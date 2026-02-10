@@ -1,0 +1,211 @@
+/* Test UI styles (restored)
+   Designed as a clean baseline; smooth-theme.css overrides colors to dark glass. */
+
+:root {
+  --test-card-radius: 22px;
+  --test-gap: 18px;
+}
+
+/* Grid of test cards */
+.test-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin: 24px 0;
+  max-width: 800px;
+}
+
+.test-card {
+  position: relative;
+  border-radius: var(--test-card-radius);
+  padding: 22px;
+  cursor: pointer;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(145deg, rgba(102, 126, 234, 0.92), rgba(118, 75, 162, 0.88));
+  color: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.18);
+  transition: transform 180ms ease, box-shadow 220ms ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.test-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 56px rgba(0,0,0,0.22);
+}
+
+.test-card-icon {
+  font-size: 2.6rem;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.test-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+}
+
+.test-card p {
+  margin: 0 0 12px;
+  opacity: 0.92;
+}
+
+.test-card-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.test-card-meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.difficulty-tag,
+.grade-tag {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.75rem;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Test container */
+.test-container {
+  display: none;
+  margin-top: 18px;
+}
+
+.test-container.active {
+  display: block;
+}
+
+.question-card {
+  border-radius: 22px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.question-text {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+/* Options */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+}
+
+.option input[type="radio"] {
+  width: 22px;
+  height: 22px;
+}
+
+.option span {
+  color: inherit;
+  opacity: 0.98;
+}
+
+.option.selected {
+  outline: 2px solid rgba(125, 211, 252, 0.28);
+}
+
+/* Question navigation */
+.question-nav-panel {
+  border-radius: 22px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  margin: 16px 0;
+}
+
+.question-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+  gap: 10px;
+}
+
+.question-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+/* Actions row */
+.question-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.question-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.question-actions .btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Results */
+.result-container,
+#test-results {
+  border-radius: 22px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+/* Мобильная адаптация отключена */

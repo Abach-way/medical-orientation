@@ -1,0 +1,743 @@
+/* ============================================================
+   GOOGLE LANGUAGE EXPLORER STYLE
+   Ультра-минималистичный тёмный дизайн
+   ============================================================ */
+
+/* Landing page - по умолчанию показан */
+.landing-page {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #000;
+}
+
+/* Когда landing скрыт через JS */
+.landing-page.hidden {
+    display: none !important;
+}
+
+/* Скрываем AI тьютор на landing page (до входа) */
+.landing-page:not(.hidden) ~ .ai-tutor-btn {
+    display: none !important;
+}
+
+/* ============================================================
+   НАВИГАЦИЯ
+   ============================================================ */
+.google-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 24px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.google-nav.scrolled {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.google-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #fff;
+    transition: opacity 0.3s ease;
+}
+
+.google-logo:hover {
+    opacity: 0.8;
+}
+
+.logo-icon {
+    font-size: 28px;
+}
+
+.logo-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.google-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.google-btn {
+    padding: 12px 28px;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: #fff;
+}
+
+.google-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+}
+
+.google-btn-text {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.75);
+    border: none;
+}
+
+.google-btn-text:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.google-btn-filled {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+.google-btn-filled:hover {
+    background: rgba(255, 255, 255, 0.92);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.12);
+}
+
+.google-btn-large {
+    padding: 18px 40px;
+    font-size: 1rem;
+    font-weight: 500;
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.google-btn-large::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.05) 0%, 
+        transparent 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.google-btn-large:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.google-btn-large:hover::before {
+    opacity: 1;
+}
+
+.google-btn-large svg {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.google-btn-large:hover svg {
+    transform: translateX(4px);
+}
+
+/* ============================================================
+   HERO СЕКЦИЯ - МИНИМАЛИЗМ
+   ============================================================ */
+.google-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 48px 80px;
+    text-align: center;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Тонкое фоновое свечение */
+.google-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150%;
+    height: 60%;
+    background: radial-gradient(ellipse 50% 80% at 50% 0%, 
+        rgba(80, 80, 120, 0.12) 0%, 
+        transparent 70%);
+    pointer-events: none;
+}
+
+.google-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, #000 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.google-hero-content {
+    max-width: 850px;
+    position: relative;
+    z-index: 1;
+}
+
+.google-hero-title {
+    font-size: clamp(2.8rem, 7vw, 4.5rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 28px;
+    opacity: 0.95;
+}
+
+.google-hero-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.75;
+    max-width: 580px;
+    margin: 0 auto 48px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+.google-hero-buttons {
+    margin-bottom: 100px;
+}
+
+/* ============================================================
+   СТАТИСТИКА - МИНИМАЛИСТИЧНАЯ
+   ============================================================ */
+.google-stats-section {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 80px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    z-index: 1;
+}
+
+.google-stats-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+.google-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+}
+
+.google-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.google-stat-number {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: -0.02em;
+}
+
+.google-stat-label {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 400;
+}
+
+/* ============================================================
+   ВИЗУАЛЬНАЯ СЕКЦИЯ С КАРТОЧКАМИ СПЕЦИАЛЬНОСТЕЙ
+   ============================================================ */
+.google-visual-section {
+    min-height: 50vh;
+    padding: 100px 48px;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.google-visual-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.visual-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    animation: visual-float 30s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+.visual-orb-1 {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(70, 70, 120, 0.15) 0%, transparent 70%);
+    top: 5%;
+    left: 5%;
+}
+
+.visual-orb-2 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(100, 80, 140, 0.12) 0%, transparent 70%);
+    bottom: 15%;
+    right: 15%;
+    animation-delay: -10s;
+}
+
+.visual-orb-3 {
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(60, 100, 120, 0.1) 0%, transparent 70%);
+    top: 45%;
+    left: 45%;
+    animation-delay: -20s;
+}
+
+@keyframes visual-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, -40px) scale(1.05); }
+    66% { transform: translate(-30px, 30px) scale(0.95); }
+}
+
+.google-visual-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.specialty-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 36px 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: card-appear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: calc(var(--delay, 0) * 0.15s);
+    position: relative;
+    overflow: hidden;
+}
+
+.specialty-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, 
+        rgba(255, 255, 255, 0.03) 0%, 
+        transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.specialty-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.specialty-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes card-appear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.specialty-icon {
+    font-size: 3rem;
+    margin-bottom: 6px;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.specialty-card:hover .specialty-icon {
+    transform: scale(1.1);
+}
+
+.specialty-name {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   FEATURES СЕКЦИЯ - ЧИСТЫЙ МИНИМАЛИЗМ
+   ============================================================ */
+.google-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #000;
+}
+
+.google-feature-item {
+    padding: 44px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.google-feature-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.08) 50%, 
+        transparent 100%);
+}
+
+.google-feature-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+.google-feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+    display: inline-block;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.google-feature-item:hover .google-feature-icon {
+    transform: scale(1.1);
+}
+
+.google-feature-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 14px;
+}
+
+.google-feature-item p {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.7;
+}
+
+/* ============================================================
+   АДАПТИВНОСТЬ
+   ============================================================ */
+@media (max-width: 1024px) {
+    .google-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 36px;
+    }
+    
+    .google-features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .google-nav {
+        padding: 18px 24px;
+    }
+    
+    .logo-text {
+        display: none;
+    }
+    
+    .google-hero {
+        padding: 100px 24px 60px;
+    }
+    
+    .google-hero-title {
+        font-size: 2.2rem;
+        font-weight: 400;
+    }
+    
+    .google-hero-subtitle {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+    
+    .google-btn-large {
+        padding: 16px 32px;
+        font-size: 0.95rem;
+    }
+    
+    .google-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+    
+    .google-stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .google-visual-section,
+    .google-features {
+        padding: 60px 24px;
+    }
+    
+    .specialty-card {
+        padding: 28px 36px;
+    }
+    
+    .google-feature-item {
+        padding: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .google-nav {
+        padding: 14px 16px;
+    }
+    
+    .google-btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+    
+    .google-hero {
+        padding: 90px 18px 50px;
+    }
+    
+    .google-hero-title {
+        font-size: 1.75rem;
+        margin-bottom: 20px;
+    }
+    
+    .google-hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 36px;
+        line-height: 1.65;
+    }
+    
+    .google-btn-large {
+        padding: 14px 28px;
+        font-size: 0.9rem;
+    }
+    
+    .google-hero-buttons {
+        margin-bottom: 70px;
+    }
+    
+    .google-stats-section {
+        padding-top: 50px;
+    }
+    
+    .google-stats-label {
+        font-size: 0.7rem;
+        margin-bottom: 28px;
+    }
+    
+    .google-stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    
+    .google-stat-number {
+        font-size: 1.4rem;
+    }
+    
+    .google-stat-label {
+        font-size: 0.75rem;
+    }
+    
+    .google-visual-section,
+    .google-features {
+        padding: 50px 18px;
+    }
+    
+    .google-visual-content {
+        gap: 12px;
+    }
+    
+    .specialty-card {
+        padding: 20px 24px;
+        flex: 1 1 calc(50% - 12px);
+        border-radius: 14px;
+        gap: 10px;
+    }
+    
+    .specialty-icon {
+        font-size: 2rem;
+        margin-bottom: 2px;
+    }
+    
+    .specialty-name {
+        font-size: 0.8rem;
+    }
+    
+    .google-feature-item {
+        padding: 26px;
+        border-radius: 18px;
+    }
+    
+    .google-feature-icon {
+        font-size: 2rem;
+        margin-bottom: 18px;
+    }
+    
+    .google-feature-item h3 {
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+    }
+    
+    .google-feature-item p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 360px) {
+    .google-nav {
+        padding: 12px 14px;
+    }
+    
+    .google-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+    
+    .google-hero {
+        padding: 85px 14px 45px;
+    }
+    
+    .google-hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .google-hero-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .google-btn-large {
+        padding: 12px 24px;
+        font-size: 0.85rem;
+    }
+    
+    .google-stats-grid {
+        gap: 12px;
+    }
+    
+    .google-stat-number {
+        font-size: 1.25rem;
+    }
+    
+    .specialty-card {
+        padding: 16px 20px;
+    }
+    
+    .specialty-icon {
+        font-size: 1.8rem;
+    }
+    
+    .google-feature-item {
+        padding: 22px;
+    }
+}
+
+/* ============================================================
+   АНИМАЦИИ ПОЯВЛЕНИЯ - ПЛАВНЫЕ
+   ============================================================ */
+.google-hero-title {
+    animation: fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.google-hero-subtitle {
+    animation: fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.google-hero-buttons {
+    animation: fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+.google-stats-section {
+    animation: fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+}
+
+.google-feature-item:nth-child(1) {
+    animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+}
+
+.google-feature-item:nth-child(2) {
+    animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) 1.05s both;
+}
+
+.google-feature-item:nth-child(3) {
+    animation: fade-up 1s cubic-bezier(0.16, 1, 0.3, 1) 1.2s both;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

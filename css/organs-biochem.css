@@ -1,0 +1,770 @@
+/* ============================================
+   3D ORGANS ATLAS - Styles
+   ============================================ */
+
+/* Organs Grid */
+.organs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+/* Organ Card */
+.organ-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(12px);
+}
+
+.organ-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2),
+                0 0 40px rgba(102, 126, 234, 0.1);
+}
+
+/* 3D Container — Three.js Canvas */
+.organ-3d-container {
+    width: 100%;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(10, 12, 25, 0.85), rgba(20, 15, 35, 0.9));
+    position: relative;
+    overflow: hidden;
+    cursor: grab;
+    border-radius: 20px 20px 0 0;
+}
+
+.organ-3d-container:active {
+    cursor: grabbing;
+}
+
+.organ-3d-container canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 20px 20px 0 0;
+}
+
+/* Organ Info */
+.organ-info {
+    padding: 20px;
+}
+
+.organ-info h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.organ-info p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.organ-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.organ-tag {
+    background: rgba(102, 126, 234, 0.15);
+    color: #667eea;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+/* ============================================
+   Organ Detail Modal
+   ============================================ */
+
+.organ-detail-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(20px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.organ-detail-modal.active {
+    display: flex;
+}
+
+.organ-detail-content {
+    background: linear-gradient(145deg, rgba(30, 30, 50, 0.98), rgba(20, 20, 40, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+}
+
+.organ-detail-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+.organ-detail-close:hover {
+    background: rgba(214, 48, 49, 0.3);
+    border-color: rgba(214, 48, 49, 0.5);
+}
+
+.organ-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    border-radius: 24px 24px 0 0;
+}
+
+.organ-detail-3d {
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.3);
+    cursor: grab;
+}
+
+.organ-detail-3d:active {
+    cursor: grabbing;
+}
+
+.organ-detail-3d canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.organ-detail-title h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.organ-latin {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.1rem;
+}
+
+.organ-detail-body {
+    padding: 32px 40px;
+}
+
+/* Tabs */
+.organ-detail-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.organ-tab {
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.organ-tab.active {
+    background: rgba(102, 126, 234, 0.2);
+    color: #667eea;
+    border-color: rgba(102, 126, 234, 0.4);
+}
+
+.organ-tab:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.organ-tab-content {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    min-height: 120px;
+}
+
+.organ-tab-content ul {
+    padding-left: 20px;
+    margin-top: 12px;
+}
+
+.organ-tab-content ul li {
+    margin-bottom: 8px;
+}
+
+.organ-tab-content h4 {
+    color: #667eea;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+
+/* Key Facts */
+.organ-key-facts {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.organ-key-facts h4 {
+    color: #fff;
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+}
+
+.organ-facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+.organ-fact-item {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+}
+
+.organ-fact-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #667eea;
+    display: block;
+}
+
+.organ-fact-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 4px;
+}
+
+
+/* ============================================
+   BIOCHEMICAL ANALYZER - Styles
+   ============================================ */
+
+.biochem-container {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Symptom Chips */
+.symptom-categories {
+    margin-top: 20px;
+}
+
+.symptom-categories h4 {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.symptom-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.symptom-chip {
+    padding: 8px 16px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+    user-select: none;
+}
+
+.symptom-chip:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.symptom-chip.active {
+    background: rgba(102, 126, 234, 0.25);
+    border-color: rgba(102, 126, 234, 0.5);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
+}
+
+/* Text Input */
+.symptom-text-input {
+    margin-top: 20px;
+}
+
+.symptom-text-input textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+    font-size: 0.95rem;
+    resize: vertical;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.symptom-text-input textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.symptom-text-input textarea:focus {
+    outline: none;
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.1);
+}
+
+/* Patient Params */
+.patient-params {
+    margin-top: 20px;
+}
+
+.patient-params h4 {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.params-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.param-field label {
+    display: block;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 6px;
+}
+
+.param-field input,
+.param-field select {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+.param-field select option {
+    background: #1e1e2e;
+    color: #fff;
+}
+
+.param-field input:focus,
+.param-field select:focus {
+    outline: none;
+    border-color: rgba(102, 126, 234, 0.5);
+}
+
+/* Analyze Button */
+.biochem-analyze-btn {
+    margin-top: 24px;
+    width: 100%;
+    padding: 16px 32px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.biochem-analyze-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.35);
+}
+
+.biochem-analyze-btn:active {
+    transform: translateY(0);
+}
+
+/* Biochem Results */
+.biochem-diagnosis {
+    background: rgba(0, 184, 148, 0.08);
+    border: 1px solid rgba(0, 184, 148, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.biochem-diagnosis h4 {
+    color: #00b894;
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+}
+
+.biochem-diagnosis p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+}
+
+.diagnosis-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 4px 4px 4px 0;
+}
+
+.diagnosis-tag.high {
+    background: rgba(214, 48, 49, 0.15);
+    color: #ff6b6b;
+    border: 1px solid rgba(214, 48, 49, 0.3);
+}
+
+.diagnosis-tag.medium {
+    background: rgba(253, 203, 110, 0.15);
+    color: #fdcb6e;
+    border: 1px solid rgba(253, 203, 110, 0.3);
+}
+
+.diagnosis-tag.low {
+    background: rgba(0, 184, 148, 0.15);
+    color: #00b894;
+    border: 1px solid rgba(0, 184, 148, 0.3);
+}
+
+/* Biochem Table */
+.biochem-table-wrapper {
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 24px;
+}
+
+.biochem-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.biochem-table thead {
+    background: rgba(102, 126, 234, 0.12);
+}
+
+.biochem-table th {
+    padding: 14px 16px;
+    text-align: left;
+    color: #667eea;
+    font-weight: 600;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.biochem-table td {
+    padding: 12px 16px;
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.biochem-table tr:hover td {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.biochem-table .indicator-up {
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+.biochem-table .indicator-down {
+    color: #74b9ff;
+    font-weight: 600;
+}
+
+.significance-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    min-width: 80px;
+}
+
+.significance-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 1s ease-out;
+}
+
+.significance-fill.high { background: linear-gradient(90deg, #ff6b6b, #d63031); }
+.significance-fill.medium { background: linear-gradient(90deg, #fdcb6e, #e17055); }
+.significance-fill.low { background: linear-gradient(90deg, #00b894, #00cec9); }
+
+/* Biochem Recommendations */
+.biochem-recommendations {
+    background: rgba(253, 203, 110, 0.06);
+    border: 1px solid rgba(253, 203, 110, 0.15);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.biochem-recommendations h4 {
+    color: #fdcb6e;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+
+.biochem-recommendations ul {
+    padding-left: 20px;
+}
+
+.biochem-recommendations li {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+/* Related Organs */
+.biochem-organs h4 {
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.related-organs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.related-organ-item {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.related-organ-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: rgba(102, 126, 234, 0.25);
+    transform: translateY(-3px);
+}
+
+.related-organ-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.related-organ-name {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+/* Disclaimer */
+.biochem-disclaimer {
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: rgba(214, 48, 49, 0.06);
+    border: 1px solid rgba(214, 48, 49, 0.15);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .organs-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .organ-3d-container {
+        height: 180px;
+    }
+
+    .organ-detail-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+        padding: 24px;
+    }
+
+    .organ-detail-3d {
+        width: 120px;
+        height: 120px;
+    }
+
+    .organ-detail-title h2 {
+        font-size: 1.5rem;
+    }
+
+    .organ-detail-body {
+        padding: 20px;
+    }
+
+    .organ-detail-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+    }
+
+    .organ-tab {
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .params-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .biochem-table {
+        font-size: 0.8rem;
+    }
+
+    .biochem-table th,
+    .biochem-table td {
+        padding: 10px 12px;
+    }
+
+    .related-organs-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+
+    .organ-facts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .organ-facts-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .related-organs-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ============================================
+   ENHANCED ANIMATIONS
+   ============================================ */
+
+/* Floating particles for organs section */
+.organ-3d-container .floating-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.4);
+    animation: floatParticle 4s ease-in-out infinite;
+}
+
+@keyframes floatParticle {
+    0%, 100% { transform: translate(0, 0); opacity: 0.2; }
+    50% { transform: translate(var(--dx, 20px), var(--dy, -20px)); opacity: 0.8; }
+}
+
+/* Loading shimmer for analysis */
+.biochem-loading {
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.03) 25%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0.03) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 14px;
+    min-height: 200px;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Organ card entrance animation */
+.organ-card {
+    animation: cardFadeIn 0.6s ease-out both;
+}
+
+.organ-card:nth-child(1) { animation-delay: 0.1s; }
+.organ-card:nth-child(2) { animation-delay: 0.2s; }
+.organ-card:nth-child(3) { animation-delay: 0.3s; }
+.organ-card:nth-child(4) { animation-delay: 0.4s; }
+.organ-card:nth-child(5) { animation-delay: 0.5s; }
+.organ-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

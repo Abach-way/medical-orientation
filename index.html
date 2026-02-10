@@ -1,0 +1,1510 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Медицинская Профориентация</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/test-design.css">
+    <link rel="stylesheet" href="css/smooth-theme.css">
+    <link rel="stylesheet" href="css/google-style.css">
+    <link rel="stylesheet" href="css/app-design.css">
+    <link rel="stylesheet" href="css/advanced-ui.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/organs-biochem.css">
+    
+    <!-- Критические мобильные стили (высший приоритет) -->
+    <style>
+        @media (max-width: 768px) {
+            /* Гарантируем видимость контента на мобильных */
+            .main-content.visible {
+                display: flex !important;
+                flex-direction: column !important;
+                min-height: 100vh !important;
+            }
+            
+            /* App-content обязательно видим */
+            .main-content.visible .app-content,
+            .main-content.visible main.app-content,
+            main.app-content {
+                display: block !important;
+                margin-left: 0 !important;
+                width: 100% !important;
+                min-height: calc(100vh - 100px) !important;
+                padding: 20px 16px 120px !important;
+            }
+            
+            /* Секции обязательно видимы */
+            section#home.visible,
+            section#tests.visible,
+            section#profile.visible,
+            section#learning.visible,
+            section#contacts.visible,
+            .main-content.visible section.visible,
+            section.visible {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                width: 100% !important;
+            }
+            
+            /* Sidebar скрыт */
+            .sidebar,
+            aside.sidebar {
+                display: none !important;
+            }
+            
+            /* Mobile nav видима */
+            nav.mobile-nav,
+            .mobile-nav {
+                display: flex !important;
+            }
+        }
+        
+        /* На десктопе mobile-nav скрыта */
+        @media (min-width: 769px) {
+            nav.mobile-nav,
+            .mobile-nav {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Фоновая музыка (джаз, автовоспроизведение) -->
+    <audio id="background-music-1" preload="auto"></audio>
+    <audio id="background-music-2" preload="auto"></audio>
+
+    <!-- Landing Page (для незалогиненных пользователей) -->
+    <div class="landing-page" id="landing-page">
+        <!-- Навигация в стиле Google -->
+        <nav class="google-nav" id="landing-nav">
+            <a href="#" class="google-logo">
+                <span class="logo-icon">🏥</span>
+                <span class="logo-text">Medical Explorer</span>
+            </a>
+            <div class="google-nav-right">
+                <button class="google-btn google-btn-text" onclick="openAuthModal('login')">Войти</button>
+                <button class="google-btn google-btn-filled" onclick="openAuthModal('register')">Начать</button>
+            </div>
+        </nav>
+
+        <!-- Hero секция в стиле Google Language Explorer -->
+        <section class="google-hero">
+            <div class="google-hero-content">
+                <h1 class="google-hero-title">
+                    Medical Explorer
+                </h1>
+                <p class="google-hero-subtitle">
+                    Открой свой путь в медицину. Интерактивные тесты и персональные рекомендации для выбора медицинской специальности.
+                </p>
+                <div class="google-hero-buttons">
+                    <button class="google-btn google-btn-large" onclick="openAuthModal('register')">
+                        Начать исследование
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Большая статистика в стиле Google -->
+            <div class="google-stats-section">
+                <div class="google-stats-label">Обзор платформы</div>
+                <div class="google-stats-grid">
+                    <div class="google-stat-item">
+                        <span class="google-stat-number">500+</span>
+                        <span class="google-stat-label">Вопросов</span>
+                    </div>
+                    <div class="google-stat-item">
+                        <span class="google-stat-number">12</span>
+                        <span class="google-stat-label">Тестов</span>
+                    </div>
+                    <div class="google-stat-item">
+                        <span class="google-stat-number">25+</span>
+                        <span class="google-stat-label">Специальностей</span>
+                    </div>
+                    <div class="google-stat-item">
+                        <span class="google-stat-number">6</span>
+                        <span class="google-stat-label">3D Органов</span>
+                    </div>
+                    <div class="google-stat-item">
+                        <span class="google-stat-number">18</span>
+                        <span class="google-stat-label">Симптомов</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Визуальная секция - карта/иллюстрация -->
+        <section class="google-visual-section">
+            <div class="google-visual-bg">
+                <div class="visual-orb visual-orb-1"></div>
+                <div class="visual-orb visual-orb-2"></div>
+                <div class="visual-orb visual-orb-3"></div>
+            </div>
+            <div class="google-visual-content">
+                <div class="specialty-card" style="--delay: 0">
+                    <div class="specialty-icon">🫀</div>
+                    <div class="specialty-name">Кардиолог</div>
+                </div>
+                <div class="specialty-card" style="--delay: 1">
+                    <div class="specialty-icon">🧠</div>
+                    <div class="specialty-name">Нейрохирург</div>
+                </div>
+                <div class="specialty-card" style="--delay: 2">
+                    <div class="specialty-icon">👶</div>
+                    <div class="specialty-name">Педиатр</div>
+                </div>
+                <div class="specialty-card" style="--delay: 3">
+                    <div class="specialty-icon">🦷</div>
+                    <div class="specialty-name">Стоматолог</div>
+                </div>
+                <div class="specialty-card" style="--delay: 4">
+                    <div class="specialty-icon">👁️</div>
+                    <div class="specialty-name">Офтальмолог</div>
+                </div>
+                <div class="specialty-card" style="--delay: 5">
+                    <div class="specialty-icon">💊</div>
+                    <div class="specialty-name">Фармацевт</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features секция -->
+        <section class="google-features">
+            <div class="google-feature-item">
+                <div class="google-feature-icon">📊</div>
+                <h3>Персональная аналитика</h3>
+                <p>Узнай свои сильные стороны и получи рекомендации по развитию</p>
+            </div>
+            <div class="google-feature-item">
+                <div class="google-feature-icon">🎯</div>
+                <h3>Профориентация</h3>
+                <p>Определи свою идеальную медицинскую специальность</p>
+            </div>
+            <div class="google-feature-item">
+                <div class="google-feature-icon">📚</div>
+                <h3>Обучающие материалы</h3>
+                <p>Подготовка к экзаменам по биологии и химии</p>
+            </div>
+            <div class="google-feature-item">
+                <div class="google-feature-icon">🫀</div>
+                <h3>3D Атлас Органов</h3>
+                <p>Интерактивные 3D модели органов человека с подробным описанием</p>
+            </div>
+            <div class="google-feature-item">
+                <div class="google-feature-icon">🧬</div>
+                <h3>Биохим. Анализатор</h3>
+                <p>Анализ биохимических показателей на основе симптомов пациента</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Контейнер авторизации (модальное окно) -->
+    <div class="auth-container" id="auth-container" role="dialog" aria-modal="true" aria-label="Авторизация">
+        <div class="auth-form wave-bg">
+            <button class="auth-close-btn" onclick="closeAuthModal()" aria-label="Закрыть">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Медицинская Профориентация</h2>
+            <p class="auth-form-subtitle">Войдите или создайте аккаунт</p>
+            
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab active" onclick="switchTab('login')">Вход</button>
+                <button type="button" class="auth-tab" onclick="switchTab('register')">Регистрация</button>
+            </div>
+            
+            <!-- Форма входа -->
+            <div id="login-page" class="auth-page active">
+                <form onsubmit="handleLogin(event)">
+                    <div class="input-group">
+                        <label for="login-email" class="sr-only">Email</label><input type="email" id="login-email" placeholder="Email" required autocomplete="email">
+                        <i class="fas fa-envelope input-icon"></i>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="login-password" class="sr-only">Пароль</label><input type="password" id="login-password" placeholder="Пароль" required autocomplete="current-password">
+                        <i class="fas fa-lock input-icon"></i>
+                    </div>
+                    
+                    <button type="submit" class="auth-button">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Войти
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Форма регистрации -->
+            <div id="register-page" class="auth-page">
+                <form onsubmit="handleRegistration(event)">
+                    <div class="input-group">
+                        <label for="reg-username" class="sr-only">Имя и Фамилия</label><input type="text" id="reg-username" placeholder="Имя и Фамилия" required autocomplete="name">
+                        <i class="fas fa-user input-icon"></i>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-email" class="sr-only">Email</label><input type="email" id="reg-email" placeholder="Email" required autocomplete="email">
+                        <i class="fas fa-envelope input-icon"></i>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-phone" class="sr-only">Номер телефона</label><input type="tel" id="reg-phone" placeholder="Номер телефона" required autocomplete="tel">
+                        <i class="fas fa-phone input-icon"></i>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-age" class="sr-only">Возраст</label><input type="number" id="reg-age" placeholder="Возраст" min="14" max="99" required>
+                        <i class="fas fa-birthday-cake input-icon"></i>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-password" class="sr-only">Пароль</label><input type="password" id="reg-password" placeholder="Пароль" required autocomplete="new-password">
+                        <i class="fas fa-lock input-icon"></i>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-confirm-password" class="sr-only">Подтвердите пароль</label><input type="password" id="reg-confirm-password" placeholder="Подтвердите пароль" required autocomplete="new-password">
+                        <i class="fas fa-lock input-icon"></i>
+                    </div>
+                    
+                    <button type="submit" class="auth-button">
+                        <i class="fas fa-user-plus"></i>
+                        Зарегистрироваться
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Код подтверждения -->
+            <div id="verification-page" class="auth-page verification-code" style="display: none !important;">
+                <h3>Подтверждение email</h3>
+                <p style="text-align: center; margin-bottom: 20px;">Мы отправили код на ваш email</p>
+                
+                <div class="code-inputs">
+                    <input type="text" maxlength="1" oninput="moveToNext(this, 1)" onkeyup="moveOnBackspace(this, 0)">
+                    <input type="text" maxlength="1" oninput="moveToNext(this, 2)" onkeyup="moveOnBackspace(this, 1)">
+                    <input type="text" maxlength="1" oninput="moveToNext(this, 3)" onkeyup="moveOnBackspace(this, 2)">
+                    <input type="text" maxlength="1" oninput="moveToNext(this, 4)" onkeyup="moveOnBackspace(this, 3)">
+                    <input type="text" maxlength="1" oninput="moveToNext(this, 5)" onkeyup="moveOnBackspace(this, 4)">
+                    <input type="text" maxlength="1" onkeyup="moveOnBackspace(this, 5)">
+                </div>
+                
+                <button type="button" class="auth-button" onclick="verifyCode()">Подтвердить</button>
+                <button type="button" class="auth-button" onclick="resendCode()" style="background: #f0f0f0; color: #333; margin-top: 10px;">Отправить код повторно</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div class="main-content" id="main-content">
+        
+        <!-- Боковая навигация -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-icon">🏥</div>
+                <div>
+                    <div class="sidebar-logo-text">Medical</div>
+                    <div class="sidebar-logo-sub">Профориентация</div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#home" class="nav-item active" onclick="showSection('home'); updateNav(this)">
+                    <span class="nav-icon">🏠</span>
+                    <span>Главная</span>
+                </a>
+                <a href="#tests" class="nav-item" onclick="showSection('tests'); updateNav(this)">
+                    <span class="nav-icon">📊</span>
+                    <span>Тесты</span>
+                    <span class="nav-badge">4</span>
+                </a>
+                <a href="#profile" class="nav-item" onclick="showSection('profile'); updateNav(this)">
+                    <span class="nav-icon">👤</span>
+                    <span>Профиль</span>
+                </a>
+                <a href="#learning" class="nav-item" onclick="showSection('learning'); updateNav(this)">
+                    <span class="nav-icon">📚</span>
+                    <span>Обучение</span>
+                </a>
+                <a href="#organs3d" class="nav-item" onclick="showSection('organs3d'); updateNav(this)">
+                    <span class="nav-icon">🫀</span>
+                    <span>3D Органы</span>
+                </a>
+                <a href="#biochem" class="nav-item" onclick="showSection('biochem'); updateNav(this)">
+                    <span class="nav-icon">🧬</span>
+                    <span>Биохим. анализ</span>
+                </a>
+                
+                <div class="nav-divider"></div>
+                
+                <a href="#contacts" class="nav-item" onclick="showSection('contacts'); updateNav(this)">
+                    <span class="nav-icon">📞</span>
+                    <span>Контакты</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-user">
+                <div class="user-card">
+                    <div class="user-avatar" id="sidebar-avatar">👤</div>
+                    <div class="user-info">
+                        <div class="user-name" id="sidebar-username">Пользователь</div>
+                        <div class="user-level">Уровень 1</div>
+                    </div>
+                </div>
+                <button class="logout-btn-new" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Выйти из аккаунта</span>
+                </button>
+            </div>
+        </aside>
+        
+        <!-- Область контента -->
+        <main class="app-content">
+        
+        <!-- Главная -->
+        <section id="home" class="visible" style="display: block;">
+            <div class="page-header">
+                <h1 class="page-title">Добро пожаловать! 👋</h1>
+                <p class="page-subtitle">Ваш путь в медицину начинается здесь</p>
+            </div>
+            
+            <!-- Статистика -->
+            <div class="bento-grid">
+                <div class="bento-item">
+                    <div class="bento-value" id="total-users-count">0</div>
+                    <div class="bento-label">Пользователей</div>
+                    <div class="bento-sublabel">на этом устройстве</div>
+                </div>
+                <div class="bento-item accent">
+                    <div class="bento-value" id="total-users-global-count">—</div>
+                    <div class="bento-label">Всего</div>
+                    <div class="bento-sublabel">пользователей</div>
+                </div>
+                <div class="bento-item">
+                    <div class="bento-value" id="total-tests-count">0</div>
+                    <div class="bento-label">Тестов пройдено</div>
+                </div>
+                <div class="bento-item">
+                    <div class="bento-value" id="total-questions-count">500+</div>
+                    <div class="bento-label">Вопросов в базе</div>
+                </div>
+            </div>
+            
+            <!-- Быстрые действия -->
+            <div class="app-card">
+                <div class="app-card-header">
+                    <div class="app-card-icon purple"><i class="fas fa-rocket"></i></div>
+                    <div>
+                        <div class="app-card-title">Быстрый старт</div>
+                        <div class="app-card-subtitle">Выберите действие для начала работы</div>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <div class="quick-action" onclick="showSection('tests'); startTest('profession')">
+                        <div class="quick-action-icon">🧠</div>
+                        <div class="quick-action-text">Тест профориентации</div>
+                        <div class="quick-action-desc">Узнайте свою специальность</div>
+                    </div>
+                    <div class="quick-action" onclick="showSection('learning')">
+                        <div class="quick-action-icon">📚</div>
+                        <div class="quick-action-text">Обучение</div>
+                        <div class="quick-action-desc">Изучайте материалы</div>
+                    </div>
+                    <div class="quick-action" onclick="showSection('profile')">
+                        <div class="quick-action-icon">📊</div>
+                        <div class="quick-action-text">Мой прогресс</div>
+                        <div class="quick-action-desc">Смотрите результаты</div>
+                    </div>
+                    <div class="quick-action" onclick="showSection('organs3d')">
+                        <div class="quick-action-icon">🫀</div>
+                        <div class="quick-action-text">3D Органы</div>
+                        <div class="quick-action-desc">Интерактивный атлас</div>
+                    </div>
+                    <div class="quick-action" onclick="showSection('biochem')">
+                        <div class="quick-action-icon">🧬</div>
+                        <div class="quick-action-text">Биохим. Анализ</div>
+                        <div class="quick-action-desc">Анализ симптомов</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Цитата дня -->
+            <div class="quote-card">
+                <p class="quote-text" id="daily-quote">Медицина — это не только наука, но и искусство. Она требует не только знаний, но и сердца.</p>
+                <p class="quote-author" id="quote-author">— Гиппократ</p>
+            </div>
+            
+        </section>
+
+        <!-- Секция Тестов -->
+        <section id="tests">
+            <!-- Панель выбора тестов по классам и сложности -->
+            <div class="card tests-selection-screen">
+                <h2><i class="fas fa-clipboard-list"></i> Центр тестирования</h2>
+                <p style="margin-top: 10px; color: rgba(255,255,255,0.8);">Выберите свой класс и пройдите тесты. Тесты по предметам — 25 вопросов, профориентация — 45 вопросов.</p>
+                
+                <!-- Фильтр по классам -->
+                <div class="tests-filter-panel" style="margin-top: 25px;">
+                    <h3 class="filter-title"><i class="fas fa-graduation-cap"></i> Выберите класс</h3>
+                    <div class="filter-buttons grade-filter">
+                        <button class="filter-btn grade-btn" onclick="filterByGrade(1, this)">1 класс</button>
+                        <button class="filter-btn grade-btn" onclick="filterByGrade(2, this)">2 класс</button>
+                        <button class="filter-btn grade-btn" onclick="filterByGrade(3, this)">3 класс</button>
+                        <button class="filter-btn grade-btn" onclick="filterByGrade(4, this)">4 класс</button>
+                        <button class="filter-btn grade-btn" onclick="filterByGrade(5, this)">5 класс</button>
+                        <button class="filter-btn grade-btn" onclick="filterByGrade(6, this)">6 класс</button>
+                        <button class="filter-btn grade-btn" onclick="filterByGrade(7, this)">7 класс</button>
+                        <button class="filter-btn grade-btn" onclick="filterByGrade(8, this)">8 класс</button>
+                        <button class="filter-btn grade-btn active" onclick="filterByGrade(9, this)">9 класс</button>
+                        <button class="filter-btn grade-btn" onclick="filterByGrade(10, this)">10 класс</button>
+                        <button class="filter-btn grade-btn" onclick="filterByGrade(11, this)">11 класс</button>
+                    </div>
+                </div>
+                
+                <!-- Заголовок выбранного класса -->
+                <div class="selected-grade-title" style="margin-top: 20px; margin-bottom: 15px;">
+                    <h3 id="current-grade-title" style="color: var(--accent); font-size: 1.2rem;">📚 Тесты для 9 класса</h3>
+                </div>
+                
+                <!-- Сетка тестов -->
+                <div class="test-cards" id="tests-grid">
+                    
+                    <!-- Профориентация -->
+                    <div class="test-card" onclick="startGradeTest('profession')" data-category="profession">
+                        <div class="test-card-icon">🎯</div>
+                        <h3>Профориентация</h3>
+                        <p>Определи свои склонности и подходящие профессии</p>
+                        <div class="test-card-badge">45 вопросов</div>
+                        <div class="test-card-meta">
+                            <span class="difficulty-tag medium">Адаптивный</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Химия -->
+                    <div class="test-card" onclick="startGradeTest('chemistry')" data-category="chemistry">
+                        <div class="test-card-icon">🧪</div>
+                        <h3>Химия</h3>
+                        <p>Проверь свои знания по химии</p>
+                        <div class="test-card-badge">25 вопросов</div>
+                        <div class="test-card-meta">
+                            <span class="difficulty-tag medium">Адаптивный</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Биология -->
+                    <div class="test-card" onclick="startGradeTest('biology')" data-category="biology">
+                        <div class="test-card-icon">🧬</div>
+                        <h3>Биология</h3>
+                        <p>Проверь свои знания по биологии</p>
+                        <div class="test-card-badge">25 вопросов</div>
+                        <div class="test-card-meta">
+                            <span class="difficulty-tag medium">Адаптивный</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Выбор специальности -->
+                    <div class="test-card" onclick="startGradeTest('specialty')" data-category="specialty">
+                        <div class="test-card-icon">🩺</div>
+                        <h3>Выбор специальности</h3>
+                        <p>Какая медицинская специальность тебе подходит?</p>
+                        <div class="test-card-badge">25 вопросов</div>
+                        <div class="test-card-meta">
+                            <span class="difficulty-tag medium">Адаптивный</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Контейнер для вопросов теста -->
+            <div id="test-questions-container" class="test-container">
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 15px; flex-wrap: wrap;">
+                        <button class="test-button secondary" onclick="goBackToTests()" style="padding: 10px 14px;">
+                            <i class="fas fa-arrow-left"></i> Назад к тестам
+                        </button>
+                        <div style="opacity: 0.75; font-size: 14px;">Можно вернуться к выбору тестов в любой момент</div>
+                    </div>
+                    <!-- Панель навигации по вопросам -->
+                    <div class="question-nav-panel">
+                        <div class="question-nav-header">
+                            <h3 style="color: #667eea;">Навигация по вопросам</h3>
+                            <button class="test-button warning" onclick="goToFirstSkipped()" style="padding: 8px 15px; font-size: 14px;">
+                                <i class="fas fa-redo-alt"></i> К пропущенным
+                            </button>
+                        </div>
+                        
+                        <div class="question-nav-grid" id="question-nav">
+                            <!-- Кнопки вопросов будут добавлены через JavaScript -->
+                        </div>
+                        
+                        <div class="question-stats">
+                            <div class="question-stat">
+                                <div class="question-stat-color" style="background: #4CAF50;"></div>
+                                <span>Отвеченные</span>
+                            </div>
+                            <div class="question-stat">
+                                <div class="question-stat-color" style="background: #667eea;"></div>
+                                <span>Текущий</span>
+                            </div>
+                            <div class="question-stat">
+                                <div class="question-stat-color" style="background: #ff9800;"></div>
+                                <span>Пропущенные</span>
+                            </div>
+                            <div class="question-stat">
+                                <div class="question-stat-color" style="background: #9c27b0;"></div>
+                                <span>Отмеченные</span>
+                            </div>
+                            <div class="question-stat">
+                                <div class="question-stat-color" style="background: #ff6b6b;"></div>
+                                <span>Пустые</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="test-progress"></div>
+                    </div>
+                    <div class="progress-text" id="progress-text">Вопрос 1 из 40</div>
+                    
+                    <div id="questions-container">
+                        <!-- Вопросы будут добавлены через JavaScript -->
+                    </div>
+                    
+                    <div class="test-controls">
+                        <button class="test-button secondary" onclick="prevQuestion()" id="prev-btn">
+                            <i class="fas fa-arrow-left"></i> Назад
+                        </button>
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <button class="test-button danger" onclick="clearCurrentAnswer()" id="clear-btn">
+                                <i class="fas fa-times"></i> Очистить
+                            </button>
+                            <button class="test-button success" onclick="markQuestion()" id="mark-btn">
+                                <i class="fas fa-flag"></i> Отметить
+                            </button>
+                        </div>
+                        
+                        <button class="test-button" onclick="nextQuestion()" id="next-btn">
+                            Далее <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <button class="test-button pulse" onclick="checkTestResults()" id="check-btn" style="display: none; width: 100%; margin-top: 20px;">
+                        <i class="fas fa-check-circle"></i> Проверить результаты
+                    </button>
+                </div>
+            </div>
+
+            <!-- Результаты теста - Красивый дизайн с анализом -->
+            <div id="test-results" class="result-container">
+                <div class="result-header">
+                    <h2>🎉 Результаты теста</h2>
+                    <div class="result-score" id="result-score">0%</div>
+                    <p class="result-title" id="result-title"></p>
+                </div>
+                
+                <div class="result-message" id="result-message"></div>
+                
+                <!-- Статистика результатов -->
+                <div class="result-stats" id="result-stats">
+                    <div class="stat-item">
+                        <span class="stat-icon">✅</span>
+                        <span class="stat-value" id="correct-count">0</span>
+                        <span class="stat-label">Правильных</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">❌</span>
+                        <span class="stat-value" id="incorrect-count">0</span>
+                        <span class="stat-label">Неправильных</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">⏱️</span>
+                        <span class="stat-value" id="time-spent">0:00</span>
+                        <span class="stat-label">Время</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">📊</span>
+                        <span class="stat-value" id="accuracy-rate">0%</span>
+                        <span class="stat-label">Точность</span>
+                    </div>
+                </div>
+                
+                <!-- Анализ результатов -->
+                <div class="analysis-section" id="analysis-section">
+                    <h3><i class="fas fa-chart-line"></i> Анализ вашего результата</h3>
+                    
+                    <div class="grade-estimate" id="grade-estimate">
+                        📈 Ваш уровень подготовки: <span id="level-text">Определяется...</span>
+                    </div>
+                    
+                    <div class="strengths" id="strengths-section">
+                        <h4>Сильные стороны</h4>
+                        <div class="category-list">
+                            <ul id="strengths-list">
+                                <li>Анализ проводится...</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="weaknesses" id="weaknesses-section">
+                        <h4>Области для улучшения</h4>
+                        <div class="category-list">
+                            <ul id="weaknesses-list">
+                                <li>Анализ проводится...</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="recommendations" id="recommendations-section">
+                        <h4>Рекомендации</h4>
+                        <div class="category-list">
+                            <ul id="recommendations-list">
+                                <li>Рекомендации формируются...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Детальный разбор ответов -->
+                <div class="detailed-answers" id="detailed-answers">
+                    <h3>📋 Детальный разбор ответов</h3>
+                    <div id="answers-review">
+                        <!-- Ответы будут добавлены через JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Кнопки действий -->
+                <div class="result-actions">
+                    <button class="test-button success" onclick="restartCurrentTest()">
+                        <i class="fas fa-redo"></i> Пройти заново
+                    </button>
+                    <button class="test-button" onclick="goBackToTests()">
+                        <i class="fas fa-list"></i> Все тесты
+                    </button>
+                    <button class="test-button secondary" onclick="shareResults()">
+                        <i class="fas fa-share-alt"></i> Поделиться
+                    </button>
+                    <button class="test-button info" onclick="downloadResultsPDF()">
+                        <i class="fas fa-file-pdf"></i> Скачать PDF
+                    </button>
+                    <button class="test-button warning" onclick="printResults()">
+                        <i class="fas fa-print"></i> Печать
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Контейнер для новой адаптивной системы тестирования -->
+            <div class="test-container" style="display: none;">
+                <div class="test-header">
+                    <div class="current-test-line">
+                        <span class="status-chip strong" id="current-test-label">Выберите тест, чтобы начать</span>
+                    </div>
+                    <div class="test-progress">
+                        <div class="progress-text">Прогресс теста</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div class="status-chips">
+                            <div class="status-chip" id="difficulty-indicator">Уровень сложности: Начальный</div>
+                            <div class="status-chip muted" id="skipped-info">Пропущено: 0</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="question-card" class="question-card">
+                    <div class="question-header">
+                        <div class="question-progress">
+                            <span class="status-chip strong" id="question-counter">Вопрос 1 из 40</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question-content">
+                        <div id="question-text" class="question-text">Нажмите на любой тест выше, чтобы начать</div>
+                        <div id="options-container" class="options-container"></div>
+                    </div>
+                    
+                    <div class="question-actions" style="display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap;">
+                        <button id="adaptive-prev-btn" class="btn btn-secondary" onclick="prevAdaptiveQuestion()" disabled>
+                            <i class="fas fa-arrow-left"></i> Назад
+                        </button>
+                        <button id="adaptive-exit-btn" class="btn btn-secondary" onclick="goBackToTests()">
+                            <i class="fas fa-sign-out-alt"></i> Выйти
+                        </button>
+                        <button id="adaptive-skip-btn" class="btn btn-skip" onclick="skipQuestion()">
+                            <i class="fas fa-forward"></i> Пропустить
+                        </button>
+                        <button id="adaptive-next-btn" class="btn btn-primary" onclick="nextQuestion()" disabled>
+                            <i class="fas fa-arrow-right"></i> Ответить / Далее
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Контейнер результатов новой системы -->
+            <div class="result-container" id="adaptive-result-container" style="display: none;">
+                <div class="result-header">
+                    <h2>🎯 Результаты адаптивного тестирования</h2>
+                    <div class="result-score" id="adaptive-result-score">0%</div>
+                </div>
+                
+                <div class="result-stats" id="adaptive-result-stats">
+                    <!-- Статистика будет добавлена через JavaScript -->
+                </div>
+                
+                <div class="analysis-section" id="adaptive-analysis-section">
+                    <!-- Анализ будет добавлен через JavaScript -->
+                </div>
+                
+                <div class="detailed-answers" id="adaptive-detailed-answers">
+                    <!-- Подробные ответы будут добавлены через JavaScript -->
+                </div>
+                
+                <div class="result-actions">
+                    <button class="test-button success" onclick="restartTest()">
+                        <i class="fas fa-redo"></i> Пройти ещё раз
+                    </button>
+                    <button class="test-button primary" onclick="shareResults()">
+                        <i class="fas fa-share-alt"></i> Поделиться
+                    </button>
+                    <button class="test-button secondary" onclick="goBackToTests()">
+                        <i class="fas fa-arrow-left"></i> К тестам
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Профиль пользователя -->
+        <section id="profile">
+            <!-- Шапка профиля - новый дизайн -->
+            <div class="profile-hero">
+                <div class="profile-hero-bg"></div>
+                <div class="profile-hero-content">
+                    <div class="profile-avatar-wrapper">
+                        <div class="avatar-container">
+                            <div id="avatar-placeholder" class="avatar-placeholder"></div>
+                            <img id="avatar-image" class="avatar" style="display: none;" alt="Аватар пользователя">
+                            <label class="avatar-upload-btn" for="avatar-input">
+                                <i class="fas fa-camera"></i>
+                            </label>
+                            <input type="file" id="avatar-input" class="avatar-input" accept="image/*" onchange="handleAvatarUpload(event)">
+                        </div>
+                        <div class="profile-level-badge" id="profile-level-badge">
+                            <span class="level-icon">⭐</span>
+                            <span class="level-text" id="user-level">Уровень 1</span>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-main-info">
+                        <div class="profile-name-row">
+                            <h1 id="profile-name">Загрузка...</h1>
+                            <button class="profile-edit-btn" onclick="editProfileName()" title="Изменить имя">
+                                <i class="fas fa-pen"></i>
+                            </button>
+                        </div>
+                        <p class="profile-status-text"><span id="profile-status">Новичок</span></p>
+                        
+                        <!-- Прогресс XP -->
+                        <div class="profile-xp-bar">
+                            <div class="xp-bar-fill" id="xp-progress" style="width: 0%"></div>
+                        </div>
+                        <div class="profile-xp-info">
+                            <span id="xp-text">0 / 100 XP</span>
+                            <span>до следующего уровня</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Быстрая статистика -->
+            <div class="profile-quick-stats">
+                <div class="quick-stat">
+                    <span class="quick-stat-icon">📊</span>
+                    <div class="quick-stat-info">
+                        <span class="quick-stat-value" id="tests-completed">0</span>
+                        <span class="quick-stat-label">тестов</span>
+                    </div>
+                </div>
+                <div class="quick-stat">
+                    <span class="quick-stat-icon">🎯</span>
+                    <div class="quick-stat-info">
+                        <span class="quick-stat-value" id="average-score">0%</span>
+                        <span class="quick-stat-label">средний балл</span>
+                    </div>
+                </div>
+                <div class="quick-stat">
+                    <span class="quick-stat-icon">🏆</span>
+                    <div class="quick-stat-info">
+                        <span class="quick-stat-value" id="best-score">0%</span>
+                        <span class="quick-stat-label">лучший</span>
+                    </div>
+                </div>
+                <div class="quick-stat">
+                    <span class="quick-stat-icon">🔥</span>
+                    <div class="quick-stat-info">
+                        <span class="quick-stat-value" id="streak-days">0</span>
+                        <span class="quick-stat-label">дней подряд</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Основной контент в две колонки -->
+            <div class="profile-grid">
+                <!-- Левая колонка -->
+                <div class="profile-column">
+                    <!-- Информация о пользователе -->
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h3><i class="fas fa-user"></i> Личные данные</h3>
+                        </div>
+                        <div class="profile-data-list">
+                            <div class="profile-data-item">
+                                <span class="data-icon"><i class="fas fa-envelope"></i></span>
+                                <div class="data-content">
+                                    <span class="data-label">Email</span>
+                                    <span class="data-value" id="profile-email-text">Загрузка...</span>
+                                </div>
+                            </div>
+                            <div class="profile-data-item">
+                                <span class="data-icon"><i class="fas fa-phone"></i></span>
+                                <div class="data-content">
+                                    <span class="data-label">Телефон</span>
+                                    <span class="data-value" id="profile-phone-text">Загрузка...</span>
+                                </div>
+                            </div>
+                            <div class="profile-data-item">
+                                <span class="data-icon"><i class="fas fa-birthday-cake"></i></span>
+                                <div class="data-content">
+                                    <span class="data-label">Возраст</span>
+                                    <span class="data-value" id="profile-age-text">Загрузка...</span>
+                                </div>
+                            </div>
+                            <div class="profile-data-item">
+                                <span class="data-icon"><i class="fas fa-calendar-alt"></i></span>
+                                <div class="data-content">
+                                    <span class="data-label">Дата регистрации</span>
+                                    <span class="data-value" id="profile-reg-date">Загрузка...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Детальная статистика -->
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h3><i class="fas fa-chart-bar"></i> Статистика</h3>
+                        </div>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-number" id="days-registered">0</span>
+                                <span class="stat-text">дней с нами</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="total-xp">0</span>
+                                <span class="stat-text">всего XP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Правая колонка -->
+                <div class="profile-column">
+                    <!-- Рекомендации -->
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h3><i class="fas fa-compass"></i> Рекомендуемые специальности</h3>
+                        </div>
+                        <div id="career-recommendations-list" class="career-list">
+                            <p class="empty-state">Пройдите тесты, чтобы получить персональные рекомендации</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Быстрые действия -->
+                    <div class="profile-card">
+                        <div class="profile-card-header">
+                            <h3><i class="fas fa-bolt"></i> Быстрые действия</h3>
+                        </div>
+                        <div class="actions-grid">
+                            <button class="profile-action-btn" onclick="showSection('tests'); startTest('profession')">
+                                <span class="action-icon">🧠</span>
+                                <span>Профориентация</span>
+                            </button>
+                            <button class="profile-action-btn" onclick="showSection('tests'); startTest('biology')">
+                                <span class="action-icon">🧬</span>
+                                <span>Биология</span>
+                            </button>
+                            <button class="profile-action-btn" onclick="showSection('tests'); startTest('chemistry')">
+                                <span class="action-icon">⚗️</span>
+                                <span>Химия</span>
+                            </button>
+                            <button class="profile-action-btn" onclick="showSection('learning')">
+                                <span class="action-icon">📚</span>
+                                <span>Обучение</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Обучение -->
+        <section id="learning">
+            <div class="card">
+                <h2>📚 Обучение и материалы</h2>
+                <p style="margin-top: 10px;">Изучите материалы для подготовки к медицинскому вузу</p>
+                
+                <div class="learning-grid">
+                    <!-- Основы медицины -->
+                    <div class="learning-card" onclick="toggleLearningCard(this)">
+                        <div class="learning-toggle">▼</div>
+                        <h3><i class="fas fa-book-medical"></i> Основы медицины</h3>
+                        <p>Введение в медицинскую науку, история медицины, основные понятия и термины</p>
+                        
+                        <div class="learning-details">
+                            <div class="learning-content">
+                                <h4><i class="fas fa-info-circle"></i> Что такое медицина?</h4>
+                                <p>Медицина — это наука и практика диагностики, лечения и профилактики заболеваний. Она включает в себя различные области знаний о здоровье человека.</p>
+                                
+                                <h4><i class="fas fa-history"></i> История медицины</h4>
+                                <ul>
+                                    <li><strong>Древний мир:</strong> Первые медицинские знания появились в Древнем Египте, Месопотамии, Индии и Китае</li>
+                                    <li><strong>Античность:</strong> Гиппократ разработал основы медицинской этики, Гален заложил основы анатомии</li>
+                                    <li><strong>Средневековье:</strong> Развитие медицины в арабском мире, сохранение античных знаний</li>
+                                    <li><strong>Эпоха Возрождения:</strong> Андреас Везалий создал современную анатомию</li>
+                                    <li><strong>XIX-XX века:</strong> Открытие микроорганизмов, развитие хирургии, появление антибиотиков</li>
+                                </ul>
+                                
+                                <h4><i class="fas fa-stethoscope"></i> Основные понятия</h4>
+                                <ul>
+                                    <li><strong>Здоровье:</strong> Состояние полного физического, психического и социального благополучия</li>
+                                    <li><strong>Болезнь:</strong> Нарушение нормальной жизнедеятельности организма</li>
+                                    <li><strong>Диагноз:</strong> Определение заболевания на основе обследования</li>
+                                    <li><strong>Лечение:</strong> Комплекс мер для восстановления здоровья</li>
+                                    <li><strong>Профилактика:</strong> Предупреждение заболеваний</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Анатомия человека -->
+                    <div class="learning-card" onclick="toggleLearningCard(this)">
+                        <div class="learning-toggle">▼</div>
+                        <h3><i class="fas fa-brain"></i> Анатомия человека</h3>
+                        <p>Строение человеческого тела, системы органов, функциональная анатомия</p>
+                        
+                        <div class="learning-details">
+                            <div class="learning-content">
+                                <h4><i class="fas fa-bone"></i> Основные системы организма</h4>
+                                <ul>
+                                    <li><strong>Опорно-двигательная система:</strong> Кости, мышцы, суставы</li>
+                                    <li><strong>Нервная система:</strong> Головной и спинной мозг, нервы</li>
+                                    <li><strong>Сердечно-сосудистая система:</strong> Сердце, кровеносные сосуды</li>
+                                    <li><strong>Дыхательная система:</strong> Легкие, трахея, бронхи</li>
+                                    <li><strong>Пищеварительная система:</strong> Желудок, кишечник, печень</li>
+                                    <li><strong>Мочевыделительная система:</strong> Почки, мочевой пузырь</li>
+                                    <li><strong>Эндокринная система:</strong> Железы внутренней секреции</li>
+                                    <li><strong>Иммунная система:</strong> Лимфатические узлы, селезенка</li>
+                                </ul>
+                                
+                                <h4><i class="fas fa-heartbeat"></i> Важные органы</h4>
+                                <ul>
+                                    <li><strong>Сердце:</strong> Насос, перекачивающий кровь по всему телу</li>
+                                    <li><strong>Мозг:</strong> Центральный орган нервной системы</li>
+                                    <li><strong>Легкие:</strong> Органы газообмена</li>
+                                    <li><strong>Печень:</strong> Крупнейшая железа, выполняющая множество функций</li>
+                                    <li><strong>Почки:</strong> Фильтруют кровь и выводят токсины</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Медицинская химия -->
+                    <div class="learning-card" onclick="toggleLearningCard(this)">
+                        <div class="learning-toggle">▼</div>
+                        <h3><i class="fas fa-vial"></i> Медицинская химия</h3>
+                        <p>Основы биохимии, фармакологии, химические процессы в организме</p>
+                        
+                        <div class="learning-details">
+                            <div class="learning-content">
+                                <h4><i class="fas fa-atom"></i> Основные химические процессы</h4>
+                                <ul>
+                                    <li><strong>Метаболизм:</strong> Совокупность химических реакций в организме</li>
+                                    <li><strong>Фотосинтез:</strong> Процесс образования органических веществ в растениях</li>
+                                    <li><strong>Дыхание:</strong> Процесс получения энергии из питательных веществ</li>
+                                    <li><strong>Пищеварение:</strong> Расщепление сложных веществ на простые</li>
+                                </ul>
+                                
+                                <h4><i class="fas fa-pills"></i> Фармакология</h4>
+                                <ul>
+                                    <li><strong>Лекарственные формы:</strong> Таблетки, капсулы, растворы, мази</li>
+                                    <li><strong>Механизм действия:</strong> Как лекарства работают в организме</li>
+                                    <li><strong>Побочные эффекты:</strong> Нежелательные реакции на лекарства</li>
+                                    <li><strong>Дозировка:</strong> Правильное количество лекарства</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Профессии в медицине -->
+                    <div class="learning-card" onclick="toggleLearningCard(this)">
+                        <div class="learning-toggle">▼</div>
+                        <h3><i class="fas fa-user-md"></i> Профессии в медицине</h3>
+                        <p>Обзор медицинских специальностей, требования, карьерные перспективы</p>
+                        
+                        <div class="learning-details">
+                            <div class="learning-content">
+                                <h4><i class="fas fa-stethoscope"></i> Основные медицинские специальности</h4>
+                                <ul>
+                                    <li><strong>Терапевт:</strong> Врач общей практики, первый контакт с пациентом</li>
+                                    <li><strong>Хирург:</strong> Проводит операции, специализируется на разных органах</li>
+                                    <li><strong>Педиатр:</strong> Врач для детей от рождения до 18 лет</li>
+                                    <li><strong>Кардиолог:</strong> Специалист по заболеваниям сердца</li>
+                                    <li><strong>Невролог:</strong> Лечит заболевания нервной системы</li>
+                                    <li><strong>Офтальмолог:</strong> Специалист по заболеваниям глаз</li>
+                                    <li><strong>Стоматолог:</strong> Врач по заболеваниям зубов и полости рта</li>
+                                    <li><strong>Психиатр:</strong> Лечит психические расстройства</li>
+                                </ul>
+                                
+                                <h4><i class="fas fa-graduation-cap"></i> Требования к врачам</h4>
+                                <ul>
+                                    <li><strong>Образование:</strong> 6 лет в медицинском вузе + 2 года ординатуры</li>
+                                    <li><strong>Личные качества:</strong> Эмпатия, стрессоустойчивость, ответственность</li>
+                                    <li><strong>Навыки:</strong> Коммуникация, анализ, принятие решений</li>
+                                    <li><strong>Постоянное обучение:</strong> Медицина постоянно развивается</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Поступление в медвуз -->
+                    <div class="learning-card" onclick="toggleLearningCard(this)">
+                        <div class="learning-toggle">▼</div>
+                        <h3><i class="fas fa-university"></i> Поступление в медвуз</h3>
+                        <p>Как подготовиться к экзаменам, выбор вуза, вступительные испытания</p>
+                        
+                        <div class="learning-details">
+                            <div class="learning-content">
+                                <h4><i class="fas fa-book"></i> Подготовка к экзаменам</h4>
+                                <ul>
+                                    <li><strong>Биология:</strong> Углубленное изучение анатомии, физиологии, генетики</li>
+                                    <li><strong>Химия:</strong> Органическая и неорганическая химия, биохимия</li>
+                                    <li><strong>Русский язык:</strong> Грамотное письмо важно для медицинской документации</li>
+                                    <li><strong>Математика/Физика:</strong> В зависимости от требований вуза</li>
+                                </ul>
+                                
+                                <h4><i class="fas fa-list-alt"></i> Вступительные испытания</h4>
+                                <ul>
+                                    <li><strong>ЕГЭ:</strong> Основная форма вступительных экзаменов</li>
+                                    <li><strong>Дополнительные испытания:</strong> Некоторые вузы проводят свои экзамены</li>
+                                    <li><strong>Портфолио:</strong> Достижения в олимпиадах, волонтерство</li>
+                                    <li><strong>Собеседование:</strong> Проверка мотивации и личных качеств</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Советы от врачей -->
+                    <div class="learning-card" onclick="toggleLearningCard(this)">
+                        <div class="learning-toggle">▼</div>
+                        <h3><i class="fas fa-comments"></i> Советы от врачей</h3>
+                        <p>Рекомендации от практикующих врачей, реальный опыт работы в медицине</p>
+                        
+                        <div class="learning-details">
+                            <div class="learning-content">
+                                <h4><i class="fas fa-lightbulb"></i> Советы будущим медикам</h4>
+                                <ul>
+                                    <li><strong>Начинайте готовиться заранее:</strong> Медицина требует глубоких знаний</li>
+                                    <li><strong>Развивайте эмпатию:</strong> Умение слушать и понимать пациента - ключевой навык</li>
+                                    <li><strong>Учитесь работать в команде:</strong> Медицина - коллективная работа</li>
+                                    <li><strong>Будьте готовы к непрерывному обучению:</strong> Медицина быстро развивается</li>
+                                    <li><strong>Развивайте стрессоустойчивость:</strong> Работа с болезнями и страданиями требует силы духа</li>
+                                </ul>
+                                
+                                <h4><i class="fas fa-handshake"></i> Реальный опыт</h4>
+                                <p>"Медицина - это не только знания, но и искусство. Каждый пациент уникален, каждая ситуация требует индивидуального подхода. Самое важное - помнить, что за каждым диагнозом стоит человек со своей историей, надеждами и страхами."</p>
+                                <p>- Доктор Иванова А.Н., терапевт с 15-летним стажем</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 40px; background: rgba(102, 126, 234, 0.1); padding: 25px; border-radius: 15px;">
+                    <h3 style="color: #667eea;"><i class="fas fa-external-link-alt"></i> Рекомендуемые ресурсы</h3>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li style="margin-bottom: 10px;">Khan Academy - бесплатные курсы по биологии и химии</li>
+                        <li style="margin-bottom: 10px;">Coursera - онлайн-курсы от ведущих медицинских вузов</li>
+                        <li style="margin-bottom: 10px;">Учебники по анатомии и физиологии человека</li>
+                        <li>Официальные сайты медицинских университетов Узбекистана</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контакты -->
+        <section id="contacts">
+            <div class="card">
+                <h2>📞 Контакты и поддержка</h2>
+                <p style="margin-top: 10px;">Свяжитесь с нами для получения дополнительной информации</p>
+                
+                <div class="contact-info">
+                    <a href="https://t.me/MedBot_uzb_bot" target="_blank" style="text-decoration: none; width: 100%; max-width: 400px;">
+                        <div class="contact-item">
+                            <div class="contact-icon">🤖</div>
+                            <div class="contact-text">
+                                <h4>Telegram бот MedBot</h4>
+                                <p>@MedBot_uzb_bot</p>
+                                <p style="font-size: 0.8em; color: #999;">Помощь в изучении медицины и профессий врачей</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <div class="contact-item" onclick="window.open('tel:+998906310013', '_self')">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            <h4>Телефон поддержки</h4>
+                            <p>+998 90 631 00 13</p>
+                            <p style="font-size: 0.8em; color: #999;">Ежедневно с 9:00 до 18:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item" onclick="window.location.href='mailto:support@medorient.uz'">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>support@medorient.uz</p>
+                            <p style="font-size: 0.8em; color: #999;">Ответим в течение 24 часов</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item" onclick="window.open('tel:+998906310013', '_self')">
+                        <div class="contact-icon">👨‍⚕️</div>
+                        <div class="contact-text">
+                            <h4>Консультация психолога</h4>
+                            <p>+998 90 631 00 13</p>
+                            <p style="font-size: 0.8em; color: #999;">Запись по предварительной договоренности</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 40px; text-align: center;">
+                    <p>Если у вас есть вопросы или предложения по улучшению платформы, свяжитесь с нами по указанным контактам.</p>
+                    <p style="margin-top: 10px; color: #667eea; font-weight: 600;">Мы всегда рады помочь вам в выборе медицинской профессии!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- 3D Интерактивный Атлас Органов -->
+        <!-- ============================================ -->
+        <section id="organs3d">
+            <div class="page-header">
+                <h1 class="page-title">🫀 3D Атлас Органов Человека</h1>
+                <p class="page-subtitle">Интерактивные 3D модели органов — вращайте, изучайте, узнавайте</p>
+            </div>
+
+            <div class="organs-grid">
+                <!-- Сердце -->
+                <div class="organ-card" onclick="openOrganDetail('heart')">
+                    <div class="organ-3d-container" id="organ-canvas-heart">
+                        <!-- Three.js 3D Heart -->
+                    </div>
+                    <div class="organ-info">
+                        <h3>❤️ Сердце</h3>
+                        <p>Мышечный орган, перекачивающий кровь по сосудам</p>
+                        <div class="organ-tags">
+                            <span class="organ-tag">Кардиология</span>
+                            <span class="organ-tag">250-300 г</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Мозг -->
+                <div class="organ-card" onclick="openOrganDetail('brain')">
+                    <div class="organ-3d-container" id="organ-canvas-brain">
+                        <!-- Three.js 3D Brain -->
+                    </div>
+                    <div class="organ-info">
+                        <h3>🧠 Головной Мозг</h3>
+                        <p>Центральный орган нервной системы, управляющий всеми функциями</p>
+                        <div class="organ-tags">
+                            <span class="organ-tag">Неврология</span>
+                            <span class="organ-tag">1300-1400 г</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Лёгкие -->
+                <div class="organ-card" onclick="openOrganDetail('lungs')">
+                    <div class="organ-3d-container" id="organ-canvas-lungs">
+                        <!-- Three.js 3D Lungs -->
+                    </div>
+                    <div class="organ-info">
+                        <h3>🫁 Лёгкие</h3>
+                        <p>Парные органы дыхания, обеспечивающие газообмен</p>
+                        <div class="organ-tags">
+                            <span class="organ-tag">Пульмонология</span>
+                            <span class="organ-tag">~1 кг</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Печень -->
+                <div class="organ-card" onclick="openOrganDetail('liver')">
+                    <div class="organ-3d-container" id="organ-canvas-liver">
+                        <!-- Three.js 3D Liver -->
+                    </div>
+                    <div class="organ-info">
+                        <h3>🫘 Печень</h3>
+                        <p>Крупнейшая железа организма, центр метаболизма</p>
+                        <div class="organ-tags">
+                            <span class="organ-tag">Гепатология</span>
+                            <span class="organ-tag">1500 г</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Почки -->
+                <div class="organ-card" onclick="openOrganDetail('kidneys')">
+                    <div class="organ-3d-container" id="organ-canvas-kidneys">
+                        <!-- Three.js 3D Kidneys -->
+                    </div>
+                    <div class="organ-info">
+                        <h3>🫘 Почки</h3>
+                        <p>Парные органы, фильтрующие кровь и образующие мочу</p>
+                        <div class="organ-tags">
+                            <span class="organ-tag">Нефрология</span>
+                            <span class="organ-tag">150 г каждая</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Желудок -->
+                <div class="organ-card" onclick="openOrganDetail('stomach')">
+                    <div class="organ-3d-container" id="organ-canvas-stomach">
+                        <!-- Three.js 3D Stomach -->
+                    </div>
+                    <div class="organ-info">
+                        <h3>🔴 Желудок</h3>
+                        <p>Полый орган ЖКТ для переваривания пищи</p>
+                        <div class="organ-tags">
+                            <span class="organ-tag">Гастроэнтерология</span>
+                            <span class="organ-tag">~1.5 л</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Детальная карточка органа (модальное окно) -->
+            <div class="organ-detail-modal" id="organ-detail-modal">
+                <div class="organ-detail-content">
+                    <button class="organ-detail-close" onclick="closeOrganDetail()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="organ-detail-header">
+                        <div class="organ-detail-3d" id="organ-detail-3d">
+                            <!-- 3D модель будет вставлена JS -->
+                        </div>
+                        <div class="organ-detail-title">
+                            <h2 id="organ-detail-name">Орган</h2>
+                            <p id="organ-detail-latin" class="organ-latin"></p>
+                        </div>
+                    </div>
+                    <div class="organ-detail-body">
+                        <div class="organ-detail-tabs">
+                            <button class="organ-tab active" onclick="switchOrganTab('anatomy', this)">Анатомия</button>
+                            <button class="organ-tab" onclick="switchOrganTab('physiology', this)">Физиология</button>
+                            <button class="organ-tab" onclick="switchOrganTab('pathology', this)">Патологии</button>
+                            <button class="organ-tab" onclick="switchOrganTab('biochemistry', this)">Биохимия</button>
+                        </div>
+                        <div class="organ-tab-content" id="organ-tab-content">
+                            <!-- Контент вкладки -->
+                        </div>
+                        <div class="organ-key-facts">
+                            <h4>📊 Ключевые показатели</h4>
+                            <div class="organ-facts-grid" id="organ-facts-grid">
+                                <!-- Факты будут вставлены JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- Биохимический Анализатор Симптомов -->
+        <!-- ============================================ -->
+        <section id="biochem">
+            <div class="page-header">
+                <h1 class="page-title">🧬 Биохимический Анализатор</h1>
+                <p class="page-subtitle">Введите симптомы пациента — система проанализирует возможные биохимические показатели</p>
+            </div>
+
+            <div class="biochem-container">
+                <!-- Панель ввода симптомов -->
+                <div class="biochem-input-panel">
+                    <div class="app-card">
+                        <div class="app-card-header">
+                            <div class="app-card-icon purple"><i class="fas fa-stethoscope"></i></div>
+                            <div>
+                                <div class="app-card-title">Симптомы пациента</div>
+                                <div class="app-card-subtitle">Выберите или введите симптомы для анализа</div>
+                            </div>
+                        </div>
+
+                        <!-- Быстрый выбор симптомов -->
+                        <div class="symptom-categories">
+                            <h4>Частые симптомы:</h4>
+                            <div class="symptom-chips" id="symptom-chips">
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="fatigue">😴 Усталость</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="headache">🤕 Головная боль</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="nausea">🤢 Тошнота</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="chest_pain">💔 Боль в груди</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="shortness_breath">😮‍💨 Одышка</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="dizziness">😵 Головокружение</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="joint_pain">🦴 Боль в суставах</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="fever">🌡️ Температура</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="edema">🫧 Отёки</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="thirst">💧 Жажда</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="frequent_urination">🚻 Частое мочеиспускание</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="weight_loss">📉 Потеря веса</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="skin_yellow">🟡 Желтушность кожи</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="muscle_weakness">💪 Слабость мышц</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="bleeding">🩸 Кровоточивость</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="abdominal_pain">🤒 Боль в животе</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="dark_urine">🟤 Тёмная моча</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="palpitations">💓 Учащённое сердцебиение</button>
+                            </div>
+                        </div>
+
+                        <!-- Дополнительный ввод -->
+                        <div class="symptom-text-input">
+                            <textarea id="additional-symptoms" placeholder="Опишите дополнительные симптомы или жалобы пациента..." rows="3"></textarea>
+                        </div>
+
+                        <!-- Параметры пациента -->
+                        <div class="patient-params">
+                            <h4>Параметры пациента:</h4>
+                            <div class="params-grid">
+                                <div class="param-field">
+                                    <label>Возраст</label>
+                                    <input type="number" id="patient-age" placeholder="25" min="1" max="120" value="30">
+                                </div>
+                                <div class="param-field">
+                                    <label>Пол</label>
+                                    <select id="patient-gender">
+                                        <option value="male">Мужской</option>
+                                        <option value="female">Женский</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="biochem-analyze-btn" onclick="analyzeBiochemistry()">
+                            <i class="fas fa-microscope"></i> Провести анализ
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Результаты анализа -->
+                <div class="biochem-results" id="biochem-results" style="display: none;">
+                    <div class="app-card">
+                        <div class="app-card-header">
+                            <div class="app-card-icon" style="background: linear-gradient(135deg, #00b894, #00cec9);"><i class="fas fa-flask"></i></div>
+                            <div>
+                                <div class="app-card-title">Результаты биохимического анализа</div>
+                                <div class="app-card-subtitle">Рекомендуемые лабораторные исследования</div>
+                            </div>
+                        </div>
+
+                        <!-- Предполагаемый диагноз -->
+                        <div class="biochem-diagnosis" id="biochem-diagnosis">
+                            <!-- Заполняется JS -->
+                        </div>
+
+                        <!-- Таблица биохимических показателей -->
+                        <div class="biochem-table-wrapper">
+                            <table class="biochem-table" id="biochem-table">
+                                <thead>
+                                    <tr>
+                                        <th>Показатель</th>
+                                        <th>Обозначение</th>
+                                        <th>Норма</th>
+                                        <th>Ожидаемое отклонение</th>
+                                        <th>Значимость</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="biochem-table-body">
+                                    <!-- Заполняется JS -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Рекомендации -->
+                        <div class="biochem-recommendations" id="biochem-recommendations">
+                            <!-- Заполняется JS -->
+                        </div>
+
+                        <!-- Связанные органы -->
+                        <div class="biochem-organs" id="biochem-organs">
+                            <h4><i class="fas fa-lungs"></i> Связанные органы и системы</h4>
+                            <div class="related-organs-grid" id="related-organs-grid">
+                                <!-- Заполняется JS -->
+                            </div>
+                        </div>
+
+                        <div class="biochem-disclaimer">
+                            ⚠️ <strong>Внимание:</strong> Данный анализатор предназначен исключительно для образовательных целей. 
+                            Не заменяет консультацию врача. Всегда обращайтесь к квалифицированному специалисту!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        </main>
+        
+        <!-- Мобильная навигация -->
+        <nav class="mobile-nav">
+            <a href="#home" class="mobile-nav-item active" onclick="showSection('home'); updateMobileNav(this)">
+                <i class="fas fa-home"></i>
+                <span>Главная</span>
+            </a>
+            <a href="#tests" class="mobile-nav-item" onclick="showSection('tests'); updateMobileNav(this)">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Тесты</span>
+            </a>
+            <a href="#profile" class="mobile-nav-item" onclick="showSection('profile'); updateMobileNav(this)">
+                <i class="fas fa-user"></i>
+                <span>Профиль</span>
+            </a>
+            <a href="#learning" class="mobile-nav-item" onclick="showSection('learning'); updateMobileNav(this)">
+                <i class="fas fa-book"></i>
+                <span>Обучение</span>
+            </a>
+            <a href="#organs3d" class="mobile-nav-item" onclick="showSection('organs3d'); updateMobileNav(this)">
+                <i class="fas fa-heart"></i>
+                <span>3D</span>
+            </a>
+            <a href="#biochem" class="mobile-nav-item" onclick="showSection('biochem'); updateMobileNav(this)">
+                <i class="fas fa-flask"></i>
+                <span>Анализ</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" defer></script>
+    <script src="js/organs-3d-models.js" defer></script>
+    <script src="js/ai-tutor.js" defer></script>
+    <script src="js/organs-biochem.js" defer></script>
+    <script src="js/questions-database.js" defer></script>
+    <script src="js/app.js" defer></script>
+    
+</body>
+</html>

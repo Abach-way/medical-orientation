@@ -496,8 +496,8 @@
    ============================================================ */
 .app-content {
     flex: 1;
-    margin-left: 280px;
-    padding: 40px 56px;
+    margin-left: 300px;
+    padding: 40px 56px 40px 64px;
     min-height: 100vh;
     position: relative;
     z-index: 1;
@@ -1129,8 +1129,8 @@
     }
     
     .app-content {
-        margin-left: 80px;
-        padding: 28px;
+        margin-left: 100px;
+        padding: 28px 28px 28px 36px;
     }
 }
 

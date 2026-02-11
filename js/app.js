@@ -23,6 +23,26 @@ try {
     // ignore
 }
 
+// ===== NON-BLOCKING TOAST NOTIFICATION =====
+function showToast(msg, duration) {
+    duration = duration || 4000;
+    var t = document.getElementById('app-toast');
+    if (!t) {
+        t = document.createElement('div');
+        t.id = 'app-toast';
+        t.style.cssText = 'position:fixed;top:40px;left:50%;transform:translateX(-50%) translateY(-20px);background:rgba(10,10,20,0.95);color:#fff;padding:14px 28px;border-radius:16px;font-size:14px;z-index:99999;pointer-events:none;opacity:0;transition:opacity 0.4s,transform 0.4s cubic-bezier(0.34,1.56,0.64,1);border:1px solid rgba(108,92,231,0.3);backdrop-filter:blur(16px);max-width:90vw;text-align:center;font-weight:500;box-shadow:0 10px 40px rgba(0,0,0,0.4);';
+        document.body.appendChild(t);
+    }
+    t.textContent = msg;
+    t.style.opacity = '1';
+    t.style.transform = 'translateX(-50%) translateY(0)';
+    clearTimeout(t._timer);
+    t._timer = setTimeout(function() {
+        t.style.opacity = '0';
+        t.style.transform = 'translateX(-50%) translateY(-20px)';
+    }, duration);
+}
+
 console.log('=== SCRIPT START ===');
 
 // Глобальный обработчик ошибок
@@ -397,11 +417,11 @@ function completeRegistration() {
     // Устанавливаем текущего пользователя
     localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(newUser));
     
-    // Показываем успешное сообщение
-    alert('🎉 Регистрация успешно завершена! Добро пожаловать в систему медицинской профориентации!');
-    
-    // Переходим к основному приложению через единый поток
+    // Переходим к основному приложению (без блокирующего alert!)
     showMainContent(newUser);
+
+    // Показываем неблокирующее уведомление вместо alert
+    showToast('🎉 Регистрация успешна! Добро пожаловать!');
     
     // Очищаем временные данные
     window.tempUserData = null;
@@ -547,11 +567,35 @@ function showMainContent(user) {
     requestAnimationFrame(() => {
         if (mainContent) {
             mainContent.style.setProperty('display', 'flex', 'important');
+            mainContent.style.setProperty('flex-direction', 'column', 'important');
+            mainContent.style.setProperty('min-height', '100vh', 'important');
             void mainContent.offsetHeight;
+        }
+        // Ensure app-content is visible
+        const appContent = document.querySelector('.app-content');
+        if (appContent) {
+            appContent.style.setProperty('display', 'block', 'important');
+            appContent.style.setProperty('width', '100%', 'important');
         }
         window.scrollTo(0, 0);
         showSection('home');
     });
+
+    // Third pass — nuclear option for stubborn mobile browsers
+    setTimeout(() => {
+        if (mainContent) {
+            mainContent.style.setProperty('display', 'flex', 'important');
+            void mainContent.offsetHeight;
+        }
+        const home = document.getElementById('home');
+        if (home && getComputedStyle(home).display === 'none') {
+            console.warn('Home section still hidden — forcing visibility');
+            home.style.setProperty('display', 'block', 'important');
+            home.style.setProperty('visibility', 'visible', 'important');
+            home.style.setProperty('opacity', '1', 'important');
+            home.classList.add('visible');
+        }
+    }, 300);
     
     // Инициализация тестов
     try {

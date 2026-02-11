@@ -1162,6 +1162,9 @@
     .main-content.visible section#tests,
     .main-content.visible section#profile,
     .main-content.visible section#learning,
+    .main-content.visible section#organs3d,
+    .main-content.visible section#biochem,
+    .main-content.visible section#chemlab,
     .main-content.visible section#contacts {
         display: none;
     }
@@ -1170,6 +1173,9 @@
     .main-content.visible section#tests.visible,
     .main-content.visible section#profile.visible,
     .main-content.visible section#learning.visible,
+    .main-content.visible section#organs3d.visible,
+    .main-content.visible section#biochem.visible,
+    .main-content.visible section#chemlab.visible,
     .main-content.visible section#contacts.visible,
     .main-content.visible section.visible,
     .main-content.visible section[style*="display: block"] {

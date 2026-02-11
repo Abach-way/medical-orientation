@@ -121,10 +121,12 @@ a {
   position: fixed;
   inset: 0;
   display: none;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 20px;
   z-index: 3000;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .auth-container.active {
@@ -422,10 +424,21 @@ section.visible {
     margin: 14px 0;
   }
   
+  .auth-container {
+    align-items: flex-start;
+    padding: 10px;
+    padding-top: max(10px, env(safe-area-inset-top));
+    padding-bottom: 10px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .auth-form {
     padding: 24px 20px;
     border-radius: 18px;
     max-width: 100%;
+    margin: auto;
+    flex-shrink: 0;
   }
   
   .auth-form h2 {
@@ -492,6 +505,10 @@ section.visible {
     margin: 12px 0;
   }
   
+  .auth-container {
+    padding: 8px;
+  }
+
   .auth-form {
     padding: 20px 16px;
     border-radius: 16px;

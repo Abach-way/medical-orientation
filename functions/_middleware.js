@@ -5,7 +5,7 @@ export async function onRequest(context) {
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://medical-orientation.pages.dev/</loc>
+        <loc>https://medical-orientation.xyz/</loc>
         <lastmod>2026-02-12</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -25,11 +25,11 @@ Allow: /
 Disallow: /api/
 Disallow: /node_modules/
 
-Sitemap: https://medical-orientation.pages.dev/sitemap.xml
+Sitemap: https://medical-orientation.xyz/sitemap.xml
 
 User-agent: Yandex
 Allow: /
-Host: https://medical-orientation.pages.dev
+Host: https://medical-orientation.xyz
 `;
     return new Response(robots, {
       headers: {

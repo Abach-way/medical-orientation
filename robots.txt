@@ -6,7 +6,7 @@ Disallow: /uploads/
 Disallow: /node_modules/
 
 # Sitemap
-Sitemap: https://medical-orientation.pages.dev/sitemap.xml
+Sitemap: https://medical-orientation.xyz/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
@@ -16,4 +16,4 @@ User-agent: Yandex
 Allow: /
 Disallow: /api/
 Disallow: /uploads/
-Host: https://medical-orientation.pages.dev
+Host: https://medical-orientation.xyz

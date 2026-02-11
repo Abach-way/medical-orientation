@@ -13,8 +13,34 @@ const secretKey = 'your-secret-key'; // Change this to a secure key in productio
 
 app.use(cors());
 app.use(bodyParser.json());
+
+// Security & SEO headers
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  // Cache static assets for performance
+  if (req.url.match(/\.(css|js|png|jpg|jpeg|gif|ico|svg|woff2|woff|ttf)$/)) {
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+  }
+  // Service worker — no cache
+  if (req.url === '/service-worker.js') {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  }
+  next();
+});
+
 // Serve the static frontend (index.html, css/, js/, manifest, service-worker.js, etc.)
-app.use(express.static(__dirname));
+app.use(express.static(__dirname, {
+  maxAge: '1d',
+  setHeaders: (res, path) => {
+    if (path.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-cache');
+    }
+  }
+}));
 app.use('/uploads', express.static('uploads')); // Serve uploaded avatars
 
 // In-memory storage (replace with database in production)

@@ -544,47 +544,45 @@ section.visible {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
 /* ============================================================
-   ДОПОЛНИТЕЛЬНЫЕ МОБИЛЬНЫЕ ФИКСЫ
+   ДОПОЛНИТЕЛЬНЫЕ МОБИЛЬНЫЕ ФИКСЫ (UNIFIED v2 — no conflicts)
    ============================================================ */
 
-/* Фикс для элементов с position: absolute/fixed */
+/* Фикс overflow */
 [style*="position: absolute"],
 [style*="position: fixed"] {
   max-width: 100vw;
 }
 
-/* Фикс для inline-стилей с шириной */
-[style*="width:"] {
-  max-width: 100% !important;
-}
-
-/* Фикс для навигации */
-.google-nav,
-.landing-nav,
-nav {
+/* Навигация max-width */
+.google-nav, .landing-nav, nav {
   max-width: 100%;
   width: 100%;
 }
 
-/* Фикс для сайдбара на планшетах — отступ контента */
-@media (max-width: 1024px) {
-  .app-content {
-    margin-left: 100px !important;
-    width: calc(100% - 100px) !important;
-    padding: 20px 16px !important;
-  }
-}
+/* === ПЛАНШЕТЫ (1024px) — делегируем app-design.css === */
+/* НЕ дублируем margin-left/padding — app-design.css управляет */
 
-/* Фикс для grid на маленьких экранах */
+/* === МОБИЛЬНЫЕ (768px) === */
 @media (max-width: 768px) {
-  .bento-grid,
+  /* Бенто: 2 столбца на мобильных (согласовано с app-design) */
+  .bento-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  
+  /* Одноколоночные элементы */
   .test-cards,
-  .google-features,
-  .google-stats-grid {
+  .google-features {
     display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 16px !important;
+  }
+  
+  .google-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
   }
   
   .google-visual-content {
@@ -596,19 +594,26 @@ nav {
   
   .specialty-card {
     flex: 1 1 calc(50% - 12px) !important;
-    min-width: 140px !important;
+    min-width: 130px !important;
     max-width: calc(50% - 6px) !important;
   }
 }
 
 @media (max-width: 480px) {
+  .bento-grid {
+    gap: 10px;
+  }
+  
+  .google-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
   .specialty-card {
     flex: 1 1 100% !important;
     max-width: 100% !important;
   }
   
-  .google-hero,
-  .landing-hero {
+  .google-hero, .landing-hero {
     padding: 80px 16px 40px !important;
   }
   
@@ -626,7 +631,7 @@ nav {
   }
 }
 
-/* Фикс для мобильной навигации */
+/* Мобильная навигация — базовые стили (app-design.css управляет display/flex) */
 .mobile-nav {
   position: fixed;
   bottom: 0;
@@ -634,7 +639,7 @@ nav {
   right: 0;
   width: 100%;
   max-width: 100%;
-  z-index: 999;
+  z-index: 1000;
 }
 
 /* Безопасная зона для iPhone */
@@ -642,8 +647,11 @@ nav {
   .mobile-nav {
     padding-bottom: env(safe-area-inset-bottom);
   }
-  
-  body {
-    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Скрыть mobile-nav на десктопе (перестраховка) */
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none !important;
   }
 }

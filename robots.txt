@@ -1,0 +1,19 @@
+# Medical Explorer — robots.txt
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /uploads/
+Disallow: /node_modules/
+
+# Sitemap
+Sitemap: https://medical-orientation.pages.dev/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+# Yandex specific
+User-agent: Yandex
+Allow: /
+Disallow: /api/
+Disallow: /uploads/
+Host: https://medical-orientation.pages.dev

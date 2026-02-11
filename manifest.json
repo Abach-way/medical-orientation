@@ -1,16 +1,17 @@
 {
-  "name": "Медицинская профориентация",
-  "short_name": "МедПрофориентация",
-  "description": "Образовательная платформа для медицинской профориентации школьников и абитуриентов",
+  "name": "Medical Explorer — Медицинская Профориентация",
+  "short_name": "Medical Explorer",
+  "description": "Интерактивная платформа медицинской профориентации: тесты, 3D атлас органов, химическая лаборатория с 65+ реакциями, биохимический анализатор.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#667eea",
+  "background_color": "#0a0a14",
   "theme_color": "#667eea",
-  "orientation": "portrait-primary",
+  "orientation": "any",
   "scope": "/",
   "lang": "ru-RU",
   "dir": "ltr",
   "categories": ["education", "medical", "health"],
+  "id": "medical-explorer-pwa",
   "icons": [
     {
       "src": "/icons/icon-72x72.png",

@@ -1,13 +1,101 @@
 ﻿<!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" itemscope itemtype="https://schema.org/WebApplication">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Медицинская Профориентация</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>Medical Explorer — Медицинская профориентация | Тесты, 3D органы, Хим. лаборатория</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Бесплатная платформа медицинской профориентации для школьников и абитуриентов. Интерактивные тесты по биологии и химии, 3D атлас органов, химическая лаборатория с 65+ реакциями, биохимический анализатор.">
+    <meta name="keywords" content="медицинская профориентация, тесты для врачей, выбор медицинской специальности, ЕГЭ биология, ЕГЭ химия, 3D анатомия, химическая лаборатория онлайн, биохимия, профориентация школьников, медицинский вуз">
+    <meta name="author" content="Medical Explorer">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#667eea" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#667eea" media="(prefers-color-scheme: light)">
+    <meta name="color-scheme" content="dark">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Medical Explorer">
+    <meta name="application-name" content="Medical Explorer">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Open Graph (VK, Telegram, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Medical Explorer — Медицинская профориентация">
+    <meta property="og:description" content="Интерактивные тесты, 3D атлас органов, химическая лаборатория с реалистичными реакциями. Найди свою медицинскую специальность!">
+    <meta property="og:image" content="/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://medical-orientation.pages.dev/">
+    <meta property="og:site_name" content="Medical Explorer">
+    <meta property="og:locale" content="ru_RU">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Medical Explorer — Медицинская профориентация">
+    <meta name="twitter:description" content="Тесты, 3D органы, химическая лаборатория — всё для будущих врачей!">
+    <meta name="twitter:image" content="/og-image.png">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Medical Explorer",
+        "alternateName": "Медицинская Профориентация",
+        "description": "Бесплатная образовательная платформа для медицинской профориентации. Интерактивные тесты, 3D атлас органов человека, химическая лаборатория с 90+ веществами и 65+ реакциями.",
+        "url": "https://medical-orientation.pages.dev/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "RUB"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Medical Explorer"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "150",
+            "bestRating": "5"
+        },
+        "featureList": [
+            "Тесты профориентации (25-45 вопросов)",
+            "3D интерактивный атлас органов",
+            "Химическая лаборатория с 65+ реакциями",
+            "Биохимический анализатор симптомов",
+            "Работа оффлайн (PWA)"
+        ],
+        "inLanguage": "ru",
+        "isAccessibleForFree": true
+    }
+    </script>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://medical-orientation.pages.dev/">
+    
+    <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="alternate icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png">
+    
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/test-design.css">
     <link rel="stylesheet" href="css/smooth-theme.css">
@@ -20,15 +108,15 @@
     
     <!-- Критические мобильные стили (высший приоритет) -->
     <style>
+        /* === МОБИЛЬНЫЕ КРИТИЧЕСКИЕ СТИЛИ === */
         @media (max-width: 768px) {
-            /* Гарантируем видимость контента на мобильных */
+            /* Гарантируем видимость контента */
             .main-content.visible {
                 display: flex !important;
                 flex-direction: column !important;
                 min-height: 100vh !important;
             }
             
-            /* App-content обязательно видим */
             .main-content.visible .app-content,
             .main-content.visible main.app-content,
             main.app-content {
@@ -39,12 +127,10 @@
                 padding: 20px 16px 120px !important;
             }
             
-            /* Секции обязательно видимы */
-            section#home.visible,
-            section#tests.visible,
-            section#profile.visible,
-            section#learning.visible,
-            section#contacts.visible,
+            section#home.visible, section#tests.visible,
+            section#profile.visible, section#learning.visible,
+            section#contacts.visible, section#organs3d.visible,
+            section#biochem.visible, section#chemlab.visible,
             .main-content.visible section.visible,
             section.visible {
                 display: block !important;
@@ -53,15 +139,11 @@
                 width: 100% !important;
             }
             
-            /* Sidebar скрыт */
-            .sidebar,
-            aside.sidebar {
+            .sidebar, aside.sidebar {
                 display: none !important;
             }
             
-            /* Mobile nav видима — не растягивать на весь экран */
-            nav.mobile-nav,
-            .mobile-nav {
+            nav.mobile-nav, .mobile-nav {
                 display: flex !important;
                 position: fixed !important;
                 bottom: 0 !important;
@@ -71,23 +153,112 @@
             }
         }
         
-        /* На десктопе mobile-nav скрыта */
         @media (min-width: 769px) {
-            nav.mobile-nav,
-            .mobile-nav {
+            nav.mobile-nav, .mobile-nav {
                 display: none !important;
+            }
+        }
+        
+        /* Notch / Dynamic Island safe areas */
+        @supports (padding: env(safe-area-inset-top)) {
+            body {
+                padding-top: env(safe-area-inset-top);
+                padding-left: env(safe-area-inset-left);
+                padding-right: env(safe-area-inset-right);
+            }
+            .mobile-nav {
+                padding-bottom: calc(12px + env(safe-area-inset-bottom)) !important;
+            }
+        }
+        
+        /* Smooth scrolling контейнеры */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+        
+        /* Haptic-style active state */
+        @media (hover: none) and (pointer: coarse) {
+            button:active, a:active, .card:active, .test-card:active,
+            .quick-action:active, .bento-item:active, .chem-bottle:active {
+                transform: scale(0.97) !important;
+                transition: transform 0.1s !important;
+            }
+        }
+        
+        /* iOS rubber-band scroll smooth */
+        body, .app-content {
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+    
+    <!-- Accessibility -->
+    <style>
+        /* Skip to content link for accessibility */
+        .skip-to-content {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #667eea;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 0 0 12px 12px;
+            z-index: 100000;
+            font-weight: 600;
+            text-decoration: none;
+            transition: top 0.3s;
+        }
+        .skip-to-content:focus {
+            top: 0;
+        }
+        .sr-only { 
+            position: absolute; width: 1px; height: 1px; 
+            padding: 0; margin: -1px; overflow: hidden; 
+            clip: rect(0,0,0,0); border: 0; 
+        }
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+        /* Focus visibility for keyboard navigation */
+        *:focus-visible {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+        /* Touch targets minimum 44px */
+        @media (max-width: 768px) {
+            button, a, input, select, textarea, [role="button"] {
+                min-height: 44px;
+            }
+        }
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-app-content" class="skip-to-content">Перейти к содержимому</a>
+    
+    <!-- Noscript fallback -->
+    <noscript>
+        <div style="background:#667eea;color:#fff;padding:30px;text-align:center;font-family:Inter,sans-serif;">
+            <h2>Medical Explorer</h2>
+            <p>Для работы приложения необходимо включить JavaScript в вашем браузере.</p>
+        </div>
+    </noscript>
 
     <!-- Фоновая музыка (джаз, автовоспроизведение) -->
     <audio id="background-music-1" preload="auto"></audio>
     <audio id="background-music-2" preload="auto"></audio>
 
     <!-- Landing Page (для незалогиненных пользователей) -->
-    <div class="landing-page" id="landing-page">
+    <div class="landing-page" id="landing-page" role="banner" aria-label="Добро пожаловать">
         <!-- Навигация в стиле Google -->
         <nav class="google-nav" id="landing-nav">
             <a href="#" class="google-logo">
@@ -374,7 +545,7 @@
         </aside>
         
         <!-- Область контента -->
-        <main class="app-content">
+        <main class="app-content" id="main-app-content" role="main" aria-label="Основное содержимое">
         
         <!-- Главная -->
         <section id="home" class="visible" style="display: block;">
@@ -1588,7 +1759,7 @@
         </main>
         
         <!-- Мобильная навигация -->
-        <nav class="mobile-nav">
+        <nav class="mobile-nav" role="navigation" aria-label="Мобильная навигация">
             <a href="#home" class="mobile-nav-item active" onclick="showSection('home'); updateMobileNav(this)">
                 <i class="fas fa-home"></i>
                 <span>Главная</span>

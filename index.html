@@ -59,10 +59,15 @@
                 display: none !important;
             }
             
-            /* Mobile nav видима */
+            /* Mobile nav видима — не растягивать на весь экран */
             nav.mobile-nav,
             .mobile-nav {
                 display: flex !important;
+                position: fixed !important;
+                bottom: 0 !important;
+                top: auto !important;
+                height: auto !important;
+                flex-wrap: nowrap !important;
             }
         }
         

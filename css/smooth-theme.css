@@ -3088,4 +3088,4 @@ h1, h2, h3, h4, h5, h6 {
    УТИЛИТЫ
    ============================================================ */
 .hidden { display: none !important; }
-.visible { display: block !important; }
+section.visible { display: block !important; }

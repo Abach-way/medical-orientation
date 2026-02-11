@@ -576,6 +576,7 @@ function showMainContent(user) {
         if (appContent) {
             appContent.style.setProperty('display', 'block', 'important');
             appContent.style.setProperty('width', '100%', 'important');
+            appContent.style.setProperty('margin-left', '0', 'important');
         }
         window.scrollTo(0, 0);
         showSection('home');
@@ -1610,15 +1611,12 @@ function showSection(sectionId) {
         section.style.setProperty('display', 'block', 'important');
         section.style.setProperty('visibility', 'visible', 'important');
         section.style.setProperty('opacity', '1', 'important');
+        section.classList.add('visible');
         
         // Если это профиль, обновляем данные
         if (sectionId === 'profile') {
             loadUserProfile();
         }
-        
-        setTimeout(() => {
-            section.classList.add('visible');
-        }, 50);
     }
 
     // Обновить индикатор текущего теста при заходе в "Тесты"

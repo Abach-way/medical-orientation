@@ -1,0 +1,1102 @@
+/* ============================================
+   CHEMISTRY LABORATORY — GAME DESIGN
+   Full CSS3 + Framer-Motion-style animations
+   ============================================ */
+
+/* === SPRING EASING (Framer Motion style) === */
+:root {
+    --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --spring-soft: cubic-bezier(0.22, 1.2, 0.36, 1);
+    --spring-bounce: cubic-bezier(0.18, 1.8, 0.4, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+    --lab-accent: #6c5ce7;
+    --lab-accent-2: #a29bfe;
+    --lab-danger: #ff4757;
+    --lab-fire: #ff6348;
+    --lab-glow: rgba(108, 92, 231, 0.4);
+}
+
+/* === LAYOUT === */
+.chem-lab-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 80vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* === HEADER === */
+.chem-header {
+    padding: 20px 20px 12px;
+}
+.chem-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 6px;
+}
+.chem-header h2 i {
+    color: var(--lab-accent-2);
+    margin-right: 8px;
+}
+.chem-header p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    margin: 0;
+}
+
+/* === TOP BAR: SEARCH === */
+.chem-search-bar {
+    position: relative;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.chem-search-bar input {
+    width: 100%;
+    padding: 14px 20px 14px 48px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s var(--spring-soft);
+}
+.chem-search-bar input:focus {
+    border-color: var(--lab-accent);
+    box-shadow: 0 0 0 3px var(--lab-glow), 0 4px 20px rgba(0,0,0,0.3);
+    transform: scale(1.01);
+}
+.chem-search-bar input::placeholder {
+    color: rgba(255,255,255,0.3);
+}
+.chem-search-bar > i,
+.chem-search-icon {
+    position: absolute;
+    left: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.3);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+/* === CATEGORY FILTER CHIPS === */
+.chem-category-filters {
+    display: flex;
+    gap: 8px;
+    padding: 12px 20px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.chem-category-filters::-webkit-scrollbar { display: none; }
+
+.chem-cat-chip {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.35s var(--spring-soft);
+    white-space: nowrap;
+    user-select: none;
+}
+.chem-cat-chip:hover {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.8);
+    transform: translateY(-1px);
+}
+.chem-cat-chip.active {
+    background: var(--lab-accent);
+    color: #fff;
+    border-color: var(--lab-accent);
+    box-shadow: 0 4px 15px var(--lab-glow);
+    transform: scale(1.05);
+}
+
+/* === SUBSTANCE SHELF (search results grid) === */
+.chem-shelf-section {
+    padding: 0;
+}
+.shelf-header {
+    padding: 14px 20px 0;
+}
+.shelf-header h3 {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 500;
+    margin: 0;
+}
+.shelf-header h3 small {
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    font-weight: 400;
+}
+.chem-shelf {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+    padding: 16px 20px;
+    max-height: 260px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(108,92,231,0.3) transparent;
+}
+
+.chem-bottle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 6px 10px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+    transition: all 0.4s var(--spring);
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+    animation: bottleAppear 0.5s var(--spring) both;
+}
+.chem-bottle:nth-child(2) { animation-delay: 0.03s; }
+.chem-bottle:nth-child(3) { animation-delay: 0.06s; }
+.chem-bottle:nth-child(4) { animation-delay: 0.09s; }
+.chem-bottle:nth-child(5) { animation-delay: 0.12s; }
+.chem-bottle:nth-child(6) { animation-delay: 0.15s; }
+.chem-bottle:nth-child(7) { animation-delay: 0.18s; }
+.chem-bottle:nth-child(8) { animation-delay: 0.21s; }
+
+@keyframes bottleAppear {
+    0% { opacity: 0; transform: scale(0.7) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.chem-bottle:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.15);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+.chem-bottle:active {
+    transform: scale(0.95);
+    transition-duration: 0.1s;
+}
+
+.bottle-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    position: relative;
+    transition: all 0.3s ease;
+}
+.bottle-icon::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 14px;
+    background: inherit;
+    opacity: 0.15;
+    filter: blur(8px);
+}
+
+/* Category colors */
+.bottle-icon.cat-nonmetal   { background: linear-gradient(135deg, #00b894, #00cec9); color: #fff; }
+.bottle-icon.cat-alkali     { background: linear-gradient(135deg, #e17055, #d63031); color: #fff; }
+.bottle-icon.cat-alkaline   { background: linear-gradient(135deg, #fdcb6e, #e17055); color: #fff; }
+.bottle-icon.cat-halogen    { background: linear-gradient(135deg, #a29bfe, #6c5ce7); color: #fff; }
+.bottle-icon.cat-noble      { background: linear-gradient(135deg, #636e72, #b2bec3); color: #fff; }
+.bottle-icon.cat-transition { background: linear-gradient(135deg, #ffeaa7, #fdcb6e); color: #333; }
+.bottle-icon.cat-metal      { background: linear-gradient(135deg, #74b9ff, #0984e3); color: #fff; }
+.bottle-icon.cat-compound   { background: linear-gradient(135deg, #fd79a8, #e84393); color: #fff; }
+.bottle-icon.cat-acid       { background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: #fff; }
+.bottle-icon.cat-base       { background: linear-gradient(135deg, #4834d4, #686de0); color: #fff; }
+.bottle-icon.cat-salt       { background: linear-gradient(135deg, #7ed6df, #22a6b3); color: #fff; }
+.bottle-icon.cat-organic    { background: linear-gradient(135deg, #badc58, #6ab04c); color: #fff; }
+.bottle-icon.cat-oxide      { background: linear-gradient(135deg, #f8a5c2, #f78fb3); color: #fff; }
+.bottle-icon.cat-indicator  { background: linear-gradient(135deg, #cf6a87, #e66767); color: #fff; }
+
+.bottle-name {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    line-height: 1.2;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bottle-number {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    font-size: 8px;
+    color: rgba(255,255,255,0.2);
+}
+
+/* On table indicator */
+.chem-bottle.on-table {
+    border-color: var(--lab-accent);
+    background: rgba(108,92,231,0.12);
+    box-shadow: 0 0 15px var(--lab-glow);
+}
+.chem-bottle.on-table::after {
+    content: '✓';
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    font-size: 10px;
+    color: var(--lab-accent-2);
+}
+
+/* === WORKBENCH / TABLE === */
+.chem-workbench {
+    position: relative;
+    padding: 20px;
+    background: linear-gradient(180deg, 
+        rgba(20,18,35,0.95) 0%,
+        rgba(30,25,50,0.9) 50%,
+        rgba(40,35,60,0.85) 100%);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    min-height: 280px;
+}
+
+.workbench-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+.workbench-header h3 {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 600;
+    margin: 0;
+}
+.chem-clear-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.03);
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.chem-clear-btn:hover {
+    border-color: #ff4757;
+    color: #ff4757;
+    background: rgba(255,71,87,0.08);
+}
+
+.workbench-layout {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.table-zone {
+    flex: 1;
+    min-width: 0;
+}
+.table-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+.table-label small {
+    font-size: 10px;
+    color: rgba(255,255,255,0.15);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.table-substance.in-flask {
+    border-color: var(--lab-accent);
+    background: rgba(108,92,231,0.15);
+    box-shadow: 0 0 12px var(--lab-glow);
+}
+.table-substance.in-flask::before {
+    content: '🧪';
+    font-size: 10px;
+    position: absolute;
+    top: -8px;
+    left: -4px;
+}
+
+.flask-highlight {
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.06), transparent);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* Items on the table */
+.table-items {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    min-height: 70px;
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.02);
+    border: 2px dashed rgba(255,255,255,0.06);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.table-items.highlight {
+    border-color: var(--lab-accent);
+    background: rgba(108,92,231,0.05);
+}
+.table-items:empty::after {
+    content: 'Нажмите на вещества выше, чтобы добавить на стол ↑';
+    color: rgba(255,255,255,0.15);
+    font-size: 13px;
+    width: 100%;
+    text-align: center;
+}
+
+.table-substance {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    animation: substanceSlide 0.4s var(--spring) both;
+    transition: all 0.3s var(--spring);
+    position: relative;
+}
+
+@keyframes substanceSlide {
+    0% { opacity: 0; transform: translateX(-20px) scale(0.8); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+.table-substance:hover {
+    background: rgba(108,92,231,0.15);
+    border-color: var(--lab-accent);
+    transform: translateY(-2px);
+}
+.table-substance:active {
+    transform: scale(0.93);
+}
+
+.table-substance .sub-symbol {
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+}
+.table-substance .sub-name {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+}
+.table-substance .sub-remove {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ff4757;
+    color: #fff;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.3s var(--spring);
+}
+.table-substance:hover .sub-remove {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* === FLASK ZONE === */
+.flask-zone {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 24px;
+    padding: 10px 0;
+}
+
+.flask-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.flask-3d {
+    width: 120px;
+    height: 160px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.4s var(--spring);
+    perspective: 600px;
+}
+.flask-3d:hover {
+    transform: scale(1.05);
+}
+
+.flask-body {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 110px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 0 0 50% 50% / 0 0 40% 40%;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-top: none;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+.flask-body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.06), transparent);
+    border-radius: inherit;
+}
+
+.flask-neck {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 60px;
+    background: rgba(255,255,255,0.03);
+    border: 2px solid rgba(255,255,255,0.1);
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+}
+.flask-neck::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: -20px;
+    right: -20px;
+    height: 2px;
+    background: rgba(255,255,255,0.1);
+}
+
+.flask-liquid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0%;
+    transition: height 0.6s var(--spring-soft), background 0.5s ease;
+    border-radius: 0 0 50% 50% / 0 0 60% 60%;
+}
+.flask-liquid.has-content {
+    height: 60%;
+}
+
+.flask-liquid.bubbling::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 10%;
+    right: 10%;
+    height: 10px;
+    background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.3) 2px, transparent 3px),
+                radial-gradient(circle at 60% 30%, rgba(255,255,255,0.2) 3px, transparent 4px),
+                radial-gradient(circle at 80% 60%, rgba(255,255,255,0.25) 2px, transparent 3px);
+    animation: bubbleFloat 1.5s ease-in-out infinite;
+}
+
+@keyframes bubbleFloat {
+    0%, 100% { transform: translateY(0); opacity: 0.7; }
+    50% { transform: translateY(-8px); opacity: 1; }
+}
+
+.flask-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    justify-content: center;
+    z-index: 2;
+}
+.flask-tag {
+    font-size: 9px;
+    padding: 2px 5px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+}
+
+.flask-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    font-weight: 500;
+}
+
+/* === MIX BUTTON === */
+.chem-mix-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--lab-accent), #a855f7);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s var(--spring);
+    position: relative;
+    overflow: hidden;
+    margin: 16px auto 0;
+    letter-spacing: 0.5px;
+}
+.chem-mix-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+.chem-mix-btn:hover::before {
+    transform: translateX(100%);
+}
+.chem-mix-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 40px var(--lab-glow), 0 0 80px rgba(108,92,231,0.2);
+}
+.chem-mix-btn:active {
+    transform: scale(0.96);
+    transition-duration: 0.1s;
+}
+.chem-mix-btn.reacting {
+    animation: mixBtnPulse 0.6s ease;
+    pointer-events: none;
+}
+@keyframes mixBtnPulse {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.1); box-shadow: 0 0 60px var(--lab-glow); }
+    100% { transform: scale(1); }
+}
+
+/* Removed chem-clear-all (now using chem-clear-btn) */
+
+/* === REACTION RESULT AREA === */
+.chem-result-zone {
+    padding: 0 20px 20px;
+    transition: all 0.5s ease;
+}
+
+.chem-equation-box {
+    padding: 18px 24px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+    font-family: 'Cambria', 'Georgia', serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s var(--spring);
+    margin-bottom: 16px;
+    overflow-x: auto;
+}
+.chem-equation-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.chem-equation-box .eq-arrow {
+    color: var(--lab-accent);
+    font-size: 22px;
+    margin: 0 6px;
+}
+.chem-equation-box .eq-state {
+    color: #ff6348;
+    font-weight: 700;
+}
+.chem-equation-box .eq-coeff {
+    color: var(--lab-accent-2);
+    font-weight: 700;
+}
+
+/* Reaction info card */
+.chem-info-card {
+    border-radius: 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    transition: all 0.6s var(--spring);
+}
+.chem-info-card.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.info-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.info-card-header h4 {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    flex: 1;
+}
+.info-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+.info-icon-circle.exo { background: linear-gradient(135deg, #ff6348, #ff4757); }
+.info-icon-circle.endo { background: linear-gradient(135deg, #4834d4, #686de0); }
+.info-icon-circle.neutral { background: linear-gradient(135deg, #636e72, #b2bec3); }
+
+.reaction-badge {
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.reaction-badge.badge-exo { background: rgba(255,99,72,0.15); color: #ff6348; }
+.reaction-badge.badge-endo { background: rgba(72,52,212,0.15); color: #a29bfe; }
+.reaction-badge.badge-neutral { background: rgba(178,190,195,0.15); color: #b2bec3; }
+
+.reaction-badge.badge-danger { 
+    background: rgba(255,71,87,0.2); 
+    color: #ff4757; 
+    animation: dangerPulse 1.5s ease infinite;
+}
+@keyframes dangerPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,71,87,0.3); }
+    50% { box-shadow: 0 0 15px 5px rgba(255,71,87,0.15); }
+}
+
+.info-card-body {
+    padding: 16px 20px;
+}
+
+.info-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+.info-detail {
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.02);
+}
+.info-detail-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+.info-detail-value {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+}
+
+.info-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 16px;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.02);
+}
+
+.info-medical {
+    padding: 14px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(108,92,231,0.08), rgba(168,85,247,0.05));
+    border: 1px solid rgba(108,92,231,0.15);
+}
+.info-medical h5 {
+    font-size: 13px;
+    color: var(--lab-accent-2);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.info-medical p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.55);
+}
+
+.info-danger-warning {
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: rgba(255,71,87,0.08);
+    border: 1px solid rgba(255,71,87,0.2);
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #ff6b6b;
+    animation: dangerWarningAppear 0.5s var(--spring) both;
+}
+@keyframes dangerWarningAppear {
+    0% { opacity: 0; transform: translateX(-10px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* === HISTORY PANEL === */
+.chem-history-section {
+    padding: 16px 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+.history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.history-header h3 {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 500;
+    margin: 0;
+}
+.history-stats {
+    display: flex;
+    gap: 10px;
+}
+.stat-pill {
+    padding: 4px 12px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+}
+.stat-pill strong {
+    color: var(--lab-accent-2);
+    font-weight: 700;
+}
+
+.chem-hist-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 200px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(108,92,231,0.2) transparent;
+}
+
+.hist-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.04);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: histAppear 0.3s var(--spring) both;
+}
+.hist-item:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.1);
+}
+.hist-item .hist-eq {
+    flex: 1;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.hist-item .hist-name {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+}
+.hist-badge {
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+@keyframes histAppear {
+    0% { opacity: 0; transform: translateX(-10px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+.history-empty-msg {
+    text-align: center;
+    padding: 24px;
+    color: rgba(255,255,255,0.15);
+    font-size: 13px;
+}
+.history-empty-msg i {
+    font-size: 28px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* === REACTION ANIMATIONS === */
+.reaction-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 100;
+    animation: particleExplode var(--dur, 0.8s) cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes particleExplode {
+    0% { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3); }
+}
+
+.smoke-puff {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 99;
+    animation: smokeUp 2s ease-out forwards;
+}
+@keyframes smokeUp {
+    0% { opacity: 0.8; transform: translateY(0) scale(0.5); }
+    100% { opacity: 0; transform: translateY(-80px) scale(2.5); }
+}
+
+.fire-spark {
+    position: absolute;
+    width: 4px;
+    height: 8px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #ff6348, #ffbe76);
+    pointer-events: none;
+    z-index: 100;
+    animation: fireSpark 0.6s ease-out forwards;
+}
+@keyframes fireSpark {
+    0% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+    100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.2) rotate(var(--rot, 180deg)); }
+}
+
+.explosion-flash {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    z-index: 98;
+    pointer-events: none;
+    animation: flashBang 0.4s ease-out forwards;
+}
+@keyframes flashBang {
+    0% { background: rgba(255,200,100,0.6); }
+    50% { background: rgba(255,255,255,0.3); }
+    100% { background: transparent; }
+}
+
+.shake-danger {
+    animation: shakeIt 0.5s ease-in-out;
+}
+@keyframes shakeIt {
+    0%, 100% { transform: translateX(0); }
+    10%, 50%, 90% { transform: translateX(-4px); }
+    30%, 70% { transform: translateX(4px); }
+}
+
+.ice-crystal {
+    position: absolute;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 100;
+    animation: crystallize 1.5s ease-out forwards;
+}
+@keyframes crystallize {
+    0% { opacity: 0; transform: translateY(0) scale(0) rotate(0deg); }
+    50% { opacity: 1; transform: translateY(-30px) scale(1.2) rotate(180deg); }
+    100% { opacity: 0; transform: translateY(-60px) scale(0.8) rotate(360deg); }
+}
+
+.precipitate-dot {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 100;
+    animation: precipFall 1.2s ease-in forwards;
+}
+@keyframes precipFall {
+    0% { opacity: 0.8; transform: translateY(0); }
+    100% { opacity: 0.3; transform: translateY(var(--fall, 60px)); }
+}
+
+.flask-glow {
+    animation: flaskGlowPulse 1.5s ease-in-out infinite;
+}
+@keyframes flaskGlowPulse {
+    0%, 100% { filter: drop-shadow(0 0 5px var(--glow-color, rgba(108,92,231,0.3))); }
+    50% { filter: drop-shadow(0 0 25px var(--glow-color, rgba(108,92,231,0.6))); }
+}
+
+/* === SAFETY BANNER === */
+.chem-safety {
+    margin: 12px 20px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(255,168,0,0.06);
+    border: 1px solid rgba(255,168,0,0.15);
+    font-size: 11px;
+    color: rgba(255,168,0,0.7);
+    text-align: center;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    .chem-shelf {
+        grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+        gap: 8px;
+        padding: 12px 14px;
+        max-height: 220px;
+    }
+    .chem-bottle {
+        padding: 10px 4px 8px;
+    }
+    .bottle-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 14px;
+    }
+    .bottle-name {
+        font-size: 9px;
+    }
+    .chem-workbench {
+        padding: 14px;
+    }
+    .workbench-layout {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .flask-3d {
+        width: 100px;
+        height: 140px;
+    }
+    .flask-body {
+        height: 95px;
+    }
+    .flask-zone {
+        gap: 16px;
+        justify-content: center;
+    }
+    .chem-mix-btn {
+        padding: 14px 32px;
+        font-size: 15px;
+    }
+    .info-details-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+    .chem-equation-box {
+        font-size: 14px;
+        padding: 14px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chem-shelf {
+        grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+        max-height: 180px;
+    }
+    .bottle-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 13px;
+    }
+    .flask-3d {
+        width: 85px;
+        height: 120px;
+    }
+    .flask-body {
+        height: 80px;
+    }
+    .flask-neck {
+        width: 24px;
+        height: 48px;
+    }
+    .flask-zone {
+        gap: 10px;
+    }
+    .info-details-grid {
+        grid-template-columns: 1fr;
+    }
+}

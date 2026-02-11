@@ -1285,18 +1285,20 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 6px;
-        padding: 12px 20px;
-        border-radius: 16px;
+        gap: 4px;
+        padding: 8px 6px;
+        border-radius: 12px;
         color: rgba(255, 255, 255, 0.4);
         text-decoration: none;
-        font-size: 0.65rem;
+        font-size: 0.6rem;
         font-weight: 500;
         transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         background: transparent;
         border: none;
         cursor: pointer;
         position: relative;
+        min-width: 0;
+        flex: 1 1 0;
     }
     
     .mobile-nav-item::before {
@@ -1324,7 +1326,7 @@
     }
     
     .mobile-nav-item i {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         position: relative;
         z-index: 1;
         transition: all 0.3s ease;
@@ -1461,17 +1463,17 @@
     
     /* Мобильная навигация - компактнее */
     .mobile-nav {
-        padding: 10px 6px 20px;
+        padding: 8px 4px 18px;
     }
     
     .mobile-nav-item {
-        padding: 10px 14px;
-        font-size: 0.6rem;
-        border-radius: 14px;
+        padding: 7px 4px;
+        font-size: 0.55rem;
+        border-radius: 10px;
     }
     
     .mobile-nav-item i {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
     }
 }
 
@@ -1524,12 +1526,16 @@
     }
     
     .mobile-nav-item {
-        padding: 8px 10px;
-        gap: 4px;
+        padding: 6px 3px;
+        gap: 3px;
     }
     
     .mobile-nav-item i {
-        font-size: 1.15rem;
+        font-size: 1rem;
+    }
+    
+    .mobile-nav-item span {
+        font-size: 0.5rem;
     }
 }
 

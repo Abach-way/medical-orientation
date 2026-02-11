@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/advanced-ui.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/organs-biochem.css">
+    <link rel="stylesheet" href="css/chem-lab.css">
     
     <!-- Критические мобильные стили (высший приоритет) -->
     <style>
@@ -339,6 +340,10 @@
                     <span class="nav-icon">🧬</span>
                     <span>Биохим. анализ</span>
                 </a>
+                <a href="#chemlab" class="nav-item" onclick="showSection('chemlab'); updateNav(this)">
+                    <span class="nav-icon">⚗️</span>
+                    <span>Хим. лаборатория</span>
+                </a>
                 
                 <div class="nav-divider"></div>
                 
@@ -429,6 +434,11 @@
                         <div class="quick-action-icon">🧬</div>
                         <div class="quick-action-text">Биохим. Анализ</div>
                         <div class="quick-action-desc">Анализ симптомов</div>
+                    </div>
+                    <div class="quick-action" onclick="showSection('chemlab')">
+                        <div class="quick-action-icon">⚗️</div>
+                        <div class="quick-action-text">Хим. Лаборатория</div>
+                        <div class="quick-action-desc">Смешивайте элементы</div>
                     </div>
                 </div>
             </div>
@@ -1465,6 +1475,99 @@
                 </div>
             </div>
         </section>
+
+        <!-- Химическая лаборатория v2 — Game Flow -->
+        <section id="chemlab">
+            <div class="chem-lab-container">
+                <!-- Заголовок -->
+                <div class="chem-header">
+                    <h2><i class="fas fa-flask"></i> Виртуальная химическая лаборатория</h2>
+                    <p>Найди вещества → Добавь на стол → Брось в колбу → Смешай!</p>
+                </div>
+
+                <!-- Поиск -->
+                <div class="chem-search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="chem-search-input" placeholder="Поиск вещества (натрий, H₂SO₄, кислота...)">
+                </div>
+
+                <!-- Фильтр по категориям -->
+                <div class="chem-category-filters" id="chem-cat-filters">
+                    <!-- Заполняется JS -->
+                </div>
+
+                <!-- Полка с веществами -->
+                <div class="chem-shelf-section">
+                    <div class="shelf-header">
+                        <h3>📦 Полка веществ <small>(нажми чтобы добавить на стол)</small></h3>
+                    </div>
+                    <div class="chem-shelf" id="chem-shelf">
+                        <!-- Заполняется JS -->
+                    </div>
+                </div>
+
+                <!-- Рабочий стол -->
+                <div class="chem-workbench">
+                    <div class="workbench-header">
+                        <h3>🧪 Рабочий стол</h3>
+                        <button class="chem-clear-btn" onclick="ChemLab.clearAll()"><i class="fas fa-trash-alt"></i> Очистить</button>
+                    </div>
+
+                    <div class="workbench-layout">
+                        <!-- Вещества на столе -->
+                        <div class="table-zone">
+                            <div class="table-label">На столе <small>(нажми → в колбу)</small></div>
+                            <div class="table-items" id="chem-table-items">
+                                <!-- Заполняется JS -->
+                            </div>
+                        </div>
+
+                        <!-- Колба -->
+                        <div class="flask-zone">
+                            <div class="flask-label">Колба</div>
+                            <div class="flask-3d" id="chem-flask">
+                                <div class="flask-neck"></div>
+                                <div class="flask-body">
+                                    <div class="flask-liquid"></div>
+                                    <div class="flask-highlight"></div>
+                                </div>
+                                <div class="flask-tags"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Кнопка смешивания -->
+                    <button class="chem-mix-btn" onclick="ChemLab.mixReactants()">
+                        <i class="fas fa-mortar-pestle"></i> Смешать реактивы!
+                    </button>
+                </div>
+
+                <!-- Результаты -->
+                <div class="chem-result-zone">
+                    <div class="chem-equation-box" id="chem-equation-box"></div>
+                    <div class="chem-info-card" id="chem-info-card"></div>
+                </div>
+
+                <!-- Предупреждение -->
+                <div class="chem-safety">
+                    ⚠️ Виртуальная лаборатория для обучения. <strong>Не повторяйте опасные реакции</strong> в реальности без профессионального надзора!
+                </div>
+
+                <!-- История -->
+                <div class="chem-history-section">
+                    <div class="history-header">
+                        <h3>📋 История реакций</h3>
+                        <div class="history-stats">
+                            <div class="stat-pill">Всего: <strong id="chem-stat-total">0</strong></div>
+                            <div class="stat-pill">Уникальных: <strong id="chem-stat-unique">0</strong></div>
+                        </div>
+                    </div>
+                    <div class="chem-hist-list" id="chem-hist-list">
+                        <!-- Заполняется JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
         
         </main>
         
@@ -1491,8 +1594,12 @@
                 <span>3D</span>
             </a>
             <a href="#biochem" class="mobile-nav-item" onclick="showSection('biochem'); updateMobileNav(this)">
-                <i class="fas fa-flask"></i>
+                <i class="fas fa-dna"></i>
                 <span>Анализ</span>
+            </a>
+            <a href="#chemlab" class="mobile-nav-item" onclick="showSection('chemlab'); updateMobileNav(this)">
+                <i class="fas fa-flask"></i>
+                <span>Лаб.</span>
             </a>
         </nav>
     </div>
@@ -1503,6 +1610,7 @@
     <script src="js/organs-3d-models.js" defer></script>
     <script src="js/ai-tutor.js" defer></script>
     <script src="js/organs-biochem.js" defer></script>
+    <script src="js/chem-lab.js" defer></script>
     <script src="js/questions-database.js" defer></script>
     <script src="js/app.js" defer></script>
     

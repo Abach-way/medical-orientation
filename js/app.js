@@ -522,6 +522,8 @@ function showMainContent(user) {
     if (mainContent) {
         mainContent.style.setProperty('display', 'flex', 'important');
         mainContent.classList.add('visible');
+        // Force reflow — fixes blank screen on mobile after registration
+        void mainContent.offsetHeight;
     }
     if (aiTutor) {
         aiTutor.style.setProperty('display', 'flex', 'important');
@@ -540,6 +542,16 @@ function showMainContent(user) {
     
     // Показываем секцию home по умолчанию
     showSection('home');
+
+    // Force extra reflow for mobile browsers (fixes blank screen after registration)
+    requestAnimationFrame(() => {
+        if (mainContent) {
+            mainContent.style.setProperty('display', 'flex', 'important');
+            void mainContent.offsetHeight;
+        }
+        window.scrollTo(0, 0);
+        showSection('home');
+    });
     
     // Инициализация тестов
     try {

@@ -1564,8 +1564,43 @@ function logout() {
 }
 
 // Показать секцию
+// SEO: Динамические заголовки для каждого раздела
+const SECTION_TITLES = {
+    home: 'Medical Explorer — Медицинская профориентация',
+    tests: 'Тесты профориентации — Medical Explorer',
+    profile: 'Мой профиль — Medical Explorer',
+    learning: 'Обучение медицине — Medical Explorer',
+    organs3d: '3D Модели органов — Medical Explorer',
+    biochem: 'Биохимия — Medical Explorer',
+    chemlab: 'Химическая лаборатория — Medical Explorer',
+    contacts: 'Контакты — Medical Explorer'
+};
+
+const SECTION_DESCRIPTIONS = {
+    home: 'Интерактивная платформа медицинской профориентации с тестами, 3D моделями органов и химической лабораторией',
+    tests: 'Пройдите тесты по профориентации, биологии и химии для определения вашей медицинской специальности',
+    profile: 'Ваш личный профиль с результатами тестов и достижениями',
+    learning: 'Образовательные материалы по медицине, анатомии и биохимии',
+    organs3d: 'Интерактивные 3D модели органов человека с детальным описанием',
+    biochem: 'Изучение биохимических процессов и молекулярной биологии',
+    chemlab: 'Виртуальная химическая лаборатория — смешивайте реагенты и наблюдайте реакции',
+    contacts: 'Свяжитесь с командой Medical Explorer'
+};
+
 function showSection(sectionId) {
     console.log('showSection called with:', sectionId);
+
+    // SEO: Обновляем title и meta description
+    document.title = SECTION_TITLES[sectionId] || SECTION_TITLES.home;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+        metaDesc.setAttribute('content', SECTION_DESCRIPTIONS[sectionId] || SECTION_DESCRIPTIONS.home);
+    }
+    // Обновляем URL без перезагрузки
+    if (history.replaceState) {
+        history.replaceState(null, '', '#' + sectionId);
+    }
+
     // Скрыть все секции
     document.querySelectorAll('section').forEach(section => {
         section.style.display = 'none';

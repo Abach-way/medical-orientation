@@ -575,8 +575,10 @@ function showMainContent(user) {
         const appContent = document.querySelector('.app-content');
         if (appContent) {
             appContent.style.setProperty('display', 'block', 'important');
-            appContent.style.setProperty('width', '100%', 'important');
-            appContent.style.setProperty('margin-left', '0', 'important');
+            if (window.innerWidth <= 768) {
+                appContent.style.setProperty('width', '100%', 'important');
+                appContent.style.setProperty('margin-left', '0', 'important');
+            }
         }
         window.scrollTo(0, 0);
         showSection('home');

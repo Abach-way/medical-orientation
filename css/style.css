@@ -567,24 +567,11 @@ nav {
   width: 100%;
 }
 
-/* Фикс для сайдбара на мобильных */
+/* Фикс для сайдбара на планшетах — отступ контента */
 @media (max-width: 1024px) {
-  .sidebar {
-    position: fixed;
-    left: -100%;
-    width: 280px;
-    max-width: 85vw;
-    transition: left 0.3s ease;
-    z-index: 1000;
-  }
-  
-  .sidebar.open {
-    left: 0;
-  }
-  
   .app-content {
-    margin-left: 0 !important;
-    width: 100% !important;
+    margin-left: 100px !important;
+    width: calc(100% - 100px) !important;
     padding: 20px 16px !important;
   }
 }

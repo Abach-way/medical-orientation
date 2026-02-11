@@ -1486,15 +1486,26 @@
             <div class="chem-lab-container">
                 <!-- Заголовок -->
                 <div class="chem-header">
-                    <h2><i class="fas fa-flask"></i> Виртуальная химическая лаборатория</h2>
-                    <p>Найди вещества → Добавь на стол → Брось в колбу → Смешай!</p>
+                    <h2><i class="fas fa-flask"></i> Химическая лаборатория 🎮</h2>
+                    <p>Полка → Стол → Колба → Смешай! Открывай реакции и получай XP!</p>
                 </div>
 
-                <!-- Поиск -->
-                <div class="chem-search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="chem-search-input" placeholder="Поиск вещества (натрий, H₂SO₄, кислота...)">
+                <!-- 🎮 Game Bar -->
+                <div class="chem-game-bar" id="chem-game-bar">
+                    <!-- Заполняется JS -->
                 </div>
+
+                <!-- Поиск + Подсказка -->
+                <div class="chem-search-row">
+                    <div class="chem-search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="chem-search-input" placeholder="Поиск вещества (натрий, H₂SO₄, кислота...)">
+                    </div>
+                    <button class="chem-hint-btn" onclick="ChemLab.getHint()" title="Подсказка">💡</button>
+                </div>
+
+                <!-- Hint message -->
+                <div class="chem-hint-msg" id="chem-hint"></div>
 
                 <!-- Фильтр по категориям -->
                 <div class="chem-category-filters" id="chem-cat-filters">

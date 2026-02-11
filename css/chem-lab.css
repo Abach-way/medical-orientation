@@ -1021,6 +1021,326 @@
     text-align: center;
 }
 
+/* ============================================
+   🎮 GAME BAR — XP, Level, Combo
+   ============================================ */
+.chem-game-bar {
+    padding: 14px 20px;
+    background: linear-gradient(135deg, rgba(108,92,231,0.08), rgba(168,85,247,0.04));
+    border-bottom: 1px solid rgba(108,92,231,0.15);
+}
+.game-level {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.game-level-badge {
+    background: linear-gradient(135deg, var(--lab-accent), #a855f7);
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 3px 12px var(--lab-glow);
+}
+.game-xp-bar {
+    flex: 1;
+    height: 10px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.06);
+    overflow: hidden;
+    position: relative;
+}
+.game-xp-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--lab-accent), #a855f7);
+    transition: width 0.5s var(--spring);
+    position: relative;
+}
+.game-xp-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 100%;
+    background: rgba(255,255,255,0.4);
+    border-radius: 0 6px 6px 0;
+    filter: blur(2px);
+}
+.game-xp-text {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    white-space: nowrap;
+    min-width: 60px;
+    text-align: right;
+}
+.game-stats-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+.game-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.03);
+}
+.game-stat-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--lab-accent-2);
+}
+.game-stat-label {
+    font-size: 9px;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.combo-glow {
+    background: rgba(255,200,0,0.15) !important;
+    border: 1px solid rgba(255,200,0,0.3);
+    animation: comboGlowPulse 0.8s ease infinite;
+}
+.combo-glow .game-stat-value { color: #ffc800; }
+@keyframes comboGlowPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,200,0,0.2); }
+    50% { box-shadow: 0 0 15px 3px rgba(255,200,0,0.15); }
+}
+
+/* ============================================
+   SEARCH ROW + HINT BUTTON
+   ============================================ */
+.chem-search-row {
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+    padding: 0;
+}
+.chem-search-row .chem-search-bar {
+    flex: 1;
+    border-bottom: none;
+}
+.chem-hint-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    background: rgba(255,200,0,0.08);
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s var(--spring);
+    margin: 16px 20px 16px 0;
+}
+.chem-hint-btn:hover {
+    background: rgba(255,200,0,0.15);
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255,200,0,0.2);
+}
+.chem-hint-msg {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s var(--spring);
+    font-size: 13px;
+    color: rgba(255,200,0,0.8);
+}
+.chem-hint-msg.visible {
+    padding: 10px 20px;
+    max-height: 60px;
+    background: rgba(255,200,0,0.05);
+    border-bottom: 1px solid rgba(255,200,0,0.1);
+}
+
+/* ============================================
+   BOTTLE REAL COLOR LABEL
+   ============================================ */
+.bottle-real-color {
+    font-size: 8px;
+    color: rgba(255,255,255,0.2);
+    text-align: center;
+    line-height: 1.1;
+    max-width: 80px;
+}
+
+/* bottle icon — use inline style from JS, not category colors */
+.bottle-icon {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* sub-symbol on table */
+.table-substance .sub-symbol {
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+/* ============================================
+   XP POPUP
+   ============================================ */
+.xp-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    padding: 10px 24px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--lab-accent), #a855f7);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.4s var(--spring);
+    box-shadow: 0 8px 30px var(--lab-glow);
+    white-space: nowrap;
+}
+.xp-popup.show {
+    opacity: 1;
+    transform: translate(-50%, -60%) scale(1);
+}
+
+/* ============================================
+   LEVEL UP OVERLAY
+   ============================================ */
+.level-up-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.6);
+    z-index: 10001;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    backdrop-filter: blur(6px);
+}
+.level-up-overlay.show { opacity: 1; }
+.level-up-card {
+    text-align: center;
+    padding: 40px 50px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(30,25,60,0.98), rgba(20,16,40,0.98));
+    border: 2px solid var(--lab-accent);
+    box-shadow: 0 0 60px var(--lab-glow), 0 0 120px rgba(108,92,231,0.1);
+    transform: scale(0.7);
+    transition: transform 0.5s var(--spring-bounce);
+}
+.level-up-overlay.show .level-up-card { transform: scale(1); }
+.level-up-icon {
+    font-size: 56px;
+    margin-bottom: 12px;
+    animation: levelStar 1s ease infinite;
+}
+@keyframes levelStar {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.2) rotate(10deg); }
+    75% { transform: scale(1.1) rotate(-5deg); }
+}
+.level-up-card h3 {
+    font-size: 28px;
+    color: #fff;
+    margin: 0 0 8px;
+    background: linear-gradient(135deg, #fff, var(--lab-accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.level-up-card p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+}
+
+/* ============================================
+   ACHIEVEMENT POPUP
+   ============================================ */
+.achievement-popup {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border-radius: 16px;
+    background: rgba(15,12,30,0.95);
+    border: 1px solid rgba(255,200,0,0.3);
+    color: #fff;
+    z-index: 10002;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 30px rgba(255,200,0,0.1);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.5s var(--spring);
+}
+.achievement-popup.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+.ach-icon {
+    font-size: 32px;
+}
+.achievement-popup strong {
+    color: #ffc800;
+    font-size: 14px;
+}
+
+/* ============================================
+   BUBBLE EFFECT
+   ============================================ */
+.reaction-bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+    border: 1px solid rgba(255,255,255,0.2);
+    pointer-events: none;
+    z-index: 100;
+    animation: bubbleRise 1.8s ease-out forwards;
+}
+@keyframes bubbleRise {
+    0% { opacity: 0.8; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-100px) scale(0.3); }
+}
+
+/* Precipitate flake */
+.precipitate-flake {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 100;
+    animation: flakeFall 2.5s ease-in forwards;
+}
+@keyframes flakeFall {
+    0% { opacity: 0.9; transform: translateY(0); }
+    100% { opacity: 0.4; transform: translateY(70px); }
+}
+
+/* XP label in history */
+.hist-xp {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--lab-accent-2);
+    white-space: nowrap;
+}
+
+/* Table-empty message */
+.table-empty {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    color: rgba(255,255,255,0.15);
+    font-size: 14px;
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
     .chem-shelf {
@@ -1070,6 +1390,14 @@
         font-size: 14px;
         padding: 14px 16px;
     }
+    .game-level-badge { font-size: 11px; padding: 3px 10px; }
+    .game-stats-row { gap: 8px; }
+    .game-stat { padding: 3px 8px; }
+    .game-stat-value { font-size: 14px; }
+    .chem-hint-btn { width: 44px; margin-right: 14px; }
+    .level-up-card { padding: 30px 36px; }
+    .level-up-card h3 { font-size: 24px; }
+    .achievement-popup { right: 10px; top: 60px; padding: 12px 18px; }
 }
 
 @media (max-width: 480px) {
@@ -1099,4 +1427,7 @@
     .info-details-grid {
         grid-template-columns: 1fr;
     }
+    .bottle-real-color { display: none; }
+    .chem-search-row { flex-direction: row; }
+    .xp-popup { font-size: 15px; padding: 8px 18px; }
 }

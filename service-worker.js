@@ -5,7 +5,7 @@
 
 // Bump this value whenever you change static assets so clients don't get stuck
 // on stale cached CSS/JS.
-const CACHE_NAME = 'medical-orientation-v31';
+const CACHE_NAME = 'medical-orientation-v32';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -19,12 +19,12 @@ const urlsToCache = [
     '/css/animations.css',
     '/css/organs-biochem.css',
     '/css/chem-lab.css',
-    '/js/ai-tutor.js',
-    '/js/organs-biochem.js',
-    '/js/organs-3d-models.js',
-    '/js/chem-lab.js',
-    '/js/questions-database.js',
-    '/js/app.js',
+    '/js/ai-tutor.js?v=32',
+    '/js/organs-biochem.js?v=32',
+    '/js/organs-3d-models.js?v=32',
+    '/js/chem-lab.js?v=32',
+    '/js/questions-database.js?v=32',
+    '/js/app.js?v=32',
     '/js/gamification.js',
     '/js/mobile-pwa.js',
     '/js/international.js',

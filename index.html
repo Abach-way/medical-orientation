@@ -248,7 +248,7 @@
     <!-- Force clear stale service worker caches (v32 migration) -->
     <script>
     (function(){
-        var CURRENT='medical-orientation-v33';
+        var CURRENT='medical-orientation-v34';
         if('caches' in window){
             caches.keys().then(function(names){
                 names.forEach(function(name){
@@ -1155,6 +1155,14 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Кнопка выхода -->
+            <div class="profile-logout-section">
+                <button class="profile-logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Выйти из аккаунта</span>
+                </button>
+            </div>
         </section>
 
         <!-- Обучение -->
@@ -1813,12 +1821,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" defer></script>
-    <script src="js/organs-3d-models.js?v=33" defer></script>
-    <script src="js/ai-tutor.js?v=33" defer></script>
-    <script src="js/organs-biochem.js?v=33" defer></script>
-    <script src="js/chem-lab.js?v=33" defer></script>
-    <script src="js/questions-database.js?v=33" defer></script>
-    <script src="js/app.js?v=33" defer></script>
+    <script src="js/organs-3d-models.js?v=34" defer></script>
+    <script src="js/ai-tutor.js?v=34" defer></script>
+    <script src="js/organs-biochem.js?v=34" defer></script>
+    <script src="js/chem-lab.js?v=34" defer></script>
+    <script src="js/questions-database.js?v=34" defer></script>
+    <script src="js/app.js?v=34" defer></script>
     
 </body>
 </html>

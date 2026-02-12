@@ -1105,6 +1105,14 @@ body::after {
   }
 }
 
+.auth-form,
+.auth-form.wave-bg {
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .auth-form::before,
 .auth-form::after {
   display: none !important;
@@ -2035,6 +2043,42 @@ h1, h2, h3, h4, h5, h6 {
 
 .action-icon {
   font-size: 1.25rem;
+}
+
+/* Profile logout button */
+.profile-logout-section {
+  margin-top: 24px;
+  padding: 0 4px 40px;
+  text-align: center;
+}
+.profile-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 36px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 75, 75, 0.25);
+  background: rgba(255, 75, 75, 0.08);
+  color: #ff4b4b;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration) var(--ease);
+  width: 100%;
+  max-width: 320px;
+  justify-content: center;
+}
+.profile-logout-btn:hover {
+  background: rgba(255, 75, 75, 0.18);
+  border-color: rgba(255, 75, 75, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 75, 75, 0.15);
+}
+.profile-logout-btn:active {
+  transform: scale(0.97);
+}
+.profile-logout-btn i {
+  font-size: 1.1rem;
 }
 
 /* Стили оптимизированы для мониторов */

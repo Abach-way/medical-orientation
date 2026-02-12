@@ -1,4 +1,4 @@
-/**
+п»ї/**
  * Medical Orientation Platform - Main Application
  * Extracted from inline script for maintainability
  */
@@ -45,7 +45,7 @@ function showToast(msg, duration) {
 
 console.log('=== SCRIPT START ===');
 
-// Глобальный обработчик ошибок
+// Р“Р»РѕР±Р°Р»СЊРЅС‹Р№ РѕР±СЂР°Р±РѕС‚С‡РёРє РѕС€РёР±РѕРє
 window.onerror = function(msg, url, line, col, error) {
     console.error('GLOBAL ERROR:', msg, 'at line', line, error);
     return false;
@@ -54,19 +54,19 @@ window.onerror = function(msg, url, line, col, error) {
 console.log('1. Starting function definitions...');
 
 // ============================================================
-// LANDING PAGE И МОДАЛЬНОЕ ОКНО АВТОРИЗАЦИИ
+// LANDING PAGE Р РњРћР”РђР›Р¬РќРћР• РћРљРќРћ РђР’РўРћР РР—РђР¦РР
 // ============================================================
 
 function openAuthModal(tab = 'login') {
     const authContainer = document.getElementById('auth-container');
     
-    // Показываем модальное окно поверх landing page (не скрываем landing!)
+    // РџРѕРєР°Р·С‹РІР°РµРј РјРѕРґР°Р»СЊРЅРѕРµ РѕРєРЅРѕ РїРѕРІРµСЂС… landing page (РЅРµ СЃРєСЂС‹РІР°РµРј landing!)
     if (authContainer) {
         authContainer.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
     
-    // Переключаем на нужную вкладку
+    // РџРµСЂРµРєР»СЋС‡Р°РµРј РЅР° РЅСѓР¶РЅСѓСЋ РІРєР»Р°РґРєСѓ
     setTimeout(() => switchTab(tab), 50);
 }
 
@@ -86,7 +86,7 @@ function scrollToFeatures() {
     }
 }
 
-// Красивый выпадающий список "Как это работает"
+// РљСЂР°СЃРёРІС‹Р№ РІС‹РїР°РґР°СЋС‰РёР№ СЃРїРёСЃРѕРє "РљР°Рє СЌС‚Рѕ СЂР°Р±РѕС‚Р°РµС‚"
 function toggleHowItWorks(event) {
     event.stopPropagation();
     const dropdown = event.target.closest('.how-it-works-dropdown');
@@ -95,7 +95,7 @@ function toggleHowItWorks(event) {
     }
 }
 
-// Закрытие списка при клике вне
+// Р—Р°РєСЂС‹С‚РёРµ СЃРїРёСЃРєР° РїСЂРё РєР»РёРєРµ РІРЅРµ
 document.addEventListener('click', function(e) {
     const dropdown = document.querySelector('.how-it-works-dropdown');
     if (dropdown && !dropdown.contains(e.target)) {
@@ -103,7 +103,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Скролл анимации для landing page
+// РЎРєСЂРѕР»Р» Р°РЅРёРјР°С†РёРё РґР»СЏ landing page
 function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -121,7 +121,7 @@ function initScrollAnimations() {
     });
 }
 
-// Эффект навигации при скролле
+// Р­С„С„РµРєС‚ РЅР°РІРёРіР°С†РёРё РїСЂРё СЃРєСЂРѕР»Р»Рµ
 function initNavScroll() {
     const nav = document.getElementById('landing-nav');
     if (!nav) return;
@@ -142,15 +142,15 @@ function initNavScroll() {
 }
 
 // ============================================================
-// ОСНОВНОЙ КОД
+// РћРЎРќРћР’РќРћР™ РљРћР”
 // ============================================================
 
-// Инициализация хранилища
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С…СЂР°РЅРёР»РёС‰Р°
 const USERS_KEY = 'medical_users_v5';
 const CURRENT_USER_KEY = 'current_medical_user_v5';
 const AVATARS_KEY = 'medical_avatars_v1';
 
-// Проверка авторизации при загрузке
+// РџСЂРѕРІРµСЂРєР° Р°РІС‚РѕСЂРёР·Р°С†РёРё РїСЂРё Р·Р°РіСЂСѓР·РєРµ
 function checkAuthOnLoad() {
     const currentUser = localStorage.getItem(CURRENT_USER_KEY);
     const landingPage = document.getElementById('landing-page');
@@ -161,13 +161,13 @@ function checkAuthOnLoad() {
     console.log('Auth check:', currentUser ? 'logged in' : 'not logged in');
     
     if (currentUser) {
-        // Пользователь залогинен - показываем основной контент
+        // РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р»РѕРіРёРЅРµРЅ - РїРѕРєР°Р·С‹РІР°РµРј РѕСЃРЅРѕРІРЅРѕР№ РєРѕРЅС‚РµРЅС‚
         if (landingPage) {
             landingPage.classList.add('hidden');
             landingPage.style.setProperty('display', 'none', 'important');
         }
         if (mainContent) {
-            mainContent.classList.add('visible'); // класс visible!
+            mainContent.classList.add('visible'); // РєР»Р°СЃСЃ visible!
             mainContent.style.setProperty('display', 'flex', 'important');
         }
         if (aiTutor) aiTutor.style.display = 'flex';
@@ -176,14 +176,14 @@ function checkAuthOnLoad() {
             authContainer.style.setProperty('display', 'none', 'important');
         }
         
-        // Показываем секцию home
+        // РџРѕРєР°Р·С‹РІР°РµРј СЃРµРєС†РёСЋ home
         setTimeout(() => {
             if (typeof showSection === 'function') {
                 showSection('home');
             }
         }, 0);
     } else {
-        // Пользователь не залогинен - показываем landing page
+        // РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ Р·Р°Р»РѕРіРёРЅРµРЅ - РїРѕРєР°Р·С‹РІР°РµРј landing page
         if (landingPage) {
             landingPage.classList.remove('hidden');
             landingPage.style.setProperty('display', 'flex', 'important');
@@ -195,7 +195,7 @@ function checkAuthOnLoad() {
         if (aiTutor) aiTutor.style.display = 'none';
         if (authContainer) authContainer.classList.remove('active');
         
-        // Инициализируем анимации landing page
+        // РРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј Р°РЅРёРјР°С†РёРё landing page
         setTimeout(() => {
             if (typeof initScrollAnimations === 'function') initScrollAnimations();
             if (typeof initNavScroll === 'function') initNavScroll();
@@ -203,15 +203,15 @@ function checkAuthOnLoad() {
     }
 }
 
-// Вызываем при загрузке
+// Р’С‹Р·С‹РІР°РµРј РїСЂРё Р·Р°РіСЂСѓР·РєРµ
 document.addEventListener('DOMContentLoaded', checkAuthOnLoad);
 
-// ОТЛАДКА: Создаем тестового пользователя для входа
+// РћРўР›РђР”РљРђ: РЎРѕР·РґР°РµРј С‚РµСЃС‚РѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РґР»СЏ РІС…РѕРґР°
 async function createTestUser() {
     const hashedPw = await hashPassword("123456");
     const testUser = {
         id: 1,
-        name: "Тест Пользователь",
+        name: "РўРµСЃС‚ РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ",
         email: "test@test.com",
         phone: "+7 900 000 0000", 
         age: 18,
@@ -229,7 +229,7 @@ async function createTestUser() {
         users = JSON.parse(localStorage.getItem(USERS_KEY));
     }
     
-    // Проверим, есть ли уже тестовый пользователь
+    // РџСЂРѕРІРµСЂРёРј, РµСЃС‚СЊ Р»Рё СѓР¶Рµ С‚РµСЃС‚РѕРІС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
     if (!users.find(u => u.email === "test@test.com")) {
         users.push(testUser);
         localStorage.setItem(USERS_KEY, JSON.stringify(users));
@@ -246,7 +246,7 @@ function isLocalhost() {
     }
 }
 
-// Для удобства на локалке создаём демо-пользователя, если хранилище пустое.
+// Р”Р»СЏ СѓРґРѕР±СЃС‚РІР° РЅР° Р»РѕРєР°Р»РєРµ СЃРѕР·РґР°С‘Рј РґРµРјРѕ-РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РµСЃР»Рё С…СЂР°РЅРёР»РёС‰Рµ РїСѓСЃС‚РѕРµ.
 try {
     const hasUsers = !!localStorage.getItem(USERS_KEY);
     if (DEBUG || (isLocalhost() && !hasUsers)) createTestUser();
@@ -260,9 +260,9 @@ let currentQuestionIndex = 0;
 let testAnswers = {};
 let markedQuestions = {};
 let userTestResults = {};
-let currentTestQuestions = []; // Массив для текущих перемешанных вопросов
+let currentTestQuestions = []; // РњР°СЃСЃРёРІ РґР»СЏ С‚РµРєСѓС‰РёС… РїРµСЂРµРјРµС€Р°РЅРЅС‹С… РІРѕРїСЂРѕСЃРѕРІ
 
-// Переключение между вкладками
+// РџРµСЂРµРєР»СЋС‡РµРЅРёРµ РјРµР¶РґСѓ РІРєР»Р°РґРєР°РјРё
 function switchTab(tab) {
     console.log('switchTab called with:', tab);
     document.querySelectorAll('.auth-page').forEach(page => {
@@ -284,7 +284,7 @@ function switchTab(tab) {
     }
 }
 
-// Функции для работы с кодом подтверждения (упрощенные)
+// Р¤СѓРЅРєС†РёРё РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєРѕРґРѕРј РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ (СѓРїСЂРѕС‰РµРЅРЅС‹Рµ)
 function moveToNext(current, nextIndex) {
     if (current.value.length >= current.maxLength) {
         const inputs = document.querySelectorAll('.code-inputs input');
@@ -303,66 +303,66 @@ function moveOnBackspace(input, prevIndex) {
     }
 }
 
-// Регистрация - УПРОЩЕННАЯ БЕЗ ВЕРИФИКАЦИИ
+// Р РµРіРёСЃС‚СЂР°С†РёСЏ - РЈРџР РћР©Р•РќРќРђРЇ Р‘Р•Р— Р’Р•Р РР¤РРљРђР¦РР
 async function handleRegistration(event) {
     event.preventDefault();
     
     const username = document.getElementById('reg-username').value.trim();
-    const email = document.getElementById('reg-email').value.trim().toLowerCase(); // Приводим к нижнему регистру
+    const email = document.getElementById('reg-email').value.trim().toLowerCase(); // РџСЂРёРІРѕРґРёРј Рє РЅРёР¶РЅРµРјСѓ СЂРµРіРёСЃС‚СЂСѓ
     const phone = document.getElementById('reg-phone').value.trim();
     const age = document.getElementById('reg-age').value;
     const password = document.getElementById('reg-password').value;
     const confirmPassword = document.getElementById('reg-confirm-password').value;
     
-    // Валидация
+    // Р’Р°Р»РёРґР°С†РёСЏ
     if (password !== confirmPassword) {
-        alert('Пароли не совпадают!');
+        alert('РџР°СЂРѕР»Рё РЅРµ СЃРѕРІРїР°РґР°СЋС‚!');
         return;
     }
     
     if (password.length < 6) {
-        alert('Пароль должен содержать минимум 6 символов!');
+        alert('РџР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ РјРёРЅРёРјСѓРј 6 СЃРёРјРІРѕР»РѕРІ!');
         return;
     }
     
     if (age < 14 || age > 99) {
-        alert('Возраст должен быть от 14 до 99 лет!');
+        alert('Р’РѕР·СЂР°СЃС‚ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕС‚ 14 РґРѕ 99 Р»РµС‚!');
         return;
     }
     
-    // Проверка email
+    // РџСЂРѕРІРµСЂРєР° email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-        alert('Пожалуйста, введите корректный email!');
+        alert('РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ email!');
         return;
     }
     
-    // Проверка номера телефона
+    // РџСЂРѕРІРµСЂРєР° РЅРѕРјРµСЂР° С‚РµР»РµС„РѕРЅР°
     const phoneRegex = /^\+?[0-9\s\-\(\)]+$/;
     if (!phoneRegex.test(phone)) {
-        alert('Пожалуйста, введите корректный номер телефона!');
+        alert('РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°!');
         return;
     }
     
-    // Проверка существующего пользователя с таким email
+    // РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ С‚Р°РєРёРј email
     try {
         if (localStorage.getItem(USERS_KEY)) {
             const users = JSON.parse(localStorage.getItem(USERS_KEY));
             const existingUser = users.find(user => user.email.toLowerCase() === email);
             if (existingUser) {
-                alert('Пользователь с таким email уже зарегистрирован!');
+                alert('РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј email СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ!');
                 return;
             }
         }
     } catch (e) {
-        alert('Хранилище браузера (localStorage) недоступно. Откройте сайт в обычном браузере (Chrome/Edge) и попробуйте снова.');
+        alert('РҐСЂР°РЅРёР»РёС‰Рµ Р±СЂР°СѓР·РµСЂР° (localStorage) РЅРµРґРѕСЃС‚СѓРїРЅРѕ. РћС‚РєСЂРѕР№С‚Рµ СЃР°Р№С‚ РІ РѕР±С‹С‡РЅРѕРј Р±СЂР°СѓР·РµСЂРµ (Chrome/Edge) Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.');
         return;
     }
     
     // Hash password before storing
     const hashedPw = await hashPassword(password);
     
-    // Сразу завершаем регистрацию без верификации
+    // РЎСЂР°Р·Сѓ Р·Р°РІРµСЂС€Р°РµРј СЂРµРіРёСЃС‚СЂР°С†РёСЋ Р±РµР· РІРµСЂРёС„РёРєР°С†РёРё
     window.tempUserData = {
         username,
         email,
@@ -374,27 +374,27 @@ async function handleRegistration(event) {
     completeRegistration();
 }
 
-// Завершение регистрации (упрощенная версия без верификации)
+// Р—Р°РІРµСЂС€РµРЅРёРµ СЂРµРіРёСЃС‚СЂР°С†РёРё (СѓРїСЂРѕС‰РµРЅРЅР°СЏ РІРµСЂСЃРёСЏ Р±РµР· РІРµСЂРёС„РёРєР°С†РёРё)
 function completeRegistration() {
     const userData = window.tempUserData;
 
-    // Проверка доступности localStorage
+    // РџСЂРѕРІРµСЂРєР° РґРѕСЃС‚СѓРїРЅРѕСЃС‚Рё localStorage
     try {
         localStorage.setItem('__mo_ls_probe', '1');
         localStorage.removeItem('__mo_ls_probe');
     } catch {
-        alert('Хранилище браузера (localStorage) недоступно. Откройте сайт в обычном браузере (Chrome/Edge) и попробуйте снова.');
+        alert('РҐСЂР°РЅРёР»РёС‰Рµ Р±СЂР°СѓР·РµСЂР° (localStorage) РЅРµРґРѕСЃС‚СѓРїРЅРѕ. РћС‚РєСЂРѕР№С‚Рµ СЃР°Р№С‚ РІ РѕР±С‹С‡РЅРѕРј Р±СЂР°СѓР·РµСЂРµ (Chrome/Edge) Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.');
         return;
     }
     
-    // Инициализируем хранилище
+    // РРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј С…СЂР°РЅРёР»РёС‰Рµ
     if (!localStorage.getItem(USERS_KEY)) {
         localStorage.setItem(USERS_KEY, JSON.stringify([]));
     }
 
     const users = JSON.parse(localStorage.getItem(USERS_KEY));
     
-    // Создаем нового пользователя
+    // РЎРѕР·РґР°РµРј РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     const newUser = {
         id: Date.now(),
         name: userData.username,
@@ -410,56 +410,56 @@ function completeRegistration() {
         testHistory: []
     };
 
-    // Добавляем пользователя в список
+    // Р”РѕР±Р°РІР»СЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ СЃРїРёСЃРѕРє
     users.push(newUser);
     localStorage.setItem(USERS_KEY, JSON.stringify(users));
 
-    // Устанавливаем текущего пользователя
+    // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(newUser));
     
-    // Переходим к основному приложению (без блокирующего alert!)
+    // РџРµСЂРµС…РѕРґРёРј Рє РѕСЃРЅРѕРІРЅРѕРјСѓ РїСЂРёР»РѕР¶РµРЅРёСЋ (Р±РµР· Р±Р»РѕРєРёСЂСѓСЋС‰РµРіРѕ alert!)
     showMainContent(newUser);
 
-    // Показываем неблокирующее уведомление вместо alert
-    showToast('?? Регистрация успешна! Добро пожаловать!');
+    // РџРѕРєР°Р·С‹РІР°РµРј РЅРµР±Р»РѕРєРёСЂСѓСЋС‰РµРµ СѓРІРµРґРѕРјР»РµРЅРёРµ РІРјРµСЃС‚Рѕ alert
+    showToast('рџЋ‰ Р РµРіРёСЃС‚СЂР°С†РёСЏ СѓСЃРїРµС€РЅР°! Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ!');
     
-    // Очищаем временные данные
+    // РћС‡РёС‰Р°РµРј РІСЂРµРјРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ
     window.tempUserData = null;
 }
 
-// Получение текущего пользователя
+// РџРѕР»СѓС‡РµРЅРёРµ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 function getCurrentUser() {
     try {
         const userJson = localStorage.getItem(CURRENT_USER_KEY);
         return userJson ? JSON.parse(userJson) : null;
     } catch (e) {
-        console.error('Ошибка при загрузке данных пользователя:', e);
+        console.error('РћС€РёР±РєР° РїСЂРё Р·Р°РіСЂСѓР·РєРµ РґР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ:', e);
         return null;
     }
 }
 
-// Обновление интерфейса после входа/регистрации
+// РћР±РЅРѕРІР»РµРЅРёРµ РёРЅС‚РµСЂС„РµР№СЃР° РїРѕСЃР»Рµ РІС…РѕРґР°/СЂРµРіРёСЃС‚СЂР°С†РёРё
 function updateUserInterface() {
     const currentUser = getCurrentUser();
     if (!currentUser) return;
     
-    // Обновляем данные профиля
+    // РћР±РЅРѕРІР»СЏРµРј РґР°РЅРЅС‹Рµ РїСЂРѕС„РёР»СЏ
     document.getElementById('profile-name').textContent = currentUser.name;
     document.getElementById('profile-email-text').textContent = currentUser.email;
     document.getElementById('profile-phone-text').textContent = currentUser.phone;
-    document.getElementById('profile-age-text').textContent = `${currentUser.age} лет`;
+    document.getElementById('profile-age-text').textContent = `${currentUser.age} Р»РµС‚`;
     document.getElementById('profile-reg-date').textContent = new Date(currentUser.registrationDate).toLocaleDateString();
     
-    // Обновляем статистику
+    // РћР±РЅРѕРІР»СЏРµРј СЃС‚Р°С‚РёСЃС‚РёРєСѓ
     updateUserStats(currentUser);
 }
 
-// Повторная отправка кода (отключена)
+// РџРѕРІС‚РѕСЂРЅР°СЏ РѕС‚РїСЂР°РІРєР° РєРѕРґР° (РѕС‚РєР»СЋС‡РµРЅР°)
 function resendCode() {
-    alert('Верификация отключена для упрощения регистрации');
+    alert('Р’РµСЂРёС„РёРєР°С†РёСЏ РѕС‚РєР»СЋС‡РµРЅР° РґР»СЏ СѓРїСЂРѕС‰РµРЅРёСЏ СЂРµРіРёСЃС‚СЂР°С†РёРё');
 }
 
-// Вход
+// Р’С…РѕРґ
 async function handleLogin(event) {
     console.log('handleLogin called');
     event.preventDefault();
@@ -476,13 +476,13 @@ async function handleLogin(event) {
     try {
         usersJson = localStorage.getItem(USERS_KEY) || '';
     } catch {
-        alert('Хранилище браузера (localStorage) недоступно. Откройте сайт в обычном браузере (Chrome/Edge) и попробуйте снова.');
+        alert('РҐСЂР°РЅРёР»РёС‰Рµ Р±СЂР°СѓР·РµСЂР° (localStorage) РЅРµРґРѕСЃС‚СѓРїРЅРѕ. РћС‚РєСЂРѕР№С‚Рµ СЃР°Р№С‚ РІ РѕР±С‹С‡РЅРѕРј Р±СЂР°СѓР·РµСЂРµ (Chrome/Edge) Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.');
         return;
     }
 
     if (!usersJson) {
         console.log('No users found in localStorage');
-        alert('Пользователь не найден! Зарегистрируйтесь сначала.');
+        alert('РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ! Р—Р°СЂРµРіРёСЃС‚СЂРёСЂСѓР№С‚РµСЃСЊ СЃРЅР°С‡Р°Р»Р°.');
         return;
     }
 
@@ -498,7 +498,7 @@ async function handleLogin(event) {
     // Hash the input password for comparison
     const hashedPw = await hashPassword(password);
     
-    // Поиск пользователя - проверяем email и хешированный пароль
+    // РџРѕРёСЃРє РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ - РїСЂРѕРІРµСЂСЏРµРј email Рё С…РµС€РёСЂРѕРІР°РЅРЅС‹Р№ РїР°СЂРѕР»СЊ
     const user = users.find(u => {
         const emailMatch = u.email && u.email.toLowerCase().trim() === email;
         const passMatch = u.password === hashedPw;
@@ -510,22 +510,22 @@ async function handleLogin(event) {
         console.log('User found:', user.name);
         localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
         
-        // Очищаем форму
+        // РћС‡РёС‰Р°РµРј С„РѕСЂРјСѓ
         emailInput.value = '';
         passwordInput.value = '';
         
         showMainContent(user);
     } else {
         console.log('User not found or wrong credentials');
-        alert('Неверный email или пароль! Проверьте данные и попробуйте снова.');
+        alert('РќРµРІРµСЂРЅС‹Р№ email РёР»Рё РїР°СЂРѕР»СЊ! РџСЂРѕРІРµСЂСЊС‚Рµ РґР°РЅРЅС‹Рµ Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.');
     }
 }
 
-// Показать основной контент
+// РџРѕРєР°Р·Р°С‚СЊ РѕСЃРЅРѕРІРЅРѕР№ РєРѕРЅС‚РµРЅС‚
 function showMainContent(user) {
     console.log('showMainContent called with user:', user);
     
-    // Скрываем landing page и auth modal
+    // РЎРєСЂС‹РІР°РµРј landing page Рё auth modal
     const landingPage = document.getElementById('landing-page');
     const authContainer = document.getElementById('auth-container');
     const mainContent = document.getElementById('main-content');
@@ -542,7 +542,7 @@ function showMainContent(user) {
     if (mainContent) {
         mainContent.style.setProperty('display', 'flex', 'important');
         mainContent.classList.add('visible');
-        // Force reflow — fixes blank screen on mobile after registration
+        // Force reflow вЂ” fixes blank screen on mobile after registration
         void mainContent.offsetHeight;
     }
     if (aiTutor) {
@@ -552,15 +552,15 @@ function showMainContent(user) {
     document.body.style.overflow = '';
     document.body.style.background = '';
     
-    // Обновляем сайдбар с данными пользователя
+    // РћР±РЅРѕРІР»СЏРµРј СЃР°Р№РґР±Р°СЂ СЃ РґР°РЅРЅС‹РјРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     const sidebarUsername = document.getElementById('sidebar-username');
     if (sidebarUsername && user) {
-        sidebarUsername.textContent = user.name || 'Пользователь';
+        sidebarUsername.textContent = user.name || 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ';
     }
     
     console.log('Main content should be visible now');
     
-    // Показываем секцию home по умолчанию
+    // РџРѕРєР°Р·С‹РІР°РµРј СЃРµРєС†РёСЋ home РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
     showSection('home');
 
     // Force extra reflow for mobile browsers (fixes blank screen after registration)
@@ -584,7 +584,7 @@ function showMainContent(user) {
         showSection('home');
     });
 
-    // Third pass — nuclear option for stubborn mobile browsers
+    // Third pass вЂ” nuclear option for stubborn mobile browsers
     setTimeout(() => {
         if (mainContent) {
             mainContent.style.setProperty('display', 'flex', 'important');
@@ -592,7 +592,7 @@ function showMainContent(user) {
         }
         const home = document.getElementById('home');
         if (home && getComputedStyle(home).display === 'none') {
-            console.warn('Home section still hidden — forcing visibility');
+            console.warn('Home section still hidden вЂ” forcing visibility');
             home.style.setProperty('display', 'block', 'important');
             home.style.setProperty('visibility', 'visible', 'important');
             home.style.setProperty('opacity', '1', 'important');
@@ -600,7 +600,7 @@ function showMainContent(user) {
         }
     }, 300);
     
-    // Инициализация тестов
+    // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С‚РµСЃС‚РѕРІ
     try {
         initializeTests();
         console.log('Tests initialized successfully');
@@ -608,16 +608,16 @@ function showMainContent(user) {
         console.error('Error initializing tests:', e);
     }
     
-    // Загрузка аватара пользователя
+    // Р—Р°РіСЂСѓР·РєР° Р°РІР°С‚Р°СЂР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     loadUserAvatar(user.id);
     
-    // Загрузка профиля пользователя
+    // Р—Р°РіСЂСѓР·РєР° РїСЂРѕС„РёР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     loadUserProfile();
 
-    // Обновляем «реальную» статистику главного экрана
+    // РћР±РЅРѕРІР»СЏРµРј В«СЂРµР°Р»СЊРЅСѓСЋВ» СЃС‚Р°С‚РёСЃС‚РёРєСѓ РіР»Р°РІРЅРѕРіРѕ СЌРєСЂР°РЅР°
     updatePlatformStats();
     
-    // Показываем кнопку AI тьютора после входа
+    // РџРѕРєР°Р·С‹РІР°РµРј РєРЅРѕРїРєСѓ AI С‚СЊСЋС‚РѕСЂР° РїРѕСЃР»Рµ РІС…РѕРґР°
     if (window.aiTutor && typeof window.aiTutor.updateTutorVisibility === 'function') {
         window.aiTutor.updateTutorVisibility();
     }
@@ -632,7 +632,7 @@ function updatePlatformStats() {
 
     if (!totalUsersEl && !totalUsersGlobalEl && !totalTestsEl && !totalTypesEl && !totalQuestionsEl) return;
 
-    // Глобальный счётчик (все устройства) — требует Cloudflare Pages Functions + KV.
+    // Р“Р»РѕР±Р°Р»СЊРЅС‹Р№ СЃС‡С‘С‚С‡РёРє (РІСЃРµ СѓСЃС‚СЂРѕР№СЃС‚РІР°) вЂ” С‚СЂРµР±СѓРµС‚ Cloudflare Pages Functions + KV.
     try {
         if (totalUsersGlobalEl && !window.__globalUsersCountFetchInFlight) {
             const VISITOR_ID_KEY = 'mo_visitor_id_v1';
@@ -656,17 +656,17 @@ function updatePlatformStats() {
                 }
             }
 
-            totalUsersGlobalEl.textContent = '…';
+            totalUsersGlobalEl.textContent = 'вЂ¦';
             window.__globalUsersCountFetchInFlight = true;
 
-            // Только на продакшене (Cloudflare Pages) вызываем API
+            // РўРѕР»СЊРєРѕ РЅР° РїСЂРѕРґР°РєС€РµРЅРµ (Cloudflare Pages) РІС‹Р·С‹РІР°РµРј API
             const isProduction = window.location.hostname !== 'localhost' && 
                                 window.location.hostname !== '127.0.0.1' &&
                                 !window.location.hostname.includes('192.168.');
             
             if (!isProduction) {
-                // На локальном сервере показываем заглушку
-                totalUsersGlobalEl.textContent = '—';
+                // РќР° Р»РѕРєР°Р»СЊРЅРѕРј СЃРµСЂРІРµСЂРµ РїРѕРєР°Р·С‹РІР°РµРј Р·Р°РіР»СѓС€РєСѓ
+                totalUsersGlobalEl.textContent = 'вЂ”';
                 window.__globalUsersCountFetchInFlight = false;
                 return;
             }
@@ -686,23 +686,23 @@ function updatePlatformStats() {
                         totalUsersGlobalEl.textContent = data.totalUsers.toLocaleString('ru-RU');
                         return;
                     }
-                    // Если KV не настроен в Cloudflare Pages — покажем понятную подсказку
+                    // Р•СЃР»Рё KV РЅРµ РЅР°СЃС‚СЂРѕРµРЅ РІ Cloudflare Pages вЂ” РїРѕРєР°Р¶РµРј РїРѕРЅСЏС‚РЅСѓСЋ РїРѕРґСЃРєР°Р·РєСѓ
                     const err = data && typeof data.error === 'string' ? data.error : '';
                     if (!ok && (status === 501 || /not configured/i.test(err))) {
-                        totalUsersGlobalEl.textContent = 'Нужно KV';
+                        totalUsersGlobalEl.textContent = 'РќСѓР¶РЅРѕ KV';
                         return;
                     }
-                    totalUsersGlobalEl.textContent = '—';
+                    totalUsersGlobalEl.textContent = 'вЂ”';
                 })
                 .catch(() => {
-                    totalUsersGlobalEl.textContent = '—';
+                    totalUsersGlobalEl.textContent = 'вЂ”';
                 })
                 .finally(() => {
                     window.__globalUsersCountFetchInFlight = false;
                 });
         }
     } catch {
-        if (totalUsersGlobalEl) totalUsersGlobalEl.textContent = '—';
+        if (totalUsersGlobalEl) totalUsersGlobalEl.textContent = 'вЂ”';
     }
 
     let users = [];
@@ -720,13 +720,13 @@ function updatePlatformStats() {
         totalTestsCompleted += Object.keys(testResults).length;
     }
 
-    // Типов тестов на платформе (категории)
+    // РўРёРїРѕРІ С‚РµСЃС‚РѕРІ РЅР° РїР»Р°С‚С„РѕСЂРјРµ (РєР°С‚РµРіРѕСЂРёРё)
     const totalTestTypes = 4;
 
-    // Вопросов в базе — считаем уникальные по id, если доступна база
+    // Р’РѕРїСЂРѕСЃРѕРІ РІ Р±Р°Р·Рµ вЂ” СЃС‡РёС‚Р°РµРј СѓРЅРёРєР°Р»СЊРЅС‹Рµ РїРѕ id, РµСЃР»Рё РґРѕСЃС‚СѓРїРЅР° Р±Р°Р·Р°
     let totalQuestions = 0;
     try {
-        // Предпочтительно: заранее рассчитанное распределение (не требует генерации банка)
+        // РџСЂРµРґРїРѕС‡С‚РёС‚РµР»СЊРЅРѕ: Р·Р°СЂР°РЅРµРµ СЂР°СЃСЃС‡РёС‚Р°РЅРЅРѕРµ СЂР°СЃРїСЂРµРґРµР»РµРЅРёРµ (РЅРµ С‚СЂРµР±СѓРµС‚ РіРµРЅРµСЂР°С†РёРё Р±Р°РЅРєР°)
         if (window.__questionCountsByTestId && typeof window.__questionCountsByTestId === 'object') {
             totalQuestions = Object.values(window.__questionCountsByTestId)
                 .filter(v => typeof v === 'number' && Number.isFinite(v))
@@ -754,10 +754,10 @@ function updatePlatformStats() {
     if (totalUsersEl) totalUsersEl.textContent = totalUsers.toLocaleString('ru-RU');
     if (totalTestsEl) totalTestsEl.textContent = totalTestsCompleted.toLocaleString('ru-RU');
     if (totalTypesEl) totalTypesEl.textContent = totalTestTypes.toLocaleString('ru-RU');
-    if (totalQuestionsEl) totalQuestionsEl.textContent = totalQuestions ? totalQuestions.toLocaleString('ru-RU') : '—';
+    if (totalQuestionsEl) totalQuestionsEl.textContent = totalQuestions ? totalQuestions.toLocaleString('ru-RU') : 'вЂ”';
 }
 
-// Загрузка аватара пользователя
+// Р—Р°РіСЂСѓР·РєР° Р°РІР°С‚Р°СЂР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 function loadUserAvatar(userId) {
     const avatars = JSON.parse(localStorage.getItem(AVATARS_KEY)) || {};
     const avatar = avatars[userId];
@@ -770,17 +770,17 @@ function loadUserAvatar(userId) {
         avatarImage.style.display = 'block';
         avatarPlaceholder.style.display = 'none';
         
-        // Устанавливаем инициалы в атрибут alt
+        // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РёРЅРёС†РёР°Р»С‹ РІ Р°С‚СЂРёР±СѓС‚ alt
         const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
         if (currentUser && currentUser.username) {
             const initials = getInitials(currentUser.username);
-            avatarImage.alt = `Аватар ${currentUser.username} (${initials})`;
+            avatarImage.alt = `РђРІР°С‚Р°СЂ ${currentUser.username} (${initials})`;
         }
     } else {
         avatarImage.style.display = 'none';
         avatarPlaceholder.style.display = 'flex';
         
-        // Устанавливаем инициалы в placeholder
+        // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РёРЅРёС†РёР°Р»С‹ РІ placeholder
         const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
         if (currentUser && currentUser.username) {
             const initials = getInitials(currentUser.username);
@@ -789,25 +789,25 @@ function loadUserAvatar(userId) {
     }
 }
 
-// Получение инициалов из имени
+// РџРѕР»СѓС‡РµРЅРёРµ РёРЅРёС†РёР°Р»РѕРІ РёР· РёРјРµРЅРё
 function getInitials(username) {
     return username.split(' ').map(name => name[0]).join('').toUpperCase().substring(0, 2);
 }
 
-// Обработка загрузки аватара
+// РћР±СЂР°Р±РѕС‚РєР° Р·Р°РіСЂСѓР·РєРё Р°РІР°С‚Р°СЂР°
 function handleAvatarUpload(event) {
     const file = event.target.files[0];
     if (!file) return;
     
-    // Проверяем тип файла
+    // РџСЂРѕРІРµСЂСЏРµРј С‚РёРї С„Р°Р№Р»Р°
     if (!file.type.match('image.*')) {
-        alert('Пожалуйста, выберите изображение!');
+        alert('РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ!');
         return;
     }
     
-    // Проверяем размер файла (максимум 5MB)
+    // РџСЂРѕРІРµСЂСЏРµРј СЂР°Р·РјРµСЂ С„Р°Р№Р»Р° (РјР°РєСЃРёРјСѓРј 5MB)
     if (file.size > 5 * 1024 * 1024) {
-        alert('Размер файла не должен превышать 5MB!');
+        alert('Р Р°Р·РјРµСЂ С„Р°Р№Р»Р° РЅРµ РґРѕР»Р¶РµРЅ РїСЂРµРІС‹С€Р°С‚СЊ 5MB!');
         return;
     }
     
@@ -817,32 +817,32 @@ function handleAvatarUpload(event) {
         const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
         if (!currentUser) return;
         
-        // Сохраняем аватар
+        // РЎРѕС…СЂР°РЅСЏРµРј Р°РІР°С‚Р°СЂ
         const avatars = JSON.parse(localStorage.getItem(AVATARS_KEY)) || {};
         avatars[currentUser.id] = e.target.result;
         localStorage.setItem(AVATARS_KEY, JSON.stringify(avatars));
         
-        // Обновляем отображение
+        // РћР±РЅРѕРІР»СЏРµРј РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ
         loadUserAvatar(currentUser.id);
         
-        alert('Аватар успешно обновлен!');
+        alert('РђРІР°С‚Р°СЂ СѓСЃРїРµС€РЅРѕ РѕР±РЅРѕРІР»РµРЅ!');
     };
     
     reader.readAsDataURL(file);
 }
 
-// Загрузка профиля пользователя
+// Р—Р°РіСЂСѓР·РєР° РїСЂРѕС„РёР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 function loadUserProfile() {
     const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
     if (!currentUser) return;
     
-    // Основная информация
+    // РћСЃРЅРѕРІРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
     document.getElementById('profile-name').textContent = currentUser.username;
     document.getElementById('profile-email-text').textContent = currentUser.email;
     document.getElementById('profile-phone-text').textContent = currentUser.phone;
-    document.getElementById('profile-age-text').textContent = `${currentUser.age} лет`;
+    document.getElementById('profile-age-text').textContent = `${currentUser.age} Р»РµС‚`;
     
-    // Дата регистрации
+    // Р”Р°С‚Р° СЂРµРіРёСЃС‚СЂР°С†РёРё
     const regDate = new Date(currentUser.registrationDate);
     document.getElementById('profile-reg-date').textContent = regDate.toLocaleDateString('ru-RU', {
         day: 'numeric',
@@ -850,34 +850,34 @@ function loadUserProfile() {
         year: 'numeric'
     });
     
-    // Дополнительная информация из профиля (элементы могут быть скрыты/удалены из UI)
+    // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ РёР· РїСЂРѕС„РёР»СЏ (СЌР»РµРјРµРЅС‚С‹ РјРѕРіСѓС‚ Р±С‹С‚СЊ СЃРєСЂС‹С‚С‹/СѓРґР°Р»РµРЅС‹ РёР· UI)
     if (currentUser.profile) {
         const educationEl = document.getElementById('education-info');
-        if (educationEl) educationEl.textContent = currentUser.profile.education || "Не указано";
+        if (educationEl) educationEl.textContent = currentUser.profile.education || "РќРµ СѓРєР°Р·Р°РЅРѕ";
 
         const locationEl = document.getElementById('location-info');
-        if (locationEl) locationEl.textContent = currentUser.profile.location || "Не указано";
+        if (locationEl) locationEl.textContent = currentUser.profile.location || "РќРµ СѓРєР°Р·Р°РЅРѕ";
 
         const interestsEl = document.getElementById('interests-info');
-        if (interestsEl) interestsEl.textContent = currentUser.profile.interests || "Не указаны";
+        if (interestsEl) interestsEl.textContent = currentUser.profile.interests || "РќРµ СѓРєР°Р·Р°РЅС‹";
     }
     
-    // Статистика
+    // РЎС‚Р°С‚РёСЃС‚РёРєР°
     updateUserStats(currentUser);
     
-    // История тестов
+    // РСЃС‚РѕСЂРёСЏ С‚РµСЃС‚РѕРІ
     loadTestHistory(currentUser);
 }
 
-// Обновление статистики пользователя
+// РћР±РЅРѕРІР»РµРЅРёРµ СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 function updateUserStats(user) {
     const testResults = user.testResults || {};
     const testKeys = Object.keys(testResults);
     
-    // Количество пройденных тестов
+    // РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕР№РґРµРЅРЅС‹С… С‚РµСЃС‚РѕРІ
     document.getElementById('tests-completed').textContent = testKeys.length;
     
-    // Средний результат
+    // РЎСЂРµРґРЅРёР№ СЂРµР·СѓР»СЊС‚Р°С‚
     let totalScore = 0;
     let bestScore = 0;
     
@@ -894,7 +894,7 @@ function updateUserStats(user) {
     document.getElementById('average-score').textContent = `${averageScore}%`;
     document.getElementById('best-score').textContent = `${bestScore}%`;
     
-    // Дней с регистрации
+    // Р”РЅРµР№ СЃ СЂРµРіРёСЃС‚СЂР°С†РёРё
     const regDate = new Date(user.registrationDate);
     const today = new Date();
     const diffTime = Math.abs(today - regDate);
@@ -902,26 +902,26 @@ function updateUserStats(user) {
     document.getElementById('days-registered').textContent = diffDays;
 }
 
-// Загрузка истории тестов
+// Р—Р°РіСЂСѓР·РєР° РёСЃС‚РѕСЂРёРё С‚РµСЃС‚РѕРІ
 function loadTestHistory(user) {
     const testResults = user.testResults || {};
     const testKeys = Object.keys(testResults);
     const container = document.getElementById('tests-history-container');
     
-    // Проверяем что контейнер существует
+    // РџСЂРѕРІРµСЂСЏРµРј С‡С‚Рѕ РєРѕРЅС‚РµР№РЅРµСЂ СЃСѓС‰РµСЃС‚РІСѓРµС‚
     if (!container) {
         console.log('tests-history-container not found');
         return;
     }
     
     if (testKeys.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">Тесты еще не пройдены</p>';
+        container.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">РўРµСЃС‚С‹ РµС‰Рµ РЅРµ РїСЂРѕР№РґРµРЅС‹</p>';
         return;
     }
     
     let html = '';
     
-    // Сортируем тесты по дате (новые первые)
+    // РЎРѕСЂС‚РёСЂСѓРµРј С‚РµСЃС‚С‹ РїРѕ РґР°С‚Рµ (РЅРѕРІС‹Рµ РїРµСЂРІС‹Рµ)
     const sortedTests = testKeys
         .map(key => ({
             key,
@@ -948,112 +948,112 @@ function loadTestHistory(user) {
     container.innerHTML = html;
 }
 
-// Получение названия теста по ключу
+// РџРѕР»СѓС‡РµРЅРёРµ РЅР°Р·РІР°РЅРёСЏ С‚РµСЃС‚Р° РїРѕ РєР»СЋС‡Сѓ
 function getTestName(testKey) {
     const testNames = {
-        'profession': 'Профориентация',
-        'chemistry': 'Химия',
-        'biology': 'Биология',
+        'profession': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ',
+        'chemistry': 'РҐРёРјРёСЏ',
+        'biology': 'Р‘РёРѕР»РѕРіРёСЏ',
 
-        // Профориентация (общая)
-        'profession_general_1': 'Профориентация (1–4 класс)',
-        'profession_general_5': 'Профориентация (5–6 класс)',
-        'profession_general_7': 'Профориентация (7–8 класс)',
-        'profession_general_9': 'Профориентация (9 класс)',
-        'profession_general_10': 'Профориентация (10–11 класс)',
+        // РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (РѕР±С‰Р°СЏ)
+        'profession_general_1': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (1вЂ“4 РєР»Р°СЃСЃ)',
+        'profession_general_5': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (5вЂ“6 РєР»Р°СЃСЃ)',
+        'profession_general_7': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (7вЂ“8 РєР»Р°СЃСЃ)',
+        'profession_general_9': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (9 РєР»Р°СЃСЃ)',
+        'profession_general_10': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (10вЂ“11 РєР»Р°СЃСЃ)',
 
-        // Профориентация (медицина)
-        'profession_med_1': 'Медицинская профориентация (1–4 класс)',
-        'profession_med_5': 'Медицинская профориентация (5–6 класс)',
-        'profession_med_7': 'Медицинская профориентация (7–8 класс)',
-        'profession_med_9': 'Медицинская профориентация (9 класс)',
-        'profession_med_10': 'Медицинская профориентация (10–11 класс)',
+        // РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (РјРµРґРёС†РёРЅР°)
+        'profession_med_1': 'РњРµРґРёС†РёРЅСЃРєР°СЏ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (1вЂ“4 РєР»Р°СЃСЃ)',
+        'profession_med_5': 'РњРµРґРёС†РёРЅСЃРєР°СЏ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (5вЂ“6 РєР»Р°СЃСЃ)',
+        'profession_med_7': 'РњРµРґРёС†РёРЅСЃРєР°СЏ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (7вЂ“8 РєР»Р°СЃСЃ)',
+        'profession_med_9': 'РњРµРґРёС†РёРЅСЃРєР°СЏ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (9 РєР»Р°СЃСЃ)',
+        'profession_med_10': 'РњРµРґРёС†РёРЅСЃРєР°СЏ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (10вЂ“11 РєР»Р°СЃСЃ)',
 
-        // Биология
-        'biology_1': 'Биология (1–4 класс)',
-        'biology_5': 'Биология (5–6 класс)',
-        'biology_7': 'Биология (7–8 класс)',
-        'biology_9': 'Биология (9 класс)',
-        'biology_10': 'Биология (10–11 класс)',
+        // Р‘РёРѕР»РѕРіРёСЏ
+        'biology_1': 'Р‘РёРѕР»РѕРіРёСЏ (1вЂ“4 РєР»Р°СЃСЃ)',
+        'biology_5': 'Р‘РёРѕР»РѕРіРёСЏ (5вЂ“6 РєР»Р°СЃСЃ)',
+        'biology_7': 'Р‘РёРѕР»РѕРіРёСЏ (7вЂ“8 РєР»Р°СЃСЃ)',
+        'biology_9': 'Р‘РёРѕР»РѕРіРёСЏ (9 РєР»Р°СЃСЃ)',
+        'biology_10': 'Р‘РёРѕР»РѕРіРёСЏ (10вЂ“11 РєР»Р°СЃСЃ)',
 
-        // Химия
-        'chemistry_1': 'Химия (1–4 класс)',
-        'chemistry_5': 'Химия (5–6 класс)',
-        'chemistry_7': 'Химия (7–8 класс)',
-        'chemistry_9': 'Химия (9 класс)',
-        'chemistry_10': 'Химия (10–11 класс)',
+        // РҐРёРјРёСЏ
+        'chemistry_1': 'РҐРёРјРёСЏ (1вЂ“4 РєР»Р°СЃСЃ)',
+        'chemistry_5': 'РҐРёРјРёСЏ (5вЂ“6 РєР»Р°СЃСЃ)',
+        'chemistry_7': 'РҐРёРјРёСЏ (7вЂ“8 РєР»Р°СЃСЃ)',
+        'chemistry_9': 'РҐРёРјРёСЏ (9 РєР»Р°СЃСЃ)',
+        'chemistry_10': 'РҐРёРјРёСЏ (10вЂ“11 РєР»Р°СЃСЃ)',
 
-        // Химия по классам (адаптивные карточки)
-        'chemistry_grade_1': 'Химия (1 класс)',
-        'chemistry_grade_2': 'Химия (2 класс)',
-        'chemistry_grade_3': 'Химия (3 класс)',
-        'chemistry_grade_4': 'Химия (4 класс)',
-        'chemistry_grade_5': 'Химия (5 класс)',
-        'chemistry_grade_6': 'Химия (6 класс)',
-        'chemistry_grade_7': 'Химия (7 класс)',
-        'chemistry_grade_8': 'Химия (8 класс)',
-        'chemistry_grade_9': 'Химия (9 класс)',
-        'chemistry_grade_10': 'Химия (10 класс)',
-        'chemistry_grade_11': 'Химия (11 класс)',
+        // РҐРёРјРёСЏ РїРѕ РєР»Р°СЃСЃР°Рј (Р°РґР°РїС‚РёРІРЅС‹Рµ РєР°СЂС‚РѕС‡РєРё)
+        'chemistry_grade_1': 'РҐРёРјРёСЏ (1 РєР»Р°СЃСЃ)',
+        'chemistry_grade_2': 'РҐРёРјРёСЏ (2 РєР»Р°СЃСЃ)',
+        'chemistry_grade_3': 'РҐРёРјРёСЏ (3 РєР»Р°СЃСЃ)',
+        'chemistry_grade_4': 'РҐРёРјРёСЏ (4 РєР»Р°СЃСЃ)',
+        'chemistry_grade_5': 'РҐРёРјРёСЏ (5 РєР»Р°СЃСЃ)',
+        'chemistry_grade_6': 'РҐРёРјРёСЏ (6 РєР»Р°СЃСЃ)',
+        'chemistry_grade_7': 'РҐРёРјРёСЏ (7 РєР»Р°СЃСЃ)',
+        'chemistry_grade_8': 'РҐРёРјРёСЏ (8 РєР»Р°СЃСЃ)',
+        'chemistry_grade_9': 'РҐРёРјРёСЏ (9 РєР»Р°СЃСЃ)',
+        'chemistry_grade_10': 'РҐРёРјРёСЏ (10 РєР»Р°СЃСЃ)',
+        'chemistry_grade_11': 'РҐРёРјРёСЏ (11 РєР»Р°СЃСЃ)',
 
-        // Биология по классам (адаптивные карточки)
-        'biology_grade_1': 'Биология (1 класс)',
-        'biology_grade_2': 'Биология (2 класс)',
-        'biology_grade_3': 'Биология (3 класс)',
-        'biology_grade_4': 'Биология (4 класс)',
-        'biology_grade_5': 'Биология (5 класс)',
-        'biology_grade_6': 'Биология (6 класс)',
-        'biology_grade_7': 'Биология (7 класс)',
-        'biology_grade_8': 'Биология (8 класс)',
-        'biology_grade_9': 'Биология (9 класс)',
-        'biology_grade_10': 'Биология (10 класс)',
-        'biology_grade_11': 'Биология (11 класс)',
+        // Р‘РёРѕР»РѕРіРёСЏ РїРѕ РєР»Р°СЃСЃР°Рј (Р°РґР°РїС‚РёРІРЅС‹Рµ РєР°СЂС‚РѕС‡РєРё)
+        'biology_grade_1': 'Р‘РёРѕР»РѕРіРёСЏ (1 РєР»Р°СЃСЃ)',
+        'biology_grade_2': 'Р‘РёРѕР»РѕРіРёСЏ (2 РєР»Р°СЃСЃ)',
+        'biology_grade_3': 'Р‘РёРѕР»РѕРіРёСЏ (3 РєР»Р°СЃСЃ)',
+        'biology_grade_4': 'Р‘РёРѕР»РѕРіРёСЏ (4 РєР»Р°СЃСЃ)',
+        'biology_grade_5': 'Р‘РёРѕР»РѕРіРёСЏ (5 РєР»Р°СЃСЃ)',
+        'biology_grade_6': 'Р‘РёРѕР»РѕРіРёСЏ (6 РєР»Р°СЃСЃ)',
+        'biology_grade_7': 'Р‘РёРѕР»РѕРіРёСЏ (7 РєР»Р°СЃСЃ)',
+        'biology_grade_8': 'Р‘РёРѕР»РѕРіРёСЏ (8 РєР»Р°СЃСЃ)',
+        'biology_grade_9': 'Р‘РёРѕР»РѕРіРёСЏ (9 РєР»Р°СЃСЃ)',
+        'biology_grade_10': 'Р‘РёРѕР»РѕРіРёСЏ (10 РєР»Р°СЃСЃ)',
+        'biology_grade_11': 'Р‘РёРѕР»РѕРіРёСЏ (11 РєР»Р°СЃСЃ)',
 
-        // Профориентация по классам (адаптивные карточки)
-        'profession_grade_1': 'Профориентация (1 класс)',
-        'profession_grade_2': 'Профориентация (2 класс)',
-        'profession_grade_3': 'Профориентация (3 класс)',
-        'profession_grade_4': 'Профориентация (4 класс)',
-        'profession_grade_5': 'Профориентация (5 класс)',
-        'profession_grade_6': 'Профориентация (6 класс)',
-        'profession_grade_7': 'Профориентация (7 класс)',
-        'profession_grade_8': 'Профориентация (8 класс)',
-        'profession_grade_9': 'Профориентация (9 класс)',
-        'profession_grade_10': 'Профориентация (10 класс)',
-        'profession_grade_11': 'Профориентация (11 класс)',
+        // РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ РїРѕ РєР»Р°СЃСЃР°Рј (Р°РґР°РїС‚РёРІРЅС‹Рµ РєР°СЂС‚РѕС‡РєРё)
+        'profession_grade_1': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (1 РєР»Р°СЃСЃ)',
+        'profession_grade_2': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (2 РєР»Р°СЃСЃ)',
+        'profession_grade_3': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (3 РєР»Р°СЃСЃ)',
+        'profession_grade_4': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (4 РєР»Р°СЃСЃ)',
+        'profession_grade_5': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (5 РєР»Р°СЃСЃ)',
+        'profession_grade_6': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (6 РєР»Р°СЃСЃ)',
+        'profession_grade_7': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (7 РєР»Р°СЃСЃ)',
+        'profession_grade_8': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (8 РєР»Р°СЃСЃ)',
+        'profession_grade_9': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (9 РєР»Р°СЃСЃ)',
+        'profession_grade_10': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (10 РєР»Р°СЃСЃ)',
+        'profession_grade_11': 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ (11 РєР»Р°СЃСЃ)',
 
-        // Специализации/склонности по классам
-        'specialty_grade_1': 'Профильные склонности (1 класс)',
-        'specialty_grade_2': 'Профильные склонности (2 класс)',
-        'specialty_grade_3': 'Профильные склонности (3 класс)',
-        'specialty_grade_4': 'Профильные склонности (4 класс)',
-        'specialty_grade_5': 'Профильные склонности (5 класс)',
-        'specialty_grade_6': 'Профильные склонности (6 класс)',
-        'specialty_grade_7': 'Профильные склонности (7 класс)',
-        'specialty_grade_8': 'Профильные склонности (8 класс)',
-        'specialty_grade_9': 'Профильные склонности (9 класс)',
-        'specialty_grade_10': 'Профильные склонности (10 класс)',
-        'specialty_grade_11': 'Профильные склонности (11 класс)'
+        // РЎРїРµС†РёР°Р»РёР·Р°С†РёРё/СЃРєР»РѕРЅРЅРѕСЃС‚Рё РїРѕ РєР»Р°СЃСЃР°Рј
+        'specialty_grade_1': 'РџСЂРѕС„РёР»СЊРЅС‹Рµ СЃРєР»РѕРЅРЅРѕСЃС‚Рё (1 РєР»Р°СЃСЃ)',
+        'specialty_grade_2': 'РџСЂРѕС„РёР»СЊРЅС‹Рµ СЃРєР»РѕРЅРЅРѕСЃС‚Рё (2 РєР»Р°СЃСЃ)',
+        'specialty_grade_3': 'РџСЂРѕС„РёР»СЊРЅС‹Рµ СЃРєР»РѕРЅРЅРѕСЃС‚Рё (3 РєР»Р°СЃСЃ)',
+        'specialty_grade_4': 'РџСЂРѕС„РёР»СЊРЅС‹Рµ СЃРєР»РѕРЅРЅРѕСЃС‚Рё (4 РєР»Р°СЃСЃ)',
+        'specialty_grade_5': 'РџСЂРѕС„РёР»СЊРЅС‹Рµ СЃРєР»РѕРЅРЅРѕСЃС‚Рё (5 РєР»Р°СЃСЃ)',
+        'specialty_grade_6': 'РџСЂРѕС„РёР»СЊРЅС‹Рµ СЃРєР»РѕРЅРЅРѕСЃС‚Рё (6 РєР»Р°СЃСЃ)',
+        'specialty_grade_7': 'РџСЂРѕС„РёР»СЊРЅС‹Рµ СЃРєР»РѕРЅРЅРѕСЃС‚Рё (7 РєР»Р°СЃСЃ)',
+        'specialty_grade_8': 'РџСЂРѕС„РёР»СЊРЅС‹Рµ СЃРєР»РѕРЅРЅРѕСЃС‚Рё (8 РєР»Р°СЃСЃ)',
+        'specialty_grade_9': 'РџСЂРѕС„РёР»СЊРЅС‹Рµ СЃРєР»РѕРЅРЅРѕСЃС‚Рё (9 РєР»Р°СЃСЃ)',
+        'specialty_grade_10': 'РџСЂРѕС„РёР»СЊРЅС‹Рµ СЃРєР»РѕРЅРЅРѕСЃС‚Рё (10 РєР»Р°СЃСЃ)',
+        'specialty_grade_11': 'РџСЂРѕС„РёР»СЊРЅС‹Рµ СЃРєР»РѕРЅРЅРѕСЃС‚Рё (11 РєР»Р°СЃСЃ)'
     };
     
     return testNames[testKey] || testKey;
 }
 
-// Редактирование образования
+// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РѕР±СЂР°Р·РѕРІР°РЅРёСЏ
 function editEducation() {
     const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
     const currentEducation = currentUser.profile?.education || "";
     
-    const newEducation = prompt('Введите информацию об образовании:', currentEducation);
+    const newEducation = prompt('Р’РІРµРґРёС‚Рµ РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± РѕР±СЂР°Р·РѕРІР°РЅРёРё:', currentEducation);
     if (newEducation !== null) {
-        // Обновляем профиль
+        // РћР±РЅРѕРІР»СЏРµРј РїСЂРѕС„РёР»СЊ
         if (!currentUser.profile) currentUser.profile = {};
         currentUser.profile.education = newEducation.trim();
         
-        // Обновляем в localStorage
+        // РћР±РЅРѕРІР»СЏРµРј РІ localStorage
         localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(currentUser));
         
-        // Обновляем в общем списке пользователей
+        // РћР±РЅРѕРІР»СЏРµРј РІ РѕР±С‰РµРј СЃРїРёСЃРєРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
         const users = JSON.parse(localStorage.getItem(USERS_KEY));
         const userIndex = users.findIndex(u => u.id === currentUser.id);
         if (userIndex !== -1) {
@@ -1061,28 +1061,28 @@ function editEducation() {
             localStorage.setItem(USERS_KEY, JSON.stringify(users));
         }
         
-        // Обновляем отображение (если блок есть в UI)
+        // РћР±РЅРѕРІР»СЏРµРј РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ (РµСЃР»Рё Р±Р»РѕРє РµСЃС‚СЊ РІ UI)
         const educationEl = document.getElementById('education-info');
-        if (educationEl) educationEl.textContent = newEducation.trim() || "Не указано";
-        alert('Информация об образовании обновлена!');
+        if (educationEl) educationEl.textContent = newEducation.trim() || "РќРµ СѓРєР°Р·Р°РЅРѕ";
+        alert('РРЅС„РѕСЂРјР°С†РёСЏ РѕР± РѕР±СЂР°Р·РѕРІР°РЅРёРё РѕР±РЅРѕРІР»РµРЅР°!');
     }
 }
 
-// Редактирование местоположения
+// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёСЏ
 function editLocation() {
     const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
     const currentLocation = currentUser.profile?.location || "";
     
-    const newLocation = prompt('Введите ваше местоположение (город, регион):', currentLocation);
+    const newLocation = prompt('Р’РІРµРґРёС‚Рµ РІР°С€Рµ РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ (РіРѕСЂРѕРґ, СЂРµРіРёРѕРЅ):', currentLocation);
     if (newLocation !== null) {
-        // Обновляем профиль
+        // РћР±РЅРѕРІР»СЏРµРј РїСЂРѕС„РёР»СЊ
         if (!currentUser.profile) currentUser.profile = {};
         currentUser.profile.location = newLocation.trim();
         
-        // Обновляем в localStorage
+        // РћР±РЅРѕРІР»СЏРµРј РІ localStorage
         localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(currentUser));
         
-        // Обновляем в общем списке пользователей
+        // РћР±РЅРѕРІР»СЏРµРј РІ РѕР±С‰РµРј СЃРїРёСЃРєРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
         const users = JSON.parse(localStorage.getItem(USERS_KEY));
         const userIndex = users.findIndex(u => u.id === currentUser.id);
         if (userIndex !== -1) {
@@ -1090,28 +1090,28 @@ function editLocation() {
             localStorage.setItem(USERS_KEY, JSON.stringify(users));
         }
         
-        // Обновляем отображение (если блок есть в UI)
+        // РћР±РЅРѕРІР»СЏРµРј РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ (РµСЃР»Рё Р±Р»РѕРє РµСЃС‚СЊ РІ UI)
         const locationEl = document.getElementById('location-info');
-        if (locationEl) locationEl.textContent = newLocation.trim() || "Не указано";
-        alert('Местоположение обновлено!');
+        if (locationEl) locationEl.textContent = newLocation.trim() || "РќРµ СѓРєР°Р·Р°РЅРѕ";
+        alert('РњРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ РѕР±РЅРѕРІР»РµРЅРѕ!');
     }
 }
 
-// Редактирование интересов
+// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РёРЅС‚РµСЂРµСЃРѕРІ
 function editInterests() {
     const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
     const currentInterests = currentUser.profile?.interests || "";
     
-    const newInterests = prompt('Введите ваши интересы (через запятую):', currentInterests);
+    const newInterests = prompt('Р’РІРµРґРёС‚Рµ РІР°С€Рё РёРЅС‚РµСЂРµСЃС‹ (С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ):', currentInterests);
     if (newInterests !== null) {
-        // Обновляем профиль
+        // РћР±РЅРѕРІР»СЏРµРј РїСЂРѕС„РёР»СЊ
         if (!currentUser.profile) currentUser.profile = {};
         currentUser.profile.interests = newInterests.trim();
         
-        // Обновляем в localStorage
+        // РћР±РЅРѕРІР»СЏРµРј РІ localStorage
         localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(currentUser));
         
-        // Обновляем в общем списке пользователей
+        // РћР±РЅРѕРІР»СЏРµРј РІ РѕР±С‰РµРј СЃРїРёСЃРєРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
         const users = JSON.parse(localStorage.getItem(USERS_KEY));
         const userIndex = users.findIndex(u => u.id === currentUser.id);
         if (userIndex !== -1) {
@@ -1119,27 +1119,27 @@ function editInterests() {
             localStorage.setItem(USERS_KEY, JSON.stringify(users));
         }
         
-        // Обновляем отображение (если блок есть в UI)
+        // РћР±РЅРѕРІР»СЏРµРј РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ (РµСЃР»Рё Р±Р»РѕРє РµСЃС‚СЊ РІ UI)
         const interestsEl = document.getElementById('interests-info');
-        if (interestsEl) interestsEl.textContent = newInterests.trim() || "Не указаны";
-        alert('Интересы обновлены!');
+        if (interestsEl) interestsEl.textContent = newInterests.trim() || "РќРµ СѓРєР°Р·Р°РЅС‹";
+        alert('РРЅС‚РµСЂРµСЃС‹ РѕР±РЅРѕРІР»РµРЅС‹!');
     }
 }
 
-// Редактирование цели
+// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ С†РµР»Рё
 function editGoal() {
     const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
     const currentGoal = currentUser.profile?.goal || "";
     
     const goals = [
-        "1 - Поступление в медицинский вуз",
-        "2 - Выбор медицинской специальности",
-        "3 - Подготовка к ЕГЭ",
-        "4 - Общее развитие в медицине",
-        "5 - Карьерная переориентация"
+        "1 - РџРѕСЃС‚СѓРїР»РµРЅРёРµ РІ РјРµРґРёС†РёРЅСЃРєРёР№ РІСѓР·",
+        "2 - Р’С‹Р±РѕСЂ РјРµРґРёС†РёРЅСЃРєРѕР№ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё",
+        "3 - РџРѕРґРіРѕС‚РѕРІРєР° Рє Р•Р“Р­",
+        "4 - РћР±С‰РµРµ СЂР°Р·РІРёС‚РёРµ РІ РјРµРґРёС†РёРЅРµ",
+        "5 - РљР°СЂСЊРµСЂРЅР°СЏ РїРµСЂРµРѕСЂРёРµРЅС‚Р°С†РёСЏ"
     ];
     
-    const goalChoice = prompt(`Выберите вашу цель:\n${goals.join('\n')}\n\nВведите номер или свою цель:`, currentGoal);
+    const goalChoice = prompt(`Р’С‹Р±РµСЂРёС‚Рµ РІР°С€Сѓ С†РµР»СЊ:\n${goals.join('\n')}\n\nР’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РёР»Рё СЃРІРѕСЋ С†РµР»СЊ:`, currentGoal);
     if (goalChoice !== null) {
         let newGoal = goalChoice.trim();
         const goalNum = parseInt(newGoal);
@@ -1160,16 +1160,16 @@ function editGoal() {
         }
         
         const goalEl = document.getElementById('goal-info');
-        if (goalEl) goalEl.textContent = newGoal || "Не указана";
-        showNotification('Цель обновлена!', 'success');
+        if (goalEl) goalEl.textContent = newGoal || "РќРµ СѓРєР°Р·Р°РЅР°";
+        showNotification('Р¦РµР»СЊ РѕР±РЅРѕРІР»РµРЅР°!', 'success');
     }
 }
 
-// Экспорт профиля
+// Р­РєСЃРїРѕСЂС‚ РїСЂРѕС„РёР»СЏ
 function exportProfile() {
     const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
     if (!currentUser) {
-        showNotification('Ошибка: пользователь не найден', 'error');
+        showNotification('РћС€РёР±РєР°: РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ', 'error');
         return;
     }
     
@@ -1190,10 +1190,10 @@ function exportProfile() {
     a.click();
     URL.revokeObjectURL(url);
     
-    showNotification('Профиль экспортирован!', 'success');
+    showNotification('РџСЂРѕС„РёР»СЊ СЌРєСЃРїРѕСЂС‚РёСЂРѕРІР°РЅ!', 'success');
 }
 
-// Поделиться профилем
+// РџРѕРґРµР»РёС‚СЊСЃСЏ РїСЂРѕС„РёР»РµРј
 function shareProfile() {
     const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
     if (!currentUser) return;
@@ -1209,27 +1209,27 @@ function shareProfile() {
     });
     const avgScore = testCount > 0 ? Math.round(totalScore / testCount) : 0;
     
-    const shareText = `?? Мой профиль на Медицинской Профориентации!\n\n?? ${currentUser.name || currentUser.username}\n?? Пройдено тестов: ${testCount}\n?? Средний результат: ${avgScore}%\n? Уровень: ${calculateLevel(currentUser)}\n\nПрисоединяйся и определи свою медицинскую специальность!`;
+    const shareText = `рџЏҐ РњРѕР№ РїСЂРѕС„РёР»СЊ РЅР° РњРµРґРёС†РёРЅСЃРєРѕР№ РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёРё!\n\nрџ‘¤ ${currentUser.name || currentUser.username}\nрџ“Љ РџСЂРѕР№РґРµРЅРѕ С‚РµСЃС‚РѕРІ: ${testCount}\nрџ“€ РЎСЂРµРґРЅРёР№ СЂРµР·СѓР»СЊС‚Р°С‚: ${avgScore}%\nв­ђ РЈСЂРѕРІРµРЅСЊ: ${calculateLevel(currentUser)}\n\nРџСЂРёСЃРѕРµРґРёРЅСЏР№СЃСЏ Рё РѕРїСЂРµРґРµР»Рё СЃРІРѕСЋ РјРµРґРёС†РёРЅСЃРєСѓСЋ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ!`;
     
     if (navigator.share) {
         navigator.share({
-            title: 'Мой профиль - Медицинская Профориентация',
+            title: 'РњРѕР№ РїСЂРѕС„РёР»СЊ - РњРµРґРёС†РёРЅСЃРєР°СЏ РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ',
             text: shareText
         }).catch(console.error);
     } else {
         navigator.clipboard.writeText(shareText).then(() => {
-            showNotification('Профиль скопирован в буфер обмена!', 'success');
+            showNotification('РџСЂРѕС„РёР»СЊ СЃРєРѕРїРёСЂРѕРІР°РЅ РІ Р±СѓС„РµСЂ РѕР±РјРµРЅР°!', 'success');
         });
     }
 }
 
-// Сброс прогресса
+// РЎР±СЂРѕСЃ РїСЂРѕРіСЂРµСЃСЃР°
 function resetProgress() {
-    if (!confirm('Вы уверены, что хотите сбросить весь прогресс? Это действие нельзя отменить!')) {
+    if (!confirm('Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ СЃР±СЂРѕСЃРёС‚СЊ РІРµСЃСЊ РїСЂРѕРіСЂРµСЃСЃ? Р­С‚Рѕ РґРµР№СЃС‚РІРёРµ РЅРµР»СЊР·СЏ РѕС‚РјРµРЅРёС‚СЊ!')) {
         return;
     }
     
-    if (!confirm('Это удалит все результаты тестов и достижения. Продолжить?')) {
+    if (!confirm('Р­С‚Рѕ СѓРґР°Р»РёС‚ РІСЃРµ СЂРµР·СѓР»СЊС‚Р°С‚С‹ С‚РµСЃС‚РѕРІ Рё РґРѕСЃС‚РёР¶РµРЅРёСЏ. РџСЂРѕРґРѕР»Р¶РёС‚СЊ?')) {
         return;
     }
     
@@ -1252,10 +1252,10 @@ function resetProgress() {
     }
     
     loadUserProfile();
-    showNotification('Прогресс сброшен', 'warning');
+    showNotification('РџСЂРѕРіСЂРµСЃСЃ СЃР±СЂРѕС€РµРЅ', 'warning');
 }
 
-// Тёмная тема
+// РўС‘РјРЅР°СЏ С‚РµРјР°
 function toggleDarkMode() {
     const body = document.body;
     const isDark = body.getAttribute('data-theme') === 'dark';
@@ -1263,15 +1263,15 @@ function toggleDarkMode() {
     if (isDark) {
         body.removeAttribute('data-theme');
         localStorage.setItem('theme', 'light');
-        showNotification('Светлая тема включена', 'info');
+        showNotification('РЎРІРµС‚Р»Р°СЏ С‚РµРјР° РІРєР»СЋС‡РµРЅР°', 'info');
     } else {
         body.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
-        showNotification('Тёмная тема включена', 'info');
+        showNotification('РўС‘РјРЅР°СЏ С‚РµРјР° РІРєР»СЋС‡РµРЅР°', 'info');
     }
 }
 
-// Загрузка темы при старте
+// Р—Р°РіСЂСѓР·РєР° С‚РµРјС‹ РїСЂРё СЃС‚Р°СЂС‚Рµ
 function loadTheme() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -1279,30 +1279,30 @@ function loadTheme() {
     }
 }
 
-// Расчёт уровня пользователя
+// Р Р°СЃС‡С‘С‚ СѓСЂРѕРІРЅСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 function calculateLevel(user) {
     const xp = user.xp || 0;
     return Math.floor(xp / 100) + 1;
 }
 
-// Расчёт XP
+// Р Р°СЃС‡С‘С‚ XP
 function calculateXP(user) {
     let xp = 0;
     const testResults = user.testResults || {};
     
     Object.values(testResults).forEach(test => {
-        // 10 XP за каждый тест + бонус за результат
+        // 10 XP Р·Р° РєР°Р¶РґС‹Р№ С‚РµСЃС‚ + Р±РѕРЅСѓСЃ Р·Р° СЂРµР·СѓР»СЊС‚Р°С‚
         xp += 10;
         if (test.score && test.maxScore) {
             const percentage = (test.score / test.maxScore) * 100;
-            xp += Math.round(percentage / 10); // До 10 бонусных XP
+            xp += Math.round(percentage / 10); // Р”Рѕ 10 Р±РѕРЅСѓСЃРЅС‹С… XP
         }
     });
     
     return xp;
 }
 
-// Обновление достижений
+// РћР±РЅРѕРІР»РµРЅРёРµ РґРѕСЃС‚РёР¶РµРЅРёР№
 function updateAchievements(user) {
     const achievements = user.achievements || [];
     const testResults = user.testResults || {};
@@ -1329,7 +1329,7 @@ function updateAchievements(user) {
                 el.classList.add('unlocked');
                 if (!achievements.includes(id)) {
                     achievements.push(id);
-                    showNotification(`?? Новое достижение: ${el.querySelector('.achievement-name').textContent}!`, 'success');
+                    showNotification(`рџЏ† РќРѕРІРѕРµ РґРѕСЃС‚РёР¶РµРЅРёРµ: ${el.querySelector('.achievement-name').textContent}!`, 'success');
                 }
             } else {
                 el.classList.add('locked');
@@ -1342,7 +1342,7 @@ function updateAchievements(user) {
     return user;
 }
 
-// Обновление календаря активности
+// РћР±РЅРѕРІР»РµРЅРёРµ РєР°Р»РµРЅРґР°СЂСЏ Р°РєС‚РёРІРЅРѕСЃС‚Рё
 function updateActivityCalendar(user) {
     const calendar = document.getElementById('activity-calendar');
     if (!calendar) return;
@@ -1350,7 +1350,7 @@ function updateActivityCalendar(user) {
     const testResults = user.testResults || {};
     const activityMap = {};
     
-    // Подсчёт активности по дням
+    // РџРѕРґСЃС‡С‘С‚ Р°РєС‚РёРІРЅРѕСЃС‚Рё РїРѕ РґРЅСЏРј
     Object.values(testResults).forEach(test => {
         if (test.date) {
             const date = test.date.split('T')[0];
@@ -1358,7 +1358,7 @@ function updateActivityCalendar(user) {
         }
     });
     
-    // Генерация 30 дней
+    // Р“РµРЅРµСЂР°С†РёСЏ 30 РґРЅРµР№
     calendar.innerHTML = '';
     const today = new Date();
     
@@ -1375,33 +1375,33 @@ function updateActivityCalendar(user) {
         
         const day = document.createElement('div');
         day.className = className;
-        day.title = `${dateStr}: ${count} тестов`;
+        day.title = `${dateStr}: ${count} С‚РµСЃС‚РѕРІ`;
         calendar.appendChild(day);
     }
 }
 
-// Рекомендации по карьере
+// Р РµРєРѕРјРµРЅРґР°С†РёРё РїРѕ РєР°СЂСЊРµСЂРµ
 function updateCareerRecommendations(user) {
     const container = document.getElementById('career-recommendations-list');
     if (!container) return;
     
     const testResults = user.testResults || {};
     if (Object.keys(testResults).length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">Пройдите тесты, чтобы получить персональные рекомендации</p>';
+        container.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">РџСЂРѕР№РґРёС‚Рµ С‚РµСЃС‚С‹, С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹Рµ СЂРµРєРѕРјРµРЅРґР°С†РёРё</p>';
         return;
     }
     
-    // Анализ результатов для рекомендаций
+    // РђРЅР°Р»РёР· СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РґР»СЏ СЂРµРєРѕРјРµРЅРґР°С†РёР№
     const careers = [
-        { name: 'Терапевт', icon: '??', match: 0, desc: 'Врач общей практики' },
-        { name: 'Хирург', icon: '??', match: 0, desc: 'Оперативное лечение' },
-        { name: 'Педиатр', icon: '??', match: 0, desc: 'Детский врач' },
-        { name: 'Кардиолог', icon: '??', match: 0, desc: 'Специалист по сердцу' },
-        { name: 'Невролог', icon: '??', match: 0, desc: 'Нервная система' },
-        { name: 'Фармацевт', icon: '??', match: 0, desc: 'Работа с лекарствами' }
+        { name: 'РўРµСЂР°РїРµРІС‚', icon: 'рџ©є', match: 0, desc: 'Р’СЂР°С‡ РѕР±С‰РµР№ РїСЂР°РєС‚РёРєРё' },
+        { name: 'РҐРёСЂСѓСЂРі', icon: 'вљ”пёЏ', match: 0, desc: 'РћРїРµСЂР°С‚РёРІРЅРѕРµ Р»РµС‡РµРЅРёРµ' },
+        { name: 'РџРµРґРёР°С‚СЂ', icon: 'рџ‘¶', match: 0, desc: 'Р”РµС‚СЃРєРёР№ РІСЂР°С‡' },
+        { name: 'РљР°СЂРґРёРѕР»РѕРі', icon: 'вќ¤пёЏ', match: 0, desc: 'РЎРїРµС†РёР°Р»РёСЃС‚ РїРѕ СЃРµСЂРґС†Сѓ' },
+        { name: 'РќРµРІСЂРѕР»РѕРі', icon: 'рџ§ ', match: 0, desc: 'РќРµСЂРІРЅР°СЏ СЃРёСЃС‚РµРјР°' },
+        { name: 'Р¤Р°СЂРјР°С†РµРІС‚', icon: 'рџ’Љ', match: 0, desc: 'Р Р°Р±РѕС‚Р° СЃ Р»РµРєР°СЂСЃС‚РІР°РјРё' }
     ];
     
-    // Простой алгоритм подбора
+    // РџСЂРѕСЃС‚РѕР№ Р°Р»РіРѕСЂРёС‚Рј РїРѕРґР±РѕСЂР°
     let totalScore = 0;
     let count = 0;
     
@@ -1432,19 +1432,19 @@ function updateCareerRecommendations(user) {
     `).join('');
 }
 
-// Обновлённая функция loadUserProfile
+// РћР±РЅРѕРІР»С‘РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ loadUserProfile
 const originalLoadUserProfile = loadUserProfile;
 loadUserProfile = function() {
     const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
     if (!currentUser) return;
     
-    // Основная информация
+    // РћСЃРЅРѕРІРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
     document.getElementById('profile-name').textContent = currentUser.name || currentUser.username;
     document.getElementById('profile-email-text').textContent = currentUser.email;
     document.getElementById('profile-phone-text').textContent = currentUser.phone;
-    document.getElementById('profile-age-text').textContent = `${currentUser.age} лет`;
+    document.getElementById('profile-age-text').textContent = `${currentUser.age} Р»РµС‚`;
     
-    // Дата регистрации
+    // Р”Р°С‚Р° СЂРµРіРёСЃС‚СЂР°С†РёРё
     const regDate = new Date(currentUser.registrationDate);
     document.getElementById('profile-reg-date').textContent = regDate.toLocaleDateString('ru-RU', {
         day: 'numeric',
@@ -1452,28 +1452,28 @@ loadUserProfile = function() {
         year: 'numeric'
     });
     
-    // Дополнительная информация (элементы могут быть скрыты/удалены из UI)
+    // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ (СЌР»РµРјРµРЅС‚С‹ РјРѕРіСѓС‚ Р±С‹С‚СЊ СЃРєСЂС‹С‚С‹/СѓРґР°Р»РµРЅС‹ РёР· UI)
     if (currentUser.profile) {
         const educationEl = document.getElementById('education-info');
-        if (educationEl) educationEl.textContent = currentUser.profile.education || "Не указано";
+        if (educationEl) educationEl.textContent = currentUser.profile.education || "РќРµ СѓРєР°Р·Р°РЅРѕ";
 
         const locationEl = document.getElementById('location-info');
-        if (locationEl) locationEl.textContent = currentUser.profile.location || "Не указано";
+        if (locationEl) locationEl.textContent = currentUser.profile.location || "РќРµ СѓРєР°Р·Р°РЅРѕ";
 
         const interestsEl = document.getElementById('interests-info');
-        if (interestsEl) interestsEl.textContent = currentUser.profile.interests || "Не указаны";
+        if (interestsEl) interestsEl.textContent = currentUser.profile.interests || "РќРµ СѓРєР°Р·Р°РЅС‹";
 
         const goalEl = document.getElementById('goal-info');
-        if (goalEl) goalEl.textContent = currentUser.profile.goal || "Не указана";
+        if (goalEl) goalEl.textContent = currentUser.profile.goal || "РќРµ СѓРєР°Р·Р°РЅР°";
     }
     
-    // XP и уровень
+    // XP Рё СѓСЂРѕРІРµРЅСЊ
     const xp = calculateXP(currentUser);
     const level = Math.floor(xp / 100) + 1;
     const xpInLevel = xp % 100;
     
     const levelEl = document.getElementById('user-level');
-    if (levelEl) levelEl.textContent = `Уровень ${level}`;
+    if (levelEl) levelEl.textContent = `РЈСЂРѕРІРµРЅСЊ ${level}`;
     
     const xpTextEl = document.getElementById('xp-text');
     if (xpTextEl) xpTextEl.textContent = `${xpInLevel} / 100 XP`;
@@ -1484,10 +1484,10 @@ loadUserProfile = function() {
     const totalXpEl = document.getElementById('total-xp');
     if (totalXpEl) totalXpEl.textContent = xp;
     
-    // Статус
+    // РЎС‚Р°С‚СѓСЃ
     const statusEl = document.getElementById('profile-status');
     if (statusEl) {
-        const statuses = ['Новичок', 'Ученик', 'Студент', 'Специалист', 'Эксперт', 'Мастер'];
+        const statuses = ['РќРѕРІРёС‡РѕРє', 'РЈС‡РµРЅРёРє', 'РЎС‚СѓРґРµРЅС‚', 'РЎРїРµС†РёР°Р»РёСЃС‚', 'Р­РєСЃРїРµСЂС‚', 'РњР°СЃС‚РµСЂ'];
         statusEl.textContent = statuses[Math.min(level - 1, statuses.length - 1)];
     }
     
@@ -1495,28 +1495,28 @@ loadUserProfile = function() {
     const streakEl = document.getElementById('streak-days');
     if (streakEl) streakEl.textContent = currentUser.streak || 0;
     
-    // Статистика
+    // РЎС‚Р°С‚РёСЃС‚РёРєР°
     updateUserStats(currentUser);
     
-    // Достижения
+    // Р”РѕСЃС‚РёР¶РµРЅРёСЏ
     updateAchievements(currentUser);
     
-    // Календарь активности
+    // РљР°Р»РµРЅРґР°СЂСЊ Р°РєС‚РёРІРЅРѕСЃС‚Рё
     updateActivityCalendar(currentUser);
     
-    // Рекомендации по карьере
+    // Р РµРєРѕРјРµРЅРґР°С†РёРё РїРѕ РєР°СЂСЊРµСЂРµ
     updateCareerRecommendations(currentUser);
     
-    // История тестов
+    // РСЃС‚РѕСЂРёСЏ С‚РµСЃС‚РѕРІ
     loadTestHistory(currentUser);
 };
 
-// Выход
+// Р’С‹С…РѕРґ
 function logout() {
-    // Без confirm: кнопка должна работать всегда и быстро
+    // Р‘РµР· confirm: РєРЅРѕРїРєР° РґРѕР»Р¶РЅР° СЂР°Р±РѕС‚Р°С‚СЊ РІСЃРµРіРґР° Рё Р±С‹СЃС‚СЂРѕ
     try { localStorage.removeItem(CURRENT_USER_KEY); } catch { /* ignore */ }
 
-    // Также закрываем текущий тестовый UI, если открыт
+    // РўР°РєР¶Рµ Р·Р°РєСЂС‹РІР°РµРј С‚РµРєСѓС‰РёР№ С‚РµСЃС‚РѕРІС‹Р№ UI, РµСЃР»Рё РѕС‚РєСЂС‹С‚
     try {
         document.querySelectorAll('#tests .test-container').forEach(c => {
             c.classList.remove('active');
@@ -1528,7 +1528,7 @@ function logout() {
         });
     } catch { /* ignore */ }
 
-    // Возврат на landing page
+    // Р’РѕР·РІСЂР°С‚ РЅР° landing page
     try {
         const auth = document.getElementById('auth-container');
         const main = document.getElementById('main-content');
@@ -1543,14 +1543,14 @@ function logout() {
             landing.classList.remove('hidden');
             landing.style.display = 'flex';
             landing.style.visibility = 'visible';
-            // Реинициализируем анимации
+            // Р РµРёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј Р°РЅРёРјР°С†РёРё
             setTimeout(() => {
                 if (typeof initScrollAnimations === 'function') initScrollAnimations();
                 if (typeof initNavScroll === 'function') initNavScroll();
             }, 100);
         }
         
-        // Скрываем кнопку AI тьютора при выходе
+        // РЎРєСЂС‹РІР°РµРј РєРЅРѕРїРєСѓ AI С‚СЊСЋС‚РѕСЂР° РїСЂРё РІС‹С…РѕРґРµ
         if (window.aiTutor && typeof window.aiTutor.updateTutorVisibility === 'function') {
             window.aiTutor.updateTutorVisibility();
         }
@@ -1563,51 +1563,51 @@ function logout() {
     }
 }
 
-// Показать секцию
-// SEO: Динамические заголовки для каждого раздела
+// РџРѕРєР°Р·Р°С‚СЊ СЃРµРєС†РёСЋ
+// SEO: Р”РёРЅР°РјРёС‡РµСЃРєРёРµ Р·Р°РіРѕР»РѕРІРєРё РґР»СЏ РєР°Р¶РґРѕРіРѕ СЂР°Р·РґРµР»Р°
 const SECTION_TITLES = {
-    home: 'Medical Explorer — Медицинская профориентация',
-    tests: 'Тесты профориентации — Medical Explorer',
-    profile: 'Мой профиль — Medical Explorer',
-    learning: 'Обучение медицине — Medical Explorer',
-    organs3d: '3D Модели органов — Medical Explorer',
-    biochem: 'Биохимия — Medical Explorer',
-    chemlab: 'Химическая лаборатория — Medical Explorer',
-    contacts: 'Контакты — Medical Explorer'
+    home: 'Medical Explorer вЂ” РњРµРґРёС†РёРЅСЃРєР°СЏ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ',
+    tests: 'РўРµСЃС‚С‹ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёРё вЂ” Medical Explorer',
+    profile: 'РњРѕР№ РїСЂРѕС„РёР»СЊ вЂ” Medical Explorer',
+    learning: 'РћР±СѓС‡РµРЅРёРµ РјРµРґРёС†РёРЅРµ вЂ” Medical Explorer',
+    organs3d: '3D РњРѕРґРµР»Рё РѕСЂРіР°РЅРѕРІ вЂ” Medical Explorer',
+    biochem: 'Р‘РёРѕС…РёРјРёСЏ вЂ” Medical Explorer',
+    chemlab: 'РҐРёРјРёС‡РµСЃРєР°СЏ Р»Р°Р±РѕСЂР°С‚РѕСЂРёСЏ вЂ” Medical Explorer',
+    contacts: 'РљРѕРЅС‚Р°РєС‚С‹ вЂ” Medical Explorer'
 };
 
 const SECTION_DESCRIPTIONS = {
-    home: 'Интерактивная платформа медицинской профориентации с тестами, 3D моделями органов и химической лабораторией',
-    tests: 'Пройдите тесты по профориентации, биологии и химии для определения вашей медицинской специальности',
-    profile: 'Ваш личный профиль с результатами тестов и достижениями',
-    learning: 'Образовательные материалы по медицине, анатомии и биохимии',
-    organs3d: 'Интерактивные 3D модели органов человека с детальным описанием',
-    biochem: 'Изучение биохимических процессов и молекулярной биологии',
-    chemlab: 'Виртуальная химическая лаборатория — смешивайте реагенты и наблюдайте реакции',
-    contacts: 'Свяжитесь с командой Medical Explorer'
+    home: 'РРЅС‚РµСЂР°РєС‚РёРІРЅР°СЏ РїР»Р°С‚С„РѕСЂРјР° РјРµРґРёС†РёРЅСЃРєРѕР№ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёРё СЃ С‚РµСЃС‚Р°РјРё, 3D РјРѕРґРµР»СЏРјРё РѕСЂРіР°РЅРѕРІ Рё С…РёРјРёС‡РµСЃРєРѕР№ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРµР№',
+    tests: 'РџСЂРѕР№РґРёС‚Рµ С‚РµСЃС‚С‹ РїРѕ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёРё, Р±РёРѕР»РѕРіРёРё Рё С…РёРјРёРё РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РІР°С€РµР№ РјРµРґРёС†РёРЅСЃРєРѕР№ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё',
+    profile: 'Р’Р°С€ Р»РёС‡РЅС‹Р№ РїСЂРѕС„РёР»СЊ СЃ СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё С‚РµСЃС‚РѕРІ Рё РґРѕСЃС‚РёР¶РµРЅРёСЏРјРё',
+    learning: 'РћР±СЂР°Р·РѕРІР°С‚РµР»СЊРЅС‹Рµ РјР°С‚РµСЂРёР°Р»С‹ РїРѕ РјРµРґРёС†РёРЅРµ, Р°РЅР°С‚РѕРјРёРё Рё Р±РёРѕС…РёРјРёРё',
+    organs3d: 'РРЅС‚РµСЂР°РєС‚РёРІРЅС‹Рµ 3D РјРѕРґРµР»Рё РѕСЂРіР°РЅРѕРІ С‡РµР»РѕРІРµРєР° СЃ РґРµС‚Р°Р»СЊРЅС‹Рј РѕРїРёСЃР°РЅРёРµРј',
+    biochem: 'РР·СѓС‡РµРЅРёРµ Р±РёРѕС…РёРјРёС‡РµСЃРєРёС… РїСЂРѕС†РµСЃСЃРѕРІ Рё РјРѕР»РµРєСѓР»СЏСЂРЅРѕР№ Р±РёРѕР»РѕРіРёРё',
+    chemlab: 'Р’РёСЂС‚СѓР°Р»СЊРЅР°СЏ С…РёРјРёС‡РµСЃРєР°СЏ Р»Р°Р±РѕСЂР°С‚РѕСЂРёСЏ вЂ” СЃРјРµС€РёРІР°Р№С‚Рµ СЂРµР°РіРµРЅС‚С‹ Рё РЅР°Р±Р»СЋРґР°Р№С‚Рµ СЂРµР°РєС†РёРё',
+    contacts: 'РЎРІСЏР¶РёС‚РµСЃСЊ СЃ РєРѕРјР°РЅРґРѕР№ Medical Explorer'
 };
 
 function showSection(sectionId) {
     console.log('showSection called with:', sectionId);
 
-    // SEO: Обновляем title и meta description
+    // SEO: РћР±РЅРѕРІР»СЏРµРј title Рё meta description
     document.title = SECTION_TITLES[sectionId] || SECTION_TITLES.home;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
         metaDesc.setAttribute('content', SECTION_DESCRIPTIONS[sectionId] || SECTION_DESCRIPTIONS.home);
     }
-    // Обновляем URL без перезагрузки
+    // РћР±РЅРѕРІР»СЏРµРј URL Р±РµР· РїРµСЂРµР·Р°РіСЂСѓР·РєРё
     if (history.replaceState) {
         history.replaceState(null, '', '#' + sectionId);
     }
 
-    // Скрыть все секции
+    // РЎРєСЂС‹С‚СЊ РІСЃРµ СЃРµРєС†РёРё
     document.querySelectorAll('section').forEach(section => {
         section.style.display = 'none';
         section.classList.remove('visible');
     });
 
-    // Сбросить UI тестов (чтобы после завершения всё снова кликабельно работало)
+    // РЎР±СЂРѕСЃРёС‚СЊ UI С‚РµСЃС‚РѕРІ (С‡С‚РѕР±С‹ РїРѕСЃР»Рµ Р·Р°РІРµСЂС€РµРЅРёСЏ РІСЃС‘ СЃРЅРѕРІР° РєР»РёРєР°Р±РµР»СЊРЅРѕ СЂР°Р±РѕС‚Р°Р»Рѕ)
     try {
         const legacyQuestions = document.getElementById('test-questions-container');
         if (legacyQuestions) {
@@ -1630,7 +1630,7 @@ function showSection(sectionId) {
         const cards = document.querySelector('#tests .test-cards');
         if (cards) cards.style.display = sectionId === 'tests' ? 'grid' : cards.style.display;
         
-        // Показываем фильтры и заголовок класса при возврате к тестам
+        // РџРѕРєР°Р·С‹РІР°РµРј С„РёР»СЊС‚СЂС‹ Рё Р·Р°РіРѕР»РѕРІРѕРє РєР»Р°СЃСЃР° РїСЂРё РІРѕР·РІСЂР°С‚Рµ Рє С‚РµСЃС‚Р°Рј
         if (sectionId === 'tests') {
             const filterPanel = document.querySelector('.tests-filter-panel');
             if (filterPanel) filterPanel.style.display = 'block';
@@ -1642,7 +1642,7 @@ function showSection(sectionId) {
         console.warn('showSection test UI reset failed', e);
     }
     
-    // Показать выбранную секцию
+    // РџРѕРєР°Р·Р°С‚СЊ РІС‹Р±СЂР°РЅРЅСѓСЋ СЃРµРєС†РёСЋ
     const section = document.getElementById(sectionId);
     if (section) {
         section.style.setProperty('display', 'block', 'important');
@@ -1650,20 +1650,20 @@ function showSection(sectionId) {
         section.style.setProperty('opacity', '1', 'important');
         section.classList.add('visible');
         
-        // Если это профиль, обновляем данные
+        // Р•СЃР»Рё СЌС‚Рѕ РїСЂРѕС„РёР»СЊ, РѕР±РЅРѕРІР»СЏРµРј РґР°РЅРЅС‹Рµ
         if (sectionId === 'profile') {
             loadUserProfile();
         }
     }
 
-    // Обновить индикатор текущего теста при заходе в "Тесты"
+    // РћР±РЅРѕРІРёС‚СЊ РёРЅРґРёРєР°С‚РѕСЂ С‚РµРєСѓС‰РµРіРѕ С‚РµСЃС‚Р° РїСЂРё Р·Р°С…РѕРґРµ РІ "РўРµСЃС‚С‹"
     try {
         if (sectionId === 'tests' && typeof updateCurrentTestUI === 'function') {
             updateCurrentTestUI();
         }
     } catch { /* ignore */ }
 
-    // Скролл к верху секции (и без лишней анимации при reduced-motion)
+    // РЎРєСЂРѕР»Р» Рє РІРµСЂС…Сѓ СЃРµРєС†РёРё (Рё Р±РµР· Р»РёС€РЅРµР№ Р°РЅРёРјР°С†РёРё РїСЂРё reduced-motion)
     try {
         const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
@@ -1671,17 +1671,17 @@ function showSection(sectionId) {
         window.scrollTo(0, 0);
     }
     
-    // Обновить навигацию
+    // РћР±РЅРѕРІРёС‚СЊ РЅР°РІРёРіР°С†РёСЋ
     document.querySelectorAll('nav a, .nav-item').forEach(link => {
         link.classList.remove('active');
     });
     
-    // Найти активную ссылку по sectionId
+    // РќР°Р№С‚Рё Р°РєС‚РёРІРЅСѓСЋ СЃСЃС‹Р»РєСѓ РїРѕ sectionId
     const activeLinks = document.querySelectorAll(`[href="#${sectionId}"]`);
     activeLinks.forEach(link => link.classList.add('active'));
 }
 
-// Обновление навигации сайдбара
+// РћР±РЅРѕРІР»РµРЅРёРµ РЅР°РІРёРіР°С†РёРё СЃР°Р№РґР±Р°СЂР°
 function updateNav(element) {
     document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
@@ -1691,7 +1691,7 @@ function updateNav(element) {
     }
 }
 
-// Обновление мобильной навигации
+// РћР±РЅРѕРІР»РµРЅРёРµ РјРѕР±РёР»СЊРЅРѕР№ РЅР°РІРёРіР°С†РёРё
 function updateMobileNav(element) {
     document.querySelectorAll('.mobile-nav-item').forEach(item => {
         item.classList.remove('active');
@@ -1701,27 +1701,27 @@ function updateMobileNav(element) {
     }
 }
 
-// Метки шкал профориентации (для красивого вывода результатов)
+// РњРµС‚РєРё С€РєР°Р» РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёРё (РґР»СЏ РєСЂР°СЃРёРІРѕРіРѕ РІС‹РІРѕРґР° СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ)
 const ORIENTATION_DIM_LABELS = {
-    people: 'Общение и помощь людям',
-    analysis: 'Аналитика и системное мышление',
-    creativity: 'Творчество и идеи',
-    practice: 'Практика и «делать руками»',
-    empathy: 'Эмпатия',
-    responsibility: 'Ответственность',
-    stress: 'Стрессоустойчивость',
-    accuracy: 'Внимательность и аккуратность',
-    science: 'Интерес к науке',
-    teamwork: 'Командная работа'
+    people: 'РћР±С‰РµРЅРёРµ Рё РїРѕРјРѕС‰СЊ Р»СЋРґСЏРј',
+    analysis: 'РђРЅР°Р»РёС‚РёРєР° Рё СЃРёСЃС‚РµРјРЅРѕРµ РјС‹С€Р»РµРЅРёРµ',
+    creativity: 'РўРІРѕСЂС‡РµСЃС‚РІРѕ Рё РёРґРµРё',
+    practice: 'РџСЂР°РєС‚РёРєР° Рё В«РґРµР»Р°С‚СЊ СЂСѓРєР°РјРёВ»',
+    empathy: 'Р­РјРїР°С‚РёСЏ',
+    responsibility: 'РћС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ',
+    stress: 'РЎС‚СЂРµСЃСЃРѕСѓСЃС‚РѕР№С‡РёРІРѕСЃС‚СЊ',
+    accuracy: 'Р’РЅРёРјР°С‚РµР»СЊРЅРѕСЃС‚СЊ Рё Р°РєРєСѓСЂР°С‚РЅРѕСЃС‚СЊ',
+    science: 'РРЅС‚РµСЂРµСЃ Рє РЅР°СѓРєРµ',
+    teamwork: 'РљРѕРјР°РЅРґРЅР°СЏ СЂР°Р±РѕС‚Р°'
 };
 
-// Переключение карточек обучения
+// РџРµСЂРµРєР»СЋС‡РµРЅРёРµ РєР°СЂС‚РѕС‡РµРє РѕР±СѓС‡РµРЅРёСЏ
 function toggleLearningCard(element) {
     const card = element.closest('.learning-card');
     const details = card.querySelector('.learning-details');
     const toggle = card.querySelector('.learning-toggle');
     
-    // Закрываем другие открытые карточки
+    // Р—Р°РєСЂС‹РІР°РµРј РґСЂСѓРіРёРµ РѕС‚РєСЂС‹С‚С‹Рµ РєР°СЂС‚РѕС‡РєРё
     document.querySelectorAll('.learning-card').forEach(otherCard => {
         if (otherCard !== card) {
             const otherDetails = otherCard.querySelector('.learning-details');
@@ -1732,11 +1732,11 @@ function toggleLearningCard(element) {
         }
     });
     
-    // Открываем/закрываем текущую карточку
+    // РћС‚РєСЂС‹РІР°РµРј/Р·Р°РєСЂС‹РІР°РµРј С‚РµРєСѓС‰СѓСЋ РєР°СЂС‚РѕС‡РєСѓ
     details.classList.toggle('active');
     toggle.classList.toggle('active');
     
-    // Поднимаем текущую карточку на передний план
+    // РџРѕРґРЅРёРјР°РµРј С‚РµРєСѓС‰СѓСЋ РєР°СЂС‚РѕС‡РєСѓ РЅР° РїРµСЂРµРґРЅРёР№ РїР»Р°РЅ
     if (details.classList.contains('active')) {
         card.style.zIndex = '10';
     } else {
@@ -1744,7 +1744,7 @@ function toggleLearningCard(element) {
     }
 }
 
-// Функция для перемешивания массива (алгоритм Фишера-Йетса)
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїРµСЂРµРјРµС€РёРІР°РЅРёСЏ РјР°СЃСЃРёРІР° (Р°Р»РіРѕСЂРёС‚Рј Р¤РёС€РµСЂР°-Р™РµС‚СЃР°)
 function shuffleArray(array) {
     const newArray = [...array];
     for (let i = newArray.length - 1; i > 0; i--) {
@@ -1754,17 +1754,17 @@ function shuffleArray(array) {
     return newArray;
 }
 
-// Получить случайные 40 вопросов из полной базы
+// РџРѕР»СѓС‡РёС‚СЊ СЃР»СѓС‡Р°Р№РЅС‹Рµ 40 РІРѕРїСЂРѕСЃРѕРІ РёР· РїРѕР»РЅРѕР№ Р±Р°Р·С‹
 function getRandomQuestions(questions, count = 40) {
-    // Перемешиваем все вопросы
+    // РџРµСЂРµРјРµС€РёРІР°РµРј РІСЃРµ РІРѕРїСЂРѕСЃС‹
     const shuffled = shuffleArray(questions);
-    // Берем первые count вопросов
+    // Р‘РµСЂРµРј РїРµСЂРІС‹Рµ count РІРѕРїСЂРѕСЃРѕРІ
     return shuffled.slice(0, count);
 }
 
-// Инициализация тестов - СОЗДАЕМ ПОЛНУЮ БАЗУ ВОПРОСОВ (100+ для каждого теста)
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С‚РµСЃС‚РѕРІ - РЎРћР—Р”РђР•Рњ РџРћР›РќРЈР® Р‘РђР—РЈ Р’РћРџР РћРЎРћР’ (100+ РґР»СЏ РєР°Р¶РґРѕРіРѕ С‚РµСЃС‚Р°)
 function initializeTests() {
-    // Создаем полную базу вопросов для всех тестов
+    // РЎРѕР·РґР°РµРј РїРѕР»РЅСѓСЋ Р±Р°Р·Сѓ РІРѕРїСЂРѕСЃРѕРІ РґР»СЏ РІСЃРµС… С‚РµСЃС‚РѕРІ
     window.fullTestQuestions = {
         profession: generateProfessionQuestions(),
         chemistry: generateChemistryQuestions(),
@@ -1773,126 +1773,126 @@ function initializeTests() {
     };
 }
 
-// Генерация 100 уникальных вопросов для теста по профориентации
+// Р“РµРЅРµСЂР°С†РёСЏ 100 СѓРЅРёРєР°Р»СЊРЅС‹С… РІРѕРїСЂРѕСЃРѕРІ РґР»СЏ С‚РµСЃС‚Р° РїРѕ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёРё
 function generateProfessionQuestions() {
     const questions = [
-        // Блок 1: Интересы и склонности (1-25)
-        { id: 'prof-1', question: 'Мне нравится изучать строение человеческого тела', difficulty: 1 },
-        { id: 'prof-2', question: 'Я спокойно отношусь к виду крови', difficulty: 1 },
-        { id: 'prof-3', question: 'Меня интересует работа медицинского оборудования', difficulty: 1 },
-        { id: 'prof-4', question: 'Я готов долго учиться для получения медицинской профессии', difficulty: 1 },
-        { id: 'prof-5', question: 'Мне нравится помогать людям в трудных ситуациях', difficulty: 1 },
-        { id: 'prof-6', question: 'Я внимателен к мельчайшим деталям', difficulty: 1 },
-        { id: 'prof-7', question: 'Я хорошо работаю в стрессовых ситуациях', difficulty: 1 },
-        { id: 'prof-8', question: 'Мне интересны биологические процессы в организме', difficulty: 1 },
-        { id: 'prof-9', question: 'Я терпелив и могу долго концентрироваться на задаче', difficulty: 1 },
-        { id: 'prof-10', question: 'Я готов работать в нестандартном графике (ночные смены, дежурства)', difficulty: 1 },
-        { id: 'prof-11', question: 'Меня интересуют последние медицинские открытия и исследования', difficulty: 1 },
-        { id: 'prof-12', question: 'Я хорошо запоминаю большие объемы информации', difficulty: 1 },
-        { id: 'prof-13', question: 'Мне нравится решать сложные логические задачи', difficulty: 1 },
-        { id: 'prof-14', question: 'Я считаю себя ответственным человеком', difficulty: 1 },
-        { id: 'prof-15', question: 'Я умею сопереживать и понимать чувства других', difficulty: 1 },
-        { id: 'prof-16', question: 'Меня не пугают трудности и препятствия', difficulty: 1 },
-        { id: 'prof-17', question: 'Я интересуюсь современными технологиями в медицине', difficulty: 1 },
-        { id: 'prof-18', question: 'Я готов постоянно учиться и повышать квалификацию', difficulty: 1 },
-        { id: 'prof-19', question: 'Мне нравится работать в команде с другими специалистами', difficulty: 1 },
-        { id: 'prof-20', question: 'Я аккуратен и точен в своих действиях', difficulty: 1 },
-        { id: 'prof-21', question: 'Меня привлекает научно-исследовательская работа', difficulty: 1 },
-        { id: 'prof-22', question: 'Я хорошо переношу физические и эмоциональные нагрузки', difficulty: 1 },
-        { id: 'prof-23', question: 'Мне интересна психология человеческого поведения', difficulty: 1 },
-        { id: 'prof-24', question: 'Я умею быстро принимать решения в критических ситуациях', difficulty: 1 },
-        { id: 'prof-25', question: 'Мне нравится общаться с разными людьми', difficulty: 1 },
+        // Р‘Р»РѕРє 1: РРЅС‚РµСЂРµСЃС‹ Рё СЃРєР»РѕРЅРЅРѕСЃС‚Рё (1-25)
+        { id: 'prof-1', question: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РёР·СѓС‡Р°С‚СЊ СЃС‚СЂРѕРµРЅРёРµ С‡РµР»РѕРІРµС‡РµСЃРєРѕРіРѕ С‚РµР»Р°', difficulty: 1 },
+        { id: 'prof-2', question: 'РЇ СЃРїРѕРєРѕР№РЅРѕ РѕС‚РЅРѕС€СѓСЃСЊ Рє РІРёРґСѓ РєСЂРѕРІРё', difficulty: 1 },
+        { id: 'prof-3', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ СЂР°Р±РѕС‚Р° РјРµРґРёС†РёРЅСЃРєРѕРіРѕ РѕР±РѕСЂСѓРґРѕРІР°РЅРёСЏ', difficulty: 1 },
+        { id: 'prof-4', question: 'РЇ РіРѕС‚РѕРІ РґРѕР»РіРѕ СѓС‡РёС‚СЊСЃСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РјРµРґРёС†РёРЅСЃРєРѕР№ РїСЂРѕС„РµСЃСЃРёРё', difficulty: 1 },
+        { id: 'prof-5', question: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј РІ С‚СЂСѓРґРЅС‹С… СЃРёС‚СѓР°С†РёСЏС…', difficulty: 1 },
+        { id: 'prof-6', question: 'РЇ РІРЅРёРјР°С‚РµР»РµРЅ Рє РјРµР»СЊС‡Р°Р№С€РёРј РґРµС‚Р°Р»СЏРј', difficulty: 1 },
+        { id: 'prof-7', question: 'РЇ С…РѕСЂРѕС€Рѕ СЂР°Р±РѕС‚Р°СЋ РІ СЃС‚СЂРµСЃСЃРѕРІС‹С… СЃРёС‚СѓР°С†РёСЏС…', difficulty: 1 },
+        { id: 'prof-8', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅС‹ Р±РёРѕР»РѕРіРёС‡РµСЃРєРёРµ РїСЂРѕС†РµСЃСЃС‹ РІ РѕСЂРіР°РЅРёР·РјРµ', difficulty: 1 },
+        { id: 'prof-9', question: 'РЇ С‚РµСЂРїРµР»РёРІ Рё РјРѕРіСѓ РґРѕР»РіРѕ РєРѕРЅС†РµРЅС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ РЅР° Р·Р°РґР°С‡Рµ', difficulty: 1 },
+        { id: 'prof-10', question: 'РЇ РіРѕС‚РѕРІ СЂР°Р±РѕС‚Р°С‚СЊ РІ РЅРµСЃС‚Р°РЅРґР°СЂС‚РЅРѕРј РіСЂР°С„РёРєРµ (РЅРѕС‡РЅС‹Рµ СЃРјРµРЅС‹, РґРµР¶СѓСЂСЃС‚РІР°)', difficulty: 1 },
+        { id: 'prof-11', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓСЋС‚ РїРѕСЃР»РµРґРЅРёРµ РјРµРґРёС†РёРЅСЃРєРёРµ РѕС‚РєСЂС‹С‚РёСЏ Рё РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ', difficulty: 1 },
+        { id: 'prof-12', question: 'РЇ С…РѕСЂРѕС€Рѕ Р·Р°РїРѕРјРёРЅР°СЋ Р±РѕР»СЊС€РёРµ РѕР±СЉРµРјС‹ РёРЅС„РѕСЂРјР°С†РёРё', difficulty: 1 },
+        { id: 'prof-13', question: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂРµС€Р°С‚СЊ СЃР»РѕР¶РЅС‹Рµ Р»РѕРіРёС‡РµСЃРєРёРµ Р·Р°РґР°С‡Рё', difficulty: 1 },
+        { id: 'prof-14', question: 'РЇ СЃС‡РёС‚Р°СЋ СЃРµР±СЏ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅС‹Рј С‡РµР»РѕРІРµРєРѕРј', difficulty: 1 },
+        { id: 'prof-15', question: 'РЇ СѓРјРµСЋ СЃРѕРїРµСЂРµР¶РёРІР°С‚СЊ Рё РїРѕРЅРёРјР°С‚СЊ С‡СѓРІСЃС‚РІР° РґСЂСѓРіРёС…', difficulty: 1 },
+        { id: 'prof-16', question: 'РњРµРЅСЏ РЅРµ РїСѓРіР°СЋС‚ С‚СЂСѓРґРЅРѕСЃС‚Рё Рё РїСЂРµРїСЏС‚СЃС‚РІРёСЏ', difficulty: 1 },
+        { id: 'prof-17', question: 'РЇ РёРЅС‚РµСЂРµСЃСѓСЋСЃСЊ СЃРѕРІСЂРµРјРµРЅРЅС‹РјРё С‚РµС…РЅРѕР»РѕРіРёСЏРјРё РІ РјРµРґРёС†РёРЅРµ', difficulty: 1 },
+        { id: 'prof-18', question: 'РЇ РіРѕС‚РѕРІ РїРѕСЃС‚РѕСЏРЅРЅРѕ СѓС‡РёС‚СЊСЃСЏ Рё РїРѕРІС‹С€Р°С‚СЊ РєРІР°Р»РёС„РёРєР°С†РёСЋ', difficulty: 1 },
+        { id: 'prof-19', question: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ РІ РєРѕРјР°РЅРґРµ СЃ РґСЂСѓРіРёРјРё СЃРїРµС†РёР°Р»РёСЃС‚Р°РјРё', difficulty: 1 },
+        { id: 'prof-20', question: 'РЇ Р°РєРєСѓСЂР°С‚РµРЅ Рё С‚РѕС‡РµРЅ РІ СЃРІРѕРёС… РґРµР№СЃС‚РІРёСЏС…', difficulty: 1 },
+        { id: 'prof-21', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РЅР°СѓС‡РЅРѕ-РёСЃСЃР»РµРґРѕРІР°С‚РµР»СЊСЃРєР°СЏ СЂР°Р±РѕС‚Р°', difficulty: 1 },
+        { id: 'prof-22', question: 'РЇ С…РѕСЂРѕС€Рѕ РїРµСЂРµРЅРѕС€Сѓ С„РёР·РёС‡РµСЃРєРёРµ Рё СЌРјРѕС†РёРѕРЅР°Р»СЊРЅС‹Рµ РЅР°РіСЂСѓР·РєРё', difficulty: 1 },
+        { id: 'prof-23', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° РїСЃРёС…РѕР»РѕРіРёСЏ С‡РµР»РѕРІРµС‡РµСЃРєРѕРіРѕ РїРѕРІРµРґРµРЅРёСЏ', difficulty: 1 },
+        { id: 'prof-24', question: 'РЇ СѓРјРµСЋ Р±С‹СЃС‚СЂРѕ РїСЂРёРЅРёРјР°С‚СЊ СЂРµС€РµРЅРёСЏ РІ РєСЂРёС‚РёС‡РµСЃРєРёС… СЃРёС‚СѓР°С†РёСЏС…', difficulty: 1 },
+        { id: 'prof-25', question: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РѕР±С‰Р°С‚СЊСЃСЏ СЃ СЂР°Р·РЅС‹РјРё Р»СЋРґСЊРјРё', difficulty: 1 },
         
-        // Блок 2: Личные качества (26-50)
-        { id: 'prof-26', question: 'Я наблюдателен и замечаю изменения в состоянии людей', difficulty: 2 },
-        { id: 'prof-27', question: 'Меня интересует профилактика заболеваний', difficulty: 2 },
-        { id: 'prof-28', question: 'Я готов брать на себя ответственность за здоровье пациентов', difficulty: 2 },
-        { id: 'prof-29', question: 'Мне интересна фармакология и действие лекарств', difficulty: 2 },
-        { id: 'prof-30', question: 'Я умею сохранять спокойствие в экстренных ситуациях', difficulty: 2 },
-        { id: 'prof-31', question: 'Мне нравится анализировать симптомы и ставить диагнозы', difficulty: 2 },
-        { id: 'prof-32', question: 'Я готов работать с медицинской документацией', difficulty: 2 },
-        { id: 'prof-33', question: 'Меня привлекает хирургическое направление в медицине', difficulty: 2 },
-        { id: 'prof-34', question: 'Я интересуюсь генетикой и наследственными заболеваниями', difficulty: 2 },
-        { id: 'prof-35', question: 'Мне нравится обучать других и делиться знаниями', difficulty: 2 },
-        { id: 'prof-36', question: 'У меня хорошая мелкая моторика рук', difficulty: 2 },
-        { id: 'prof-37', question: 'Меня интересует неотложная медицинская помощь', difficulty: 2 },
-        { id: 'prof-38', question: 'Я готов работать в любых условиях, включая полевые', difficulty: 2 },
-        { id: 'prof-39', question: 'Мне интересна медицинская диагностика', difficulty: 2 },
-        { id: 'prof-40', question: 'Я стремлюсь к совершенству в своей работе', difficulty: 2 },
-        { id: 'prof-41', question: 'Я могу долго стоять на ногах во время работы', difficulty: 2 },
-        { id: 'prof-42', question: 'Мне нравится работать с современным оборудованием', difficulty: 2 },
-        { id: 'prof-43', question: 'Я умею находить подход к разным людям', difficulty: 2 },
-        { id: 'prof-44', question: 'Меня интересует педиатрия - работа с детьми', difficulty: 2 },
-        { id: 'prof-45', question: 'Я готов к ненормированному рабочему дню', difficulty: 2 },
-        { id: 'prof-46', question: 'Мне интересна реабилитация и восстановление пациентов', difficulty: 2 },
-        { id: 'prof-47', question: 'Я умею работать с информацией и базами данных', difficulty: 2 },
-        { id: 'prof-48', question: 'Меня привлекает работа в операционной', difficulty: 2 },
-        { id: 'prof-49', question: 'Я интересуюсь вопросами здорового образа жизни', difficulty: 2 },
-        { id: 'prof-50', question: 'Я готов работать с тяжелобольными пациентами', difficulty: 2 },
+        // Р‘Р»РѕРє 2: Р›РёС‡РЅС‹Рµ РєР°С‡РµСЃС‚РІР° (26-50)
+        { id: 'prof-26', question: 'РЇ РЅР°Р±Р»СЋРґР°С‚РµР»РµРЅ Рё Р·Р°РјРµС‡Р°СЋ РёР·РјРµРЅРµРЅРёСЏ РІ СЃРѕСЃС‚РѕСЏРЅРёРё Р»СЋРґРµР№', difficulty: 2 },
+        { id: 'prof-27', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ РїСЂРѕС„РёР»Р°РєС‚РёРєР° Р·Р°Р±РѕР»РµРІР°РЅРёР№', difficulty: 2 },
+        { id: 'prof-28', question: 'РЇ РіРѕС‚РѕРІ Р±СЂР°С‚СЊ РЅР° СЃРµР±СЏ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ Р·Р° Р·РґРѕСЂРѕРІСЊРµ РїР°С†РёРµРЅС‚РѕРІ', difficulty: 2 },
+        { id: 'prof-29', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° С„Р°СЂРјР°РєРѕР»РѕРіРёСЏ Рё РґРµР№СЃС‚РІРёРµ Р»РµРєР°СЂСЃС‚РІ', difficulty: 2 },
+        { id: 'prof-30', question: 'РЇ СѓРјРµСЋ СЃРѕС…СЂР°РЅСЏС‚СЊ СЃРїРѕРєРѕР№СЃС‚РІРёРµ РІ СЌРєСЃС‚СЂРµРЅРЅС‹С… СЃРёС‚СѓР°С†РёСЏС…', difficulty: 2 },
+        { id: 'prof-31', question: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р°РЅР°Р»РёР·РёСЂРѕРІР°С‚СЊ СЃРёРјРїС‚РѕРјС‹ Рё СЃС‚Р°РІРёС‚СЊ РґРёР°РіРЅРѕР·С‹', difficulty: 2 },
+        { id: 'prof-32', question: 'РЇ РіРѕС‚РѕРІ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РјРµРґРёС†РёРЅСЃРєРѕР№ РґРѕРєСѓРјРµРЅС‚Р°С†РёРµР№', difficulty: 2 },
+        { id: 'prof-33', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ С…РёСЂСѓСЂРіРёС‡РµСЃРєРѕРµ РЅР°РїСЂР°РІР»РµРЅРёРµ РІ РјРµРґРёС†РёРЅРµ', difficulty: 2 },
+        { id: 'prof-34', question: 'РЇ РёРЅС‚РµСЂРµСЃСѓСЋСЃСЊ РіРµРЅРµС‚РёРєРѕР№ Рё РЅР°СЃР»РµРґСЃС‚РІРµРЅРЅС‹РјРё Р·Р°Р±РѕР»РµРІР°РЅРёСЏРјРё', difficulty: 2 },
+        { id: 'prof-35', question: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РѕР±СѓС‡Р°С‚СЊ РґСЂСѓРіРёС… Рё РґРµР»РёС‚СЊСЃСЏ Р·РЅР°РЅРёСЏРјРё', difficulty: 2 },
+        { id: 'prof-36', question: 'РЈ РјРµРЅСЏ С…РѕСЂРѕС€Р°СЏ РјРµР»РєР°СЏ РјРѕС‚РѕСЂРёРєР° СЂСѓРє', difficulty: 2 },
+        { id: 'prof-37', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ РЅРµРѕС‚Р»РѕР¶РЅР°СЏ РјРµРґРёС†РёРЅСЃРєР°СЏ РїРѕРјРѕС‰СЊ', difficulty: 2 },
+        { id: 'prof-38', question: 'РЇ РіРѕС‚РѕРІ СЂР°Р±РѕС‚Р°С‚СЊ РІ Р»СЋР±С‹С… СѓСЃР»РѕРІРёСЏС…, РІРєР»СЋС‡Р°СЏ РїРѕР»РµРІС‹Рµ', difficulty: 2 },
+        { id: 'prof-39', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° РјРµРґРёС†РёРЅСЃРєР°СЏ РґРёР°РіРЅРѕСЃС‚РёРєР°', difficulty: 2 },
+        { id: 'prof-40', question: 'РЇ СЃС‚СЂРµРјР»СЋСЃСЊ Рє СЃРѕРІРµСЂС€РµРЅСЃС‚РІСѓ РІ СЃРІРѕРµР№ СЂР°Р±РѕС‚Рµ', difficulty: 2 },
+        { id: 'prof-41', question: 'РЇ РјРѕРіСѓ РґРѕР»РіРѕ СЃС‚РѕСЏС‚СЊ РЅР° РЅРѕРіР°С… РІРѕ РІСЂРµРјСЏ СЂР°Р±РѕС‚С‹', difficulty: 2 },
+        { id: 'prof-42', question: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ СЃ СЃРѕРІСЂРµРјРµРЅРЅС‹Рј РѕР±РѕСЂСѓРґРѕРІР°РЅРёРµРј', difficulty: 2 },
+        { id: 'prof-43', question: 'РЇ СѓРјРµСЋ РЅР°С…РѕРґРёС‚СЊ РїРѕРґС…РѕРґ Рє СЂР°Р·РЅС‹Рј Р»СЋРґСЏРј', difficulty: 2 },
+        { id: 'prof-44', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ РїРµРґРёР°С‚СЂРёСЏ - СЂР°Р±РѕС‚Р° СЃ РґРµС‚СЊРјРё', difficulty: 2 },
+        { id: 'prof-45', question: 'РЇ РіРѕС‚РѕРІ Рє РЅРµРЅРѕСЂРјРёСЂРѕРІР°РЅРЅРѕРјСѓ СЂР°Р±РѕС‡РµРјСѓ РґРЅСЋ', difficulty: 2 },
+        { id: 'prof-46', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° СЂРµР°Р±РёР»РёС‚Р°С†РёСЏ Рё РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РїР°С†РёРµРЅС‚РѕРІ', difficulty: 2 },
+        { id: 'prof-47', question: 'РЇ СѓРјРµСЋ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рё Р±Р°Р·Р°РјРё РґР°РЅРЅС‹С…', difficulty: 2 },
+        { id: 'prof-48', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ СЂР°Р±РѕС‚Р° РІ РѕРїРµСЂР°С†РёРѕРЅРЅРѕР№', difficulty: 2 },
+        { id: 'prof-49', question: 'РЇ РёРЅС‚РµСЂРµСЃСѓСЋСЃСЊ РІРѕРїСЂРѕСЃР°РјРё Р·РґРѕСЂРѕРІРѕРіРѕ РѕР±СЂР°Р·Р° Р¶РёР·РЅРё', difficulty: 2 },
+        { id: 'prof-50', question: 'РЇ РіРѕС‚РѕРІ СЂР°Р±РѕС‚Р°С‚СЊ СЃ С‚СЏР¶РµР»РѕР±РѕР»СЊРЅС‹РјРё РїР°С†РёРµРЅС‚Р°РјРё', difficulty: 2 },
         
-        // Блок 3: Профессиональные ориентиры (51-75)
-        { id: 'prof-51', question: 'Меня привлекает работа в скорой помощи', difficulty: 3 },
-        { id: 'prof-52', question: 'Я хотел бы заниматься научными исследованиями в медицине', difficulty: 3 },
-        { id: 'prof-53', question: 'Мне интересна работа с инфекционными заболеваниями', difficulty: 3 },
-        { id: 'prof-54', question: 'Я вижу себя семейным врачом общей практики', difficulty: 3 },
-        { id: 'prof-55', question: 'Меня привлекает пластическая хирургия', difficulty: 3 },
-        { id: 'prof-56', question: 'Я хотел бы работать в области онкологии', difficulty: 3 },
-        { id: 'prof-57', question: 'Мне интересна кардиология - лечение сердечных заболеваний', difficulty: 3 },
-        { id: 'prof-58', question: 'Я вижу себя работающим в реанимации', difficulty: 3 },
-        { id: 'prof-59', question: 'Меня привлекает неврология - работа с нервной системой', difficulty: 3 },
-        { id: 'prof-60', question: 'Я хотел бы заниматься спортивной медициной', difficulty: 3 },
-        { id: 'prof-61', question: 'Мне интересна офтальмология - лечение глаз', difficulty: 3 },
-        { id: 'prof-62', question: 'Я вижу себя работающим стоматологом', difficulty: 3 },
-        { id: 'prof-63', question: 'Меня привлекает психиатрия и психотерапия', difficulty: 3 },
-        { id: 'prof-64', question: 'Я хотел бы заниматься акушерством и гинекологией', difficulty: 3 },
-        { id: 'prof-65', question: 'Мне интересна дерматология - лечение кожных заболеваний', difficulty: 3 },
-        { id: 'prof-66', question: 'Я вижу себя работающим анестезиологом', difficulty: 3 },
-        { id: 'prof-67', question: 'Меня привлекает эндокринология', difficulty: 3 },
-        { id: 'prof-68', question: 'Я хотел бы заниматься травматологией и ортопедией', difficulty: 3 },
-        { id: 'prof-69', question: 'Мне интересна урология', difficulty: 3 },
-        { id: 'prof-70', question: 'Я вижу себя работающим в лаборатории', difficulty: 3 },
-        { id: 'prof-71', question: 'Меня привлекает радиология и диагностика', difficulty: 3 },
-        { id: 'prof-72', question: 'Я хотел бы заниматься паллиативной медициной', difficulty: 3 },
-        { id: 'prof-73', question: 'Мне интересна гастроэнтерология', difficulty: 3 },
-        { id: 'prof-74', question: 'Я вижу себя работающим пульмонологом', difficulty: 3 },
-        { id: 'prof-75', question: 'Меня привлекает нефрология - лечение почек', difficulty: 3 },
+        // Р‘Р»РѕРє 3: РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Рµ РѕСЂРёРµРЅС‚РёСЂС‹ (51-75)
+        { id: 'prof-51', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ СЂР°Р±РѕС‚Р° РІ СЃРєРѕСЂРѕР№ РїРѕРјРѕС‰Рё', difficulty: 3 },
+        { id: 'prof-52', question: 'РЇ С…РѕС‚РµР» Р±С‹ Р·Р°РЅРёРјР°С‚СЊСЃСЏ РЅР°СѓС‡РЅС‹РјРё РёСЃСЃР»РµРґРѕРІР°РЅРёСЏРјРё РІ РјРµРґРёС†РёРЅРµ', difficulty: 3 },
+        { id: 'prof-53', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° СЂР°Р±РѕС‚Р° СЃ РёРЅС„РµРєС†РёРѕРЅРЅС‹РјРё Р·Р°Р±РѕР»РµРІР°РЅРёСЏРјРё', difficulty: 3 },
+        { id: 'prof-54', question: 'РЇ РІРёР¶Сѓ СЃРµР±СЏ СЃРµРјРµР№РЅС‹Рј РІСЂР°С‡РѕРј РѕР±С‰РµР№ РїСЂР°РєС‚РёРєРё', difficulty: 3 },
+        { id: 'prof-55', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РїР»Р°СЃС‚РёС‡РµСЃРєР°СЏ С…РёСЂСѓСЂРіРёСЏ', difficulty: 3 },
+        { id: 'prof-56', question: 'РЇ С…РѕС‚РµР» Р±С‹ СЂР°Р±РѕС‚Р°С‚СЊ РІ РѕР±Р»Р°СЃС‚Рё РѕРЅРєРѕР»РѕРіРёРё', difficulty: 3 },
+        { id: 'prof-57', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° РєР°СЂРґРёРѕР»РѕРіРёСЏ - Р»РµС‡РµРЅРёРµ СЃРµСЂРґРµС‡РЅС‹С… Р·Р°Р±РѕР»РµРІР°РЅРёР№', difficulty: 3 },
+        { id: 'prof-58', question: 'РЇ РІРёР¶Сѓ СЃРµР±СЏ СЂР°Р±РѕС‚Р°СЋС‰РёРј РІ СЂРµР°РЅРёРјР°С†РёРё', difficulty: 3 },
+        { id: 'prof-59', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РЅРµРІСЂРѕР»РѕРіРёСЏ - СЂР°Р±РѕС‚Р° СЃ РЅРµСЂРІРЅРѕР№ СЃРёСЃС‚РµРјРѕР№', difficulty: 3 },
+        { id: 'prof-60', question: 'РЇ С…РѕС‚РµР» Р±С‹ Р·Р°РЅРёРјР°С‚СЊСЃСЏ СЃРїРѕСЂС‚РёРІРЅРѕР№ РјРµРґРёС†РёРЅРѕР№', difficulty: 3 },
+        { id: 'prof-61', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° РѕС„С‚Р°Р»СЊРјРѕР»РѕРіРёСЏ - Р»РµС‡РµРЅРёРµ РіР»Р°Р·', difficulty: 3 },
+        { id: 'prof-62', question: 'РЇ РІРёР¶Сѓ СЃРµР±СЏ СЂР°Р±РѕС‚Р°СЋС‰РёРј СЃС‚РѕРјР°С‚РѕР»РѕРіРѕРј', difficulty: 3 },
+        { id: 'prof-63', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РїСЃРёС…РёР°С‚СЂРёСЏ Рё РїСЃРёС…РѕС‚РµСЂР°РїРёСЏ', difficulty: 3 },
+        { id: 'prof-64', question: 'РЇ С…РѕС‚РµР» Р±С‹ Р·Р°РЅРёРјР°С‚СЊСЃСЏ Р°РєСѓС€РµСЂСЃС‚РІРѕРј Рё РіРёРЅРµРєРѕР»РѕРіРёРµР№', difficulty: 3 },
+        { id: 'prof-65', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° РґРµСЂРјР°С‚РѕР»РѕРіРёСЏ - Р»РµС‡РµРЅРёРµ РєРѕР¶РЅС‹С… Р·Р°Р±РѕР»РµРІР°РЅРёР№', difficulty: 3 },
+        { id: 'prof-66', question: 'РЇ РІРёР¶Сѓ СЃРµР±СЏ СЂР°Р±РѕС‚Р°СЋС‰РёРј Р°РЅРµСЃС‚РµР·РёРѕР»РѕРіРѕРј', difficulty: 3 },
+        { id: 'prof-67', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ СЌРЅРґРѕРєСЂРёРЅРѕР»РѕРіРёСЏ', difficulty: 3 },
+        { id: 'prof-68', question: 'РЇ С…РѕС‚РµР» Р±С‹ Р·Р°РЅРёРјР°С‚СЊСЃСЏ С‚СЂР°РІРјР°С‚РѕР»РѕРіРёРµР№ Рё РѕСЂС‚РѕРїРµРґРёРµР№', difficulty: 3 },
+        { id: 'prof-69', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° СѓСЂРѕР»РѕРіРёСЏ', difficulty: 3 },
+        { id: 'prof-70', question: 'РЇ РІРёР¶Сѓ СЃРµР±СЏ СЂР°Р±РѕС‚Р°СЋС‰РёРј РІ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё', difficulty: 3 },
+        { id: 'prof-71', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ СЂР°РґРёРѕР»РѕРіРёСЏ Рё РґРёР°РіРЅРѕСЃС‚РёРєР°', difficulty: 3 },
+        { id: 'prof-72', question: 'РЇ С…РѕС‚РµР» Р±С‹ Р·Р°РЅРёРјР°С‚СЊСЃСЏ РїР°Р»Р»РёР°С‚РёРІРЅРѕР№ РјРµРґРёС†РёРЅРѕР№', difficulty: 3 },
+        { id: 'prof-73', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° РіР°СЃС‚СЂРѕСЌРЅС‚РµСЂРѕР»РѕРіРёСЏ', difficulty: 3 },
+        { id: 'prof-74', question: 'РЇ РІРёР¶Сѓ СЃРµР±СЏ СЂР°Р±РѕС‚Р°СЋС‰РёРј РїСѓР»СЊРјРѕРЅРѕР»РѕРіРѕРј', difficulty: 3 },
+        { id: 'prof-75', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РЅРµС„СЂРѕР»РѕРіРёСЏ - Р»РµС‡РµРЅРёРµ РїРѕС‡РµРє', difficulty: 3 },
         
-        // Блок 4: Ценности и мотивация (76-100)
-        { id: 'prof-76', question: 'Для меня важно видеть результат своей работы - выздоровление пациента', difficulty: 4 },
-        { id: 'prof-77', question: 'Я готов жертвовать личным временем ради пациентов', difficulty: 4 },
-        { id: 'prof-78', question: 'Меня мотивирует возможность спасать жизни', difficulty: 4 },
-        { id: 'prof-79', question: 'Я хочу внести вклад в развитие медицинской науки', difficulty: 4 },
-        { id: 'prof-80', question: 'Для меня важен престиж медицинской профессии', difficulty: 4 },
-        { id: 'prof-81', question: 'Я готов к эмоциональным нагрузкам профессии врача', difficulty: 4 },
-        { id: 'prof-82', question: 'Меня привлекает возможность помогать людям каждый день', difficulty: 4 },
-        { id: 'prof-83', question: 'Я хочу работать в престижной клинике', difficulty: 4 },
-        { id: 'prof-84', question: 'Для меня важна стабильность медицинской профессии', difficulty: 4 },
-        { id: 'prof-85', question: 'Я готов к постоянному профессиональному росту', difficulty: 4 },
-        { id: 'prof-86', question: 'Меня привлекает международное признание в медицине', difficulty: 4 },
-        { id: 'prof-87', question: 'Я хочу открыть собственную клинику или практику', difficulty: 4 },
-        { id: 'prof-88', question: 'Для меня важно уважение коллег и пациентов', difficulty: 4 },
-        { id: 'prof-89', question: 'Я готов работать в сельской местности, где не хватает врачей', difficulty: 4 },
-        { id: 'prof-90', question: 'Меня привлекает преподавание в медицинском вузе', difficulty: 4 },
-        { id: 'prof-91', question: 'Я хочу участвовать в гуманитарных медицинских миссиях', difficulty: 4 },
-        { id: 'prof-92', question: 'Для меня важен баланс работы и личной жизни', difficulty: 4 },
-        { id: 'prof-93', question: 'Я готов к финансовым вложениям в свое медицинское образование', difficulty: 4 },
-        { id: 'prof-94', question: 'Меня привлекает возможность работать за рубежом', difficulty: 4 },
-        { id: 'prof-95', question: 'Я хочу специализироваться в редкой области медицины', difficulty: 4 },
-        { id: 'prof-96', question: 'Для меня важно быть на переднем крае медицинских технологий', difficulty: 4 },
-        { id: 'prof-97', question: 'Я готов к многолетней ординатуре для узкой специализации', difficulty: 4 },
-        { id: 'prof-98', question: 'Меня привлекает административная работа в здравоохранении', difficulty: 4 },
-        { id: 'prof-99', question: 'Я хочу создавать новые методы лечения', difficulty: 4 },
-        { id: 'prof-100', question: 'Для меня медицина - это призвание, а не просто работа', difficulty: 4 }
+        // Р‘Р»РѕРє 4: Р¦РµРЅРЅРѕСЃС‚Рё Рё РјРѕС‚РёРІР°С†РёСЏ (76-100)
+        { id: 'prof-76', question: 'Р”Р»СЏ РјРµРЅСЏ РІР°Р¶РЅРѕ РІРёРґРµС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚ СЃРІРѕРµР№ СЂР°Р±РѕС‚С‹ - РІС‹Р·РґРѕСЂРѕРІР»РµРЅРёРµ РїР°С†РёРµРЅС‚Р°', difficulty: 4 },
+        { id: 'prof-77', question: 'РЇ РіРѕС‚РѕРІ Р¶РµСЂС‚РІРѕРІР°С‚СЊ Р»РёС‡РЅС‹Рј РІСЂРµРјРµРЅРµРј СЂР°РґРё РїР°С†РёРµРЅС‚РѕРІ', difficulty: 4 },
+        { id: 'prof-78', question: 'РњРµРЅСЏ РјРѕС‚РёРІРёСЂСѓРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЃРїР°СЃР°С‚СЊ Р¶РёР·РЅРё', difficulty: 4 },
+        { id: 'prof-79', question: 'РЇ С…РѕС‡Сѓ РІРЅРµСЃС‚Рё РІРєР»Р°Рґ РІ СЂР°Р·РІРёС‚РёРµ РјРµРґРёС†РёРЅСЃРєРѕР№ РЅР°СѓРєРё', difficulty: 4 },
+        { id: 'prof-80', question: 'Р”Р»СЏ РјРµРЅСЏ РІР°Р¶РµРЅ РїСЂРµСЃС‚РёР¶ РјРµРґРёС†РёРЅСЃРєРѕР№ РїСЂРѕС„РµСЃСЃРёРё', difficulty: 4 },
+        { id: 'prof-81', question: 'РЇ РіРѕС‚РѕРІ Рє СЌРјРѕС†РёРѕРЅР°Р»СЊРЅС‹Рј РЅР°РіСЂСѓР·РєР°Рј РїСЂРѕС„РµСЃСЃРёРё РІСЂР°С‡Р°', difficulty: 4 },
+        { id: 'prof-82', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј РєР°Р¶РґС‹Р№ РґРµРЅСЊ', difficulty: 4 },
+        { id: 'prof-83', question: 'РЇ С…РѕС‡Сѓ СЂР°Р±РѕС‚Р°С‚СЊ РІ РїСЂРµСЃС‚РёР¶РЅРѕР№ РєР»РёРЅРёРєРµ', difficulty: 4 },
+        { id: 'prof-84', question: 'Р”Р»СЏ РјРµРЅСЏ РІР°Р¶РЅР° СЃС‚Р°Р±РёР»СЊРЅРѕСЃС‚СЊ РјРµРґРёС†РёРЅСЃРєРѕР№ РїСЂРѕС„РµСЃСЃРёРё', difficulty: 4 },
+        { id: 'prof-85', question: 'РЇ РіРѕС‚РѕРІ Рє РїРѕСЃС‚РѕСЏРЅРЅРѕРјСѓ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕРјСѓ СЂРѕСЃС‚Сѓ', difficulty: 4 },
+        { id: 'prof-86', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РјРµР¶РґСѓРЅР°СЂРѕРґРЅРѕРµ РїСЂРёР·РЅР°РЅРёРµ РІ РјРµРґРёС†РёРЅРµ', difficulty: 4 },
+        { id: 'prof-87', question: 'РЇ С…РѕС‡Сѓ РѕС‚РєСЂС‹С‚СЊ СЃРѕР±СЃС‚РІРµРЅРЅСѓСЋ РєР»РёРЅРёРєСѓ РёР»Рё РїСЂР°РєС‚РёРєСѓ', difficulty: 4 },
+        { id: 'prof-88', question: 'Р”Р»СЏ РјРµРЅСЏ РІР°Р¶РЅРѕ СѓРІР°Р¶РµРЅРёРµ РєРѕР»Р»РµРі Рё РїР°С†РёРµРЅС‚РѕРІ', difficulty: 4 },
+        { id: 'prof-89', question: 'РЇ РіРѕС‚РѕРІ СЂР°Р±РѕС‚Р°С‚СЊ РІ СЃРµР»СЊСЃРєРѕР№ РјРµСЃС‚РЅРѕСЃС‚Рё, РіРґРµ РЅРµ С…РІР°С‚Р°РµС‚ РІСЂР°С‡РµР№', difficulty: 4 },
+        { id: 'prof-90', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РїСЂРµРїРѕРґР°РІР°РЅРёРµ РІ РјРµРґРёС†РёРЅСЃРєРѕРј РІСѓР·Рµ', difficulty: 4 },
+        { id: 'prof-91', question: 'РЇ С…РѕС‡Сѓ СѓС‡Р°СЃС‚РІРѕРІР°С‚СЊ РІ РіСѓРјР°РЅРёС‚Р°СЂРЅС‹С… РјРµРґРёС†РёРЅСЃРєРёС… РјРёСЃСЃРёСЏС…', difficulty: 4 },
+        { id: 'prof-92', question: 'Р”Р»СЏ РјРµРЅСЏ РІР°Р¶РµРЅ Р±Р°Р»Р°РЅСЃ СЂР°Р±РѕС‚С‹ Рё Р»РёС‡РЅРѕР№ Р¶РёР·РЅРё', difficulty: 4 },
+        { id: 'prof-93', question: 'РЇ РіРѕС‚РѕРІ Рє С„РёРЅР°РЅСЃРѕРІС‹Рј РІР»РѕР¶РµРЅРёСЏРј РІ СЃРІРѕРµ РјРµРґРёС†РёРЅСЃРєРѕРµ РѕР±СЂР°Р·РѕРІР°РЅРёРµ', difficulty: 4 },
+        { id: 'prof-94', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЂР°Р±РѕС‚Р°С‚СЊ Р·Р° СЂСѓР±РµР¶РѕРј', difficulty: 4 },
+        { id: 'prof-95', question: 'РЇ С…РѕС‡Сѓ СЃРїРµС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊСЃСЏ РІ СЂРµРґРєРѕР№ РѕР±Р»Р°СЃС‚Рё РјРµРґРёС†РёРЅС‹', difficulty: 4 },
+        { id: 'prof-96', question: 'Р”Р»СЏ РјРµРЅСЏ РІР°Р¶РЅРѕ Р±С‹С‚СЊ РЅР° РїРµСЂРµРґРЅРµРј РєСЂР°Рµ РјРµРґРёС†РёРЅСЃРєРёС… С‚РµС…РЅРѕР»РѕРіРёР№', difficulty: 4 },
+        { id: 'prof-97', question: 'РЇ РіРѕС‚РѕРІ Рє РјРЅРѕРіРѕР»РµС‚РЅРµР№ РѕСЂРґРёРЅР°С‚СѓСЂРµ РґР»СЏ СѓР·РєРѕР№ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё', difficulty: 4 },
+        { id: 'prof-98', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РёРІРЅР°СЏ СЂР°Р±РѕС‚Р° РІ Р·РґСЂР°РІРѕРѕС…СЂР°РЅРµРЅРёРё', difficulty: 4 },
+        { id: 'prof-99', question: 'РЇ С…РѕС‡Сѓ СЃРѕР·РґР°РІР°С‚СЊ РЅРѕРІС‹Рµ РјРµС‚РѕРґС‹ Р»РµС‡РµРЅРёСЏ', difficulty: 4 },
+        { id: 'prof-100', question: 'Р”Р»СЏ РјРµРЅСЏ РјРµРґРёС†РёРЅР° - СЌС‚Рѕ РїСЂРёР·РІР°РЅРёРµ, Р° РЅРµ РїСЂРѕСЃС‚Рѕ СЂР°Р±РѕС‚Р°', difficulty: 4 }
     ];
     
-    // Добавляем стандартные опции для всех вопросов
+    // Р”РѕР±Р°РІР»СЏРµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Рµ РѕРїС†РёРё РґР»СЏ РІСЃРµС… РІРѕРїСЂРѕСЃРѕРІ
     questions.forEach(q => {
-        q.options = ["Полностью согласен", "Скорее согласен", "Затрудняюсь ответить", "Скорее не согласен", "Полностью не согласен"];
+        q.options = ["РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ", "РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ", "Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ", "РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ", "РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ"];
         q.correct = 0;
-        q.explanation = "Этот вопрос поможет определить ваши предпочтения в медицинской области.";
+        q.explanation = "Р­С‚РѕС‚ РІРѕРїСЂРѕСЃ РїРѕРјРѕР¶РµС‚ РѕРїСЂРµРґРµР»РёС‚СЊ РІР°С€Рё РїСЂРµРґРїРѕС‡С‚РµРЅРёСЏ РІ РјРµРґРёС†РёРЅСЃРєРѕР№ РѕР±Р»Р°СЃС‚Рё.";
     });
     
-    // Группируем по уровням сложности
+    // Р“СЂСѓРїРїРёСЂСѓРµРј РїРѕ СѓСЂРѕРІРЅСЏРј СЃР»РѕР¶РЅРѕСЃС‚Рё
     const groupedQuestions = {};
     questions.forEach(q => {
         if (!groupedQuestions[q.difficulty]) groupedQuestions[q.difficulty] = [];
@@ -1902,124 +1902,124 @@ function generateProfessionQuestions() {
     return groupedQuestions;
 }
 
-// Генерация 100 уникальных вопросов для теста по химии
+// Р“РµРЅРµСЂР°С†РёСЏ 100 СѓРЅРёРєР°Р»СЊРЅС‹С… РІРѕРїСЂРѕСЃРѕРІ РґР»СЏ С‚РµСЃС‚Р° РїРѕ С…РёРјРёРё
 function generateChemistryQuestions() {
     const questions = [
-        // Блок 1: Основы химии (1-25)
-        { id: 'chem-1', question: 'Что такое pH?', options: ['Мера кислотности раствора', 'Мера температуры', 'Мера давления', 'Мера объема'], correct: 0, difficulty: 1 },
-        { id: 'chem-2', question: 'Какова химическая формула воды?', options: ['H?O', 'CO?', 'NaCl', 'O?'], correct: 0, difficulty: 1 },
-        { id: 'chem-3', question: 'Какой газ поддерживает горение?', options: ['Кислород', 'Азот', 'Углекислый газ', 'Водород'], correct: 0, difficulty: 1 },
-        { id: 'chem-4', question: 'Какой элемент является самым легким?', options: ['Водород', 'Гелий', 'Литий', 'Кислород'], correct: 0, difficulty: 1 },
-        { id: 'chem-5', question: 'Что такое катализатор?', options: ['Вещество, ускоряющее реакцию', 'Продукт реакции', 'Исходное вещество', 'Растворитель'], correct: 0, difficulty: 1 },
-        { id: 'chem-6', question: 'Какова формула поваренной соли?', options: ['NaCl', 'KCl', 'CaCl?', 'MgCl?'], correct: 0, difficulty: 1 },
-        { id: 'chem-7', question: 'Какой элемент обозначается символом Fe?', options: ['Железо', 'Фтор', 'Франций', 'Фермий'], correct: 0, difficulty: 1 },
-        { id: 'chem-8', question: 'Сколько электронов на внешнем уровне атома кислорода?', options: ['6', '8', '2', '4'], correct: 0, difficulty: 1 },
-        { id: 'chem-9', question: 'Какой металл жидкий при комнатной температуре?', options: ['Ртуть', 'Натрий', 'Калий', 'Цезий'], correct: 0, difficulty: 1 },
-        { id: 'chem-10', question: 'Что такое атомная масса?', options: ['Масса атома в а.е.м.', 'Количество протонов', 'Количество электронов', 'Заряд ядра'], correct: 0, difficulty: 1 },
-        { id: 'chem-11', question: 'Какова формула углекислого газа?', options: ['CO?', 'CO', 'CH?', 'C?H?'], correct: 0, difficulty: 1 },
-        { id: 'chem-12', question: 'Что такое электролиз?', options: ['Разложение вещества электрическим током', 'Плавление металла', 'Испарение жидкости', 'Растворение соли'], correct: 0, difficulty: 1 },
-        { id: 'chem-13', question: 'Какой элемент - основа органической химии?', options: ['Углерод', 'Кислород', 'Водород', 'Азот'], correct: 0, difficulty: 1 },
-        { id: 'chem-14', question: 'Что такое индикатор в химии?', options: ['Вещество, меняющее цвет от pH', 'Измерительный прибор', 'Катализатор', 'Растворитель'], correct: 0, difficulty: 1 },
-        { id: 'chem-15', question: 'Какой газ используется в газированных напитках?', options: ['Углекислый газ', 'Кислород', 'Азот', 'Гелий'], correct: 0, difficulty: 1 },
-        { id: 'chem-16', question: 'Что такое молекулярная масса?', options: ['Сумма атомных масс в молекуле', 'Масса одного атома', 'Плотность вещества', 'Объем молекулы'], correct: 0, difficulty: 1 },
-        { id: 'chem-17', question: 'Какой элемент обозначается Au?', options: ['Золото', 'Серебро', 'Алюминий', 'Аргон'], correct: 0, difficulty: 1 },
-        { id: 'chem-18', question: 'Что такое валентность?', options: ['Способность атома образовывать связи', 'Заряд иона', 'Масса атома', 'Размер атома'], correct: 0, difficulty: 1 },
-        { id: 'chem-19', question: 'Какой элемент является галогеном?', options: ['Хлор', 'Кислород', 'Азот', 'Углерод'], correct: 0, difficulty: 1 },
-        { id: 'chem-20', question: 'Что такое ион?', options: ['Заряженная частица', 'Нейтральный атом', 'Молекула', 'Электрон'], correct: 0, difficulty: 1 },
-        { id: 'chem-21', question: 'Какова формула метана?', options: ['CH?', 'C?H?', 'C?H?', 'C?H?'], correct: 0, difficulty: 1 },
-        { id: 'chem-22', question: 'Что такое кислота?', options: ['Вещество, отдающее протон', 'Вещество, принимающее протон', 'Соль', 'Оксид'], correct: 0, difficulty: 1 },
-        { id: 'chem-23', question: 'Какой элемент обозначается Ag?', options: ['Серебро', 'Золото', 'Алюминий', 'Аргон'], correct: 0, difficulty: 1 },
-        { id: 'chem-24', question: 'Что такое щелочь?', options: ['Растворимое основание', 'Кислота', 'Соль', 'Оксид'], correct: 0, difficulty: 1 },
-        { id: 'chem-25', question: 'Какой газ составляет 78% атмосферы?', options: ['Азот', 'Кислород', 'Аргон', 'Углекислый газ'], correct: 0, difficulty: 1 },
+        // Р‘Р»РѕРє 1: РћСЃРЅРѕРІС‹ С…РёРјРёРё (1-25)
+        { id: 'chem-1', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ pH?', options: ['РњРµСЂР° РєРёСЃР»РѕС‚РЅРѕСЃС‚Рё СЂР°СЃС‚РІРѕСЂР°', 'РњРµСЂР° С‚РµРјРїРµСЂР°С‚СѓСЂС‹', 'РњРµСЂР° РґР°РІР»РµРЅРёСЏ', 'РњРµСЂР° РѕР±СЉРµРјР°'], correct: 0, difficulty: 1 },
+        { id: 'chem-2', question: 'РљР°РєРѕРІР° С…РёРјРёС‡РµСЃРєР°СЏ С„РѕСЂРјСѓР»Р° РІРѕРґС‹?', options: ['Hв‚‚O', 'COв‚‚', 'NaCl', 'Oв‚‚'], correct: 0, difficulty: 1 },
+        { id: 'chem-3', question: 'РљР°РєРѕР№ РіР°Р· РїРѕРґРґРµСЂР¶РёРІР°РµС‚ РіРѕСЂРµРЅРёРµ?', options: ['РљРёСЃР»РѕСЂРѕРґ', 'РђР·РѕС‚', 'РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·', 'Р’РѕРґРѕСЂРѕРґ'], correct: 0, difficulty: 1 },
+        { id: 'chem-4', question: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ СЏРІР»СЏРµС‚СЃСЏ СЃР°РјС‹Рј Р»РµРіРєРёРј?', options: ['Р’РѕРґРѕСЂРѕРґ', 'Р“РµР»РёР№', 'Р›РёС‚РёР№', 'РљРёСЃР»РѕСЂРѕРґ'], correct: 0, difficulty: 1 },
+        { id: 'chem-5', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РєР°С‚Р°Р»РёР·Р°С‚РѕСЂ?', options: ['Р’РµС‰РµСЃС‚РІРѕ, СѓСЃРєРѕСЂСЏСЋС‰РµРµ СЂРµР°РєС†РёСЋ', 'РџСЂРѕРґСѓРєС‚ СЂРµР°РєС†РёРё', 'РСЃС…РѕРґРЅРѕРµ РІРµС‰РµСЃС‚РІРѕ', 'Р Р°СЃС‚РІРѕСЂРёС‚РµР»СЊ'], correct: 0, difficulty: 1 },
+        { id: 'chem-6', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° РїРѕРІР°СЂРµРЅРЅРѕР№ СЃРѕР»Рё?', options: ['NaCl', 'KCl', 'CaClв‚‚', 'MgClв‚‚'], correct: 0, difficulty: 1 },
+        { id: 'chem-7', question: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ РѕР±РѕР·РЅР°С‡Р°РµС‚СЃСЏ СЃРёРјРІРѕР»РѕРј Fe?', options: ['Р–РµР»РµР·Рѕ', 'Р¤С‚РѕСЂ', 'Р¤СЂР°РЅС†РёР№', 'Р¤РµСЂРјРёР№'], correct: 0, difficulty: 1 },
+        { id: 'chem-8', question: 'РЎРєРѕР»СЊРєРѕ СЌР»РµРєС‚СЂРѕРЅРѕРІ РЅР° РІРЅРµС€РЅРµРј СѓСЂРѕРІРЅРµ Р°С‚РѕРјР° РєРёСЃР»РѕСЂРѕРґР°?', options: ['6', '8', '2', '4'], correct: 0, difficulty: 1 },
+        { id: 'chem-9', question: 'РљР°РєРѕР№ РјРµС‚Р°Р»Р» Р¶РёРґРєРёР№ РїСЂРё РєРѕРјРЅР°С‚РЅРѕР№ С‚РµРјРїРµСЂР°С‚СѓСЂРµ?', options: ['Р С‚СѓС‚СЊ', 'РќР°С‚СЂРёР№', 'РљР°Р»РёР№', 'Р¦РµР·РёР№'], correct: 0, difficulty: 1 },
+        { id: 'chem-10', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°С‚РѕРјРЅР°СЏ РјР°СЃСЃР°?', options: ['РњР°СЃСЃР° Р°С‚РѕРјР° РІ Р°.Рµ.Рј.', 'РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕС‚РѕРЅРѕРІ', 'РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРєС‚СЂРѕРЅРѕРІ', 'Р—Р°СЂСЏРґ СЏРґСЂР°'], correct: 0, difficulty: 1 },
+        { id: 'chem-11', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° СѓРіР»РµРєРёСЃР»РѕРіРѕ РіР°Р·Р°?', options: ['COв‚‚', 'CO', 'CHв‚„', 'Cв‚‚Hв‚†'], correct: 0, difficulty: 1 },
+        { id: 'chem-12', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЌР»РµРєС‚СЂРѕР»РёР·?', options: ['Р Р°Р·Р»РѕР¶РµРЅРёРµ РІРµС‰РµСЃС‚РІР° СЌР»РµРєС‚СЂРёС‡РµСЃРєРёРј С‚РѕРєРѕРј', 'РџР»Р°РІР»РµРЅРёРµ РјРµС‚Р°Р»Р»Р°', 'РСЃРїР°СЂРµРЅРёРµ Р¶РёРґРєРѕСЃС‚Рё', 'Р Р°СЃС‚РІРѕСЂРµРЅРёРµ СЃРѕР»Рё'], correct: 0, difficulty: 1 },
+        { id: 'chem-13', question: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ - РѕСЃРЅРѕРІР° РѕСЂРіР°РЅРёС‡РµСЃРєРѕР№ С…РёРјРёРё?', options: ['РЈРіР»РµСЂРѕРґ', 'РљРёСЃР»РѕСЂРѕРґ', 'Р’РѕРґРѕСЂРѕРґ', 'РђР·РѕС‚'], correct: 0, difficulty: 1 },
+        { id: 'chem-14', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РёРЅРґРёРєР°С‚РѕСЂ РІ С…РёРјРёРё?', options: ['Р’РµС‰РµСЃС‚РІРѕ, РјРµРЅСЏСЋС‰РµРµ С†РІРµС‚ РѕС‚ pH', 'РР·РјРµСЂРёС‚РµР»СЊРЅС‹Р№ РїСЂРёР±РѕСЂ', 'РљР°С‚Р°Р»РёР·Р°С‚РѕСЂ', 'Р Р°СЃС‚РІРѕСЂРёС‚РµР»СЊ'], correct: 0, difficulty: 1 },
+        { id: 'chem-15', question: 'РљР°РєРѕР№ РіР°Р· РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ РіР°Р·РёСЂРѕРІР°РЅРЅС‹С… РЅР°РїРёС‚РєР°С…?', options: ['РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·', 'РљРёСЃР»РѕСЂРѕРґ', 'РђР·РѕС‚', 'Р“РµР»РёР№'], correct: 0, difficulty: 1 },
+        { id: 'chem-16', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РјРѕР»РµРєСѓР»СЏСЂРЅР°СЏ РјР°СЃСЃР°?', options: ['РЎСѓРјРјР° Р°С‚РѕРјРЅС‹С… РјР°СЃСЃ РІ РјРѕР»РµРєСѓР»Рµ', 'РњР°СЃСЃР° РѕРґРЅРѕРіРѕ Р°С‚РѕРјР°', 'РџР»РѕС‚РЅРѕСЃС‚СЊ РІРµС‰РµСЃС‚РІР°', 'РћР±СЉРµРј РјРѕР»РµРєСѓР»С‹'], correct: 0, difficulty: 1 },
+        { id: 'chem-17', question: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ РѕР±РѕР·РЅР°С‡Р°РµС‚СЃСЏ Au?', options: ['Р—РѕР»РѕС‚Рѕ', 'РЎРµСЂРµР±СЂРѕ', 'РђР»СЋРјРёРЅРёР№', 'РђСЂРіРѕРЅ'], correct: 0, difficulty: 1 },
+        { id: 'chem-18', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РІР°Р»РµРЅС‚РЅРѕСЃС‚СЊ?', options: ['РЎРїРѕСЃРѕР±РЅРѕСЃС‚СЊ Р°С‚РѕРјР° РѕР±СЂР°Р·РѕРІС‹РІР°С‚СЊ СЃРІСЏР·Рё', 'Р—Р°СЂСЏРґ РёРѕРЅР°', 'РњР°СЃСЃР° Р°С‚РѕРјР°', 'Р Р°Р·РјРµСЂ Р°С‚РѕРјР°'], correct: 0, difficulty: 1 },
+        { id: 'chem-19', question: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ СЏРІР»СЏРµС‚СЃСЏ РіР°Р»РѕРіРµРЅРѕРј?', options: ['РҐР»РѕСЂ', 'РљРёСЃР»РѕСЂРѕРґ', 'РђР·РѕС‚', 'РЈРіР»РµСЂРѕРґ'], correct: 0, difficulty: 1 },
+        { id: 'chem-20', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РёРѕРЅ?', options: ['Р—Р°СЂСЏР¶РµРЅРЅР°СЏ С‡Р°СЃС‚РёС†Р°', 'РќРµР№С‚СЂР°Р»СЊРЅС‹Р№ Р°С‚РѕРј', 'РњРѕР»РµРєСѓР»Р°', 'Р­Р»РµРєС‚СЂРѕРЅ'], correct: 0, difficulty: 1 },
+        { id: 'chem-21', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° РјРµС‚Р°РЅР°?', options: ['CHв‚„', 'Cв‚‚Hв‚†', 'Cв‚ѓHв‚€', 'Cв‚‚Hв‚„'], correct: 0, difficulty: 1 },
+        { id: 'chem-22', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РєРёСЃР»РѕС‚Р°?', options: ['Р’РµС‰РµСЃС‚РІРѕ, РѕС‚РґР°СЋС‰РµРµ РїСЂРѕС‚РѕРЅ', 'Р’РµС‰РµСЃС‚РІРѕ, РїСЂРёРЅРёРјР°СЋС‰РµРµ РїСЂРѕС‚РѕРЅ', 'РЎРѕР»СЊ', 'РћРєСЃРёРґ'], correct: 0, difficulty: 1 },
+        { id: 'chem-23', question: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ РѕР±РѕР·РЅР°С‡Р°РµС‚СЃСЏ Ag?', options: ['РЎРµСЂРµР±СЂРѕ', 'Р—РѕР»РѕС‚Рѕ', 'РђР»СЋРјРёРЅРёР№', 'РђСЂРіРѕРЅ'], correct: 0, difficulty: 1 },
+        { id: 'chem-24', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ С‰РµР»РѕС‡СЊ?', options: ['Р Р°СЃС‚РІРѕСЂРёРјРѕРµ РѕСЃРЅРѕРІР°РЅРёРµ', 'РљРёСЃР»РѕС‚Р°', 'РЎРѕР»СЊ', 'РћРєСЃРёРґ'], correct: 0, difficulty: 1 },
+        { id: 'chem-25', question: 'РљР°РєРѕР№ РіР°Р· СЃРѕСЃС‚Р°РІР»СЏРµС‚ 78% Р°С‚РјРѕСЃС„РµСЂС‹?', options: ['РђР·РѕС‚', 'РљРёСЃР»РѕСЂРѕРґ', 'РђСЂРіРѕРЅ', 'РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·'], correct: 0, difficulty: 1 },
         
-        // Блок 2: Неорганическая химия (26-50)
-        { id: 'chem-26', question: 'Что такое оксид?', options: ['Соединение с кислородом', 'Соединение с водородом', 'Соль', 'Кислота'], correct: 0, difficulty: 2 },
-        { id: 'chem-27', question: 'Какой металл самый электропроводный?', options: ['Серебро', 'Медь', 'Золото', 'Алюминий'], correct: 0, difficulty: 2 },
-        { id: 'chem-28', question: 'Что происходит при нейтрализации?', options: ['Кислота + основание = соль + вода', 'Окисление металла', 'Разложение вещества', 'Синтез полимера'], correct: 0, difficulty: 2 },
-        { id: 'chem-29', question: 'Какой элемент является щелочным металлом?', options: ['Натрий', 'Кальций', 'Магний', 'Алюминий'], correct: 0, difficulty: 2 },
-        { id: 'chem-30', question: 'Что такое амфотерность?', options: ['Двойственные свойства вещества', 'Растворимость', 'Летучесть', 'Пластичность'], correct: 0, difficulty: 2 },
-        { id: 'chem-31', question: 'Какова формула серной кислоты?', options: ['H?SO?', 'HCl', 'HNO?', 'H?PO?'], correct: 0, difficulty: 2 },
-        { id: 'chem-32', question: 'Что такое гидролиз соли?', options: ['Взаимодействие соли с водой', 'Растворение соли', 'Плавление соли', 'Испарение воды'], correct: 0, difficulty: 2 },
-        { id: 'chem-33', question: 'Какой элемент является инертным газом?', options: ['Аргон', 'Кислород', 'Азот', 'Водород'], correct: 0, difficulty: 2 },
-        { id: 'chem-34', question: 'Что такое аллотропия?', options: ['Существование элемента в разных формах', 'Изомерия', 'Полимеризация', 'Гибридизация'], correct: 0, difficulty: 2 },
-        { id: 'chem-35', question: 'Какова формула азотной кислоты?', options: ['HNO?', 'H?SO?', 'HCl', 'H?PO?'], correct: 0, difficulty: 2 },
-        { id: 'chem-36', question: 'Что такое коррозия?', options: ['Разрушение металла', 'Плавление', 'Испарение', 'Растворение'], correct: 0, difficulty: 2 },
-        { id: 'chem-37', question: 'Какой металл используют для защиты от коррозии?', options: ['Цинк', 'Медь', 'Золото', 'Серебро'], correct: 0, difficulty: 2 },
-        { id: 'chem-38', question: 'Что такое электроотрицательность?', options: ['Способность атома притягивать электроны', 'Заряд ядра', 'Масса атома', 'Радиус атома'], correct: 0, difficulty: 2 },
-        { id: 'chem-39', question: 'Какой элемент самый электроотрицательный?', options: ['Фтор', 'Кислород', 'Хлор', 'Азот'], correct: 0, difficulty: 2 },
-        { id: 'chem-40', question: 'Что такое окислитель?', options: ['Вещество, принимающее электроны', 'Вещество, отдающее электроны', 'Катализатор', 'Растворитель'], correct: 0, difficulty: 2 },
-        { id: 'chem-41', question: 'Какова формула гидроксида натрия?', options: ['NaOH', 'KOH', 'Ca(OH)?', 'Mg(OH)?'], correct: 0, difficulty: 2 },
-        { id: 'chem-42', question: 'Что такое восстановитель?', options: ['Вещество, отдающее электроны', 'Вещество, принимающее электроны', 'Катализатор', 'Ингибитор'], correct: 0, difficulty: 2 },
-        { id: 'chem-43', question: 'Какой тип связи в молекуле NaCl?', options: ['Ионная', 'Ковалентная', 'Металлическая', 'Водородная'], correct: 0, difficulty: 2 },
-        { id: 'chem-44', question: 'Что такое дистилляция?', options: ['Разделение жидкостей по температуре кипения', 'Фильтрация', 'Осаждение', 'Кристаллизация'], correct: 0, difficulty: 2 },
-        { id: 'chem-45', question: 'Какой тип связи в молекуле H?O?', options: ['Ковалентная полярная', 'Ионная', 'Металлическая', 'Ковалентная неполярная'], correct: 0, difficulty: 2 },
-        { id: 'chem-46', question: 'Что такое изотопы?', options: ['Атомы с разным числом нейтронов', 'Разные элементы', 'Разные соединения', 'Ионы'], correct: 0, difficulty: 2 },
-        { id: 'chem-47', question: 'Какой элемент имеет атомный номер 1?', options: ['Водород', 'Гелий', 'Литий', 'Углерод'], correct: 0, difficulty: 2 },
-        { id: 'chem-48', question: 'Что такое период в таблице Менделеева?', options: ['Горизонтальный ряд элементов', 'Вертикальный столбец', 'Группа металлов', 'Семейство элементов'], correct: 0, difficulty: 2 },
-        { id: 'chem-49', question: 'Какой элемент имеет атомный номер 6?', options: ['Углерод', 'Кислород', 'Азот', 'Бор'], correct: 0, difficulty: 2 },
-        { id: 'chem-50', question: 'Что такое группа в таблице Менделеева?', options: ['Вертикальный столбец элементов', 'Горизонтальный ряд', 'Семейство газов', 'Ряд металлов'], correct: 0, difficulty: 2 },
+        // Р‘Р»РѕРє 2: РќРµРѕСЂРіР°РЅРёС‡РµСЃРєР°СЏ С…РёРјРёСЏ (26-50)
+        { id: 'chem-26', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РѕРєСЃРёРґ?', options: ['РЎРѕРµРґРёРЅРµРЅРёРµ СЃ РєРёСЃР»РѕСЂРѕРґРѕРј', 'РЎРѕРµРґРёРЅРµРЅРёРµ СЃ РІРѕРґРѕСЂРѕРґРѕРј', 'РЎРѕР»СЊ', 'РљРёСЃР»РѕС‚Р°'], correct: 0, difficulty: 2 },
+        { id: 'chem-27', question: 'РљР°РєРѕР№ РјРµС‚Р°Р»Р» СЃР°РјС‹Р№ СЌР»РµРєС‚СЂРѕРїСЂРѕРІРѕРґРЅС‹Р№?', options: ['РЎРµСЂРµР±СЂРѕ', 'РњРµРґСЊ', 'Р—РѕР»РѕС‚Рѕ', 'РђР»СЋРјРёРЅРёР№'], correct: 0, difficulty: 2 },
+        { id: 'chem-28', question: 'Р§С‚Рѕ РїСЂРѕРёСЃС…РѕРґРёС‚ РїСЂРё РЅРµР№С‚СЂР°Р»РёР·Р°С†РёРё?', options: ['РљРёСЃР»РѕС‚Р° + РѕСЃРЅРѕРІР°РЅРёРµ = СЃРѕР»СЊ + РІРѕРґР°', 'РћРєРёСЃР»РµРЅРёРµ РјРµС‚Р°Р»Р»Р°', 'Р Р°Р·Р»РѕР¶РµРЅРёРµ РІРµС‰РµСЃС‚РІР°', 'РЎРёРЅС‚РµР· РїРѕР»РёРјРµСЂР°'], correct: 0, difficulty: 2 },
+        { id: 'chem-29', question: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ СЏРІР»СЏРµС‚СЃСЏ С‰РµР»РѕС‡РЅС‹Рј РјРµС‚Р°Р»Р»РѕРј?', options: ['РќР°С‚СЂРёР№', 'РљР°Р»СЊС†РёР№', 'РњР°РіРЅРёР№', 'РђР»СЋРјРёРЅРёР№'], correct: 0, difficulty: 2 },
+        { id: 'chem-30', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°РјС„РѕС‚РµСЂРЅРѕСЃС‚СЊ?', options: ['Р”РІРѕР№СЃС‚РІРµРЅРЅС‹Рµ СЃРІРѕР№СЃС‚РІР° РІРµС‰РµСЃС‚РІР°', 'Р Р°СЃС‚РІРѕСЂРёРјРѕСЃС‚СЊ', 'Р›РµС‚СѓС‡РµСЃС‚СЊ', 'РџР»Р°СЃС‚РёС‡РЅРѕСЃС‚СЊ'], correct: 0, difficulty: 2 },
+        { id: 'chem-31', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° СЃРµСЂРЅРѕР№ РєРёСЃР»РѕС‚С‹?', options: ['Hв‚‚SOв‚„', 'HCl', 'HNOв‚ѓ', 'Hв‚ѓPOв‚„'], correct: 0, difficulty: 2 },
+        { id: 'chem-32', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РіРёРґСЂРѕР»РёР· СЃРѕР»Рё?', options: ['Р’Р·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ СЃРѕР»Рё СЃ РІРѕРґРѕР№', 'Р Р°СЃС‚РІРѕСЂРµРЅРёРµ СЃРѕР»Рё', 'РџР»Р°РІР»РµРЅРёРµ СЃРѕР»Рё', 'РСЃРїР°СЂРµРЅРёРµ РІРѕРґС‹'], correct: 0, difficulty: 2 },
+        { id: 'chem-33', question: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ СЏРІР»СЏРµС‚СЃСЏ РёРЅРµСЂС‚РЅС‹Рј РіР°Р·РѕРј?', options: ['РђСЂРіРѕРЅ', 'РљРёСЃР»РѕСЂРѕРґ', 'РђР·РѕС‚', 'Р’РѕРґРѕСЂРѕРґ'], correct: 0, difficulty: 2 },
+        { id: 'chem-34', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°Р»Р»РѕС‚СЂРѕРїРёСЏ?', options: ['РЎСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ СЂР°Р·РЅС‹С… С„РѕСЂРјР°С…', 'РР·РѕРјРµСЂРёСЏ', 'РџРѕР»РёРјРµСЂРёР·Р°С†РёСЏ', 'Р“РёР±СЂРёРґРёР·Р°С†РёСЏ'], correct: 0, difficulty: 2 },
+        { id: 'chem-35', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° Р°Р·РѕС‚РЅРѕР№ РєРёСЃР»РѕС‚С‹?', options: ['HNOв‚ѓ', 'Hв‚‚SOв‚„', 'HCl', 'Hв‚ѓPOв‚„'], correct: 0, difficulty: 2 },
+        { id: 'chem-36', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РєРѕСЂСЂРѕР·РёСЏ?', options: ['Р Р°Р·СЂСѓС€РµРЅРёРµ РјРµС‚Р°Р»Р»Р°', 'РџР»Р°РІР»РµРЅРёРµ', 'РСЃРїР°СЂРµРЅРёРµ', 'Р Р°СЃС‚РІРѕСЂРµРЅРёРµ'], correct: 0, difficulty: 2 },
+        { id: 'chem-37', question: 'РљР°РєРѕР№ РјРµС‚Р°Р»Р» РёСЃРїРѕР»СЊР·СѓСЋС‚ РґР»СЏ Р·Р°С‰РёС‚С‹ РѕС‚ РєРѕСЂСЂРѕР·РёРё?', options: ['Р¦РёРЅРє', 'РњРµРґСЊ', 'Р—РѕР»РѕС‚Рѕ', 'РЎРµСЂРµР±СЂРѕ'], correct: 0, difficulty: 2 },
+        { id: 'chem-38', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЌР»РµРєС‚СЂРѕРѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕСЃС‚СЊ?', options: ['РЎРїРѕСЃРѕР±РЅРѕСЃС‚СЊ Р°С‚РѕРјР° РїСЂРёС‚СЏРіРёРІР°С‚СЊ СЌР»РµРєС‚СЂРѕРЅС‹', 'Р—Р°СЂСЏРґ СЏРґСЂР°', 'РњР°СЃСЃР° Р°С‚РѕРјР°', 'Р Р°РґРёСѓСЃ Р°С‚РѕРјР°'], correct: 0, difficulty: 2 },
+        { id: 'chem-39', question: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ СЃР°РјС‹Р№ СЌР»РµРєС‚СЂРѕРѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№?', options: ['Р¤С‚РѕСЂ', 'РљРёСЃР»РѕСЂРѕРґ', 'РҐР»РѕСЂ', 'РђР·РѕС‚'], correct: 0, difficulty: 2 },
+        { id: 'chem-40', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РѕРєРёСЃР»РёС‚РµР»СЊ?', options: ['Р’РµС‰РµСЃС‚РІРѕ, РїСЂРёРЅРёРјР°СЋС‰РµРµ СЌР»РµРєС‚СЂРѕРЅС‹', 'Р’РµС‰РµСЃС‚РІРѕ, РѕС‚РґР°СЋС‰РµРµ СЌР»РµРєС‚СЂРѕРЅС‹', 'РљР°С‚Р°Р»РёР·Р°С‚РѕСЂ', 'Р Р°СЃС‚РІРѕСЂРёС‚РµР»СЊ'], correct: 0, difficulty: 2 },
+        { id: 'chem-41', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° РіРёРґСЂРѕРєСЃРёРґР° РЅР°С‚СЂРёСЏ?', options: ['NaOH', 'KOH', 'Ca(OH)в‚‚', 'Mg(OH)в‚‚'], correct: 0, difficulty: 2 },
+        { id: 'chem-42', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚РµР»СЊ?', options: ['Р’РµС‰РµСЃС‚РІРѕ, РѕС‚РґР°СЋС‰РµРµ СЌР»РµРєС‚СЂРѕРЅС‹', 'Р’РµС‰РµСЃС‚РІРѕ, РїСЂРёРЅРёРјР°СЋС‰РµРµ СЌР»РµРєС‚СЂРѕРЅС‹', 'РљР°С‚Р°Р»РёР·Р°С‚РѕСЂ', 'РРЅРіРёР±РёС‚РѕСЂ'], correct: 0, difficulty: 2 },
+        { id: 'chem-43', question: 'РљР°РєРѕР№ С‚РёРї СЃРІСЏР·Рё РІ РјРѕР»РµРєСѓР»Рµ NaCl?', options: ['РРѕРЅРЅР°СЏ', 'РљРѕРІР°Р»РµРЅС‚РЅР°СЏ', 'РњРµС‚Р°Р»Р»РёС‡РµСЃРєР°СЏ', 'Р’РѕРґРѕСЂРѕРґРЅР°СЏ'], correct: 0, difficulty: 2 },
+        { id: 'chem-44', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РґРёСЃС‚РёР»Р»СЏС†РёСЏ?', options: ['Р Р°Р·РґРµР»РµРЅРёРµ Р¶РёРґРєРѕСЃС‚РµР№ РїРѕ С‚РµРјРїРµСЂР°С‚СѓСЂРµ РєРёРїРµРЅРёСЏ', 'Р¤РёР»СЊС‚СЂР°С†РёСЏ', 'РћСЃР°Р¶РґРµРЅРёРµ', 'РљСЂРёСЃС‚Р°Р»Р»РёР·Р°С†РёСЏ'], correct: 0, difficulty: 2 },
+        { id: 'chem-45', question: 'РљР°РєРѕР№ С‚РёРї СЃРІСЏР·Рё РІ РјРѕР»РµРєСѓР»Рµ Hв‚‚O?', options: ['РљРѕРІР°Р»РµРЅС‚РЅР°СЏ РїРѕР»СЏСЂРЅР°СЏ', 'РРѕРЅРЅР°СЏ', 'РњРµС‚Р°Р»Р»РёС‡РµСЃРєР°СЏ', 'РљРѕРІР°Р»РµРЅС‚РЅР°СЏ РЅРµРїРѕР»СЏСЂРЅР°СЏ'], correct: 0, difficulty: 2 },
+        { id: 'chem-46', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РёР·РѕС‚РѕРїС‹?', options: ['РђС‚РѕРјС‹ СЃ СЂР°Р·РЅС‹Рј С‡РёСЃР»РѕРј РЅРµР№С‚СЂРѕРЅРѕРІ', 'Р Р°Р·РЅС‹Рµ СЌР»РµРјРµРЅС‚С‹', 'Р Р°Р·РЅС‹Рµ СЃРѕРµРґРёРЅРµРЅРёСЏ', 'РРѕРЅС‹'], correct: 0, difficulty: 2 },
+        { id: 'chem-47', question: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ РёРјРµРµС‚ Р°С‚РѕРјРЅС‹Р№ РЅРѕРјРµСЂ 1?', options: ['Р’РѕРґРѕСЂРѕРґ', 'Р“РµР»РёР№', 'Р›РёС‚РёР№', 'РЈРіР»РµСЂРѕРґ'], correct: 0, difficulty: 2 },
+        { id: 'chem-48', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РїРµСЂРёРѕРґ РІ С‚Р°Р±Р»РёС†Рµ РњРµРЅРґРµР»РµРµРІР°?', options: ['Р“РѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅС‹Р№ СЂСЏРґ СЌР»РµРјРµРЅС‚РѕРІ', 'Р’РµСЂС‚РёРєР°Р»СЊРЅС‹Р№ СЃС‚РѕР»Р±РµС†', 'Р“СЂСѓРїРїР° РјРµС‚Р°Р»Р»РѕРІ', 'РЎРµРјРµР№СЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ'], correct: 0, difficulty: 2 },
+        { id: 'chem-49', question: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ РёРјРµРµС‚ Р°С‚РѕРјРЅС‹Р№ РЅРѕРјРµСЂ 6?', options: ['РЈРіР»РµСЂРѕРґ', 'РљРёСЃР»РѕСЂРѕРґ', 'РђР·РѕС‚', 'Р‘РѕСЂ'], correct: 0, difficulty: 2 },
+        { id: 'chem-50', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РіСЂСѓРїРїР° РІ С‚Р°Р±Р»РёС†Рµ РњРµРЅРґРµР»РµРµРІР°?', options: ['Р’РµСЂС‚РёРєР°Р»СЊРЅС‹Р№ СЃС‚РѕР»Р±РµС† СЌР»РµРјРµРЅС‚РѕРІ', 'Р“РѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅС‹Р№ СЂСЏРґ', 'РЎРµРјРµР№СЃС‚РІРѕ РіР°Р·РѕРІ', 'Р СЏРґ РјРµС‚Р°Р»Р»РѕРІ'], correct: 0, difficulty: 2 },
         
-        // Блок 3: Органическая химия (51-75)
-        { id: 'chem-51', question: 'Что такое углеводороды?', options: ['Соединения углерода и водорода', 'Углеводы', 'Жиры', 'Белки'], correct: 0, difficulty: 3 },
-        { id: 'chem-52', question: 'Какова формула этана?', options: ['C?H?', 'CH?', 'C?H?', 'C?H?'], correct: 0, difficulty: 3 },
-        { id: 'chem-53', question: 'Что такое алканы?', options: ['Предельные углеводороды', 'Непредельные углеводороды', 'Ароматические соединения', 'Спирты'], correct: 0, difficulty: 3 },
-        { id: 'chem-54', question: 'Какова формула этилового спирта?', options: ['C?H?OH', 'CH?OH', 'C?H?OH', 'C?H?OH'], correct: 0, difficulty: 3 },
-        { id: 'chem-55', question: 'Что такое алкены?', options: ['Углеводороды с двойной связью', 'Предельные углеводороды', 'Ароматические соединения', 'Спирты'], correct: 0, difficulty: 3 },
-        { id: 'chem-56', question: 'Какова формула уксусной кислоты?', options: ['CH?COOH', 'HCOOH', 'C?H?COOH', 'C?H?COOH'], correct: 0, difficulty: 3 },
-        { id: 'chem-57', question: 'Что такое изомерия?', options: ['Одинаковый состав, разное строение', 'Одинаковое строение', 'Разный состав', 'Полимеризация'], correct: 0, difficulty: 3 },
-        { id: 'chem-58', question: 'Какова формула бензола?', options: ['C?H?', 'C?H??', 'C?H??', 'C?H?'], correct: 0, difficulty: 3 },
-        { id: 'chem-59', question: 'Что такое функциональная группа?', options: ['Группа атомов, определяющая свойства', 'Молекула', 'Атом', 'Ион'], correct: 0, difficulty: 3 },
-        { id: 'chem-60', question: 'Какая функциональная группа у спиртов?', options: ['-OH', '-COOH', '-CHO', '-NH?'], correct: 0, difficulty: 3 },
-        { id: 'chem-61', question: 'Что такое эфиры?', options: ['Соединения типа R-O-R', 'Спирты', 'Кислоты', 'Альдегиды'], correct: 0, difficulty: 3 },
-        { id: 'chem-62', question: 'Какая функциональная группа у альдегидов?', options: ['-CHO', '-OH', '-COOH', '-CO-'], correct: 0, difficulty: 3 },
-        { id: 'chem-63', question: 'Что такое полимеры?', options: ['Макромолекулы из повторяющихся звеньев', 'Мономеры', 'Простые вещества', 'Соли'], correct: 0, difficulty: 3 },
-        { id: 'chem-64', question: 'Какова формула глюкозы?', options: ['C?H??O?', 'C??H??O??', 'C?H??O?', 'CH?O'], correct: 0, difficulty: 3 },
-        { id: 'chem-65', question: 'Что такое крахмал?', options: ['Полисахарид', 'Моносахарид', 'Дисахарид', 'Белок'], correct: 0, difficulty: 3 },
-        { id: 'chem-66', question: 'Какова формула сахарозы?', options: ['C??H??O??', 'C?H??O?', 'C?H??O?', 'CH?O'], correct: 0, difficulty: 3 },
-        { id: 'chem-67', question: 'Что такое аминокислоты?', options: ['Строительные блоки белков', 'Углеводы', 'Жиры', 'Нуклеотиды'], correct: 0, difficulty: 3 },
-        { id: 'chem-68', question: 'Какая связь соединяет аминокислоты в белке?', options: ['Пептидная', 'Ионная', 'Водородная', 'Гликозидная'], correct: 0, difficulty: 3 },
-        { id: 'chem-69', question: 'Что такое денатурация белка?', options: ['Разрушение структуры белка', 'Синтез белка', 'Гидролиз', 'Полимеризация'], correct: 0, difficulty: 3 },
-        { id: 'chem-70', question: 'Какова формула глицерина?', options: ['C?H?O?', 'C?H?O?', 'C?H??O?', 'CH?O'], correct: 0, difficulty: 3 },
-        { id: 'chem-71', question: 'Что такое жиры?', options: ['Эфиры глицерина и жирных кислот', 'Углеводы', 'Белки', 'Нуклеиновые кислоты'], correct: 0, difficulty: 3 },
-        { id: 'chem-72', question: 'Что такое гидрирование?', options: ['Присоединение водорода', 'Отщепление водорода', 'Окисление', 'Восстановление'], correct: 0, difficulty: 3 },
-        { id: 'chem-73', question: 'Какой процесс используется для получения маргарина?', options: ['Гидрирование масел', 'Дистилляция', 'Крекинг', 'Полимеризация'], correct: 0, difficulty: 3 },
-        { id: 'chem-74', question: 'Что такое крекинг?', options: ['Расщепление углеводородов', 'Соединение молекул', 'Полимеризация', 'Гидрирование'], correct: 0, difficulty: 3 },
-        { id: 'chem-75', question: 'Какова формула ацетилена?', options: ['C?H?', 'C?H?', 'C?H?', 'CH?'], correct: 0, difficulty: 3 },
+        // Р‘Р»РѕРє 3: РћСЂРіР°РЅРёС‡РµСЃРєР°СЏ С…РёРјРёСЏ (51-75)
+        { id: 'chem-51', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ СѓРіР»РµРІРѕРґРѕСЂРѕРґС‹?', options: ['РЎРѕРµРґРёРЅРµРЅРёСЏ СѓРіР»РµСЂРѕРґР° Рё РІРѕРґРѕСЂРѕРґР°', 'РЈРіР»РµРІРѕРґС‹', 'Р–РёСЂС‹', 'Р‘РµР»РєРё'], correct: 0, difficulty: 3 },
+        { id: 'chem-52', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° СЌС‚Р°РЅР°?', options: ['Cв‚‚Hв‚†', 'CHв‚„', 'Cв‚ѓHв‚€', 'Cв‚‚Hв‚„'], correct: 0, difficulty: 3 },
+        { id: 'chem-53', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°Р»РєР°РЅС‹?', options: ['РџСЂРµРґРµР»СЊРЅС‹Рµ СѓРіР»РµРІРѕРґРѕСЂРѕРґС‹', 'РќРµРїСЂРµРґРµР»СЊРЅС‹Рµ СѓРіР»РµРІРѕРґРѕСЂРѕРґС‹', 'РђСЂРѕРјР°С‚РёС‡РµСЃРєРёРµ СЃРѕРµРґРёРЅРµРЅРёСЏ', 'РЎРїРёСЂС‚С‹'], correct: 0, difficulty: 3 },
+        { id: 'chem-54', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° СЌС‚РёР»РѕРІРѕРіРѕ СЃРїРёСЂС‚Р°?', options: ['Cв‚‚Hв‚…OH', 'CHв‚ѓOH', 'Cв‚ѓHв‚‡OH', 'Cв‚„Hв‚‰OH'], correct: 0, difficulty: 3 },
+        { id: 'chem-55', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°Р»РєРµРЅС‹?', options: ['РЈРіР»РµРІРѕРґРѕСЂРѕРґС‹ СЃ РґРІРѕР№РЅРѕР№ СЃРІСЏР·СЊСЋ', 'РџСЂРµРґРµР»СЊРЅС‹Рµ СѓРіР»РµРІРѕРґРѕСЂРѕРґС‹', 'РђСЂРѕРјР°С‚РёС‡РµСЃРєРёРµ СЃРѕРµРґРёРЅРµРЅРёСЏ', 'РЎРїРёСЂС‚С‹'], correct: 0, difficulty: 3 },
+        { id: 'chem-56', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° СѓРєСЃСѓСЃРЅРѕР№ РєРёСЃР»РѕС‚С‹?', options: ['CHв‚ѓCOOH', 'HCOOH', 'Cв‚‚Hв‚…COOH', 'Cв‚ѓHв‚‡COOH'], correct: 0, difficulty: 3 },
+        { id: 'chem-57', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РёР·РѕРјРµСЂРёСЏ?', options: ['РћРґРёРЅР°РєРѕРІС‹Р№ СЃРѕСЃС‚Р°РІ, СЂР°Р·РЅРѕРµ СЃС‚СЂРѕРµРЅРёРµ', 'РћРґРёРЅР°РєРѕРІРѕРµ СЃС‚СЂРѕРµРЅРёРµ', 'Р Р°Р·РЅС‹Р№ СЃРѕСЃС‚Р°РІ', 'РџРѕР»РёРјРµСЂРёР·Р°С†РёСЏ'], correct: 0, difficulty: 3 },
+        { id: 'chem-58', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° Р±РµРЅР·РѕР»Р°?', options: ['Cв‚†Hв‚†', 'Cв‚†Hв‚Ѓв‚‚', 'Cв‚†Hв‚Ѓв‚„', 'Cв‚‡Hв‚€'], correct: 0, difficulty: 3 },
+        { id: 'chem-59', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅР°СЏ РіСЂСѓРїРїР°?', options: ['Р“СЂСѓРїРїР° Р°С‚РѕРјРѕРІ, РѕРїСЂРµРґРµР»СЏСЋС‰Р°СЏ СЃРІРѕР№СЃС‚РІР°', 'РњРѕР»РµРєСѓР»Р°', 'РђС‚РѕРј', 'РРѕРЅ'], correct: 0, difficulty: 3 },
+        { id: 'chem-60', question: 'РљР°РєР°СЏ С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅР°СЏ РіСЂСѓРїРїР° Сѓ СЃРїРёСЂС‚РѕРІ?', options: ['-OH', '-COOH', '-CHO', '-NHв‚‚'], correct: 0, difficulty: 3 },
+        { id: 'chem-61', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЌС„РёСЂС‹?', options: ['РЎРѕРµРґРёРЅРµРЅРёСЏ С‚РёРїР° R-O-R', 'РЎРїРёСЂС‚С‹', 'РљРёСЃР»РѕС‚С‹', 'РђР»СЊРґРµРіРёРґС‹'], correct: 0, difficulty: 3 },
+        { id: 'chem-62', question: 'РљР°РєР°СЏ С„СѓРЅРєС†РёРѕРЅР°Р»СЊРЅР°СЏ РіСЂСѓРїРїР° Сѓ Р°Р»СЊРґРµРіРёРґРѕРІ?', options: ['-CHO', '-OH', '-COOH', '-CO-'], correct: 0, difficulty: 3 },
+        { id: 'chem-63', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РїРѕР»РёРјРµСЂС‹?', options: ['РњР°РєСЂРѕРјРѕР»РµРєСѓР»С‹ РёР· РїРѕРІС‚РѕСЂСЏСЋС‰РёС…СЃСЏ Р·РІРµРЅСЊРµРІ', 'РњРѕРЅРѕРјРµСЂС‹', 'РџСЂРѕСЃС‚С‹Рµ РІРµС‰РµСЃС‚РІР°', 'РЎРѕР»Рё'], correct: 0, difficulty: 3 },
+        { id: 'chem-64', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° РіР»СЋРєРѕР·С‹?', options: ['Cв‚†Hв‚Ѓв‚‚Oв‚†', 'Cв‚Ѓв‚‚Hв‚‚в‚‚Oв‚Ѓв‚Ѓ', 'Cв‚†Hв‚Ѓв‚ЂOв‚…', 'CHв‚‚O'], correct: 0, difficulty: 3 },
+        { id: 'chem-65', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РєСЂР°С…РјР°Р»?', options: ['РџРѕР»РёСЃР°С…Р°СЂРёРґ', 'РњРѕРЅРѕСЃР°С…Р°СЂРёРґ', 'Р”РёСЃР°С…Р°СЂРёРґ', 'Р‘РµР»РѕРє'], correct: 0, difficulty: 3 },
+        { id: 'chem-66', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° СЃР°С…Р°СЂРѕР·С‹?', options: ['Cв‚Ѓв‚‚Hв‚‚в‚‚Oв‚Ѓв‚Ѓ', 'Cв‚†Hв‚Ѓв‚‚Oв‚†', 'Cв‚†Hв‚Ѓв‚ЂOв‚…', 'CHв‚‚O'], correct: 0, difficulty: 3 },
+        { id: 'chem-67', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°РјРёРЅРѕРєРёСЃР»РѕС‚С‹?', options: ['РЎС‚СЂРѕРёС‚РµР»СЊРЅС‹Рµ Р±Р»РѕРєРё Р±РµР»РєРѕРІ', 'РЈРіР»РµРІРѕРґС‹', 'Р–РёСЂС‹', 'РќСѓРєР»РµРѕС‚РёРґС‹'], correct: 0, difficulty: 3 },
+        { id: 'chem-68', question: 'РљР°РєР°СЏ СЃРІСЏР·СЊ СЃРѕРµРґРёРЅСЏРµС‚ Р°РјРёРЅРѕРєРёСЃР»РѕС‚С‹ РІ Р±РµР»РєРµ?', options: ['РџРµРїС‚РёРґРЅР°СЏ', 'РРѕРЅРЅР°СЏ', 'Р’РѕРґРѕСЂРѕРґРЅР°СЏ', 'Р“Р»РёРєРѕР·РёРґРЅР°СЏ'], correct: 0, difficulty: 3 },
+        { id: 'chem-69', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РґРµРЅР°С‚СѓСЂР°С†РёСЏ Р±РµР»РєР°?', options: ['Р Р°Р·СЂСѓС€РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ Р±РµР»РєР°', 'РЎРёРЅС‚РµР· Р±РµР»РєР°', 'Р“РёРґСЂРѕР»РёР·', 'РџРѕР»РёРјРµСЂРёР·Р°С†РёСЏ'], correct: 0, difficulty: 3 },
+        { id: 'chem-70', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° РіР»РёС†РµСЂРёРЅР°?', options: ['Cв‚ѓHв‚€Oв‚ѓ', 'Cв‚‚Hв‚†Oв‚‚', 'Cв‚„Hв‚Ѓв‚ЂOв‚„', 'CHв‚„O'], correct: 0, difficulty: 3 },
+        { id: 'chem-71', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р¶РёСЂС‹?', options: ['Р­С„РёСЂС‹ РіР»РёС†РµСЂРёРЅР° Рё Р¶РёСЂРЅС‹С… РєРёСЃР»РѕС‚', 'РЈРіР»РµРІРѕРґС‹', 'Р‘РµР»РєРё', 'РќСѓРєР»РµРёРЅРѕРІС‹Рµ РєРёСЃР»РѕС‚С‹'], correct: 0, difficulty: 3 },
+        { id: 'chem-72', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РіРёРґСЂРёСЂРѕРІР°РЅРёРµ?', options: ['РџСЂРёСЃРѕРµРґРёРЅРµРЅРёРµ РІРѕРґРѕСЂРѕРґР°', 'РћС‚С‰РµРїР»РµРЅРёРµ РІРѕРґРѕСЂРѕРґР°', 'РћРєРёСЃР»РµРЅРёРµ', 'Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ'], correct: 0, difficulty: 3 },
+        { id: 'chem-73', question: 'РљР°РєРѕР№ РїСЂРѕС†РµСЃСЃ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РјР°СЂРіР°СЂРёРЅР°?', options: ['Р“РёРґСЂРёСЂРѕРІР°РЅРёРµ РјР°СЃРµР»', 'Р”РёСЃС‚РёР»Р»СЏС†РёСЏ', 'РљСЂРµРєРёРЅРі', 'РџРѕР»РёРјРµСЂРёР·Р°С†РёСЏ'], correct: 0, difficulty: 3 },
+        { id: 'chem-74', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РєСЂРµРєРёРЅРі?', options: ['Р Р°СЃС‰РµРїР»РµРЅРёРµ СѓРіР»РµРІРѕРґРѕСЂРѕРґРѕРІ', 'РЎРѕРµРґРёРЅРµРЅРёРµ РјРѕР»РµРєСѓР»', 'РџРѕР»РёРјРµСЂРёР·Р°С†РёСЏ', 'Р“РёРґСЂРёСЂРѕРІР°РЅРёРµ'], correct: 0, difficulty: 3 },
+        { id: 'chem-75', question: 'РљР°РєРѕРІР° С„РѕСЂРјСѓР»Р° Р°С†РµС‚РёР»РµРЅР°?', options: ['Cв‚‚Hв‚‚', 'Cв‚‚Hв‚„', 'Cв‚‚Hв‚†', 'CHв‚„'], correct: 0, difficulty: 3 },
         
-        // Блок 4: Биохимия и медицинская химия (76-100)
-        { id: 'chem-76', question: 'Что такое ферменты с химической точки зрения?', options: ['Белки-катализаторы', 'Углеводы', 'Липиды', 'Нуклеиновые кислоты'], correct: 0, difficulty: 4 },
-        { id: 'chem-77', question: 'Какой элемент входит в состав гемоглобина?', options: ['Железо', 'Медь', 'Цинк', 'Магний'], correct: 0, difficulty: 4 },
-        { id: 'chem-78', question: 'Что такое АТФ?', options: ['Аденозинтрифосфат - источник энергии', 'Белок', 'Углевод', 'Жир'], correct: 0, difficulty: 4 },
-        { id: 'chem-79', question: 'Какой pH крови в норме?', options: ['7.35-7.45', '6.0-6.5', '8.0-8.5', '5.5-6.0'], correct: 0, difficulty: 4 },
-        { id: 'chem-80', question: 'Что такое буферная система?', options: ['Система, поддерживающая постоянство pH', 'Фильтр', 'Катализатор', 'Ингибитор'], correct: 0, difficulty: 4 },
-        { id: 'chem-81', question: 'Какой витамин является антиоксидантом?', options: ['Витамин E', 'Витамин D', 'Витамин K', 'Витамин B12'], correct: 0, difficulty: 4 },
-        { id: 'chem-82', question: 'Что такое свободные радикалы?', options: ['Частицы с неспаренным электроном', 'Ионы', 'Молекулы', 'Атомы'], correct: 0, difficulty: 4 },
-        { id: 'chem-83', question: 'Какой элемент входит в состав инсулина?', options: ['Цинк', 'Железо', 'Медь', 'Кальций'], correct: 0, difficulty: 4 },
-        { id: 'chem-84', question: 'Что такое электролитный баланс?', options: ['Соотношение ионов в организме', 'Баланс воды', 'Баланс белков', 'Баланс жиров'], correct: 0, difficulty: 4 },
-        { id: 'chem-85', question: 'Какой ион важен для сокращения мышц?', options: ['Кальций', 'Натрий', 'Хлор', 'Фосфор'], correct: 0, difficulty: 4 },
-        { id: 'chem-86', question: 'Что такое осмос?', options: ['Движение воды через мембрану', 'Диффузия газов', 'Транспорт ионов', 'Фильтрация'], correct: 0, difficulty: 4 },
-        { id: 'chem-87', question: 'Какова роль натрия в организме?', options: ['Поддержание водного баланса', 'Транспорт кислорода', 'Синтез белков', 'Хранение энергии'], correct: 0, difficulty: 4 },
-        { id: 'chem-88', question: 'Что такое метаболизм?', options: ['Совокупность химических реакций в организме', 'Пищеварение', 'Дыхание', 'Кровообращение'], correct: 0, difficulty: 4 },
-        { id: 'chem-89', question: 'Какой процесс - анаболизм?', options: ['Синтез сложных веществ', 'Распад веществ', 'Окисление', 'Восстановление'], correct: 0, difficulty: 4 },
-        { id: 'chem-90', question: 'Что такое катаболизм?', options: ['Распад сложных веществ', 'Синтез веществ', 'Рост клеток', 'Деление клеток'], correct: 0, difficulty: 4 },
-        { id: 'chem-91', question: 'Какой витамин синтезируется в коже?', options: ['Витамин D', 'Витамин A', 'Витамин C', 'Витамин B1'], correct: 0, difficulty: 4 },
-        { id: 'chem-92', question: 'Что такое гликоген?', options: ['Запасной углевод в печени', 'Белок', 'Жир', 'Нуклеиновая кислота'], correct: 0, difficulty: 4 },
-        { id: 'chem-93', question: 'Какой гормон регулирует уровень глюкозы?', options: ['Инсулин', 'Адреналин', 'Тироксин', 'Кортизол'], correct: 0, difficulty: 4 },
-        { id: 'chem-94', question: 'Что такое кетоновые тела?', options: ['Продукты распада жиров', 'Углеводы', 'Белки', 'Витамины'], correct: 0, difficulty: 4 },
-        { id: 'chem-95', question: 'Какой фермент расщепляет крахмал?', options: ['Амилаза', 'Липаза', 'Протеаза', 'Нуклеаза'], correct: 0, difficulty: 4 },
-        { id: 'chem-96', question: 'Что такое пепсин?', options: ['Фермент, расщепляющий белки', 'Гормон', 'Витамин', 'Углевод'], correct: 0, difficulty: 4 },
-        { id: 'chem-97', question: 'Какой фермент расщепляет жиры?', options: ['Липаза', 'Амилаза', 'Протеаза', 'Лактаза'], correct: 0, difficulty: 4 },
-        { id: 'chem-98', question: 'Что такое холестерин?', options: ['Липид, компонент мембран', 'Углевод', 'Белок', 'Витамин'], correct: 0, difficulty: 4 },
-        { id: 'chem-99', question: 'Какой тип холестерина считается "хорошим"?', options: ['ЛПВП', 'ЛПНП', 'ЛПОНП', 'Триглицериды'], correct: 0, difficulty: 4 },
-        { id: 'chem-100', question: 'Что такое антиоксиданты?', options: ['Вещества, нейтрализующие свободные радикалы', 'Окислители', 'Катализаторы', 'Ферменты'], correct: 0, difficulty: 4 }
+        // Р‘Р»РѕРє 4: Р‘РёРѕС…РёРјРёСЏ Рё РјРµРґРёС†РёРЅСЃРєР°СЏ С…РёРјРёСЏ (76-100)
+        { id: 'chem-76', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ С„РµСЂРјРµРЅС‚С‹ СЃ С…РёРјРёС‡РµСЃРєРѕР№ С‚РѕС‡РєРё Р·СЂРµРЅРёСЏ?', options: ['Р‘РµР»РєРё-РєР°С‚Р°Р»РёР·Р°С‚РѕСЂС‹', 'РЈРіР»РµРІРѕРґС‹', 'Р›РёРїРёРґС‹', 'РќСѓРєР»РµРёРЅРѕРІС‹Рµ РєРёСЃР»РѕС‚С‹'], correct: 0, difficulty: 4 },
+        { id: 'chem-77', question: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ РІС…РѕРґРёС‚ РІ СЃРѕСЃС‚Р°РІ РіРµРјРѕРіР»РѕР±РёРЅР°?', options: ['Р–РµР»РµР·Рѕ', 'РњРµРґСЊ', 'Р¦РёРЅРє', 'РњР°РіРЅРёР№'], correct: 0, difficulty: 4 },
+        { id: 'chem-78', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РђРўР¤?', options: ['РђРґРµРЅРѕР·РёРЅС‚СЂРёС„РѕСЃС„Р°С‚ - РёСЃС‚РѕС‡РЅРёРє СЌРЅРµСЂРіРёРё', 'Р‘РµР»РѕРє', 'РЈРіР»РµРІРѕРґ', 'Р–РёСЂ'], correct: 0, difficulty: 4 },
+        { id: 'chem-79', question: 'РљР°РєРѕР№ pH РєСЂРѕРІРё РІ РЅРѕСЂРјРµ?', options: ['7.35-7.45', '6.0-6.5', '8.0-8.5', '5.5-6.0'], correct: 0, difficulty: 4 },
+        { id: 'chem-80', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р±СѓС„РµСЂРЅР°СЏ СЃРёСЃС‚РµРјР°?', options: ['РЎРёСЃС‚РµРјР°, РїРѕРґРґРµСЂР¶РёРІР°СЋС‰Р°СЏ РїРѕСЃС‚РѕСЏРЅСЃС‚РІРѕ pH', 'Р¤РёР»СЊС‚СЂ', 'РљР°С‚Р°Р»РёР·Р°С‚РѕСЂ', 'РРЅРіРёР±РёС‚РѕСЂ'], correct: 0, difficulty: 4 },
+        { id: 'chem-81', question: 'РљР°РєРѕР№ РІРёС‚Р°РјРёРЅ СЏРІР»СЏРµС‚СЃСЏ Р°РЅС‚РёРѕРєСЃРёРґР°РЅС‚РѕРј?', options: ['Р’РёС‚Р°РјРёРЅ E', 'Р’РёС‚Р°РјРёРЅ D', 'Р’РёС‚Р°РјРёРЅ K', 'Р’РёС‚Р°РјРёРЅ B12'], correct: 0, difficulty: 4 },
+        { id: 'chem-82', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЃРІРѕР±РѕРґРЅС‹Рµ СЂР°РґРёРєР°Р»С‹?', options: ['Р§Р°СЃС‚РёС†С‹ СЃ РЅРµСЃРїР°СЂРµРЅРЅС‹Рј СЌР»РµРєС‚СЂРѕРЅРѕРј', 'РРѕРЅС‹', 'РњРѕР»РµРєСѓР»С‹', 'РђС‚РѕРјС‹'], correct: 0, difficulty: 4 },
+        { id: 'chem-83', question: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ РІС…РѕРґРёС‚ РІ СЃРѕСЃС‚Р°РІ РёРЅСЃСѓР»РёРЅР°?', options: ['Р¦РёРЅРє', 'Р–РµР»РµР·Рѕ', 'РњРµРґСЊ', 'РљР°Р»СЊС†РёР№'], correct: 0, difficulty: 4 },
+        { id: 'chem-84', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЌР»РµРєС‚СЂРѕР»РёС‚РЅС‹Р№ Р±Р°Р»Р°РЅСЃ?', options: ['РЎРѕРѕС‚РЅРѕС€РµРЅРёРµ РёРѕРЅРѕРІ РІ РѕСЂРіР°РЅРёР·РјРµ', 'Р‘Р°Р»Р°РЅСЃ РІРѕРґС‹', 'Р‘Р°Р»Р°РЅСЃ Р±РµР»РєРѕРІ', 'Р‘Р°Р»Р°РЅСЃ Р¶РёСЂРѕРІ'], correct: 0, difficulty: 4 },
+        { id: 'chem-85', question: 'РљР°РєРѕР№ РёРѕРЅ РІР°Р¶РµРЅ РґР»СЏ СЃРѕРєСЂР°С‰РµРЅРёСЏ РјС‹С€С†?', options: ['РљР°Р»СЊС†РёР№', 'РќР°С‚СЂРёР№', 'РҐР»РѕСЂ', 'Р¤РѕСЃС„РѕСЂ'], correct: 0, difficulty: 4 },
+        { id: 'chem-86', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РѕСЃРјРѕСЃ?', options: ['Р”РІРёР¶РµРЅРёРµ РІРѕРґС‹ С‡РµСЂРµР· РјРµРјР±СЂР°РЅСѓ', 'Р”РёС„С„СѓР·РёСЏ РіР°Р·РѕРІ', 'РўСЂР°РЅСЃРїРѕСЂС‚ РёРѕРЅРѕРІ', 'Р¤РёР»СЊС‚СЂР°С†РёСЏ'], correct: 0, difficulty: 4 },
+        { id: 'chem-87', question: 'РљР°РєРѕРІР° СЂРѕР»СЊ РЅР°С‚СЂРёСЏ РІ РѕСЂРіР°РЅРёР·РјРµ?', options: ['РџРѕРґРґРµСЂР¶Р°РЅРёРµ РІРѕРґРЅРѕРіРѕ Р±Р°Р»Р°РЅСЃР°', 'РўСЂР°РЅСЃРїРѕСЂС‚ РєРёСЃР»РѕСЂРѕРґР°', 'РЎРёРЅС‚РµР· Р±РµР»РєРѕРІ', 'РҐСЂР°РЅРµРЅРёРµ СЌРЅРµСЂРіРёРё'], correct: 0, difficulty: 4 },
+        { id: 'chem-88', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РјРµС‚Р°Р±РѕР»РёР·Рј?', options: ['РЎРѕРІРѕРєСѓРїРЅРѕСЃС‚СЊ С…РёРјРёС‡РµСЃРєРёС… СЂРµР°РєС†РёР№ РІ РѕСЂРіР°РЅРёР·РјРµ', 'РџРёС‰РµРІР°СЂРµРЅРёРµ', 'Р”С‹С…Р°РЅРёРµ', 'РљСЂРѕРІРѕРѕР±СЂР°С‰РµРЅРёРµ'], correct: 0, difficulty: 4 },
+        { id: 'chem-89', question: 'РљР°РєРѕР№ РїСЂРѕС†РµСЃСЃ - Р°РЅР°Р±РѕР»РёР·Рј?', options: ['РЎРёРЅС‚РµР· СЃР»РѕР¶РЅС‹С… РІРµС‰РµСЃС‚РІ', 'Р Р°СЃРїР°Рґ РІРµС‰РµСЃС‚РІ', 'РћРєРёСЃР»РµРЅРёРµ', 'Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ'], correct: 0, difficulty: 4 },
+        { id: 'chem-90', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РєР°С‚Р°Р±РѕР»РёР·Рј?', options: ['Р Р°СЃРїР°Рґ СЃР»РѕР¶РЅС‹С… РІРµС‰РµСЃС‚РІ', 'РЎРёРЅС‚РµР· РІРµС‰РµСЃС‚РІ', 'Р РѕСЃС‚ РєР»РµС‚РѕРє', 'Р”РµР»РµРЅРёРµ РєР»РµС‚РѕРє'], correct: 0, difficulty: 4 },
+        { id: 'chem-91', question: 'РљР°РєРѕР№ РІРёС‚Р°РјРёРЅ СЃРёРЅС‚РµР·РёСЂСѓРµС‚СЃСЏ РІ РєРѕР¶Рµ?', options: ['Р’РёС‚Р°РјРёРЅ D', 'Р’РёС‚Р°РјРёРЅ A', 'Р’РёС‚Р°РјРёРЅ C', 'Р’РёС‚Р°РјРёРЅ B1'], correct: 0, difficulty: 4 },
+        { id: 'chem-92', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РіР»РёРєРѕРіРµРЅ?', options: ['Р—Р°РїР°СЃРЅРѕР№ СѓРіР»РµРІРѕРґ РІ РїРµС‡РµРЅРё', 'Р‘РµР»РѕРє', 'Р–РёСЂ', 'РќСѓРєР»РµРёРЅРѕРІР°СЏ РєРёСЃР»РѕС‚Р°'], correct: 0, difficulty: 4 },
+        { id: 'chem-93', question: 'РљР°РєРѕР№ РіРѕСЂРјРѕРЅ СЂРµРіСѓР»РёСЂСѓРµС‚ СѓСЂРѕРІРµРЅСЊ РіР»СЋРєРѕР·С‹?', options: ['РРЅСЃСѓР»РёРЅ', 'РђРґСЂРµРЅР°Р»РёРЅ', 'РўРёСЂРѕРєСЃРёРЅ', 'РљРѕСЂС‚РёР·РѕР»'], correct: 0, difficulty: 4 },
+        { id: 'chem-94', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РєРµС‚РѕРЅРѕРІС‹Рµ С‚РµР»Р°?', options: ['РџСЂРѕРґСѓРєС‚С‹ СЂР°СЃРїР°РґР° Р¶РёСЂРѕРІ', 'РЈРіР»РµРІРѕРґС‹', 'Р‘РµР»РєРё', 'Р’РёС‚Р°РјРёРЅС‹'], correct: 0, difficulty: 4 },
+        { id: 'chem-95', question: 'РљР°РєРѕР№ С„РµСЂРјРµРЅС‚ СЂР°СЃС‰РµРїР»СЏРµС‚ РєСЂР°С…РјР°Р»?', options: ['РђРјРёР»Р°Р·Р°', 'Р›РёРїР°Р·Р°', 'РџСЂРѕС‚РµР°Р·Р°', 'РќСѓРєР»РµР°Р·Р°'], correct: 0, difficulty: 4 },
+        { id: 'chem-96', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РїРµРїСЃРёРЅ?', options: ['Р¤РµСЂРјРµРЅС‚, СЂР°СЃС‰РµРїР»СЏСЋС‰РёР№ Р±РµР»РєРё', 'Р“РѕСЂРјРѕРЅ', 'Р’РёС‚Р°РјРёРЅ', 'РЈРіР»РµРІРѕРґ'], correct: 0, difficulty: 4 },
+        { id: 'chem-97', question: 'РљР°РєРѕР№ С„РµСЂРјРµРЅС‚ СЂР°СЃС‰РµРїР»СЏРµС‚ Р¶РёСЂС‹?', options: ['Р›РёРїР°Р·Р°', 'РђРјРёР»Р°Р·Р°', 'РџСЂРѕС‚РµР°Р·Р°', 'Р›Р°РєС‚Р°Р·Р°'], correct: 0, difficulty: 4 },
+        { id: 'chem-98', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ С…РѕР»РµСЃС‚РµСЂРёРЅ?', options: ['Р›РёРїРёРґ, РєРѕРјРїРѕРЅРµРЅС‚ РјРµРјР±СЂР°РЅ', 'РЈРіР»РµРІРѕРґ', 'Р‘РµР»РѕРє', 'Р’РёС‚Р°РјРёРЅ'], correct: 0, difficulty: 4 },
+        { id: 'chem-99', question: 'РљР°РєРѕР№ С‚РёРї С…РѕР»РµСЃС‚РµСЂРёРЅР° СЃС‡РёС‚Р°РµС‚СЃСЏ "С…РѕСЂРѕС€РёРј"?', options: ['Р›РџР’Рџ', 'Р›РџРќРџ', 'Р›РџРћРќРџ', 'РўСЂРёРіР»РёС†РµСЂРёРґС‹'], correct: 0, difficulty: 4 },
+        { id: 'chem-100', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°РЅС‚РёРѕРєСЃРёРґР°РЅС‚С‹?', options: ['Р’РµС‰РµСЃС‚РІР°, РЅРµР№С‚СЂР°Р»РёР·СѓСЋС‰РёРµ СЃРІРѕР±РѕРґРЅС‹Рµ СЂР°РґРёРєР°Р»С‹', 'РћРєРёСЃР»РёС‚РµР»Рё', 'РљР°С‚Р°Р»РёР·Р°С‚РѕСЂС‹', 'Р¤РµСЂРјРµРЅС‚С‹'], correct: 0, difficulty: 4 }
     ];
     
-    // Добавляем пояснения
+    // Р”РѕР±Р°РІР»СЏРµРј РїРѕСЏСЃРЅРµРЅРёСЏ
     questions.forEach(q => {
-        q.explanation = 'Проверьте свои знания в области химии.';
+        q.explanation = 'РџСЂРѕРІРµСЂСЊС‚Рµ СЃРІРѕРё Р·РЅР°РЅРёСЏ РІ РѕР±Р»Р°СЃС‚Рё С…РёРјРёРё.';
     });
     
-    // Группируем по уровням сложности
+    // Р“СЂСѓРїРїРёСЂСѓРµРј РїРѕ СѓСЂРѕРІРЅСЏРј СЃР»РѕР¶РЅРѕСЃС‚Рё
     const groupedQuestions = {};
     questions.forEach(q => {
         if (!groupedQuestions[q.difficulty]) groupedQuestions[q.difficulty] = [];
@@ -2029,124 +2029,124 @@ function generateChemistryQuestions() {
     return groupedQuestions;
 }
 
-// Генерация 100 уникальных вопросов для теста по биологии
+// Р“РµРЅРµСЂР°С†РёСЏ 100 СѓРЅРёРєР°Р»СЊРЅС‹С… РІРѕРїСЂРѕСЃРѕРІ РґР»СЏ С‚РµСЃС‚Р° РїРѕ Р±РёРѕР»РѕРіРёРё
 function generateBiologyQuestions() {
     const questions = [
-        // Блок 1: Клеточная биология (1-25)
-        { id: 'bio-1', question: 'Что является основной структурной единицей живого организма?', options: ['Клетка', 'Ткань', 'Орган', 'Молекула'], correct: 0, difficulty: 1 },
-        { id: 'bio-2', question: 'Сколько хромосом в клетках человека?', options: ['46', '23', '48', '44'], correct: 0, difficulty: 1 },
-        { id: 'bio-3', question: 'Какая органелла называется "энергетической станцией" клетки?', options: ['Митохондрия', 'Ядро', 'Рибосома', 'Лизосома'], correct: 0, difficulty: 1 },
-        { id: 'bio-4', question: 'Где хранится генетическая информация клетки?', options: ['В ядре', 'В цитоплазме', 'В рибосомах', 'В мембране'], correct: 0, difficulty: 1 },
-        { id: 'bio-5', question: 'Что такое ДНК?', options: ['Дезоксирибонуклеиновая кислота', 'Белок', 'Углевод', 'Жир'], correct: 0, difficulty: 1 },
-        { id: 'bio-6', question: 'Какой процесс деления соматических клеток?', options: ['Митоз', 'Мейоз', 'Амитоз', 'Апоптоз'], correct: 0, difficulty: 1 },
-        { id: 'bio-7', question: 'Где происходит синтез белка?', options: ['В рибосомах', 'В ядре', 'В митохондриях', 'В лизосомах'], correct: 0, difficulty: 1 },
-        { id: 'bio-8', question: 'Что такое хромосомы?', options: ['Структуры, содержащие ДНК', 'Белки', 'Органеллы', 'Ферменты'], correct: 0, difficulty: 1 },
-        { id: 'bio-9', question: 'Какая органелла отвечает за переваривание веществ в клетке?', options: ['Лизосома', 'Митохондрия', 'Рибосома', 'Ядро'], correct: 0, difficulty: 1 },
-        { id: 'bio-10', question: 'Что защищает и поддерживает форму клетки?', options: ['Клеточная мембрана', 'Ядро', 'Цитоплазма', 'Рибосомы'], correct: 0, difficulty: 1 },
-        { id: 'bio-11', question: 'Сколько пар хромосом у человека?', options: ['23', '46', '22', '24'], correct: 0, difficulty: 1 },
-        { id: 'bio-12', question: 'Что такое цитоплазма?', options: ['Внутреннее содержимое клетки', 'Оболочка клетки', 'Ядро', 'Хромосома'], correct: 0, difficulty: 1 },
-        { id: 'bio-13', question: 'Какие клетки не имеют ядра?', options: ['Эритроциты', 'Лейкоциты', 'Нейроны', 'Миоциты'], correct: 0, difficulty: 1 },
-        { id: 'bio-14', question: 'Что такое органеллы?', options: ['Структуры внутри клетки', 'Типы клеток', 'Ткани', 'Органы'], correct: 0, difficulty: 1 },
-        { id: 'bio-15', question: 'Какой органелла присутствует только в растительных клетках?', options: ['Хлоропласт', 'Митохондрия', 'Рибосома', 'Ядро'], correct: 0, difficulty: 1 },
-        { id: 'bio-16', question: 'Что такое РНК?', options: ['Рибонуклеиновая кислота', 'Белок', 'Жир', 'Углевод'], correct: 0, difficulty: 1 },
-        { id: 'bio-17', question: 'Какой процесс образования половых клеток?', options: ['Мейоз', 'Митоз', 'Амитоз', 'Бинарное деление'], correct: 0, difficulty: 1 },
-        { id: 'bio-18', question: 'Что такое ген?', options: ['Участок ДНК', 'Хромосома', 'Клетка', 'Белок'], correct: 0, difficulty: 1 },
-        { id: 'bio-19', question: 'Какая структура контролирует обмен веществ между клеткой и средой?', options: ['Мембрана', 'Ядро', 'Рибосома', 'Митохондрия'], correct: 0, difficulty: 1 },
-        { id: 'bio-20', question: 'Сколько хромосом в половых клетках человека?', options: ['23', '46', '22', '44'], correct: 0, difficulty: 1 },
-        { id: 'bio-21', question: 'Что такое аппарат Гольджи?', options: ['Органелла для упаковки веществ', 'Энергетическая станция', 'Центр синтеза белка', 'Хранилище ДНК'], correct: 0, difficulty: 1 },
-        { id: 'bio-22', question: 'Какие клетки способны к фагоцитозу?', options: ['Лейкоциты', 'Эритроциты', 'Тромбоциты', 'Нейроны'], correct: 0, difficulty: 1 },
-        { id: 'bio-23', question: 'Что такое эндоплазматическая сеть?', options: ['Система канальцев в клетке', 'Ядро клетки', 'Мембрана', 'Цитоплазма'], correct: 0, difficulty: 1 },
-        { id: 'bio-24', question: 'Какой процесс называется апоптозом?', options: ['Программируемая гибель клетки', 'Деление клетки', 'Рост клетки', 'Питание клетки'], correct: 0, difficulty: 1 },
-        { id: 'bio-25', question: 'Что такое стволовые клетки?', options: ['Недифференцированные клетки', 'Нервные клетки', 'Мышечные клетки', 'Костные клетки'], correct: 0, difficulty: 1 },
+        // Р‘Р»РѕРє 1: РљР»РµС‚РѕС‡РЅР°СЏ Р±РёРѕР»РѕРіРёСЏ (1-25)
+        { id: 'bio-1', question: 'Р§С‚Рѕ СЏРІР»СЏРµС‚СЃСЏ РѕСЃРЅРѕРІРЅРѕР№ СЃС‚СЂСѓРєС‚СѓСЂРЅРѕР№ РµРґРёРЅРёС†РµР№ Р¶РёРІРѕРіРѕ РѕСЂРіР°РЅРёР·РјР°?', options: ['РљР»РµС‚РєР°', 'РўРєР°РЅСЊ', 'РћСЂРіР°РЅ', 'РњРѕР»РµРєСѓР»Р°'], correct: 0, difficulty: 1 },
+        { id: 'bio-2', question: 'РЎРєРѕР»СЊРєРѕ С…СЂРѕРјРѕСЃРѕРј РІ РєР»РµС‚РєР°С… С‡РµР»РѕРІРµРєР°?', options: ['46', '23', '48', '44'], correct: 0, difficulty: 1 },
+        { id: 'bio-3', question: 'РљР°РєР°СЏ РѕСЂРіР°РЅРµР»Р»Р° РЅР°Р·С‹РІР°РµС‚СЃСЏ "СЌРЅРµСЂРіРµС‚РёС‡РµСЃРєРѕР№ СЃС‚Р°РЅС†РёРµР№" РєР»РµС‚РєРё?', options: ['РњРёС‚РѕС…РѕРЅРґСЂРёСЏ', 'РЇРґСЂРѕ', 'Р РёР±РѕСЃРѕРјР°', 'Р›РёР·РѕСЃРѕРјР°'], correct: 0, difficulty: 1 },
+        { id: 'bio-4', question: 'Р“РґРµ С…СЂР°РЅРёС‚СЃСЏ РіРµРЅРµС‚РёС‡РµСЃРєР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ РєР»РµС‚РєРё?', options: ['Р’ СЏРґСЂРµ', 'Р’ С†РёС‚РѕРїР»Р°Р·РјРµ', 'Р’ СЂРёР±РѕСЃРѕРјР°С…', 'Р’ РјРµРјР±СЂР°РЅРµ'], correct: 0, difficulty: 1 },
+        { id: 'bio-5', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р”РќРљ?', options: ['Р”РµР·РѕРєСЃРёСЂРёР±РѕРЅСѓРєР»РµРёРЅРѕРІР°СЏ РєРёСЃР»РѕС‚Р°', 'Р‘РµР»РѕРє', 'РЈРіР»РµРІРѕРґ', 'Р–РёСЂ'], correct: 0, difficulty: 1 },
+        { id: 'bio-6', question: 'РљР°РєРѕР№ РїСЂРѕС†РµСЃСЃ РґРµР»РµРЅРёСЏ СЃРѕРјР°С‚РёС‡РµСЃРєРёС… РєР»РµС‚РѕРє?', options: ['РњРёС‚РѕР·', 'РњРµР№РѕР·', 'РђРјРёС‚РѕР·', 'РђРїРѕРїС‚РѕР·'], correct: 0, difficulty: 1 },
+        { id: 'bio-7', question: 'Р“РґРµ РїСЂРѕРёСЃС…РѕРґРёС‚ СЃРёРЅС‚РµР· Р±РµР»РєР°?', options: ['Р’ СЂРёР±РѕСЃРѕРјР°С…', 'Р’ СЏРґСЂРµ', 'Р’ РјРёС‚РѕС…РѕРЅРґСЂРёСЏС…', 'Р’ Р»РёР·РѕСЃРѕРјР°С…'], correct: 0, difficulty: 1 },
+        { id: 'bio-8', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ С…СЂРѕРјРѕСЃРѕРјС‹?', options: ['РЎС‚СЂСѓРєС‚СѓСЂС‹, СЃРѕРґРµСЂР¶Р°С‰РёРµ Р”РќРљ', 'Р‘РµР»РєРё', 'РћСЂРіР°РЅРµР»Р»С‹', 'Р¤РµСЂРјРµРЅС‚С‹'], correct: 0, difficulty: 1 },
+        { id: 'bio-9', question: 'РљР°РєР°СЏ РѕСЂРіР°РЅРµР»Р»Р° РѕС‚РІРµС‡Р°РµС‚ Р·Р° РїРµСЂРµРІР°СЂРёРІР°РЅРёРµ РІРµС‰РµСЃС‚РІ РІ РєР»РµС‚РєРµ?', options: ['Р›РёР·РѕСЃРѕРјР°', 'РњРёС‚РѕС…РѕРЅРґСЂРёСЏ', 'Р РёР±РѕСЃРѕРјР°', 'РЇРґСЂРѕ'], correct: 0, difficulty: 1 },
+        { id: 'bio-10', question: 'Р§С‚Рѕ Р·Р°С‰РёС‰Р°РµС‚ Рё РїРѕРґРґРµСЂР¶РёРІР°РµС‚ С„РѕСЂРјСѓ РєР»РµС‚РєРё?', options: ['РљР»РµС‚РѕС‡РЅР°СЏ РјРµРјР±СЂР°РЅР°', 'РЇРґСЂРѕ', 'Р¦РёС‚РѕРїР»Р°Р·РјР°', 'Р РёР±РѕСЃРѕРјС‹'], correct: 0, difficulty: 1 },
+        { id: 'bio-11', question: 'РЎРєРѕР»СЊРєРѕ РїР°СЂ С…СЂРѕРјРѕСЃРѕРј Сѓ С‡РµР»РѕРІРµРєР°?', options: ['23', '46', '22', '24'], correct: 0, difficulty: 1 },
+        { id: 'bio-12', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ С†РёС‚РѕРїР»Р°Р·РјР°?', options: ['Р’РЅСѓС‚СЂРµРЅРЅРµРµ СЃРѕРґРµСЂР¶РёРјРѕРµ РєР»РµС‚РєРё', 'РћР±РѕР»РѕС‡РєР° РєР»РµС‚РєРё', 'РЇРґСЂРѕ', 'РҐСЂРѕРјРѕСЃРѕРјР°'], correct: 0, difficulty: 1 },
+        { id: 'bio-13', question: 'РљР°РєРёРµ РєР»РµС‚РєРё РЅРµ РёРјРµСЋС‚ СЏРґСЂР°?', options: ['Р­СЂРёС‚СЂРѕС†РёС‚С‹', 'Р›РµР№РєРѕС†РёС‚С‹', 'РќРµР№СЂРѕРЅС‹', 'РњРёРѕС†РёС‚С‹'], correct: 0, difficulty: 1 },
+        { id: 'bio-14', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РѕСЂРіР°РЅРµР»Р»С‹?', options: ['РЎС‚СЂСѓРєС‚СѓСЂС‹ РІРЅСѓС‚СЂРё РєР»РµС‚РєРё', 'РўРёРїС‹ РєР»РµС‚РѕРє', 'РўРєР°РЅРё', 'РћСЂРіР°РЅС‹'], correct: 0, difficulty: 1 },
+        { id: 'bio-15', question: 'РљР°РєРѕР№ РѕСЂРіР°РЅРµР»Р»Р° РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚ С‚РѕР»СЊРєРѕ РІ СЂР°СЃС‚РёС‚РµР»СЊРЅС‹С… РєР»РµС‚РєР°С…?', options: ['РҐР»РѕСЂРѕРїР»Р°СЃС‚', 'РњРёС‚РѕС…РѕРЅРґСЂРёСЏ', 'Р РёР±РѕСЃРѕРјР°', 'РЇРґСЂРѕ'], correct: 0, difficulty: 1 },
+        { id: 'bio-16', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р РќРљ?', options: ['Р РёР±РѕРЅСѓРєР»РµРёРЅРѕРІР°СЏ РєРёСЃР»РѕС‚Р°', 'Р‘РµР»РѕРє', 'Р–РёСЂ', 'РЈРіР»РµРІРѕРґ'], correct: 0, difficulty: 1 },
+        { id: 'bio-17', question: 'РљР°РєРѕР№ РїСЂРѕС†РµСЃСЃ РѕР±СЂР°Р·РѕРІР°РЅРёСЏ РїРѕР»РѕРІС‹С… РєР»РµС‚РѕРє?', options: ['РњРµР№РѕР·', 'РњРёС‚РѕР·', 'РђРјРёС‚РѕР·', 'Р‘РёРЅР°СЂРЅРѕРµ РґРµР»РµРЅРёРµ'], correct: 0, difficulty: 1 },
+        { id: 'bio-18', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РіРµРЅ?', options: ['РЈС‡Р°СЃС‚РѕРє Р”РќРљ', 'РҐСЂРѕРјРѕСЃРѕРјР°', 'РљР»РµС‚РєР°', 'Р‘РµР»РѕРє'], correct: 0, difficulty: 1 },
+        { id: 'bio-19', question: 'РљР°РєР°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° РєРѕРЅС‚СЂРѕР»РёСЂСѓРµС‚ РѕР±РјРµРЅ РІРµС‰РµСЃС‚РІ РјРµР¶РґСѓ РєР»РµС‚РєРѕР№ Рё СЃСЂРµРґРѕР№?', options: ['РњРµРјР±СЂР°РЅР°', 'РЇРґСЂРѕ', 'Р РёР±РѕСЃРѕРјР°', 'РњРёС‚РѕС…РѕРЅРґСЂРёСЏ'], correct: 0, difficulty: 1 },
+        { id: 'bio-20', question: 'РЎРєРѕР»СЊРєРѕ С…СЂРѕРјРѕСЃРѕРј РІ РїРѕР»РѕРІС‹С… РєР»РµС‚РєР°С… С‡РµР»РѕРІРµРєР°?', options: ['23', '46', '22', '44'], correct: 0, difficulty: 1 },
+        { id: 'bio-21', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°РїРїР°СЂР°С‚ Р“РѕР»СЊРґР¶Рё?', options: ['РћСЂРіР°РЅРµР»Р»Р° РґР»СЏ СѓРїР°РєРѕРІРєРё РІРµС‰РµСЃС‚РІ', 'Р­РЅРµСЂРіРµС‚РёС‡РµСЃРєР°СЏ СЃС‚Р°РЅС†РёСЏ', 'Р¦РµРЅС‚СЂ СЃРёРЅС‚РµР·Р° Р±РµР»РєР°', 'РҐСЂР°РЅРёР»РёС‰Рµ Р”РќРљ'], correct: 0, difficulty: 1 },
+        { id: 'bio-22', question: 'РљР°РєРёРµ РєР»РµС‚РєРё СЃРїРѕСЃРѕР±РЅС‹ Рє С„Р°РіРѕС†РёС‚РѕР·Сѓ?', options: ['Р›РµР№РєРѕС†РёС‚С‹', 'Р­СЂРёС‚СЂРѕС†РёС‚С‹', 'РўСЂРѕРјР±РѕС†РёС‚С‹', 'РќРµР№СЂРѕРЅС‹'], correct: 0, difficulty: 1 },
+        { id: 'bio-23', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЌРЅРґРѕРїР»Р°Р·РјР°С‚РёС‡РµСЃРєР°СЏ СЃРµС‚СЊ?', options: ['РЎРёСЃС‚РµРјР° РєР°РЅР°Р»СЊС†РµРІ РІ РєР»РµС‚РєРµ', 'РЇРґСЂРѕ РєР»РµС‚РєРё', 'РњРµРјР±СЂР°РЅР°', 'Р¦РёС‚РѕРїР»Р°Р·РјР°'], correct: 0, difficulty: 1 },
+        { id: 'bio-24', question: 'РљР°РєРѕР№ РїСЂРѕС†РµСЃСЃ РЅР°Р·С‹РІР°РµС‚СЃСЏ Р°РїРѕРїС‚РѕР·РѕРј?', options: ['РџСЂРѕРіСЂР°РјРјРёСЂСѓРµРјР°СЏ РіРёР±РµР»СЊ РєР»РµС‚РєРё', 'Р”РµР»РµРЅРёРµ РєР»РµС‚РєРё', 'Р РѕСЃС‚ РєР»РµС‚РєРё', 'РџРёС‚Р°РЅРёРµ РєР»РµС‚РєРё'], correct: 0, difficulty: 1 },
+        { id: 'bio-25', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЃС‚РІРѕР»РѕРІС‹Рµ РєР»РµС‚РєРё?', options: ['РќРµРґРёС„С„РµСЂРµРЅС†РёСЂРѕРІР°РЅРЅС‹Рµ РєР»РµС‚РєРё', 'РќРµСЂРІРЅС‹Рµ РєР»РµС‚РєРё', 'РњС‹С€РµС‡РЅС‹Рµ РєР»РµС‚РєРё', 'РљРѕСЃС‚РЅС‹Рµ РєР»РµС‚РєРё'], correct: 0, difficulty: 1 },
         
-        // Блок 2: Анатомия и физиология (26-50)
-        { id: 'bio-26', question: 'Какой орган является центральным в кровеносной системе?', options: ['Сердце', 'Печень', 'Почки', 'Легкие'], correct: 0, difficulty: 2 },
-        { id: 'bio-27', question: 'Сколько камер в сердце человека?', options: ['4', '2', '3', '5'], correct: 0, difficulty: 2 },
-        { id: 'bio-28', question: 'Какой орган вырабатывает инсулин?', options: ['Поджелудочная железа', 'Печень', 'Почки', 'Желудок'], correct: 0, difficulty: 2 },
-        { id: 'bio-29', question: 'Где происходит газообмен в легких?', options: ['В альвеолах', 'В бронхах', 'В трахее', 'В плевре'], correct: 0, difficulty: 2 },
-        { id: 'bio-30', question: 'Какой орган фильтрует кровь от токсинов?', options: ['Печень', 'Сердце', 'Легкие', 'Желудок'], correct: 0, difficulty: 2 },
-        { id: 'bio-31', question: 'Сколько костей в скелете взрослого человека?', options: ['206', '210', '200', '250'], correct: 0, difficulty: 2 },
-        { id: 'bio-32', question: 'Какая железа регулирует обмен веществ?', options: ['Щитовидная железа', 'Гипофиз', 'Надпочечники', 'Тимус'], correct: 0, difficulty: 2 },
-        { id: 'bio-33', question: 'Какой отдел мозга отвечает за координацию движений?', options: ['Мозжечок', 'Кора', 'Продолговатый мозг', 'Гипоталамус'], correct: 0, difficulty: 2 },
-        { id: 'bio-34', question: 'Где вырабатываются эритроциты?', options: ['В костном мозге', 'В печени', 'В селезенке', 'В почках'], correct: 0, difficulty: 2 },
-        { id: 'bio-35', question: 'Какой гормон вырабатывается надпочечниками при стрессе?', options: ['Адреналин', 'Инсулин', 'Тироксин', 'Тестостерон'], correct: 0, difficulty: 2 },
-        { id: 'bio-36', question: 'Сколько литров крови в организме взрослого человека?', options: ['4-6 литров', '2-3 литра', '8-10 литров', '1-2 литра'], correct: 0, difficulty: 2 },
-        { id: 'bio-37', question: 'Какой орган является самым большим внутренним органом?', options: ['Печень', 'Легкие', 'Сердце', 'Почки'], correct: 0, difficulty: 2 },
-        { id: 'bio-38', question: 'Где начинается переваривание белков?', options: ['В желудке', 'Во рту', 'В кишечнике', 'В пищеводе'], correct: 0, difficulty: 2 },
-        { id: 'bio-39', question: 'Какой витамин синтезируется в коже под действием солнца?', options: ['Витамин D', 'Витамин C', 'Витамин A', 'Витамин B12'], correct: 0, difficulty: 2 },
-        { id: 'bio-40', question: 'Какая кровь течет по легочным артериям?', options: ['Венозная', 'Артериальная', 'Смешанная', 'Капиллярная'], correct: 0, difficulty: 2 },
-        { id: 'bio-41', question: 'Где всасываются питательные вещества?', options: ['В тонком кишечнике', 'В желудке', 'В толстом кишечнике', 'В пищеводе'], correct: 0, difficulty: 2 },
-        { id: 'bio-42', question: 'Какой отдел нервной системы управляет внутренними органами?', options: ['Вегетативная', 'Соматическая', 'Центральная', 'Периферическая'], correct: 0, difficulty: 2 },
-        { id: 'bio-43', question: 'Сколько пар черепно-мозговых нервов у человека?', options: ['12', '10', '14', '8'], correct: 0, difficulty: 2 },
-        { id: 'bio-44', question: 'Какой орган вырабатывает желчь?', options: ['Печень', 'Желчный пузырь', 'Поджелудочная железа', 'Желудок'], correct: 0, difficulty: 2 },
-        { id: 'bio-45', question: 'Где находится гипофиз?', options: ['В головном мозге', 'В шее', 'В груди', 'В брюшной полости'], correct: 0, difficulty: 2 },
-        { id: 'bio-46', question: 'Какие клетки крови отвечают за иммунитет?', options: ['Лейкоциты', 'Эритроциты', 'Тромбоциты', 'Плазма'], correct: 0, difficulty: 2 },
-        { id: 'bio-47', question: 'Какой орган регулирует водно-солевой баланс?', options: ['Почки', 'Печень', 'Легкие', 'Сердце'], correct: 0, difficulty: 2 },
-        { id: 'bio-48', question: 'Где находится вестибулярный аппарат?', options: ['Во внутреннем ухе', 'В головном мозге', 'В глазах', 'В носу'], correct: 0, difficulty: 2 },
-        { id: 'bio-49', question: 'Какой гормон регулирует уровень глюкозы в крови?', options: ['Инсулин', 'Адреналин', 'Тироксин', 'Кортизол'], correct: 0, difficulty: 2 },
-        { id: 'bio-50', question: 'Сколько позвонков в позвоночнике человека?', options: ['33-34', '26-27', '40-41', '20-21'], correct: 0, difficulty: 2 },
+        // Р‘Р»РѕРє 2: РђРЅР°С‚РѕРјРёСЏ Рё С„РёР·РёРѕР»РѕРіРёСЏ (26-50)
+        { id: 'bio-26', question: 'РљР°РєРѕР№ РѕСЂРіР°РЅ СЏРІР»СЏРµС‚СЃСЏ С†РµРЅС‚СЂР°Р»СЊРЅС‹Рј РІ РєСЂРѕРІРµРЅРѕСЃРЅРѕР№ СЃРёСЃС‚РµРјРµ?', options: ['РЎРµСЂРґС†Рµ', 'РџРµС‡РµРЅСЊ', 'РџРѕС‡РєРё', 'Р›РµРіРєРёРµ'], correct: 0, difficulty: 2 },
+        { id: 'bio-27', question: 'РЎРєРѕР»СЊРєРѕ РєР°РјРµСЂ РІ СЃРµСЂРґС†Рµ С‡РµР»РѕРІРµРєР°?', options: ['4', '2', '3', '5'], correct: 0, difficulty: 2 },
+        { id: 'bio-28', question: 'РљР°РєРѕР№ РѕСЂРіР°РЅ РІС‹СЂР°Р±Р°С‚С‹РІР°РµС‚ РёРЅСЃСѓР»РёРЅ?', options: ['РџРѕРґР¶РµР»СѓРґРѕС‡РЅР°СЏ Р¶РµР»РµР·Р°', 'РџРµС‡РµРЅСЊ', 'РџРѕС‡РєРё', 'Р–РµР»СѓРґРѕРє'], correct: 0, difficulty: 2 },
+        { id: 'bio-29', question: 'Р“РґРµ РїСЂРѕРёСЃС…РѕРґРёС‚ РіР°Р·РѕРѕР±РјРµРЅ РІ Р»РµРіРєРёС…?', options: ['Р’ Р°Р»СЊРІРµРѕР»Р°С…', 'Р’ Р±СЂРѕРЅС…Р°С…', 'Р’ С‚СЂР°С…РµРµ', 'Р’ РїР»РµРІСЂРµ'], correct: 0, difficulty: 2 },
+        { id: 'bio-30', question: 'РљР°РєРѕР№ РѕСЂРіР°РЅ С„РёР»СЊС‚СЂСѓРµС‚ РєСЂРѕРІСЊ РѕС‚ С‚РѕРєСЃРёРЅРѕРІ?', options: ['РџРµС‡РµРЅСЊ', 'РЎРµСЂРґС†Рµ', 'Р›РµРіРєРёРµ', 'Р–РµР»СѓРґРѕРє'], correct: 0, difficulty: 2 },
+        { id: 'bio-31', question: 'РЎРєРѕР»СЊРєРѕ РєРѕСЃС‚РµР№ РІ СЃРєРµР»РµС‚Рµ РІР·СЂРѕСЃР»РѕРіРѕ С‡РµР»РѕРІРµРєР°?', options: ['206', '210', '200', '250'], correct: 0, difficulty: 2 },
+        { id: 'bio-32', question: 'РљР°РєР°СЏ Р¶РµР»РµР·Р° СЂРµРіСѓР»РёСЂСѓРµС‚ РѕР±РјРµРЅ РІРµС‰РµСЃС‚РІ?', options: ['Р©РёС‚РѕРІРёРґРЅР°СЏ Р¶РµР»РµР·Р°', 'Р“РёРїРѕС„РёР·', 'РќР°РґРїРѕС‡РµС‡РЅРёРєРё', 'РўРёРјСѓСЃ'], correct: 0, difficulty: 2 },
+        { id: 'bio-33', question: 'РљР°РєРѕР№ РѕС‚РґРµР» РјРѕР·РіР° РѕС‚РІРµС‡Р°РµС‚ Р·Р° РєРѕРѕСЂРґРёРЅР°С†РёСЋ РґРІРёР¶РµРЅРёР№?', options: ['РњРѕР·Р¶РµС‡РѕРє', 'РљРѕСЂР°', 'РџСЂРѕРґРѕР»РіРѕРІР°С‚С‹Р№ РјРѕР·Рі', 'Р“РёРїРѕС‚Р°Р»Р°РјСѓСЃ'], correct: 0, difficulty: 2 },
+        { id: 'bio-34', question: 'Р“РґРµ РІС‹СЂР°Р±Р°С‚С‹РІР°СЋС‚СЃСЏ СЌСЂРёС‚СЂРѕС†РёС‚С‹?', options: ['Р’ РєРѕСЃС‚РЅРѕРј РјРѕР·РіРµ', 'Р’ РїРµС‡РµРЅРё', 'Р’ СЃРµР»РµР·РµРЅРєРµ', 'Р’ РїРѕС‡РєР°С…'], correct: 0, difficulty: 2 },
+        { id: 'bio-35', question: 'РљР°РєРѕР№ РіРѕСЂРјРѕРЅ РІС‹СЂР°Р±Р°С‚С‹РІР°РµС‚СЃСЏ РЅР°РґРїРѕС‡РµС‡РЅРёРєР°РјРё РїСЂРё СЃС‚СЂРµСЃСЃРµ?', options: ['РђРґСЂРµРЅР°Р»РёРЅ', 'РРЅСЃСѓР»РёРЅ', 'РўРёСЂРѕРєСЃРёРЅ', 'РўРµСЃС‚РѕСЃС‚РµСЂРѕРЅ'], correct: 0, difficulty: 2 },
+        { id: 'bio-36', question: 'РЎРєРѕР»СЊРєРѕ Р»РёС‚СЂРѕРІ РєСЂРѕРІРё РІ РѕСЂРіР°РЅРёР·РјРµ РІР·СЂРѕСЃР»РѕРіРѕ С‡РµР»РѕРІРµРєР°?', options: ['4-6 Р»РёС‚СЂРѕРІ', '2-3 Р»РёС‚СЂР°', '8-10 Р»РёС‚СЂРѕРІ', '1-2 Р»РёС‚СЂР°'], correct: 0, difficulty: 2 },
+        { id: 'bio-37', question: 'РљР°РєРѕР№ РѕСЂРіР°РЅ СЏРІР»СЏРµС‚СЃСЏ СЃР°РјС‹Рј Р±РѕР»СЊС€РёРј РІРЅСѓС‚СЂРµРЅРЅРёРј РѕСЂРіР°РЅРѕРј?', options: ['РџРµС‡РµРЅСЊ', 'Р›РµРіРєРёРµ', 'РЎРµСЂРґС†Рµ', 'РџРѕС‡РєРё'], correct: 0, difficulty: 2 },
+        { id: 'bio-38', question: 'Р“РґРµ РЅР°С‡РёРЅР°РµС‚СЃСЏ РїРµСЂРµРІР°СЂРёРІР°РЅРёРµ Р±РµР»РєРѕРІ?', options: ['Р’ Р¶РµР»СѓРґРєРµ', 'Р’Рѕ СЂС‚Сѓ', 'Р’ РєРёС€РµС‡РЅРёРєРµ', 'Р’ РїРёС‰РµРІРѕРґРµ'], correct: 0, difficulty: 2 },
+        { id: 'bio-39', question: 'РљР°РєРѕР№ РІРёС‚Р°РјРёРЅ СЃРёРЅС‚РµР·РёСЂСѓРµС‚СЃСЏ РІ РєРѕР¶Рµ РїРѕРґ РґРµР№СЃС‚РІРёРµРј СЃРѕР»РЅС†Р°?', options: ['Р’РёС‚Р°РјРёРЅ D', 'Р’РёС‚Р°РјРёРЅ C', 'Р’РёС‚Р°РјРёРЅ A', 'Р’РёС‚Р°РјРёРЅ B12'], correct: 0, difficulty: 2 },
+        { id: 'bio-40', question: 'РљР°РєР°СЏ РєСЂРѕРІСЊ С‚РµС‡РµС‚ РїРѕ Р»РµРіРѕС‡РЅС‹Рј Р°СЂС‚РµСЂРёСЏРј?', options: ['Р’РµРЅРѕР·РЅР°СЏ', 'РђСЂС‚РµСЂРёР°Р»СЊРЅР°СЏ', 'РЎРјРµС€Р°РЅРЅР°СЏ', 'РљР°РїРёР»Р»СЏСЂРЅР°СЏ'], correct: 0, difficulty: 2 },
+        { id: 'bio-41', question: 'Р“РґРµ РІСЃР°СЃС‹РІР°СЋС‚СЃСЏ РїРёС‚Р°С‚РµР»СЊРЅС‹Рµ РІРµС‰РµСЃС‚РІР°?', options: ['Р’ С‚РѕРЅРєРѕРј РєРёС€РµС‡РЅРёРєРµ', 'Р’ Р¶РµР»СѓРґРєРµ', 'Р’ С‚РѕР»СЃС‚РѕРј РєРёС€РµС‡РЅРёРєРµ', 'Р’ РїРёС‰РµРІРѕРґРµ'], correct: 0, difficulty: 2 },
+        { id: 'bio-42', question: 'РљР°РєРѕР№ РѕС‚РґРµР» РЅРµСЂРІРЅРѕР№ СЃРёСЃС‚РµРјС‹ СѓРїСЂР°РІР»СЏРµС‚ РІРЅСѓС‚СЂРµРЅРЅРёРјРё РѕСЂРіР°РЅР°РјРё?', options: ['Р’РµРіРµС‚Р°С‚РёРІРЅР°СЏ', 'РЎРѕРјР°С‚РёС‡РµСЃРєР°СЏ', 'Р¦РµРЅС‚СЂР°Р»СЊРЅР°СЏ', 'РџРµСЂРёС„РµСЂРёС‡РµСЃРєР°СЏ'], correct: 0, difficulty: 2 },
+        { id: 'bio-43', question: 'РЎРєРѕР»СЊРєРѕ РїР°СЂ С‡РµСЂРµРїРЅРѕ-РјРѕР·РіРѕРІС‹С… РЅРµСЂРІРѕРІ Сѓ С‡РµР»РѕРІРµРєР°?', options: ['12', '10', '14', '8'], correct: 0, difficulty: 2 },
+        { id: 'bio-44', question: 'РљР°РєРѕР№ РѕСЂРіР°РЅ РІС‹СЂР°Р±Р°С‚С‹РІР°РµС‚ Р¶РµР»С‡СЊ?', options: ['РџРµС‡РµРЅСЊ', 'Р–РµР»С‡РЅС‹Р№ РїСѓР·С‹СЂСЊ', 'РџРѕРґР¶РµР»СѓРґРѕС‡РЅР°СЏ Р¶РµР»РµР·Р°', 'Р–РµР»СѓРґРѕРє'], correct: 0, difficulty: 2 },
+        { id: 'bio-45', question: 'Р“РґРµ РЅР°С…РѕРґРёС‚СЃСЏ РіРёРїРѕС„РёР·?', options: ['Р’ РіРѕР»РѕРІРЅРѕРј РјРѕР·РіРµ', 'Р’ С€РµРµ', 'Р’ РіСЂСѓРґРё', 'Р’ Р±СЂСЋС€РЅРѕР№ РїРѕР»РѕСЃС‚Рё'], correct: 0, difficulty: 2 },
+        { id: 'bio-46', question: 'РљР°РєРёРµ РєР»РµС‚РєРё РєСЂРѕРІРё РѕС‚РІРµС‡Р°СЋС‚ Р·Р° РёРјРјСѓРЅРёС‚РµС‚?', options: ['Р›РµР№РєРѕС†РёС‚С‹', 'Р­СЂРёС‚СЂРѕС†РёС‚С‹', 'РўСЂРѕРјР±РѕС†РёС‚С‹', 'РџР»Р°Р·РјР°'], correct: 0, difficulty: 2 },
+        { id: 'bio-47', question: 'РљР°РєРѕР№ РѕСЂРіР°РЅ СЂРµРіСѓР»РёСЂСѓРµС‚ РІРѕРґРЅРѕ-СЃРѕР»РµРІРѕР№ Р±Р°Р»Р°РЅСЃ?', options: ['РџРѕС‡РєРё', 'РџРµС‡РµРЅСЊ', 'Р›РµРіРєРёРµ', 'РЎРµСЂРґС†Рµ'], correct: 0, difficulty: 2 },
+        { id: 'bio-48', question: 'Р“РґРµ РЅР°С…РѕРґРёС‚СЃСЏ РІРµСЃС‚РёР±СѓР»СЏСЂРЅС‹Р№ Р°РїРїР°СЂР°С‚?', options: ['Р’Рѕ РІРЅСѓС‚СЂРµРЅРЅРµРј СѓС…Рµ', 'Р’ РіРѕР»РѕРІРЅРѕРј РјРѕР·РіРµ', 'Р’ РіР»Р°Р·Р°С…', 'Р’ РЅРѕСЃСѓ'], correct: 0, difficulty: 2 },
+        { id: 'bio-49', question: 'РљР°РєРѕР№ РіРѕСЂРјРѕРЅ СЂРµРіСѓР»РёСЂСѓРµС‚ СѓСЂРѕРІРµРЅСЊ РіР»СЋРєРѕР·С‹ РІ РєСЂРѕРІРё?', options: ['РРЅСЃСѓР»РёРЅ', 'РђРґСЂРµРЅР°Р»РёРЅ', 'РўРёСЂРѕРєСЃРёРЅ', 'РљРѕСЂС‚РёР·РѕР»'], correct: 0, difficulty: 2 },
+        { id: 'bio-50', question: 'РЎРєРѕР»СЊРєРѕ РїРѕР·РІРѕРЅРєРѕРІ РІ РїРѕР·РІРѕРЅРѕС‡РЅРёРєРµ С‡РµР»РѕРІРµРєР°?', options: ['33-34', '26-27', '40-41', '20-21'], correct: 0, difficulty: 2 },
         
-        // Блок 3: Генетика и наследственность (51-75)
-        { id: 'bio-51', question: 'Кто открыл законы наследственности?', options: ['Грегор Мендель', 'Чарльз Дарвин', 'Луи Пастер', 'Роберт Кох'], correct: 0, difficulty: 3 },
-        { id: 'bio-52', question: 'Что такое генотип?', options: ['Совокупность генов организма', 'Внешние признаки', 'Хромосомы', 'ДНК'], correct: 0, difficulty: 3 },
-        { id: 'bio-53', question: 'Что такое фенотип?', options: ['Внешние признаки организма', 'Набор генов', 'Хромосомы', 'ДНК'], correct: 0, difficulty: 3 },
-        { id: 'bio-54', question: 'Какой признак называется доминантным?', options: ['Проявляющийся в гетерозиготе', 'Скрытый', 'Промежуточный', 'Летальный'], correct: 0, difficulty: 3 },
-        { id: 'bio-55', question: 'Что такое мутация?', options: ['Изменение в ДНК', 'Норма', 'Адаптация', 'Рост'], correct: 0, difficulty: 3 },
-        { id: 'bio-56', question: 'Какой тип наследования гемофилии?', options: ['Сцепленное с X-хромосомой', 'Аутосомно-доминантное', 'Аутосомно-рецессивное', 'Y-сцепленное'], correct: 0, difficulty: 3 },
-        { id: 'bio-57', question: 'Что такое аллели?', options: ['Варианты одного гена', 'Разные гены', 'Хромосомы', 'Белки'], correct: 0, difficulty: 3 },
-        { id: 'bio-58', question: 'Какие хромосомы определяют пол у человека?', options: ['X и Y', 'A и B', '1 и 2', 'XX только'], correct: 0, difficulty: 3 },
-        { id: 'bio-59', question: 'Что такое гетерозигота?', options: ['Организм с разными аллелями', 'Организм с одинаковыми аллелями', 'Мутант', 'Гибрид'], correct: 0, difficulty: 3 },
-        { id: 'bio-60', question: 'Какой синдром вызван трисомией по 21 хромосоме?', options: ['Синдром Дауна', 'Синдром Тернера', 'Синдром Клайнфельтера', 'Синдром Патау'], correct: 0, difficulty: 3 },
-        { id: 'bio-61', question: 'Что такое кроссинговер?', options: ['Обмен участками хромосом', 'Деление клетки', 'Мутация', 'Репликация'], correct: 0, difficulty: 3 },
-        { id: 'bio-62', question: 'Какой закон Менделя описывает расщепление признаков?', options: ['Второй закон', 'Первый закон', 'Третий закон', 'Закон чистоты гамет'], correct: 0, difficulty: 3 },
-        { id: 'bio-63', question: 'Что такое полное доминирование?', options: ['Доминантный аллель полностью подавляет рецессивный', 'Оба аллеля проявляются', 'Промежуточное наследование', 'Сцепленное наследование'], correct: 0, difficulty: 3 },
-        { id: 'bio-64', question: 'Какой метод позволяет определить генотип?', options: ['Анализирующее скрещивание', 'Наблюдение', 'Измерение', 'Подсчет'], correct: 0, difficulty: 3 },
-        { id: 'bio-65', question: 'Что такое генная инженерия?', options: ['Изменение ДНК искусственным путем', 'Естественный отбор', 'Мутагенез', 'Селекция'], correct: 0, difficulty: 3 },
-        { id: 'bio-66', question: 'Какой фермент используется для разрезания ДНК?', options: ['Рестриктаза', 'Лигаза', 'Полимераза', 'Хеликаза'], correct: 0, difficulty: 3 },
-        { id: 'bio-67', question: 'Что такое ПЦР?', options: ['Метод копирования ДНК', 'Метод секвенирования', 'Метод клонирования', 'Метод гибридизации'], correct: 0, difficulty: 3 },
-        { id: 'bio-68', question: 'Какой организм называется трансгенным?', options: ['С чужеродными генами', 'С мутациями', 'Гибрид', 'Клон'], correct: 0, difficulty: 3 },
-        { id: 'bio-69', question: 'Что такое геном?', options: ['Полный набор генов организма', 'Один ген', 'Хромосома', 'Белок'], correct: 0, difficulty: 3 },
-        { id: 'bio-70', question: 'Какое заболевание является наследственным?', options: ['Муковисцидоз', 'Грипп', 'Туберкулез', 'Малярия'], correct: 0, difficulty: 3 },
-        { id: 'bio-71', question: 'Что такое экспрессия гена?', options: ['Проявление гена в признаке', 'Мутация', 'Репликация', 'Транскрипция'], correct: 0, difficulty: 3 },
-        { id: 'bio-72', question: 'Какой процесс - транскрипция?', options: ['Синтез РНК на матрице ДНК', 'Копирование ДНК', 'Синтез белка', 'Деление клетки'], correct: 0, difficulty: 3 },
-        { id: 'bio-73', question: 'Что такое трансляция?', options: ['Синтез белка на рибосомах', 'Синтез РНК', 'Копирование ДНК', 'Деление клетки'], correct: 0, difficulty: 3 },
-        { id: 'bio-74', question: 'Какой кодон является стартовым?', options: ['АУГ', 'УАА', 'УАГ', 'УГА'], correct: 0, difficulty: 3 },
-        { id: 'bio-75', question: 'Что такое интрон?', options: ['Некодирующий участок гена', 'Кодирующий участок', 'Промотор', 'Терминатор'], correct: 0, difficulty: 3 },
+        // Р‘Р»РѕРє 3: Р“РµРЅРµС‚РёРєР° Рё РЅР°СЃР»РµРґСЃС‚РІРµРЅРЅРѕСЃС‚СЊ (51-75)
+        { id: 'bio-51', question: 'РљС‚Рѕ РѕС‚РєСЂС‹Р» Р·Р°РєРѕРЅС‹ РЅР°СЃР»РµРґСЃС‚РІРµРЅРЅРѕСЃС‚Рё?', options: ['Р“СЂРµРіРѕСЂ РњРµРЅРґРµР»СЊ', 'Р§Р°СЂР»СЊР· Р”Р°СЂРІРёРЅ', 'Р›СѓРё РџР°СЃС‚РµСЂ', 'Р РѕР±РµСЂС‚ РљРѕС…'], correct: 0, difficulty: 3 },
+        { id: 'bio-52', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РіРµРЅРѕС‚РёРї?', options: ['РЎРѕРІРѕРєСѓРїРЅРѕСЃС‚СЊ РіРµРЅРѕРІ РѕСЂРіР°РЅРёР·РјР°', 'Р’РЅРµС€РЅРёРµ РїСЂРёР·РЅР°РєРё', 'РҐСЂРѕРјРѕСЃРѕРјС‹', 'Р”РќРљ'], correct: 0, difficulty: 3 },
+        { id: 'bio-53', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ С„РµРЅРѕС‚РёРї?', options: ['Р’РЅРµС€РЅРёРµ РїСЂРёР·РЅР°РєРё РѕСЂРіР°РЅРёР·РјР°', 'РќР°Р±РѕСЂ РіРµРЅРѕРІ', 'РҐСЂРѕРјРѕСЃРѕРјС‹', 'Р”РќРљ'], correct: 0, difficulty: 3 },
+        { id: 'bio-54', question: 'РљР°РєРѕР№ РїСЂРёР·РЅР°Рє РЅР°Р·С‹РІР°РµС‚СЃСЏ РґРѕРјРёРЅР°РЅС‚РЅС‹Рј?', options: ['РџСЂРѕСЏРІР»СЏСЋС‰РёР№СЃСЏ РІ РіРµС‚РµСЂРѕР·РёРіРѕС‚Рµ', 'РЎРєСЂС‹С‚С‹Р№', 'РџСЂРѕРјРµР¶СѓС‚РѕС‡РЅС‹Р№', 'Р›РµС‚Р°Р»СЊРЅС‹Р№'], correct: 0, difficulty: 3 },
+        { id: 'bio-55', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РјСѓС‚Р°С†РёСЏ?', options: ['РР·РјРµРЅРµРЅРёРµ РІ Р”РќРљ', 'РќРѕСЂРјР°', 'РђРґР°РїС‚Р°С†РёСЏ', 'Р РѕСЃС‚'], correct: 0, difficulty: 3 },
+        { id: 'bio-56', question: 'РљР°РєРѕР№ С‚РёРї РЅР°СЃР»РµРґРѕРІР°РЅРёСЏ РіРµРјРѕС„РёР»РёРё?', options: ['РЎС†РµРїР»РµРЅРЅРѕРµ СЃ X-С…СЂРѕРјРѕСЃРѕРјРѕР№', 'РђСѓС‚РѕСЃРѕРјРЅРѕ-РґРѕРјРёРЅР°РЅС‚РЅРѕРµ', 'РђСѓС‚РѕСЃРѕРјРЅРѕ-СЂРµС†РµСЃСЃРёРІРЅРѕРµ', 'Y-СЃС†РµРїР»РµРЅРЅРѕРµ'], correct: 0, difficulty: 3 },
+        { id: 'bio-57', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°Р»Р»РµР»Рё?', options: ['Р’Р°СЂРёР°РЅС‚С‹ РѕРґРЅРѕРіРѕ РіРµРЅР°', 'Р Р°Р·РЅС‹Рµ РіРµРЅС‹', 'РҐСЂРѕРјРѕСЃРѕРјС‹', 'Р‘РµР»РєРё'], correct: 0, difficulty: 3 },
+        { id: 'bio-58', question: 'РљР°РєРёРµ С…СЂРѕРјРѕСЃРѕРјС‹ РѕРїСЂРµРґРµР»СЏСЋС‚ РїРѕР» Сѓ С‡РµР»РѕРІРµРєР°?', options: ['X Рё Y', 'A Рё B', '1 Рё 2', 'XX С‚РѕР»СЊРєРѕ'], correct: 0, difficulty: 3 },
+        { id: 'bio-59', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РіРµС‚РµСЂРѕР·РёРіРѕС‚Р°?', options: ['РћСЂРіР°РЅРёР·Рј СЃ СЂР°Р·РЅС‹РјРё Р°Р»Р»РµР»СЏРјРё', 'РћСЂРіР°РЅРёР·Рј СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё Р°Р»Р»РµР»СЏРјРё', 'РњСѓС‚Р°РЅС‚', 'Р“РёР±СЂРёРґ'], correct: 0, difficulty: 3 },
+        { id: 'bio-60', question: 'РљР°РєРѕР№ СЃРёРЅРґСЂРѕРј РІС‹Р·РІР°РЅ С‚СЂРёСЃРѕРјРёРµР№ РїРѕ 21 С…СЂРѕРјРѕСЃРѕРјРµ?', options: ['РЎРёРЅРґСЂРѕРј Р”Р°СѓРЅР°', 'РЎРёРЅРґСЂРѕРј РўРµСЂРЅРµСЂР°', 'РЎРёРЅРґСЂРѕРј РљР»Р°Р№РЅС„РµР»СЊС‚РµСЂР°', 'РЎРёРЅРґСЂРѕРј РџР°С‚Р°Сѓ'], correct: 0, difficulty: 3 },
+        { id: 'bio-61', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РєСЂРѕСЃСЃРёРЅРіРѕРІРµСЂ?', options: ['РћР±РјРµРЅ СѓС‡Р°СЃС‚РєР°РјРё С…СЂРѕРјРѕСЃРѕРј', 'Р”РµР»РµРЅРёРµ РєР»РµС‚РєРё', 'РњСѓС‚Р°С†РёСЏ', 'Р РµРїР»РёРєР°С†РёСЏ'], correct: 0, difficulty: 3 },
+        { id: 'bio-62', question: 'РљР°РєРѕР№ Р·Р°РєРѕРЅ РњРµРЅРґРµР»СЏ РѕРїРёСЃС‹РІР°РµС‚ СЂР°СЃС‰РµРїР»РµРЅРёРµ РїСЂРёР·РЅР°РєРѕРІ?', options: ['Р’С‚РѕСЂРѕР№ Р·Р°РєРѕРЅ', 'РџРµСЂРІС‹Р№ Р·Р°РєРѕРЅ', 'РўСЂРµС‚РёР№ Р·Р°РєРѕРЅ', 'Р—Р°РєРѕРЅ С‡РёСЃС‚РѕС‚С‹ РіР°РјРµС‚'], correct: 0, difficulty: 3 },
+        { id: 'bio-63', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РїРѕР»РЅРѕРµ РґРѕРјРёРЅРёСЂРѕРІР°РЅРёРµ?', options: ['Р”РѕРјРёРЅР°РЅС‚РЅС‹Р№ Р°Р»Р»РµР»СЊ РїРѕР»РЅРѕСЃС‚СЊСЋ РїРѕРґР°РІР»СЏРµС‚ СЂРµС†РµСЃСЃРёРІРЅС‹Р№', 'РћР±Р° Р°Р»Р»РµР»СЏ РїСЂРѕСЏРІР»СЏСЋС‚СЃСЏ', 'РџСЂРѕРјРµР¶СѓС‚РѕС‡РЅРѕРµ РЅР°СЃР»РµРґРѕРІР°РЅРёРµ', 'РЎС†РµРїР»РµРЅРЅРѕРµ РЅР°СЃР»РµРґРѕРІР°РЅРёРµ'], correct: 0, difficulty: 3 },
+        { id: 'bio-64', question: 'РљР°РєРѕР№ РјРµС‚РѕРґ РїРѕР·РІРѕР»СЏРµС‚ РѕРїСЂРµРґРµР»РёС‚СЊ РіРµРЅРѕС‚РёРї?', options: ['РђРЅР°Р»РёР·РёСЂСѓСЋС‰РµРµ СЃРєСЂРµС‰РёРІР°РЅРёРµ', 'РќР°Р±Р»СЋРґРµРЅРёРµ', 'РР·РјРµСЂРµРЅРёРµ', 'РџРѕРґСЃС‡РµС‚'], correct: 0, difficulty: 3 },
+        { id: 'bio-65', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РіРµРЅРЅР°СЏ РёРЅР¶РµРЅРµСЂРёСЏ?', options: ['РР·РјРµРЅРµРЅРёРµ Р”РќРљ РёСЃРєСѓСЃСЃС‚РІРµРЅРЅС‹Рј РїСѓС‚РµРј', 'Р•СЃС‚РµСЃС‚РІРµРЅРЅС‹Р№ РѕС‚Р±РѕСЂ', 'РњСѓС‚Р°РіРµРЅРµР·', 'РЎРµР»РµРєС†РёСЏ'], correct: 0, difficulty: 3 },
+        { id: 'bio-66', question: 'РљР°РєРѕР№ С„РµСЂРјРµРЅС‚ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ СЂР°Р·СЂРµР·Р°РЅРёСЏ Р”РќРљ?', options: ['Р РµСЃС‚СЂРёРєС‚Р°Р·Р°', 'Р›РёРіР°Р·Р°', 'РџРѕР»РёРјРµСЂР°Р·Р°', 'РҐРµР»РёРєР°Р·Р°'], correct: 0, difficulty: 3 },
+        { id: 'bio-67', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РџР¦Р ?', options: ['РњРµС‚РѕРґ РєРѕРїРёСЂРѕРІР°РЅРёСЏ Р”РќРљ', 'РњРµС‚РѕРґ СЃРµРєРІРµРЅРёСЂРѕРІР°РЅРёСЏ', 'РњРµС‚РѕРґ РєР»РѕРЅРёСЂРѕРІР°РЅРёСЏ', 'РњРµС‚РѕРґ РіРёР±СЂРёРґРёР·Р°С†РёРё'], correct: 0, difficulty: 3 },
+        { id: 'bio-68', question: 'РљР°РєРѕР№ РѕСЂРіР°РЅРёР·Рј РЅР°Р·С‹РІР°РµС‚СЃСЏ С‚СЂР°РЅСЃРіРµРЅРЅС‹Рј?', options: ['РЎ С‡СѓР¶РµСЂРѕРґРЅС‹РјРё РіРµРЅР°РјРё', 'РЎ РјСѓС‚Р°С†РёСЏРјРё', 'Р“РёР±СЂРёРґ', 'РљР»РѕРЅ'], correct: 0, difficulty: 3 },
+        { id: 'bio-69', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РіРµРЅРѕРј?', options: ['РџРѕР»РЅС‹Р№ РЅР°Р±РѕСЂ РіРµРЅРѕРІ РѕСЂРіР°РЅРёР·РјР°', 'РћРґРёРЅ РіРµРЅ', 'РҐСЂРѕРјРѕСЃРѕРјР°', 'Р‘РµР»РѕРє'], correct: 0, difficulty: 3 },
+        { id: 'bio-70', question: 'РљР°РєРѕРµ Р·Р°Р±РѕР»РµРІР°РЅРёРµ СЏРІР»СЏРµС‚СЃСЏ РЅР°СЃР»РµРґСЃС‚РІРµРЅРЅС‹Рј?', options: ['РњСѓРєРѕРІРёСЃС†РёРґРѕР·', 'Р“СЂРёРїРї', 'РўСѓР±РµСЂРєСѓР»РµР·', 'РњР°Р»СЏСЂРёСЏ'], correct: 0, difficulty: 3 },
+        { id: 'bio-71', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЌРєСЃРїСЂРµСЃСЃРёСЏ РіРµРЅР°?', options: ['РџСЂРѕСЏРІР»РµРЅРёРµ РіРµРЅР° РІ РїСЂРёР·РЅР°РєРµ', 'РњСѓС‚Р°С†РёСЏ', 'Р РµРїР»РёРєР°С†РёСЏ', 'РўСЂР°РЅСЃРєСЂРёРїС†РёСЏ'], correct: 0, difficulty: 3 },
+        { id: 'bio-72', question: 'РљР°РєРѕР№ РїСЂРѕС†РµСЃСЃ - С‚СЂР°РЅСЃРєСЂРёРїС†РёСЏ?', options: ['РЎРёРЅС‚РµР· Р РќРљ РЅР° РјР°С‚СЂРёС†Рµ Р”РќРљ', 'РљРѕРїРёСЂРѕРІР°РЅРёРµ Р”РќРљ', 'РЎРёРЅС‚РµР· Р±РµР»РєР°', 'Р”РµР»РµРЅРёРµ РєР»РµС‚РєРё'], correct: 0, difficulty: 3 },
+        { id: 'bio-73', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ С‚СЂР°РЅСЃР»СЏС†РёСЏ?', options: ['РЎРёРЅС‚РµР· Р±РµР»РєР° РЅР° СЂРёР±РѕСЃРѕРјР°С…', 'РЎРёРЅС‚РµР· Р РќРљ', 'РљРѕРїРёСЂРѕРІР°РЅРёРµ Р”РќРљ', 'Р”РµР»РµРЅРёРµ РєР»РµС‚РєРё'], correct: 0, difficulty: 3 },
+        { id: 'bio-74', question: 'РљР°РєРѕР№ РєРѕРґРѕРЅ СЏРІР»СЏРµС‚СЃСЏ СЃС‚Р°СЂС‚РѕРІС‹Рј?', options: ['РђРЈР“', 'РЈРђРђ', 'РЈРђР“', 'РЈР“Рђ'], correct: 0, difficulty: 3 },
+        { id: 'bio-75', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РёРЅС‚СЂРѕРЅ?', options: ['РќРµРєРѕРґРёСЂСѓСЋС‰РёР№ СѓС‡Р°СЃС‚РѕРє РіРµРЅР°', 'РљРѕРґРёСЂСѓСЋС‰РёР№ СѓС‡Р°СЃС‚РѕРє', 'РџСЂРѕРјРѕС‚РѕСЂ', 'РўРµСЂРјРёРЅР°С‚РѕСЂ'], correct: 0, difficulty: 3 },
         
-        // Блок 4: Эволюция и экология (76-100)
-        { id: 'bio-76', question: 'Кто создал теорию эволюции?', options: ['Чарльз Дарвин', 'Грегор Мендель', 'Луи Пастер', 'Карл Линней'], correct: 0, difficulty: 4 },
-        { id: 'bio-77', question: 'Что такое естественный отбор?', options: ['Выживание наиболее приспособленных', 'Искусственное разведение', 'Мутация', 'Миграция'], correct: 0, difficulty: 4 },
-        { id: 'bio-78', question: 'Что такое популяция?', options: ['Группа особей одного вида', 'Все виды в экосистеме', 'Один организм', 'Семья'], correct: 0, difficulty: 4 },
-        { id: 'bio-79', question: 'Что такое экосистема?', options: ['Сообщество организмов и среда', 'Один вид', 'Популяция', 'Биосфера'], correct: 0, difficulty: 4 },
-        { id: 'bio-80', question: 'Какой фактор является абиотическим?', options: ['Температура', 'Хищничество', 'Конкуренция', 'Паразитизм'], correct: 0, difficulty: 4 },
-        { id: 'bio-81', question: 'Что такое пищевая цепь?', options: ['Последовательность питания организмов', 'Цепочка ДНК', 'Цепь мутаций', 'Эволюционный ряд'], correct: 0, difficulty: 4 },
-        { id: 'bio-82', question: 'Кто находится на первом трофическом уровне?', options: ['Продуценты', 'Консументы', 'Редуценты', 'Хищники'], correct: 0, difficulty: 4 },
-        { id: 'bio-83', question: 'Что такое симбиоз?', options: ['Взаимовыгодное сосуществование', 'Паразитизм', 'Хищничество', 'Конкуренция'], correct: 0, difficulty: 4 },
-        { id: 'bio-84', question: 'Какой газ выделяют растения при фотосинтезе?', options: ['Кислород', 'Углекислый газ', 'Азот', 'Водород'], correct: 0, difficulty: 4 },
-        { id: 'bio-85', question: 'Что такое биосфера?', options: ['Оболочка Земли с жизнью', 'Атмосфера', 'Гидросфера', 'Литосфера'], correct: 0, difficulty: 4 },
-        { id: 'bio-86', question: 'Какой ученый ввел термин "экология"?', options: ['Эрнст Геккель', 'Чарльз Дарвин', 'Карл Линней', 'Грегор Мендель'], correct: 0, difficulty: 4 },
-        { id: 'bio-87', question: 'Что такое ареал?', options: ['Область распространения вида', 'Местообитание', 'Экологическая ниша', 'Популяция'], correct: 0, difficulty: 4 },
-        { id: 'bio-88', question: 'Какой вид отбора приводит к усилению признака?', options: ['Направленный', 'Стабилизирующий', 'Дизруптивный', 'Половой'], correct: 0, difficulty: 4 },
-        { id: 'bio-89', question: 'Что такое рудименты?', options: ['Недоразвитые органы', 'Развитые органы', 'Новые органы', 'Измененные органы'], correct: 0, difficulty: 4 },
-        { id: 'bio-90', question: 'Что такое атавизмы?', options: ['Возврат к признакам предков', 'Новые признаки', 'Мутации', 'Адаптации'], correct: 0, difficulty: 4 },
-        { id: 'bio-91', question: 'Какой вид изоляции способствует видообразованию?', options: ['Географическая', 'Временная', 'Поведенческая', 'Все перечисленные'], correct: 3, difficulty: 4 },
-        { id: 'bio-92', question: 'Что такое конвергенция?', options: ['Сходство неродственных видов', 'Расхождение признаков', 'Мутация', 'Наследование'], correct: 0, difficulty: 4 },
-        { id: 'bio-93', question: 'Что изучает палеонтология?', options: ['Ископаемые организмы', 'Современные виды', 'Клетки', 'Гены'], correct: 0, difficulty: 4 },
-        { id: 'bio-94', question: 'Какой эры не существует?', options: ['Протозойская', 'Палеозойская', 'Мезозойская', 'Кайнозойская'], correct: 0, difficulty: 4 },
-        { id: 'bio-95', question: 'Что такое ароморфоз?', options: ['Крупное эволюционное изменение', 'Мелкое приспособление', 'Дегенерация', 'Мутация'], correct: 0, difficulty: 4 },
-        { id: 'bio-96', question: 'Какой процесс противоположен прогрессу?', options: ['Регресс', 'Ароморфоз', 'Идиоадаптация', 'Дивергенция'], correct: 0, difficulty: 4 },
-        { id: 'bio-97', question: 'Что такое биогеоценоз?', options: ['Экосистема суши', 'Водная экосистема', 'Популяция', 'Вид'], correct: 0, difficulty: 4 },
-        { id: 'bio-98', question: 'Какой круговорот наиболее важен для жизни?', options: ['Углеродный', 'Серный', 'Фосфорный', 'Азотный'], correct: 0, difficulty: 4 },
-        { id: 'bio-99', question: 'Что такое сукцессия?', options: ['Смена экосистем', 'Эволюция', 'Мутация', 'Адаптация'], correct: 0, difficulty: 4 },
-        { id: 'bio-100', question: 'Какой фактор вызывает парниковый эффект?', options: ['CO? в атмосфере', 'O? в атмосфере', 'N? в атмосфере', 'Ar в атмосфере'], correct: 0, difficulty: 4 }
+        // Р‘Р»РѕРє 4: Р­РІРѕР»СЋС†РёСЏ Рё СЌРєРѕР»РѕРіРёСЏ (76-100)
+        { id: 'bio-76', question: 'РљС‚Рѕ СЃРѕР·РґР°Р» С‚РµРѕСЂРёСЋ СЌРІРѕР»СЋС†РёРё?', options: ['Р§Р°СЂР»СЊР· Р”Р°СЂРІРёРЅ', 'Р“СЂРµРіРѕСЂ РњРµРЅРґРµР»СЊ', 'Р›СѓРё РџР°СЃС‚РµСЂ', 'РљР°СЂР» Р›РёРЅРЅРµР№'], correct: 0, difficulty: 4 },
+        { id: 'bio-77', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РµСЃС‚РµСЃС‚РІРµРЅРЅС‹Р№ РѕС‚Р±РѕСЂ?', options: ['Р’С‹Р¶РёРІР°РЅРёРµ РЅР°РёР±РѕР»РµРµ РїСЂРёСЃРїРѕСЃРѕР±Р»РµРЅРЅС‹С…', 'РСЃРєСѓСЃСЃС‚РІРµРЅРЅРѕРµ СЂР°Р·РІРµРґРµРЅРёРµ', 'РњСѓС‚Р°С†РёСЏ', 'РњРёРіСЂР°С†РёСЏ'], correct: 0, difficulty: 4 },
+        { id: 'bio-78', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РїРѕРїСѓР»СЏС†РёСЏ?', options: ['Р“СЂСѓРїРїР° РѕСЃРѕР±РµР№ РѕРґРЅРѕРіРѕ РІРёРґР°', 'Р’СЃРµ РІРёРґС‹ РІ СЌРєРѕСЃРёСЃС‚РµРјРµ', 'РћРґРёРЅ РѕСЂРіР°РЅРёР·Рј', 'РЎРµРјСЊСЏ'], correct: 0, difficulty: 4 },
+        { id: 'bio-79', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЌРєРѕСЃРёСЃС‚РµРјР°?', options: ['РЎРѕРѕР±С‰РµСЃС‚РІРѕ РѕСЂРіР°РЅРёР·РјРѕРІ Рё СЃСЂРµРґР°', 'РћРґРёРЅ РІРёРґ', 'РџРѕРїСѓР»СЏС†РёСЏ', 'Р‘РёРѕСЃС„РµСЂР°'], correct: 0, difficulty: 4 },
+        { id: 'bio-80', question: 'РљР°РєРѕР№ С„Р°РєС‚РѕСЂ СЏРІР»СЏРµС‚СЃСЏ Р°Р±РёРѕС‚РёС‡РµСЃРєРёРј?', options: ['РўРµРјРїРµСЂР°С‚СѓСЂР°', 'РҐРёС‰РЅРёС‡РµСЃС‚РІРѕ', 'РљРѕРЅРєСѓСЂРµРЅС†РёСЏ', 'РџР°СЂР°Р·РёС‚РёР·Рј'], correct: 0, difficulty: 4 },
+        { id: 'bio-81', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РїРёС‰РµРІР°СЏ С†РµРїСЊ?', options: ['РџРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ РїРёС‚Р°РЅРёСЏ РѕСЂРіР°РЅРёР·РјРѕРІ', 'Р¦РµРїРѕС‡РєР° Р”РќРљ', 'Р¦РµРїСЊ РјСѓС‚Р°С†РёР№', 'Р­РІРѕР»СЋС†РёРѕРЅРЅС‹Р№ СЂСЏРґ'], correct: 0, difficulty: 4 },
+        { id: 'bio-82', question: 'РљС‚Рѕ РЅР°С…РѕРґРёС‚СЃСЏ РЅР° РїРµСЂРІРѕРј С‚СЂРѕС„РёС‡РµСЃРєРѕРј СѓСЂРѕРІРЅРµ?', options: ['РџСЂРѕРґСѓС†РµРЅС‚С‹', 'РљРѕРЅСЃСѓРјРµРЅС‚С‹', 'Р РµРґСѓС†РµРЅС‚С‹', 'РҐРёС‰РЅРёРєРё'], correct: 0, difficulty: 4 },
+        { id: 'bio-83', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЃРёРјР±РёРѕР·?', options: ['Р’Р·Р°РёРјРѕРІС‹РіРѕРґРЅРѕРµ СЃРѕСЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ', 'РџР°СЂР°Р·РёС‚РёР·Рј', 'РҐРёС‰РЅРёС‡РµСЃС‚РІРѕ', 'РљРѕРЅРєСѓСЂРµРЅС†РёСЏ'], correct: 0, difficulty: 4 },
+        { id: 'bio-84', question: 'РљР°РєРѕР№ РіР°Р· РІС‹РґРµР»СЏСЋС‚ СЂР°СЃС‚РµРЅРёСЏ РїСЂРё С„РѕС‚РѕСЃРёРЅС‚РµР·Рµ?', options: ['РљРёСЃР»РѕСЂРѕРґ', 'РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·', 'РђР·РѕС‚', 'Р’РѕРґРѕСЂРѕРґ'], correct: 0, difficulty: 4 },
+        { id: 'bio-85', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р±РёРѕСЃС„РµСЂР°?', options: ['РћР±РѕР»РѕС‡РєР° Р—РµРјР»Рё СЃ Р¶РёР·РЅСЊСЋ', 'РђС‚РјРѕСЃС„РµСЂР°', 'Р“РёРґСЂРѕСЃС„РµСЂР°', 'Р›РёС‚РѕСЃС„РµСЂР°'], correct: 0, difficulty: 4 },
+        { id: 'bio-86', question: 'РљР°РєРѕР№ СѓС‡РµРЅС‹Р№ РІРІРµР» С‚РµСЂРјРёРЅ "СЌРєРѕР»РѕРіРёСЏ"?', options: ['Р­СЂРЅСЃС‚ Р“РµРєРєРµР»СЊ', 'Р§Р°СЂР»СЊР· Р”Р°СЂРІРёРЅ', 'РљР°СЂР» Р›РёРЅРЅРµР№', 'Р“СЂРµРіРѕСЂ РњРµРЅРґРµР»СЊ'], correct: 0, difficulty: 4 },
+        { id: 'bio-87', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°СЂРµР°Р»?', options: ['РћР±Р»Р°СЃС‚СЊ СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅРµРЅРёСЏ РІРёРґР°', 'РњРµСЃС‚РѕРѕР±РёС‚Р°РЅРёРµ', 'Р­РєРѕР»РѕРіРёС‡РµСЃРєР°СЏ РЅРёС€Р°', 'РџРѕРїСѓР»СЏС†РёСЏ'], correct: 0, difficulty: 4 },
+        { id: 'bio-88', question: 'РљР°РєРѕР№ РІРёРґ РѕС‚Р±РѕСЂР° РїСЂРёРІРѕРґРёС‚ Рє СѓСЃРёР»РµРЅРёСЋ РїСЂРёР·РЅР°РєР°?', options: ['РќР°РїСЂР°РІР»РµРЅРЅС‹Р№', 'РЎС‚Р°Р±РёР»РёР·РёСЂСѓСЋС‰РёР№', 'Р”РёР·СЂСѓРїС‚РёРІРЅС‹Р№', 'РџРѕР»РѕРІРѕР№'], correct: 0, difficulty: 4 },
+        { id: 'bio-89', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЂСѓРґРёРјРµРЅС‚С‹?', options: ['РќРµРґРѕСЂР°Р·РІРёС‚С‹Рµ РѕСЂРіР°РЅС‹', 'Р Р°Р·РІРёС‚С‹Рµ РѕСЂРіР°РЅС‹', 'РќРѕРІС‹Рµ РѕСЂРіР°РЅС‹', 'РР·РјРµРЅРµРЅРЅС‹Рµ РѕСЂРіР°РЅС‹'], correct: 0, difficulty: 4 },
+        { id: 'bio-90', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°С‚Р°РІРёР·РјС‹?', options: ['Р’РѕР·РІСЂР°С‚ Рє РїСЂРёР·РЅР°РєР°Рј РїСЂРµРґРєРѕРІ', 'РќРѕРІС‹Рµ РїСЂРёР·РЅР°РєРё', 'РњСѓС‚Р°С†РёРё', 'РђРґР°РїС‚Р°С†РёРё'], correct: 0, difficulty: 4 },
+        { id: 'bio-91', question: 'РљР°РєРѕР№ РІРёРґ РёР·РѕР»СЏС†РёРё СЃРїРѕСЃРѕР±СЃС‚РІСѓРµС‚ РІРёРґРѕРѕР±СЂР°Р·РѕРІР°РЅРёСЋ?', options: ['Р“РµРѕРіСЂР°С„РёС‡РµСЃРєР°СЏ', 'Р’СЂРµРјРµРЅРЅР°СЏ', 'РџРѕРІРµРґРµРЅС‡РµСЃРєР°СЏ', 'Р’СЃРµ РїРµСЂРµС‡РёСЃР»РµРЅРЅС‹Рµ'], correct: 3, difficulty: 4 },
+        { id: 'bio-92', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ РєРѕРЅРІРµСЂРіРµРЅС†РёСЏ?', options: ['РЎС…РѕРґСЃС‚РІРѕ РЅРµСЂРѕРґСЃС‚РІРµРЅРЅС‹С… РІРёРґРѕРІ', 'Р Р°СЃС…РѕР¶РґРµРЅРёРµ РїСЂРёР·РЅР°РєРѕРІ', 'РњСѓС‚Р°С†РёСЏ', 'РќР°СЃР»РµРґРѕРІР°РЅРёРµ'], correct: 0, difficulty: 4 },
+        { id: 'bio-93', question: 'Р§С‚Рѕ РёР·СѓС‡Р°РµС‚ РїР°Р»РµРѕРЅС‚РѕР»РѕРіРёСЏ?', options: ['РСЃРєРѕРїР°РµРјС‹Рµ РѕСЂРіР°РЅРёР·РјС‹', 'РЎРѕРІСЂРµРјРµРЅРЅС‹Рµ РІРёРґС‹', 'РљР»РµС‚РєРё', 'Р“РµРЅС‹'], correct: 0, difficulty: 4 },
+        { id: 'bio-94', question: 'РљР°РєРѕР№ СЌСЂС‹ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚?', options: ['РџСЂРѕС‚РѕР·РѕР№СЃРєР°СЏ', 'РџР°Р»РµРѕР·РѕР№СЃРєР°СЏ', 'РњРµР·РѕР·РѕР№СЃРєР°СЏ', 'РљР°Р№РЅРѕР·РѕР№СЃРєР°СЏ'], correct: 0, difficulty: 4 },
+        { id: 'bio-95', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°СЂРѕРјРѕСЂС„РѕР·?', options: ['РљСЂСѓРїРЅРѕРµ СЌРІРѕР»СЋС†РёРѕРЅРЅРѕРµ РёР·РјРµРЅРµРЅРёРµ', 'РњРµР»РєРѕРµ РїСЂРёСЃРїРѕСЃРѕР±Р»РµРЅРёРµ', 'Р”РµРіРµРЅРµСЂР°С†РёСЏ', 'РњСѓС‚Р°С†РёСЏ'], correct: 0, difficulty: 4 },
+        { id: 'bio-96', question: 'РљР°РєРѕР№ РїСЂРѕС†РµСЃСЃ РїСЂРѕС‚РёРІРѕРїРѕР»РѕР¶РµРЅ РїСЂРѕРіСЂРµСЃСЃСѓ?', options: ['Р РµРіСЂРµСЃСЃ', 'РђСЂРѕРјРѕСЂС„РѕР·', 'РРґРёРѕР°РґР°РїС‚Р°С†РёСЏ', 'Р”РёРІРµСЂРіРµРЅС†РёСЏ'], correct: 0, difficulty: 4 },
+        { id: 'bio-97', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р±РёРѕРіРµРѕС†РµРЅРѕР·?', options: ['Р­РєРѕСЃРёСЃС‚РµРјР° СЃСѓС€Рё', 'Р’РѕРґРЅР°СЏ СЌРєРѕСЃРёСЃС‚РµРјР°', 'РџРѕРїСѓР»СЏС†РёСЏ', 'Р’РёРґ'], correct: 0, difficulty: 4 },
+        { id: 'bio-98', question: 'РљР°РєРѕР№ РєСЂСѓРіРѕРІРѕСЂРѕС‚ РЅР°РёР±РѕР»РµРµ РІР°Р¶РµРЅ РґР»СЏ Р¶РёР·РЅРё?', options: ['РЈРіР»РµСЂРѕРґРЅС‹Р№', 'РЎРµСЂРЅС‹Р№', 'Р¤РѕСЃС„РѕСЂРЅС‹Р№', 'РђР·РѕС‚РЅС‹Р№'], correct: 0, difficulty: 4 },
+        { id: 'bio-99', question: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЃСѓРєС†РµСЃСЃРёСЏ?', options: ['РЎРјРµРЅР° СЌРєРѕСЃРёСЃС‚РµРј', 'Р­РІРѕР»СЋС†РёСЏ', 'РњСѓС‚Р°С†РёСЏ', 'РђРґР°РїС‚Р°С†РёСЏ'], correct: 0, difficulty: 4 },
+        { id: 'bio-100', question: 'РљР°РєРѕР№ С„Р°РєС‚РѕСЂ РІС‹Р·С‹РІР°РµС‚ РїР°СЂРЅРёРєРѕРІС‹Р№ СЌС„С„РµРєС‚?', options: ['COв‚‚ РІ Р°С‚РјРѕСЃС„РµСЂРµ', 'Oв‚‚ РІ Р°С‚РјРѕСЃС„РµСЂРµ', 'Nв‚‚ РІ Р°С‚РјРѕСЃС„РµСЂРµ', 'Ar РІ Р°С‚РјРѕСЃС„РµСЂРµ'], correct: 0, difficulty: 4 }
     ];
     
-    // Добавляем пояснения
+    // Р”РѕР±Р°РІР»СЏРµРј РїРѕСЏСЃРЅРµРЅРёСЏ
     questions.forEach(q => {
-        q.explanation = 'Проверьте свои знания в области биологии.';
+        q.explanation = 'РџСЂРѕРІРµСЂСЊС‚Рµ СЃРІРѕРё Р·РЅР°РЅРёСЏ РІ РѕР±Р»Р°СЃС‚Рё Р±РёРѕР»РѕРіРёРё.';
     });
     
-    // Группируем по уровням сложности
+    // Р“СЂСѓРїРїРёСЂСѓРµРј РїРѕ СѓСЂРѕРІРЅСЏРј СЃР»РѕР¶РЅРѕСЃС‚Рё
     const groupedQuestions = {};
     questions.forEach(q => {
         if (!groupedQuestions[q.difficulty]) groupedQuestions[q.difficulty] = [];
@@ -2156,124 +2156,124 @@ function generateBiologyQuestions() {
     return groupedQuestions;
 }
 
-// Генерация 100+ вопросов для теста по специальности
+// Р“РµРЅРµСЂР°С†РёСЏ 100+ РІРѕРїСЂРѕСЃРѕРІ РґР»СЏ С‚РµСЃС‚Р° РїРѕ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё
 function generateSpecialtyQuestions() {
     const questions = [
-        // Блок 1: Интересы и склонности (1-25)
-        { id: 'spec-1', question: 'Мне нравится работать с детьми и помогать им чувствовать себя комфортно', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-2', question: 'Я готов нести ответственность за жизнь и здоровье пациентов', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-3', question: 'Мне интересно разбираться в сложных диагностических случаях', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-4', question: 'Я могу долго сохранять концентрацию при выполнении сложных манипуляций', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-5', question: 'Мне нравится работать с современным медицинским оборудованием', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-6', question: 'Я хотел бы заниматься научными исследованиями в медицине', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-7', question: 'Меня интересует психология человеческого поведения', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-8', question: 'Я способен быстро принимать решения в стрессовых ситуациях', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-9', question: 'Мне важен личный контакт с пациентами и их семьями', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-10', question: 'Я обращаю внимание на мельчайшие детали и изменения', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-11', question: 'Меня привлекает работа в экстренной медицине', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-12', question: 'Я хотел бы стать экспертом в узкой области медицины', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-13', question: 'Мне интересна профилактика заболеваний и здоровый образ жизни', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-14', question: 'Я готов постоянно учиться и осваивать новые методы лечения', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-15', question: 'Мне комфортно работать в команде с другими специалистами', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-16', question: 'Меня привлекает помощь пациентам в восстановлении после болезней', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-17', question: 'Мне интересна эстетическая медицина и косметология', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-18', question: 'Я готов работать с тяжелобольными пациентами', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-19', question: 'Меня интересует генетика и наследственные заболевания', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-20', question: 'Я хотел бы помогать людям в отдаленных районах', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-21', question: 'Мне нравится обучать других и делиться знаниями', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-22', question: 'Я готов к ненормированному рабочему графику', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-23', question: 'Меня привлекают инновационные технологии в медицине', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-24', question: 'Я хочу помогать людям с зависимостями справиться с проблемами', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
-        { id: 'spec-25', question: 'Меня интересует спортивная медицина и работа со спортсменами', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 1 },
+        // Р‘Р»РѕРє 1: РРЅС‚РµСЂРµСЃС‹ Рё СЃРєР»РѕРЅРЅРѕСЃС‚Рё (1-25)
+        { id: 'spec-1', question: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РґРµС‚СЊРјРё Рё РїРѕРјРѕРіР°С‚СЊ РёРј С‡СѓРІСЃС‚РІРѕРІР°С‚СЊ СЃРµР±СЏ РєРѕРјС„РѕСЂС‚РЅРѕ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-2', question: 'РЇ РіРѕС‚РѕРІ РЅРµСЃС‚Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ Р·Р° Р¶РёР·РЅСЊ Рё Р·РґРѕСЂРѕРІСЊРµ РїР°С†РёРµРЅС‚РѕРІ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-3', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СЂР°Р·Р±РёСЂР°С‚СЊСЃСЏ РІ СЃР»РѕР¶РЅС‹С… РґРёР°РіРЅРѕСЃС‚РёС‡РµСЃРєРёС… СЃР»СѓС‡Р°СЏС…', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-4', question: 'РЇ РјРѕРіСѓ РґРѕР»РіРѕ СЃРѕС…СЂР°РЅСЏС‚СЊ РєРѕРЅС†РµРЅС‚СЂР°С†РёСЋ РїСЂРё РІС‹РїРѕР»РЅРµРЅРёРё СЃР»РѕР¶РЅС‹С… РјР°РЅРёРїСѓР»СЏС†РёР№', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-5', question: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ СЃ СЃРѕРІСЂРµРјРµРЅРЅС‹Рј РјРµРґРёС†РёРЅСЃРєРёРј РѕР±РѕСЂСѓРґРѕРІР°РЅРёРµРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-6', question: 'РЇ С…РѕС‚РµР» Р±С‹ Р·Р°РЅРёРјР°С‚СЊСЃСЏ РЅР°СѓС‡РЅС‹РјРё РёСЃСЃР»РµРґРѕРІР°РЅРёСЏРјРё РІ РјРµРґРёС†РёРЅРµ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-7', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ РїСЃРёС…РѕР»РѕРіРёСЏ С‡РµР»РѕРІРµС‡РµСЃРєРѕРіРѕ РїРѕРІРµРґРµРЅРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-8', question: 'РЇ СЃРїРѕСЃРѕР±РµРЅ Р±С‹СЃС‚СЂРѕ РїСЂРёРЅРёРјР°С‚СЊ СЂРµС€РµРЅРёСЏ РІ СЃС‚СЂРµСЃСЃРѕРІС‹С… СЃРёС‚СѓР°С†РёСЏС…', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-9', question: 'РњРЅРµ РІР°Р¶РµРЅ Р»РёС‡РЅС‹Р№ РєРѕРЅС‚Р°РєС‚ СЃ РїР°С†РёРµРЅС‚Р°РјРё Рё РёС… СЃРµРјСЊСЏРјРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-10', question: 'РЇ РѕР±СЂР°С‰Р°СЋ РІРЅРёРјР°РЅРёРµ РЅР° РјРµР»СЊС‡Р°Р№С€РёРµ РґРµС‚Р°Р»Рё Рё РёР·РјРµРЅРµРЅРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-11', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ СЂР°Р±РѕС‚Р° РІ СЌРєСЃС‚СЂРµРЅРЅРѕР№ РјРµРґРёС†РёРЅРµ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-12', question: 'РЇ С…РѕС‚РµР» Р±С‹ СЃС‚Р°С‚СЊ СЌРєСЃРїРµСЂС‚РѕРј РІ СѓР·РєРѕР№ РѕР±Р»Р°СЃС‚Рё РјРµРґРёС†РёРЅС‹', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-13', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° РїСЂРѕС„РёР»Р°РєС‚РёРєР° Р·Р°Р±РѕР»РµРІР°РЅРёР№ Рё Р·РґРѕСЂРѕРІС‹Р№ РѕР±СЂР°Р· Р¶РёР·РЅРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-14', question: 'РЇ РіРѕС‚РѕРІ РїРѕСЃС‚РѕСЏРЅРЅРѕ СѓС‡РёС‚СЊСЃСЏ Рё РѕСЃРІР°РёРІР°С‚СЊ РЅРѕРІС‹Рµ РјРµС‚РѕРґС‹ Р»РµС‡РµРЅРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-15', question: 'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ РІ РєРѕРјР°РЅРґРµ СЃ РґСЂСѓРіРёРјРё СЃРїРµС†РёР°Р»РёСЃС‚Р°РјРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-16', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РїРѕРјРѕС‰СЊ РїР°С†РёРµРЅС‚Р°Рј РІ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРё РїРѕСЃР»Рµ Р±РѕР»РµР·РЅРµР№', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-17', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° СЌСЃС‚РµС‚РёС‡РµСЃРєР°СЏ РјРµРґРёС†РёРЅР° Рё РєРѕСЃРјРµС‚РѕР»РѕРіРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-18', question: 'РЇ РіРѕС‚РѕРІ СЂР°Р±РѕС‚Р°С‚СЊ СЃ С‚СЏР¶РµР»РѕР±РѕР»СЊРЅС‹РјРё РїР°С†РёРµРЅС‚Р°РјРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-19', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ РіРµРЅРµС‚РёРєР° Рё РЅР°СЃР»РµРґСЃС‚РІРµРЅРЅС‹Рµ Р·Р°Р±РѕР»РµРІР°РЅРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-20', question: 'РЇ С…РѕС‚РµР» Р±С‹ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј РІ РѕС‚РґР°Р»РµРЅРЅС‹С… СЂР°Р№РѕРЅР°С…', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-21', question: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РѕР±СѓС‡Р°С‚СЊ РґСЂСѓРіРёС… Рё РґРµР»РёС‚СЊСЃСЏ Р·РЅР°РЅРёСЏРјРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-22', question: 'РЇ РіРѕС‚РѕРІ Рє РЅРµРЅРѕСЂРјРёСЂРѕРІР°РЅРЅРѕРјСѓ СЂР°Р±РѕС‡РµРјСѓ РіСЂР°С„РёРєСѓ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-23', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°СЋС‚ РёРЅРЅРѕРІР°С†РёРѕРЅРЅС‹Рµ С‚РµС…РЅРѕР»РѕРіРёРё РІ РјРµРґРёС†РёРЅРµ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-24', question: 'РЇ С…РѕС‡Сѓ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј СЃ Р·Р°РІРёСЃРёРјРѕСЃС‚СЏРјРё СЃРїСЂР°РІРёС‚СЊСЃСЏ СЃ РїСЂРѕР±Р»РµРјР°РјРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
+        { id: 'spec-25', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ СЃРїРѕСЂС‚РёРІРЅР°СЏ РјРµРґРёС†РёРЅР° Рё СЂР°Р±РѕС‚Р° СЃРѕ СЃРїРѕСЂС‚СЃРјРµРЅР°РјРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 1 },
         
-        // Блок 2: Условия работы и готовность (26-50)
-        { id: 'spec-26', question: 'Я готов работать с инфекционными больными при соблюдении мер защиты', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-27', question: 'Меня привлекает работа в операционной', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-28', question: 'Я хотел бы заниматься вопросами питания и диетологии', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-29', question: 'Меня интересует работа с пожилыми пациентами', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-30', question: 'Я готов к большому объему медицинской документации', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-31', question: 'Мне нравится анализировать результаты обследований', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-32', question: 'Я хотел бы работать в международных медицинских организациях', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-33', question: 'Меня привлекает военная медицина и служба в армии', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-34', question: 'Я готов к частым командировкам и перемещениям', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-35', question: 'Меня интересует онкология и помощь онкобольным', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-36', question: 'Я хотел бы специализироваться на женском здоровье', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-37', question: 'Меня привлекает изучение нервной системы и мозга', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-38', question: 'Мне комфортно работать в условиях поликлиники', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-39', question: 'Меня интересует работа с сердечно-сосудистой системой', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-40', question: 'Я хочу внедрять цифровые технологии в медицинскую практику', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-41', question: 'Мне интересна работа с органами зрения', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-42', question: 'Я готов работать с пациентами, нуждающимися в паллиативной помощи', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-43', question: 'Меня привлекает стоматология и челюстно-лицевая хирургия', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-44', question: 'Я хотел бы работать в области репродуктивной медицины', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-45', question: 'Меня интересует радиология и лучевая диагностика', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-46', question: 'Я готов работать в отделении реанимации и интенсивной терапии', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-47', question: 'Мне интересна работа анестезиолога', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-48', question: 'Я хотел бы заниматься аллергологией и иммунологией', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-49', question: 'Меня привлекает эндокринология и гормональные нарушения', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
-        { id: 'spec-50', question: 'Я готов работать с пациентами с хроническими заболеваниями', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 2 },
+        // Р‘Р»РѕРє 2: РЈСЃР»РѕРІРёСЏ СЂР°Р±РѕС‚С‹ Рё РіРѕС‚РѕРІРЅРѕСЃС‚СЊ (26-50)
+        { id: 'spec-26', question: 'РЇ РіРѕС‚РѕРІ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РёРЅС„РµРєС†РёРѕРЅРЅС‹РјРё Р±РѕР»СЊРЅС‹РјРё РїСЂРё СЃРѕР±Р»СЋРґРµРЅРёРё РјРµСЂ Р·Р°С‰РёС‚С‹', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-27', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ СЂР°Р±РѕС‚Р° РІ РѕРїРµСЂР°С†РёРѕРЅРЅРѕР№', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-28', question: 'РЇ С…РѕС‚РµР» Р±С‹ Р·Р°РЅРёРјР°С‚СЊСЃСЏ РІРѕРїСЂРѕСЃР°РјРё РїРёС‚Р°РЅРёСЏ Рё РґРёРµС‚РѕР»РѕРіРёРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-29', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ СЂР°Р±РѕС‚Р° СЃ РїРѕР¶РёР»С‹РјРё РїР°С†РёРµРЅС‚Р°РјРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-30', question: 'РЇ РіРѕС‚РѕРІ Рє Р±РѕР»СЊС€РѕРјСѓ РѕР±СЉРµРјСѓ РјРµРґРёС†РёРЅСЃРєРѕР№ РґРѕРєСѓРјРµРЅС‚Р°С†РёРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-31', question: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р°РЅР°Р»РёР·РёСЂРѕРІР°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹ РѕР±СЃР»РµРґРѕРІР°РЅРёР№', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-32', question: 'РЇ С…РѕС‚РµР» Р±С‹ СЂР°Р±РѕС‚Р°С‚СЊ РІ РјРµР¶РґСѓРЅР°СЂРѕРґРЅС‹С… РјРµРґРёС†РёРЅСЃРєРёС… РѕСЂРіР°РЅРёР·Р°С†РёСЏС…', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-33', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РІРѕРµРЅРЅР°СЏ РјРµРґРёС†РёРЅР° Рё СЃР»СѓР¶Р±Р° РІ Р°СЂРјРёРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-34', question: 'РЇ РіРѕС‚РѕРІ Рє С‡Р°СЃС‚С‹Рј РєРѕРјР°РЅРґРёСЂРѕРІРєР°Рј Рё РїРµСЂРµРјРµС‰РµРЅРёСЏРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-35', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ РѕРЅРєРѕР»РѕРіРёСЏ Рё РїРѕРјРѕС‰СЊ РѕРЅРєРѕР±РѕР»СЊРЅС‹Рј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-36', question: 'РЇ С…РѕС‚РµР» Р±С‹ СЃРїРµС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊСЃСЏ РЅР° Р¶РµРЅСЃРєРѕРј Р·РґРѕСЂРѕРІСЊРµ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-37', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РёР·СѓС‡РµРЅРёРµ РЅРµСЂРІРЅРѕР№ СЃРёСЃС‚РµРјС‹ Рё РјРѕР·РіР°', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-38', question: 'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ РІ СѓСЃР»РѕРІРёСЏС… РїРѕР»РёРєР»РёРЅРёРєРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-39', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ СЂР°Р±РѕС‚Р° СЃ СЃРµСЂРґРµС‡РЅРѕ-СЃРѕСЃСѓРґРёСЃС‚РѕР№ СЃРёСЃС‚РµРјРѕР№', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-40', question: 'РЇ С…РѕС‡Сѓ РІРЅРµРґСЂСЏС‚СЊ С†РёС„СЂРѕРІС‹Рµ С‚РµС…РЅРѕР»РѕРіРёРё РІ РјРµРґРёС†РёРЅСЃРєСѓСЋ РїСЂР°РєС‚РёРєСѓ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-41', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° СЂР°Р±РѕС‚Р° СЃ РѕСЂРіР°РЅР°РјРё Р·СЂРµРЅРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-42', question: 'РЇ РіРѕС‚РѕРІ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РїР°С†РёРµРЅС‚Р°РјРё, РЅСѓР¶РґР°СЋС‰РёРјРёСЃСЏ РІ РїР°Р»Р»РёР°С‚РёРІРЅРѕР№ РїРѕРјРѕС‰Рё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-43', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ СЃС‚РѕРјР°С‚РѕР»РѕРіРёСЏ Рё С‡РµР»СЋСЃС‚РЅРѕ-Р»РёС†РµРІР°СЏ С…РёСЂСѓСЂРіРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-44', question: 'РЇ С…РѕС‚РµР» Р±С‹ СЂР°Р±РѕС‚Р°С‚СЊ РІ РѕР±Р»Р°СЃС‚Рё СЂРµРїСЂРѕРґСѓРєС‚РёРІРЅРѕР№ РјРµРґРёС†РёРЅС‹', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-45', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ СЂР°РґРёРѕР»РѕРіРёСЏ Рё Р»СѓС‡РµРІР°СЏ РґРёР°РіРЅРѕСЃС‚РёРєР°', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-46', question: 'РЇ РіРѕС‚РѕРІ СЂР°Р±РѕС‚Р°С‚СЊ РІ РѕС‚РґРµР»РµРЅРёРё СЂРµР°РЅРёРјР°С†РёРё Рё РёРЅС‚РµРЅСЃРёРІРЅРѕР№ С‚РµСЂР°РїРёРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-47', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° СЂР°Р±РѕС‚Р° Р°РЅРµСЃС‚РµР·РёРѕР»РѕРіР°', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-48', question: 'РЇ С…РѕС‚РµР» Р±С‹ Р·Р°РЅРёРјР°С‚СЊСЃСЏ Р°Р»Р»РµСЂРіРѕР»РѕРіРёРµР№ Рё РёРјРјСѓРЅРѕР»РѕРіРёРµР№', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-49', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ СЌРЅРґРѕРєСЂРёРЅРѕР»РѕРіРёСЏ Рё РіРѕСЂРјРѕРЅР°Р»СЊРЅС‹Рµ РЅР°СЂСѓС€РµРЅРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
+        { id: 'spec-50', question: 'РЇ РіРѕС‚РѕРІ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РїР°С†РёРµРЅС‚Р°РјРё СЃ С…СЂРѕРЅРёС‡РµСЃРєРёРјРё Р·Р°Р±РѕР»РµРІР°РЅРёСЏРјРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 2 },
         
-        // Блок 3: Специальности и направления (51-75)
-        { id: 'spec-51', question: 'Меня привлекает работа терапевта общей практики', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-52', question: 'Я хотел бы стать хирургом', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-53', question: 'Меня интересует работа педиатра', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-54', question: 'Я вижу себя кардиологом в будущем', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-55', question: 'Меня привлекает специальность невролога', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-56', question: 'Я хотел бы работать офтальмологом', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-57', question: 'Меня интересует работа психиатра или психотерапевта', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-58', question: 'Я вижу себя дерматологом', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-59', question: 'Меня привлекает гинекология и акушерство', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-60', question: 'Я хотел бы работать урологом', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-61', question: 'Меня интересует травматология и ортопедия', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-62', question: 'Я вижу себя гастроэнтерологом', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-63', question: 'Меня привлекает пульмонология', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-64', question: 'Я хотел бы работать нефрологом', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-65', question: 'Меня интересует гематология', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-66', question: 'Я вижу себя инфекционистом', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-67', question: 'Меня привлекает работа патологоанатома', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-68', question: 'Я хотел бы работать в скорой помощи', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-69', question: 'Меня интересует работа семейного врача', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-70', question: 'Я вижу себя ревматологом', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-71', question: 'Меня привлекает работа оториноларинголога (ЛОР)', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-72', question: 'Я хотел бы работать в области физиотерапии', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-73', question: 'Меня интересует работа в клинической лаборатории', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-74', question: 'Я вижу себя нейрохирургом', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
-        { id: 'spec-75', question: 'Меня привлекает пластическая хирургия', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 3 },
+        // Р‘Р»РѕРє 3: РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё Рё РЅР°РїСЂР°РІР»РµРЅРёСЏ (51-75)
+        { id: 'spec-51', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ СЂР°Р±РѕС‚Р° С‚РµСЂР°РїРµРІС‚Р° РѕР±С‰РµР№ РїСЂР°РєС‚РёРєРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-52', question: 'РЇ С…РѕС‚РµР» Р±С‹ СЃС‚Р°С‚СЊ С…РёСЂСѓСЂРіРѕРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-53', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ СЂР°Р±РѕС‚Р° РїРµРґРёР°С‚СЂР°', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-54', question: 'РЇ РІРёР¶Сѓ СЃРµР±СЏ РєР°СЂРґРёРѕР»РѕРіРѕРј РІ Р±СѓРґСѓС‰РµРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-55', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ РЅРµРІСЂРѕР»РѕРіР°', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-56', question: 'РЇ С…РѕС‚РµР» Р±С‹ СЂР°Р±РѕС‚Р°С‚СЊ РѕС„С‚Р°Р»СЊРјРѕР»РѕРіРѕРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-57', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ СЂР°Р±РѕС‚Р° РїСЃРёС…РёР°С‚СЂР° РёР»Рё РїСЃРёС…РѕС‚РµСЂР°РїРµРІС‚Р°', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-58', question: 'РЇ РІРёР¶Сѓ СЃРµР±СЏ РґРµСЂРјР°С‚РѕР»РѕРіРѕРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-59', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РіРёРЅРµРєРѕР»РѕРіРёСЏ Рё Р°РєСѓС€РµСЂСЃС‚РІРѕ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-60', question: 'РЇ С…РѕС‚РµР» Р±С‹ СЂР°Р±РѕС‚Р°С‚СЊ СѓСЂРѕР»РѕРіРѕРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-61', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ С‚СЂР°РІРјР°С‚РѕР»РѕРіРёСЏ Рё РѕСЂС‚РѕРїРµРґРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-62', question: 'РЇ РІРёР¶Сѓ СЃРµР±СЏ РіР°СЃС‚СЂРѕСЌРЅС‚РµСЂРѕР»РѕРіРѕРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-63', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РїСѓР»СЊРјРѕРЅРѕР»РѕРіРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-64', question: 'РЇ С…РѕС‚РµР» Р±С‹ СЂР°Р±РѕС‚Р°С‚СЊ РЅРµС„СЂРѕР»РѕРіРѕРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-65', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ РіРµРјР°С‚РѕР»РѕРіРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-66', question: 'РЇ РІРёР¶Сѓ СЃРµР±СЏ РёРЅС„РµРєС†РёРѕРЅРёСЃС‚РѕРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-67', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ СЂР°Р±РѕС‚Р° РїР°С‚РѕР»РѕРіРѕР°РЅР°С‚РѕРјР°', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-68', question: 'РЇ С…РѕС‚РµР» Р±С‹ СЂР°Р±РѕС‚Р°С‚СЊ РІ СЃРєРѕСЂРѕР№ РїРѕРјРѕС‰Рё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-69', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ СЂР°Р±РѕС‚Р° СЃРµРјРµР№РЅРѕРіРѕ РІСЂР°С‡Р°', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-70', question: 'РЇ РІРёР¶Сѓ СЃРµР±СЏ СЂРµРІРјР°С‚РѕР»РѕРіРѕРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-71', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ СЂР°Р±РѕС‚Р° РѕС‚РѕСЂРёРЅРѕР»Р°СЂРёРЅРіРѕР»РѕРіР° (Р›РћР )', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-72', question: 'РЇ С…РѕС‚РµР» Р±С‹ СЂР°Р±РѕС‚Р°С‚СЊ РІ РѕР±Р»Р°СЃС‚Рё С„РёР·РёРѕС‚РµСЂР°РїРёРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-73', question: 'РњРµРЅСЏ РёРЅС‚РµСЂРµСЃСѓРµС‚ СЂР°Р±РѕС‚Р° РІ РєР»РёРЅРёС‡РµСЃРєРѕР№ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-74', question: 'РЇ РІРёР¶Сѓ СЃРµР±СЏ РЅРµР№СЂРѕС…РёСЂСѓСЂРіРѕРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
+        { id: 'spec-75', question: 'РњРµРЅСЏ РїСЂРёРІР»РµРєР°РµС‚ РїР»Р°СЃС‚РёС‡РµСЃРєР°СЏ С…РёСЂСѓСЂРіРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 3 },
         
-        // Блок 4: Личные качества и ценности (76-100)
-        { id: 'spec-76', question: 'Я умею сохранять спокойствие в критических ситуациях', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-77', question: 'У меня хорошо развита мелкая моторика рук', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-78', question: 'Я способен работать с эмоционально сложными пациентами', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-79', question: 'Мне легко даются точные науки и математические расчеты', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-80', question: 'Я предпочитаю работу с видимым результатом своего труда', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-81', question: 'Мне важен баланс между работой и личной жизнью', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-82', question: 'Я готов к высокому уровню физической нагрузки на работе', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-83', question: 'Мне важно финансовое вознаграждение за мой труд', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-84', question: 'Я умею находить общий язык с разными людьми', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-85', question: 'Мне интересно изучать новые медицинские публикации', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-86', question: 'Я предпочитаю работать самостоятельно', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-87', question: 'Мне важно признание коллег и пациентов', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-88', question: 'Я способен быстро адаптироваться к изменениям', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-89', question: 'Мне комфортно принимать сложные этические решения', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-90', question: 'Я умею слушать и слышать других людей', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-91', question: 'Мне важно постоянное профессиональное развитие', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-92', question: 'Я способен эффективно работать под давлением', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-93', question: 'Мне интересна организационная работа в медицине', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-94', question: 'Я готов работать с пациентами разных культур и традиций', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-95', question: 'Мне важно вносить вклад в развитие медицинской науки', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-96', question: 'Я умею объяснять сложные вещи простыми словами', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-97', question: 'Мне важно помогать людям в трудных жизненных ситуациях', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-98', question: 'Я готов нести ответственность за принятые решения', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-99', question: 'Мне интересна работа с медицинскими данными и аналитикой', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 },
-        { id: 'spec-100', question: 'Я вижу свое призвание в медицине', options: ['Полностью согласен', 'Скорее согласен', 'Затрудняюсь ответить', 'Скорее не согласен', 'Полностью не согласен'], correct: 0, difficulty: 4 }
+        // Р‘Р»РѕРє 4: Р›РёС‡РЅС‹Рµ РєР°С‡РµСЃС‚РІР° Рё С†РµРЅРЅРѕСЃС‚Рё (76-100)
+        { id: 'spec-76', question: 'РЇ СѓРјРµСЋ СЃРѕС…СЂР°РЅСЏС‚СЊ СЃРїРѕРєРѕР№СЃС‚РІРёРµ РІ РєСЂРёС‚РёС‡РµСЃРєРёС… СЃРёС‚СѓР°С†РёСЏС…', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-77', question: 'РЈ РјРµРЅСЏ С…РѕСЂРѕС€Рѕ СЂР°Р·РІРёС‚Р° РјРµР»РєР°СЏ РјРѕС‚РѕСЂРёРєР° СЂСѓРє', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-78', question: 'РЇ СЃРїРѕСЃРѕР±РµРЅ СЂР°Р±РѕС‚Р°С‚СЊ СЃ СЌРјРѕС†РёРѕРЅР°Р»СЊРЅРѕ СЃР»РѕР¶РЅС‹РјРё РїР°С†РёРµРЅС‚Р°РјРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-79', question: 'РњРЅРµ Р»РµРіРєРѕ РґР°СЋС‚СЃСЏ С‚РѕС‡РЅС‹Рµ РЅР°СѓРєРё Рё РјР°С‚РµРјР°С‚РёС‡РµСЃРєРёРµ СЂР°СЃС‡РµС‚С‹', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-80', question: 'РЇ РїСЂРµРґРїРѕС‡РёС‚Р°СЋ СЂР°Р±РѕС‚Сѓ СЃ РІРёРґРёРјС‹Рј СЂРµР·СѓР»СЊС‚Р°С‚РѕРј СЃРІРѕРµРіРѕ С‚СЂСѓРґР°', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-81', question: 'РњРЅРµ РІР°Р¶РµРЅ Р±Р°Р»Р°РЅСЃ РјРµР¶РґСѓ СЂР°Р±РѕС‚РѕР№ Рё Р»РёС‡РЅРѕР№ Р¶РёР·РЅСЊСЋ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-82', question: 'РЇ РіРѕС‚РѕРІ Рє РІС‹СЃРѕРєРѕРјСѓ СѓСЂРѕРІРЅСЋ С„РёР·РёС‡РµСЃРєРѕР№ РЅР°РіСЂСѓР·РєРё РЅР° СЂР°Р±РѕС‚Рµ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-83', question: 'РњРЅРµ РІР°Р¶РЅРѕ С„РёРЅР°РЅСЃРѕРІРѕРµ РІРѕР·РЅР°РіСЂР°Р¶РґРµРЅРёРµ Р·Р° РјРѕР№ С‚СЂСѓРґ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-84', question: 'РЇ СѓРјРµСЋ РЅР°С…РѕРґРёС‚СЊ РѕР±С‰РёР№ СЏР·С‹Рє СЃ СЂР°Р·РЅС‹РјРё Р»СЋРґСЊРјРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-85', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ РёР·СѓС‡Р°С‚СЊ РЅРѕРІС‹Рµ РјРµРґРёС†РёРЅСЃРєРёРµ РїСѓР±Р»РёРєР°С†РёРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-86', question: 'РЇ РїСЂРµРґРїРѕС‡РёС‚Р°СЋ СЂР°Р±РѕС‚Р°С‚СЊ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-87', question: 'РњРЅРµ РІР°Р¶РЅРѕ РїСЂРёР·РЅР°РЅРёРµ РєРѕР»Р»РµРі Рё РїР°С†РёРµРЅС‚РѕРІ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-88', question: 'РЇ СЃРїРѕСЃРѕР±РµРЅ Р±С‹СЃС‚СЂРѕ Р°РґР°РїС‚РёСЂРѕРІР°С‚СЊСЃСЏ Рє РёР·РјРµРЅРµРЅРёСЏРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-89', question: 'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ РїСЂРёРЅРёРјР°С‚СЊ СЃР»РѕР¶РЅС‹Рµ СЌС‚РёС‡РµСЃРєРёРµ СЂРµС€РµРЅРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-90', question: 'РЇ СѓРјРµСЋ СЃР»СѓС€Р°С‚СЊ Рё СЃР»С‹С€Р°С‚СЊ РґСЂСѓРіРёС… Р»СЋРґРµР№', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-91', question: 'РњРЅРµ РІР°Р¶РЅРѕ РїРѕСЃС‚РѕСЏРЅРЅРѕРµ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕРµ СЂР°Р·РІРёС‚РёРµ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-92', question: 'РЇ СЃРїРѕСЃРѕР±РµРЅ СЌС„С„РµРєС‚РёРІРЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ РїРѕРґ РґР°РІР»РµРЅРёРµРј', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-93', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° РѕСЂРіР°РЅРёР·Р°С†РёРѕРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РІ РјРµРґРёС†РёРЅРµ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-94', question: 'РЇ РіРѕС‚РѕРІ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РїР°С†РёРµРЅС‚Р°РјРё СЂР°Р·РЅС‹С… РєСѓР»СЊС‚СѓСЂ Рё С‚СЂР°РґРёС†РёР№', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-95', question: 'РњРЅРµ РІР°Р¶РЅРѕ РІРЅРѕСЃРёС‚СЊ РІРєР»Р°Рґ РІ СЂР°Р·РІРёС‚РёРµ РјРµРґРёС†РёРЅСЃРєРѕР№ РЅР°СѓРєРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-96', question: 'РЇ СѓРјРµСЋ РѕР±СЉСЏСЃРЅСЏС‚СЊ СЃР»РѕР¶РЅС‹Рµ РІРµС‰Рё РїСЂРѕСЃС‚С‹РјРё СЃР»РѕРІР°РјРё', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-97', question: 'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј РІ С‚СЂСѓРґРЅС‹С… Р¶РёР·РЅРµРЅРЅС‹С… СЃРёС‚СѓР°С†РёСЏС…', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-98', question: 'РЇ РіРѕС‚РѕРІ РЅРµСЃС‚Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ Р·Р° РїСЂРёРЅСЏС‚С‹Рµ СЂРµС€РµРЅРёСЏ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-99', question: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° СЂР°Р±РѕС‚Р° СЃ РјРµРґРёС†РёРЅСЃРєРёРјРё РґР°РЅРЅС‹РјРё Рё Р°РЅР°Р»РёС‚РёРєРѕР№', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 },
+        { id: 'spec-100', question: 'РЇ РІРёР¶Сѓ СЃРІРѕРµ РїСЂРёР·РІР°РЅРёРµ РІ РјРµРґРёС†РёРЅРµ', options: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'Р—Р°С‚СЂСѓРґРЅСЏСЋСЃСЊ РѕС‚РІРµС‚РёС‚СЊ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РџРѕР»РЅРѕСЃС‚СЊСЋ РЅРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, difficulty: 4 }
     ];
     
-    // Добавляем пояснения
+    // Р”РѕР±Р°РІР»СЏРµРј РїРѕСЏСЃРЅРµРЅРёСЏ
     questions.forEach(q => {
-        q.explanation = 'Этот вопрос поможет определить ваши предпочтения в выборе медицинской специальности.';
+        q.explanation = 'Р­С‚РѕС‚ РІРѕРїСЂРѕСЃ РїРѕРјРѕР¶РµС‚ РѕРїСЂРµРґРµР»РёС‚СЊ РІР°С€Рё РїСЂРµРґРїРѕС‡С‚РµРЅРёСЏ РІ РІС‹Р±РѕСЂРµ РјРµРґРёС†РёРЅСЃРєРѕР№ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё.';
     });
     
-    // Группируем по уровням сложности
+    // Р“СЂСѓРїРїРёСЂСѓРµРј РїРѕ СѓСЂРѕРІРЅСЏРј СЃР»РѕР¶РЅРѕСЃС‚Рё
     const groupedQuestions = {};
     questions.forEach(q => {
         if (!groupedQuestions[q.difficulty]) groupedQuestions[q.difficulty] = [];
@@ -2283,29 +2283,29 @@ function generateSpecialtyQuestions() {
     return groupedQuestions;
 }
 
-// Начать тест - ИСПРАВЛЕНО: БЕРЕМ СЛУЧАЙНЫЕ 40 ВОПРОСОВ
-// Старая функция startTest удалена - используем новую адаптивную систему
+// РќР°С‡Р°С‚СЊ С‚РµСЃС‚ - РРЎРџР РђР’Р›Р•РќРћ: Р‘Р•Р Р•Рњ РЎР›РЈР§РђР™РќР«Р• 40 Р’РћРџР РћРЎРћР’
+// РЎС‚Р°СЂР°СЏ С„СѓРЅРєС†РёСЏ startTest СѓРґР°Р»РµРЅР° - РёСЃРїРѕР»СЊР·СѓРµРј РЅРѕРІСѓСЋ Р°РґР°РїС‚РёРІРЅСѓСЋ СЃРёСЃС‚РµРјСѓ
 
-// Загрузить вопрос
+// Р—Р°РіСЂСѓР·РёС‚СЊ РІРѕРїСЂРѕСЃ
 function loadQuestion() {
     const question = currentTestQuestions[currentQuestionIndex];
     
-    // Обновить прогресс
+    // РћР±РЅРѕРІРёС‚СЊ РїСЂРѕРіСЂРµСЃСЃ
     const progress = ((currentQuestionIndex + 1) / 40) * 100;
     document.getElementById('test-progress').style.width = `${progress}%`;
-    document.getElementById('progress-text').textContent = `Вопрос ${currentQuestionIndex + 1} из 40`;
+    document.getElementById('progress-text').textContent = `Р’РѕРїСЂРѕСЃ ${currentQuestionIndex + 1} РёР· 40`;
     
-    // Обновить панель навигации
+    // РћР±РЅРѕРІРёС‚СЊ РїР°РЅРµР»СЊ РЅР°РІРёРіР°С†РёРё
     updateQuestionNav();
     
-    // Создать HTML для вопроса
+    // РЎРѕР·РґР°С‚СЊ HTML РґР»СЏ РІРѕРїСЂРѕСЃР°
     let html = `
         <div class="question-container">
             <div class="question-header">
-                <div class="question-number">Вопрос ${currentQuestionIndex + 1} из 40</div>
+                <div class="question-number">Р’РѕРїСЂРѕСЃ ${currentQuestionIndex + 1} РёР· 40</div>
                 <div class="question-actions">
                     <button class="question-action-btn mark" onclick="markQuestion()" id="mark-question-btn">
-                        ${markedQuestions[currentQuestionIndex] ? '? Снять отметку' : '? Отметить вопрос'}
+                        ${markedQuestions[currentQuestionIndex] ? 'в… РЎРЅСЏС‚СЊ РѕС‚РјРµС‚РєСѓ' : 'в† РћС‚РјРµС‚РёС‚СЊ РІРѕРїСЂРѕСЃ'}
                     </button>
                 </div>
             </div>
@@ -2313,7 +2313,7 @@ function loadQuestion() {
             <div class="options">
     `;
     
-    // Добавить варианты ответов
+    // Р”РѕР±Р°РІРёС‚СЊ РІР°СЂРёР°РЅС‚С‹ РѕС‚РІРµС‚РѕРІ
     question.options.forEach((option, index) => {
         const isSelected = testAnswers[currentQuestionIndex] === option.id;
         html += `
@@ -2328,23 +2328,23 @@ function loadQuestion() {
     
     document.getElementById('questions-container').innerHTML = html;
     
-    // Обновить кнопки
+    // РћР±РЅРѕРІРёС‚СЊ РєРЅРѕРїРєРё
     document.getElementById('prev-btn').style.display = currentQuestionIndex > 0 ? 'flex' : 'none';
     document.getElementById('next-btn').style.display = currentQuestionIndex < 39 ? 'flex' : 'none';
     document.getElementById('check-btn').style.display = currentQuestionIndex === 39 ? 'flex' : 'none';
     
-    // Обновить кнопку отметки
+    // РћР±РЅРѕРІРёС‚СЊ РєРЅРѕРїРєСѓ РѕС‚РјРµС‚РєРё
     const markBtn = document.getElementById('mark-question-btn');
     if (markBtn) {
-        markBtn.textContent = markedQuestions[currentQuestionIndex] ? '? Снять отметку' : '? Отметить вопрос';
+        markBtn.textContent = markedQuestions[currentQuestionIndex] ? 'в… РЎРЅСЏС‚СЊ РѕС‚РјРµС‚РєСѓ' : 'в† РћС‚РјРµС‚РёС‚СЊ РІРѕРїСЂРѕСЃ';
         markBtn.style.backgroundColor = markedQuestions[currentQuestionIndex] ? '#9c27b0' : '#f0f0f0';
         markBtn.style.color = markedQuestions[currentQuestionIndex] ? 'white' : '#333';
     }
     
-    // Убираем автопрокрутку, чтобы не было дрожания при скролле
+    // РЈР±РёСЂР°РµРј Р°РІС‚РѕРїСЂРѕРєСЂСѓС‚РєСѓ, С‡С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ РґСЂРѕР¶Р°РЅРёСЏ РїСЂРё СЃРєСЂРѕР»Р»Рµ
 }
 
-// Обновить панель навигации по вопросам
+// РћР±РЅРѕРІРёС‚СЊ РїР°РЅРµР»СЊ РЅР°РІРёРіР°С†РёРё РїРѕ РІРѕРїСЂРѕСЃР°Рј
 function updateQuestionNav() {
     const navContainer = document.getElementById('question-nav');
     if (!navContainer) return;
@@ -2356,7 +2356,7 @@ function updateQuestionNav() {
         btn.className = 'question-nav-btn';
         btn.textContent = i + 1;
         
-        // Определяем состояние вопроса
+        // РћРїСЂРµРґРµР»СЏРµРј СЃРѕСЃС‚РѕСЏРЅРёРµ РІРѕРїСЂРѕСЃР°
         if (i === currentQuestionIndex) {
             btn.classList.add('current');
         } else if (markedQuestions[i]) {
@@ -2376,83 +2376,83 @@ function updateQuestionNav() {
     }
 }
 
-// Отметить вопрос
+// РћС‚РјРµС‚РёС‚СЊ РІРѕРїСЂРѕСЃ
 function markQuestion() {
     markedQuestions[currentQuestionIndex] = !markedQuestions[currentQuestionIndex];
     
-    // Обновить отображение
+    // РћР±РЅРѕРІРёС‚СЊ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ
     const markBtn = document.getElementById('mark-question-btn');
     if (markBtn) {
-        markBtn.textContent = markedQuestions[currentQuestionIndex] ? '? Снять отметку' : '? Отметить вопрос';
+        markBtn.textContent = markedQuestions[currentQuestionIndex] ? 'в… РЎРЅСЏС‚СЊ РѕС‚РјРµС‚РєСѓ' : 'в† РћС‚РјРµС‚РёС‚СЊ РІРѕРїСЂРѕСЃ';
         markBtn.style.backgroundColor = markedQuestions[currentQuestionIndex] ? '#9c27b0' : '#f0f0f0';
         markBtn.style.color = markedQuestions[currentQuestionIndex] ? 'white' : '#333';
         
-        // Анимация
+        // РђРЅРёРјР°С†РёСЏ
         markBtn.style.animation = 'pulse 0.5s';
         setTimeout(() => {
             markBtn.style.animation = '';
         }, 500);
     }
     
-    // Обновить панель навигации
+    // РћР±РЅРѕРІРёС‚СЊ РїР°РЅРµР»СЊ РЅР°РІРёРіР°С†РёРё
     updateQuestionNav();
     
-    // Показать уведомление
+    // РџРѕРєР°Р·Р°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ
     if (markedQuestions[currentQuestionIndex]) {
-        showNotification('Вопрос отмечен!', 'success');
+        showNotification('Р’РѕРїСЂРѕСЃ РѕС‚РјРµС‡РµРЅ!', 'success');
     } else {
-        showNotification('Отметка снята', 'info');
+        showNotification('РћС‚РјРµС‚РєР° СЃРЅСЏС‚Р°', 'info');
     }
 }
 
-// Очистить текущий ответ
+// РћС‡РёСЃС‚РёС‚СЊ С‚РµРєСѓС‰РёР№ РѕС‚РІРµС‚
 function clearCurrentAnswer() {
     if (testAnswers[currentQuestionIndex] !== undefined) {
         delete testAnswers[currentQuestionIndex];
         
-        // Перезагрузить вопрос
+        // РџРµСЂРµР·Р°РіСЂСѓР·РёС‚СЊ РІРѕРїСЂРѕСЃ
         loadQuestion();
         
-        // Показать уведомление
-        showNotification('Ответ очищен', 'warning');
+        // РџРѕРєР°Р·Р°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ
+        showNotification('РћС‚РІРµС‚ РѕС‡РёС‰РµРЅ', 'warning');
     } else {
-        showNotification('Нет ответа для очистки', 'info');
+        showNotification('РќРµС‚ РѕС‚РІРµС‚Р° РґР»СЏ РѕС‡РёСЃС‚РєРё', 'info');
     }
 }
 
-// Перейти к первому пропущенному вопросу
+// РџРµСЂРµР№С‚Рё Рє РїРµСЂРІРѕРјСѓ РїСЂРѕРїСѓС‰РµРЅРЅРѕРјСѓ РІРѕРїСЂРѕСЃСѓ
 function goToFirstSkipped() {
-    // Ищем первый вопрос без ответа
+    // РС‰РµРј РїРµСЂРІС‹Р№ РІРѕРїСЂРѕСЃ Р±РµР· РѕС‚РІРµС‚Р°
     for (let i = 0; i < 40; i++) {
         if (testAnswers[i] === undefined) {
             currentQuestionIndex = i;
             loadQuestion();
             
-            // Показать уведомление
-            showNotification(`Переход к пропущенному вопросу ${i + 1}`, 'info');
+            // РџРѕРєР°Р·Р°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ
+            showNotification(`РџРµСЂРµС…РѕРґ Рє РїСЂРѕРїСѓС‰РµРЅРЅРѕРјСѓ РІРѕРїСЂРѕСЃСѓ ${i + 1}`, 'info');
             return;
         }
     }
     
-    // Если все вопросы отвечены, ищем первый отмеченный
+    // Р•СЃР»Рё РІСЃРµ РІРѕРїСЂРѕСЃС‹ РѕС‚РІРµС‡РµРЅС‹, РёС‰РµРј РїРµСЂРІС‹Р№ РѕС‚РјРµС‡РµРЅРЅС‹Р№
     for (let i = 0; i < 40; i++) {
         if (markedQuestions[i]) {
             currentQuestionIndex = i;
             loadQuestion();
             
-            // Показать уведомление
-            showNotification(`Переход к отмеченному вопросу ${i + 1}`, 'info');
+            // РџРѕРєР°Р·Р°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ
+            showNotification(`РџРµСЂРµС…РѕРґ Рє РѕС‚РјРµС‡РµРЅРЅРѕРјСѓ РІРѕРїСЂРѕСЃСѓ ${i + 1}`, 'info');
             return;
         }
     }
     
-    // Если все вопросы отвечены и не отмечены
-    showNotification('Все вопросы отвечены!', 'success');
+    // Р•СЃР»Рё РІСЃРµ РІРѕРїСЂРѕСЃС‹ РѕС‚РІРµС‡РµРЅС‹ Рё РЅРµ РѕС‚РјРµС‡РµРЅС‹
+    showNotification('Р’СЃРµ РІРѕРїСЂРѕСЃС‹ РѕС‚РІРµС‡РµРЅС‹!', 'success');
 }
 
-// Показать уведомление
+// РџРѕРєР°Р·Р°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ
 function showNotification(message, type) {
-    // Создаем элемент уведомления
+    // РЎРѕР·РґР°РµРј СЌР»РµРјРµРЅС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ
     const notification = document.createElement('div');
     notification.textContent = message;
     notification.style.position = 'fixed';
@@ -2466,7 +2466,7 @@ function showNotification(message, type) {
     notification.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
     notification.style.animation = 'fadeIn 0.3s, slideIn 0.3s';
     
-    // Цвет в зависимости от типа
+    // Р¦РІРµС‚ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ С‚РёРїР°
     switch(type) {
         case 'success':
             notification.style.background = 'linear-gradient(90deg, #4CAF50, #8BC34A)';
@@ -2484,7 +2484,7 @@ function showNotification(message, type) {
     
     document.body.appendChild(notification);
     
-    // Удаляем уведомление через 3 секунды
+    // РЈРґР°Р»СЏРµРј СѓРІРµРґРѕРјР»РµРЅРёРµ С‡РµСЂРµР· 3 СЃРµРєСѓРЅРґС‹
     setTimeout(() => {
         notification.style.animation = 'fadeIn 0.3s reverse';
         setTimeout(() => {
@@ -2495,22 +2495,22 @@ function showNotification(message, type) {
     }, 3000);
 }
 
-// Выбрать ответ
+// Р’С‹Р±СЂР°С‚СЊ РѕС‚РІРµС‚
 function selectAnswer(optionIndex) {
     const question = currentTestQuestions[currentQuestionIndex];
     const option = question.options[optionIndex];
     
-    // Сохранить ответ
+    // РЎРѕС…СЂР°РЅРёС‚СЊ РѕС‚РІРµС‚
     testAnswers[currentQuestionIndex] = option.id;
     
-    // Анимация выбора
+    // РђРЅРёРјР°С†РёСЏ РІС‹Р±РѕСЂР°
     const selectedOption = document.querySelectorAll('.option')[optionIndex];
     selectedOption.style.animation = 'pulse 0.3s';
     setTimeout(() => {
         selectedOption.style.animation = '';
     }, 300);
     
-    // Обновить отображение
+    // РћР±РЅРѕРІРёС‚СЊ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ
     document.querySelectorAll('.option').forEach((opt, idx) => {
         if (idx === optionIndex) {
             opt.classList.add('selected');
@@ -2521,11 +2521,11 @@ function selectAnswer(optionIndex) {
         }
     });
     
-    // Обновить панель навигации
+    // РћР±РЅРѕРІРёС‚СЊ РїР°РЅРµР»СЊ РЅР°РІРёРіР°С†РёРё
     updateQuestionNav();
 }
 
-// Следующий вопрос
+// РЎР»РµРґСѓСЋС‰РёР№ РІРѕРїСЂРѕСЃ
 function nextQuestion() {
     if (currentQuestionIndex < 39) {
         currentQuestionIndex++;
@@ -2533,7 +2533,7 @@ function nextQuestion() {
     }
 }
 
-// Предыдущий вопрос
+// РџСЂРµРґС‹РґСѓС‰РёР№ РІРѕРїСЂРѕСЃ
 function prevQuestion() {
     if (currentQuestionIndex > 0) {
         currentQuestionIndex--;
@@ -2541,15 +2541,15 @@ function prevQuestion() {
     }
 }
 
-// Проверить результаты теста
+// РџСЂРѕРІРµСЂРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹ С‚РµСЃС‚Р°
 function checkTestResults() {
-    // Проверить, все ли вопросы отвечены
+    // РџСЂРѕРІРµСЂРёС‚СЊ, РІСЃРµ Р»Рё РІРѕРїСЂРѕСЃС‹ РѕС‚РІРµС‡РµРЅС‹
     const answeredCount = Object.keys(testAnswers).length;
     
     if (answeredCount < 40) {
-        const confirmSkip = confirm(`Вы ответили только на ${answeredCount} из 40 вопросов. ${40 - answeredCount} вопросов остались без ответа. Хотите все равно завершить тест?`);
+        const confirmSkip = confirm(`Р’С‹ РѕС‚РІРµС‚РёР»Рё С‚РѕР»СЊРєРѕ РЅР° ${answeredCount} РёР· 40 РІРѕРїСЂРѕСЃРѕРІ. ${40 - answeredCount} РІРѕРїСЂРѕСЃРѕРІ РѕСЃС‚Р°Р»РёСЃСЊ Р±РµР· РѕС‚РІРµС‚Р°. РҐРѕС‚РёС‚Рµ РІСЃРµ СЂР°РІРЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ С‚РµСЃС‚?`);
         if (!confirmSkip) {
-            // Переходим к первому пропущенному вопросу
+            // РџРµСЂРµС…РѕРґРёРј Рє РїРµСЂРІРѕРјСѓ РїСЂРѕРїСѓС‰РµРЅРЅРѕРјСѓ РІРѕРїСЂРѕСЃСѓ
             goToFirstSkipped();
             return;
         }
@@ -2558,34 +2558,34 @@ function checkTestResults() {
     let score = 0;
     let maxScore = 0;
     
-    // Подсчет результатов в зависимости от типа теста
+    // РџРѕРґСЃС‡РµС‚ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ С‚РёРїР° С‚РµСЃС‚Р°
     if (currentTestType === 'profession' || currentTestType === 'specialty') {
-        // Тесты с оценкой от 1 до 5
+        // РўРµСЃС‚С‹ СЃ РѕС†РµРЅРєРѕР№ РѕС‚ 1 РґРѕ 5
         currentTestQuestions.forEach((question, index) => {
             const answerId = testAnswers[index];
             const selectedOption = question.options.find(opt => opt.id === answerId);
             if (selectedOption) {
                 score += selectedOption.value;
             }
-            maxScore += 5; // Максимальный балл за вопрос
+            maxScore += 5; // РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ Р±Р°Р»Р» Р·Р° РІРѕРїСЂРѕСЃ
         });
         
         const percentage = Math.round((score / maxScore) * 100);
         
-        // Определить результат
+        // РћРїСЂРµРґРµР»РёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚
         let title, message;
         if (percentage >= 80) {
-            title = "Отличный результат! ??";
-            message = "У вас явная склонность к медицинской профессии. Рекомендуем рассмотреть поступление в медицинский вуз. Ваши сильные стороны: ответственность, эмпатия, готовность к обучению.";
+            title = "РћС‚Р»РёС‡РЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚! рџЋ‰";
+            message = "РЈ РІР°СЃ СЏРІРЅР°СЏ СЃРєР»РѕРЅРЅРѕСЃС‚СЊ Рє РјРµРґРёС†РёРЅСЃРєРѕР№ РїСЂРѕС„РµСЃСЃРёРё. Р РµРєРѕРјРµРЅРґСѓРµРј СЂР°СЃСЃРјРѕС‚СЂРµС‚СЊ РїРѕСЃС‚СѓРїР»РµРЅРёРµ РІ РјРµРґРёС†РёРЅСЃРєРёР№ РІСѓР·. Р’Р°С€Рё СЃРёР»СЊРЅС‹Рµ СЃС‚РѕСЂРѕРЅС‹: РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ, СЌРјРїР°С‚РёСЏ, РіРѕС‚РѕРІРЅРѕСЃС‚СЊ Рє РѕР±СѓС‡РµРЅРёСЋ.";
         } else if (percentage >= 60) {
-            title = "Хороший результат! ??";
-            message = "Вы проявляете интерес к медицине. Рекомендуем дополнительно изучить медицинские специальности, пройти практику в медицинском учреждении для более осознанного выбора.";
+            title = "РҐРѕСЂРѕС€РёР№ СЂРµР·СѓР»СЊС‚Р°С‚! рџ‘Ќ";
+            message = "Р’С‹ РїСЂРѕСЏРІР»СЏРµС‚Рµ РёРЅС‚РµСЂРµСЃ Рє РјРµРґРёС†РёРЅРµ. Р РµРєРѕРјРµРЅРґСѓРµРј РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ РёР·СѓС‡РёС‚СЊ РјРµРґРёС†РёРЅСЃРєРёРµ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё, РїСЂРѕР№С‚Рё РїСЂР°РєС‚РёРєСѓ РІ РјРµРґРёС†РёРЅСЃРєРѕРј СѓС‡СЂРµР¶РґРµРЅРёРё РґР»СЏ Р±РѕР»РµРµ РѕСЃРѕР·РЅР°РЅРЅРѕРіРѕ РІС‹Р±РѕСЂР°.";
         } else if (percentage >= 40) {
-            title = "Средний результат ??";
-            message = "Ваши результаты показывают умеренный интерес к медицине. Рассмотрите смежные профессии (медицинская оптика, фармация, медицинская техника) или пройдите консультацию у карьерного психолога.";
+            title = "РЎСЂРµРґРЅРёР№ СЂРµР·СѓР»СЊС‚Р°С‚ рџ¤”";
+            message = "Р’Р°С€Рё СЂРµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРєР°Р·С‹РІР°СЋС‚ СѓРјРµСЂРµРЅРЅС‹Р№ РёРЅС‚РµСЂРµСЃ Рє РјРµРґРёС†РёРЅРµ. Р Р°СЃСЃРјРѕС‚СЂРёС‚Рµ СЃРјРµР¶РЅС‹Рµ РїСЂРѕС„РµСЃСЃРёРё (РјРµРґРёС†РёРЅСЃРєР°СЏ РѕРїС‚РёРєР°, С„Р°СЂРјР°С†РёСЏ, РјРµРґРёС†РёРЅСЃРєР°СЏ С‚РµС…РЅРёРєР°) РёР»Рё РїСЂРѕР№РґРёС‚Рµ РєРѕРЅСЃСѓР»СЊС‚Р°С†РёСЋ Сѓ РєР°СЂСЊРµСЂРЅРѕРіРѕ РїСЃРёС…РѕР»РѕРіР°.";
         } else {
-            title = "Низкий результат ??";
-            message = "Возможно, медицина - не ваш профиль. Рекомендуем пройти другие тесты для определения профессиональных склонностей и рассмотреть другие области (инженерия, IT, естественные науки).";
+            title = "РќРёР·РєРёР№ СЂРµР·СѓР»СЊС‚Р°С‚ рџ’­";
+            message = "Р’РѕР·РјРѕР¶РЅРѕ, РјРµРґРёС†РёРЅР° - РЅРµ РІР°С€ РїСЂРѕС„РёР»СЊ. Р РµРєРѕРјРµРЅРґСѓРµРј РїСЂРѕР№С‚Рё РґСЂСѓРіРёРµ С‚РµСЃС‚С‹ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹С… СЃРєР»РѕРЅРЅРѕСЃС‚РµР№ Рё СЂР°СЃСЃРјРѕС‚СЂРµС‚СЊ РґСЂСѓРіРёРµ РѕР±Р»Р°СЃС‚Рё (РёРЅР¶РµРЅРµСЂРёСЏ, IT, РµСЃС‚РµСЃС‚РІРµРЅРЅС‹Рµ РЅР°СѓРєРё).";
         }
         
         document.getElementById('result-score').textContent = `${percentage}%`;
@@ -2593,7 +2593,7 @@ function checkTestResults() {
         document.getElementById('result-message').textContent = message;
         
     } else if (currentTestType === 'chemistry' || currentTestType === 'biology') {
-        // Тесты с правильными/неправильными ответами
+        // РўРµСЃС‚С‹ СЃ РїСЂР°РІРёР»СЊРЅС‹РјРё/РЅРµРїСЂР°РІРёР»СЊРЅС‹РјРё РѕС‚РІРµС‚Р°РјРё
         let correctAnswers = 0;
         
         currentTestQuestions.forEach((question, index) => {
@@ -2606,20 +2606,20 @@ function checkTestResults() {
         
         const percentage = Math.round((correctAnswers / 40) * 100);
         
-        // Определить результат
+        // РћРїСЂРµРґРµР»РёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚
         let title, message;
         if (percentage >= 80) {
-            title = "Отличные знания! ??";
-            message = `Вы правильно ответили на ${correctAnswers} из 40 вопросов. Ваши знания достаточны для поступления в медицинский вуз. Продолжайте углублять знания по предмету.`;
+            title = "РћС‚Р»РёС‡РЅС‹Рµ Р·РЅР°РЅРёСЏ! рџЋ‰";
+            message = `Р’С‹ РїСЂР°РІРёР»СЊРЅРѕ РѕС‚РІРµС‚РёР»Рё РЅР° ${correctAnswers} РёР· 40 РІРѕРїСЂРѕСЃРѕРІ. Р’Р°С€Рё Р·РЅР°РЅРёСЏ РґРѕСЃС‚Р°С‚РѕС‡РЅС‹ РґР»СЏ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ РІ РјРµРґРёС†РёРЅСЃРєРёР№ РІСѓР·. РџСЂРѕРґРѕР»Р¶Р°Р№С‚Рµ СѓРіР»СѓР±Р»СЏС‚СЊ Р·РЅР°РЅРёСЏ РїРѕ РїСЂРµРґРјРµС‚Сѓ.`;
         } else if (percentage >= 60) {
-            title = "Хорошие знания! ??";
-            message = `Вы правильно ответили на ${correctAnswers} из 40 вопросов. Рекомендуем подтянуть знания для успешной сдачи экзаменов. Обратите внимание на темы, которые вызвали затруднения.`;
+            title = "РҐРѕСЂРѕС€РёРµ Р·РЅР°РЅРёСЏ! рџ‘Ќ";
+            message = `Р’С‹ РїСЂР°РІРёР»СЊРЅРѕ РѕС‚РІРµС‚РёР»Рё РЅР° ${correctAnswers} РёР· 40 РІРѕРїСЂРѕСЃРѕРІ. Р РµРєРѕРјРµРЅРґСѓРµРј РїРѕРґС‚СЏРЅСѓС‚СЊ Р·РЅР°РЅРёСЏ РґР»СЏ СѓСЃРїРµС€РЅРѕР№ СЃРґР°С‡Рё СЌРєР·Р°РјРµРЅРѕРІ. РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ РЅР° С‚РµРјС‹, РєРѕС‚РѕСЂС‹Рµ РІС‹Р·РІР°Р»Рё Р·Р°С‚СЂСѓРґРЅРµРЅРёСЏ.`;
         } else if (percentage >= 40) {
-            title = "Средний уровень ??";
-            message = `Вы правильно ответили на ${correctAnswers} из 40 вопросов. Необходимо серьезно заняться подготовкой. Рекомендуем начать с базовых понятий и постепенно переходить к более сложным темам.`;
+            title = "РЎСЂРµРґРЅРёР№ СѓСЂРѕРІРµРЅСЊ рџ“љ";
+            message = `Р’С‹ РїСЂР°РІРёР»СЊРЅРѕ РѕС‚РІРµС‚РёР»Рё РЅР° ${correctAnswers} РёР· 40 РІРѕРїСЂРѕСЃРѕРІ. РќРµРѕР±С…РѕРґРёРјРѕ СЃРµСЂСЊРµР·РЅРѕ Р·Р°РЅСЏС‚СЊСЃСЏ РїРѕРґРіРѕС‚РѕРІРєРѕР№. Р РµРєРѕРјРµРЅРґСѓРµРј РЅР°С‡Р°С‚СЊ СЃ Р±Р°Р·РѕРІС‹С… РїРѕРЅСЏС‚РёР№ Рё РїРѕСЃС‚РµРїРµРЅРЅРѕ РїРµСЂРµС…РѕРґРёС‚СЊ Рє Р±РѕР»РµРµ СЃР»РѕР¶РЅС‹Рј С‚РµРјР°Рј.`;
         } else {
-            title = "Низкий уровень ??";
-            message = `Вы правильно ответили на ${correctAnswers} из 40 вопросов. Рекомендуем начать изучение предмета с основ. Возможно, вам стоит рассмотреть репетитора или онлайн-курсы для систематической подготовки.`;
+            title = "РќРёР·РєРёР№ СѓСЂРѕРІРµРЅСЊ рџ’­";
+            message = `Р’С‹ РїСЂР°РІРёР»СЊРЅРѕ РѕС‚РІРµС‚РёР»Рё РЅР° ${correctAnswers} РёР· 40 РІРѕРїСЂРѕСЃРѕРІ. Р РµРєРѕРјРµРЅРґСѓРµРј РЅР°С‡Р°С‚СЊ РёР·СѓС‡РµРЅРёРµ РїСЂРµРґРјРµС‚Р° СЃ РѕСЃРЅРѕРІ. Р’РѕР·РјРѕР¶РЅРѕ, РІР°Рј СЃС‚РѕРёС‚ СЂР°СЃСЃРјРѕС‚СЂРµС‚СЊ СЂРµРїРµС‚РёС‚РѕСЂР° РёР»Рё РѕРЅР»Р°Р№РЅ-РєСѓСЂСЃС‹ РґР»СЏ СЃРёСЃС‚РµРјР°С‚РёС‡РµСЃРєРѕР№ РїРѕРґРіРѕС‚РѕРІРєРё.`;
         }
         
         document.getElementById('result-score').textContent = `${percentage}%`;
@@ -2627,14 +2627,14 @@ function checkTestResults() {
         document.getElementById('result-message').textContent = message;
     }
     
-    // Сохранить результаты для текущего пользователя
+    // РЎРѕС…СЂР°РЅРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹ РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
     if (currentUser) {
         if (!currentUser.testResults) {
             currentUser.testResults = {};
         }
         
-        // Сохраняем использованные вопросы для истории
+        // РЎРѕС…СЂР°РЅСЏРµРј РёСЃРїРѕР»СЊР·РѕРІР°РЅРЅС‹Рµ РІРѕРїСЂРѕСЃС‹ РґР»СЏ РёСЃС‚РѕСЂРёРё
         const usedQuestions = currentTestQuestions.map(q => q.id);
         
         currentUser.testResults[currentTestType + '_' + Date.now()] = {
@@ -2647,10 +2647,10 @@ function checkTestResults() {
             testType: currentTestType
         };
         
-        // Обновить пользователя в localStorage
+        // РћР±РЅРѕРІРёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ localStorage
         localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(currentUser));
         
-        // Обновить в общем списке пользователей
+        // РћР±РЅРѕРІРёС‚СЊ РІ РѕР±С‰РµРј СЃРїРёСЃРєРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
         const users = JSON.parse(localStorage.getItem(USERS_KEY));
         const userIndex = users.findIndex(u => u.id === currentUser.id);
         if (userIndex !== -1) {
@@ -2658,32 +2658,32 @@ function checkTestResults() {
             localStorage.setItem(USERS_KEY, JSON.stringify(users));
         }
         
-        // Обновить статистику в профиле
+        // РћР±РЅРѕРІРёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РІ РїСЂРѕС„РёР»Рµ
         updateUserStats(currentUser);
         loadTestHistory(currentUser);
     }
     
-    // Показать результаты
+    // РџРѕРєР°Р·Р°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹
     document.getElementById('test-questions-container').classList.remove('active');
     document.getElementById('test-results').classList.add('show');
     
-    // Плавная прокрутка к результатам
+    // РџР»Р°РІРЅР°СЏ РїСЂРѕРєСЂСѓС‚РєР° Рє СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј
     setTimeout(() => {
         document.getElementById('test-results').scrollIntoView({ behavior: 'smooth' });
     }, 100);
     
-    // Показать уведомление
-    showNotification('Тест завершен! Результаты сохранены.', 'success');
+    // РџРѕРєР°Р·Р°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ
+    showNotification('РўРµСЃС‚ Р·Р°РІРµСЂС€РµРЅ! Р РµР·СѓР»СЊС‚Р°С‚С‹ СЃРѕС…СЂР°РЅРµРЅС‹.', 'success');
 }
 
-// Проверка авторизации при загрузке
+// РџСЂРѕРІРµСЂРєР° Р°РІС‚РѕСЂРёР·Р°С†РёРё РїСЂРё Р·Р°РіСЂСѓР·РєРµ
 window.addEventListener('DOMContentLoaded', () => {
     console.log('DOMContentLoaded fired');
     
-    // Загрузка темы
+    // Р—Р°РіСЂСѓР·РєР° С‚РµРјС‹
     loadTheme();
     
-    // Инициализация плавающих цветов
+    // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїР»Р°РІР°СЋС‰РёС… С†РІРµС‚РѕРІ
     initFloatingFlowers();
     
     try {
@@ -2705,12 +2705,12 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Инициализация плавающих цветов
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїР»Р°РІР°СЋС‰РёС… С†РІРµС‚РѕРІ
 function initFloatingFlowers() {
     const container = document.getElementById('floatingFlowers');
     if (!container) return;
     
-    // Добавляем случайные позиции для цветов
+    // Р”РѕР±Р°РІР»СЏРµРј СЃР»СѓС‡Р°Р№РЅС‹Рµ РїРѕР·РёС†РёРё РґР»СЏ С†РІРµС‚РѕРІ
     const flowers = container.querySelectorAll('.flower');
     flowers.forEach((flower, i) => {
         flower.style.animationDuration = `${15 + Math.random() * 20}s`;
@@ -2719,22 +2719,22 @@ function initFloatingFlowers() {
     });
 }
 
-// Инициализация тестов при загрузке
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С‚РµСЃС‚РѕРІ РїСЂРё Р·Р°РіСЂСѓР·РєРµ
 window.addEventListener('load', () => {
     initializeTests();
 });
 
 // ==============================
-// БАНК ВОПРОСОВ (ПО КЛАССАМ)
-// Только 4 раздела: профориентация, мед.профориентация, химия, биология
+// Р‘РђРќРљ Р’РћРџР РћРЎРћР’ (РџРћ РљР›РђРЎРЎРђРњ)
+// РўРѕР»СЊРєРѕ 4 СЂР°Р·РґРµР»Р°: РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ, РјРµРґ.РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ, С…РёРјРёСЏ, Р±РёРѕР»РѕРіРёСЏ
 // ==============================
 
 const LIKERT_5 = [
-    'Совсем не про меня',
-    'Скорее нет',
-    'Нейтрально',
-    'Скорее да',
-    'Очень похоже на меня'
+    'РЎРѕРІСЃРµРј РЅРµ РїСЂРѕ РјРµРЅСЏ',
+    'РЎРєРѕСЂРµРµ РЅРµС‚',
+    'РќРµР№С‚СЂР°Р»СЊРЅРѕ',
+    'РЎРєРѕСЂРµРµ РґР°',
+    'РћС‡РµРЅСЊ РїРѕС…РѕР¶Рµ РЅР° РјРµРЅСЏ'
 ];
 
 function clamp(n, min, max) {
@@ -2769,312 +2769,312 @@ function makeLikertQuestion({ id, question, dimension, gradeBand, subject = 'pro
         kind: 'likert',
         question,
         options: LIKERT_5,
-        // Для интерфейса адаптивной сложности
+        // Р”Р»СЏ РёРЅС‚РµСЂС„РµР№СЃР° Р°РґР°РїС‚РёРІРЅРѕР№ СЃР»РѕР¶РЅРѕСЃС‚Рё
         difficulty: gradeBand === '1-4' ? 1 : gradeBand === '5-6' ? 1 : gradeBand === '7-8' ? 2 : gradeBand === '9' ? 3 : 4,
         dimension,
         gradeBand,
         subject,
-        explanation: 'В профориентационных вопросах нет «правильных» ответов — важно отвечать честно.'
+        explanation: 'Р’ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёРѕРЅРЅС‹С… РІРѕРїСЂРѕСЃР°С… РЅРµС‚ В«РїСЂР°РІРёР»СЊРЅС‹С…В» РѕС‚РІРµС‚РѕРІ вЂ” РІР°Р¶РЅРѕ РѕС‚РІРµС‡Р°С‚СЊ С‡РµСЃС‚РЅРѕ.'
     };
 }
 
 function generateProfessionGeneralQuestions(bandStartGrade, desiredCount = 64) {
     const band = normalizeBandLabel(bandStartGrade);
     const dims = {
-        people: 'Общение и помощь людям',
-        analysis: 'Аналитика и системное мышление',
-        creativity: 'Творчество и идеи',
-        practice: 'Практика и «делать руками»',
-        leadership: 'Организация и лидерство',
-        responsibility: 'Ответственность и дисциплина'
+        people: 'РћР±С‰РµРЅРёРµ Рё РїРѕРјРѕС‰СЊ Р»СЋРґСЏРј',
+        analysis: 'РђРЅР°Р»РёС‚РёРєР° Рё СЃРёСЃС‚РµРјРЅРѕРµ РјС‹С€Р»РµРЅРёРµ',
+        creativity: 'РўРІРѕСЂС‡РµСЃС‚РІРѕ Рё РёРґРµРё',
+        practice: 'РџСЂР°РєС‚РёРєР° Рё В«РґРµР»Р°С‚СЊ СЂСѓРєР°РјРёВ»',
+        leadership: 'РћСЂРіР°РЅРёР·Р°С†РёСЏ Рё Р»РёРґРµСЂСЃС‚РІРѕ',
+        responsibility: 'РћС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ Рё РґРёСЃС†РёРїР»РёРЅР°'
     };
 
     const statementsByBand = {
         '1-4': [
-            ['people', 'Мне нравится помогать одноклассникам и друзьям.'],
-            ['people', 'Мне интересно слушать людей и понимать их настроение.'],
-            ['practice', 'Мне нравится что-то собирать, мастерить или чинить.'],
-            ['creativity', 'Мне нравится придумывать истории, игры или рисунки.'],
-            ['analysis', 'Мне нравится находить закономерности и «почему так».'],
-            ['responsibility', 'Я стараюсь делать задания аккуратно и до конца.'],
-            ['leadership', 'Мне нравится быть организатором в играх или проектах.'],
-            ['practice', 'Мне нравится выполнять задания по шагам (инструкциям).'],
-            ['analysis', 'Мне нравится решать задачки и головоломки.'],
-            ['responsibility', 'Мне важно, чтобы меня можно было доверять.']
+            ['people', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРјРѕРіР°С‚СЊ РѕРґРЅРѕРєР»Р°СЃСЃРЅРёРєР°Рј Рё РґСЂСѓР·СЊСЏРј.'],
+            ['people', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СЃР»СѓС€Р°С‚СЊ Р»СЋРґРµР№ Рё РїРѕРЅРёРјР°С‚СЊ РёС… РЅР°СЃС‚СЂРѕРµРЅРёРµ.'],
+            ['practice', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ С‡С‚Рѕ-С‚Рѕ СЃРѕР±РёСЂР°С‚СЊ, РјР°СЃС‚РµСЂРёС‚СЊ РёР»Рё С‡РёРЅРёС‚СЊ.'],
+            ['creativity', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРёРґСѓРјС‹РІР°С‚СЊ РёСЃС‚РѕСЂРёРё, РёРіСЂС‹ РёР»Рё СЂРёСЃСѓРЅРєРё.'],
+            ['analysis', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РЅР°С…РѕРґРёС‚СЊ Р·Р°РєРѕРЅРѕРјРµСЂРЅРѕСЃС‚Рё Рё В«РїРѕС‡РµРјСѓ С‚Р°РєВ».'],
+            ['responsibility', 'РЇ СЃС‚Р°СЂР°СЋСЃСЊ РґРµР»Р°С‚СЊ Р·Р°РґР°РЅРёСЏ Р°РєРєСѓСЂР°С‚РЅРѕ Рё РґРѕ РєРѕРЅС†Р°.'],
+            ['leadership', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р±С‹С‚СЊ РѕСЂРіР°РЅРёР·Р°С‚РѕСЂРѕРј РІ РёРіСЂР°С… РёР»Рё РїСЂРѕРµРєС‚Р°С….'],
+            ['practice', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РІС‹РїРѕР»РЅСЏС‚СЊ Р·Р°РґР°РЅРёСЏ РїРѕ С€Р°РіР°Рј (РёРЅСЃС‚СЂСѓРєС†РёСЏРј).'],
+            ['analysis', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂРµС€Р°С‚СЊ Р·Р°РґР°С‡РєРё Рё РіРѕР»РѕРІРѕР»РѕРјРєРё.'],
+            ['responsibility', 'РњРЅРµ РІР°Р¶РЅРѕ, С‡С‚РѕР±С‹ РјРµРЅСЏ РјРѕР¶РЅРѕ Р±С‹Р»Рѕ РґРѕРІРµСЂСЏС‚СЊ.']
         ],
         '5-6': [
-            ['people', 'Мне легко находить общий язык с разными людьми.'],
-            ['people', 'Мне нравится объяснять другим то, что я понял(а).'],
-            ['analysis', 'Мне интересно сравнивать факты и делать выводы.'],
-            ['analysis', 'Мне нравится работать с таблицами, схемами, данными.'],
-            ['practice', 'Мне нравится делать практические работы и эксперименты.'],
-            ['practice', 'Мне нравится работать с инструментами/оборудованием (аккуратно).'],
-            ['creativity', 'Мне нравится придумывать нестандартные решения.'],
-            ['creativity', 'Мне нравится делать презентации, проекты, оформлять.'],
-            ['leadership', 'Мне нравится распределять задачи в группе.'],
-            ['responsibility', 'Мне важны правила и безопасность при работе.']
+            ['people', 'РњРЅРµ Р»РµРіРєРѕ РЅР°С…РѕРґРёС‚СЊ РѕР±С‰РёР№ СЏР·С‹Рє СЃ СЂР°Р·РЅС‹РјРё Р»СЋРґСЊРјРё.'],
+            ['people', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РѕР±СЉСЏСЃРЅСЏС‚СЊ РґСЂСѓРіРёРј С‚Рѕ, С‡С‚Рѕ СЏ РїРѕРЅСЏР»(Р°).'],
+            ['analysis', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СЃСЂР°РІРЅРёРІР°С‚СЊ С„Р°РєС‚С‹ Рё РґРµР»Р°С‚СЊ РІС‹РІРѕРґС‹.'],
+            ['analysis', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ СЃ С‚Р°Р±Р»РёС†Р°РјРё, СЃС…РµРјР°РјРё, РґР°РЅРЅС‹РјРё.'],
+            ['practice', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РґРµР»Р°С‚СЊ РїСЂР°РєС‚РёС‡РµСЃРєРёРµ СЂР°Р±РѕС‚С‹ Рё СЌРєСЃРїРµСЂРёРјРµРЅС‚С‹.'],
+            ['practice', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё/РѕР±РѕСЂСѓРґРѕРІР°РЅРёРµРј (Р°РєРєСѓСЂР°С‚РЅРѕ).'],
+            ['creativity', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРёРґСѓРјС‹РІР°С‚СЊ РЅРµСЃС‚Р°РЅРґР°СЂС‚РЅС‹Рµ СЂРµС€РµРЅРёСЏ.'],
+            ['creativity', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РґРµР»Р°С‚СЊ РїСЂРµР·РµРЅС‚Р°С†РёРё, РїСЂРѕРµРєС‚С‹, РѕС„РѕСЂРјР»СЏС‚СЊ.'],
+            ['leadership', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°СЃРїСЂРµРґРµР»СЏС‚СЊ Р·Р°РґР°С‡Рё РІ РіСЂСѓРїРїРµ.'],
+            ['responsibility', 'РњРЅРµ РІР°Р¶РЅС‹ РїСЂР°РІРёР»Р° Рё Р±РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ РїСЂРё СЂР°Р±РѕС‚Рµ.']
         ],
         '7-8': [
-            ['analysis', 'Мне нравится разбираться в причинах и следствиях.'],
-            ['analysis', 'Мне интересно изучать сложные темы шаг за шагом.'],
-            ['people', 'Мне важно, чтобы моя работа приносила пользу людям.'],
-            ['people', 'Мне комфортно общаться и задавать уточняющие вопросы.'],
-            ['practice', 'Мне нравится практиковаться и улучшать навык.'],
-            ['practice', 'Мне нравится точность: измерять, проверять, настраивать.'],
-            ['responsibility', 'Я умею держать обещания и сроки.'],
-            ['responsibility', 'Мне подходит работа, где нельзя ошибаться по мелочам.'],
-            ['leadership', 'Мне нравится вести проект и отвечать за результат.'],
-            ['creativity', 'Мне интересно создавать новое (идеи, дизайн, подходы).']
+            ['analysis', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р·Р±РёСЂР°С‚СЊСЃСЏ РІ РїСЂРёС‡РёРЅР°С… Рё СЃР»РµРґСЃС‚РІРёСЏС….'],
+            ['analysis', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ РёР·СѓС‡Р°С‚СЊ СЃР»РѕР¶РЅС‹Рµ С‚РµРјС‹ С€Р°Рі Р·Р° С€Р°РіРѕРј.'],
+            ['people', 'РњРЅРµ РІР°Р¶РЅРѕ, С‡С‚РѕР±С‹ РјРѕСЏ СЂР°Р±РѕС‚Р° РїСЂРёРЅРѕСЃРёР»Р° РїРѕР»СЊР·Сѓ Р»СЋРґСЏРј.'],
+            ['people', 'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ РѕР±С‰Р°С‚СЊСЃСЏ Рё Р·Р°РґР°РІР°С‚СЊ СѓС‚РѕС‡РЅСЏСЋС‰РёРµ РІРѕРїСЂРѕСЃС‹.'],
+            ['practice', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂР°РєС‚РёРєРѕРІР°С‚СЊСЃСЏ Рё СѓР»СѓС‡С€Р°С‚СЊ РЅР°РІС‹Рє.'],
+            ['practice', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ С‚РѕС‡РЅРѕСЃС‚СЊ: РёР·РјРµСЂСЏС‚СЊ, РїСЂРѕРІРµСЂСЏС‚СЊ, РЅР°СЃС‚СЂР°РёРІР°С‚СЊ.'],
+            ['responsibility', 'РЇ СѓРјРµСЋ РґРµСЂР¶Р°С‚СЊ РѕР±РµС‰Р°РЅРёСЏ Рё СЃСЂРѕРєРё.'],
+            ['responsibility', 'РњРЅРµ РїРѕРґС…РѕРґРёС‚ СЂР°Р±РѕС‚Р°, РіРґРµ РЅРµР»СЊР·СЏ РѕС€РёР±Р°С‚СЊСЃСЏ РїРѕ РјРµР»РѕС‡Р°Рј.'],
+            ['leadership', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РІРµСЃС‚Рё РїСЂРѕРµРєС‚ Рё РѕС‚РІРµС‡Р°С‚СЊ Р·Р° СЂРµР·СѓР»СЊС‚Р°С‚.'],
+            ['creativity', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СЃРѕР·РґР°РІР°С‚СЊ РЅРѕРІРѕРµ (РёРґРµРё, РґРёР·Р°Р№РЅ, РїРѕРґС…РѕРґС‹).']
         ],
         '9': [
-            ['analysis', 'Мне интересно принимать решения на основе данных и фактов.'],
-            ['analysis', 'Мне нравится изучать причины ошибок и улучшать процесс.'],
-            ['people', 'Мне комфортно вести диалог и задавать неудобные вопросы по делу.'],
-            ['people', 'Мне важна работа, где нужно понимать людей.'],
-            ['responsibility', 'Мне подходит работа с высокой ответственностью.'],
-            ['responsibility', 'Я выдерживаю длительную подготовку ради цели.'],
-            ['practice', 'Мне нравится работать руками и видеть результат.'],
-            ['practice', 'Мне важна аккуратность и «чистота» выполнения.'],
-            ['leadership', 'Мне интересно организовывать людей и процессы.'],
-            ['creativity', 'Мне интересно искать нестандартные пути и решения.']
+            ['analysis', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ РїСЂРёРЅРёРјР°С‚СЊ СЂРµС€РµРЅРёСЏ РЅР° РѕСЃРЅРѕРІРµ РґР°РЅРЅС‹С… Рё С„Р°РєС‚РѕРІ.'],
+            ['analysis', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РёР·СѓС‡Р°С‚СЊ РїСЂРёС‡РёРЅС‹ РѕС€РёР±РѕРє Рё СѓР»СѓС‡С€Р°С‚СЊ РїСЂРѕС†РµСЃСЃ.'],
+            ['people', 'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ РІРµСЃС‚Рё РґРёР°Р»РѕРі Рё Р·Р°РґР°РІР°С‚СЊ РЅРµСѓРґРѕР±РЅС‹Рµ РІРѕРїСЂРѕСЃС‹ РїРѕ РґРµР»Сѓ.'],
+            ['people', 'РњРЅРµ РІР°Р¶РЅР° СЂР°Р±РѕС‚Р°, РіРґРµ РЅСѓР¶РЅРѕ РїРѕРЅРёРјР°С‚СЊ Р»СЋРґРµР№.'],
+            ['responsibility', 'РњРЅРµ РїРѕРґС…РѕРґРёС‚ СЂР°Р±РѕС‚Р° СЃ РІС‹СЃРѕРєРѕР№ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊСЋ.'],
+            ['responsibility', 'РЇ РІС‹РґРµСЂР¶РёРІР°СЋ РґР»РёС‚РµР»СЊРЅСѓСЋ РїРѕРґРіРѕС‚РѕРІРєСѓ СЂР°РґРё С†РµР»Рё.'],
+            ['practice', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ СЂСѓРєР°РјРё Рё РІРёРґРµС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚.'],
+            ['practice', 'РњРЅРµ РІР°Р¶РЅР° Р°РєРєСѓСЂР°С‚РЅРѕСЃС‚СЊ Рё В«С‡РёСЃС‚РѕС‚Р°В» РІС‹РїРѕР»РЅРµРЅРёСЏ.'],
+            ['leadership', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ РѕСЂРіР°РЅРёР·РѕРІС‹РІР°С‚СЊ Р»СЋРґРµР№ Рё РїСЂРѕС†РµСЃСЃС‹.'],
+            ['creativity', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ РёСЃРєР°С‚СЊ РЅРµСЃС‚Р°РЅРґР°СЂС‚РЅС‹Рµ РїСѓС‚Рё Рё СЂРµС€РµРЅРёСЏ.']
         ],
         '10-11': [
-            ['analysis', 'Мне нравится глубоко разбираться в теме и строить систему знаний.'],
-            ['analysis', 'Мне комфортно работать с большим объёмом информации.'],
-            ['responsibility', 'Я готов(а) отвечать за последствия своих решений.'],
-            ['responsibility', 'Я умею работать в режиме дедлайнов.'],
-            ['people', 'Мне важно помогать людям и улучшать качество их жизни.'],
-            ['people', 'Мне подходит работа, где нужно объяснять сложное простыми словами.'],
-            ['practice', 'Мне интересна работа с оборудованием/инструментами.'],
-            ['practice', 'Мне важны точность и стандарты качества.'],
-            ['leadership', 'Мне интересно управлять проектами/командами.'],
-            ['creativity', 'Мне интересно создавать новые продукты/методики/подходы.']
+            ['analysis', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РіР»СѓР±РѕРєРѕ СЂР°Р·Р±РёСЂР°С‚СЊСЃСЏ РІ С‚РµРјРµ Рё СЃС‚СЂРѕРёС‚СЊ СЃРёСЃС‚РµРјСѓ Р·РЅР°РЅРёР№.'],
+            ['analysis', 'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ СЃ Р±РѕР»СЊС€РёРј РѕР±СЉС‘РјРѕРј РёРЅС„РѕСЂРјР°С†РёРё.'],
+            ['responsibility', 'РЇ РіРѕС‚РѕРІ(Р°) РѕС‚РІРµС‡Р°С‚СЊ Р·Р° РїРѕСЃР»РµРґСЃС‚РІРёСЏ СЃРІРѕРёС… СЂРµС€РµРЅРёР№.'],
+            ['responsibility', 'РЇ СѓРјРµСЋ СЂР°Р±РѕС‚Р°С‚СЊ РІ СЂРµР¶РёРјРµ РґРµРґР»Р°Р№РЅРѕРІ.'],
+            ['people', 'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј Рё СѓР»СѓС‡С€Р°С‚СЊ РєР°С‡РµСЃС‚РІРѕ РёС… Р¶РёР·РЅРё.'],
+            ['people', 'РњРЅРµ РїРѕРґС…РѕРґРёС‚ СЂР°Р±РѕС‚Р°, РіРґРµ РЅСѓР¶РЅРѕ РѕР±СЉСЏСЃРЅСЏС‚СЊ СЃР»РѕР¶РЅРѕРµ РїСЂРѕСЃС‚С‹РјРё СЃР»РѕРІР°РјРё.'],
+            ['practice', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° СЂР°Р±РѕС‚Р° СЃ РѕР±РѕСЂСѓРґРѕРІР°РЅРёРµРј/РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё.'],
+            ['practice', 'РњРЅРµ РІР°Р¶РЅС‹ С‚РѕС‡РЅРѕСЃС‚СЊ Рё СЃС‚Р°РЅРґР°СЂС‚С‹ РєР°С‡РµСЃС‚РІР°.'],
+            ['leadership', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СѓРїСЂР°РІР»СЏС‚СЊ РїСЂРѕРµРєС‚Р°РјРё/РєРѕРјР°РЅРґР°РјРё.'],
+            ['creativity', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СЃРѕР·РґР°РІР°С‚СЊ РЅРѕРІС‹Рµ РїСЂРѕРґСѓРєС‚С‹/РјРµС‚РѕРґРёРєРё/РїРѕРґС…РѕРґС‹.']
         ]
     };
 
     const base = statementsByBand[band] || statementsByBand['9'];
 
-    // Расширяем банк, чтобы он реально был большим (особенно для 9–11 классов)
-    // и не заканчивался на ~60–90 вопросах.
+    // Р Р°СЃС€РёСЂСЏРµРј Р±Р°РЅРє, С‡С‚РѕР±С‹ РѕРЅ СЂРµР°Р»СЊРЅРѕ Р±С‹Р» Р±РѕР»СЊС€РёРј (РѕСЃРѕР±РµРЅРЅРѕ РґР»СЏ 9вЂ“11 РєР»Р°СЃСЃРѕРІ)
+    // Рё РЅРµ Р·Р°РєР°РЅС‡РёРІР°Р»СЃСЏ РЅР° ~60вЂ“90 РІРѕРїСЂРѕСЃР°С….
     const extraByBand = {
         '1-4': {
             people: [
-                'Мне нравится заботиться о людях и животных.',
-                'Мне нравится поддерживать друзей, если им грустно.',
-                'Мне нравится, когда я могу помочь кому-то разобраться.',
-                'Мне нравится работать вместе и делиться идеями.',
-                'Мне нравится быть внимательным(ой) к другим.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р·Р°Р±РѕС‚РёС‚СЊСЃСЏ Рѕ Р»СЋРґСЏС… Рё Р¶РёРІРѕС‚РЅС‹С….',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРґРґРµСЂР¶РёРІР°С‚СЊ РґСЂСѓР·РµР№, РµСЃР»Рё РёРј РіСЂСѓСЃС‚РЅРѕ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ, РєРѕРіРґР° СЏ РјРѕРіСѓ РїРѕРјРѕС‡СЊ РєРѕРјСѓ-С‚Рѕ СЂР°Р·РѕР±СЂР°С‚СЊСЃСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ РІРјРµСЃС‚Рµ Рё РґРµР»РёС‚СЊСЃСЏ РёРґРµСЏРјРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р±С‹С‚СЊ РІРЅРёРјР°С‚РµР»СЊРЅС‹Рј(РѕР№) Рє РґСЂСѓРіРёРј.'
             ],
             analysis: [
-                'Мне интересно узнавать, почему что-то происходит.',
-                'Мне нравится искать правильный ответ шаг за шагом.',
-                'Мне нравится замечать, что у задач есть правила.',
-                'Мне нравится сравнивать и находить отличия.',
-                'Мне нравится проверять, всё ли я сделал(а) правильно.'
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СѓР·РЅР°РІР°С‚СЊ, РїРѕС‡РµРјСѓ С‡С‚Рѕ-С‚Рѕ РїСЂРѕРёСЃС…РѕРґРёС‚.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РёСЃРєР°С‚СЊ РїСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚ С€Р°Рі Р·Р° С€Р°РіРѕРј.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р·Р°РјРµС‡Р°С‚СЊ, С‡С‚Рѕ Сѓ Р·Р°РґР°С‡ РµСЃС‚СЊ РїСЂР°РІРёР»Р°.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЃСЂР°РІРЅРёРІР°С‚СЊ Рё РЅР°С…РѕРґРёС‚СЊ РѕС‚Р»РёС‡РёСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРѕРІРµСЂСЏС‚СЊ, РІСЃС‘ Р»Рё СЏ СЃРґРµР»Р°Р»(Р°) РїСЂР°РІРёР»СЊРЅРѕ.'
             ],
             creativity: [
-                'Мне нравится придумывать новые идеи.',
-                'Мне нравится делать что-то красиво и аккуратно.',
-                'Мне нравится придумывать разные варианты решения.',
-                'Мне нравится фантазировать и создавать новое.',
-                'Мне нравится улучшать то, что уже сделано.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРёРґСѓРјС‹РІР°С‚СЊ РЅРѕРІС‹Рµ РёРґРµРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РґРµР»Р°С‚СЊ С‡С‚Рѕ-С‚Рѕ РєСЂР°СЃРёРІРѕ Рё Р°РєРєСѓСЂР°С‚РЅРѕ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРёРґСѓРјС‹РІР°С‚СЊ СЂР°Р·РЅС‹Рµ РІР°СЂРёР°РЅС‚С‹ СЂРµС€РµРЅРёСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ С„Р°РЅС‚Р°Р·РёСЂРѕРІР°С‚СЊ Рё СЃРѕР·РґР°РІР°С‚СЊ РЅРѕРІРѕРµ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СѓР»СѓС‡С€Р°С‚СЊ С‚Рѕ, С‡С‚Рѕ СѓР¶Рµ СЃРґРµР»Р°РЅРѕ.'
             ],
             practice: [
-                'Мне нравится делать что-то руками и видеть результат.',
-                'Мне нравится собирать, мастерить и проверять, как работает.',
-                'Мне нравится делать по инструкции и получать хороший результат.',
-                'Мне нравится аккуратно выполнять задания.',
-                'Мне нравится доводить поделку/работу до конца.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РґРµР»Р°С‚СЊ С‡С‚Рѕ-С‚Рѕ СЂСѓРєР°РјРё Рё РІРёРґРµС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЃРѕР±РёСЂР°С‚СЊ, РјР°СЃС‚РµСЂРёС‚СЊ Рё РїСЂРѕРІРµСЂСЏС‚СЊ, РєР°Рє СЂР°Р±РѕС‚Р°РµС‚.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РґРµР»Р°С‚СЊ РїРѕ РёРЅСЃС‚СЂСѓРєС†РёРё Рё РїРѕР»СѓС‡Р°С‚СЊ С…РѕСЂРѕС€РёР№ СЂРµР·СѓР»СЊС‚Р°С‚.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р°РєРєСѓСЂР°С‚РЅРѕ РІС‹РїРѕР»РЅСЏС‚СЊ Р·Р°РґР°РЅРёСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РґРѕРІРѕРґРёС‚СЊ РїРѕРґРµР»РєСѓ/СЂР°Р±РѕС‚Сѓ РґРѕ РєРѕРЅС†Р°.'
             ],
             leadership: [
-                'Мне нравится помогать группе договориться о правилах.',
-                'Мне нравится быть организатором в игре или проекте.',
-                'Мне нравится распределять роли, чтобы всем было понятно.',
-                'Мне нравится следить, чтобы всем было комфортно в команде.',
-                'Мне нравится помогать другим начать и закончить дело.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРјРѕРіР°С‚СЊ РіСЂСѓРїРїРµ РґРѕРіРѕРІРѕСЂРёС‚СЊСЃСЏ Рѕ РїСЂР°РІРёР»Р°С….',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р±С‹С‚СЊ РѕСЂРіР°РЅРёР·Р°С‚РѕСЂРѕРј РІ РёРіСЂРµ РёР»Рё РїСЂРѕРµРєС‚Рµ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°СЃРїСЂРµРґРµР»СЏС‚СЊ СЂРѕР»Рё, С‡С‚РѕР±С‹ РІСЃРµРј Р±С‹Р»Рѕ РїРѕРЅСЏС‚РЅРѕ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЃР»РµРґРёС‚СЊ, С‡С‚РѕР±С‹ РІСЃРµРј Р±С‹Р»Рѕ РєРѕРјС„РѕСЂС‚РЅРѕ РІ РєРѕРјР°РЅРґРµ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРјРѕРіР°С‚СЊ РґСЂСѓРіРёРј РЅР°С‡Р°С‚СЊ Рё Р·Р°РєРѕРЅС‡РёС‚СЊ РґРµР»Рѕ.'
             ],
             responsibility: [
-                'Мне важно выполнять обещания.',
-                'Мне важно соблюдать правила и безопасность.',
-                'Мне важно делать задания аккуратно.',
-                'Мне важно не забывать важные вещи.',
-                'Мне важно доводить начатое до конца.'
+                'РњРЅРµ РІР°Р¶РЅРѕ РІС‹РїРѕР»РЅСЏС‚СЊ РѕР±РµС‰Р°РЅРёСЏ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ РїСЂР°РІРёР»Р° Рё Р±РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРµР»Р°С‚СЊ Р·Р°РґР°РЅРёСЏ Р°РєРєСѓСЂР°С‚РЅРѕ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РЅРµ Р·Р°Р±С‹РІР°С‚СЊ РІР°Р¶РЅС‹Рµ РІРµС‰Рё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРѕРІРѕРґРёС‚СЊ РЅР°С‡Р°С‚РѕРµ РґРѕ РєРѕРЅС†Р°.'
             ]
         },
         '5-6': {
             people: [
-                'Мне нравится объяснять другим сложное простыми словами.',
-                'Мне комфортно задавать вопросы, чтобы понять человека.',
-                'Мне нравится помогать людям решать проблемы.',
-                'Мне важно, чтобы моя работа была полезной для других.',
-                'Мне нравится поддерживать команду и атмосферу.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РѕР±СЉСЏСЃРЅСЏС‚СЊ РґСЂСѓРіРёРј СЃР»РѕР¶РЅРѕРµ РїСЂРѕСЃС‚С‹РјРё СЃР»РѕРІР°РјРё.',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ Р·Р°РґР°РІР°С‚СЊ РІРѕРїСЂРѕСЃС‹, С‡С‚РѕР±С‹ РїРѕРЅСЏС‚СЊ С‡РµР»РѕРІРµРєР°.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј СЂРµС€Р°С‚СЊ РїСЂРѕР±Р»РµРјС‹.',
+                'РњРЅРµ РІР°Р¶РЅРѕ, С‡С‚РѕР±С‹ РјРѕСЏ СЂР°Р±РѕС‚Р° Р±С‹Р»Р° РїРѕР»РµР·РЅРѕР№ РґР»СЏ РґСЂСѓРіРёС….',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРґРґРµСЂР¶РёРІР°С‚СЊ РєРѕРјР°РЅРґСѓ Рё Р°С‚РјРѕСЃС„РµСЂСѓ.'
             ],
             analysis: [
-                'Мне интересно делать выводы из фактов и примеров.',
-                'Мне нравится находить причины ошибок и исправлять их.',
-                'Мне нравится работать с таблицами, схемами и данными.',
-                'Мне нравится планировать шаги решения заранее.',
-                'Мне нравится проверять результат и улучшать подход.'
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ РґРµР»Р°С‚СЊ РІС‹РІРѕРґС‹ РёР· С„Р°РєС‚РѕРІ Рё РїСЂРёРјРµСЂРѕРІ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РЅР°С…РѕРґРёС‚СЊ РїСЂРёС‡РёРЅС‹ РѕС€РёР±РѕРє Рё РёСЃРїСЂР°РІР»СЏС‚СЊ РёС….',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ СЃ С‚Р°Р±Р»РёС†Р°РјРё, СЃС…РµРјР°РјРё Рё РґР°РЅРЅС‹РјРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїР»Р°РЅРёСЂРѕРІР°С‚СЊ С€Р°РіРё СЂРµС€РµРЅРёСЏ Р·Р°СЂР°РЅРµРµ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРѕРІРµСЂСЏС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚ Рё СѓР»СѓС‡С€Р°С‚СЊ РїРѕРґС…РѕРґ.'
             ],
             creativity: [
-                'Мне нравится предлагать несколько вариантов решения.',
-                'Мне нравится улучшать проект, чтобы он стал понятнее.',
-                'Мне нравится оформлять и презентовать результат.',
-                'Мне нравится придумывать идеи под ограничения.',
-                'Мне нравится искать необычные, но рабочие подходы.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРµРґР»Р°РіР°С‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ РІР°СЂРёР°РЅС‚РѕРІ СЂРµС€РµРЅРёСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СѓР»СѓС‡С€Р°С‚СЊ РїСЂРѕРµРєС‚, С‡С‚РѕР±С‹ РѕРЅ СЃС‚Р°Р» РїРѕРЅСЏС‚РЅРµРµ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РѕС„РѕСЂРјР»СЏС‚СЊ Рё РїСЂРµР·РµРЅС‚РѕРІР°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРёРґСѓРјС‹РІР°С‚СЊ РёРґРµРё РїРѕРґ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РёСЃРєР°С‚СЊ РЅРµРѕР±С‹С‡РЅС‹Рµ, РЅРѕ СЂР°Р±РѕС‡РёРµ РїРѕРґС…РѕРґС‹.'
             ],
             practice: [
-                'Мне нравится выполнять практические задания и эксперименты.',
-                'Мне нравится аккуратно работать с оборудованием.',
-                'Мне нравится измерять, сравнивать и проверять.',
-                'Мне нравится делать что-то руками и улучшать навык.',
-                'Мне нравится доводить работу до качественного результата.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РІС‹РїРѕР»РЅСЏС‚СЊ РїСЂР°РєС‚РёС‡РµСЃРєРёРµ Р·Р°РґР°РЅРёСЏ Рё СЌРєСЃРїРµСЂРёРјРµРЅС‚С‹.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р°РєРєСѓСЂР°С‚РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РѕР±РѕСЂСѓРґРѕРІР°РЅРёРµРј.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РёР·РјРµСЂСЏС‚СЊ, СЃСЂР°РІРЅРёРІР°С‚СЊ Рё РїСЂРѕРІРµСЂСЏС‚СЊ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РґРµР»Р°С‚СЊ С‡С‚Рѕ-С‚Рѕ СЂСѓРєР°РјРё Рё СѓР»СѓС‡С€Р°С‚СЊ РЅР°РІС‹Рє.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РґРѕРІРѕРґРёС‚СЊ СЂР°Р±РѕС‚Сѓ РґРѕ РєР°С‡РµСЃС‚РІРµРЅРЅРѕРіРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°.'
             ],
             leadership: [
-                'Мне нравится распределять задачи в группе.',
-                'Мне нравится следить за сроками и планом.',
-                'Мне нравится координировать работу команды.',
-                'Мне нравится договариваться о правилах и обязанностях.',
-                'Мне нравится подводить итоги и улучшать процесс.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°СЃРїСЂРµРґРµР»СЏС‚СЊ Р·Р°РґР°С‡Рё РІ РіСЂСѓРїРїРµ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЃР»РµРґРёС‚СЊ Р·Р° СЃСЂРѕРєР°РјРё Рё РїР»Р°РЅРѕРј.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РєРѕРѕСЂРґРёРЅРёСЂРѕРІР°С‚СЊ СЂР°Р±РѕС‚Сѓ РєРѕРјР°РЅРґС‹.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РґРѕРіРѕРІР°СЂРёРІР°С‚СЊСЃСЏ Рѕ РїСЂР°РІРёР»Р°С… Рё РѕР±СЏР·Р°РЅРЅРѕСЃС‚СЏС….',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРґРІРѕРґРёС‚СЊ РёС‚РѕРіРё Рё СѓР»СѓС‡С€Р°С‚СЊ РїСЂРѕС†РµСЃСЃ.'
             ],
             responsibility: [
-                'Мне важно соблюдать правила безопасности.',
-                'Мне важно делать работу без спешки и ошибок.',
-                'Мне важно проверять себя и исправлять неточности.',
-                'Мне важно вести записи/заметки, чтобы не забывать.',
-                'Мне важно учиться регулярно, а не «рывками».'
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ РїСЂР°РІРёР»Р° Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРµР»Р°С‚СЊ СЂР°Р±РѕС‚Сѓ Р±РµР· СЃРїРµС€РєРё Рё РѕС€РёР±РѕРє.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РїСЂРѕРІРµСЂСЏС‚СЊ СЃРµР±СЏ Рё РёСЃРїСЂР°РІР»СЏС‚СЊ РЅРµС‚РѕС‡РЅРѕСЃС‚Рё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РІРµСЃС‚Рё Р·Р°РїРёСЃРё/Р·Р°РјРµС‚РєРё, С‡С‚РѕР±С‹ РЅРµ Р·Р°Р±С‹РІР°С‚СЊ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СѓС‡РёС‚СЊСЃСЏ СЂРµРіСѓР»СЏСЂРЅРѕ, Р° РЅРµ В«СЂС‹РІРєР°РјРёВ».'
             ]
         },
         '7-8': {
             people: [
-                'Мне комфортно общаться и уточнять детали по делу.',
-                'Мне нравится помогать людям через понятные инструкции.',
-                'Мне нравится работать с обратной связью и улучшать результат.',
-                'Мне нравится находить общий язык в команде.',
-                'Мне важно, чтобы моя работа помогала другим.'
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ РѕР±С‰Р°С‚СЊСЃСЏ Рё СѓС‚РѕС‡РЅСЏС‚СЊ РґРµС‚Р°Р»Рё РїРѕ РґРµР»Сѓ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј С‡РµСЂРµР· РїРѕРЅСЏС‚РЅС‹Рµ РёРЅСЃС‚СЂСѓРєС†РёРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РѕР±СЂР°С‚РЅРѕР№ СЃРІСЏР·СЊСЋ Рё СѓР»СѓС‡С€Р°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РЅР°С…РѕРґРёС‚СЊ РѕР±С‰РёР№ СЏР·С‹Рє РІ РєРѕРјР°РЅРґРµ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ, С‡С‚РѕР±С‹ РјРѕСЏ СЂР°Р±РѕС‚Р° РїРѕРјРѕРіР°Р»Р° РґСЂСѓРіРёРј.'
             ],
             analysis: [
-                'Мне нравится разбирать причины и следствия.',
-                'Мне нравится анализировать информацию и делать выводы.',
-                'Мне нравится искать закономерности и проверять их.',
-                'Мне нравится оптимизировать процесс и убирать лишнее.',
-                'Мне нравится учиться через разбор ошибок.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р·Р±РёСЂР°С‚СЊ РїСЂРёС‡РёРЅС‹ Рё СЃР»РµРґСЃС‚РІРёСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р°РЅР°Р»РёР·РёСЂРѕРІР°С‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рё РґРµР»Р°С‚СЊ РІС‹РІРѕРґС‹.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РёСЃРєР°С‚СЊ Р·Р°РєРѕРЅРѕРјРµСЂРЅРѕСЃС‚Рё Рё РїСЂРѕРІРµСЂСЏС‚СЊ РёС….',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РѕРїС‚РёРјРёР·РёСЂРѕРІР°С‚СЊ РїСЂРѕС†РµСЃСЃ Рё СѓР±РёСЂР°С‚СЊ Р»РёС€РЅРµРµ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СѓС‡РёС‚СЊСЃСЏ С‡РµСЂРµР· СЂР°Р·Р±РѕСЂ РѕС€РёР±РѕРє.'
             ],
             creativity: [
-                'Мне нравится создавать новые подходы и идеи.',
-                'Мне нравится придумывать решения под ограничения.',
-                'Мне нравится комбинировать идеи из разных тем.',
-                'Мне нравится улучшать продукт/проект по итерациям.',
-                'Мне нравится находить неожиданные варианты решения.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЃРѕР·РґР°РІР°С‚СЊ РЅРѕРІС‹Рµ РїРѕРґС…РѕРґС‹ Рё РёРґРµРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРёРґСѓРјС‹РІР°С‚СЊ СЂРµС€РµРЅРёСЏ РїРѕРґ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РєРѕРјР±РёРЅРёСЂРѕРІР°С‚СЊ РёРґРµРё РёР· СЂР°Р·РЅС‹С… С‚РµРј.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СѓР»СѓС‡С€Р°С‚СЊ РїСЂРѕРґСѓРєС‚/РїСЂРѕРµРєС‚ РїРѕ РёС‚РµСЂР°С†РёСЏРј.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РЅР°С…РѕРґРёС‚СЊ РЅРµРѕР¶РёРґР°РЅРЅС‹Рµ РІР°СЂРёР°РЅС‚С‹ СЂРµС€РµРЅРёСЏ.'
             ],
             practice: [
-                'Мне нравится отрабатывать навык до уверенности.',
-                'Мне нравится точность: измерять, проверять, настраивать.',
-                'Мне нравится работать по алгоритмам и чек-листам.',
-                'Мне нравится контролировать качество результата.',
-                'Мне нравится аккуратно работать с инструментами/оборудованием.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РѕС‚СЂР°Р±Р°С‚С‹РІР°С‚СЊ РЅР°РІС‹Рє РґРѕ СѓРІРµСЂРµРЅРЅРѕСЃС‚Рё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ С‚РѕС‡РЅРѕСЃС‚СЊ: РёР·РјРµСЂСЏС‚СЊ, РїСЂРѕРІРµСЂСЏС‚СЊ, РЅР°СЃС‚СЂР°РёРІР°С‚СЊ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ РїРѕ Р°Р»РіРѕСЂРёС‚РјР°Рј Рё С‡РµРє-Р»РёСЃС‚Р°Рј.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РєРѕРЅС‚СЂРѕР»РёСЂРѕРІР°С‚СЊ РєР°С‡РµСЃС‚РІРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р°РєРєСѓСЂР°С‚РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё/РѕР±РѕСЂСѓРґРѕРІР°РЅРёРµРј.'
             ],
             leadership: [
-                'Мне нравится вести проект и отвечать за результат.',
-                'Мне нравится планировать этапы работы.',
-                'Мне нравится распределять ответственность в команде.',
-                'Мне нравится координировать людей и задачи.',
-                'Мне нравится организовывать процесс так, чтобы всем было понятно.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РІРµСЃС‚Рё РїСЂРѕРµРєС‚ Рё РѕС‚РІРµС‡Р°С‚СЊ Р·Р° СЂРµР·СѓР»СЊС‚Р°С‚.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїР»Р°РЅРёСЂРѕРІР°С‚СЊ СЌС‚Р°РїС‹ СЂР°Р±РѕС‚С‹.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°СЃРїСЂРµРґРµР»СЏС‚СЊ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ РІ РєРѕРјР°РЅРґРµ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РєРѕРѕСЂРґРёРЅРёСЂРѕРІР°С‚СЊ Р»СЋРґРµР№ Рё Р·Р°РґР°С‡Рё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РѕСЂРіР°РЅРёР·РѕРІС‹РІР°С‚СЊ РїСЂРѕС†РµСЃСЃ С‚Р°Рє, С‡С‚РѕР±С‹ РІСЃРµРј Р±С‹Р»Рѕ РїРѕРЅСЏС‚РЅРѕ.'
             ],
             responsibility: [
-                'Мне важно держать обещания и сроки.',
-                'Мне важно делать работу качественно, а не «как получится».',
-                'Мне важно фиксировать договорённости и детали.',
-                'Мне важно признавать ошибку и исправлять.',
-                'Мне важно доводить начатое до результата.'
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРµСЂР¶Р°С‚СЊ РѕР±РµС‰Р°РЅРёСЏ Рё СЃСЂРѕРєРё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРµР»Р°С‚СЊ СЂР°Р±РѕС‚Сѓ РєР°С‡РµСЃС‚РІРµРЅРЅРѕ, Р° РЅРµ В«РєР°Рє РїРѕР»СѓС‡РёС‚СЃСЏВ».',
+                'РњРЅРµ РІР°Р¶РЅРѕ С„РёРєСЃРёСЂРѕРІР°С‚СЊ РґРѕРіРѕРІРѕСЂС‘РЅРЅРѕСЃС‚Рё Рё РґРµС‚Р°Р»Рё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РїСЂРёР·РЅР°РІР°С‚СЊ РѕС€РёР±РєСѓ Рё РёСЃРїСЂР°РІР»СЏС‚СЊ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРѕРІРѕРґРёС‚СЊ РЅР°С‡Р°С‚РѕРµ РґРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°.'
             ]
         },
         '9': {
             people: [
-                'Мне важно понимать людей и их мотивацию.',
-                'Мне комфортно вести диалог даже в напряжённой ситуации.',
-                'Мне нравится помогать людям принимать решения.',
-                'Мне нравится объяснять сложное простыми словами.',
-                'Мне нравится работать с обратной связью без обид.'
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРЅРёРјР°С‚СЊ Р»СЋРґРµР№ Рё РёС… РјРѕС‚РёРІР°С†РёСЋ.',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ РІРµСЃС‚Рё РґРёР°Р»РѕРі РґР°Р¶Рµ РІ РЅР°РїСЂСЏР¶С‘РЅРЅРѕР№ СЃРёС‚СѓР°С†РёРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј РїСЂРёРЅРёРјР°С‚СЊ СЂРµС€РµРЅРёСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РѕР±СЉСЏСЃРЅСЏС‚СЊ СЃР»РѕР¶РЅРѕРµ РїСЂРѕСЃС‚С‹РјРё СЃР»РѕРІР°РјРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РѕР±СЂР°С‚РЅРѕР№ СЃРІСЏР·СЊСЋ Р±РµР· РѕР±РёРґ.'
             ],
             analysis: [
-                'Мне нравится принимать решения на основе данных.',
-                'Мне нравится разбирать ошибки и улучшать процесс.',
-                'Мне нравится строить план подготовки и следовать ему.',
-                'Мне нравится сравнивать варианты и выбирать лучший.',
-                'Мне нравится находить причинно-следственные связи.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРёРЅРёРјР°С‚СЊ СЂРµС€РµРЅРёСЏ РЅР° РѕСЃРЅРѕРІРµ РґР°РЅРЅС‹С….',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р·Р±РёСЂР°С‚СЊ РѕС€РёР±РєРё Рё СѓР»СѓС‡С€Р°С‚СЊ РїСЂРѕС†РµСЃСЃ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЃС‚СЂРѕРёС‚СЊ РїР»Р°РЅ РїРѕРґРіРѕС‚РѕРІРєРё Рё СЃР»РµРґРѕРІР°С‚СЊ РµРјСѓ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЃСЂР°РІРЅРёРІР°С‚СЊ РІР°СЂРёР°РЅС‚С‹ Рё РІС‹Р±РёСЂР°С‚СЊ Р»СѓС‡С€РёР№.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РЅР°С…РѕРґРёС‚СЊ РїСЂРёС‡РёРЅРЅРѕ-СЃР»РµРґСЃС‚РІРµРЅРЅС‹Рµ СЃРІСЏР·Рё.'
             ],
             creativity: [
-                'Мне нравится искать нестандартные решения.',
-                'Мне нравится генерировать идеи и выбирать рабочие.',
-                'Мне нравится улучшать продукт/процесс.',
-                'Мне нравится комбинировать идеи из разных областей.',
-                'Мне нравится находить новые возможности в ограничениях.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РёСЃРєР°С‚СЊ РЅРµСЃС‚Р°РЅРґР°СЂС‚РЅС‹Рµ СЂРµС€РµРЅРёСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ РёРґРµРё Рё РІС‹Р±РёСЂР°С‚СЊ СЂР°Р±РѕС‡РёРµ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СѓР»СѓС‡С€Р°С‚СЊ РїСЂРѕРґСѓРєС‚/РїСЂРѕС†РµСЃСЃ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РєРѕРјР±РёРЅРёСЂРѕРІР°С‚СЊ РёРґРµРё РёР· СЂР°Р·РЅС‹С… РѕР±Р»Р°СЃС‚РµР№.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РЅР°С…РѕРґРёС‚СЊ РЅРѕРІС‹Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РІ РѕРіСЂР°РЅРёС‡РµРЅРёСЏС….'
             ],
             practice: [
-                'Мне важно соблюдать стандарты качества.',
-                'Мне нравится работать аккуратно и точно.',
-                'Мне нравится действовать по протоколу/алгоритму.',
-                'Мне нравится работать с техникой/инструментами.',
-                'Мне нравится проверять результат и исправлять недочёты.'
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ СЃС‚Р°РЅРґР°СЂС‚С‹ РєР°С‡РµСЃС‚РІР°.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ Р°РєРєСѓСЂР°С‚РЅРѕ Рё С‚РѕС‡РЅРѕ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РґРµР№СЃС‚РІРѕРІР°С‚СЊ РїРѕ РїСЂРѕС‚РѕРєРѕР»Сѓ/Р°Р»РіРѕСЂРёС‚РјСѓ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ СЃ С‚РµС…РЅРёРєРѕР№/РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРѕРІРµСЂСЏС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚ Рё РёСЃРїСЂР°РІР»СЏС‚СЊ РЅРµРґРѕС‡С‘С‚С‹.'
             ],
             leadership: [
-                'Мне нравится организовывать людей и процессы.',
-                'Мне нравится вести проект к результату.',
-                'Мне нравится распределять задачи и контролировать прогресс.',
-                'Мне нравится управлять временем и приоритетами.',
-                'Мне нравится договариваться о правилах команды.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РѕСЂРіР°РЅРёР·РѕРІС‹РІР°С‚СЊ Р»СЋРґРµР№ Рё РїСЂРѕС†РµСЃСЃС‹.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РІРµСЃС‚Рё РїСЂРѕРµРєС‚ Рє СЂРµР·СѓР»СЊС‚Р°С‚Сѓ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°СЃРїСЂРµРґРµР»СЏС‚СЊ Р·Р°РґР°С‡Рё Рё РєРѕРЅС‚СЂРѕР»РёСЂРѕРІР°С‚СЊ РїСЂРѕРіСЂРµСЃСЃ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СѓРїСЂР°РІР»СЏС‚СЊ РІСЂРµРјРµРЅРµРј Рё РїСЂРёРѕСЂРёС‚РµС‚Р°РјРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РґРѕРіРѕРІР°СЂРёРІР°С‚СЊСЃСЏ Рѕ РїСЂР°РІРёР»Р°С… РєРѕРјР°РЅРґС‹.'
             ],
             responsibility: [
-                'Мне подходит работа с высокой ответственностью.',
-                'Я выдерживаю длительную подготовку ради цели.',
-                'Мне комфортно работать в режиме дедлайнов.',
-                'Мне важно отвечать за качество результата.',
-                'Мне важно не перекладывать ответственность на других.'
+                'РњРЅРµ РїРѕРґС…РѕРґРёС‚ СЂР°Р±РѕС‚Р° СЃ РІС‹СЃРѕРєРѕР№ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊСЋ.',
+                'РЇ РІС‹РґРµСЂР¶РёРІР°СЋ РґР»РёС‚РµР»СЊРЅСѓСЋ РїРѕРґРіРѕС‚РѕРІРєСѓ СЂР°РґРё С†РµР»Рё.',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ РІ СЂРµР¶РёРјРµ РґРµРґР»Р°Р№РЅРѕРІ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РѕС‚РІРµС‡Р°С‚СЊ Р·Р° РєР°С‡РµСЃС‚РІРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РЅРµ РїРµСЂРµРєР»Р°РґС‹РІР°С‚СЊ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ РЅР° РґСЂСѓРіРёС….'
             ]
         },
         '10-11': {
             people: [
-                'Мне важно помогать людям осознанно и системно.',
-                'Мне комфортно вести сложные разговоры уважительно.',
-                'Мне подходит работа, где нужно объяснять сложное простыми словами.',
-                'Мне важно действовать этично и корректно.',
-                'Мне нравится работать с запросами людей и уточнять детали.'
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј РѕСЃРѕР·РЅР°РЅРЅРѕ Рё СЃРёСЃС‚РµРјРЅРѕ.',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ РІРµСЃС‚Рё СЃР»РѕР¶РЅС‹Рµ СЂР°Р·РіРѕРІРѕСЂС‹ СѓРІР°Р¶РёС‚РµР»СЊРЅРѕ.',
+                'РњРЅРµ РїРѕРґС…РѕРґРёС‚ СЂР°Р±РѕС‚Р°, РіРґРµ РЅСѓР¶РЅРѕ РѕР±СЉСЏСЃРЅСЏС‚СЊ СЃР»РѕР¶РЅРѕРµ РїСЂРѕСЃС‚С‹РјРё СЃР»РѕРІР°РјРё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРµР№СЃС‚РІРѕРІР°С‚СЊ СЌС‚РёС‡РЅРѕ Рё РєРѕСЂСЂРµРєС‚РЅРѕ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ СЃ Р·Р°РїСЂРѕСЃР°РјРё Р»СЋРґРµР№ Рё СѓС‚РѕС‡РЅСЏС‚СЊ РґРµС‚Р°Р»Рё.'
             ],
             analysis: [
-                'Мне нравится структурировать большой объём информации.',
-                'Мне нравится строить систему знаний и связи между темами.',
-                'Мне нравится проверять гипотезы и делать выводы.',
-                'Мне нравится анализировать данные и принимать решения.',
-                'Мне нравится искать слабые места и улучшать подход.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°С‚СЊ Р±РѕР»СЊС€РѕР№ РѕР±СЉС‘Рј РёРЅС„РѕСЂРјР°С†РёРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЃС‚СЂРѕРёС‚СЊ СЃРёСЃС‚РµРјСѓ Р·РЅР°РЅРёР№ Рё СЃРІСЏР·Рё РјРµР¶РґСѓ С‚РµРјР°РјРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРѕРІРµСЂСЏС‚СЊ РіРёРїРѕС‚РµР·С‹ Рё РґРµР»Р°С‚СЊ РІС‹РІРѕРґС‹.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р°РЅР°Р»РёР·РёСЂРѕРІР°С‚СЊ РґР°РЅРЅС‹Рµ Рё РїСЂРёРЅРёРјР°С‚СЊ СЂРµС€РµРЅРёСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РёСЃРєР°С‚СЊ СЃР»Р°Р±С‹Рµ РјРµСЃС‚Р° Рё СѓР»СѓС‡С€Р°С‚СЊ РїРѕРґС…РѕРґ.'
             ],
             creativity: [
-                'Мне интересно создавать новые методики/подходы.',
-                'Мне нравится искать решения под ограничения.',
-                'Мне нравится улучшать продукт на основе обратной связи.',
-                'Мне нравится придумывать несколько вариантов и выбирать лучший.',
-                'Мне нравится видеть возможности для инноваций.'
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СЃРѕР·РґР°РІР°С‚СЊ РЅРѕРІС‹Рµ РјРµС‚РѕРґРёРєРё/РїРѕРґС…РѕРґС‹.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РёСЃРєР°С‚СЊ СЂРµС€РµРЅРёСЏ РїРѕРґ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СѓР»СѓС‡С€Р°С‚СЊ РїСЂРѕРґСѓРєС‚ РЅР° РѕСЃРЅРѕРІРµ РѕР±СЂР°С‚РЅРѕР№ СЃРІСЏР·Рё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРёРґСѓРјС‹РІР°С‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ РІР°СЂРёР°РЅС‚РѕРІ Рё РІС‹Р±РёСЂР°С‚СЊ Р»СѓС‡С€РёР№.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РІРёРґРµС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РґР»СЏ РёРЅРЅРѕРІР°С†РёР№.'
             ],
             practice: [
-                'Мне важны точность и стандарты качества.',
-                'Мне подходит работа по протоколам и чек-листам.',
-                'Мне комфортно выполнять точные действия без спешки.',
-                'Мне интересно работать с оборудованием/инструментами.',
-                'Мне важно фиксировать результат и проверять себя.'
+                'РњРЅРµ РІР°Р¶РЅС‹ С‚РѕС‡РЅРѕСЃС‚СЊ Рё СЃС‚Р°РЅРґР°СЂС‚С‹ РєР°С‡РµСЃС‚РІР°.',
+                'РњРЅРµ РїРѕРґС…РѕРґРёС‚ СЂР°Р±РѕС‚Р° РїРѕ РїСЂРѕС‚РѕРєРѕР»Р°Рј Рё С‡РµРє-Р»РёСЃС‚Р°Рј.',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ РІС‹РїРѕР»РЅСЏС‚СЊ С‚РѕС‡РЅС‹Рµ РґРµР№СЃС‚РІРёСЏ Р±РµР· СЃРїРµС€РєРё.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РѕР±РѕСЂСѓРґРѕРІР°РЅРёРµРј/РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ С„РёРєСЃРёСЂРѕРІР°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚ Рё РїСЂРѕРІРµСЂСЏС‚СЊ СЃРµР±СЏ.'
             ],
             leadership: [
-                'Мне интересно управлять проектами/командами.',
-                'Мне нравится планировать этапы, сроки и риски.',
-                'Мне нравится ставить цели и метрики результата.',
-                'Мне нравится координировать команду и процессы.',
-                'Мне нравится обеспечивать дисциплину и качество в работе.'
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СѓРїСЂР°РІР»СЏС‚СЊ РїСЂРѕРµРєС‚Р°РјРё/РєРѕРјР°РЅРґР°РјРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїР»Р°РЅРёСЂРѕРІР°С‚СЊ СЌС‚Р°РїС‹, СЃСЂРѕРєРё Рё СЂРёСЃРєРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЃС‚Р°РІРёС‚СЊ С†РµР»Рё Рё РјРµС‚СЂРёРєРё СЂРµР·СѓР»СЊС‚Р°С‚Р°.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РєРѕРѕСЂРґРёРЅРёСЂРѕРІР°С‚СЊ РєРѕРјР°РЅРґСѓ Рё РїСЂРѕС†РµСЃСЃС‹.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РѕР±РµСЃРїРµС‡РёРІР°С‚СЊ РґРёСЃС†РёРїР»РёРЅСѓ Рё РєР°С‡РµСЃС‚РІРѕ РІ СЂР°Р±РѕС‚Рµ.'
             ],
             responsibility: [
-                'Я готов(а) отвечать за последствия своих решений.',
-                'Я умею работать в режиме дедлайнов.',
-                'Мне важна дисциплина подготовки и стабильность.',
-                'Мне важно сохранять качество под нагрузкой.',
-                'Мне важно нести ответственность за итог.'
+                'РЇ РіРѕС‚РѕРІ(Р°) РѕС‚РІРµС‡Р°С‚СЊ Р·Р° РїРѕСЃР»РµРґСЃС‚РІРёСЏ СЃРІРѕРёС… СЂРµС€РµРЅРёР№.',
+                'РЇ СѓРјРµСЋ СЂР°Р±РѕС‚Р°С‚СЊ РІ СЂРµР¶РёРјРµ РґРµРґР»Р°Р№РЅРѕРІ.',
+                'РњРЅРµ РІР°Р¶РЅР° РґРёСЃС†РёРїР»РёРЅР° РїРѕРґРіРѕС‚РѕРІРєРё Рё СЃС‚Р°Р±РёР»СЊРЅРѕСЃС‚СЊ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕС…СЂР°РЅСЏС‚СЊ РєР°С‡РµСЃС‚РІРѕ РїРѕРґ РЅР°РіСЂСѓР·РєРѕР№.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РЅРµСЃС‚Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ Р·Р° РёС‚РѕРі.'
             ]
         }
     };
@@ -3093,7 +3093,7 @@ function generateProfessionGeneralQuestions(bandStartGrade, desiredCount = 64) {
         // ignore
     }
 
-    // Дедупликация (на случай совпадений из базового и расширенного списка)
+    // Р”РµРґСѓРїР»РёРєР°С†РёСЏ (РЅР° СЃР»СѓС‡Р°Р№ СЃРѕРІРїР°РґРµРЅРёР№ РёР· Р±Р°Р·РѕРІРѕРіРѕ Рё СЂР°СЃС€РёСЂРµРЅРЅРѕРіРѕ СЃРїРёСЃРєР°)
     const seenBasePairs = new Set();
     const baseUnique = [];
     for (const pair of baseExpanded) {
@@ -3106,22 +3106,22 @@ function generateProfessionGeneralQuestions(bandStartGrade, desiredCount = 64) {
         baseUnique.push([dim, text]);
     }
 
-    // Раздуваем банк до 50+ вопросов, повторяя смысл в разных формулировках
+    // Р Р°Р·РґСѓРІР°РµРј Р±Р°РЅРє РґРѕ 50+ РІРѕРїСЂРѕСЃРѕРІ, РїРѕРІС‚РѕСЂСЏСЏ СЃРјС‹СЃР» РІ СЂР°Р·РЅС‹С… С„РѕСЂРјСѓР»РёСЂРѕРІРєР°С…
     const variants = [
         (t) => t,
-        (t) => t.replace('Мне нравится', 'Мне интересно'),
-        (t) => t.replace('Мне нравится', 'Мне по душе'),
-        (t) => t.replace('Мне нравится', 'Мне приятно'),
-        (t) => t.replace('Мне интересно', 'Мне действительно интересно'),
-        (t) => t.replace('Мне важно', 'Для меня важно'),
-        (t) => t.replace('Мне важно', 'Мне особенно важно'),
-        (t) => t.replace('Мне подходит', 'Мне скорее подходит'),
-        (t) => t.replace('Мне подходит', 'Мне обычно подходит')
+        (t) => t.replace('РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ'),
+        (t) => t.replace('РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ', 'РњРЅРµ РїРѕ РґСѓС€Рµ'),
+        (t) => t.replace('РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ', 'РњРЅРµ РїСЂРёСЏС‚РЅРѕ'),
+        (t) => t.replace('РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ', 'РњРЅРµ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ РёРЅС‚РµСЂРµСЃРЅРѕ'),
+        (t) => t.replace('РњРЅРµ РІР°Р¶РЅРѕ', 'Р”Р»СЏ РјРµРЅСЏ РІР°Р¶РЅРѕ'),
+        (t) => t.replace('РњРЅРµ РІР°Р¶РЅРѕ', 'РњРЅРµ РѕСЃРѕР±РµРЅРЅРѕ РІР°Р¶РЅРѕ'),
+        (t) => t.replace('РњРЅРµ РїРѕРґС…РѕРґРёС‚', 'РњРЅРµ СЃРєРѕСЂРµРµ РїРѕРґС…РѕРґРёС‚'),
+        (t) => t.replace('РњРЅРµ РїРѕРґС…РѕРґРёС‚', 'РњРЅРµ РѕР±С‹С‡РЅРѕ РїРѕРґС…РѕРґРёС‚')
     ];
 
     const questions = [];
     let idx = 0;
-    // Генерируем без повторов: каждая пара (variant,text) используется максимум 1 раз
+    // Р“РµРЅРµСЂРёСЂСѓРµРј Р±РµР· РїРѕРІС‚РѕСЂРѕРІ: РєР°Р¶РґР°СЏ РїР°СЂР° (variant,text) РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РјР°РєСЃРёРјСѓРј 1 СЂР°Р·
     outer: for (let pass = 0; pass < variants.length; pass++) {
         const v = variants[pass];
         for (const [dim, text] of baseUnique) {
@@ -3138,9 +3138,9 @@ function generateProfessionGeneralQuestions(bandStartGrade, desiredCount = 64) {
         }
     }
 
-    // Добавим описания измерений (служебные) через explanation в начале
+    // Р”РѕР±Р°РІРёРј РѕРїРёСЃР°РЅРёСЏ РёР·РјРµСЂРµРЅРёР№ (СЃР»СѓР¶РµР±РЅС‹Рµ) С‡РµСЂРµР· explanation РІ РЅР°С‡Р°Р»Рµ
     if (questions.length > 0) {
-        questions[0].explanation = `Оценивайте утверждения по шкале. Мы сформируем профиль интересов: ${Object.values(dims).join(', ')}.`;
+        questions[0].explanation = `РћС†РµРЅРёРІР°Р№С‚Рµ СѓС‚РІРµСЂР¶РґРµРЅРёСЏ РїРѕ С€РєР°Р»Рµ. РњС‹ СЃС„РѕСЂРјРёСЂСѓРµРј РїСЂРѕС„РёР»СЊ РёРЅС‚РµСЂРµСЃРѕРІ: ${Object.values(dims).join(', ')}.`;
     }
 
     return questions;
@@ -3149,312 +3149,312 @@ function generateProfessionGeneralQuestions(bandStartGrade, desiredCount = 64) {
 function generateMedicalProfessionQuestions(bandStartGrade, desiredCount = 64) {
     const band = normalizeBandLabel(bandStartGrade);
     const statements = {
-        empathy: 'Эмпатия и поддержка',
-        stress: 'Стрессоустойчивость',
-        accuracy: 'Точность и внимание к деталям',
-        science: 'Интерес к науке (био/хим)',
-        teamwork: 'Командная работа',
-        responsibility: 'Ответственность'
+        empathy: 'Р­РјРїР°С‚РёСЏ Рё РїРѕРґРґРµСЂР¶РєР°',
+        stress: 'РЎС‚СЂРµСЃСЃРѕСѓСЃС‚РѕР№С‡РёРІРѕСЃС‚СЊ',
+        accuracy: 'РўРѕС‡РЅРѕСЃС‚СЊ Рё РІРЅРёРјР°РЅРёРµ Рє РґРµС‚Р°Р»СЏРј',
+        science: 'РРЅС‚РµСЂРµСЃ Рє РЅР°СѓРєРµ (Р±РёРѕ/С…РёРј)',
+        teamwork: 'РљРѕРјР°РЅРґРЅР°СЏ СЂР°Р±РѕС‚Р°',
+        responsibility: 'РћС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ'
     };
 
     const base = {
         '1-4': [
-            ['empathy', 'Мне важно, чтобы людям рядом было спокойнее.'],
-            ['empathy', 'Я стараюсь поддерживать тех, кто расстроен.'],
-            ['accuracy', 'Я люблю, когда всё аккуратно и чисто.'],
-            ['responsibility', 'Я выполняю обещания и правила.'],
-            ['science', 'Мне интересно узнавать, как работает тело человека.'],
-            ['teamwork', 'Мне нравится работать вместе и помогать команде.'],
-            ['stress', 'Я могу сохранять спокойствие, когда кто-то волнуется.'],
-            ['accuracy', 'Мне нравится делать всё по инструкции.'],
-            ['science', 'Мне нравится узнавать про животных/растения/человека.'],
-            ['responsibility', 'Я стараюсь не забывать важные вещи.']
+            ['empathy', 'РњРЅРµ РІР°Р¶РЅРѕ, С‡С‚РѕР±С‹ Р»СЋРґСЏРј СЂСЏРґРѕРј Р±С‹Р»Рѕ СЃРїРѕРєРѕР№РЅРµРµ.'],
+            ['empathy', 'РЇ СЃС‚Р°СЂР°СЋСЃСЊ РїРѕРґРґРµСЂР¶РёРІР°С‚СЊ С‚РµС…, РєС‚Рѕ СЂР°СЃСЃС‚СЂРѕРµРЅ.'],
+            ['accuracy', 'РЇ Р»СЋР±Р»СЋ, РєРѕРіРґР° РІСЃС‘ Р°РєРєСѓСЂР°С‚РЅРѕ Рё С‡РёСЃС‚Рѕ.'],
+            ['responsibility', 'РЇ РІС‹РїРѕР»РЅСЏСЋ РѕР±РµС‰Р°РЅРёСЏ Рё РїСЂР°РІРёР»Р°.'],
+            ['science', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СѓР·РЅР°РІР°С‚СЊ, РєР°Рє СЂР°Р±РѕС‚Р°РµС‚ С‚РµР»Рѕ С‡РµР»РѕРІРµРєР°.'],
+            ['teamwork', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ РІРјРµСЃС‚Рµ Рё РїРѕРјРѕРіР°С‚СЊ РєРѕРјР°РЅРґРµ.'],
+            ['stress', 'РЇ РјРѕРіСѓ СЃРѕС…СЂР°РЅСЏС‚СЊ СЃРїРѕРєРѕР№СЃС‚РІРёРµ, РєРѕРіРґР° РєС‚Рѕ-С‚Рѕ РІРѕР»РЅСѓРµС‚СЃСЏ.'],
+            ['accuracy', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РґРµР»Р°С‚СЊ РІСЃС‘ РїРѕ РёРЅСЃС‚СЂСѓРєС†РёРё.'],
+            ['science', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СѓР·РЅР°РІР°С‚СЊ РїСЂРѕ Р¶РёРІРѕС‚РЅС‹С…/СЂР°СЃС‚РµРЅРёСЏ/С‡РµР»РѕРІРµРєР°.'],
+            ['responsibility', 'РЇ СЃС‚Р°СЂР°СЋСЃСЊ РЅРµ Р·Р°Р±С‹РІР°С‚СЊ РІР°Р¶РЅС‹Рµ РІРµС‰Рё.']
         ],
         '5-6': [
-            ['science', 'Мне интересно, почему возникают болезни и как их предотвращают.'],
-            ['science', 'Мне нравятся уроки, где много объяснений про организм.'],
-            ['accuracy', 'Мне важны точность и порядок в работе.'],
-            ['accuracy', 'Мне нравится замечать мелкие детали.'],
-            ['empathy', 'Мне комфортно поддерживать человека, если ему плохо.'],
-            ['teamwork', 'Мне нравится работать в группе и распределять роли.'],
-            ['responsibility', 'Я понимаю, что ошибки могут быть опасны.'],
-            ['stress', 'В сложных ситуациях я действую спокойно.'],
-            ['responsibility', 'Мне важно соблюдать правила безопасности.'],
-            ['teamwork', 'Мне легче, когда есть общий план команды.']
+            ['science', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ, РїРѕС‡РµРјСѓ РІРѕР·РЅРёРєР°СЋС‚ Р±РѕР»РµР·РЅРё Рё РєР°Рє РёС… РїСЂРµРґРѕС‚РІСЂР°С‰Р°СЋС‚.'],
+            ['science', 'РњРЅРµ РЅСЂР°РІСЏС‚СЃСЏ СѓСЂРѕРєРё, РіРґРµ РјРЅРѕРіРѕ РѕР±СЉСЏСЃРЅРµРЅРёР№ РїСЂРѕ РѕСЂРіР°РЅРёР·Рј.'],
+            ['accuracy', 'РњРЅРµ РІР°Р¶РЅС‹ С‚РѕС‡РЅРѕСЃС‚СЊ Рё РїРѕСЂСЏРґРѕРє РІ СЂР°Р±РѕС‚Рµ.'],
+            ['accuracy', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р·Р°РјРµС‡Р°С‚СЊ РјРµР»РєРёРµ РґРµС‚Р°Р»Рё.'],
+            ['empathy', 'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ РїРѕРґРґРµСЂР¶РёРІР°С‚СЊ С‡РµР»РѕРІРµРєР°, РµСЃР»Рё РµРјСѓ РїР»РѕС…Рѕ.'],
+            ['teamwork', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ РІ РіСЂСѓРїРїРµ Рё СЂР°СЃРїСЂРµРґРµР»СЏС‚СЊ СЂРѕР»Рё.'],
+            ['responsibility', 'РЇ РїРѕРЅРёРјР°СЋ, С‡С‚Рѕ РѕС€РёР±РєРё РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРїР°СЃРЅС‹.'],
+            ['stress', 'Р’ СЃР»РѕР¶РЅС‹С… СЃРёС‚СѓР°С†РёСЏС… СЏ РґРµР№СЃС‚РІСѓСЋ СЃРїРѕРєРѕР№РЅРѕ.'],
+            ['responsibility', 'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ РїСЂР°РІРёР»Р° Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё.'],
+            ['teamwork', 'РњРЅРµ Р»РµРіС‡Рµ, РєРѕРіРґР° РµСЃС‚СЊ РѕР±С‰РёР№ РїР»Р°РЅ РєРѕРјР°РЅРґС‹.']
         ],
         '7-8': [
-            ['science', 'Мне интересно изучать анатомию и физиологию человека.'],
-            ['science', 'Мне нравится разбираться в причинах симптомов и процессов.'],
-            ['empathy', 'Я умею слушать и не обесценивать эмоции человека.'],
-            ['stress', 'В напряжённой обстановке я сохраняю концентрацию.'],
-            ['accuracy', 'Мне подходит работа, где нужна стерильность и точность.'],
-            ['accuracy', 'Я предпочитаю проверять себя, а не «делать на глаз».'],
-            ['teamwork', 'Мне комфортно работать по протоколам команды.'],
-            ['teamwork', 'Мне важно взаимодействовать с разными специалистами.'],
-            ['responsibility', 'Я готов(а) учиться долго и регулярно.'],
-            ['responsibility', 'Мне подходит работа, где важно не навредить.']
+            ['science', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ РёР·СѓС‡Р°С‚СЊ Р°РЅР°С‚РѕРјРёСЋ Рё С„РёР·РёРѕР»РѕРіРёСЋ С‡РµР»РѕРІРµРєР°.'],
+            ['science', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р·Р±РёСЂР°С‚СЊСЃСЏ РІ РїСЂРёС‡РёРЅР°С… СЃРёРјРїС‚РѕРјРѕРІ Рё РїСЂРѕС†РµСЃСЃРѕРІ.'],
+            ['empathy', 'РЇ СѓРјРµСЋ СЃР»СѓС€Р°С‚СЊ Рё РЅРµ РѕР±РµСЃС†РµРЅРёРІР°С‚СЊ СЌРјРѕС†РёРё С‡РµР»РѕРІРµРєР°.'],
+            ['stress', 'Р’ РЅР°РїСЂСЏР¶С‘РЅРЅРѕР№ РѕР±СЃС‚Р°РЅРѕРІРєРµ СЏ СЃРѕС…СЂР°РЅСЏСЋ РєРѕРЅС†РµРЅС‚СЂР°С†РёСЋ.'],
+            ['accuracy', 'РњРЅРµ РїРѕРґС…РѕРґРёС‚ СЂР°Р±РѕС‚Р°, РіРґРµ РЅСѓР¶РЅР° СЃС‚РµСЂРёР»СЊРЅРѕСЃС‚СЊ Рё С‚РѕС‡РЅРѕСЃС‚СЊ.'],
+            ['accuracy', 'РЇ РїСЂРµРґРїРѕС‡РёС‚Р°СЋ РїСЂРѕРІРµСЂСЏС‚СЊ СЃРµР±СЏ, Р° РЅРµ В«РґРµР»Р°С‚СЊ РЅР° РіР»Р°Р·В».'],
+            ['teamwork', 'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ РїРѕ РїСЂРѕС‚РѕРєРѕР»Р°Рј РєРѕРјР°РЅРґС‹.'],
+            ['teamwork', 'РњРЅРµ РІР°Р¶РЅРѕ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРѕРІР°С‚СЊ СЃ СЂР°Р·РЅС‹РјРё СЃРїРµС†РёР°Р»РёСЃС‚Р°РјРё.'],
+            ['responsibility', 'РЇ РіРѕС‚РѕРІ(Р°) СѓС‡РёС‚СЊСЃСЏ РґРѕР»РіРѕ Рё СЂРµРіСѓР»СЏСЂРЅРѕ.'],
+            ['responsibility', 'РњРЅРµ РїРѕРґС…РѕРґРёС‚ СЂР°Р±РѕС‚Р°, РіРґРµ РІР°Р¶РЅРѕ РЅРµ РЅР°РІСЂРµРґРёС‚СЊ.']
         ],
         '9': [
-            ['science', 'Мне интересно связывать биологию и химию с медициной.'],
-            ['science', 'Мне нравится решать задачи и разбирать клинические случаи (на своём уровне).'],
-            ['accuracy', 'Мне важно соблюдать алгоритмы и порядок действий.'],
-            ['accuracy', 'Мне комфортно работать с измерениями, дозировками, расчётами.'],
-            ['empathy', 'Мне важно помогать людям даже в сложных ситуациях.'],
-            ['stress', 'Я способен(на) сохранять спокойствие в критический момент.'],
-            ['teamwork', 'Мне нравится работа, где нужна команда и координация.'],
-            ['responsibility', 'Я готов(а) нести ответственность за решение и результат.'],
-            ['responsibility', 'Я готов(а) учиться 6+ лет ради профессии.'],
-            ['stress', 'Я могу работать, когда есть давление времени.']
+            ['science', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СЃРІСЏР·С‹РІР°С‚СЊ Р±РёРѕР»РѕРіРёСЋ Рё С…РёРјРёСЋ СЃ РјРµРґРёС†РёРЅРѕР№.'],
+            ['science', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂРµС€Р°С‚СЊ Р·Р°РґР°С‡Рё Рё СЂР°Р·Р±РёСЂР°С‚СЊ РєР»РёРЅРёС‡РµСЃРєРёРµ СЃР»СѓС‡Р°Рё (РЅР° СЃРІРѕС‘Рј СѓСЂРѕРІРЅРµ).'],
+            ['accuracy', 'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ Р°Р»РіРѕСЂРёС‚РјС‹ Рё РїРѕСЂСЏРґРѕРє РґРµР№СЃС‚РІРёР№.'],
+            ['accuracy', 'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РёР·РјРµСЂРµРЅРёСЏРјРё, РґРѕР·РёСЂРѕРІРєР°РјРё, СЂР°СЃС‡С‘С‚Р°РјРё.'],
+            ['empathy', 'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј РґР°Р¶Рµ РІ СЃР»РѕР¶РЅС‹С… СЃРёС‚СѓР°С†РёСЏС….'],
+            ['stress', 'РЇ СЃРїРѕСЃРѕР±РµРЅ(РЅР°) СЃРѕС…СЂР°РЅСЏС‚СЊ СЃРїРѕРєРѕР№СЃС‚РІРёРµ РІ РєСЂРёС‚РёС‡РµСЃРєРёР№ РјРѕРјРµРЅС‚.'],
+            ['teamwork', 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°, РіРґРµ РЅСѓР¶РЅР° РєРѕРјР°РЅРґР° Рё РєРѕРѕСЂРґРёРЅР°С†РёСЏ.'],
+            ['responsibility', 'РЇ РіРѕС‚РѕРІ(Р°) РЅРµСЃС‚Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ Р·Р° СЂРµС€РµРЅРёРµ Рё СЂРµР·СѓР»СЊС‚Р°С‚.'],
+            ['responsibility', 'РЇ РіРѕС‚РѕРІ(Р°) СѓС‡РёС‚СЊСЃСЏ 6+ Р»РµС‚ СЂР°РґРё РїСЂРѕС„РµСЃСЃРёРё.'],
+            ['stress', 'РЇ РјРѕРіСѓ СЂР°Р±РѕС‚Р°С‚СЊ, РєРѕРіРґР° РµСЃС‚СЊ РґР°РІР»РµРЅРёРµ РІСЂРµРјРµРЅРё.']
         ],
         '10-11': [
-            ['science', 'Мне интересно углублённо изучать биологию/химию/анатомию.'],
-            ['science', 'Мне комфортно учиться через практику и разбор ошибок.'],
-            ['accuracy', 'Я внимателен(на) к деталям и понимаю цену ошибки.'],
-            ['accuracy', 'Мне подходит работа по стандартам и протоколам.'],
-            ['empathy', 'Я умею поддерживать человека и сохранять уважение.'],
-            ['stress', 'Я сохраняю спокойствие и ясность мышления под нагрузкой.'],
-            ['teamwork', 'Мне интересны роли в команде: врач, медсестра, лаборант, фармацевт.'],
-            ['responsibility', 'Мне важно работать этично и честно.'],
-            ['responsibility', 'Я готов(а) к постоянному обучению в профессии.'],
-            ['teamwork', 'Мне важно уметь договариваться и передавать смену/информацию.']
+            ['science', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СѓРіР»СѓР±Р»С‘РЅРЅРѕ РёР·СѓС‡Р°С‚СЊ Р±РёРѕР»РѕРіРёСЋ/С…РёРјРёСЋ/Р°РЅР°С‚РѕРјРёСЋ.'],
+            ['science', 'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СѓС‡РёС‚СЊСЃСЏ С‡РµСЂРµР· РїСЂР°РєС‚РёРєСѓ Рё СЂР°Р·Р±РѕСЂ РѕС€РёР±РѕРє.'],
+            ['accuracy', 'РЇ РІРЅРёРјР°С‚РµР»РµРЅ(РЅР°) Рє РґРµС‚Р°Р»СЏРј Рё РїРѕРЅРёРјР°СЋ С†РµРЅСѓ РѕС€РёР±РєРё.'],
+            ['accuracy', 'РњРЅРµ РїРѕРґС…РѕРґРёС‚ СЂР°Р±РѕС‚Р° РїРѕ СЃС‚Р°РЅРґР°СЂС‚Р°Рј Рё РїСЂРѕС‚РѕРєРѕР»Р°Рј.'],
+            ['empathy', 'РЇ СѓРјРµСЋ РїРѕРґРґРµСЂР¶РёРІР°С‚СЊ С‡РµР»РѕРІРµРєР° Рё СЃРѕС…СЂР°РЅСЏС‚СЊ СѓРІР°Р¶РµРЅРёРµ.'],
+            ['stress', 'РЇ СЃРѕС…СЂР°РЅСЏСЋ СЃРїРѕРєРѕР№СЃС‚РІРёРµ Рё СЏСЃРЅРѕСЃС‚СЊ РјС‹С€Р»РµРЅРёСЏ РїРѕРґ РЅР°РіСЂСѓР·РєРѕР№.'],
+            ['teamwork', 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅС‹ СЂРѕР»Рё РІ РєРѕРјР°РЅРґРµ: РІСЂР°С‡, РјРµРґСЃРµСЃС‚СЂР°, Р»Р°Р±РѕСЂР°РЅС‚, С„Р°СЂРјР°С†РµРІС‚.'],
+            ['responsibility', 'РњРЅРµ РІР°Р¶РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ СЌС‚РёС‡РЅРѕ Рё С‡РµСЃС‚РЅРѕ.'],
+            ['responsibility', 'РЇ РіРѕС‚РѕРІ(Р°) Рє РїРѕСЃС‚РѕСЏРЅРЅРѕРјСѓ РѕР±СѓС‡РµРЅРёСЋ РІ РїСЂРѕС„РµСЃСЃРёРё.'],
+            ['teamwork', 'РњРЅРµ РІР°Р¶РЅРѕ СѓРјРµС‚СЊ РґРѕРіРѕРІР°СЂРёРІР°С‚СЊСЃСЏ Рё РїРµСЂРµРґР°РІР°С‚СЊ СЃРјРµРЅСѓ/РёРЅС„РѕСЂРјР°С†РёСЋ.']
         ]
     };
 
     const baseList = base[band] || base['9'];
 
-    // Расширяем банк (особенно для 9–11), чтобы не было ощущение «вопросов мало»
-    // и чтобы повторов было существенно меньше.
+    // Р Р°СЃС€РёСЂСЏРµРј Р±Р°РЅРє (РѕСЃРѕР±РµРЅРЅРѕ РґР»СЏ 9вЂ“11), С‡С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ РѕС‰СѓС‰РµРЅРёРµ В«РІРѕРїСЂРѕСЃРѕРІ РјР°Р»РѕВ»
+    // Рё С‡С‚РѕР±С‹ РїРѕРІС‚РѕСЂРѕРІ Р±С‹Р»Рѕ СЃСѓС‰РµСЃС‚РІРµРЅРЅРѕ РјРµРЅСЊС€Рµ.
     const extraByBand = {
         '1-4': {
             empathy: [
-                'Мне важно поддерживать людей добрым словом.',
-                'Мне нравится помогать, если кто-то переживает.',
-                'Мне важно не смеяться над ошибками других.',
-                'Мне нравится заботиться о тех, кому трудно.',
-                'Мне важно быть внимательным(ой) к чувствам других.'
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРґРґРµСЂР¶РёРІР°С‚СЊ Р»СЋРґРµР№ РґРѕР±СЂС‹Рј СЃР»РѕРІРѕРј.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРјРѕРіР°С‚СЊ, РµСЃР»Рё РєС‚Рѕ-С‚Рѕ РїРµСЂРµР¶РёРІР°РµС‚.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РЅРµ СЃРјРµСЏС‚СЊСЃСЏ РЅР°Рґ РѕС€РёР±РєР°РјРё РґСЂСѓРіРёС….',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р·Р°Р±РѕС‚РёС‚СЊСЃСЏ Рѕ С‚РµС…, РєРѕРјСѓ С‚СЂСѓРґРЅРѕ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ Р±С‹С‚СЊ РІРЅРёРјР°С‚РµР»СЊРЅС‹Рј(РѕР№) Рє С‡СѓРІСЃС‚РІР°Рј РґСЂСѓРіРёС….'
             ],
             stress: [
-                'Я могу не паниковать, если что-то пошло не так.',
-                'Я стараюсь сохранять спокойствие в сложной ситуации.',
-                'Я могу собраться и продолжить дело, даже если страшно.',
-                'Я могу действовать спокойно, когда другие волнуются.',
-                'Я не сдаюсь сразу, если сложно.'
+                'РЇ РјРѕРіСѓ РЅРµ РїР°РЅРёРєРѕРІР°С‚СЊ, РµСЃР»Рё С‡С‚Рѕ-С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє.',
+                'РЇ СЃС‚Р°СЂР°СЋСЃСЊ СЃРѕС…СЂР°РЅСЏС‚СЊ СЃРїРѕРєРѕР№СЃС‚РІРёРµ РІ СЃР»РѕР¶РЅРѕР№ СЃРёС‚СѓР°С†РёРё.',
+                'РЇ РјРѕРіСѓ СЃРѕР±СЂР°С‚СЊСЃСЏ Рё РїСЂРѕРґРѕР»Р¶РёС‚СЊ РґРµР»Рѕ, РґР°Р¶Рµ РµСЃР»Рё СЃС‚СЂР°С€РЅРѕ.',
+                'РЇ РјРѕРіСѓ РґРµР№СЃС‚РІРѕРІР°С‚СЊ СЃРїРѕРєРѕР№РЅРѕ, РєРѕРіРґР° РґСЂСѓРіРёРµ РІРѕР»РЅСѓСЋС‚СЃСЏ.',
+                'РЇ РЅРµ СЃРґР°СЋСЃСЊ СЃСЂР°Р·Сѓ, РµСЃР»Рё СЃР»РѕР¶РЅРѕ.'
             ],
             accuracy: [
-                'Мне важно делать всё аккуратно и чисто.',
-                'Мне нравится работать по инструкции.',
-                'Мне нравится проверять результат.',
-                'Мне важно не торопиться, чтобы не ошибаться.',
-                'Мне нравится, когда всё сделано правильно.'
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРµР»Р°С‚СЊ РІСЃС‘ Р°РєРєСѓСЂР°С‚РЅРѕ Рё С‡РёСЃС‚Рѕ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ РїРѕ РёРЅСЃС‚СЂСѓРєС†РёРё.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїСЂРѕРІРµСЂСЏС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РЅРµ С‚РѕСЂРѕРїРёС‚СЊСЃСЏ, С‡С‚РѕР±С‹ РЅРµ РѕС€РёР±Р°С‚СЊСЃСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ, РєРѕРіРґР° РІСЃС‘ СЃРґРµР»Р°РЅРѕ РїСЂР°РІРёР»СЊРЅРѕ.'
             ],
             science: [
-                'Мне интересно узнавать, как устроено тело человека.',
-                'Мне интересно, как работают органы и системы.',
-                'Мне нравится узнавать новые факты о здоровье.',
-                'Мне интересно, почему люди болеют.',
-                'Мне интересно, как помогает медицина.'
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СѓР·РЅР°РІР°С‚СЊ, РєР°Рє СѓСЃС‚СЂРѕРµРЅРѕ С‚РµР»Рѕ С‡РµР»РѕРІРµРєР°.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ, РєР°Рє СЂР°Р±РѕС‚Р°СЋС‚ РѕСЂРіР°РЅС‹ Рё СЃРёСЃС‚РµРјС‹.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СѓР·РЅР°РІР°С‚СЊ РЅРѕРІС‹Рµ С„Р°РєС‚С‹ Рѕ Р·РґРѕСЂРѕРІСЊРµ.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ, РїРѕС‡РµРјСѓ Р»СЋРґРё Р±РѕР»РµСЋС‚.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ, РєР°Рє РїРѕРјРѕРіР°РµС‚ РјРµРґРёС†РёРЅР°.'
             ],
             teamwork: [
-                'Мне нравится работать в команде.',
-                'Мне важно помогать группе.',
-                'Мне нравится, когда у команды есть общий план.',
-                'Мне нравится поддерживать других в работе.',
-                'Мне комфортно выполнять свою часть задания в группе.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ РІ РєРѕРјР°РЅРґРµ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРјРѕРіР°С‚СЊ РіСЂСѓРїРїРµ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ, РєРѕРіРґР° Сѓ РєРѕРјР°РЅРґС‹ РµСЃС‚СЊ РѕР±С‰РёР№ РїР»Р°РЅ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРґРґРµСЂР¶РёРІР°С‚СЊ РґСЂСѓРіРёС… РІ СЂР°Р±РѕС‚Рµ.',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ РІС‹РїРѕР»РЅСЏС‚СЊ СЃРІРѕСЋ С‡Р°СЃС‚СЊ Р·Р°РґР°РЅРёСЏ РІ РіСЂСѓРїРїРµ.'
             ],
             responsibility: [
-                'Мне важно соблюдать правила безопасности.',
-                'Мне важно выполнять обещания.',
-                'Мне важно быть надёжным(ой).',
-                'Мне важно доводить дело до конца.',
-                'Мне важно не забывать важные вещи.'
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ РїСЂР°РІРёР»Р° Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РІС‹РїРѕР»РЅСЏС‚СЊ РѕР±РµС‰Р°РЅРёСЏ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ Р±С‹С‚СЊ РЅР°РґС‘Р¶РЅС‹Рј(РѕР№).',
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРѕРІРѕРґРёС‚СЊ РґРµР»Рѕ РґРѕ РєРѕРЅС†Р°.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РЅРµ Р·Р°Р±С‹РІР°С‚СЊ РІР°Р¶РЅС‹Рµ РІРµС‰Рё.'
             ]
         },
         '5-6': {
             empathy: [
-                'Мне важно поддержать человека, если ему плохо.',
-                'Мне важно не обесценивать чувства других.',
-                'Мне комфортно слушать и помогать человеку успокоиться.',
-                'Мне важно относиться к людям уважительно.',
-                'Мне важно быть терпеливым(ой) к другим.'
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРґРґРµСЂР¶Р°С‚СЊ С‡РµР»РѕРІРµРєР°, РµСЃР»Рё РµРјСѓ РїР»РѕС…Рѕ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РЅРµ РѕР±РµСЃС†РµРЅРёРІР°С‚СЊ С‡СѓРІСЃС‚РІР° РґСЂСѓРіРёС….',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СЃР»СѓС€Р°С‚СЊ Рё РїРѕРјРѕРіР°С‚СЊ С‡РµР»РѕРІРµРєСѓ СѓСЃРїРѕРєРѕРёС‚СЊСЃСЏ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РѕС‚РЅРѕСЃРёС‚СЊСЃСЏ Рє Р»СЋРґСЏРј СѓРІР°Р¶РёС‚РµР»СЊРЅРѕ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ Р±С‹С‚СЊ С‚РµСЂРїРµР»РёРІС‹Рј(РѕР№) Рє РґСЂСѓРіРёРј.'
             ],
             stress: [
-                'В сложных ситуациях я стараюсь действовать спокойно.',
-                'Я могу собраться, когда есть давление времени.',
-                'Я не теряюсь, если нужно быстро принять решение.',
-                'Я стараюсь сохранять концентрацию в напряжении.',
-                'Я могу продолжать работать, даже если устал(а).'
+                'Р’ СЃР»РѕР¶РЅС‹С… СЃРёС‚СѓР°С†РёСЏС… СЏ СЃС‚Р°СЂР°СЋСЃСЊ РґРµР№СЃС‚РІРѕРІР°С‚СЊ СЃРїРѕРєРѕР№РЅРѕ.',
+                'РЇ РјРѕРіСѓ СЃРѕР±СЂР°С‚СЊСЃСЏ, РєРѕРіРґР° РµСЃС‚СЊ РґР°РІР»РµРЅРёРµ РІСЂРµРјРµРЅРё.',
+                'РЇ РЅРµ С‚РµСЂСЏСЋСЃСЊ, РµСЃР»Рё РЅСѓР¶РЅРѕ Р±С‹СЃС‚СЂРѕ РїСЂРёРЅСЏС‚СЊ СЂРµС€РµРЅРёРµ.',
+                'РЇ СЃС‚Р°СЂР°СЋСЃСЊ СЃРѕС…СЂР°РЅСЏС‚СЊ РєРѕРЅС†РµРЅС‚СЂР°С†РёСЋ РІ РЅР°РїСЂСЏР¶РµРЅРёРё.',
+                'РЇ РјРѕРіСѓ РїСЂРѕРґРѕР»Р¶Р°С‚СЊ СЂР°Р±РѕС‚Р°С‚СЊ, РґР°Р¶Рµ РµСЃР»Рё СѓСЃС‚Р°Р»(Р°).'
             ],
             accuracy: [
-                'Мне важны точность и порядок в работе.',
-                'Мне нравится замечать мелкие детали.',
-                'Мне важно проверять себя.',
-                'Мне важно соблюдать чистоту и аккуратность.',
-                'Мне нравится делать всё по правилам.'
+                'РњРЅРµ РІР°Р¶РЅС‹ С‚РѕС‡РЅРѕСЃС‚СЊ Рё РїРѕСЂСЏРґРѕРє РІ СЂР°Р±РѕС‚Рµ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р·Р°РјРµС‡Р°С‚СЊ РјРµР»РєРёРµ РґРµС‚Р°Р»Рё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РїСЂРѕРІРµСЂСЏС‚СЊ СЃРµР±СЏ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ С‡РёСЃС‚РѕС‚Сѓ Рё Р°РєРєСѓСЂР°С‚РЅРѕСЃС‚СЊ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РґРµР»Р°С‚СЊ РІСЃС‘ РїРѕ РїСЂР°РІРёР»Р°Рј.'
             ],
             science: [
-                'Мне интересно, почему возникают болезни.',
-                'Мне интересно, как предотвращают болезни.',
-                'Мне интересно, как лекарства помогают человеку.',
-                'Мне нравится узнавать про организм и здоровье.',
-                'Мне интересно, как работают анализы и исследования.'
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ, РїРѕС‡РµРјСѓ РІРѕР·РЅРёРєР°СЋС‚ Р±РѕР»РµР·РЅРё.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ, РєР°Рє РїСЂРµРґРѕС‚РІСЂР°С‰Р°СЋС‚ Р±РѕР»РµР·РЅРё.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ, РєР°Рє Р»РµРєР°СЂСЃС‚РІР° РїРѕРјРѕРіР°СЋС‚ С‡РµР»РѕРІРµРєСѓ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СѓР·РЅР°РІР°С‚СЊ РїСЂРѕ РѕСЂРіР°РЅРёР·Рј Рё Р·РґРѕСЂРѕРІСЊРµ.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ, РєР°Рє СЂР°Р±РѕС‚Р°СЋС‚ Р°РЅР°Р»РёР·С‹ Рё РёСЃСЃР»РµРґРѕРІР°РЅРёСЏ.'
             ],
             teamwork: [
-                'Мне нравится работать в группе и распределять роли.',
-                'Мне легче, когда есть общий план команды.',
-                'Мне комфортно договариваться в группе.',
-                'Мне важно выполнять свою часть работы вовремя.',
-                'Мне нравится помогать другим участникам команды.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ РІ РіСЂСѓРїРїРµ Рё СЂР°СЃРїСЂРµРґРµР»СЏС‚СЊ СЂРѕР»Рё.',
+                'РњРЅРµ Р»РµРіС‡Рµ, РєРѕРіРґР° РµСЃС‚СЊ РѕР±С‰РёР№ РїР»Р°РЅ РєРѕРјР°РЅРґС‹.',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ РґРѕРіРѕРІР°СЂРёРІР°С‚СЊСЃСЏ РІ РіСЂСѓРїРїРµ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РІС‹РїРѕР»РЅСЏС‚СЊ СЃРІРѕСЋ С‡Р°СЃС‚СЊ СЂР°Р±РѕС‚С‹ РІРѕРІСЂРµРјСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРјРѕРіР°С‚СЊ РґСЂСѓРіРёРј СѓС‡Р°СЃС‚РЅРёРєР°Рј РєРѕРјР°РЅРґС‹.'
             ],
             responsibility: [
-                'Я понимаю, что ошибки могут быть опасны.',
-                'Мне важно соблюдать правила безопасности.',
-                'Мне важно делать работу без спешки.',
-                'Мне важно учиться регулярно.',
-                'Мне важно выполнять задания качественно.'
+                'РЇ РїРѕРЅРёРјР°СЋ, С‡С‚Рѕ РѕС€РёР±РєРё РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРїР°СЃРЅС‹.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ РїСЂР°РІРёР»Р° Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРµР»Р°С‚СЊ СЂР°Р±РѕС‚Сѓ Р±РµР· СЃРїРµС€РєРё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СѓС‡РёС‚СЊСЃСЏ СЂРµРіСѓР»СЏСЂРЅРѕ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РІС‹РїРѕР»РЅСЏС‚СЊ Р·Р°РґР°РЅРёСЏ РєР°С‡РµСЃС‚РІРµРЅРЅРѕ.'
             ]
         },
         '7-8': {
             empathy: [
-                'Мне важно поддерживать человека, даже если ему тяжело.',
-                'Я умею слушать и не обесценивать эмоции человека.',
-                'Мне важно сохранять уважение в разговоре.',
-                'Мне важно помогать человеку чувствовать себя в безопасности.',
-                'Мне важно быть тактичным(ой) в общении.'
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРґРґРµСЂР¶РёРІР°С‚СЊ С‡РµР»РѕРІРµРєР°, РґР°Р¶Рµ РµСЃР»Рё РµРјСѓ С‚СЏР¶РµР»Рѕ.',
+                'РЇ СѓРјРµСЋ СЃР»СѓС€Р°С‚СЊ Рё РЅРµ РѕР±РµСЃС†РµРЅРёРІР°С‚СЊ СЌРјРѕС†РёРё С‡РµР»РѕРІРµРєР°.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕС…СЂР°РЅСЏС‚СЊ СѓРІР°Р¶РµРЅРёРµ РІ СЂР°Р·РіРѕРІРѕСЂРµ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРјРѕРіР°С‚СЊ С‡РµР»РѕРІРµРєСѓ С‡СѓРІСЃС‚РІРѕРІР°С‚СЊ СЃРµР±СЏ РІ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ Р±С‹С‚СЊ С‚Р°РєС‚РёС‡РЅС‹Рј(РѕР№) РІ РѕР±С‰РµРЅРёРё.'
             ],
             stress: [
-                'В напряжённой обстановке я сохраняю концентрацию.',
-                'Мне комфортно работать, когда есть ответственность.',
-                'Я могу действовать по алгоритму в стрессовой ситуации.',
-                'Я могу сохранять спокойствие, если что-то идёт не по плану.',
-                'Мне важно не терять самообладание под нагрузкой.'
+                'Р’ РЅР°РїСЂСЏР¶С‘РЅРЅРѕР№ РѕР±СЃС‚Р°РЅРѕРІРєРµ СЏ СЃРѕС…СЂР°РЅСЏСЋ РєРѕРЅС†РµРЅС‚СЂР°С†РёСЋ.',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ, РєРѕРіРґР° РµСЃС‚СЊ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ.',
+                'РЇ РјРѕРіСѓ РґРµР№СЃС‚РІРѕРІР°С‚СЊ РїРѕ Р°Р»РіРѕСЂРёС‚РјСѓ РІ СЃС‚СЂРµСЃСЃРѕРІРѕР№ СЃРёС‚СѓР°С†РёРё.',
+                'РЇ РјРѕРіСѓ СЃРѕС…СЂР°РЅСЏС‚СЊ СЃРїРѕРєРѕР№СЃС‚РІРёРµ, РµСЃР»Рё С‡С‚Рѕ-С‚Рѕ РёРґС‘С‚ РЅРµ РїРѕ РїР»Р°РЅСѓ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РЅРµ С‚РµСЂСЏС‚СЊ СЃР°РјРѕРѕР±Р»Р°РґР°РЅРёРµ РїРѕРґ РЅР°РіСЂСѓР·РєРѕР№.'
             ],
             accuracy: [
-                'Мне подходит работа, где нужна стерильность и точность.',
-                'Я предпочитаю проверять себя, а не «делать на глаз».',
-                'Мне важно соблюдать порядок действий.',
-                'Мне важно не пропускать мелочи.',
-                'Мне важно делать работу по стандарту.'
+                'РњРЅРµ РїРѕРґС…РѕРґРёС‚ СЂР°Р±РѕС‚Р°, РіРґРµ РЅСѓР¶РЅР° СЃС‚РµСЂРёР»СЊРЅРѕСЃС‚СЊ Рё С‚РѕС‡РЅРѕСЃС‚СЊ.',
+                'РЇ РїСЂРµРґРїРѕС‡РёС‚Р°СЋ РїСЂРѕРІРµСЂСЏС‚СЊ СЃРµР±СЏ, Р° РЅРµ В«РґРµР»Р°С‚СЊ РЅР° РіР»Р°Р·В».',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ РїРѕСЂСЏРґРѕРє РґРµР№СЃС‚РІРёР№.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РЅРµ РїСЂРѕРїСѓСЃРєР°С‚СЊ РјРµР»РѕС‡Рё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРµР»Р°С‚СЊ СЂР°Р±РѕС‚Сѓ РїРѕ СЃС‚Р°РЅРґР°СЂС‚Сѓ.'
             ],
             science: [
-                'Мне интересно изучать анатомию и физиологию человека.',
-                'Мне нравится разбираться в причинах симптомов и процессов.',
-                'Мне интересно понимать связь биологии и здоровья.',
-                'Мне нравится узнавать, как работают лекарства (в общих чертах).',
-                'Мне интересно узнавать про профилактику заболеваний.'
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ РёР·СѓС‡Р°С‚СЊ Р°РЅР°С‚РѕРјРёСЋ Рё С„РёР·РёРѕР»РѕРіРёСЋ С‡РµР»РѕРІРµРєР°.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р·Р±РёСЂР°С‚СЊСЃСЏ РІ РїСЂРёС‡РёРЅР°С… СЃРёРјРїС‚РѕРјРѕРІ Рё РїСЂРѕС†РµСЃСЃРѕРІ.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ РїРѕРЅРёРјР°С‚СЊ СЃРІСЏР·СЊ Р±РёРѕР»РѕРіРёРё Рё Р·РґРѕСЂРѕРІСЊСЏ.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СѓР·РЅР°РІР°С‚СЊ, РєР°Рє СЂР°Р±РѕС‚Р°СЋС‚ Р»РµРєР°СЂСЃС‚РІР° (РІ РѕР±С‰РёС… С‡РµСЂС‚Р°С…).',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СѓР·РЅР°РІР°С‚СЊ РїСЂРѕ РїСЂРѕС„РёР»Р°РєС‚РёРєСѓ Р·Р°Р±РѕР»РµРІР°РЅРёР№.'
             ],
             teamwork: [
-                'Мне комфортно работать по протоколам команды.',
-                'Мне важно взаимодействовать с разными специалистами.',
-                'Мне важно передавать информацию без искажений.',
-                'Мне нравится работать, когда есть роли и ответственность.',
-                'Мне важно уважать вклад других в команде.'
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ РїРѕ РїСЂРѕС‚РѕРєРѕР»Р°Рј РєРѕРјР°РЅРґС‹.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРѕРІР°С‚СЊ СЃ СЂР°Р·РЅС‹РјРё СЃРїРµС†РёР°Р»РёСЃС‚Р°РјРё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРµСЂРµРґР°РІР°С‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Р±РµР· РёСЃРєР°Р¶РµРЅРёР№.',
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ, РєРѕРіРґР° РµСЃС‚СЊ СЂРѕР»Рё Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СѓРІР°Р¶Р°С‚СЊ РІРєР»Р°Рґ РґСЂСѓРіРёС… РІ РєРѕРјР°РЅРґРµ.'
             ],
             responsibility: [
-                'Мне подходит работа, где важно не навредить.',
-                'Я готов(а) учиться долго и регулярно.',
-                'Мне важно соблюдать этику и правила.',
-                'Мне важно отвечать за качество своей работы.',
-                'Мне важно держать дисциплину подготовки.'
+                'РњРЅРµ РїРѕРґС…РѕРґРёС‚ СЂР°Р±РѕС‚Р°, РіРґРµ РІР°Р¶РЅРѕ РЅРµ РЅР°РІСЂРµРґРёС‚СЊ.',
+                'РЇ РіРѕС‚РѕРІ(Р°) СѓС‡РёС‚СЊСЃСЏ РґРѕР»РіРѕ Рё СЂРµРіСѓР»СЏСЂРЅРѕ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ СЌС‚РёРєСѓ Рё РїСЂР°РІРёР»Р°.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РѕС‚РІРµС‡Р°С‚СЊ Р·Р° РєР°С‡РµСЃС‚РІРѕ СЃРІРѕРµР№ СЂР°Р±РѕС‚С‹.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРµСЂР¶Р°С‚СЊ РґРёСЃС†РёРїР»РёРЅСѓ РїРѕРґРіРѕС‚РѕРІРєРё.'
             ]
         },
         '9': {
             empathy: [
-                'Мне важно помогать людям даже в сложных ситуациях.',
-                'Мне важно сохранять уважение к человеку в любой ситуации.',
-                'Мне важно не судить человека, а помогать ему.',
-                'Мне важно говорить спокойно и поддерживающе.',
-                'Мне важно понимать эмоции и потребности человека.',
-                'Мне важно соблюдать границы и конфиденциальность.'
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј РґР°Р¶Рµ РІ СЃР»РѕР¶РЅС‹С… СЃРёС‚СѓР°С†РёСЏС….',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕС…СЂР°РЅСЏС‚СЊ СѓРІР°Р¶РµРЅРёРµ Рє С‡РµР»РѕРІРµРєСѓ РІ Р»СЋР±РѕР№ СЃРёС‚СѓР°С†РёРё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РЅРµ СЃСѓРґРёС‚СЊ С‡РµР»РѕРІРµРєР°, Р° РїРѕРјРѕРіР°С‚СЊ РµРјСѓ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РіРѕРІРѕСЂРёС‚СЊ СЃРїРѕРєРѕР№РЅРѕ Рё РїРѕРґРґРµСЂР¶РёРІР°СЋС‰Рµ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРЅРёРјР°С‚СЊ СЌРјРѕС†РёРё Рё РїРѕС‚СЂРµР±РЅРѕСЃС‚Рё С‡РµР»РѕРІРµРєР°.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ РіСЂР°РЅРёС†С‹ Рё РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚СЊ.'
             ],
             stress: [
-                'Я способен(на) сохранять спокойствие в критический момент.',
-                'Я могу работать, когда есть давление времени.',
-                'Я могу действовать по алгоритму под стрессом.',
-                'Я могу сохранять ясность мышления под нагрузкой.',
-                'Я могу держать фокус на задаче, даже если вокруг хаос.',
-                'Я могу признавать ошибку и быстро исправлять.'
+                'РЇ СЃРїРѕСЃРѕР±РµРЅ(РЅР°) СЃРѕС…СЂР°РЅСЏС‚СЊ СЃРїРѕРєРѕР№СЃС‚РІРёРµ РІ РєСЂРёС‚РёС‡РµСЃРєРёР№ РјРѕРјРµРЅС‚.',
+                'РЇ РјРѕРіСѓ СЂР°Р±РѕС‚Р°С‚СЊ, РєРѕРіРґР° РµСЃС‚СЊ РґР°РІР»РµРЅРёРµ РІСЂРµРјРµРЅРё.',
+                'РЇ РјРѕРіСѓ РґРµР№СЃС‚РІРѕРІР°С‚СЊ РїРѕ Р°Р»РіРѕСЂРёС‚РјСѓ РїРѕРґ СЃС‚СЂРµСЃСЃРѕРј.',
+                'РЇ РјРѕРіСѓ СЃРѕС…СЂР°РЅСЏС‚СЊ СЏСЃРЅРѕСЃС‚СЊ РјС‹С€Р»РµРЅРёСЏ РїРѕРґ РЅР°РіСЂСѓР·РєРѕР№.',
+                'РЇ РјРѕРіСѓ РґРµСЂР¶Р°С‚СЊ С„РѕРєСѓСЃ РЅР° Р·Р°РґР°С‡Рµ, РґР°Р¶Рµ РµСЃР»Рё РІРѕРєСЂСѓРі С…Р°РѕСЃ.',
+                'РЇ РјРѕРіСѓ РїСЂРёР·РЅР°РІР°С‚СЊ РѕС€РёР±РєСѓ Рё Р±С‹СЃС‚СЂРѕ РёСЃРїСЂР°РІР»СЏС‚СЊ.'
             ],
             accuracy: [
-                'Мне важно соблюдать алгоритмы и порядок действий.',
-                'Мне комфортно работать с измерениями и расчётами.',
-                'Мне важно проверять дозировки/значения (на своём уровне).',
-                'Мне важно не пропускать детали и мелочи.',
-                'Мне важно следовать стандартам качества.',
-                'Мне важно вести записи аккуратно.'
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ Р°Р»РіРѕСЂРёС‚РјС‹ Рё РїРѕСЂСЏРґРѕРє РґРµР№СЃС‚РІРёР№.',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РёР·РјРµСЂРµРЅРёСЏРјРё Рё СЂР°СЃС‡С‘С‚Р°РјРё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РїСЂРѕРІРµСЂСЏС‚СЊ РґРѕР·РёСЂРѕРІРєРё/Р·РЅР°С‡РµРЅРёСЏ (РЅР° СЃРІРѕС‘Рј СѓСЂРѕРІРЅРµ).',
+                'РњРЅРµ РІР°Р¶РЅРѕ РЅРµ РїСЂРѕРїСѓСЃРєР°С‚СЊ РґРµС‚Р°Р»Рё Рё РјРµР»РѕС‡Рё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃР»РµРґРѕРІР°С‚СЊ СЃС‚Р°РЅРґР°СЂС‚Р°Рј РєР°С‡РµСЃС‚РІР°.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РІРµСЃС‚Рё Р·Р°РїРёСЃРё Р°РєРєСѓСЂР°С‚РЅРѕ.'
             ],
             science: [
-                'Мне интересно связывать биологию и химию с медициной.',
-                'Мне интересно понимать механизмы в организме.',
-                'Мне интересно разбирать причины и последствия процессов.',
-                'Мне интересно изучать основы лекарств и их действия.',
-                'Мне интересно углубляться в темы через задачи и практику.',
-                'Мне интересно узнавать про диагностику и анализы.'
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СЃРІСЏР·С‹РІР°С‚СЊ Р±РёРѕР»РѕРіРёСЋ Рё С…РёРјРёСЋ СЃ РјРµРґРёС†РёРЅРѕР№.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ РїРѕРЅРёРјР°С‚СЊ РјРµС…Р°РЅРёР·РјС‹ РІ РѕСЂРіР°РЅРёР·РјРµ.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СЂР°Р·Р±РёСЂР°С‚СЊ РїСЂРёС‡РёРЅС‹ Рё РїРѕСЃР»РµРґСЃС‚РІРёСЏ РїСЂРѕС†РµСЃСЃРѕРІ.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ РёР·СѓС‡Р°С‚СЊ РѕСЃРЅРѕРІС‹ Р»РµРєР°СЂСЃС‚РІ Рё РёС… РґРµР№СЃС‚РІРёСЏ.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СѓРіР»СѓР±Р»СЏС‚СЊСЃСЏ РІ С‚РµРјС‹ С‡РµСЂРµР· Р·Р°РґР°С‡Рё Рё РїСЂР°РєС‚РёРєСѓ.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СѓР·РЅР°РІР°С‚СЊ РїСЂРѕ РґРёР°РіРЅРѕСЃС‚РёРєСѓ Рё Р°РЅР°Р»РёР·С‹.'
             ],
             teamwork: [
-                'Мне нравится работа, где нужна команда и координация.',
-                'Мне важно чётко передавать информацию в команде.',
-                'Мне важно договариваться и соблюдать общий план.',
-                'Мне комфортно работать, когда есть роли и ответственность.',
-                'Мне важно поддерживать коллег и принимать помощь.',
-                'Мне важно соблюдать правила взаимодействия в команде.'
+                'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°, РіРґРµ РЅСѓР¶РЅР° РєРѕРјР°РЅРґР° Рё РєРѕРѕСЂРґРёРЅР°С†РёСЏ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ С‡С‘С‚РєРѕ РїРµСЂРµРґР°РІР°С‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ РІ РєРѕРјР°РЅРґРµ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРѕРіРѕРІР°СЂРёРІР°С‚СЊСЃСЏ Рё СЃРѕР±Р»СЋРґР°С‚СЊ РѕР±С‰РёР№ РїР»Р°РЅ.',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ, РєРѕРіРґР° РµСЃС‚СЊ СЂРѕР»Рё Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРґРґРµСЂР¶РёРІР°С‚СЊ РєРѕР»Р»РµРі Рё РїСЂРёРЅРёРјР°С‚СЊ РїРѕРјРѕС‰СЊ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ РїСЂР°РІРёР»Р° РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ РІ РєРѕРјР°РЅРґРµ.'
             ],
             responsibility: [
-                'Я готов(а) нести ответственность за решение и результат.',
-                'Я готов(а) учиться 6+ лет ради профессии.',
-                'Мне важно работать этично и честно.',
-                'Мне важно понимать последствия своих действий.',
-                'Мне важно соблюдать безопасность и протоколы.',
-                'Мне важно держать дисциплину подготовки.'
+                'РЇ РіРѕС‚РѕРІ(Р°) РЅРµСЃС‚Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ Р·Р° СЂРµС€РµРЅРёРµ Рё СЂРµР·СѓР»СЊС‚Р°С‚.',
+                'РЇ РіРѕС‚РѕРІ(Р°) СѓС‡РёС‚СЊСЃСЏ 6+ Р»РµС‚ СЂР°РґРё РїСЂРѕС„РµСЃСЃРёРё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ СЌС‚РёС‡РЅРѕ Рё С‡РµСЃС‚РЅРѕ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРЅРёРјР°С‚СЊ РїРѕСЃР»РµРґСЃС‚РІРёСЏ СЃРІРѕРёС… РґРµР№СЃС‚РІРёР№.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ Рё РїСЂРѕС‚РѕРєРѕР»С‹.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРµСЂР¶Р°С‚СЊ РґРёСЃС†РёРїР»РёРЅСѓ РїРѕРґРіРѕС‚РѕРІРєРё.'
             ]
         },
         '10-11': {
             empathy: [
-                'Я умею поддерживать человека и сохранять уважение.',
-                'Мне важно сохранять спокойный тон в сложном разговоре.',
-                'Мне важно соблюдать конфиденциальность и этику.',
-                'Мне важно не обесценивать боль и переживания человека.',
-                'Мне важно быть тактичным(ой) и внимательным(ой) к деталям.',
-                'Мне важно помогать человеку чувствовать контроль и безопасность.'
+                'РЇ СѓРјРµСЋ РїРѕРґРґРµСЂР¶РёРІР°С‚СЊ С‡РµР»РѕРІРµРєР° Рё СЃРѕС…СЂР°РЅСЏС‚СЊ СѓРІР°Р¶РµРЅРёРµ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕС…СЂР°РЅСЏС‚СЊ СЃРїРѕРєРѕР№РЅС‹Р№ С‚РѕРЅ РІ СЃР»РѕР¶РЅРѕРј СЂР°Р·РіРѕРІРѕСЂРµ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚СЊ Рё СЌС‚РёРєСѓ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РЅРµ РѕР±РµСЃС†РµРЅРёРІР°С‚СЊ Р±РѕР»СЊ Рё РїРµСЂРµР¶РёРІР°РЅРёСЏ С‡РµР»РѕРІРµРєР°.',
+                'РњРЅРµ РІР°Р¶РЅРѕ Р±С‹С‚СЊ С‚Р°РєС‚РёС‡РЅС‹Рј(РѕР№) Рё РІРЅРёРјР°С‚РµР»СЊРЅС‹Рј(РѕР№) Рє РґРµС‚Р°Р»СЏРј.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРјРѕРіР°С‚СЊ С‡РµР»РѕРІРµРєСѓ С‡СѓРІСЃС‚РІРѕРІР°С‚СЊ РєРѕРЅС‚СЂРѕР»СЊ Рё Р±РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ.'
             ],
             stress: [
-                'Я сохраняю спокойствие и ясность мышления под нагрузкой.',
-                'Мне комфортно работать в условиях времени и ответственности.',
-                'Я могу держать концентрацию при усталости.',
-                'Я могу быстро переключаться между задачами без паники.',
-                'Я могу действовать по протоколу даже в стрессовой ситуации.',
-                'Я могу сохранять работоспособность в режиме дедлайнов.'
+                'РЇ СЃРѕС…СЂР°РЅСЏСЋ СЃРїРѕРєРѕР№СЃС‚РІРёРµ Рё СЏСЃРЅРѕСЃС‚СЊ РјС‹С€Р»РµРЅРёСЏ РїРѕРґ РЅР°РіСЂСѓР·РєРѕР№.',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ РІ СѓСЃР»РѕРІРёСЏС… РІСЂРµРјРµРЅРё Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё.',
+                'РЇ РјРѕРіСѓ РґРµСЂР¶Р°С‚СЊ РєРѕРЅС†РµРЅС‚СЂР°С†РёСЋ РїСЂРё СѓСЃС‚Р°Р»РѕСЃС‚Рё.',
+                'РЇ РјРѕРіСѓ Р±С‹СЃС‚СЂРѕ РїРµСЂРµРєР»СЋС‡Р°С‚СЊСЃСЏ РјРµР¶РґСѓ Р·Р°РґР°С‡Р°РјРё Р±РµР· РїР°РЅРёРєРё.',
+                'РЇ РјРѕРіСѓ РґРµР№СЃС‚РІРѕРІР°С‚СЊ РїРѕ РїСЂРѕС‚РѕРєРѕР»Сѓ РґР°Р¶Рµ РІ СЃС‚СЂРµСЃСЃРѕРІРѕР№ СЃРёС‚СѓР°С†РёРё.',
+                'РЇ РјРѕРіСѓ СЃРѕС…СЂР°РЅСЏС‚СЊ СЂР°Р±РѕС‚РѕСЃРїРѕСЃРѕР±РЅРѕСЃС‚СЊ РІ СЂРµР¶РёРјРµ РґРµРґР»Р°Р№РЅРѕРІ.'
             ],
             accuracy: [
-                'Я внимателен(на) к деталям и понимаю цену ошибки.',
-                'Мне подходит работа по стандартам и протоколам.',
-                'Мне важно перепроверять ключевые шаги и значения.',
-                'Мне важно вести документацию/записи аккуратно.',
-                'Мне важно соблюдать порядок действий и чистоту процесса.',
-                'Мне важно работать «точно», а не «примерно».'
+                'РЇ РІРЅРёРјР°С‚РµР»РµРЅ(РЅР°) Рє РґРµС‚Р°Р»СЏРј Рё РїРѕРЅРёРјР°СЋ С†РµРЅСѓ РѕС€РёР±РєРё.',
+                'РњРЅРµ РїРѕРґС…РѕРґРёС‚ СЂР°Р±РѕС‚Р° РїРѕ СЃС‚Р°РЅРґР°СЂС‚Р°Рј Рё РїСЂРѕС‚РѕРєРѕР»Р°Рј.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРµСЂРµРїСЂРѕРІРµСЂСЏС‚СЊ РєР»СЋС‡РµРІС‹Рµ С€Р°РіРё Рё Р·РЅР°С‡РµРЅРёСЏ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РІРµСЃС‚Рё РґРѕРєСѓРјРµРЅС‚Р°С†РёСЋ/Р·Р°РїРёСЃРё Р°РєРєСѓСЂР°С‚РЅРѕ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ РїРѕСЂСЏРґРѕРє РґРµР№СЃС‚РІРёР№ Рё С‡РёСЃС‚РѕС‚Сѓ РїСЂРѕС†РµСЃСЃР°.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ В«С‚РѕС‡РЅРѕВ», Р° РЅРµ В«РїСЂРёРјРµСЂРЅРѕВ».'
             ],
             science: [
-                'Мне интересно углублённо изучать биологию/химию/анатомию.',
-                'Мне комфортно учиться через практику и разбор ошибок.',
-                'Мне интересно понимать механизмы (почему так происходит).',
-                'Мне интересно решать задания на применение знаний.',
-                'Мне интересно читать и разбирать учебные материалы системно.',
-                'Мне интересно связывать теорию с реальными задачами медицины.'
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СѓРіР»СѓР±Р»С‘РЅРЅРѕ РёР·СѓС‡Р°С‚СЊ Р±РёРѕР»РѕРіРёСЋ/С…РёРјРёСЋ/Р°РЅР°С‚РѕРјРёСЋ.',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ СѓС‡РёС‚СЊСЃСЏ С‡РµСЂРµР· РїСЂР°РєС‚РёРєСѓ Рё СЂР°Р·Р±РѕСЂ РѕС€РёР±РѕРє.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ РїРѕРЅРёРјР°С‚СЊ РјРµС…Р°РЅРёР·РјС‹ (РїРѕС‡РµРјСѓ С‚Р°Рє РїСЂРѕРёСЃС…РѕРґРёС‚).',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СЂРµС€Р°С‚СЊ Р·Р°РґР°РЅРёСЏ РЅР° РїСЂРёРјРµРЅРµРЅРёРµ Р·РЅР°РЅРёР№.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ С‡РёС‚Р°С‚СЊ Рё СЂР°Р·Р±РёСЂР°С‚СЊ СѓС‡РµР±РЅС‹Рµ РјР°С‚РµСЂРёР°Р»С‹ СЃРёСЃС‚РµРјРЅРѕ.',
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СЃРІСЏР·С‹РІР°С‚СЊ С‚РµРѕСЂРёСЋ СЃ СЂРµР°Р»СЊРЅС‹РјРё Р·Р°РґР°С‡Р°РјРё РјРµРґРёС†РёРЅС‹.'
             ],
             teamwork: [
-                'Мне интересны роли в команде: врач, медсестра, лаборант, фармацевт.',
-                'Мне важно уметь договариваться и передавать смену/информацию.',
-                'Мне важно, чтобы команда работала по общим правилам.',
-                'Мне комфортно принимать ответственность за свою часть процесса.',
-                'Мне важно уважать вклад каждого специалиста.',
-                'Мне важно ясно объяснять и уточнять, чтобы не было ошибок.'
+                'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅС‹ СЂРѕР»Рё РІ РєРѕРјР°РЅРґРµ: РІСЂР°С‡, РјРµРґСЃРµСЃС‚СЂР°, Р»Р°Р±РѕСЂР°РЅС‚, С„Р°СЂРјР°С†РµРІС‚.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СѓРјРµС‚СЊ РґРѕРіРѕРІР°СЂРёРІР°С‚СЊСЃСЏ Рё РїРµСЂРµРґР°РІР°С‚СЊ СЃРјРµРЅСѓ/РёРЅС„РѕСЂРјР°С†РёСЋ.',
+                'РњРЅРµ РІР°Р¶РЅРѕ, С‡С‚РѕР±С‹ РєРѕРјР°РЅРґР° СЂР°Р±РѕС‚Р°Р»Р° РїРѕ РѕР±С‰РёРј РїСЂР°РІРёР»Р°Рј.',
+                'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРѕ РїСЂРёРЅРёРјР°С‚СЊ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ Р·Р° СЃРІРѕСЋ С‡Р°СЃС‚СЊ РїСЂРѕС†РµСЃСЃР°.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СѓРІР°Р¶Р°С‚СЊ РІРєР»Р°Рґ РєР°Р¶РґРѕРіРѕ СЃРїРµС†РёР°Р»РёСЃС‚Р°.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЏСЃРЅРѕ РѕР±СЉСЏСЃРЅСЏС‚СЊ Рё СѓС‚РѕС‡РЅСЏС‚СЊ, С‡С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ РѕС€РёР±РѕРє.'
             ],
             responsibility: [
-                'Мне важно работать этично и честно.',
-                'Я готов(а) к постоянному обучению в профессии.',
-                'Мне важно понимать последствия решений.',
-                'Мне важно соблюдать безопасность и протоколы.',
-                'Мне важно держать дисциплину и стабильность подготовки.',
-                'Мне важно брать ответственность за результат.'
+                'РњРЅРµ РІР°Р¶РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ СЌС‚РёС‡РЅРѕ Рё С‡РµСЃС‚РЅРѕ.',
+                'РЇ РіРѕС‚РѕРІ(Р°) Рє РїРѕСЃС‚РѕСЏРЅРЅРѕРјСѓ РѕР±СѓС‡РµРЅРёСЋ РІ РїСЂРѕС„РµСЃСЃРёРё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРЅРёРјР°С‚СЊ РїРѕСЃР»РµРґСЃС‚РІРёСЏ СЂРµС€РµРЅРёР№.',
+                'РњРЅРµ РІР°Р¶РЅРѕ СЃРѕР±Р»СЋРґР°С‚СЊ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ Рё РїСЂРѕС‚РѕРєРѕР»С‹.',
+                'РњРЅРµ РІР°Р¶РЅРѕ РґРµСЂР¶Р°С‚СЊ РґРёСЃС†РёРїР»РёРЅСѓ Рё СЃС‚Р°Р±РёР»СЊРЅРѕСЃС‚СЊ РїРѕРґРіРѕС‚РѕРІРєРё.',
+                'РњРЅРµ РІР°Р¶РЅРѕ Р±СЂР°С‚СЊ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ Р·Р° СЂРµР·СѓР»СЊС‚Р°С‚.'
             ]
         }
     };
@@ -3486,11 +3486,11 @@ function generateMedicalProfessionQuestions(bandStartGrade, desiredCount = 64) {
     }
     const variants = [
         (t) => t,
-        (t) => t.replace('Мне интересно', 'Мне действительно интересно'),
-        (t) => t.replace('Мне важно', 'Для меня важно'),
-        (t) => t.replace('Мне подходит', 'Мне скорее подходит'),
-        (t) => t.replace('Мне подходит', 'Мне обычно подходит'),
-        (t) => t.replace('Мне важно', 'Мне особенно важно')
+        (t) => t.replace('РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ', 'РњРЅРµ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ РёРЅС‚РµСЂРµСЃРЅРѕ'),
+        (t) => t.replace('РњРЅРµ РІР°Р¶РЅРѕ', 'Р”Р»СЏ РјРµРЅСЏ РІР°Р¶РЅРѕ'),
+        (t) => t.replace('РњРЅРµ РїРѕРґС…РѕРґРёС‚', 'РњРЅРµ СЃРєРѕСЂРµРµ РїРѕРґС…РѕРґРёС‚'),
+        (t) => t.replace('РњРЅРµ РїРѕРґС…РѕРґРёС‚', 'РњРЅРµ РѕР±С‹С‡РЅРѕ РїРѕРґС…РѕРґРёС‚'),
+        (t) => t.replace('РњРЅРµ РІР°Р¶РЅРѕ', 'РњРЅРµ РѕСЃРѕР±РµРЅРЅРѕ РІР°Р¶РЅРѕ')
     ];
 
     const questions = [];
@@ -3511,7 +3511,7 @@ function generateMedicalProfessionQuestions(bandStartGrade, desiredCount = 64) {
         }
     }
     if (questions.length > 0) {
-        questions[0].explanation = `Это мед.профориентация. Профиль строится по параметрам: ${Object.values(statements).join(', ')}.`;
+        questions[0].explanation = `Р­С‚Рѕ РјРµРґ.РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ. РџСЂРѕС„РёР»СЊ СЃС‚СЂРѕРёС‚СЃСЏ РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј: ${Object.values(statements).join(', ')}.`;
     }
     return questions;
 }
@@ -3547,7 +3547,7 @@ function inferCategoryFromTestId(testId) {
     return null;
 }
 
-// Детерминированные помощники (чтобы варианты всегда были стабильные)
+// Р”РµС‚РµСЂРјРёРЅРёСЂРѕРІР°РЅРЅС‹Рµ РїРѕРјРѕС‰РЅРёРєРё (С‡С‚РѕР±С‹ РІР°СЂРёР°РЅС‚С‹ РІСЃРµРіРґР° Р±С‹Р»Рё СЃС‚Р°Р±РёР»СЊРЅС‹Рµ)
 function seededRand(seed) {
     let s = (seed >>> 0) || 1;
     return () => {
@@ -3610,11 +3610,11 @@ function buildMcqFromPairs({ prefix, pairs, questionText, optionsFromKeys, corre
 }
 
 
-// Функция для получения вопросов из базы
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РІРѕРїСЂРѕСЃРѕРІ РёР· Р±Р°Р·С‹
 function getQuestionsFromDatabase(category, grade) {
     const db = QUESTIONS_DATABASE[category];
     if (!db || !db[grade]) {
-        // Если нет вопросов для этого класса, используем ближайший
+        // Р•СЃР»Рё РЅРµС‚ РІРѕРїСЂРѕСЃРѕРІ РґР»СЏ СЌС‚РѕРіРѕ РєР»Р°СЃСЃР°, РёСЃРїРѕР»СЊР·СѓРµРј Р±Р»РёР¶Р°Р№С€РёР№
         const grades = Object.keys(db || {}).map(Number).sort((a, b) => a - b);
         const closest = grades.reduce((prev, curr) => 
             Math.abs(curr - grade) < Math.abs(prev - grade) ? curr : prev, grades[0] || 1);
@@ -3637,130 +3637,130 @@ function generateGradeQuestions(category, grade, count = 100) {
         questions.push(...generateSpecialtyQuestionsForGrade(gradeNum, count));
     }
     
-    // Перемешиваем вопросы
+    // РџРµСЂРµРјРµС€РёРІР°РµРј РІРѕРїСЂРѕСЃС‹
     return shuffleArray(questions).slice(0, count);
 }
 
-// === ПРОФОРИЕНТАЦИЯ ПО КЛАССАМ ===
+// === РџР РћР¤РћР РР•РќРўРђР¦РРЇ РџРћ РљР›РђРЎРЎРђРњ ===
 function generateProfessionQuestionsForGrade(grade, count) {
     const questions = [];
     const prefix = `profession_g${grade}`;
     
-    // Получаем вопросы из базы данных
+    // РџРѕР»СѓС‡Р°РµРј РІРѕРїСЂРѕСЃС‹ РёР· Р±Р°Р·С‹ РґР°РЅРЅС‹С…
     let themes = getQuestionsFromDatabase('profession', grade);
     
-    // Если в базе нет вопросов, используем старую логику
+    // Р•СЃР»Рё РІ Р±Р°Р·Рµ РЅРµС‚ РІРѕРїСЂРѕСЃРѕРІ, РёСЃРїРѕР»СЊР·СѓРµРј СЃС‚Р°СЂСѓСЋ Р»РѕРіРёРєСѓ
     if (!themes || themes.length === 0) {
         themes = grade <= 4 ? [
-        // 1-4 класс - простые понятные профессии
-        { q: 'Кто лечит людей в больнице?', opts: ['Врач', 'Учитель', 'Повар', 'Водитель'], correct: 0 },
-        { q: 'Кто учит детей в школе?', opts: ['Учитель', 'Врач', 'Строитель', 'Пожарный'], correct: 0 },
-        { q: 'Кто тушит пожары?', opts: ['Пожарный', 'Полицейский', 'Врач', 'Повар'], correct: 0 },
-        { q: 'Кто готовит еду в ресторане?', opts: ['Повар', 'Официант', 'Врач', 'Учитель'], correct: 0 },
-        { q: 'Кто строит дома?', opts: ['Строитель', 'Врач', 'Учитель', 'Повар'], correct: 0 },
-        { q: 'Кто водит автобус?', opts: ['Водитель', 'Пилот', 'Капитан', 'Машинист'], correct: 0 },
-        { q: 'Кто летает на самолёте?', opts: ['Пилот', 'Водитель', 'Капитан', 'Машинист'], correct: 0 },
-        { q: 'Кто ловит преступников?', opts: ['Полицейский', 'Пожарный', 'Врач', 'Учитель'], correct: 0 },
-        { q: 'Кто лечит животных?', opts: ['Ветеринар', 'Врач', 'Биолог', 'Зоолог'], correct: 0 },
-        { q: 'Кто рисует картины?', opts: ['Художник', 'Скульптор', 'Фотограф', 'Дизайнер'], correct: 0 },
-        { q: 'Кто пишет книги?', opts: ['Писатель', 'Журналист', 'Учитель', 'Библиотекарь'], correct: 0 },
-        { q: 'Кто делает причёски?', opts: ['Парикмахер', 'Визажист', 'Стилист', 'Модельер'], correct: 0 },
-        { q: 'Кто продаёт товары в магазине?', opts: ['Продавец', 'Покупатель', 'Директор', 'Охранник'], correct: 0 },
-        { q: 'Кто работает в библиотеке?', opts: ['Библиотекарь', 'Учитель', 'Писатель', 'Журналист'], correct: 0 },
-        { q: 'Кто выращивает овощи и фрукты?', opts: ['Фермер', 'Повар', 'Продавец', 'Биолог'], correct: 0 },
-        { q: 'Тебе нравится помогать другим людям?', opts: ['Да, очень', 'Иногда', 'Не очень', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Тебе нравится рисовать и делать поделки?', opts: ['Да, очень', 'Иногда', 'Не очень', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Тебе нравится играть с животными?', opts: ['Да, очень', 'Иногда', 'Не очень', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Тебе нравится считать и решать задачки?', opts: ['Да, очень', 'Иногда', 'Не очень', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Тебе нравится читать книги?', opts: ['Да, очень', 'Иногда', 'Не очень', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Кто чинит машины?', opts: ['Механик', 'Водитель', 'Инженер', 'Строитель'], correct: 0 },
-        { q: 'Кто шьёт одежду?', opts: ['Швея', 'Модельер', 'Продавец', 'Стилист'], correct: 0 },
-        { q: 'Кто печёт хлеб и булочки?', opts: ['Пекарь', 'Повар', 'Кондитер', 'Продавец'], correct: 0 },
-        { q: 'Кто работает в аптеке?', opts: ['Фармацевт', 'Врач', 'Медсестра', 'Биолог'], correct: 0 },
-        { q: 'Кто снимает фильмы?', opts: ['Режиссёр', 'Актёр', 'Оператор', 'Сценарист'], correct: 0 },
+        // 1-4 РєР»Р°СЃСЃ - РїСЂРѕСЃС‚С‹Рµ РїРѕРЅСЏС‚РЅС‹Рµ РїСЂРѕС„РµСЃСЃРёРё
+        { q: 'РљС‚Рѕ Р»РµС‡РёС‚ Р»СЋРґРµР№ РІ Р±РѕР»СЊРЅРёС†Рµ?', opts: ['Р’СЂР°С‡', 'РЈС‡РёС‚РµР»СЊ', 'РџРѕРІР°СЂ', 'Р’РѕРґРёС‚РµР»СЊ'], correct: 0 },
+        { q: 'РљС‚Рѕ СѓС‡РёС‚ РґРµС‚РµР№ РІ С€РєРѕР»Рµ?', opts: ['РЈС‡РёС‚РµР»СЊ', 'Р’СЂР°С‡', 'РЎС‚СЂРѕРёС‚РµР»СЊ', 'РџРѕР¶Р°СЂРЅС‹Р№'], correct: 0 },
+        { q: 'РљС‚Рѕ С‚СѓС€РёС‚ РїРѕР¶Р°СЂС‹?', opts: ['РџРѕР¶Р°СЂРЅС‹Р№', 'РџРѕР»РёС†РµР№СЃРєРёР№', 'Р’СЂР°С‡', 'РџРѕРІР°СЂ'], correct: 0 },
+        { q: 'РљС‚Рѕ РіРѕС‚РѕРІРёС‚ РµРґСѓ РІ СЂРµСЃС‚РѕСЂР°РЅРµ?', opts: ['РџРѕРІР°СЂ', 'РћС„РёС†РёР°РЅС‚', 'Р’СЂР°С‡', 'РЈС‡РёС‚РµР»СЊ'], correct: 0 },
+        { q: 'РљС‚Рѕ СЃС‚СЂРѕРёС‚ РґРѕРјР°?', opts: ['РЎС‚СЂРѕРёС‚РµР»СЊ', 'Р’СЂР°С‡', 'РЈС‡РёС‚РµР»СЊ', 'РџРѕРІР°СЂ'], correct: 0 },
+        { q: 'РљС‚Рѕ РІРѕРґРёС‚ Р°РІС‚РѕР±СѓСЃ?', opts: ['Р’РѕРґРёС‚РµР»СЊ', 'РџРёР»РѕС‚', 'РљР°РїРёС‚Р°РЅ', 'РњР°С€РёРЅРёСЃС‚'], correct: 0 },
+        { q: 'РљС‚Рѕ Р»РµС‚Р°РµС‚ РЅР° СЃР°РјРѕР»С‘С‚Рµ?', opts: ['РџРёР»РѕС‚', 'Р’РѕРґРёС‚РµР»СЊ', 'РљР°РїРёС‚Р°РЅ', 'РњР°С€РёРЅРёСЃС‚'], correct: 0 },
+        { q: 'РљС‚Рѕ Р»РѕРІРёС‚ РїСЂРµСЃС‚СѓРїРЅРёРєРѕРІ?', opts: ['РџРѕР»РёС†РµР№СЃРєРёР№', 'РџРѕР¶Р°СЂРЅС‹Р№', 'Р’СЂР°С‡', 'РЈС‡РёС‚РµР»СЊ'], correct: 0 },
+        { q: 'РљС‚Рѕ Р»РµС‡РёС‚ Р¶РёРІРѕС‚РЅС‹С…?', opts: ['Р’РµС‚РµСЂРёРЅР°СЂ', 'Р’СЂР°С‡', 'Р‘РёРѕР»РѕРі', 'Р—РѕРѕР»РѕРі'], correct: 0 },
+        { q: 'РљС‚Рѕ СЂРёСЃСѓРµС‚ РєР°СЂС‚РёРЅС‹?', opts: ['РҐСѓРґРѕР¶РЅРёРє', 'РЎРєСѓР»СЊРїС‚РѕСЂ', 'Р¤РѕС‚РѕРіСЂР°С„', 'Р”РёР·Р°Р№РЅРµСЂ'], correct: 0 },
+        { q: 'РљС‚Рѕ РїРёС€РµС‚ РєРЅРёРіРё?', opts: ['РџРёСЃР°С‚РµР»СЊ', 'Р–СѓСЂРЅР°Р»РёСЃС‚', 'РЈС‡РёС‚РµР»СЊ', 'Р‘РёР±Р»РёРѕС‚РµРєР°СЂСЊ'], correct: 0 },
+        { q: 'РљС‚Рѕ РґРµР»Р°РµС‚ РїСЂРёС‡С‘СЃРєРё?', opts: ['РџР°СЂРёРєРјР°С…РµСЂ', 'Р’РёР·Р°Р¶РёСЃС‚', 'РЎС‚РёР»РёСЃС‚', 'РњРѕРґРµР»СЊРµСЂ'], correct: 0 },
+        { q: 'РљС‚Рѕ РїСЂРѕРґР°С‘С‚ С‚РѕРІР°СЂС‹ РІ РјР°РіР°Р·РёРЅРµ?', opts: ['РџСЂРѕРґР°РІРµС†', 'РџРѕРєСѓРїР°С‚РµР»СЊ', 'Р”РёСЂРµРєС‚РѕСЂ', 'РћС…СЂР°РЅРЅРёРє'], correct: 0 },
+        { q: 'РљС‚Рѕ СЂР°Р±РѕС‚Р°РµС‚ РІ Р±РёР±Р»РёРѕС‚РµРєРµ?', opts: ['Р‘РёР±Р»РёРѕС‚РµРєР°СЂСЊ', 'РЈС‡РёС‚РµР»СЊ', 'РџРёСЃР°С‚РµР»СЊ', 'Р–СѓСЂРЅР°Р»РёСЃС‚'], correct: 0 },
+        { q: 'РљС‚Рѕ РІС‹СЂР°С‰РёРІР°РµС‚ РѕРІРѕС‰Рё Рё С„СЂСѓРєС‚С‹?', opts: ['Р¤РµСЂРјРµСЂ', 'РџРѕРІР°СЂ', 'РџСЂРѕРґР°РІРµС†', 'Р‘РёРѕР»РѕРі'], correct: 0 },
+        { q: 'РўРµР±Рµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРјРѕРіР°С‚СЊ РґСЂСѓРіРёРј Р»СЋРґСЏРј?', opts: ['Р”Р°, РѕС‡РµРЅСЊ', 'РРЅРѕРіРґР°', 'РќРµ РѕС‡РµРЅСЊ', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РўРµР±Рµ РЅСЂР°РІРёС‚СЃСЏ СЂРёСЃРѕРІР°С‚СЊ Рё РґРµР»Р°С‚СЊ РїРѕРґРµР»РєРё?', opts: ['Р”Р°, РѕС‡РµРЅСЊ', 'РРЅРѕРіРґР°', 'РќРµ РѕС‡РµРЅСЊ', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РўРµР±Рµ РЅСЂР°РІРёС‚СЃСЏ РёРіСЂР°С‚СЊ СЃ Р¶РёРІРѕС‚РЅС‹РјРё?', opts: ['Р”Р°, РѕС‡РµРЅСЊ', 'РРЅРѕРіРґР°', 'РќРµ РѕС‡РµРЅСЊ', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РўРµР±Рµ РЅСЂР°РІРёС‚СЃСЏ СЃС‡РёС‚Р°С‚СЊ Рё СЂРµС€Р°С‚СЊ Р·Р°РґР°С‡РєРё?', opts: ['Р”Р°, РѕС‡РµРЅСЊ', 'РРЅРѕРіРґР°', 'РќРµ РѕС‡РµРЅСЊ', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РўРµР±Рµ РЅСЂР°РІРёС‚СЃСЏ С‡РёС‚Р°С‚СЊ РєРЅРёРіРё?', opts: ['Р”Р°, РѕС‡РµРЅСЊ', 'РРЅРѕРіРґР°', 'РќРµ РѕС‡РµРЅСЊ', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РљС‚Рѕ С‡РёРЅРёС‚ РјР°С€РёРЅС‹?', opts: ['РњРµС…Р°РЅРёРє', 'Р’РѕРґРёС‚РµР»СЊ', 'РРЅР¶РµРЅРµСЂ', 'РЎС‚СЂРѕРёС‚РµР»СЊ'], correct: 0 },
+        { q: 'РљС‚Рѕ С€СЊС‘С‚ РѕРґРµР¶РґСѓ?', opts: ['РЁРІРµСЏ', 'РњРѕРґРµР»СЊРµСЂ', 'РџСЂРѕРґР°РІРµС†', 'РЎС‚РёР»РёСЃС‚'], correct: 0 },
+        { q: 'РљС‚Рѕ РїРµС‡С‘С‚ С…Р»РµР± Рё Р±СѓР»РѕС‡РєРё?', opts: ['РџРµРєР°СЂСЊ', 'РџРѕРІР°СЂ', 'РљРѕРЅРґРёС‚РµСЂ', 'РџСЂРѕРґР°РІРµС†'], correct: 0 },
+        { q: 'РљС‚Рѕ СЂР°Р±РѕС‚Р°РµС‚ РІ Р°РїС‚РµРєРµ?', opts: ['Р¤Р°СЂРјР°С†РµРІС‚', 'Р’СЂР°С‡', 'РњРµРґСЃРµСЃС‚СЂР°', 'Р‘РёРѕР»РѕРі'], correct: 0 },
+        { q: 'РљС‚Рѕ СЃРЅРёРјР°РµС‚ С„РёР»СЊРјС‹?', opts: ['Р РµР¶РёСЃСЃС‘СЂ', 'РђРєС‚С‘СЂ', 'РћРїРµСЂР°С‚РѕСЂ', 'РЎС†РµРЅР°СЂРёСЃС‚'], correct: 0 },
     ] : grade <= 6 ? [
-        // 5-6 класс
-        { q: 'Какая профессия связана с изучением живой природы?', opts: ['Биолог', 'Физик', 'Химик', 'Математик'], correct: 0 },
-        { q: 'Кто занимается лечением зубов?', opts: ['Стоматолог', 'Терапевт', 'Хирург', 'Окулист'], correct: 0 },
-        { q: 'Какой специалист проектирует здания?', opts: ['Архитектор', 'Строитель', 'Дизайнер', 'Инженер'], correct: 0 },
-        { q: 'Кто изучает звёзды и планеты?', opts: ['Астроном', 'Физик', 'Географ', 'Геолог'], correct: 0 },
-        { q: 'Какая профессия связана с защитой природы?', opts: ['Эколог', 'Биолог', 'Географ', 'Фермер'], correct: 0 },
-        { q: 'Кто пишет статьи для газет?', opts: ['Журналист', 'Писатель', 'Редактор', 'Блогер'], correct: 0 },
-        { q: 'Какой врач лечит детей?', opts: ['Педиатр', 'Терапевт', 'Хирург', 'Невролог'], correct: 0 },
-        { q: 'Кто создаёт компьютерные программы?', opts: ['Программист', 'Инженер', 'Электрик', 'Системный администратор'], correct: 0 },
-        { q: 'Какая профессия связана с изучением истории?', opts: ['Историк', 'Археолог', 'Географ', 'Политолог'], correct: 0 },
-        { q: 'Кто переводит тексты с одного языка на другой?', opts: ['Переводчик', 'Учитель', 'Писатель', 'Редактор'], correct: 0 },
-        { q: 'Мне интересно узнавать, как устроен мир', opts: ['Да, очень', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Мне нравится работать в команде', opts: ['Да, очень', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Я люблю решать сложные задачи', opts: ['Да, очень', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Мне нравится помогать людям', opts: ['Да, очень', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Я интересуюсь техникой и гаджетами', opts: ['Да, очень', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Кто исследует морское дно?', opts: ['Океанолог', 'Биолог', 'Географ', 'Геолог'], correct: 0 },
-        { q: 'Какой специалист работает с электричеством?', opts: ['Электрик', 'Механик', 'Инженер', 'Физик'], correct: 0 },
-        { q: 'Кто лечит глаза?', opts: ['Офтальмолог', 'Терапевт', 'Хирург', 'Дерматолог'], correct: 0 },
-        { q: 'Какая профессия связана с музыкой?', opts: ['Музыкант', 'Художник', 'Актёр', 'Танцор'], correct: 0 },
-        { q: 'Кто изучает минералы и горные породы?', opts: ['Геолог', 'Географ', 'Химик', 'Физик'], correct: 0 },
-        { q: 'Какой специалист занимается дизайном интерьеров?', opts: ['Дизайнер интерьеров', 'Архитектор', 'Художник', 'Строитель'], correct: 0 },
-        { q: 'Кто работает с документами в офисе?', opts: ['Секретарь', 'Бухгалтер', 'Менеджер', 'Директор'], correct: 0 },
-        { q: 'Какая профессия связана со спортом?', opts: ['Тренер', 'Врач', 'Учитель', 'Массажист'], correct: 0 },
-        { q: 'Кто создаёт новые лекарства?', opts: ['Фармаколог', 'Врач', 'Химик', 'Биолог'], correct: 0 },
-        { q: 'Какой специалист изучает поведение людей?', opts: ['Психолог', 'Социолог', 'Врач', 'Учитель'], correct: 0 },
+        // 5-6 РєР»Р°СЃСЃ
+        { q: 'РљР°РєР°СЏ РїСЂРѕС„РµСЃСЃРёСЏ СЃРІСЏР·Р°РЅР° СЃ РёР·СѓС‡РµРЅРёРµРј Р¶РёРІРѕР№ РїСЂРёСЂРѕРґС‹?', opts: ['Р‘РёРѕР»РѕРі', 'Р¤РёР·РёРє', 'РҐРёРјРёРє', 'РњР°С‚РµРјР°С‚РёРє'], correct: 0 },
+        { q: 'РљС‚Рѕ Р·Р°РЅРёРјР°РµС‚СЃСЏ Р»РµС‡РµРЅРёРµРј Р·СѓР±РѕРІ?', opts: ['РЎС‚РѕРјР°С‚РѕР»РѕРі', 'РўРµСЂР°РїРµРІС‚', 'РҐРёСЂСѓСЂРі', 'РћРєСѓР»РёСЃС‚'], correct: 0 },
+        { q: 'РљР°РєРѕР№ СЃРїРµС†РёР°Р»РёСЃС‚ РїСЂРѕРµРєС‚РёСЂСѓРµС‚ Р·РґР°РЅРёСЏ?', opts: ['РђСЂС…РёС‚РµРєС‚РѕСЂ', 'РЎС‚СЂРѕРёС‚РµР»СЊ', 'Р”РёР·Р°Р№РЅРµСЂ', 'РРЅР¶РµРЅРµСЂ'], correct: 0 },
+        { q: 'РљС‚Рѕ РёР·СѓС‡Р°РµС‚ Р·РІС‘Р·РґС‹ Рё РїР»Р°РЅРµС‚С‹?', opts: ['РђСЃС‚СЂРѕРЅРѕРј', 'Р¤РёР·РёРє', 'Р“РµРѕРіСЂР°С„', 'Р“РµРѕР»РѕРі'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РїСЂРѕС„РµСЃСЃРёСЏ СЃРІСЏР·Р°РЅР° СЃ Р·Р°С‰РёС‚РѕР№ РїСЂРёСЂРѕРґС‹?', opts: ['Р­РєРѕР»РѕРі', 'Р‘РёРѕР»РѕРі', 'Р“РµРѕРіСЂР°С„', 'Р¤РµСЂРјРµСЂ'], correct: 0 },
+        { q: 'РљС‚Рѕ РїРёС€РµС‚ СЃС‚Р°С‚СЊРё РґР»СЏ РіР°Р·РµС‚?', opts: ['Р–СѓСЂРЅР°Р»РёСЃС‚', 'РџРёСЃР°С‚РµР»СЊ', 'Р РµРґР°РєС‚РѕСЂ', 'Р‘Р»РѕРіРµСЂ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ Р»РµС‡РёС‚ РґРµС‚РµР№?', opts: ['РџРµРґРёР°С‚СЂ', 'РўРµСЂР°РїРµРІС‚', 'РҐРёСЂСѓСЂРі', 'РќРµРІСЂРѕР»РѕРі'], correct: 0 },
+        { q: 'РљС‚Рѕ СЃРѕР·РґР°С‘С‚ РєРѕРјРїСЊСЋС‚РµСЂРЅС‹Рµ РїСЂРѕРіСЂР°РјРјС‹?', opts: ['РџСЂРѕРіСЂР°РјРјРёСЃС‚', 'РРЅР¶РµРЅРµСЂ', 'Р­Р»РµРєС‚СЂРёРє', 'РЎРёСЃС‚РµРјРЅС‹Р№ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РїСЂРѕС„РµСЃСЃРёСЏ СЃРІСЏР·Р°РЅР° СЃ РёР·СѓС‡РµРЅРёРµРј РёСЃС‚РѕСЂРёРё?', opts: ['РСЃС‚РѕСЂРёРє', 'РђСЂС…РµРѕР»РѕРі', 'Р“РµРѕРіСЂР°С„', 'РџРѕР»РёС‚РѕР»РѕРі'], correct: 0 },
+        { q: 'РљС‚Рѕ РїРµСЂРµРІРѕРґРёС‚ С‚РµРєСЃС‚С‹ СЃ РѕРґРЅРѕРіРѕ СЏР·С‹РєР° РЅР° РґСЂСѓРіРѕР№?', opts: ['РџРµСЂРµРІРѕРґС‡РёРє', 'РЈС‡РёС‚РµР»СЊ', 'РџРёСЃР°С‚РµР»СЊ', 'Р РµРґР°РєС‚РѕСЂ'], correct: 0 },
+        { q: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅРѕ СѓР·РЅР°РІР°С‚СЊ, РєР°Рє СѓСЃС‚СЂРѕРµРЅ РјРёСЂ', opts: ['Р”Р°, РѕС‡РµРЅСЊ', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ СЂР°Р±РѕС‚Р°С‚СЊ РІ РєРѕРјР°РЅРґРµ', opts: ['Р”Р°, РѕС‡РµРЅСЊ', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РЇ Р»СЋР±Р»СЋ СЂРµС€Р°С‚СЊ СЃР»РѕР¶РЅС‹Рµ Р·Р°РґР°С‡Рё', opts: ['Р”Р°, РѕС‡РµРЅСЊ', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј', opts: ['Р”Р°, РѕС‡РµРЅСЊ', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РЇ РёРЅС‚РµСЂРµСЃСѓСЋСЃСЊ С‚РµС…РЅРёРєРѕР№ Рё РіР°РґР¶РµС‚Р°РјРё', opts: ['Р”Р°, РѕС‡РµРЅСЊ', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РљС‚Рѕ РёСЃСЃР»РµРґСѓРµС‚ РјРѕСЂСЃРєРѕРµ РґРЅРѕ?', opts: ['РћРєРµР°РЅРѕР»РѕРі', 'Р‘РёРѕР»РѕРі', 'Р“РµРѕРіСЂР°С„', 'Р“РµРѕР»РѕРі'], correct: 0 },
+        { q: 'РљР°РєРѕР№ СЃРїРµС†РёР°Р»РёСЃС‚ СЂР°Р±РѕС‚Р°РµС‚ СЃ СЌР»РµРєС‚СЂРёС‡РµСЃС‚РІРѕРј?', opts: ['Р­Р»РµРєС‚СЂРёРє', 'РњРµС…Р°РЅРёРє', 'РРЅР¶РµРЅРµСЂ', 'Р¤РёР·РёРє'], correct: 0 },
+        { q: 'РљС‚Рѕ Р»РµС‡РёС‚ РіР»Р°Р·Р°?', opts: ['РћС„С‚Р°Р»СЊРјРѕР»РѕРі', 'РўРµСЂР°РїРµРІС‚', 'РҐРёСЂСѓСЂРі', 'Р”РµСЂРјР°С‚РѕР»РѕРі'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РїСЂРѕС„РµСЃСЃРёСЏ СЃРІСЏР·Р°РЅР° СЃ РјСѓР·С‹РєРѕР№?', opts: ['РњСѓР·С‹РєР°РЅС‚', 'РҐСѓРґРѕР¶РЅРёРє', 'РђРєС‚С‘СЂ', 'РўР°РЅС†РѕСЂ'], correct: 0 },
+        { q: 'РљС‚Рѕ РёР·СѓС‡Р°РµС‚ РјРёРЅРµСЂР°Р»С‹ Рё РіРѕСЂРЅС‹Рµ РїРѕСЂРѕРґС‹?', opts: ['Р“РµРѕР»РѕРі', 'Р“РµРѕРіСЂР°С„', 'РҐРёРјРёРє', 'Р¤РёР·РёРє'], correct: 0 },
+        { q: 'РљР°РєРѕР№ СЃРїРµС†РёР°Р»РёСЃС‚ Р·Р°РЅРёРјР°РµС‚СЃСЏ РґРёР·Р°Р№РЅРѕРј РёРЅС‚РµСЂСЊРµСЂРѕРІ?', opts: ['Р”РёР·Р°Р№РЅРµСЂ РёРЅС‚РµСЂСЊРµСЂРѕРІ', 'РђСЂС…РёС‚РµРєС‚РѕСЂ', 'РҐСѓРґРѕР¶РЅРёРє', 'РЎС‚СЂРѕРёС‚РµР»СЊ'], correct: 0 },
+        { q: 'РљС‚Рѕ СЂР°Р±РѕС‚Р°РµС‚ СЃ РґРѕРєСѓРјРµРЅС‚Р°РјРё РІ РѕС„РёСЃРµ?', opts: ['РЎРµРєСЂРµС‚Р°СЂСЊ', 'Р‘СѓС…РіР°Р»С‚РµСЂ', 'РњРµРЅРµРґР¶РµСЂ', 'Р”РёСЂРµРєС‚РѕСЂ'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РїСЂРѕС„РµСЃСЃРёСЏ СЃРІСЏР·Р°РЅР° СЃРѕ СЃРїРѕСЂС‚РѕРј?', opts: ['РўСЂРµРЅРµСЂ', 'Р’СЂР°С‡', 'РЈС‡РёС‚РµР»СЊ', 'РњР°СЃСЃР°Р¶РёСЃС‚'], correct: 0 },
+        { q: 'РљС‚Рѕ СЃРѕР·РґР°С‘С‚ РЅРѕРІС‹Рµ Р»РµРєР°СЂСЃС‚РІР°?', opts: ['Р¤Р°СЂРјР°РєРѕР»РѕРі', 'Р’СЂР°С‡', 'РҐРёРјРёРє', 'Р‘РёРѕР»РѕРі'], correct: 0 },
+        { q: 'РљР°РєРѕР№ СЃРїРµС†РёР°Р»РёСЃС‚ РёР·СѓС‡Р°РµС‚ РїРѕРІРµРґРµРЅРёРµ Р»СЋРґРµР№?', opts: ['РџСЃРёС…РѕР»РѕРі', 'РЎРѕС†РёРѕР»РѕРі', 'Р’СЂР°С‡', 'РЈС‡РёС‚РµР»СЊ'], correct: 0 },
     ] : grade <= 8 ? [
-        // 7-8 класс
-        { q: 'Какой тип личности по Холланду предпочитает работу с данными и цифрами?', opts: ['Конвенциональный', 'Реалистичный', 'Артистичный', 'Социальный'], correct: 0 },
-        { q: 'Что изучает эргономика?', opts: ['Взаимодействие человека и рабочей среды', 'Экономику труда', 'Психологию работников', 'Физиологию труда'], correct: 0 },
-        { q: 'Какая профессия относится к типу "человек-техника"?', opts: ['Инженер', 'Врач', 'Учитель', 'Художник'], correct: 0 },
-        { q: 'Что такое профессиограмма?', opts: ['Описание профессии и требований к работнику', 'График работы', 'Зарплатная ведомость', 'Резюме'], correct: 0 },
-        { q: 'Какое образование нужно для работы врачом?', opts: ['Высшее медицинское', 'Среднее специальное', 'Курсы', 'Любое высшее'], correct: 0 },
-        { q: 'Что такое soft skills?', opts: ['Гибкие навыки (коммуникация, лидерство)', 'Технические навыки', 'Профессиональные знания', 'Физические способности'], correct: 0 },
-        { q: 'Какая профессия относится к IT-сфере?', opts: ['Data Scientist', 'Маркетолог', 'Бухгалтер', 'Юрист'], correct: 0 },
-        { q: 'Что такое карьерная лестница?', opts: ['Последовательность должностей для продвижения', 'Лестница в офисе', 'Список профессий', 'Рейтинг зарплат'], correct: 0 },
-        { q: 'Мне важно, чтобы моя работа приносила пользу обществу', opts: ['Полностью согласен', 'Скорее согласен', 'Скорее не согласен', 'Не согласен'], correct: 0, type: 'likert' },
-        { q: 'Я готов много учиться для достижения карьерных целей', opts: ['Полностью согласен', 'Скорее согласен', 'Скорее не согласен', 'Не согласен'], correct: 0, type: 'likert' },
-        { q: 'Для меня важен высокий доход', opts: ['Полностью согласен', 'Скорее согласен', 'Скорее не согласен', 'Не согласен'], correct: 0, type: 'likert' },
-        { q: 'Я предпочитаю творческую работу рутинной', opts: ['Полностью согласен', 'Скорее согласен', 'Скорее не согласен', 'Не согласен'], correct: 0, type: 'likert' },
-        { q: 'Мне комфортнее работать в одиночку, чем в команде', opts: ['Полностью согласен', 'Скорее согласен', 'Скорее не согласен', 'Не согласен'], correct: 0, type: 'likert' },
-        { q: 'Какой специалист занимается продвижением в интернете?', opts: ['SMM-специалист', 'Программист', 'Дизайнер', 'Копирайтер'], correct: 0 },
-        { q: 'Что такое фриланс?', opts: ['Удалённая работа на себя', 'Работа в офисе', 'Государственная служба', 'Работа по найму'], correct: 0 },
-        { q: 'Какая профессия связана с анализом больших данных?', opts: ['Аналитик данных', 'Программист', 'Тестировщик', 'Системный администратор'], correct: 0 },
-        { q: 'Что изучает профориентация?', opts: ['Помощь в выборе профессии', 'Историю профессий', 'Экономику труда', 'Психологию работы'], correct: 0 },
-        { q: 'Какой тип мышления важен для программиста?', opts: ['Логическое', 'Образное', 'Эмоциональное', 'Интуитивное'], correct: 0 },
-        { q: 'Что такое стажировка?', opts: ['Практика для получения опыта', 'Испытательный срок', 'Обучение в вузе', 'Курсы повышения квалификации'], correct: 0 },
-        { q: 'Какая профессия появилась благодаря развитию интернета?', opts: ['Блогер', 'Журналист', 'Писатель', 'Редактор'], correct: 0 },
-        { q: 'Что важнее при выборе профессии?', opts: ['Интерес и способности', 'Только зарплата', 'Мнение родителей', 'Престиж'], correct: 0 },
-        { q: 'Какой навык важен для любой профессии?', opts: ['Умение учиться', 'Знание языков', 'Физическая сила', 'Красивый почерк'], correct: 0 },
-        { q: 'Что такое резюме?', opts: ['Документ с информацией о соискателе', 'Рекомендательное письмо', 'Трудовой договор', 'Диплом'], correct: 0 },
-        { q: 'Какая профессия связана с защитой информации?', opts: ['Специалист по кибербезопасности', 'Программист', 'Системный администратор', 'Тестировщик'], correct: 0 },
+        // 7-8 РєР»Р°СЃСЃ
+        { q: 'РљР°РєРѕР№ С‚РёРї Р»РёС‡РЅРѕСЃС‚Рё РїРѕ РҐРѕР»Р»Р°РЅРґСѓ РїСЂРµРґРїРѕС‡РёС‚Р°РµС‚ СЂР°Р±РѕС‚Сѓ СЃ РґР°РЅРЅС‹РјРё Рё С†РёС„СЂР°РјРё?', opts: ['РљРѕРЅРІРµРЅС†РёРѕРЅР°Р»СЊРЅС‹Р№', 'Р РµР°Р»РёСЃС‚РёС‡РЅС‹Р№', 'РђСЂС‚РёСЃС‚РёС‡РЅС‹Р№', 'РЎРѕС†РёР°Р»СЊРЅС‹Р№'], correct: 0 },
+        { q: 'Р§С‚Рѕ РёР·СѓС‡Р°РµС‚ СЌСЂРіРѕРЅРѕРјРёРєР°?', opts: ['Р’Р·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ С‡РµР»РѕРІРµРєР° Рё СЂР°Р±РѕС‡РµР№ СЃСЂРµРґС‹', 'Р­РєРѕРЅРѕРјРёРєСѓ С‚СЂСѓРґР°', 'РџСЃРёС…РѕР»РѕРіРёСЋ СЂР°Р±РѕС‚РЅРёРєРѕРІ', 'Р¤РёР·РёРѕР»РѕРіРёСЋ С‚СЂСѓРґР°'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РїСЂРѕС„РµСЃСЃРёСЏ РѕС‚РЅРѕСЃРёС‚СЃСЏ Рє С‚РёРїСѓ "С‡РµР»РѕРІРµРє-С‚РµС…РЅРёРєР°"?', opts: ['РРЅР¶РµРЅРµСЂ', 'Р’СЂР°С‡', 'РЈС‡РёС‚РµР»СЊ', 'РҐСѓРґРѕР¶РЅРёРє'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РїСЂРѕС„РµСЃСЃРёРѕРіСЂР°РјРјР°?', opts: ['РћРїРёСЃР°РЅРёРµ РїСЂРѕС„РµСЃСЃРёРё Рё С‚СЂРµР±РѕРІР°РЅРёР№ Рє СЂР°Р±РѕС‚РЅРёРєСѓ', 'Р“СЂР°С„РёРє СЂР°Р±РѕС‚С‹', 'Р—Р°СЂРїР»Р°С‚РЅР°СЏ РІРµРґРѕРјРѕСЃС‚СЊ', 'Р РµР·СЋРјРµ'], correct: 0 },
+        { q: 'РљР°РєРѕРµ РѕР±СЂР°Р·РѕРІР°РЅРёРµ РЅСѓР¶РЅРѕ РґР»СЏ СЂР°Р±РѕС‚С‹ РІСЂР°С‡РѕРј?', opts: ['Р’С‹СЃС€РµРµ РјРµРґРёС†РёРЅСЃРєРѕРµ', 'РЎСЂРµРґРЅРµРµ СЃРїРµС†РёР°Р»СЊРЅРѕРµ', 'РљСѓСЂСЃС‹', 'Р›СЋР±РѕРµ РІС‹СЃС€РµРµ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ soft skills?', opts: ['Р“РёР±РєРёРµ РЅР°РІС‹РєРё (РєРѕРјРјСѓРЅРёРєР°С†РёСЏ, Р»РёРґРµСЂСЃС‚РІРѕ)', 'РўРµС…РЅРёС‡РµСЃРєРёРµ РЅР°РІС‹РєРё', 'РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Рµ Р·РЅР°РЅРёСЏ', 'Р¤РёР·РёС‡РµСЃРєРёРµ СЃРїРѕСЃРѕР±РЅРѕСЃС‚Рё'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РїСЂРѕС„РµСЃСЃРёСЏ РѕС‚РЅРѕСЃРёС‚СЃСЏ Рє IT-СЃС„РµСЂРµ?', opts: ['Data Scientist', 'РњР°СЂРєРµС‚РѕР»РѕРі', 'Р‘СѓС…РіР°Р»С‚РµСЂ', 'Р®СЂРёСЃС‚'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РєР°СЂСЊРµСЂРЅР°СЏ Р»РµСЃС‚РЅРёС†Р°?', opts: ['РџРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ РґРѕР»Р¶РЅРѕСЃС‚РµР№ РґР»СЏ РїСЂРѕРґРІРёР¶РµРЅРёСЏ', 'Р›РµСЃС‚РЅРёС†Р° РІ РѕС„РёСЃРµ', 'РЎРїРёСЃРѕРє РїСЂРѕС„РµСЃСЃРёР№', 'Р РµР№С‚РёРЅРі Р·Р°СЂРїР»Р°С‚'], correct: 0 },
+        { q: 'РњРЅРµ РІР°Р¶РЅРѕ, С‡С‚РѕР±С‹ РјРѕСЏ СЂР°Р±РѕС‚Р° РїСЂРёРЅРѕСЃРёР»Р° РїРѕР»СЊР·Сѓ РѕР±С‰РµСЃС‚РІСѓ', opts: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РќРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, type: 'likert' },
+        { q: 'РЇ РіРѕС‚РѕРІ РјРЅРѕРіРѕ СѓС‡РёС‚СЊСЃСЏ РґР»СЏ РґРѕСЃС‚РёР¶РµРЅРёСЏ РєР°СЂСЊРµСЂРЅС‹С… С†РµР»РµР№', opts: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РќРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, type: 'likert' },
+        { q: 'Р”Р»СЏ РјРµРЅСЏ РІР°Р¶РµРЅ РІС‹СЃРѕРєРёР№ РґРѕС…РѕРґ', opts: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РќРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, type: 'likert' },
+        { q: 'РЇ РїСЂРµРґРїРѕС‡РёС‚Р°СЋ С‚РІРѕСЂС‡РµСЃРєСѓСЋ СЂР°Р±РѕС‚Сѓ СЂСѓС‚РёРЅРЅРѕР№', opts: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РќРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, type: 'likert' },
+        { q: 'РњРЅРµ РєРѕРјС„РѕСЂС‚РЅРµРµ СЂР°Р±РѕС‚Р°С‚СЊ РІ РѕРґРёРЅРѕС‡РєСѓ, С‡РµРј РІ РєРѕРјР°РЅРґРµ', opts: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РќРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, type: 'likert' },
+        { q: 'РљР°РєРѕР№ СЃРїРµС†РёР°Р»РёСЃС‚ Р·Р°РЅРёРјР°РµС‚СЃСЏ РїСЂРѕРґРІРёР¶РµРЅРёРµРј РІ РёРЅС‚РµСЂРЅРµС‚Рµ?', opts: ['SMM-СЃРїРµС†РёР°Р»РёСЃС‚', 'РџСЂРѕРіСЂР°РјРјРёСЃС‚', 'Р”РёР·Р°Р№РЅРµСЂ', 'РљРѕРїРёСЂР°Р№С‚РµСЂ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ С„СЂРёР»Р°РЅСЃ?', opts: ['РЈРґР°Р»С‘РЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° СЃРµР±СЏ', 'Р Р°Р±РѕС‚Р° РІ РѕС„РёСЃРµ', 'Р“РѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅР°СЏ СЃР»СѓР¶Р±Р°', 'Р Р°Р±РѕС‚Р° РїРѕ РЅР°Р№РјСѓ'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РїСЂРѕС„РµСЃСЃРёСЏ СЃРІСЏР·Р°РЅР° СЃ Р°РЅР°Р»РёР·РѕРј Р±РѕР»СЊС€РёС… РґР°РЅРЅС‹С…?', opts: ['РђРЅР°Р»РёС‚РёРє РґР°РЅРЅС‹С…', 'РџСЂРѕРіСЂР°РјРјРёСЃС‚', 'РўРµСЃС‚РёСЂРѕРІС‰РёРє', 'РЎРёСЃС‚РµРјРЅС‹Р№ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ'], correct: 0 },
+        { q: 'Р§С‚Рѕ РёР·СѓС‡Р°РµС‚ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ?', opts: ['РџРѕРјРѕС‰СЊ РІ РІС‹Р±РѕСЂРµ РїСЂРѕС„РµСЃСЃРёРё', 'РСЃС‚РѕСЂРёСЋ РїСЂРѕС„РµСЃСЃРёР№', 'Р­РєРѕРЅРѕРјРёРєСѓ С‚СЂСѓРґР°', 'РџСЃРёС…РѕР»РѕРіРёСЋ СЂР°Р±РѕС‚С‹'], correct: 0 },
+        { q: 'РљР°РєРѕР№ С‚РёРї РјС‹С€Р»РµРЅРёСЏ РІР°Р¶РµРЅ РґР»СЏ РїСЂРѕРіСЂР°РјРјРёСЃС‚Р°?', opts: ['Р›РѕРіРёС‡РµСЃРєРѕРµ', 'РћР±СЂР°Р·РЅРѕРµ', 'Р­РјРѕС†РёРѕРЅР°Р»СЊРЅРѕРµ', 'РРЅС‚СѓРёС‚РёРІРЅРѕРµ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЃС‚Р°Р¶РёСЂРѕРІРєР°?', opts: ['РџСЂР°РєС‚РёРєР° РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РѕРїС‹С‚Р°', 'РСЃРїС‹С‚Р°С‚РµР»СЊРЅС‹Р№ СЃСЂРѕРє', 'РћР±СѓС‡РµРЅРёРµ РІ РІСѓР·Рµ', 'РљСѓСЂСЃС‹ РїРѕРІС‹С€РµРЅРёСЏ РєРІР°Р»РёС„РёРєР°С†РёРё'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РїСЂРѕС„РµСЃСЃРёСЏ РїРѕСЏРІРёР»Р°СЃСЊ Р±Р»Р°РіРѕРґР°СЂСЏ СЂР°Р·РІРёС‚РёСЋ РёРЅС‚РµСЂРЅРµС‚Р°?', opts: ['Р‘Р»РѕРіРµСЂ', 'Р–СѓСЂРЅР°Р»РёСЃС‚', 'РџРёСЃР°С‚РµР»СЊ', 'Р РµРґР°РєС‚РѕСЂ'], correct: 0 },
+        { q: 'Р§С‚Рѕ РІР°Р¶РЅРµРµ РїСЂРё РІС‹Р±РѕСЂРµ РїСЂРѕС„РµСЃСЃРёРё?', opts: ['РРЅС‚РµСЂРµСЃ Рё СЃРїРѕСЃРѕР±РЅРѕСЃС‚Рё', 'РўРѕР»СЊРєРѕ Р·Р°СЂРїР»Р°С‚Р°', 'РњРЅРµРЅРёРµ СЂРѕРґРёС‚РµР»РµР№', 'РџСЂРµСЃС‚РёР¶'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РЅР°РІС‹Рє РІР°Р¶РµРЅ РґР»СЏ Р»СЋР±РѕР№ РїСЂРѕС„РµСЃСЃРёРё?', opts: ['РЈРјРµРЅРёРµ СѓС‡РёС‚СЊСЃСЏ', 'Р—РЅР°РЅРёРµ СЏР·С‹РєРѕРІ', 'Р¤РёР·РёС‡РµСЃРєР°СЏ СЃРёР»Р°', 'РљСЂР°СЃРёРІС‹Р№ РїРѕС‡РµСЂРє'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЂРµР·СЋРјРµ?', opts: ['Р”РѕРєСѓРјРµРЅС‚ СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ СЃРѕРёСЃРєР°С‚РµР»Рµ', 'Р РµРєРѕРјРµРЅРґР°С‚РµР»СЊРЅРѕРµ РїРёСЃСЊРјРѕ', 'РўСЂСѓРґРѕРІРѕР№ РґРѕРіРѕРІРѕСЂ', 'Р”РёРїР»РѕРј'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РїСЂРѕС„РµСЃСЃРёСЏ СЃРІСЏР·Р°РЅР° СЃ Р·Р°С‰РёС‚РѕР№ РёРЅС„РѕСЂРјР°С†РёРё?', opts: ['РЎРїРµС†РёР°Р»РёСЃС‚ РїРѕ РєРёР±РµСЂР±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё', 'РџСЂРѕРіСЂР°РјРјРёСЃС‚', 'РЎРёСЃС‚РµРјРЅС‹Р№ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ', 'РўРµСЃС‚РёСЂРѕРІС‰РёРє'], correct: 0 },
     ] : [
-        // 9-11 класс
-        { q: 'Какой документ необходим для поступления в вуз?', opts: ['Аттестат о среднем образовании', 'Диплом', 'Сертификат', 'Рекомендация'], correct: 0 },
-        { q: 'Что такое ЕГЭ?', opts: ['Единый государственный экзамен', 'Единый городской экзамен', 'Единый гуманитарный экзамен', 'Единый главный экзамен'], correct: 0 },
-        { q: 'Какой предмет нужен для поступления на медицинский факультет?', opts: ['Биология и химия', 'Физика и математика', 'История и обществознание', 'Литература и русский'], correct: 0 },
-        { q: 'Что такое бакалавриат?', opts: ['Первая ступень высшего образования', 'Среднее образование', 'Аспирантура', 'Докторантура'], correct: 0 },
-        { q: 'Сколько лет длится обучение в медицинском вузе?', opts: ['6 лет + ординатура', '4 года', '5 лет', '3 года'], correct: 0 },
-        { q: 'Что такое профильный класс?', opts: ['Класс с углублённым изучением предметов', 'Обычный класс', 'Класс для одарённых', 'Вечерний класс'], correct: 0 },
-        { q: 'Какая форма обучения предполагает самостоятельное изучение?', opts: ['Заочная', 'Очная', 'Очно-заочная', 'Дистанционная'], correct: 0 },
-        { q: 'Что такое целевое обучение?', opts: ['Обучение по направлению от организации', 'Платное обучение', 'Заочное обучение', 'Обучение за рубежом'], correct: 0 },
-        { q: 'Я чётко представляю свою будущую профессию', opts: ['Полностью согласен', 'Скорее согласен', 'Скорее не согласен', 'Не согласен'], correct: 0, type: 'likert' },
-        { q: 'Я знаю, какие предметы нужны для моей профессии', opts: ['Полностью согласен', 'Скорее согласен', 'Скорее не согласен', 'Не согласен'], correct: 0, type: 'likert' },
-        { q: 'Я готов к длительному обучению ради профессии мечты', opts: ['Полностью согласен', 'Скорее согласен', 'Скорее не согласен', 'Не согласен'], correct: 0, type: 'likert' },
-        { q: 'Мне важен баланс работы и личной жизни', opts: ['Полностью согласен', 'Скорее согласен', 'Скорее не согласен', 'Не согласен'], correct: 0, type: 'likert' },
-        { q: 'Я хочу работать в международной компании', opts: ['Полностью согласен', 'Скорее согласен', 'Скорее не согласен', 'Не согласен'], correct: 0, type: 'likert' },
-        { q: 'Что такое магистратура?', opts: ['Вторая ступень высшего образования', 'Первая ступень', 'Среднее образование', 'Курсы'], correct: 0 },
-        { q: 'Какой документ подтверждает квалификацию врача?', opts: ['Диплом и сертификат специалиста', 'Только диплом', 'Аттестат', 'Удостоверение'], correct: 0 },
-        { q: 'Что такое ординатура?', opts: ['Послевузовское медицинское образование', 'Аспирантура', 'Интернатура', 'Магистратура'], correct: 0 },
-        { q: 'Какой средний балл ЕГЭ нужен для поступления в топовые вузы?', opts: ['От 85 и выше', 'От 50', 'От 60', 'Любой'], correct: 0 },
-        { q: 'Что такое олимпиада для школьников?', opts: ['Соревнование по предметам', 'Спортивное мероприятие', 'Экзамен', 'Конкурс красоты'], correct: 0 },
-        { q: 'Какое преимущество даёт победа во Всероссийской олимпиаде?', opts: ['Поступление без экзаменов', 'Скидка на обучение', 'Дополнительные баллы', 'Ничего'], correct: 0 },
-        { q: 'Что такое портфолио абитуриента?', opts: ['Сборник достижений', 'Список документов', 'Фотоальбом', 'Дневник'], correct: 0 },
-        { q: 'Какая профессия будет востребована в будущем?', opts: ['Специалист по ИИ', 'Машинист', 'Почтальон', 'Кассир'], correct: 0 },
-        { q: 'Что такое gap year?', opts: ['Год перерыва перед учёбой/работой', 'Учебный год', 'Летние каникулы', 'Испытательный срок'], correct: 0 },
-        { q: 'Какой навык важен для врача?', opts: ['Эмпатия и стрессоустойчивость', 'Только знания', 'Физическая сила', 'Творческие способности'], correct: 0 },
-        { q: 'Что такое профессиональное выгорание?', opts: ['Истощение от работы', 'Увольнение', 'Повышение', 'Отпуск'], correct: 0 },
+        // 9-11 РєР»Р°СЃСЃ
+        { q: 'РљР°РєРѕР№ РґРѕРєСѓРјРµРЅС‚ РЅРµРѕР±С…РѕРґРёРј РґР»СЏ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ РІ РІСѓР·?', opts: ['РђС‚С‚РµСЃС‚Р°С‚ Рѕ СЃСЂРµРґРЅРµРј РѕР±СЂР°Р·РѕРІР°РЅРёРё', 'Р”РёРїР»РѕРј', 'РЎРµСЂС‚РёС„РёРєР°С‚', 'Р РµРєРѕРјРµРЅРґР°С†РёСЏ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р•Р“Р­?', opts: ['Р•РґРёРЅС‹Р№ РіРѕСЃСѓРґР°СЂСЃС‚РІРµРЅРЅС‹Р№ СЌРєР·Р°РјРµРЅ', 'Р•РґРёРЅС‹Р№ РіРѕСЂРѕРґСЃРєРѕР№ СЌРєР·Р°РјРµРЅ', 'Р•РґРёРЅС‹Р№ РіСѓРјР°РЅРёС‚Р°СЂРЅС‹Р№ СЌРєР·Р°РјРµРЅ', 'Р•РґРёРЅС‹Р№ РіР»Р°РІРЅС‹Р№ СЌРєР·Р°РјРµРЅ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РїСЂРµРґРјРµС‚ РЅСѓР¶РµРЅ РґР»СЏ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ РЅР° РјРµРґРёС†РёРЅСЃРєРёР№ С„Р°РєСѓР»СЊС‚РµС‚?', opts: ['Р‘РёРѕР»РѕРіРёСЏ Рё С…РёРјРёСЏ', 'Р¤РёР·РёРєР° Рё РјР°С‚РµРјР°С‚РёРєР°', 'РСЃС‚РѕСЂРёСЏ Рё РѕР±С‰РµСЃС‚РІРѕР·РЅР°РЅРёРµ', 'Р›РёС‚РµСЂР°С‚СѓСЂР° Рё СЂСѓСЃСЃРєРёР№'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р±Р°РєР°Р»Р°РІСЂРёР°С‚?', opts: ['РџРµСЂРІР°СЏ СЃС‚СѓРїРµРЅСЊ РІС‹СЃС€РµРіРѕ РѕР±СЂР°Р·РѕРІР°РЅРёСЏ', 'РЎСЂРµРґРЅРµРµ РѕР±СЂР°Р·РѕРІР°РЅРёРµ', 'РђСЃРїРёСЂР°РЅС‚СѓСЂР°', 'Р”РѕРєС‚РѕСЂР°РЅС‚СѓСЂР°'], correct: 0 },
+        { q: 'РЎРєРѕР»СЊРєРѕ Р»РµС‚ РґР»РёС‚СЃСЏ РѕР±СѓС‡РµРЅРёРµ РІ РјРµРґРёС†РёРЅСЃРєРѕРј РІСѓР·Рµ?', opts: ['6 Р»РµС‚ + РѕСЂРґРёРЅР°С‚СѓСЂР°', '4 РіРѕРґР°', '5 Р»РµС‚', '3 РіРѕРґР°'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РїСЂРѕС„РёР»СЊРЅС‹Р№ РєР»Р°СЃСЃ?', opts: ['РљР»Р°СЃСЃ СЃ СѓРіР»СѓР±Р»С‘РЅРЅС‹Рј РёР·СѓС‡РµРЅРёРµРј РїСЂРµРґРјРµС‚РѕРІ', 'РћР±С‹С‡РЅС‹Р№ РєР»Р°СЃСЃ', 'РљР»Р°СЃСЃ РґР»СЏ РѕРґР°СЂС‘РЅРЅС‹С…', 'Р’РµС‡РµСЂРЅРёР№ РєР»Р°СЃСЃ'], correct: 0 },
+        { q: 'РљР°РєР°СЏ С„РѕСЂРјР° РѕР±СѓС‡РµРЅРёСЏ РїСЂРµРґРїРѕР»Р°РіР°РµС‚ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕРµ РёР·СѓС‡РµРЅРёРµ?', opts: ['Р—Р°РѕС‡РЅР°СЏ', 'РћС‡РЅР°СЏ', 'РћС‡РЅРѕ-Р·Р°РѕС‡РЅР°СЏ', 'Р”РёСЃС‚Р°РЅС†РёРѕРЅРЅР°СЏ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ С†РµР»РµРІРѕРµ РѕР±СѓС‡РµРЅРёРµ?', opts: ['РћР±СѓС‡РµРЅРёРµ РїРѕ РЅР°РїСЂР°РІР»РµРЅРёСЋ РѕС‚ РѕСЂРіР°РЅРёР·Р°С†РёРё', 'РџР»Р°С‚РЅРѕРµ РѕР±СѓС‡РµРЅРёРµ', 'Р—Р°РѕС‡РЅРѕРµ РѕР±СѓС‡РµРЅРёРµ', 'РћР±СѓС‡РµРЅРёРµ Р·Р° СЂСѓР±РµР¶РѕРј'], correct: 0 },
+        { q: 'РЇ С‡С‘С‚РєРѕ РїСЂРµРґСЃС‚Р°РІР»СЏСЋ СЃРІРѕСЋ Р±СѓРґСѓС‰СѓСЋ РїСЂРѕС„РµСЃСЃРёСЋ', opts: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РќРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, type: 'likert' },
+        { q: 'РЇ Р·РЅР°СЋ, РєР°РєРёРµ РїСЂРµРґРјРµС‚С‹ РЅСѓР¶РЅС‹ РґР»СЏ РјРѕРµР№ РїСЂРѕС„РµСЃСЃРёРё', opts: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РќРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, type: 'likert' },
+        { q: 'РЇ РіРѕС‚РѕРІ Рє РґР»РёС‚РµР»СЊРЅРѕРјСѓ РѕР±СѓС‡РµРЅРёСЋ СЂР°РґРё РїСЂРѕС„РµСЃСЃРёРё РјРµС‡С‚С‹', opts: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РќРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, type: 'likert' },
+        { q: 'РњРЅРµ РІР°Р¶РµРЅ Р±Р°Р»Р°РЅСЃ СЂР°Р±РѕС‚С‹ Рё Р»РёС‡РЅРѕР№ Р¶РёР·РЅРё', opts: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РќРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, type: 'likert' },
+        { q: 'РЇ С…РѕС‡Сѓ СЂР°Р±РѕС‚Р°С‚СЊ РІ РјРµР¶РґСѓРЅР°СЂРѕРґРЅРѕР№ РєРѕРјРїР°РЅРёРё', opts: ['РџРѕР»РЅРѕСЃС‚СЊСЋ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ СЃРѕРіР»Р°СЃРµРЅ', 'РЎРєРѕСЂРµРµ РЅРµ СЃРѕРіР»Р°СЃРµРЅ', 'РќРµ СЃРѕРіР»Р°СЃРµРЅ'], correct: 0, type: 'likert' },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РјР°РіРёСЃС‚СЂР°С‚СѓСЂР°?', opts: ['Р’С‚РѕСЂР°СЏ СЃС‚СѓРїРµРЅСЊ РІС‹СЃС€РµРіРѕ РѕР±СЂР°Р·РѕРІР°РЅРёСЏ', 'РџРµСЂРІР°СЏ СЃС‚СѓРїРµРЅСЊ', 'РЎСЂРµРґРЅРµРµ РѕР±СЂР°Р·РѕРІР°РЅРёРµ', 'РљСѓСЂСЃС‹'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РґРѕРєСѓРјРµРЅС‚ РїРѕРґС‚РІРµСЂР¶РґР°РµС‚ РєРІР°Р»РёС„РёРєР°С†РёСЋ РІСЂР°С‡Р°?', opts: ['Р”РёРїР»РѕРј Рё СЃРµСЂС‚РёС„РёРєР°С‚ СЃРїРµС†РёР°Р»РёСЃС‚Р°', 'РўРѕР»СЊРєРѕ РґРёРїР»РѕРј', 'РђС‚С‚РµСЃС‚Р°С‚', 'РЈРґРѕСЃС‚РѕРІРµСЂРµРЅРёРµ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РѕСЂРґРёРЅР°С‚СѓСЂР°?', opts: ['РџРѕСЃР»РµРІСѓР·РѕРІСЃРєРѕРµ РјРµРґРёС†РёРЅСЃРєРѕРµ РѕР±СЂР°Р·РѕРІР°РЅРёРµ', 'РђСЃРїРёСЂР°РЅС‚СѓСЂР°', 'РРЅС‚РµСЂРЅР°С‚СѓСЂР°', 'РњР°РіРёСЃС‚СЂР°С‚СѓСЂР°'], correct: 0 },
+        { q: 'РљР°РєРѕР№ СЃСЂРµРґРЅРёР№ Р±Р°Р»Р» Р•Р“Р­ РЅСѓР¶РµРЅ РґР»СЏ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ РІ С‚РѕРїРѕРІС‹Рµ РІСѓР·С‹?', opts: ['РћС‚ 85 Рё РІС‹С€Рµ', 'РћС‚ 50', 'РћС‚ 60', 'Р›СЋР±РѕР№'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РѕР»РёРјРїРёР°РґР° РґР»СЏ С€РєРѕР»СЊРЅРёРєРѕРІ?', opts: ['РЎРѕСЂРµРІРЅРѕРІР°РЅРёРµ РїРѕ РїСЂРµРґРјРµС‚Р°Рј', 'РЎРїРѕСЂС‚РёРІРЅРѕРµ РјРµСЂРѕРїСЂРёСЏС‚РёРµ', 'Р­РєР·Р°РјРµРЅ', 'РљРѕРЅРєСѓСЂСЃ РєСЂР°СЃРѕС‚С‹'], correct: 0 },
+        { q: 'РљР°РєРѕРµ РїСЂРµРёРјСѓС‰РµСЃС‚РІРѕ РґР°С‘С‚ РїРѕР±РµРґР° РІРѕ Р’СЃРµСЂРѕСЃСЃРёР№СЃРєРѕР№ РѕР»РёРјРїРёР°РґРµ?', opts: ['РџРѕСЃС‚СѓРїР»РµРЅРёРµ Р±РµР· СЌРєР·Р°РјРµРЅРѕРІ', 'РЎРєРёРґРєР° РЅР° РѕР±СѓС‡РµРЅРёРµ', 'Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ Р±Р°Р»Р»С‹', 'РќРёС‡РµРіРѕ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РїРѕСЂС‚С„РѕР»РёРѕ Р°Р±РёС‚СѓСЂРёРµРЅС‚Р°?', opts: ['РЎР±РѕСЂРЅРёРє РґРѕСЃС‚РёР¶РµРЅРёР№', 'РЎРїРёСЃРѕРє РґРѕРєСѓРјРµРЅС‚РѕРІ', 'Р¤РѕС‚РѕР°Р»СЊР±РѕРј', 'Р”РЅРµРІРЅРёРє'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РїСЂРѕС„РµСЃСЃРёСЏ Р±СѓРґРµС‚ РІРѕСЃС‚СЂРµР±РѕРІР°РЅР° РІ Р±СѓРґСѓС‰РµРј?', opts: ['РЎРїРµС†РёР°Р»РёСЃС‚ РїРѕ РР', 'РњР°С€РёРЅРёСЃС‚', 'РџРѕС‡С‚Р°Р»СЊРѕРЅ', 'РљР°СЃСЃРёСЂ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ gap year?', opts: ['Р“РѕРґ РїРµСЂРµСЂС‹РІР° РїРµСЂРµРґ СѓС‡С‘Р±РѕР№/СЂР°Р±РѕС‚РѕР№', 'РЈС‡РµР±РЅС‹Р№ РіРѕРґ', 'Р›РµС‚РЅРёРµ РєР°РЅРёРєСѓР»С‹', 'РСЃРїС‹С‚Р°С‚РµР»СЊРЅС‹Р№ СЃСЂРѕРє'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РЅР°РІС‹Рє РІР°Р¶РµРЅ РґР»СЏ РІСЂР°С‡Р°?', opts: ['Р­РјРїР°С‚РёСЏ Рё СЃС‚СЂРµСЃСЃРѕСѓСЃС‚РѕР№С‡РёРІРѕСЃС‚СЊ', 'РўРѕР»СЊРєРѕ Р·РЅР°РЅРёСЏ', 'Р¤РёР·РёС‡РµСЃРєР°СЏ СЃРёР»Р°', 'РўРІРѕСЂС‡РµСЃРєРёРµ СЃРїРѕСЃРѕР±РЅРѕСЃС‚Рё'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕРµ РІС‹РіРѕСЂР°РЅРёРµ?', opts: ['РСЃС‚РѕС‰РµРЅРёРµ РѕС‚ СЂР°Р±РѕС‚С‹', 'РЈРІРѕР»СЊРЅРµРЅРёРµ', 'РџРѕРІС‹С€РµРЅРёРµ', 'РћС‚РїСѓСЃРє'], correct: 0 },
     ];
-    } // Закрываем if
+    } // Р—Р°РєСЂС‹РІР°РµРј if
 
-    // Генерируем вопросы
+    // Р“РµРЅРµСЂРёСЂСѓРµРј РІРѕРїСЂРѕСЃС‹
     themes.forEach((t, i) => {
         questions.push({
             id: `${prefix}_${i + 1}`,
@@ -3774,7 +3774,7 @@ function generateProfessionQuestionsForGrade(grade, count) {
         });
     });
 
-    // Добавляем ещё вопросов до 100 путём вариаций
+    // Р”РѕР±Р°РІР»СЏРµРј РµС‰С‘ РІРѕРїСЂРѕСЃРѕРІ РґРѕ 100 РїСѓС‚С‘Рј РІР°СЂРёР°С†РёР№
     while (questions.length < count) {
         const base = themes[questions.length % themes.length];
         const variation = {
@@ -3787,7 +3787,7 @@ function generateProfessionQuestionsForGrade(grade, count) {
             subject: 'profession',
             grade: grade
         };
-        // Найдём правильный ответ в перемешанном массиве
+        // РќР°Р№РґС‘Рј РїСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚ РІ РїРµСЂРµРјРµС€Р°РЅРЅРѕРј РјР°СЃСЃРёРІРµ
         variation.correct = variation.options.indexOf(base.opts[base.correct]);
         questions.push(variation);
     }
@@ -3795,75 +3795,75 @@ function generateProfessionQuestionsForGrade(grade, count) {
     return questions;
 }
 
-// === ХИМИЯ ПО КЛАССАМ ===
+// === РҐРРњРРЇ РџРћ РљР›РђРЎРЎРђРњ ===
 function generateChemistryQuestionsForGrade(grade, count) {
     const questions = [];
     const prefix = `chemistry_g${grade}`;
 
     const themes = grade <= 4 ? [
-        { q: 'Из чего состоит вода?', opts: ['Водород и кислород', 'Только водород', 'Только кислород', 'Углерод'], correct: 0 },
-        { q: 'Какой газ мы вдыхаем?', opts: ['Кислород', 'Углекислый газ', 'Азот', 'Водород'], correct: 0 },
-        { q: 'Что происходит с водой при замерзании?', opts: ['Превращается в лёд', 'Испаряется', 'Исчезает', 'Нагревается'], correct: 0 },
-        { q: 'Какого цвета обычно огонь?', opts: ['Оранжевый и жёлтый', 'Зелёный', 'Синий', 'Фиолетовый'], correct: 0 },
-        { q: 'Что такое соль?', opts: ['Белые кристаллы для еды', 'Сахар', 'Мука', 'Вода'], correct: 0 },
-        { q: 'Из чего делают стекло?', opts: ['Из песка', 'Из воды', 'Из дерева', 'Из металла'], correct: 0 },
-        { q: 'Что выделяют растения днём?', opts: ['Кислород', 'Углекислый газ', 'Азот', 'Водород'], correct: 0 },
-        { q: 'Какое вещество сладкое на вкус?', opts: ['Сахар', 'Соль', 'Уксус', 'Лимон'], correct: 0 },
-        { q: 'Из чего состоит воздух?', opts: ['Из разных газов', 'Только из кислорода', 'Из воды', 'Из пыли'], correct: 0 },
-        { q: 'Что такое ржавчина?', opts: ['Разрушение металла', 'Краска', 'Грязь', 'Пыль'], correct: 0 },
-        { q: 'Какой металл притягивается магнитом?', opts: ['Железо', 'Алюминий', 'Медь', 'Золото'], correct: 0 },
-        { q: 'Из чего делают бумагу?', opts: ['Из дерева', 'Из металла', 'Из камня', 'Из воды'], correct: 0 },
-        { q: 'Что происходит при кипении воды?', opts: ['Образуется пар', 'Образуется лёд', 'Ничего', 'Становится солёной'], correct: 0 },
-        { q: 'Какое вещество используют для мытья рук?', opts: ['Мыло', 'Соль', 'Сахар', 'Мука'], correct: 0 },
-        { q: 'Что такое пузырьки в газировке?', opts: ['Углекислый газ', 'Кислород', 'Азот', 'Пар'], correct: 0 },
+        { q: 'РР· С‡РµРіРѕ СЃРѕСЃС‚РѕРёС‚ РІРѕРґР°?', opts: ['Р’РѕРґРѕСЂРѕРґ Рё РєРёСЃР»РѕСЂРѕРґ', 'РўРѕР»СЊРєРѕ РІРѕРґРѕСЂРѕРґ', 'РўРѕР»СЊРєРѕ РєРёСЃР»РѕСЂРѕРґ', 'РЈРіР»РµСЂРѕРґ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РіР°Р· РјС‹ РІРґС‹С…Р°РµРј?', opts: ['РљРёСЃР»РѕСЂРѕРґ', 'РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·', 'РђР·РѕС‚', 'Р’РѕРґРѕСЂРѕРґ'], correct: 0 },
+        { q: 'Р§С‚Рѕ РїСЂРѕРёСЃС…РѕРґРёС‚ СЃ РІРѕРґРѕР№ РїСЂРё Р·Р°РјРµСЂР·Р°РЅРёРё?', opts: ['РџСЂРµРІСЂР°С‰Р°РµС‚СЃСЏ РІ Р»С‘Рґ', 'РСЃРїР°СЂСЏРµС‚СЃСЏ', 'РСЃС‡РµР·Р°РµС‚', 'РќР°РіСЂРµРІР°РµС‚СЃСЏ'], correct: 0 },
+        { q: 'РљР°РєРѕРіРѕ С†РІРµС‚Р° РѕР±С‹С‡РЅРѕ РѕРіРѕРЅСЊ?', opts: ['РћСЂР°РЅР¶РµРІС‹Р№ Рё Р¶С‘Р»С‚С‹Р№', 'Р—РµР»С‘РЅС‹Р№', 'РЎРёРЅРёР№', 'Р¤РёРѕР»РµС‚РѕРІС‹Р№'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЃРѕР»СЊ?', opts: ['Р‘РµР»С‹Рµ РєСЂРёСЃС‚Р°Р»Р»С‹ РґР»СЏ РµРґС‹', 'РЎР°С…Р°СЂ', 'РњСѓРєР°', 'Р’РѕРґР°'], correct: 0 },
+        { q: 'РР· С‡РµРіРѕ РґРµР»Р°СЋС‚ СЃС‚РµРєР»Рѕ?', opts: ['РР· РїРµСЃРєР°', 'РР· РІРѕРґС‹', 'РР· РґРµСЂРµРІР°', 'РР· РјРµС‚Р°Р»Р»Р°'], correct: 0 },
+        { q: 'Р§С‚Рѕ РІС‹РґРµР»СЏСЋС‚ СЂР°СЃС‚РµРЅРёСЏ РґРЅС‘Рј?', opts: ['РљРёСЃР»РѕСЂРѕРґ', 'РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·', 'РђР·РѕС‚', 'Р’РѕРґРѕСЂРѕРґ'], correct: 0 },
+        { q: 'РљР°РєРѕРµ РІРµС‰РµСЃС‚РІРѕ СЃР»Р°РґРєРѕРµ РЅР° РІРєСѓСЃ?', opts: ['РЎР°С…Р°СЂ', 'РЎРѕР»СЊ', 'РЈРєСЃСѓСЃ', 'Р›РёРјРѕРЅ'], correct: 0 },
+        { q: 'РР· С‡РµРіРѕ СЃРѕСЃС‚РѕРёС‚ РІРѕР·РґСѓС…?', opts: ['РР· СЂР°Р·РЅС‹С… РіР°Р·РѕРІ', 'РўРѕР»СЊРєРѕ РёР· РєРёСЃР»РѕСЂРѕРґР°', 'РР· РІРѕРґС‹', 'РР· РїС‹Р»Рё'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЂР¶Р°РІС‡РёРЅР°?', opts: ['Р Р°Р·СЂСѓС€РµРЅРёРµ РјРµС‚Р°Р»Р»Р°', 'РљСЂР°СЃРєР°', 'Р“СЂСЏР·СЊ', 'РџС‹Р»СЊ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РјРµС‚Р°Р»Р» РїСЂРёС‚СЏРіРёРІР°РµС‚СЃСЏ РјР°РіРЅРёС‚РѕРј?', opts: ['Р–РµР»РµР·Рѕ', 'РђР»СЋРјРёРЅРёР№', 'РњРµРґСЊ', 'Р—РѕР»РѕС‚Рѕ'], correct: 0 },
+        { q: 'РР· С‡РµРіРѕ РґРµР»Р°СЋС‚ Р±СѓРјР°РіСѓ?', opts: ['РР· РґРµСЂРµРІР°', 'РР· РјРµС‚Р°Р»Р»Р°', 'РР· РєР°РјРЅСЏ', 'РР· РІРѕРґС‹'], correct: 0 },
+        { q: 'Р§С‚Рѕ РїСЂРѕРёСЃС…РѕРґРёС‚ РїСЂРё РєРёРїРµРЅРёРё РІРѕРґС‹?', opts: ['РћР±СЂР°Р·СѓРµС‚СЃСЏ РїР°СЂ', 'РћР±СЂР°Р·СѓРµС‚СЃСЏ Р»С‘Рґ', 'РќРёС‡РµРіРѕ', 'РЎС‚Р°РЅРѕРІРёС‚СЃСЏ СЃРѕР»С‘РЅРѕР№'], correct: 0 },
+        { q: 'РљР°РєРѕРµ РІРµС‰РµСЃС‚РІРѕ РёСЃРїРѕР»СЊР·СѓСЋС‚ РґР»СЏ РјС‹С‚СЊСЏ СЂСѓРє?', opts: ['РњС‹Р»Рѕ', 'РЎРѕР»СЊ', 'РЎР°С…Р°СЂ', 'РњСѓРєР°'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РїСѓР·С‹СЂСЊРєРё РІ РіР°Р·РёСЂРѕРІРєРµ?', opts: ['РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·', 'РљРёСЃР»РѕСЂРѕРґ', 'РђР·РѕС‚', 'РџР°СЂ'], correct: 0 },
     ] : grade <= 6 ? [
-        { q: 'Какой химический символ у кислорода?', opts: ['O', 'K', 'C', 'H'], correct: 0 },
-        { q: 'Какой химический символ у водорода?', opts: ['H', 'O', 'He', 'W'], correct: 0 },
-        { q: 'Что такое H?O?', opts: ['Вода', 'Перекись водорода', 'Кислота', 'Соль'], correct: 0 },
-        { q: 'Какой газ поддерживает горение?', opts: ['Кислород', 'Азот', 'Углекислый газ', 'Водород'], correct: 0 },
-        { q: 'Какой элемент обозначается Fe?', opts: ['Железо', 'Фтор', 'Фосфор', 'Франций'], correct: 0 },
-        { q: 'Что такое атом?', opts: ['Мельчайшая частица вещества', 'Молекула', 'Ион', 'Электрон'], correct: 0 },
-        { q: 'Какой газ выдыхают люди?', opts: ['Углекислый газ', 'Кислород', 'Азот', 'Водород'], correct: 0 },
-        { q: 'Какой металл самый лёгкий?', opts: ['Литий', 'Алюминий', 'Железо', 'Медь'], correct: 0 },
-        { q: 'Что такое молекула?', opts: ['Группа связанных атомов', 'Один атом', 'Электрон', 'Протон'], correct: 0 },
-        { q: 'Какой элемент обозначается C?', opts: ['Углерод', 'Кальций', 'Хлор', 'Кобальт'], correct: 0 },
-        { q: 'Что происходит при смешивании уксуса и соды?', opts: ['Выделяется газ', 'Ничего', 'Взрыв', 'Образуется лёд'], correct: 0 },
-        { q: 'Какой элемент нужен для дыхания?', opts: ['Кислород', 'Азот', 'Углерод', 'Водород'], correct: 0 },
-        { q: 'Из чего состоит поваренная соль?', opts: ['Натрий и хлор', 'Калий и йод', 'Кальций и фтор', 'Магний и бром'], correct: 0 },
-        { q: 'Какой газ легче воздуха?', opts: ['Водород', 'Кислород', 'Азот', 'Углекислый газ'], correct: 0 },
-        { q: 'Что такое химическая реакция?', opts: ['Превращение веществ', 'Смешивание', 'Нагревание', 'Охлаждение'], correct: 0 },
+        { q: 'РљР°РєРѕР№ С…РёРјРёС‡РµСЃРєРёР№ СЃРёРјРІРѕР» Сѓ РєРёСЃР»РѕСЂРѕРґР°?', opts: ['O', 'K', 'C', 'H'], correct: 0 },
+        { q: 'РљР°РєРѕР№ С…РёРјРёС‡РµСЃРєРёР№ СЃРёРјРІРѕР» Сѓ РІРѕРґРѕСЂРѕРґР°?', opts: ['H', 'O', 'He', 'W'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ Hв‚‚O?', opts: ['Р’РѕРґР°', 'РџРµСЂРµРєРёСЃСЊ РІРѕРґРѕСЂРѕРґР°', 'РљРёСЃР»РѕС‚Р°', 'РЎРѕР»СЊ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РіР°Р· РїРѕРґРґРµСЂР¶РёРІР°РµС‚ РіРѕСЂРµРЅРёРµ?', opts: ['РљРёСЃР»РѕСЂРѕРґ', 'РђР·РѕС‚', 'РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·', 'Р’РѕРґРѕСЂРѕРґ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ РѕР±РѕР·РЅР°С‡Р°РµС‚СЃСЏ Fe?', opts: ['Р–РµР»РµР·Рѕ', 'Р¤С‚РѕСЂ', 'Р¤РѕСЃС„РѕСЂ', 'Р¤СЂР°РЅС†РёР№'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°С‚РѕРј?', opts: ['РњРµР»СЊС‡Р°Р№С€Р°СЏ С‡Р°СЃС‚РёС†Р° РІРµС‰РµСЃС‚РІР°', 'РњРѕР»РµРєСѓР»Р°', 'РРѕРЅ', 'Р­Р»РµРєС‚СЂРѕРЅ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РіР°Р· РІС‹РґС‹С…Р°СЋС‚ Р»СЋРґРё?', opts: ['РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·', 'РљРёСЃР»РѕСЂРѕРґ', 'РђР·РѕС‚', 'Р’РѕРґРѕСЂРѕРґ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РјРµС‚Р°Р»Р» СЃР°РјС‹Р№ Р»С‘РіРєРёР№?', opts: ['Р›РёС‚РёР№', 'РђР»СЋРјРёРЅРёР№', 'Р–РµР»РµР·Рѕ', 'РњРµРґСЊ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РјРѕР»РµРєСѓР»Р°?', opts: ['Р“СЂСѓРїРїР° СЃРІСЏР·Р°РЅРЅС‹С… Р°С‚РѕРјРѕРІ', 'РћРґРёРЅ Р°С‚РѕРј', 'Р­Р»РµРєС‚СЂРѕРЅ', 'РџСЂРѕС‚РѕРЅ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ РѕР±РѕР·РЅР°С‡Р°РµС‚СЃСЏ C?', opts: ['РЈРіР»РµСЂРѕРґ', 'РљР°Р»СЊС†РёР№', 'РҐР»РѕСЂ', 'РљРѕР±Р°Р»СЊС‚'], correct: 0 },
+        { q: 'Р§С‚Рѕ РїСЂРѕРёСЃС…РѕРґРёС‚ РїСЂРё СЃРјРµС€РёРІР°РЅРёРё СѓРєСЃСѓСЃР° Рё СЃРѕРґС‹?', opts: ['Р’С‹РґРµР»СЏРµС‚СЃСЏ РіР°Р·', 'РќРёС‡РµРіРѕ', 'Р’Р·СЂС‹РІ', 'РћР±СЂР°Р·СѓРµС‚СЃСЏ Р»С‘Рґ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ РЅСѓР¶РµРЅ РґР»СЏ РґС‹С…Р°РЅРёСЏ?', opts: ['РљРёСЃР»РѕСЂРѕРґ', 'РђР·РѕС‚', 'РЈРіР»РµСЂРѕРґ', 'Р’РѕРґРѕСЂРѕРґ'], correct: 0 },
+        { q: 'РР· С‡РµРіРѕ СЃРѕСЃС‚РѕРёС‚ РїРѕРІР°СЂРµРЅРЅР°СЏ СЃРѕР»СЊ?', opts: ['РќР°С‚СЂРёР№ Рё С…Р»РѕСЂ', 'РљР°Р»РёР№ Рё Р№РѕРґ', 'РљР°Р»СЊС†РёР№ Рё С„С‚РѕСЂ', 'РњР°РіРЅРёР№ Рё Р±СЂРѕРј'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РіР°Р· Р»РµРіС‡Рµ РІРѕР·РґСѓС…Р°?', opts: ['Р’РѕРґРѕСЂРѕРґ', 'РљРёСЃР»РѕСЂРѕРґ', 'РђР·РѕС‚', 'РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ С…РёРјРёС‡РµСЃРєР°СЏ СЂРµР°РєС†РёСЏ?', opts: ['РџСЂРµРІСЂР°С‰РµРЅРёРµ РІРµС‰РµСЃС‚РІ', 'РЎРјРµС€РёРІР°РЅРёРµ', 'РќР°РіСЂРµРІР°РЅРёРµ', 'РћС…Р»Р°Р¶РґРµРЅРёРµ'], correct: 0 },
     ] : grade <= 8 ? [
-        { q: 'Какой заряд у протона?', opts: ['Положительный', 'Отрицательный', 'Нейтральный', 'Переменный'], correct: 0 },
-        { q: 'Где находятся электроны в атоме?', opts: ['На орбиталях вокруг ядра', 'В ядре', 'Вне атома', 'В нейтронах'], correct: 0 },
-        { q: 'Что такое валентность?', opts: ['Способность атома образовывать связи', 'Масса атома', 'Заряд ядра', 'Число протонов'], correct: 0 },
-        { q: 'Какая формула серной кислоты?', opts: ['H?SO?', 'HCl', 'HNO?', 'H?PO?'], correct: 0 },
-        { q: 'Что такое pH?', opts: ['Показатель кислотности', 'Плотность', 'Давление', 'Температура'], correct: 0 },
-        { q: 'Какой металл жидкий при комнатной температуре?', opts: ['Ртуть', 'Железо', 'Медь', 'Алюминий'], correct: 0 },
-        { q: 'Что такое оксид?', opts: ['Соединение с кислородом', 'Кислота', 'Соль', 'Основание'], correct: 0 },
-        { q: 'Какой газ используют в лампочках?', opts: ['Аргон', 'Кислород', 'Азот', 'Водород'], correct: 0 },
-        { q: 'Что такое катализатор?', opts: ['Ускоритель реакции', 'Замедлитель реакции', 'Продукт реакции', 'Реагент'], correct: 0 },
-        { q: 'Какой элемент имеет атомный номер 1?', opts: ['Водород', 'Гелий', 'Литий', 'Углерод'], correct: 0 },
-        { q: 'Что такое ион?', opts: ['Заряженная частица', 'Нейтральная частица', 'Атом', 'Молекула'], correct: 0 },
-        { q: 'Какая формула углекислого газа?', opts: ['CO?', 'CO', 'C?O', 'O?C'], correct: 0 },
-        { q: 'Что такое электролиз?', opts: ['Разложение током', 'Нагревание', 'Охлаждение', 'Смешивание'], correct: 0 },
-        { q: 'Какой металл используют в термометрах?', opts: ['Ртуть', 'Железо', 'Медь', 'Алюминий'], correct: 0 },
-        { q: 'Что такое индикатор?', opts: ['Вещество, меняющее цвет', 'Катализатор', 'Растворитель', 'Осадок'], correct: 0 },
+        { q: 'РљР°РєРѕР№ Р·Р°СЂСЏРґ Сѓ РїСЂРѕС‚РѕРЅР°?', opts: ['РџРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№', 'РћС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№', 'РќРµР№С‚СЂР°Р»СЊРЅС‹Р№', 'РџРµСЂРµРјРµРЅРЅС‹Р№'], correct: 0 },
+        { q: 'Р“РґРµ РЅР°С…РѕРґСЏС‚СЃСЏ СЌР»РµРєС‚СЂРѕРЅС‹ РІ Р°С‚РѕРјРµ?', opts: ['РќР° РѕСЂР±РёС‚Р°Р»СЏС… РІРѕРєСЂСѓРі СЏРґСЂР°', 'Р’ СЏРґСЂРµ', 'Р’РЅРµ Р°С‚РѕРјР°', 'Р’ РЅРµР№С‚СЂРѕРЅР°С…'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РІР°Р»РµРЅС‚РЅРѕСЃС‚СЊ?', opts: ['РЎРїРѕСЃРѕР±РЅРѕСЃС‚СЊ Р°С‚РѕРјР° РѕР±СЂР°Р·РѕРІС‹РІР°С‚СЊ СЃРІСЏР·Рё', 'РњР°СЃСЃР° Р°С‚РѕРјР°', 'Р—Р°СЂСЏРґ СЏРґСЂР°', 'Р§РёСЃР»Рѕ РїСЂРѕС‚РѕРЅРѕРІ'], correct: 0 },
+        { q: 'РљР°РєР°СЏ С„РѕСЂРјСѓР»Р° СЃРµСЂРЅРѕР№ РєРёСЃР»РѕС‚С‹?', opts: ['Hв‚‚SOв‚„', 'HCl', 'HNOв‚ѓ', 'Hв‚ѓPOв‚„'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ pH?', opts: ['РџРѕРєР°Р·Р°С‚РµР»СЊ РєРёСЃР»РѕС‚РЅРѕСЃС‚Рё', 'РџР»РѕС‚РЅРѕСЃС‚СЊ', 'Р”Р°РІР»РµРЅРёРµ', 'РўРµРјРїРµСЂР°С‚СѓСЂР°'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РјРµС‚Р°Р»Р» Р¶РёРґРєРёР№ РїСЂРё РєРѕРјРЅР°С‚РЅРѕР№ С‚РµРјРїРµСЂР°С‚СѓСЂРµ?', opts: ['Р С‚СѓС‚СЊ', 'Р–РµР»РµР·Рѕ', 'РњРµРґСЊ', 'РђР»СЋРјРёРЅРёР№'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РѕРєСЃРёРґ?', opts: ['РЎРѕРµРґРёРЅРµРЅРёРµ СЃ РєРёСЃР»РѕСЂРѕРґРѕРј', 'РљРёСЃР»РѕС‚Р°', 'РЎРѕР»СЊ', 'РћСЃРЅРѕРІР°РЅРёРµ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РіР°Р· РёСЃРїРѕР»СЊР·СѓСЋС‚ РІ Р»Р°РјРїРѕС‡РєР°С…?', opts: ['РђСЂРіРѕРЅ', 'РљРёСЃР»РѕСЂРѕРґ', 'РђР·РѕС‚', 'Р’РѕРґРѕСЂРѕРґ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РєР°С‚Р°Р»РёР·Р°С‚РѕСЂ?', opts: ['РЈСЃРєРѕСЂРёС‚РµР»СЊ СЂРµР°РєС†РёРё', 'Р—Р°РјРµРґР»РёС‚РµР»СЊ СЂРµР°РєС†РёРё', 'РџСЂРѕРґСѓРєС‚ СЂРµР°РєС†РёРё', 'Р РµР°РіРµРЅС‚'], correct: 0 },
+        { q: 'РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ РёРјРµРµС‚ Р°С‚РѕРјРЅС‹Р№ РЅРѕРјРµСЂ 1?', opts: ['Р’РѕРґРѕСЂРѕРґ', 'Р“РµР»РёР№', 'Р›РёС‚РёР№', 'РЈРіР»РµСЂРѕРґ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РёРѕРЅ?', opts: ['Р—Р°СЂСЏР¶РµРЅРЅР°СЏ С‡Р°СЃС‚РёС†Р°', 'РќРµР№С‚СЂР°Р»СЊРЅР°СЏ С‡Р°СЃС‚РёС†Р°', 'РђС‚РѕРј', 'РњРѕР»РµРєСѓР»Р°'], correct: 0 },
+        { q: 'РљР°РєР°СЏ С„РѕСЂРјСѓР»Р° СѓРіР»РµРєРёСЃР»РѕРіРѕ РіР°Р·Р°?', opts: ['COв‚‚', 'CO', 'Cв‚‚O', 'Oв‚‚C'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЌР»РµРєС‚СЂРѕР»РёР·?', opts: ['Р Р°Р·Р»РѕР¶РµРЅРёРµ С‚РѕРєРѕРј', 'РќР°РіСЂРµРІР°РЅРёРµ', 'РћС…Р»Р°Р¶РґРµРЅРёРµ', 'РЎРјРµС€РёРІР°РЅРёРµ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РјРµС‚Р°Р»Р» РёСЃРїРѕР»СЊР·СѓСЋС‚ РІ С‚РµСЂРјРѕРјРµС‚СЂР°С…?', opts: ['Р С‚СѓС‚СЊ', 'Р–РµР»РµР·Рѕ', 'РњРµРґСЊ', 'РђР»СЋРјРёРЅРёР№'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РёРЅРґРёРєР°С‚РѕСЂ?', opts: ['Р’РµС‰РµСЃС‚РІРѕ, РјРµРЅСЏСЋС‰РµРµ С†РІРµС‚', 'РљР°С‚Р°Р»РёР·Р°С‚РѕСЂ', 'Р Р°СЃС‚РІРѕСЂРёС‚РµР»СЊ', 'РћСЃР°РґРѕРє'], correct: 0 },
     ] : [
-        { q: 'Какой тип связи в молекуле NaCl?', opts: ['Ионная', 'Ковалентная', 'Металлическая', 'Водородная'], correct: 0 },
-        { q: 'Что такое моль?', opts: ['6.02?10?? частиц', 'Масса вещества', 'Объём газа', 'Количество атомов'], correct: 0 },
-        { q: 'Какой закон описывает сохранение массы?', opts: ['Закон Ломоносова-Лавуазье', 'Закон Авогадро', 'Закон Гесса', 'Закон Дальтона'], correct: 0 },
-        { q: 'Что такое электроотрицательность?', opts: ['Способность притягивать электроны', 'Заряд ядра', 'Масса атома', 'Валентность'], correct: 0 },
-        { q: 'Какой объём занимает 1 моль газа при н.у.?', opts: ['22.4 л', '11.2 л', '44.8 л', '1 л'], correct: 0 },
-        { q: 'Что такое изотопы?', opts: ['Атомы с разным числом нейтронов', 'Атомы с разным числом протонов', 'Разные элементы', 'Ионы'], correct: 0 },
-        { q: 'Какая формула этанола?', opts: ['C?H?OH', 'CH?OH', 'C?H?OH', 'CH?'], correct: 0 },
-        { q: 'Что такое гидролиз?', opts: ['Разложение водой', 'Разложение током', 'Окисление', 'Восстановление'], correct: 0 },
-        { q: 'Какой металл самый электропроводный?', opts: ['Серебро', 'Медь', 'Золото', 'Алюминий'], correct: 0 },
-        { q: 'Что такое энтальпия?', opts: ['Теплосодержание системы', 'Энтропия', 'Энергия связи', 'Температура'], correct: 0 },
-        { q: 'Какая кислота входит в состав желудочного сока?', opts: ['Соляная', 'Серная', 'Азотная', 'Уксусная'], correct: 0 },
-        { q: 'Что такое полимер?', opts: ['Молекула из повторяющихся звеньев', 'Мономер', 'Катализатор', 'Растворитель'], correct: 0 },
-        { q: 'Какой газ образуется при брожении?', opts: ['Углекислый газ', 'Кислород', 'Азот', 'Водород'], correct: 0 },
-        { q: 'Что такое окислитель?', opts: ['Вещество, принимающее электроны', 'Вещество, отдающее электроны', 'Катализатор', 'Растворитель'], correct: 0 },
-        { q: 'Какая формула глюкозы?', opts: ['C?H??O?', 'C??H??O??', 'C?H?OH', 'CH?COOH'], correct: 0 },
+        { q: 'РљР°РєРѕР№ С‚РёРї СЃРІСЏР·Рё РІ РјРѕР»РµРєСѓР»Рµ NaCl?', opts: ['РРѕРЅРЅР°СЏ', 'РљРѕРІР°Р»РµРЅС‚РЅР°СЏ', 'РњРµС‚Р°Р»Р»РёС‡РµСЃРєР°СЏ', 'Р’РѕРґРѕСЂРѕРґРЅР°СЏ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РјРѕР»СЊ?', opts: ['6.02Г—10ВІВі С‡Р°СЃС‚РёС†', 'РњР°СЃСЃР° РІРµС‰РµСЃС‚РІР°', 'РћР±СЉС‘Рј РіР°Р·Р°', 'РљРѕР»РёС‡РµСЃС‚РІРѕ Р°С‚РѕРјРѕРІ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ Р·Р°РєРѕРЅ РѕРїРёСЃС‹РІР°РµС‚ СЃРѕС…СЂР°РЅРµРЅРёРµ РјР°СЃСЃС‹?', opts: ['Р—Р°РєРѕРЅ Р›РѕРјРѕРЅРѕСЃРѕРІР°-Р›Р°РІСѓР°Р·СЊРµ', 'Р—Р°РєРѕРЅ РђРІРѕРіР°РґСЂРѕ', 'Р—Р°РєРѕРЅ Р“РµСЃСЃР°', 'Р—Р°РєРѕРЅ Р”Р°Р»СЊС‚РѕРЅР°'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЌР»РµРєС‚СЂРѕРѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕСЃС‚СЊ?', opts: ['РЎРїРѕСЃРѕР±РЅРѕСЃС‚СЊ РїСЂРёС‚СЏРіРёРІР°С‚СЊ СЌР»РµРєС‚СЂРѕРЅС‹', 'Р—Р°СЂСЏРґ СЏРґСЂР°', 'РњР°СЃСЃР° Р°С‚РѕРјР°', 'Р’Р°Р»РµРЅС‚РЅРѕСЃС‚СЊ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РѕР±СЉС‘Рј Р·Р°РЅРёРјР°РµС‚ 1 РјРѕР»СЊ РіР°Р·Р° РїСЂРё РЅ.Сѓ.?', opts: ['22.4 Р»', '11.2 Р»', '44.8 Р»', '1 Р»'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РёР·РѕС‚РѕРїС‹?', opts: ['РђС‚РѕРјС‹ СЃ СЂР°Р·РЅС‹Рј С‡РёСЃР»РѕРј РЅРµР№С‚СЂРѕРЅРѕРІ', 'РђС‚РѕРјС‹ СЃ СЂР°Р·РЅС‹Рј С‡РёСЃР»РѕРј РїСЂРѕС‚РѕРЅРѕРІ', 'Р Р°Р·РЅС‹Рµ СЌР»РµРјРµРЅС‚С‹', 'РРѕРЅС‹'], correct: 0 },
+        { q: 'РљР°РєР°СЏ С„РѕСЂРјСѓР»Р° СЌС‚Р°РЅРѕР»Р°?', opts: ['Cв‚‚Hв‚…OH', 'CHв‚ѓOH', 'Cв‚ѓHв‚‡OH', 'CHв‚„'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РіРёРґСЂРѕР»РёР·?', opts: ['Р Р°Р·Р»РѕР¶РµРЅРёРµ РІРѕРґРѕР№', 'Р Р°Р·Р»РѕР¶РµРЅРёРµ С‚РѕРєРѕРј', 'РћРєРёСЃР»РµРЅРёРµ', 'Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РјРµС‚Р°Р»Р» СЃР°РјС‹Р№ СЌР»РµРєС‚СЂРѕРїСЂРѕРІРѕРґРЅС‹Р№?', opts: ['РЎРµСЂРµР±СЂРѕ', 'РњРµРґСЊ', 'Р—РѕР»РѕС‚Рѕ', 'РђР»СЋРјРёРЅРёР№'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЌРЅС‚Р°Р»СЊРїРёСЏ?', opts: ['РўРµРїР»РѕСЃРѕРґРµСЂР¶Р°РЅРёРµ СЃРёСЃС‚РµРјС‹', 'Р­РЅС‚СЂРѕРїРёСЏ', 'Р­РЅРµСЂРіРёСЏ СЃРІСЏР·Рё', 'РўРµРјРїРµСЂР°С‚СѓСЂР°'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РєРёСЃР»РѕС‚Р° РІС…РѕРґРёС‚ РІ СЃРѕСЃС‚Р°РІ Р¶РµР»СѓРґРѕС‡РЅРѕРіРѕ СЃРѕРєР°?', opts: ['РЎРѕР»СЏРЅР°СЏ', 'РЎРµСЂРЅР°СЏ', 'РђР·РѕС‚РЅР°СЏ', 'РЈРєСЃСѓСЃРЅР°СЏ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РїРѕР»РёРјРµСЂ?', opts: ['РњРѕР»РµРєСѓР»Р° РёР· РїРѕРІС‚РѕСЂСЏСЋС‰РёС…СЃСЏ Р·РІРµРЅСЊРµРІ', 'РњРѕРЅРѕРјРµСЂ', 'РљР°С‚Р°Р»РёР·Р°С‚РѕСЂ', 'Р Р°СЃС‚РІРѕСЂРёС‚РµР»СЊ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РіР°Р· РѕР±СЂР°Р·СѓРµС‚СЃСЏ РїСЂРё Р±СЂРѕР¶РµРЅРёРё?', opts: ['РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·', 'РљРёСЃР»РѕСЂРѕРґ', 'РђР·РѕС‚', 'Р’РѕРґРѕСЂРѕРґ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РѕРєРёСЃР»РёС‚РµР»СЊ?', opts: ['Р’РµС‰РµСЃС‚РІРѕ, РїСЂРёРЅРёРјР°СЋС‰РµРµ СЌР»РµРєС‚СЂРѕРЅС‹', 'Р’РµС‰РµСЃС‚РІРѕ, РѕС‚РґР°СЋС‰РµРµ СЌР»РµРєС‚СЂРѕРЅС‹', 'РљР°С‚Р°Р»РёР·Р°С‚РѕСЂ', 'Р Р°СЃС‚РІРѕСЂРёС‚РµР»СЊ'], correct: 0 },
+        { q: 'РљР°РєР°СЏ С„РѕСЂРјСѓР»Р° РіР»СЋРєРѕР·С‹?', opts: ['Cв‚†Hв‚Ѓв‚‚Oв‚†', 'Cв‚Ѓв‚‚Hв‚‚в‚‚Oв‚Ѓв‚Ѓ', 'Cв‚‚Hв‚…OH', 'CHв‚ѓCOOH'], correct: 0 },
     ];
 
     themes.forEach((t, i) => {
@@ -3897,75 +3897,75 @@ function generateChemistryQuestionsForGrade(grade, count) {
     return questions;
 }
 
-// === БИОЛОГИЯ ПО КЛАССАМ ===
+// === Р‘РРћР›РћР“РРЇ РџРћ РљР›РђРЎРЎРђРњ ===
 function generateBiologyQuestionsForGrade(grade, count) {
     const questions = [];
     const prefix = `biology_g${grade}`;
 
     const themes = grade <= 4 ? [
-        { q: 'Сколько ног у насекомых?', opts: ['6', '4', '8', '2'], correct: 0 },
-        { q: 'Какое животное даёт молоко?', opts: ['Корова', 'Курица', 'Рыба', 'Лягушка'], correct: 0 },
-        { q: 'Что нужно растениям для роста?', opts: ['Вода и свет', 'Только вода', 'Только свет', 'Ничего'], correct: 0 },
-        { q: 'Какая часть растения находится в земле?', opts: ['Корень', 'Листья', 'Цветок', 'Плод'], correct: 0 },
-        { q: 'Как называется детёныш кошки?', opts: ['Котёнок', 'Щенок', 'Телёнок', 'Цыплёнок'], correct: 0 },
-        { q: 'Какое животное умеет летать?', opts: ['Птица', 'Рыба', 'Змея', 'Черепаха'], correct: 0 },
-        { q: 'Чем дышит рыба?', opts: ['Жабрами', 'Лёгкими', 'Кожей', 'Носом'], correct: 0 },
-        { q: 'Какое животное живёт в воде?', opts: ['Рыба', 'Лиса', 'Заяц', 'Медведь'], correct: 0 },
-        { q: 'Что делают пчёлы?', opts: ['Собирают мёд', 'Вьют гнёзда', 'Плетут паутину', 'Роют норы'], correct: 0 },
-        { q: 'Какой орган слышит звуки?', opts: ['Ухо', 'Глаз', 'Нос', 'Рука'], correct: 0 },
-        { q: 'Сколько лап у собаки?', opts: ['4', '2', '6', '8'], correct: 0 },
-        { q: 'Кто плетёт паутину?', opts: ['Паук', 'Пчела', 'Муха', 'Бабочка'], correct: 0 },
-        { q: 'Какая часть цветка привлекает пчёл?', opts: ['Лепестки', 'Корень', 'Стебель', 'Листья'], correct: 0 },
-        { q: 'Чем покрыто тело рыбы?', opts: ['Чешуёй', 'Шерстью', 'Перьями', 'Кожей'], correct: 0 },
-        { q: 'Какое животное впадает в зимнюю спячку?', opts: ['Медведь', 'Волк', 'Лиса', 'Заяц'], correct: 0 },
+        { q: 'РЎРєРѕР»СЊРєРѕ РЅРѕРі Сѓ РЅР°СЃРµРєРѕРјС‹С…?', opts: ['6', '4', '8', '2'], correct: 0 },
+        { q: 'РљР°РєРѕРµ Р¶РёРІРѕС‚РЅРѕРµ РґР°С‘С‚ РјРѕР»РѕРєРѕ?', opts: ['РљРѕСЂРѕРІР°', 'РљСѓСЂРёС†Р°', 'Р С‹Р±Р°', 'Р›СЏРіСѓС€РєР°'], correct: 0 },
+        { q: 'Р§С‚Рѕ РЅСѓР¶РЅРѕ СЂР°СЃС‚РµРЅРёСЏРј РґР»СЏ СЂРѕСЃС‚Р°?', opts: ['Р’РѕРґР° Рё СЃРІРµС‚', 'РўРѕР»СЊРєРѕ РІРѕРґР°', 'РўРѕР»СЊРєРѕ СЃРІРµС‚', 'РќРёС‡РµРіРѕ'], correct: 0 },
+        { q: 'РљР°РєР°СЏ С‡Р°СЃС‚СЊ СЂР°СЃС‚РµРЅРёСЏ РЅР°С…РѕРґРёС‚СЃСЏ РІ Р·РµРјР»Рµ?', opts: ['РљРѕСЂРµРЅСЊ', 'Р›РёСЃС‚СЊСЏ', 'Р¦РІРµС‚РѕРє', 'РџР»РѕРґ'], correct: 0 },
+        { q: 'РљР°Рє РЅР°Р·С‹РІР°РµС‚СЃСЏ РґРµС‚С‘РЅС‹С€ РєРѕС€РєРё?', opts: ['РљРѕС‚С‘РЅРѕРє', 'Р©РµРЅРѕРє', 'РўРµР»С‘РЅРѕРє', 'Р¦С‹РїР»С‘РЅРѕРє'], correct: 0 },
+        { q: 'РљР°РєРѕРµ Р¶РёРІРѕС‚РЅРѕРµ СѓРјРµРµС‚ Р»РµС‚Р°С‚СЊ?', opts: ['РџС‚РёС†Р°', 'Р С‹Р±Р°', 'Р—РјРµСЏ', 'Р§РµСЂРµРїР°С…Р°'], correct: 0 },
+        { q: 'Р§РµРј РґС‹С€РёС‚ СЂС‹Р±Р°?', opts: ['Р–Р°Р±СЂР°РјРё', 'Р›С‘РіРєРёРјРё', 'РљРѕР¶РµР№', 'РќРѕСЃРѕРј'], correct: 0 },
+        { q: 'РљР°РєРѕРµ Р¶РёРІРѕС‚РЅРѕРµ Р¶РёРІС‘С‚ РІ РІРѕРґРµ?', opts: ['Р С‹Р±Р°', 'Р›РёСЃР°', 'Р—Р°СЏС†', 'РњРµРґРІРµРґСЊ'], correct: 0 },
+        { q: 'Р§С‚Рѕ РґРµР»Р°СЋС‚ РїС‡С‘Р»С‹?', opts: ['РЎРѕР±РёСЂР°СЋС‚ РјС‘Рґ', 'Р’СЊСЋС‚ РіРЅС‘Р·РґР°', 'РџР»РµС‚СѓС‚ РїР°СѓС‚РёРЅСѓ', 'Р РѕСЋС‚ РЅРѕСЂС‹'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РѕСЂРіР°РЅ СЃР»С‹С€РёС‚ Р·РІСѓРєРё?', opts: ['РЈС…Рѕ', 'Р“Р»Р°Р·', 'РќРѕСЃ', 'Р СѓРєР°'], correct: 0 },
+        { q: 'РЎРєРѕР»СЊРєРѕ Р»Р°Рї Сѓ СЃРѕР±Р°РєРё?', opts: ['4', '2', '6', '8'], correct: 0 },
+        { q: 'РљС‚Рѕ РїР»РµС‚С‘С‚ РїР°СѓС‚РёРЅСѓ?', opts: ['РџР°СѓРє', 'РџС‡РµР»Р°', 'РњСѓС…Р°', 'Р‘Р°Р±РѕС‡РєР°'], correct: 0 },
+        { q: 'РљР°РєР°СЏ С‡Р°СЃС‚СЊ С†РІРµС‚РєР° РїСЂРёРІР»РµРєР°РµС‚ РїС‡С‘Р»?', opts: ['Р›РµРїРµСЃС‚РєРё', 'РљРѕСЂРµРЅСЊ', 'РЎС‚РµР±РµР»СЊ', 'Р›РёСЃС‚СЊСЏ'], correct: 0 },
+        { q: 'Р§РµРј РїРѕРєСЂС‹С‚Рѕ С‚РµР»Рѕ СЂС‹Р±С‹?', opts: ['Р§РµС€СѓС‘Р№', 'РЁРµСЂСЃС‚СЊСЋ', 'РџРµСЂСЊСЏРјРё', 'РљРѕР¶РµР№'], correct: 0 },
+        { q: 'РљР°РєРѕРµ Р¶РёРІРѕС‚РЅРѕРµ РІРїР°РґР°РµС‚ РІ Р·РёРјРЅСЋСЋ СЃРїСЏС‡РєСѓ?', opts: ['РњРµРґРІРµРґСЊ', 'Р’РѕР»Рє', 'Р›РёСЃР°', 'Р—Р°СЏС†'], correct: 0 },
     ] : grade <= 6 ? [
-        { q: 'Какая клетка организма самая маленькая?', opts: ['Эритроцит', 'Нейрон', 'Яйцеклетка', 'Мышечная'], correct: 0 },
-        { q: 'Что такое фотосинтез?', opts: ['Создание питательных веществ растениями', 'Дыхание растений', 'Рост растений', 'Размножение'], correct: 0 },
-        { q: 'Какой орган качает кровь?', opts: ['Сердце', 'Лёгкие', 'Печень', 'Почки'], correct: 0 },
-        { q: 'Сколько костей в теле взрослого человека?', opts: ['206', '100', '300', '150'], correct: 0 },
-        { q: 'Что защищает мозг?', opts: ['Череп', 'Позвоночник', 'Рёбра', 'Таз'], correct: 0 },
-        { q: 'Какой орган очищает кровь?', opts: ['Почки', 'Сердце', 'Лёгкие', 'Желудок'], correct: 0 },
-        { q: 'Что такое хлорофилл?', opts: ['Зелёный пигмент растений', 'Клетка', 'Корень', 'Вирус'], correct: 0 },
-        { q: 'Какая система переваривает пищу?', opts: ['Пищеварительная', 'Дыхательная', 'Нервная', 'Кровеносная'], correct: 0 },
-        { q: 'Что такое бактерия?', opts: ['Одноклеточный организм', 'Многоклеточный организм', 'Вирус', 'Клетка человека'], correct: 0 },
-        { q: 'Какой орган отвечает за зрение?', opts: ['Глаз', 'Ухо', 'Нос', 'Язык'], correct: 0 },
-        { q: 'Что такое скелет?', opts: ['Каркас из костей', 'Мышцы', 'Кожа', 'Органы'], correct: 0 },
-        { q: 'Какая клетка переносит кислород?', opts: ['Эритроцит', 'Лейкоцит', 'Тромбоцит', 'Нейрон'], correct: 0 },
-        { q: 'Что такое эволюция?', opts: ['Развитие живых существ', 'Создание видов', 'Вымирание', 'Рождение'], correct: 0 },
-        { q: 'Какой орган вырабатывает инсулин?', opts: ['Поджелудочная железа', 'Печень', 'Сердце', 'Почки'], correct: 0 },
-        { q: 'Что такое экосистема?', opts: ['Сообщество организмов и среды', 'Один вид', 'Водоём', 'Лес'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РєР»РµС‚РєР° РѕСЂРіР°РЅРёР·РјР° СЃР°РјР°СЏ РјР°Р»РµРЅСЊРєР°СЏ?', opts: ['Р­СЂРёС‚СЂРѕС†РёС‚', 'РќРµР№СЂРѕРЅ', 'РЇР№С†РµРєР»РµС‚РєР°', 'РњС‹С€РµС‡РЅР°СЏ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ С„РѕС‚РѕСЃРёРЅС‚РµР·?', opts: ['РЎРѕР·РґР°РЅРёРµ РїРёС‚Р°С‚РµР»СЊРЅС‹С… РІРµС‰РµСЃС‚РІ СЂР°СЃС‚РµРЅРёСЏРјРё', 'Р”С‹С…Р°РЅРёРµ СЂР°СЃС‚РµРЅРёР№', 'Р РѕСЃС‚ СЂР°СЃС‚РµРЅРёР№', 'Р Р°Р·РјРЅРѕР¶РµРЅРёРµ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РѕСЂРіР°РЅ РєР°С‡Р°РµС‚ РєСЂРѕРІСЊ?', opts: ['РЎРµСЂРґС†Рµ', 'Р›С‘РіРєРёРµ', 'РџРµС‡РµРЅСЊ', 'РџРѕС‡РєРё'], correct: 0 },
+        { q: 'РЎРєРѕР»СЊРєРѕ РєРѕСЃС‚РµР№ РІ С‚РµР»Рµ РІР·СЂРѕСЃР»РѕРіРѕ С‡РµР»РѕРІРµРєР°?', opts: ['206', '100', '300', '150'], correct: 0 },
+        { q: 'Р§С‚Рѕ Р·Р°С‰РёС‰Р°РµС‚ РјРѕР·Рі?', opts: ['Р§РµСЂРµРї', 'РџРѕР·РІРѕРЅРѕС‡РЅРёРє', 'Р С‘Р±СЂР°', 'РўР°Р·'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РѕСЂРіР°РЅ РѕС‡РёС‰Р°РµС‚ РєСЂРѕРІСЊ?', opts: ['РџРѕС‡РєРё', 'РЎРµСЂРґС†Рµ', 'Р›С‘РіРєРёРµ', 'Р–РµР»СѓРґРѕРє'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ С…Р»РѕСЂРѕС„РёР»Р»?', opts: ['Р—РµР»С‘РЅС‹Р№ РїРёРіРјРµРЅС‚ СЂР°СЃС‚РµРЅРёР№', 'РљР»РµС‚РєР°', 'РљРѕСЂРµРЅСЊ', 'Р’РёСЂСѓСЃ'], correct: 0 },
+        { q: 'РљР°РєР°СЏ СЃРёСЃС‚РµРјР° РїРµСЂРµРІР°СЂРёРІР°РµС‚ РїРёС‰Сѓ?', opts: ['РџРёС‰РµРІР°СЂРёС‚РµР»СЊРЅР°СЏ', 'Р”С‹С…Р°С‚РµР»СЊРЅР°СЏ', 'РќРµСЂРІРЅР°СЏ', 'РљСЂРѕРІРµРЅРѕСЃРЅР°СЏ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р±Р°РєС‚РµСЂРёСЏ?', opts: ['РћРґРЅРѕРєР»РµС‚РѕС‡РЅС‹Р№ РѕСЂРіР°РЅРёР·Рј', 'РњРЅРѕРіРѕРєР»РµС‚РѕС‡РЅС‹Р№ РѕСЂРіР°РЅРёР·Рј', 'Р’РёСЂСѓСЃ', 'РљР»РµС‚РєР° С‡РµР»РѕРІРµРєР°'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РѕСЂРіР°РЅ РѕС‚РІРµС‡Р°РµС‚ Р·Р° Р·СЂРµРЅРёРµ?', opts: ['Р“Р»Р°Р·', 'РЈС…Рѕ', 'РќРѕСЃ', 'РЇР·С‹Рє'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЃРєРµР»РµС‚?', opts: ['РљР°СЂРєР°СЃ РёР· РєРѕСЃС‚РµР№', 'РњС‹С€С†С‹', 'РљРѕР¶Р°', 'РћСЂРіР°РЅС‹'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РєР»РµС‚РєР° РїРµСЂРµРЅРѕСЃРёС‚ РєРёСЃР»РѕСЂРѕРґ?', opts: ['Р­СЂРёС‚СЂРѕС†РёС‚', 'Р›РµР№РєРѕС†РёС‚', 'РўСЂРѕРјР±РѕС†РёС‚', 'РќРµР№СЂРѕРЅ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЌРІРѕР»СЋС†РёСЏ?', opts: ['Р Р°Р·РІРёС‚РёРµ Р¶РёРІС‹С… СЃСѓС‰РµСЃС‚РІ', 'РЎРѕР·РґР°РЅРёРµ РІРёРґРѕРІ', 'Р’С‹РјРёСЂР°РЅРёРµ', 'Р РѕР¶РґРµРЅРёРµ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РѕСЂРіР°РЅ РІС‹СЂР°Р±Р°С‚С‹РІР°РµС‚ РёРЅСЃСѓР»РёРЅ?', opts: ['РџРѕРґР¶РµР»СѓРґРѕС‡РЅР°СЏ Р¶РµР»РµР·Р°', 'РџРµС‡РµРЅСЊ', 'РЎРµСЂРґС†Рµ', 'РџРѕС‡РєРё'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЌРєРѕСЃРёСЃС‚РµРјР°?', opts: ['РЎРѕРѕР±С‰РµСЃС‚РІРѕ РѕСЂРіР°РЅРёР·РјРѕРІ Рё СЃСЂРµРґС‹', 'РћРґРёРЅ РІРёРґ', 'Р’РѕРґРѕС‘Рј', 'Р›РµСЃ'], correct: 0 },
     ] : grade <= 8 ? [
-        { q: 'Что такое ДНК?', opts: ['Носитель генетической информации', 'Белок', 'Углевод', 'Жир'], correct: 0 },
-        { q: 'Сколько хромосом у человека?', opts: ['46', '23', '48', '44'], correct: 0 },
-        { q: 'Что такое митоз?', opts: ['Деление клетки', 'Слияние клеток', 'Гибель клетки', 'Рост клетки'], correct: 0 },
-        { q: 'Какой орган самый большой?', opts: ['Кожа', 'Печень', 'Мозг', 'Лёгкие'], correct: 0 },
-        { q: 'Что такое рефлекс?', opts: ['Автоматическая реакция', 'Осознанное действие', 'Мысль', 'Чувство'], correct: 0 },
-        { q: 'Какой витамин вырабатывается на солнце?', opts: ['Витамин D', 'Витамин C', 'Витамин A', 'Витамин B'], correct: 0 },
-        { q: 'Что такое гормон?', opts: ['Химический регулятор', 'Клетка', 'Орган', 'Ткань'], correct: 0 },
-        { q: 'Какая кровь течёт по венам?', opts: ['Венозная (бедная кислородом)', 'Артериальная', 'Смешанная', 'Лимфа'], correct: 0 },
-        { q: 'Что такое метаболизм?', opts: ['Обмен веществ', 'Рост', 'Размножение', 'Питание'], correct: 0 },
-        { q: 'Какой орган вырабатывает желчь?', opts: ['Печень', 'Желудок', 'Поджелудочная', 'Кишечник'], correct: 0 },
-        { q: 'Что такое иммунитет?', opts: ['Защита организма', 'Болезнь', 'Инфекция', 'Аллергия'], correct: 0 },
-        { q: 'Какая группа крови универсальный донор?', opts: ['O (I)', 'A (II)', 'B (III)', 'AB (IV)'], correct: 0 },
-        { q: 'Что такое генотип?', opts: ['Набор генов', 'Внешний вид', 'Поведение', 'Среда'], correct: 0 },
-        { q: 'Какой гормон регулирует сахар в крови?', opts: ['Инсулин', 'Адреналин', 'Тироксин', 'Тестостерон'], correct: 0 },
-        { q: 'Что такое нейрон?', opts: ['Нервная клетка', 'Мышечная клетка', 'Клетка крови', 'Клетка кожи'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р”РќРљ?', opts: ['РќРѕСЃРёС‚РµР»СЊ РіРµРЅРµС‚РёС‡РµСЃРєРѕР№ РёРЅС„РѕСЂРјР°С†РёРё', 'Р‘РµР»РѕРє', 'РЈРіР»РµРІРѕРґ', 'Р–РёСЂ'], correct: 0 },
+        { q: 'РЎРєРѕР»СЊРєРѕ С…СЂРѕРјРѕСЃРѕРј Сѓ С‡РµР»РѕРІРµРєР°?', opts: ['46', '23', '48', '44'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РјРёС‚РѕР·?', opts: ['Р”РµР»РµРЅРёРµ РєР»РµС‚РєРё', 'РЎР»РёСЏРЅРёРµ РєР»РµС‚РѕРє', 'Р“РёР±РµР»СЊ РєР»РµС‚РєРё', 'Р РѕСЃС‚ РєР»РµС‚РєРё'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РѕСЂРіР°РЅ СЃР°РјС‹Р№ Р±РѕР»СЊС€РѕР№?', opts: ['РљРѕР¶Р°', 'РџРµС‡РµРЅСЊ', 'РњРѕР·Рі', 'Р›С‘РіРєРёРµ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЂРµС„Р»РµРєСЃ?', opts: ['РђРІС‚РѕРјР°С‚РёС‡РµСЃРєР°СЏ СЂРµР°РєС†РёСЏ', 'РћСЃРѕР·РЅР°РЅРЅРѕРµ РґРµР№СЃС‚РІРёРµ', 'РњС‹СЃР»СЊ', 'Р§СѓРІСЃС‚РІРѕ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІРёС‚Р°РјРёРЅ РІС‹СЂР°Р±Р°С‚С‹РІР°РµС‚СЃСЏ РЅР° СЃРѕР»РЅС†Рµ?', opts: ['Р’РёС‚Р°РјРёРЅ D', 'Р’РёС‚Р°РјРёРЅ C', 'Р’РёС‚Р°РјРёРЅ A', 'Р’РёС‚Р°РјРёРЅ B'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РіРѕСЂРјРѕРЅ?', opts: ['РҐРёРјРёС‡РµСЃРєРёР№ СЂРµРіСѓР»СЏС‚РѕСЂ', 'РљР»РµС‚РєР°', 'РћСЂРіР°РЅ', 'РўРєР°РЅСЊ'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РєСЂРѕРІСЊ С‚РµС‡С‘С‚ РїРѕ РІРµРЅР°Рј?', opts: ['Р’РµРЅРѕР·РЅР°СЏ (Р±РµРґРЅР°СЏ РєРёСЃР»РѕСЂРѕРґРѕРј)', 'РђСЂС‚РµСЂРёР°Р»СЊРЅР°СЏ', 'РЎРјРµС€Р°РЅРЅР°СЏ', 'Р›РёРјС„Р°'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РјРµС‚Р°Р±РѕР»РёР·Рј?', opts: ['РћР±РјРµРЅ РІРµС‰РµСЃС‚РІ', 'Р РѕСЃС‚', 'Р Р°Р·РјРЅРѕР¶РµРЅРёРµ', 'РџРёС‚Р°РЅРёРµ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РѕСЂРіР°РЅ РІС‹СЂР°Р±Р°С‚С‹РІР°РµС‚ Р¶РµР»С‡СЊ?', opts: ['РџРµС‡РµРЅСЊ', 'Р–РµР»СѓРґРѕРє', 'РџРѕРґР¶РµР»СѓРґРѕС‡РЅР°СЏ', 'РљРёС€РµС‡РЅРёРє'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РёРјРјСѓРЅРёС‚РµС‚?', opts: ['Р—Р°С‰РёС‚Р° РѕСЂРіР°РЅРёР·РјР°', 'Р‘РѕР»РµР·РЅСЊ', 'РРЅС„РµРєС†РёСЏ', 'РђР»Р»РµСЂРіРёСЏ'], correct: 0 },
+        { q: 'РљР°РєР°СЏ РіСЂСѓРїРїР° РєСЂРѕРІРё СѓРЅРёРІРµСЂСЃР°Р»СЊРЅС‹Р№ РґРѕРЅРѕСЂ?', opts: ['O (I)', 'A (II)', 'B (III)', 'AB (IV)'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РіРµРЅРѕС‚РёРї?', opts: ['РќР°Р±РѕСЂ РіРµРЅРѕРІ', 'Р’РЅРµС€РЅРёР№ РІРёРґ', 'РџРѕРІРµРґРµРЅРёРµ', 'РЎСЂРµРґР°'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РіРѕСЂРјРѕРЅ СЂРµРіСѓР»РёСЂСѓРµС‚ СЃР°С…Р°СЂ РІ РєСЂРѕРІРё?', opts: ['РРЅСЃСѓР»РёРЅ', 'РђРґСЂРµРЅР°Р»РёРЅ', 'РўРёСЂРѕРєСЃРёРЅ', 'РўРµСЃС‚РѕСЃС‚РµСЂРѕРЅ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РЅРµР№СЂРѕРЅ?', opts: ['РќРµСЂРІРЅР°СЏ РєР»РµС‚РєР°', 'РњС‹С€РµС‡РЅР°СЏ РєР»РµС‚РєР°', 'РљР»РµС‚РєР° РєСЂРѕРІРё', 'РљР»РµС‚РєР° РєРѕР¶Рё'], correct: 0 },
     ] : [
-        { q: 'Что такое генная инженерия?', opts: ['Изменение ДНК', 'Клонирование', 'Селекция', 'Мутация'], correct: 0 },
-        { q: 'Какой процесс происходит в митохондриях?', opts: ['Клеточное дыхание', 'Фотосинтез', 'Синтез белка', 'Деление'], correct: 0 },
-        { q: 'Что такое мейоз?', opts: ['Деление с уменьшением хромосом', 'Обычное деление', 'Слияние клеток', 'Гибель клеток'], correct: 0 },
-        { q: 'Какой закон Менделя описывает расщепление?', opts: ['Второй закон', 'Первый закон', 'Третий закон', 'Четвёртый закон'], correct: 0 },
-        { q: 'Что такое транскрипция?', opts: ['Синтез РНК на ДНК', 'Синтез белка', 'Репликация', 'Мутация'], correct: 0 },
-        { q: 'Какая структура ДНК?', opts: ['Двойная спираль', 'Одинарная цепь', 'Кольцо', 'Куб'], correct: 0 },
-        { q: 'Что такое антиген?', opts: ['Чужеродное вещество', 'Антитело', 'Клетка крови', 'Гормон'], correct: 0 },
-        { q: 'Какой процесс — трансляция?', opts: ['Синтез белка', 'Синтез РНК', 'Репликация ДНК', 'Деление клетки'], correct: 0 },
-        { q: 'Что такое биотехнология?', opts: ['Использование организмов в производстве', 'Изучение жизни', 'Экология', 'Медицина'], correct: 0 },
-        { q: 'Какой органоид синтезирует белок?', opts: ['Рибосома', 'Митохондрия', 'Лизосома', 'Ядро'], correct: 0 },
-        { q: 'Что такое клонирование?', opts: ['Создание генетической копии', 'Скрещивание', 'Мутация', 'Отбор'], correct: 0 },
-        { q: 'Какой тип наследования у гемофилии?', opts: ['Сцепленный с X-хромосомой', 'Аутосомный доминантный', 'Аутосомный рецессивный', 'Y-сцепленный'], correct: 0 },
-        { q: 'Что такое стволовые клетки?', opts: ['Недифференцированные клетки', 'Нервные клетки', 'Мышечные клетки', 'Клетки крови'], correct: 0 },
-        { q: 'Какой фермент разрезает ДНК?', opts: ['Рестриктаза', 'Полимераза', 'Лигаза', 'Хеликаза'], correct: 0 },
-        { q: 'Что такое ПЦР?', opts: ['Полимеразная цепная реакция', 'Тест на антитела', 'Секвенирование', 'Электрофорез'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РіРµРЅРЅР°СЏ РёРЅР¶РµРЅРµСЂРёСЏ?', opts: ['РР·РјРµРЅРµРЅРёРµ Р”РќРљ', 'РљР»РѕРЅРёСЂРѕРІР°РЅРёРµ', 'РЎРµР»РµРєС†РёСЏ', 'РњСѓС‚Р°С†РёСЏ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РїСЂРѕС†РµСЃСЃ РїСЂРѕРёСЃС…РѕРґРёС‚ РІ РјРёС‚РѕС…РѕРЅРґСЂРёСЏС…?', opts: ['РљР»РµС‚РѕС‡РЅРѕРµ РґС‹С…Р°РЅРёРµ', 'Р¤РѕС‚РѕСЃРёРЅС‚РµР·', 'РЎРёРЅС‚РµР· Р±РµР»РєР°', 'Р”РµР»РµРЅРёРµ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РјРµР№РѕР·?', opts: ['Р”РµР»РµРЅРёРµ СЃ СѓРјРµРЅСЊС€РµРЅРёРµРј С…СЂРѕРјРѕСЃРѕРј', 'РћР±С‹С‡РЅРѕРµ РґРµР»РµРЅРёРµ', 'РЎР»РёСЏРЅРёРµ РєР»РµС‚РѕРє', 'Р“РёР±РµР»СЊ РєР»РµС‚РѕРє'], correct: 0 },
+        { q: 'РљР°РєРѕР№ Р·Р°РєРѕРЅ РњРµРЅРґРµР»СЏ РѕРїРёСЃС‹РІР°РµС‚ СЂР°СЃС‰РµРїР»РµРЅРёРµ?', opts: ['Р’С‚РѕСЂРѕР№ Р·Р°РєРѕРЅ', 'РџРµСЂРІС‹Р№ Р·Р°РєРѕРЅ', 'РўСЂРµС‚РёР№ Р·Р°РєРѕРЅ', 'Р§РµС‚РІС‘СЂС‚С‹Р№ Р·Р°РєРѕРЅ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ С‚СЂР°РЅСЃРєСЂРёРїС†РёСЏ?', opts: ['РЎРёРЅС‚РµР· Р РќРљ РЅР° Р”РќРљ', 'РЎРёРЅС‚РµР· Р±РµР»РєР°', 'Р РµРїР»РёРєР°С†РёСЏ', 'РњСѓС‚Р°С†РёСЏ'], correct: 0 },
+        { q: 'РљР°РєР°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° Р”РќРљ?', opts: ['Р”РІРѕР№РЅР°СЏ СЃРїРёСЂР°Р»СЊ', 'РћРґРёРЅР°СЂРЅР°СЏ С†РµРїСЊ', 'РљРѕР»СЊС†Рѕ', 'РљСѓР±'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°РЅС‚РёРіРµРЅ?', opts: ['Р§СѓР¶РµСЂРѕРґРЅРѕРµ РІРµС‰РµСЃС‚РІРѕ', 'РђРЅС‚РёС‚РµР»Рѕ', 'РљР»РµС‚РєР° РєСЂРѕРІРё', 'Р“РѕСЂРјРѕРЅ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РїСЂРѕС†РµСЃСЃ вЂ” С‚СЂР°РЅСЃР»СЏС†РёСЏ?', opts: ['РЎРёРЅС‚РµР· Р±РµР»РєР°', 'РЎРёРЅС‚РµР· Р РќРљ', 'Р РµРїР»РёРєР°С†РёСЏ Р”РќРљ', 'Р”РµР»РµРЅРёРµ РєР»РµС‚РєРё'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р±РёРѕС‚РµС…РЅРѕР»РѕРіРёСЏ?', opts: ['РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РѕСЂРіР°РЅРёР·РјРѕРІ РІ РїСЂРѕРёР·РІРѕРґСЃС‚РІРµ', 'РР·СѓС‡РµРЅРёРµ Р¶РёР·РЅРё', 'Р­РєРѕР»РѕРіРёСЏ', 'РњРµРґРёС†РёРЅР°'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РѕСЂРіР°РЅРѕРёРґ СЃРёРЅС‚РµР·РёСЂСѓРµС‚ Р±РµР»РѕРє?', opts: ['Р РёР±РѕСЃРѕРјР°', 'РњРёС‚РѕС…РѕРЅРґСЂРёСЏ', 'Р›РёР·РѕСЃРѕРјР°', 'РЇРґСЂРѕ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РєР»РѕРЅРёСЂРѕРІР°РЅРёРµ?', opts: ['РЎРѕР·РґР°РЅРёРµ РіРµРЅРµС‚РёС‡РµСЃРєРѕР№ РєРѕРїРёРё', 'РЎРєСЂРµС‰РёРІР°РЅРёРµ', 'РњСѓС‚Р°С†РёСЏ', 'РћС‚Р±РѕСЂ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ С‚РёРї РЅР°СЃР»РµРґРѕРІР°РЅРёСЏ Сѓ РіРµРјРѕС„РёР»РёРё?', opts: ['РЎС†РµРїР»РµРЅРЅС‹Р№ СЃ X-С…СЂРѕРјРѕСЃРѕРјРѕР№', 'РђСѓС‚РѕСЃРѕРјРЅС‹Р№ РґРѕРјРёРЅР°РЅС‚РЅС‹Р№', 'РђСѓС‚РѕСЃРѕРјРЅС‹Р№ СЂРµС†РµСЃСЃРёРІРЅС‹Р№', 'Y-СЃС†РµРїР»РµРЅРЅС‹Р№'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЃС‚РІРѕР»РѕРІС‹Рµ РєР»РµС‚РєРё?', opts: ['РќРµРґРёС„С„РµСЂРµРЅС†РёСЂРѕРІР°РЅРЅС‹Рµ РєР»РµС‚РєРё', 'РќРµСЂРІРЅС‹Рµ РєР»РµС‚РєРё', 'РњС‹С€РµС‡РЅС‹Рµ РєР»РµС‚РєРё', 'РљР»РµС‚РєРё РєСЂРѕРІРё'], correct: 0 },
+        { q: 'РљР°РєРѕР№ С„РµСЂРјРµРЅС‚ СЂР°Р·СЂРµР·Р°РµС‚ Р”РќРљ?', opts: ['Р РµСЃС‚СЂРёРєС‚Р°Р·Р°', 'РџРѕР»РёРјРµСЂР°Р·Р°', 'Р›РёРіР°Р·Р°', 'РҐРµР»РёРєР°Р·Р°'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РџР¦Р ?', opts: ['РџРѕР»РёРјРµСЂР°Р·РЅР°СЏ С†РµРїРЅР°СЏ СЂРµР°РєС†РёСЏ', 'РўРµСЃС‚ РЅР° Р°РЅС‚РёС‚РµР»Р°', 'РЎРµРєРІРµРЅРёСЂРѕРІР°РЅРёРµ', 'Р­Р»РµРєС‚СЂРѕС„РѕСЂРµР·'], correct: 0 },
     ];
 
     themes.forEach((t, i) => {
@@ -3999,75 +3999,75 @@ function generateBiologyQuestionsForGrade(grade, count) {
     return questions;
 }
 
-// === СПЕЦИАЛЬНОСТЬ ПО КЛАССАМ ===
+// === РЎРџР•Р¦РРђР›Р¬РќРћРЎРўР¬ РџРћ РљР›РђРЎРЎРђРњ ===
 function generateSpecialtyQuestionsForGrade(grade, count) {
     const questions = [];
     const prefix = `specialty_g${grade}`;
 
     const themes = grade <= 4 ? [
-        { q: 'Кто помогает людям, когда они болеют?', opts: ['Врач', 'Учитель', 'Повар', 'Водитель'], correct: 0 },
-        { q: 'Где работает врач?', opts: ['В больнице', 'В школе', 'В магазине', 'На стройке'], correct: 0 },
-        { q: 'Что носит врач на работе?', opts: ['Белый халат', 'Костюм', 'Форму', 'Джинсы'], correct: 0 },
-        { q: 'Кто делает уколы?', opts: ['Медсестра', 'Учитель', 'Повар', 'Продавец'], correct: 0 },
-        { q: 'Чем измеряют температуру?', opts: ['Градусником', 'Линейкой', 'Весами', 'Часами'], correct: 0 },
-        { q: 'Что лечит стоматолог?', opts: ['Зубы', 'Глаза', 'Уши', 'Ноги'], correct: 0 },
-        { q: 'Куда везут больных на скорой помощи?', opts: ['В больницу', 'В школу', 'Домой', 'В магазин'], correct: 0 },
-        { q: 'Кто лечит животных?', opts: ['Ветеринар', 'Педиатр', 'Хирург', 'Терапевт'], correct: 0 },
-        { q: 'Что делает врач первым делом?', opts: ['Осматривает больного', 'Даёт лекарство', 'Делает операцию', 'Уходит'], correct: 0 },
-        { q: 'Где продают лекарства?', opts: ['В аптеке', 'В магазине', 'В школе', 'На рынке'], correct: 0 },
-        { q: 'Тебе нравится помогать, когда кто-то болеет?', opts: ['Да', 'Иногда', 'Не очень', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Ты боишься крови?', opts: ['Нет', 'Немного', 'Да', 'Очень'], correct: 0, type: 'likert' },
-        { q: 'Тебе интересно, как работает тело человека?', opts: ['Да', 'Иногда', 'Не очень', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Кто помогает рожать детей?', opts: ['Акушер', 'Педиатр', 'Хирург', 'Терапевт'], correct: 0 },
-        { q: 'Что слушает врач через стетоскоп?', opts: ['Сердце и лёгкие', 'Голову', 'Живот', 'Руки'], correct: 0 },
+        { q: 'РљС‚Рѕ РїРѕРјРѕРіР°РµС‚ Р»СЋРґСЏРј, РєРѕРіРґР° РѕРЅРё Р±РѕР»РµСЋС‚?', opts: ['Р’СЂР°С‡', 'РЈС‡РёС‚РµР»СЊ', 'РџРѕРІР°СЂ', 'Р’РѕРґРёС‚РµР»СЊ'], correct: 0 },
+        { q: 'Р“РґРµ СЂР°Р±РѕС‚Р°РµС‚ РІСЂР°С‡?', opts: ['Р’ Р±РѕР»СЊРЅРёС†Рµ', 'Р’ С€РєРѕР»Рµ', 'Р’ РјР°РіР°Р·РёРЅРµ', 'РќР° СЃС‚СЂРѕР№РєРµ'], correct: 0 },
+        { q: 'Р§С‚Рѕ РЅРѕСЃРёС‚ РІСЂР°С‡ РЅР° СЂР°Р±РѕС‚Рµ?', opts: ['Р‘РµР»С‹Р№ С…Р°Р»Р°С‚', 'РљРѕСЃС‚СЋРј', 'Р¤РѕСЂРјСѓ', 'Р”Р¶РёРЅСЃС‹'], correct: 0 },
+        { q: 'РљС‚Рѕ РґРµР»Р°РµС‚ СѓРєРѕР»С‹?', opts: ['РњРµРґСЃРµСЃС‚СЂР°', 'РЈС‡РёС‚РµР»СЊ', 'РџРѕРІР°СЂ', 'РџСЂРѕРґР°РІРµС†'], correct: 0 },
+        { q: 'Р§РµРј РёР·РјРµСЂСЏСЋС‚ С‚РµРјРїРµСЂР°С‚СѓСЂСѓ?', opts: ['Р“СЂР°РґСѓСЃРЅРёРєРѕРј', 'Р›РёРЅРµР№РєРѕР№', 'Р’РµСЃР°РјРё', 'Р§Р°СЃР°РјРё'], correct: 0 },
+        { q: 'Р§С‚Рѕ Р»РµС‡РёС‚ СЃС‚РѕРјР°С‚РѕР»РѕРі?', opts: ['Р—СѓР±С‹', 'Р“Р»Р°Р·Р°', 'РЈС€Рё', 'РќРѕРіРё'], correct: 0 },
+        { q: 'РљСѓРґР° РІРµР·СѓС‚ Р±РѕР»СЊРЅС‹С… РЅР° СЃРєРѕСЂРѕР№ РїРѕРјРѕС‰Рё?', opts: ['Р’ Р±РѕР»СЊРЅРёС†Сѓ', 'Р’ С€РєРѕР»Сѓ', 'Р”РѕРјРѕР№', 'Р’ РјР°РіР°Р·РёРЅ'], correct: 0 },
+        { q: 'РљС‚Рѕ Р»РµС‡РёС‚ Р¶РёРІРѕС‚РЅС‹С…?', opts: ['Р’РµС‚РµСЂРёРЅР°СЂ', 'РџРµРґРёР°С‚СЂ', 'РҐРёСЂСѓСЂРі', 'РўРµСЂР°РїРµРІС‚'], correct: 0 },
+        { q: 'Р§С‚Рѕ РґРµР»Р°РµС‚ РІСЂР°С‡ РїРµСЂРІС‹Рј РґРµР»РѕРј?', opts: ['РћСЃРјР°С‚СЂРёРІР°РµС‚ Р±РѕР»СЊРЅРѕРіРѕ', 'Р”Р°С‘С‚ Р»РµРєР°СЂСЃС‚РІРѕ', 'Р”РµР»Р°РµС‚ РѕРїРµСЂР°С†РёСЋ', 'РЈС…РѕРґРёС‚'], correct: 0 },
+        { q: 'Р“РґРµ РїСЂРѕРґР°СЋС‚ Р»РµРєР°СЂСЃС‚РІР°?', opts: ['Р’ Р°РїС‚РµРєРµ', 'Р’ РјР°РіР°Р·РёРЅРµ', 'Р’ С€РєРѕР»Рµ', 'РќР° СЂС‹РЅРєРµ'], correct: 0 },
+        { q: 'РўРµР±Рµ РЅСЂР°РІРёС‚СЃСЏ РїРѕРјРѕРіР°С‚СЊ, РєРѕРіРґР° РєС‚Рѕ-С‚Рѕ Р±РѕР»РµРµС‚?', opts: ['Р”Р°', 'РРЅРѕРіРґР°', 'РќРµ РѕС‡РµРЅСЊ', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РўС‹ Р±РѕРёС€СЊСЃСЏ РєСЂРѕРІРё?', opts: ['РќРµС‚', 'РќРµРјРЅРѕРіРѕ', 'Р”Р°', 'РћС‡РµРЅСЊ'], correct: 0, type: 'likert' },
+        { q: 'РўРµР±Рµ РёРЅС‚РµСЂРµСЃРЅРѕ, РєР°Рє СЂР°Р±РѕС‚Р°РµС‚ С‚РµР»Рѕ С‡РµР»РѕРІРµРєР°?', opts: ['Р”Р°', 'РРЅРѕРіРґР°', 'РќРµ РѕС‡РµРЅСЊ', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РљС‚Рѕ РїРѕРјРѕРіР°РµС‚ СЂРѕР¶Р°С‚СЊ РґРµС‚РµР№?', opts: ['РђРєСѓС€РµСЂ', 'РџРµРґРёР°С‚СЂ', 'РҐРёСЂСѓСЂРі', 'РўРµСЂР°РїРµРІС‚'], correct: 0 },
+        { q: 'Р§С‚Рѕ СЃР»СѓС€Р°РµС‚ РІСЂР°С‡ С‡РµСЂРµР· СЃС‚РµС‚РѕСЃРєРѕРї?', opts: ['РЎРµСЂРґС†Рµ Рё Р»С‘РіРєРёРµ', 'Р“РѕР»РѕРІСѓ', 'Р–РёРІРѕС‚', 'Р СѓРєРё'], correct: 0 },
     ] : grade <= 6 ? [
-        { q: 'Какой врач лечит детей?', opts: ['Педиатр', 'Терапевт', 'Хирург', 'Кардиолог'], correct: 0 },
-        { q: 'Какой врач делает операции?', opts: ['Хирург', 'Терапевт', 'Педиатр', 'Дерматолог'], correct: 0 },
-        { q: 'Какой врач лечит сердце?', opts: ['Кардиолог', 'Невролог', 'Пульмонолог', 'Гастроэнтеролог'], correct: 0 },
-        { q: 'Какой врач лечит кожу?', opts: ['Дерматолог', 'Кардиолог', 'Невролог', 'Ортопед'], correct: 0 },
-        { q: 'Какой врач лечит нервную систему?', opts: ['Невролог', 'Кардиолог', 'Хирург', 'Терапевт'], correct: 0 },
-        { q: 'Где учатся на врача?', opts: ['В медицинском институте', 'В школе', 'На курсах', 'В техникуме'], correct: 0 },
-        { q: 'Сколько лет учиться на врача?', opts: ['6 лет и больше', '4 года', '2 года', '1 год'], correct: 0 },
-        { q: 'Какой врач делает рентген?', opts: ['Рентгенолог', 'Хирург', 'Терапевт', 'Педиатр'], correct: 0 },
-        { q: 'Кто работает в скорой помощи?', opts: ['Фельдшер', 'Учитель', 'Продавец', 'Водитель'], correct: 0 },
-        { q: 'Какой врач лечит глаза?', opts: ['Офтальмолог', 'Отоларинголог', 'Невролог', 'Кардиолог'], correct: 0 },
-        { q: 'Мне интересна работа врача', opts: ['Да', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Я могу долго и внимательно слушать', opts: ['Да', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Мне нравится биология', opts: ['Да', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Какой врач лечит уши, горло, нос?', opts: ['Отоларинголог (ЛОР)', 'Офтальмолог', 'Дерматолог', 'Стоматолог'], correct: 0 },
-        { q: 'Кто делает анализы крови?', opts: ['Лаборант', 'Хирург', 'Терапевт', 'Педиатр'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ Р»РµС‡РёС‚ РґРµС‚РµР№?', opts: ['РџРµРґРёР°С‚СЂ', 'РўРµСЂР°РїРµРІС‚', 'РҐРёСЂСѓСЂРі', 'РљР°СЂРґРёРѕР»РѕРі'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ РґРµР»Р°РµС‚ РѕРїРµСЂР°С†РёРё?', opts: ['РҐРёСЂСѓСЂРі', 'РўРµСЂР°РїРµРІС‚', 'РџРµРґРёР°С‚СЂ', 'Р”РµСЂРјР°С‚РѕР»РѕРі'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ Р»РµС‡РёС‚ СЃРµСЂРґС†Рµ?', opts: ['РљР°СЂРґРёРѕР»РѕРі', 'РќРµРІСЂРѕР»РѕРі', 'РџСѓР»СЊРјРѕРЅРѕР»РѕРі', 'Р“Р°СЃС‚СЂРѕСЌРЅС‚РµСЂРѕР»РѕРі'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ Р»РµС‡РёС‚ РєРѕР¶Сѓ?', opts: ['Р”РµСЂРјР°С‚РѕР»РѕРі', 'РљР°СЂРґРёРѕР»РѕРі', 'РќРµРІСЂРѕР»РѕРі', 'РћСЂС‚РѕРїРµРґ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ Р»РµС‡РёС‚ РЅРµСЂРІРЅСѓСЋ СЃРёСЃС‚РµРјСѓ?', opts: ['РќРµРІСЂРѕР»РѕРі', 'РљР°СЂРґРёРѕР»РѕРі', 'РҐРёСЂСѓСЂРі', 'РўРµСЂР°РїРµРІС‚'], correct: 0 },
+        { q: 'Р“РґРµ СѓС‡Р°С‚СЃСЏ РЅР° РІСЂР°С‡Р°?', opts: ['Р’ РјРµРґРёС†РёРЅСЃРєРѕРј РёРЅСЃС‚РёС‚СѓС‚Рµ', 'Р’ С€РєРѕР»Рµ', 'РќР° РєСѓСЂСЃР°С…', 'Р’ С‚РµС…РЅРёРєСѓРјРµ'], correct: 0 },
+        { q: 'РЎРєРѕР»СЊРєРѕ Р»РµС‚ СѓС‡РёС‚СЊСЃСЏ РЅР° РІСЂР°С‡Р°?', opts: ['6 Р»РµС‚ Рё Р±РѕР»СЊС€Рµ', '4 РіРѕРґР°', '2 РіРѕРґР°', '1 РіРѕРґ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ РґРµР»Р°РµС‚ СЂРµРЅС‚РіРµРЅ?', opts: ['Р РµРЅС‚РіРµРЅРѕР»РѕРі', 'РҐРёСЂСѓСЂРі', 'РўРµСЂР°РїРµРІС‚', 'РџРµРґРёР°С‚СЂ'], correct: 0 },
+        { q: 'РљС‚Рѕ СЂР°Р±РѕС‚Р°РµС‚ РІ СЃРєРѕСЂРѕР№ РїРѕРјРѕС‰Рё?', opts: ['Р¤РµР»СЊРґС€РµСЂ', 'РЈС‡РёС‚РµР»СЊ', 'РџСЂРѕРґР°РІРµС†', 'Р’РѕРґРёС‚РµР»СЊ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ Р»РµС‡РёС‚ РіР»Р°Р·Р°?', opts: ['РћС„С‚Р°Р»СЊРјРѕР»РѕРі', 'РћС‚РѕР»Р°СЂРёРЅРіРѕР»РѕРі', 'РќРµРІСЂРѕР»РѕРі', 'РљР°СЂРґРёРѕР»РѕРі'], correct: 0 },
+        { q: 'РњРЅРµ РёРЅС‚РµСЂРµСЃРЅР° СЂР°Р±РѕС‚Р° РІСЂР°С‡Р°', opts: ['Р”Р°', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РЇ РјРѕРіСѓ РґРѕР»РіРѕ Рё РІРЅРёРјР°С‚РµР»СЊРЅРѕ СЃР»СѓС€Р°С‚СЊ', opts: ['Р”Р°', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РњРЅРµ РЅСЂР°РІРёС‚СЃСЏ Р±РёРѕР»РѕРіРёСЏ', opts: ['Р”Р°', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ Р»РµС‡РёС‚ СѓС€Рё, РіРѕСЂР»Рѕ, РЅРѕСЃ?', opts: ['РћС‚РѕР»Р°СЂРёРЅРіРѕР»РѕРі (Р›РћР )', 'РћС„С‚Р°Р»СЊРјРѕР»РѕРі', 'Р”РµСЂРјР°С‚РѕР»РѕРі', 'РЎС‚РѕРјР°С‚РѕР»РѕРі'], correct: 0 },
+        { q: 'РљС‚Рѕ РґРµР»Р°РµС‚ Р°РЅР°Р»РёР·С‹ РєСЂРѕРІРё?', opts: ['Р›Р°Р±РѕСЂР°РЅС‚', 'РҐРёСЂСѓСЂРі', 'РўРµСЂР°РїРµРІС‚', 'РџРµРґРёР°С‚СЂ'], correct: 0 },
     ] : grade <= 8 ? [
-        { q: 'Какая специальность занимается онкологией?', opts: ['Онколог', 'Кардиолог', 'Невролог', 'Терапевт'], correct: 0 },
-        { q: 'Кто занимается психическим здоровьем?', opts: ['Психиатр', 'Невролог', 'Терапевт', 'Хирург'], correct: 0 },
-        { q: 'Какой врач лечит суставы?', opts: ['Ревматолог', 'Кардиолог', 'Пульмонолог', 'Гастроэнтеролог'], correct: 0 },
-        { q: 'Что изучает анатомия?', opts: ['Строение тела', 'Болезни', 'Лекарства', 'Операции'], correct: 0 },
-        { q: 'Какой врач занимается аллергиями?', opts: ['Аллерголог', 'Дерматолог', 'Терапевт', 'Педиатр'], correct: 0 },
-        { q: 'Что такое диагностика?', opts: ['Определение болезни', 'Лечение', 'Профилактика', 'Реабилитация'], correct: 0 },
-        { q: 'Какой врач лечит лёгкие?', opts: ['Пульмонолог', 'Кардиолог', 'Невролог', 'Гастроэнтеролог'], correct: 0 },
-        { q: 'Кто занимается реабилитацией?', opts: ['Реабилитолог', 'Хирург', 'Терапевт', 'Педиатр'], correct: 0 },
-        { q: 'Какой врач лечит желудок?', opts: ['Гастроэнтеролог', 'Кардиолог', 'Пульмонолог', 'Невролог'], correct: 0 },
-        { q: 'Что такое клятва Гиппократа?', opts: ['Этический кодекс врача', 'Диплом', 'Лицензия', 'Рецепт'], correct: 0 },
-        { q: 'Я готов учиться 6+ лет', opts: ['Да', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Мне важно помогать людям', opts: ['Да', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Я стрессоустойчив', opts: ['Да', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Какой врач работает с пожилыми?', opts: ['Гериатр', 'Педиатр', 'Неонатолог', 'Акушер'], correct: 0 },
-        { q: 'Кто лечит новорождённых?', opts: ['Неонатолог', 'Педиатр', 'Терапевт', 'Гериатр'], correct: 0 },
+        { q: 'РљР°РєР°СЏ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ Р·Р°РЅРёРјР°РµС‚СЃСЏ РѕРЅРєРѕР»РѕРіРёРµР№?', opts: ['РћРЅРєРѕР»РѕРі', 'РљР°СЂРґРёРѕР»РѕРі', 'РќРµРІСЂРѕР»РѕРі', 'РўРµСЂР°РїРµРІС‚'], correct: 0 },
+        { q: 'РљС‚Рѕ Р·Р°РЅРёРјР°РµС‚СЃСЏ РїСЃРёС…РёС‡РµСЃРєРёРј Р·РґРѕСЂРѕРІСЊРµРј?', opts: ['РџСЃРёС…РёР°С‚СЂ', 'РќРµРІСЂРѕР»РѕРі', 'РўРµСЂР°РїРµРІС‚', 'РҐРёСЂСѓСЂРі'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ Р»РµС‡РёС‚ СЃСѓСЃС‚Р°РІС‹?', opts: ['Р РµРІРјР°С‚РѕР»РѕРі', 'РљР°СЂРґРёРѕР»РѕРі', 'РџСѓР»СЊРјРѕРЅРѕР»РѕРі', 'Р“Р°СЃС‚СЂРѕСЌРЅС‚РµСЂРѕР»РѕРі'], correct: 0 },
+        { q: 'Р§С‚Рѕ РёР·СѓС‡Р°РµС‚ Р°РЅР°С‚РѕРјРёСЏ?', opts: ['РЎС‚СЂРѕРµРЅРёРµ С‚РµР»Р°', 'Р‘РѕР»РµР·РЅРё', 'Р›РµРєР°СЂСЃС‚РІР°', 'РћРїРµСЂР°С†РёРё'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ Р·Р°РЅРёРјР°РµС‚СЃСЏ Р°Р»Р»РµСЂРіРёСЏРјРё?', opts: ['РђР»Р»РµСЂРіРѕР»РѕРі', 'Р”РµСЂРјР°С‚РѕР»РѕРі', 'РўРµСЂР°РїРµРІС‚', 'РџРµРґРёР°С‚СЂ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РґРёР°РіРЅРѕСЃС‚РёРєР°?', opts: ['РћРїСЂРµРґРµР»РµРЅРёРµ Р±РѕР»РµР·РЅРё', 'Р›РµС‡РµРЅРёРµ', 'РџСЂРѕС„РёР»Р°РєС‚РёРєР°', 'Р РµР°Р±РёР»РёС‚Р°С†РёСЏ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ Р»РµС‡РёС‚ Р»С‘РіРєРёРµ?', opts: ['РџСѓР»СЊРјРѕРЅРѕР»РѕРі', 'РљР°СЂРґРёРѕР»РѕРі', 'РќРµРІСЂРѕР»РѕРі', 'Р“Р°СЃС‚СЂРѕСЌРЅС‚РµСЂРѕР»РѕРі'], correct: 0 },
+        { q: 'РљС‚Рѕ Р·Р°РЅРёРјР°РµС‚СЃСЏ СЂРµР°Р±РёР»РёС‚Р°С†РёРµР№?', opts: ['Р РµР°Р±РёР»РёС‚РѕР»РѕРі', 'РҐРёСЂСѓСЂРі', 'РўРµСЂР°РїРµРІС‚', 'РџРµРґРёР°С‚СЂ'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ Р»РµС‡РёС‚ Р¶РµР»СѓРґРѕРє?', opts: ['Р“Р°СЃС‚СЂРѕСЌРЅС‚РµСЂРѕР»РѕРі', 'РљР°СЂРґРёРѕР»РѕРі', 'РџСѓР»СЊРјРѕРЅРѕР»РѕРі', 'РќРµРІСЂРѕР»РѕРі'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РєР»СЏС‚РІР° Р“РёРїРїРѕРєСЂР°С‚Р°?', opts: ['Р­С‚РёС‡РµСЃРєРёР№ РєРѕРґРµРєСЃ РІСЂР°С‡Р°', 'Р”РёРїР»РѕРј', 'Р›РёС†РµРЅР·РёСЏ', 'Р РµС†РµРїС‚'], correct: 0 },
+        { q: 'РЇ РіРѕС‚РѕРІ СѓС‡РёС‚СЊСЃСЏ 6+ Р»РµС‚', opts: ['Р”Р°', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РњРЅРµ РІР°Р¶РЅРѕ РїРѕРјРѕРіР°С‚СЊ Р»СЋРґСЏРј', opts: ['Р”Р°', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РЇ СЃС‚СЂРµСЃСЃРѕСѓСЃС‚РѕР№С‡РёРІ', opts: ['Р”Р°', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ СЂР°Р±РѕС‚Р°РµС‚ СЃ РїРѕР¶РёР»С‹РјРё?', opts: ['Р“РµСЂРёР°С‚СЂ', 'РџРµРґРёР°С‚СЂ', 'РќРµРѕРЅР°С‚РѕР»РѕРі', 'РђРєСѓС€РµСЂ'], correct: 0 },
+        { q: 'РљС‚Рѕ Р»РµС‡РёС‚ РЅРѕРІРѕСЂРѕР¶РґС‘РЅРЅС‹С…?', opts: ['РќРµРѕРЅР°С‚РѕР»РѕРі', 'РџРµРґРёР°С‚СЂ', 'РўРµСЂР°РїРµРІС‚', 'Р“РµСЂРёР°С‚СЂ'], correct: 0 },
     ] : [
-        { q: 'Какой балл ЕГЭ нужен для мед. вуза?', opts: ['От 70 и выше', 'От 50', 'Любой', 'От 30'], correct: 0 },
-        { q: 'Сколько длится ординатура?', opts: ['2-5 лет', '1 год', '6 месяцев', '10 лет'], correct: 0 },
-        { q: 'Какие предметы сдавать для медвуза?', opts: ['Биология, химия, русский', 'Математика, физика', 'История, общество', 'Литература, английский'], correct: 0 },
-        { q: 'Что такое интернатура?', opts: ['Практика после вуза (отменена)', 'Учёба в вузе', 'Школьная практика', 'Курсы'], correct: 0 },
-        { q: 'Какая специальность самая высокооплачиваемая?', opts: ['Хирург', 'Терапевт', 'Педиатр', 'Медсестра'], correct: 0 },
-        { q: 'Что такое аккредитация врача?', opts: ['Подтверждение квалификации', 'Диплом', 'Лицензия клиники', 'Рецепт'], correct: 0 },
-        { q: 'Какой врач зарабатывает больше?', opts: ['Пластический хирург', 'Участковый терапевт', 'Педиатр', 'Медсестра'], correct: 0 },
-        { q: 'Где можно работать с мед. образованием?', opts: ['Больница, клиника, лаборатория', 'Только больница', 'Только клиника', 'Только лаборатория'], correct: 0 },
-        { q: 'Что такое резидентура?', opts: ['Послевузовское обучение', 'Учёба в вузе', 'Школа', 'Курсы'], correct: 0 },
-        { q: 'Какая специальность требует больше обучения?', opts: ['Нейрохирург', 'Терапевт', 'Педиатр', 'Дерматолог'], correct: 0 },
-        { q: 'Я готов к ночным дежурствам', opts: ['Да', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Мне важен престиж профессии', opts: ['Да', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Я хочу заниматься наукой в медицине', opts: ['Да', 'Скорее да', 'Скорее нет', 'Нет'], correct: 0, type: 'likert' },
-        { q: 'Какой вуз лучший для медицины в России?', opts: ['Сеченовский университет', 'МГУ', 'СПбГУ', 'МФТИ'], correct: 0 },
-        { q: 'Что такое целевое направление?', opts: ['Обучение по договору с организацией', 'Платное обучение', 'Заочное обучение', 'Дистанционное'], correct: 0 },
+        { q: 'РљР°РєРѕР№ Р±Р°Р»Р» Р•Р“Р­ РЅСѓР¶РµРЅ РґР»СЏ РјРµРґ. РІСѓР·Р°?', opts: ['РћС‚ 70 Рё РІС‹С€Рµ', 'РћС‚ 50', 'Р›СЋР±РѕР№', 'РћС‚ 30'], correct: 0 },
+        { q: 'РЎРєРѕР»СЊРєРѕ РґР»РёС‚СЃСЏ РѕСЂРґРёРЅР°С‚СѓСЂР°?', opts: ['2-5 Р»РµС‚', '1 РіРѕРґ', '6 РјРµСЃСЏС†РµРІ', '10 Р»РµС‚'], correct: 0 },
+        { q: 'РљР°РєРёРµ РїСЂРµРґРјРµС‚С‹ СЃРґР°РІР°С‚СЊ РґР»СЏ РјРµРґРІСѓР·Р°?', opts: ['Р‘РёРѕР»РѕРіРёСЏ, С…РёРјРёСЏ, СЂСѓСЃСЃРєРёР№', 'РњР°С‚РµРјР°С‚РёРєР°, С„РёР·РёРєР°', 'РСЃС‚РѕСЂРёСЏ, РѕР±С‰РµСЃС‚РІРѕ', 'Р›РёС‚РµСЂР°С‚СѓСЂР°, Р°РЅРіР»РёР№СЃРєРёР№'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ РёРЅС‚РµСЂРЅР°С‚СѓСЂР°?', opts: ['РџСЂР°РєС‚РёРєР° РїРѕСЃР»Рµ РІСѓР·Р° (РѕС‚РјРµРЅРµРЅР°)', 'РЈС‡С‘Р±Р° РІ РІСѓР·Рµ', 'РЁРєРѕР»СЊРЅР°СЏ РїСЂР°РєС‚РёРєР°', 'РљСѓСЂСЃС‹'], correct: 0 },
+        { q: 'РљР°РєР°СЏ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ СЃР°РјР°СЏ РІС‹СЃРѕРєРѕРѕРїР»Р°С‡РёРІР°РµРјР°СЏ?', opts: ['РҐРёСЂСѓСЂРі', 'РўРµСЂР°РїРµРІС‚', 'РџРµРґРёР°С‚СЂ', 'РњРµРґСЃРµСЃС‚СЂР°'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ Р°РєРєСЂРµРґРёС‚Р°С†РёСЏ РІСЂР°С‡Р°?', opts: ['РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РєРІР°Р»РёС„РёРєР°С†РёРё', 'Р”РёРїР»РѕРј', 'Р›РёС†РµРЅР·РёСЏ РєР»РёРЅРёРєРё', 'Р РµС†РµРїС‚'], correct: 0 },
+        { q: 'РљР°РєРѕР№ РІСЂР°С‡ Р·Р°СЂР°Р±Р°С‚С‹РІР°РµС‚ Р±РѕР»СЊС€Рµ?', opts: ['РџР»Р°СЃС‚РёС‡РµСЃРєРёР№ С…РёСЂСѓСЂРі', 'РЈС‡Р°СЃС‚РєРѕРІС‹Р№ С‚РµСЂР°РїРµРІС‚', 'РџРµРґРёР°С‚СЂ', 'РњРµРґСЃРµСЃС‚СЂР°'], correct: 0 },
+        { q: 'Р“РґРµ РјРѕР¶РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РјРµРґ. РѕР±СЂР°Р·РѕРІР°РЅРёРµРј?', opts: ['Р‘РѕР»СЊРЅРёС†Р°, РєР»РёРЅРёРєР°, Р»Р°Р±РѕСЂР°С‚РѕСЂРёСЏ', 'РўРѕР»СЊРєРѕ Р±РѕР»СЊРЅРёС†Р°', 'РўРѕР»СЊРєРѕ РєР»РёРЅРёРєР°', 'РўРѕР»СЊРєРѕ Р»Р°Р±РѕСЂР°С‚РѕСЂРёСЏ'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ СЂРµР·РёРґРµРЅС‚СѓСЂР°?', opts: ['РџРѕСЃР»РµРІСѓР·РѕРІСЃРєРѕРµ РѕР±СѓС‡РµРЅРёРµ', 'РЈС‡С‘Р±Р° РІ РІСѓР·Рµ', 'РЁРєРѕР»Р°', 'РљСѓСЂСЃС‹'], correct: 0 },
+        { q: 'РљР°РєР°СЏ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ С‚СЂРµР±СѓРµС‚ Р±РѕР»СЊС€Рµ РѕР±СѓС‡РµРЅРёСЏ?', opts: ['РќРµР№СЂРѕС…РёСЂСѓСЂРі', 'РўРµСЂР°РїРµРІС‚', 'РџРµРґРёР°С‚СЂ', 'Р”РµСЂРјР°С‚РѕР»РѕРі'], correct: 0 },
+        { q: 'РЇ РіРѕС‚РѕРІ Рє РЅРѕС‡РЅС‹Рј РґРµР¶СѓСЂСЃС‚РІР°Рј', opts: ['Р”Р°', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РњРЅРµ РІР°Р¶РµРЅ РїСЂРµСЃС‚РёР¶ РїСЂРѕС„РµСЃСЃРёРё', opts: ['Р”Р°', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РЇ С…РѕС‡Сѓ Р·Р°РЅРёРјР°С‚СЊСЃСЏ РЅР°СѓРєРѕР№ РІ РјРµРґРёС†РёРЅРµ', opts: ['Р”Р°', 'РЎРєРѕСЂРµРµ РґР°', 'РЎРєРѕСЂРµРµ РЅРµС‚', 'РќРµС‚'], correct: 0, type: 'likert' },
+        { q: 'РљР°РєРѕР№ РІСѓР· Р»СѓС‡С€РёР№ РґР»СЏ РјРµРґРёС†РёРЅС‹ РІ Р РѕСЃСЃРёРё?', opts: ['РЎРµС‡РµРЅРѕРІСЃРєРёР№ СѓРЅРёРІРµСЂСЃРёС‚РµС‚', 'РњР“РЈ', 'РЎРџР±Р“РЈ', 'РњР¤РўР'], correct: 0 },
+        { q: 'Р§С‚Рѕ С‚Р°РєРѕРµ С†РµР»РµРІРѕРµ РЅР°РїСЂР°РІР»РµРЅРёРµ?', opts: ['РћР±СѓС‡РµРЅРёРµ РїРѕ РґРѕРіРѕРІРѕСЂСѓ СЃ РѕСЂРіР°РЅРёР·Р°С†РёРµР№', 'РџР»Р°С‚РЅРѕРµ РѕР±СѓС‡РµРЅРёРµ', 'Р—Р°РѕС‡РЅРѕРµ РѕР±СѓС‡РµРЅРёРµ', 'Р”РёСЃС‚Р°РЅС†РёРѕРЅРЅРѕРµ'], correct: 0 },
     ];
 
     themes.forEach((t, i) => {
@@ -4108,10 +4108,10 @@ function generateBiologyByGrade(bandStartGrade, desiredCount = 64) {
     const out = [];
 
     const addTwoWayDefinitions = ({ suffix, pairs, topic, difficulty, seedBase }) => {
-        // 2 варианта формулировки в каждую сторону => больше уникальных вопросов без «детских» тем
+        // 2 РІР°СЂРёР°РЅС‚Р° С„РѕСЂРјСѓР»РёСЂРѕРІРєРё РІ РєР°Р¶РґСѓСЋ СЃС‚РѕСЂРѕРЅСѓ => Р±РѕР»СЊС€Рµ СѓРЅРёРєР°Р»СЊРЅС‹С… РІРѕРїСЂРѕСЃРѕРІ Р±РµР· В«РґРµС‚СЃРєРёС…В» С‚РµРј
         const defPrompts = [
-            (p) => `Выберите верное определение термина: «${p.key}».`,
-            (p) => `Что означает термин «${p.key}»?`
+            (p) => `Р’С‹Р±РµСЂРёС‚Рµ РІРµСЂРЅРѕРµ РѕРїСЂРµРґРµР»РµРЅРёРµ С‚РµСЂРјРёРЅР°: В«${p.key}В».`,
+            (p) => `Р§С‚Рѕ РѕР·РЅР°С‡Р°РµС‚ С‚РµСЂРјРёРЅ В«${p.key}В»?`
         ];
         defPrompts.forEach((qText, i) => {
             out.push(
@@ -4124,15 +4124,15 @@ function generateBiologyByGrade(bandStartGrade, desiredCount = 64) {
                     questionText: (p) => qText(p),
                     optionsFromKeys: (keys, byKey) => keys.map(k => byKey[k]),
                     correctIndexFn: (keys, correctKey) => keys.indexOf(correctKey),
-                    explanationFn: (p) => `Правильно: ${p.value}.`
+                    explanationFn: (p) => `РџСЂР°РІРёР»СЊРЅРѕ: ${p.value}.`
                 })
             );
         });
 
         const inverted = pairs.map(p => ({ key: p.value, value: p.key }));
         const invPrompts = [
-            (p) => `Какой термин соответствует определению: «${p.key}»?`,
-            (p) => `Выберите термин по описанию: «${p.key}».`
+            (p) => `РљР°РєРѕР№ С‚РµСЂРјРёРЅ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РѕРїСЂРµРґРµР»РµРЅРёСЋ: В«${p.key}В»?`,
+            (p) => `Р’С‹Р±РµСЂРёС‚Рµ С‚РµСЂРјРёРЅ РїРѕ РѕРїРёСЃР°РЅРёСЋ: В«${p.key}В».`
         ];
         invPrompts.forEach((qText, i) => {
             out.push(
@@ -4145,7 +4145,7 @@ function generateBiologyByGrade(bandStartGrade, desiredCount = 64) {
                     questionText: (p) => qText(p),
                     optionsFromKeys: (keys, byKey) => keys.map(k => byKey[k]),
                     correctIndexFn: (keys, correctKey) => keys.indexOf(correctKey),
-                    explanationFn: (p) => `Правильно: ${p.value}.`
+                    explanationFn: (p) => `РџСЂР°РІРёР»СЊРЅРѕ: ${p.value}.`
                 })
             );
         });
@@ -4158,109 +4158,109 @@ function generateBiologyByGrade(bandStartGrade, desiredCount = 64) {
 
     if (isSenior) {
         const molBio = [
-            { key: 'Репликация', value: 'Удвоение ДНК перед делением клетки' },
-            { key: 'Транскрипция', value: 'Синтез РНК на матрице ДНК' },
-            { key: 'Трансляция', value: 'Синтез белка на рибосомах по информации мРНК' },
-            { key: 'Кодон', value: 'Триплет нуклеотидов мРНК, кодирующий аминокислоту' },
-            { key: 'Антикодон', value: 'Триплет тРНК, комплементарный кодону мРНК' },
-            { key: 'Генетический код', value: 'Соответствие между кодонами и аминокислотами' },
-            { key: 'Апоптоз', value: 'Программируемая гибель клетки' },
-            { key: 'Мутация', value: 'Стойкое изменение генетического материала' },
-            { key: 'Аллель', value: 'Одна из форм гена' },
-            { key: 'Геном', value: 'Совокупность генетического материала организма' },
-            { key: 'Кроссинговер', value: 'Обмен участками между гомологичными хромосомами в мейозе' },
-            { key: 'Мейоз', value: 'Деление, уменьшающее набор хромосом вдвое (образование гамет)' },
-            { key: 'Митоз', value: 'Деление клетки с образованием генетически идентичных клеток' },
-            { key: 'Кариотип', value: 'Набор хромосом вида (число, форма, размеры)' },
-            { key: 'Плазмида', value: 'Небольшая кольцевая ДНК бактерий, несущая доп. гены' }
+            { key: 'Р РµРїР»РёРєР°С†РёСЏ', value: 'РЈРґРІРѕРµРЅРёРµ Р”РќРљ РїРµСЂРµРґ РґРµР»РµРЅРёРµРј РєР»РµС‚РєРё' },
+            { key: 'РўСЂР°РЅСЃРєСЂРёРїС†РёСЏ', value: 'РЎРёРЅС‚РµР· Р РќРљ РЅР° РјР°С‚СЂРёС†Рµ Р”РќРљ' },
+            { key: 'РўСЂР°РЅСЃР»СЏС†РёСЏ', value: 'РЎРёРЅС‚РµР· Р±РµР»РєР° РЅР° СЂРёР±РѕСЃРѕРјР°С… РїРѕ РёРЅС„РѕСЂРјР°С†РёРё РјР РќРљ' },
+            { key: 'РљРѕРґРѕРЅ', value: 'РўСЂРёРїР»РµС‚ РЅСѓРєР»РµРѕС‚РёРґРѕРІ РјР РќРљ, РєРѕРґРёСЂСѓСЋС‰РёР№ Р°РјРёРЅРѕРєРёСЃР»РѕС‚Сѓ' },
+            { key: 'РђРЅС‚РёРєРѕРґРѕРЅ', value: 'РўСЂРёРїР»РµС‚ С‚Р РќРљ, РєРѕРјРїР»РµРјРµРЅС‚Р°СЂРЅС‹Р№ РєРѕРґРѕРЅСѓ РјР РќРљ' },
+            { key: 'Р“РµРЅРµС‚РёС‡РµСЃРєРёР№ РєРѕРґ', value: 'РЎРѕРѕС‚РІРµС‚СЃС‚РІРёРµ РјРµР¶РґСѓ РєРѕРґРѕРЅР°РјРё Рё Р°РјРёРЅРѕРєРёСЃР»РѕС‚Р°РјРё' },
+            { key: 'РђРїРѕРїС‚РѕР·', value: 'РџСЂРѕРіСЂР°РјРјРёСЂСѓРµРјР°СЏ РіРёР±РµР»СЊ РєР»РµС‚РєРё' },
+            { key: 'РњСѓС‚Р°С†РёСЏ', value: 'РЎС‚РѕР№РєРѕРµ РёР·РјРµРЅРµРЅРёРµ РіРµРЅРµС‚РёС‡РµСЃРєРѕРіРѕ РјР°С‚РµСЂРёР°Р»Р°' },
+            { key: 'РђР»Р»РµР»СЊ', value: 'РћРґРЅР° РёР· С„РѕСЂРј РіРµРЅР°' },
+            { key: 'Р“РµРЅРѕРј', value: 'РЎРѕРІРѕРєСѓРїРЅРѕСЃС‚СЊ РіРµРЅРµС‚РёС‡РµСЃРєРѕРіРѕ РјР°С‚РµСЂРёР°Р»Р° РѕСЂРіР°РЅРёР·РјР°' },
+            { key: 'РљСЂРѕСЃСЃРёРЅРіРѕРІРµСЂ', value: 'РћР±РјРµРЅ СѓС‡Р°СЃС‚РєР°РјРё РјРµР¶РґСѓ РіРѕРјРѕР»РѕРіРёС‡РЅС‹РјРё С…СЂРѕРјРѕСЃРѕРјР°РјРё РІ РјРµР№РѕР·Рµ' },
+            { key: 'РњРµР№РѕР·', value: 'Р”РµР»РµРЅРёРµ, СѓРјРµРЅСЊС€Р°СЋС‰РµРµ РЅР°Р±РѕСЂ С…СЂРѕРјРѕСЃРѕРј РІРґРІРѕРµ (РѕР±СЂР°Р·РѕРІР°РЅРёРµ РіР°РјРµС‚)' },
+            { key: 'РњРёС‚РѕР·', value: 'Р”РµР»РµРЅРёРµ РєР»РµС‚РєРё СЃ РѕР±СЂР°Р·РѕРІР°РЅРёРµРј РіРµРЅРµС‚РёС‡РµСЃРєРё РёРґРµРЅС‚РёС‡РЅС‹С… РєР»РµС‚РѕРє' },
+            { key: 'РљР°СЂРёРѕС‚РёРї', value: 'РќР°Р±РѕСЂ С…СЂРѕРјРѕСЃРѕРј РІРёРґР° (С‡РёСЃР»Рѕ, С„РѕСЂРјР°, СЂР°Р·РјРµСЂС‹)' },
+            { key: 'РџР»Р°Р·РјРёРґР°', value: 'РќРµР±РѕР»СЊС€Р°СЏ РєРѕР»СЊС†РµРІР°СЏ Р”РќРљ Р±Р°РєС‚РµСЂРёР№, РЅРµСЃСѓС‰Р°СЏ РґРѕРї. РіРµРЅС‹' }
         ];
 
         const phys = [
-            { key: 'Гомеостаз', value: 'Поддержание относительного постоянства внутренней среды' },
-            { key: 'Отрицательная обратная связь', value: 'Механизм регуляции, уменьшающий отклонение параметра' },
-            { key: 'Нервный импульс', value: 'Электрохимический сигнал в нервной ткани' },
-            { key: 'Синапс', value: 'Контакт между нейронами (или нейроном и клеткой-мишенью)' },
-            { key: 'Фермент', value: 'Белок-катализатор, ускоряющий биохимические реакции' },
-            { key: 'Гормон', value: 'Сигнальное вещество, регулирующее функции органов' },
-            { key: 'Иммунитет', value: 'Способность организма распознавать и устранять чужеродные агенты' },
-            { key: 'Антитело', value: 'Белок иммунной системы, специфически связывающий антиген' },
-            { key: 'Антиген', value: 'Чужеродная молекула, вызывающая иммунный ответ' },
-            { key: 'Дыхательная цепь', value: 'Система переноса электронов в митохондриях для синтеза АТФ' },
-            { key: 'АТФ', value: 'Универсальная молекула-носитель энергии в клетке' },
-            { key: 'Осмос', value: 'Диффузия воды через полупроницаемую мембрану' },
-            { key: 'Диффузия', value: 'Самопроизвольное перемешивание частиц из-за теплового движения' }
+            { key: 'Р“РѕРјРµРѕСЃС‚Р°Р·', value: 'РџРѕРґРґРµСЂР¶Р°РЅРёРµ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕРіРѕ РїРѕСЃС‚РѕСЏРЅСЃС‚РІР° РІРЅСѓС‚СЂРµРЅРЅРµР№ СЃСЂРµРґС‹' },
+            { key: 'РћС‚СЂРёС†Р°С‚РµР»СЊРЅР°СЏ РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ', value: 'РњРµС…Р°РЅРёР·Рј СЂРµРіСѓР»СЏС†РёРё, СѓРјРµРЅСЊС€Р°СЋС‰РёР№ РѕС‚РєР»РѕРЅРµРЅРёРµ РїР°СЂР°РјРµС‚СЂР°' },
+            { key: 'РќРµСЂРІРЅС‹Р№ РёРјРїСѓР»СЊСЃ', value: 'Р­Р»РµРєС‚СЂРѕС…РёРјРёС‡РµСЃРєРёР№ СЃРёРіРЅР°Р» РІ РЅРµСЂРІРЅРѕР№ С‚РєР°РЅРё' },
+            { key: 'РЎРёРЅР°РїСЃ', value: 'РљРѕРЅС‚Р°РєС‚ РјРµР¶РґСѓ РЅРµР№СЂРѕРЅР°РјРё (РёР»Рё РЅРµР№СЂРѕРЅРѕРј Рё РєР»РµС‚РєРѕР№-РјРёС€РµРЅСЊСЋ)' },
+            { key: 'Р¤РµСЂРјРµРЅС‚', value: 'Р‘РµР»РѕРє-РєР°С‚Р°Р»РёР·Р°С‚РѕСЂ, СѓСЃРєРѕСЂСЏСЋС‰РёР№ Р±РёРѕС…РёРјРёС‡РµСЃРєРёРµ СЂРµР°РєС†РёРё' },
+            { key: 'Р“РѕСЂРјРѕРЅ', value: 'РЎРёРіРЅР°Р»СЊРЅРѕРµ РІРµС‰РµСЃС‚РІРѕ, СЂРµРіСѓР»РёСЂСѓСЋС‰РµРµ С„СѓРЅРєС†РёРё РѕСЂРіР°РЅРѕРІ' },
+            { key: 'РРјРјСѓРЅРёС‚РµС‚', value: 'РЎРїРѕСЃРѕР±РЅРѕСЃС‚СЊ РѕСЂРіР°РЅРёР·РјР° СЂР°СЃРїРѕР·РЅР°РІР°С‚СЊ Рё СѓСЃС‚СЂР°РЅСЏС‚СЊ С‡СѓР¶РµСЂРѕРґРЅС‹Рµ Р°РіРµРЅС‚С‹' },
+            { key: 'РђРЅС‚РёС‚РµР»Рѕ', value: 'Р‘РµР»РѕРє РёРјРјСѓРЅРЅРѕР№ СЃРёСЃС‚РµРјС‹, СЃРїРµС†РёС„РёС‡РµСЃРєРё СЃРІСЏР·С‹РІР°СЋС‰РёР№ Р°РЅС‚РёРіРµРЅ' },
+            { key: 'РђРЅС‚РёРіРµРЅ', value: 'Р§СѓР¶РµСЂРѕРґРЅР°СЏ РјРѕР»РµРєСѓР»Р°, РІС‹Р·С‹РІР°СЋС‰Р°СЏ РёРјРјСѓРЅРЅС‹Р№ РѕС‚РІРµС‚' },
+            { key: 'Р”С‹С…Р°С‚РµР»СЊРЅР°СЏ С†РµРїСЊ', value: 'РЎРёСЃС‚РµРјР° РїРµСЂРµРЅРѕСЃР° СЌР»РµРєС‚СЂРѕРЅРѕРІ РІ РјРёС‚РѕС…РѕРЅРґСЂРёСЏС… РґР»СЏ СЃРёРЅС‚РµР·Р° РђРўР¤' },
+            { key: 'РђРўР¤', value: 'РЈРЅРёРІРµСЂСЃР°Р»СЊРЅР°СЏ РјРѕР»РµРєСѓР»Р°-РЅРѕСЃРёС‚РµР»СЊ СЌРЅРµСЂРіРёРё РІ РєР»РµС‚РєРµ' },
+            { key: 'РћСЃРјРѕСЃ', value: 'Р”РёС„С„СѓР·РёСЏ РІРѕРґС‹ С‡РµСЂРµР· РїРѕР»СѓРїСЂРѕРЅРёС†Р°РµРјСѓСЋ РјРµРјР±СЂР°РЅСѓ' },
+            { key: 'Р”РёС„С„СѓР·РёСЏ', value: 'РЎР°РјРѕРїСЂРѕРёР·РІРѕР»СЊРЅРѕРµ РїРµСЂРµРјРµС€РёРІР°РЅРёРµ С‡Р°СЃС‚РёС† РёР·-Р·Р° С‚РµРїР»РѕРІРѕРіРѕ РґРІРёР¶РµРЅРёСЏ' }
         ];
 
         const ecologyEvolution = [
-            { key: 'Популяция', value: 'Совокупность особей одного вида на общей территории' },
-            { key: 'Генофонд', value: 'Совокупность генов популяции' },
-            { key: 'Естественный отбор', value: 'Выживание и размножение наиболее приспособленных' },
-            { key: 'Дрейф генов', value: 'Случайные изменения частот аллелей в популяции' },
-            { key: 'Изоляция', value: 'Разобщение популяций, препятствующее скрещиванию' },
-            { key: 'Видообразование', value: 'Процесс возникновения новых видов' },
-            { key: 'Сукцессия', value: 'Последовательная смена сообществ на территории' },
-            { key: 'Экологическая ниша', value: 'Роль вида в экосистеме и условия его существования' },
-            { key: 'Конкуренция', value: 'Взаимодействие организмов за ограниченные ресурсы' },
-            { key: 'Симбиоз', value: 'Тесное совместное существование организмов разных видов' },
-            { key: 'Трофическая цепь', value: 'Передача вещества и энергии через питание' },
-            { key: 'Продуценты', value: 'Организмы, создающие органическое вещество (обычно растения)' },
-            { key: 'Консументы', value: 'Организмы, питающиеся готовым органическим веществом' },
-            { key: 'Редуценты', value: 'Организмы, разлагающие органику до минеральных соединений' }
+            { key: 'РџРѕРїСѓР»СЏС†РёСЏ', value: 'РЎРѕРІРѕРєСѓРїРЅРѕСЃС‚СЊ РѕСЃРѕР±РµР№ РѕРґРЅРѕРіРѕ РІРёРґР° РЅР° РѕР±С‰РµР№ С‚РµСЂСЂРёС‚РѕСЂРёРё' },
+            { key: 'Р“РµРЅРѕС„РѕРЅРґ', value: 'РЎРѕРІРѕРєСѓРїРЅРѕСЃС‚СЊ РіРµРЅРѕРІ РїРѕРїСѓР»СЏС†РёРё' },
+            { key: 'Р•СЃС‚РµСЃС‚РІРµРЅРЅС‹Р№ РѕС‚Р±РѕСЂ', value: 'Р’С‹Р¶РёРІР°РЅРёРµ Рё СЂР°Р·РјРЅРѕР¶РµРЅРёРµ РЅР°РёР±РѕР»РµРµ РїСЂРёСЃРїРѕСЃРѕР±Р»РµРЅРЅС‹С…' },
+            { key: 'Р”СЂРµР№С„ РіРµРЅРѕРІ', value: 'РЎР»СѓС‡Р°Р№РЅС‹Рµ РёР·РјРµРЅРµРЅРёСЏ С‡Р°СЃС‚РѕС‚ Р°Р»Р»РµР»РµР№ РІ РїРѕРїСѓР»СЏС†РёРё' },
+            { key: 'РР·РѕР»СЏС†РёСЏ', value: 'Р Р°Р·РѕР±С‰РµРЅРёРµ РїРѕРїСѓР»СЏС†РёР№, РїСЂРµРїСЏС‚СЃС‚РІСѓСЋС‰РµРµ СЃРєСЂРµС‰РёРІР°РЅРёСЋ' },
+            { key: 'Р’РёРґРѕРѕР±СЂР°Р·РѕРІР°РЅРёРµ', value: 'РџСЂРѕС†РµСЃСЃ РІРѕР·РЅРёРєРЅРѕРІРµРЅРёСЏ РЅРѕРІС‹С… РІРёРґРѕРІ' },
+            { key: 'РЎСѓРєС†РµСЃСЃРёСЏ', value: 'РџРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅР°СЏ СЃРјРµРЅР° СЃРѕРѕР±С‰РµСЃС‚РІ РЅР° С‚РµСЂСЂРёС‚РѕСЂРёРё' },
+            { key: 'Р­РєРѕР»РѕРіРёС‡РµСЃРєР°СЏ РЅРёС€Р°', value: 'Р РѕР»СЊ РІРёРґР° РІ СЌРєРѕСЃРёСЃС‚РµРјРµ Рё СѓСЃР»РѕРІРёСЏ РµРіРѕ СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ' },
+            { key: 'РљРѕРЅРєСѓСЂРµРЅС†РёСЏ', value: 'Р’Р·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ РѕСЂРіР°РЅРёР·РјРѕРІ Р·Р° РѕРіСЂР°РЅРёС‡РµРЅРЅС‹Рµ СЂРµСЃСѓСЂСЃС‹' },
+            { key: 'РЎРёРјР±РёРѕР·', value: 'РўРµСЃРЅРѕРµ СЃРѕРІРјРµСЃС‚РЅРѕРµ СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ РѕСЂРіР°РЅРёР·РјРѕРІ СЂР°Р·РЅС‹С… РІРёРґРѕРІ' },
+            { key: 'РўСЂРѕС„РёС‡РµСЃРєР°СЏ С†РµРїСЊ', value: 'РџРµСЂРµРґР°С‡Р° РІРµС‰РµСЃС‚РІР° Рё СЌРЅРµСЂРіРёРё С‡РµСЂРµР· РїРёС‚Р°РЅРёРµ' },
+            { key: 'РџСЂРѕРґСѓС†РµРЅС‚С‹', value: 'РћСЂРіР°РЅРёР·РјС‹, СЃРѕР·РґР°СЋС‰РёРµ РѕСЂРіР°РЅРёС‡РµСЃРєРѕРµ РІРµС‰РµСЃС‚РІРѕ (РѕР±С‹С‡РЅРѕ СЂР°СЃС‚РµРЅРёСЏ)' },
+            { key: 'РљРѕРЅСЃСѓРјРµРЅС‚С‹', value: 'РћСЂРіР°РЅРёР·РјС‹, РїРёС‚Р°СЋС‰РёРµСЃСЏ РіРѕС‚РѕРІС‹Рј РѕСЂРіР°РЅРёС‡РµСЃРєРёРј РІРµС‰РµСЃС‚РІРѕРј' },
+            { key: 'Р РµРґСѓС†РµРЅС‚С‹', value: 'РћСЂРіР°РЅРёР·РјС‹, СЂР°Р·Р»Р°РіР°СЋС‰РёРµ РѕСЂРіР°РЅРёРєСѓ РґРѕ РјРёРЅРµСЂР°Р»СЊРЅС‹С… СЃРѕРµРґРёРЅРµРЅРёР№' }
         ];
 
         const genetics = [
-            { key: 'Закон единообразия гибридов F1', value: 'При скрещивании гомозигот различающихся форм все F1 одинаковы (доминирование)' },
-            { key: 'Закон расщепления', value: 'Во втором поколении признаки расщепляются в определённых соотношениях' },
-            { key: 'Независимое наследование', value: 'Признаки наследуются независимо, если гены в разных хромосомах' },
-            { key: 'Гомозигота', value: 'Организм с одинаковыми аллелями данного гена' },
-            { key: 'Гетерозигота', value: 'Организм с разными аллелями данного гена' },
-            { key: 'Доминантный признак', value: 'Проявляется в фенотипе гетерозиготы' },
-            { key: 'Рецессивный признак', value: 'Проявляется при отсутствии доминантного (обычно в гомозиготе)' },
-            { key: 'Неполное доминирование', value: 'Фенотип гетерозиготы промежуточный между гомозиготами' },
-            { key: 'Кодоминирование', value: 'Оба аллеля проявляются одновременно (например, группы крови AB)' },
-            { key: 'Сцепленное наследование', value: 'Совместное наследование генов, расположенных в одной хромосоме' },
-            { key: 'Карта хромосомы', value: 'Схема расположения генов в хромосоме' },
-            { key: 'Генетическая рекомбинация', value: 'Образование новых сочетаний аллелей' },
-            { key: 'Тест-скрещивание', value: 'Скрещивание с гомозиготой по рецессиву для выяснения генотипа' },
-            { key: 'Мутаген', value: 'Фактор, повышающий частоту мутаций' },
-            { key: 'Хромосомная мутация', value: 'Изменение структуры хромосомы (делеция, инверсия, дупликация)' },
-            { key: 'Генная мутация', value: 'Изменение последовательности нуклеотидов в гене' },
-            { key: 'Полиплоидия', value: 'Увеличение числа наборов хромосом' },
-            { key: 'Анеуплоидия', value: 'Изменение числа отдельных хромосом (например, трисомия)' },
-            { key: 'Генетический дрейф', value: 'Случайное изменение частот аллелей в малых популяциях' },
-            { key: 'Панмиксия', value: 'Случайное скрещивание в популяции' }
-            ,{ key: 'Полигенное наследование', value: 'Наследование признака, контролируемого многими генами' }
-            ,{ key: 'Эпистаз', value: 'Взаимодействие генов, при котором один ген подавляет проявление другого' }
-            ,{ key: 'Плейотропия', value: 'Влияние одного гена на несколько признаков' }
-            ,{ key: 'Пенетрантность', value: 'Частота проявления гена в фенотипе у носителей' }
+            { key: 'Р—Р°РєРѕРЅ РµРґРёРЅРѕРѕР±СЂР°Р·РёСЏ РіРёР±СЂРёРґРѕРІ F1', value: 'РџСЂРё СЃРєСЂРµС‰РёРІР°РЅРёРё РіРѕРјРѕР·РёРіРѕС‚ СЂР°Р·Р»РёС‡Р°СЋС‰РёС…СЃСЏ С„РѕСЂРј РІСЃРµ F1 РѕРґРёРЅР°РєРѕРІС‹ (РґРѕРјРёРЅРёСЂРѕРІР°РЅРёРµ)' },
+            { key: 'Р—Р°РєРѕРЅ СЂР°СЃС‰РµРїР»РµРЅРёСЏ', value: 'Р’Рѕ РІС‚РѕСЂРѕРј РїРѕРєРѕР»РµРЅРёРё РїСЂРёР·РЅР°РєРё СЂР°СЃС‰РµРїР»СЏСЋС‚СЃСЏ РІ РѕРїСЂРµРґРµР»С‘РЅРЅС‹С… СЃРѕРѕС‚РЅРѕС€РµРЅРёСЏС…' },
+            { key: 'РќРµР·Р°РІРёСЃРёРјРѕРµ РЅР°СЃР»РµРґРѕРІР°РЅРёРµ', value: 'РџСЂРёР·РЅР°РєРё РЅР°СЃР»РµРґСѓСЋС‚СЃСЏ РЅРµР·Р°РІРёСЃРёРјРѕ, РµСЃР»Рё РіРµРЅС‹ РІ СЂР°Р·РЅС‹С… С…СЂРѕРјРѕСЃРѕРјР°С…' },
+            { key: 'Р“РѕРјРѕР·РёРіРѕС‚Р°', value: 'РћСЂРіР°РЅРёР·Рј СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё Р°Р»Р»РµР»СЏРјРё РґР°РЅРЅРѕРіРѕ РіРµРЅР°' },
+            { key: 'Р“РµС‚РµСЂРѕР·РёРіРѕС‚Р°', value: 'РћСЂРіР°РЅРёР·Рј СЃ СЂР°Р·РЅС‹РјРё Р°Р»Р»РµР»СЏРјРё РґР°РЅРЅРѕРіРѕ РіРµРЅР°' },
+            { key: 'Р”РѕРјРёРЅР°РЅС‚РЅС‹Р№ РїСЂРёР·РЅР°Рє', value: 'РџСЂРѕСЏРІР»СЏРµС‚СЃСЏ РІ С„РµРЅРѕС‚РёРїРµ РіРµС‚РµСЂРѕР·РёРіРѕС‚С‹' },
+            { key: 'Р РµС†РµСЃСЃРёРІРЅС‹Р№ РїСЂРёР·РЅР°Рє', value: 'РџСЂРѕСЏРІР»СЏРµС‚СЃСЏ РїСЂРё РѕС‚СЃСѓС‚СЃС‚РІРёРё РґРѕРјРёРЅР°РЅС‚РЅРѕРіРѕ (РѕР±С‹С‡РЅРѕ РІ РіРѕРјРѕР·РёРіРѕС‚Рµ)' },
+            { key: 'РќРµРїРѕР»РЅРѕРµ РґРѕРјРёРЅРёСЂРѕРІР°РЅРёРµ', value: 'Р¤РµРЅРѕС‚РёРї РіРµС‚РµСЂРѕР·РёРіРѕС‚С‹ РїСЂРѕРјРµР¶СѓС‚РѕС‡РЅС‹Р№ РјРµР¶РґСѓ РіРѕРјРѕР·РёРіРѕС‚Р°РјРё' },
+            { key: 'РљРѕРґРѕРјРёРЅРёСЂРѕРІР°РЅРёРµ', value: 'РћР±Р° Р°Р»Р»РµР»СЏ РїСЂРѕСЏРІР»СЏСЋС‚СЃСЏ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ (РЅР°РїСЂРёРјРµСЂ, РіСЂСѓРїРїС‹ РєСЂРѕРІРё AB)' },
+            { key: 'РЎС†РµРїР»РµРЅРЅРѕРµ РЅР°СЃР»РµРґРѕРІР°РЅРёРµ', value: 'РЎРѕРІРјРµСЃС‚РЅРѕРµ РЅР°СЃР»РµРґРѕРІР°РЅРёРµ РіРµРЅРѕРІ, СЂР°СЃРїРѕР»РѕР¶РµРЅРЅС‹С… РІ РѕРґРЅРѕР№ С…СЂРѕРјРѕСЃРѕРјРµ' },
+            { key: 'РљР°СЂС‚Р° С…СЂРѕРјРѕСЃРѕРјС‹', value: 'РЎС…РµРјР° СЂР°СЃРїРѕР»РѕР¶РµРЅРёСЏ РіРµРЅРѕРІ РІ С…СЂРѕРјРѕСЃРѕРјРµ' },
+            { key: 'Р“РµРЅРµС‚РёС‡РµСЃРєР°СЏ СЂРµРєРѕРјР±РёРЅР°С†РёСЏ', value: 'РћР±СЂР°Р·РѕРІР°РЅРёРµ РЅРѕРІС‹С… СЃРѕС‡РµС‚Р°РЅРёР№ Р°Р»Р»РµР»РµР№' },
+            { key: 'РўРµСЃС‚-СЃРєСЂРµС‰РёРІР°РЅРёРµ', value: 'РЎРєСЂРµС‰РёРІР°РЅРёРµ СЃ РіРѕРјРѕР·РёРіРѕС‚РѕР№ РїРѕ СЂРµС†РµСЃСЃРёРІСѓ РґР»СЏ РІС‹СЏСЃРЅРµРЅРёСЏ РіРµРЅРѕС‚РёРїР°' },
+            { key: 'РњСѓС‚Р°РіРµРЅ', value: 'Р¤Р°РєС‚РѕСЂ, РїРѕРІС‹С€Р°СЋС‰РёР№ С‡Р°СЃС‚РѕС‚Сѓ РјСѓС‚Р°С†РёР№' },
+            { key: 'РҐСЂРѕРјРѕСЃРѕРјРЅР°СЏ РјСѓС‚Р°С†РёСЏ', value: 'РР·РјРµРЅРµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ С…СЂРѕРјРѕСЃРѕРјС‹ (РґРµР»РµС†РёСЏ, РёРЅРІРµСЂСЃРёСЏ, РґСѓРїР»РёРєР°С†РёСЏ)' },
+            { key: 'Р“РµРЅРЅР°СЏ РјСѓС‚Р°С†РёСЏ', value: 'РР·РјРµРЅРµРЅРёРµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё РЅСѓРєР»РµРѕС‚РёРґРѕРІ РІ РіРµРЅРµ' },
+            { key: 'РџРѕР»РёРїР»РѕРёРґРёСЏ', value: 'РЈРІРµР»РёС‡РµРЅРёРµ С‡РёСЃР»Р° РЅР°Р±РѕСЂРѕРІ С…СЂРѕРјРѕСЃРѕРј' },
+            { key: 'РђРЅРµСѓРїР»РѕРёРґРёСЏ', value: 'РР·РјРµРЅРµРЅРёРµ С‡РёСЃР»Р° РѕС‚РґРµР»СЊРЅС‹С… С…СЂРѕРјРѕСЃРѕРј (РЅР°РїСЂРёРјРµСЂ, С‚СЂРёСЃРѕРјРёСЏ)' },
+            { key: 'Р“РµРЅРµС‚РёС‡РµСЃРєРёР№ РґСЂРµР№С„', value: 'РЎР»СѓС‡Р°Р№РЅРѕРµ РёР·РјРµРЅРµРЅРёРµ С‡Р°СЃС‚РѕС‚ Р°Р»Р»РµР»РµР№ РІ РјР°Р»С‹С… РїРѕРїСѓР»СЏС†РёСЏС…' },
+            { key: 'РџР°РЅРјРёРєСЃРёСЏ', value: 'РЎР»СѓС‡Р°Р№РЅРѕРµ СЃРєСЂРµС‰РёРІР°РЅРёРµ РІ РїРѕРїСѓР»СЏС†РёРё' }
+            ,{ key: 'РџРѕР»РёРіРµРЅРЅРѕРµ РЅР°СЃР»РµРґРѕРІР°РЅРёРµ', value: 'РќР°СЃР»РµРґРѕРІР°РЅРёРµ РїСЂРёР·РЅР°РєР°, РєРѕРЅС‚СЂРѕР»РёСЂСѓРµРјРѕРіРѕ РјРЅРѕРіРёРјРё РіРµРЅР°РјРё' }
+            ,{ key: 'Р­РїРёСЃС‚Р°Р·', value: 'Р’Р·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ РіРµРЅРѕРІ, РїСЂРё РєРѕС‚РѕСЂРѕРј РѕРґРёРЅ РіРµРЅ РїРѕРґР°РІР»СЏРµС‚ РїСЂРѕСЏРІР»РµРЅРёРµ РґСЂСѓРіРѕРіРѕ' }
+            ,{ key: 'РџР»РµР№РѕС‚СЂРѕРїРёСЏ', value: 'Р’Р»РёСЏРЅРёРµ РѕРґРЅРѕРіРѕ РіРµРЅР° РЅР° РЅРµСЃРєРѕР»СЊРєРѕ РїСЂРёР·РЅР°РєРѕРІ' }
+            ,{ key: 'РџРµРЅРµС‚СЂР°РЅС‚РЅРѕСЃС‚СЊ', value: 'Р§Р°СЃС‚РѕС‚Р° РїСЂРѕСЏРІР»РµРЅРёСЏ РіРµРЅР° РІ С„РµРЅРѕС‚РёРїРµ Сѓ РЅРѕСЃРёС‚РµР»РµР№' }
         ];
 
-        addTwoWayDefinitions({ suffix: 'mol', pairs: molBio, topic: 'Молекулярная биология', difficulty: 4, seedBase: 1101 });
-        addTwoWayDefinitions({ suffix: 'phys', pairs: phys, topic: 'Физиология и регуляция', difficulty: 4, seedBase: 1201 });
-        addTwoWayDefinitions({ suffix: 'eco', pairs: ecologyEvolution, topic: 'Экология и эволюция', difficulty: 4, seedBase: 1301 });
-        addTwoWayDefinitions({ suffix: 'gen', pairs: genetics, topic: 'Генетика', difficulty: 4, seedBase: 1401 });
+        addTwoWayDefinitions({ suffix: 'mol', pairs: molBio, topic: 'РњРѕР»РµРєСѓР»СЏСЂРЅР°СЏ Р±РёРѕР»РѕРіРёСЏ', difficulty: 4, seedBase: 1101 });
+        addTwoWayDefinitions({ suffix: 'phys', pairs: phys, topic: 'Р¤РёР·РёРѕР»РѕРіРёСЏ Рё СЂРµРіСѓР»СЏС†РёСЏ', difficulty: 4, seedBase: 1201 });
+        addTwoWayDefinitions({ suffix: 'eco', pairs: ecologyEvolution, topic: 'Р­РєРѕР»РѕРіРёСЏ Рё СЌРІРѕР»СЋС†РёСЏ', difficulty: 4, seedBase: 1301 });
+        addTwoWayDefinitions({ suffix: 'gen', pairs: genetics, topic: 'Р“РµРЅРµС‚РёРєР°', difficulty: 4, seedBase: 1401 });
     } else {
-        // Для младших/средних оставляем базу, но без "детских" вопросов в старших классах.
+        // Р”Р»СЏ РјР»Р°РґС€РёС…/СЃСЂРµРґРЅРёС… РѕСЃС‚Р°РІР»СЏРµРј Р±Р°Р·Сѓ, РЅРѕ Р±РµР· "РґРµС‚СЃРєРёС…" РІРѕРїСЂРѕСЃРѕРІ РІ СЃС‚Р°СЂС€РёС… РєР»Р°СЃСЃР°С….
 
         if (isJunior) {
             const organToFunc = [
-                { key: 'Лёгкие', value: 'Дыхание (газообмен)' },
-                { key: 'Сердце', value: 'Перекачивание крови' },
-                { key: 'Желудок', value: 'Начальное переваривание пищи' },
-                { key: 'Печень', value: 'Образование желчи и обезвреживание вредных веществ' },
-                { key: 'Почки', value: 'Фильтрация крови и образование мочи' },
-                { key: 'Мозг', value: 'Управление работой организма' },
-                { key: 'Кожа', value: 'Защита тела и терморегуляция' },
-                { key: 'Кишечник', value: 'Всасывание питательных веществ' }
+                { key: 'Р›С‘РіРєРёРµ', value: 'Р”С‹С…Р°РЅРёРµ (РіР°Р·РѕРѕР±РјРµРЅ)' },
+                { key: 'РЎРµСЂРґС†Рµ', value: 'РџРµСЂРµРєР°С‡РёРІР°РЅРёРµ РєСЂРѕРІРё' },
+                { key: 'Р–РµР»СѓРґРѕРє', value: 'РќР°С‡Р°Р»СЊРЅРѕРµ РїРµСЂРµРІР°СЂРёРІР°РЅРёРµ РїРёС‰Рё' },
+                { key: 'РџРµС‡РµРЅСЊ', value: 'РћР±СЂР°Р·РѕРІР°РЅРёРµ Р¶РµР»С‡Рё Рё РѕР±РµР·РІСЂРµР¶РёРІР°РЅРёРµ РІСЂРµРґРЅС‹С… РІРµС‰РµСЃС‚РІ' },
+                { key: 'РџРѕС‡РєРё', value: 'Р¤РёР»СЊС‚СЂР°С†РёСЏ РєСЂРѕРІРё Рё РѕР±СЂР°Р·РѕРІР°РЅРёРµ РјРѕС‡Рё' },
+                { key: 'РњРѕР·Рі', value: 'РЈРїСЂР°РІР»РµРЅРёРµ СЂР°Р±РѕС‚РѕР№ РѕСЂРіР°РЅРёР·РјР°' },
+                { key: 'РљРѕР¶Р°', value: 'Р—Р°С‰РёС‚Р° С‚РµР»Р° Рё С‚РµСЂРјРѕСЂРµРіСѓР»СЏС†РёСЏ' },
+                { key: 'РљРёС€РµС‡РЅРёРє', value: 'Р’СЃР°СЃС‹РІР°РЅРёРµ РїРёС‚Р°С‚РµР»СЊРЅС‹С… РІРµС‰РµСЃС‚РІ' }
             ];
             out.push(
                 ...buildMcqFromPairs({
                     prefix: `${prefix}_organs`,
                     pairs: organToFunc,
-                    topic: band === '1-4' ? 'Человек' : 'Анатомия',
+                    topic: band === '1-4' ? 'Р§РµР»РѕРІРµРє' : 'РђРЅР°С‚РѕРјРёСЏ',
                     difficulty: diff,
                     seedBase: 11,
-                    questionText: (p) => `Какая основная функция органа «${p.key}»?`,
+                    questionText: (p) => `РљР°РєР°СЏ РѕСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РѕСЂРіР°РЅР° В«${p.key}В»?`,
                     optionsFromKeys: (keys, byKey) => keys.map(k => byKey[k]),
                     correctIndexFn: (keys, correctKey) => keys.indexOf(correctKey),
                     explanationFn: (p) => `${p.key}: ${p.value}.`
@@ -4268,72 +4268,72 @@ function generateBiologyByGrade(bandStartGrade, desiredCount = 64) {
             );
 
             const senseToOrgan = [
-                { key: 'Зрение', value: 'Глаза' },
-                { key: 'Слух', value: 'Уши' },
-                { key: 'Обоняние', value: 'Нос' },
-                { key: 'Вкус', value: 'Язык' },
-                { key: 'Осязание', value: 'Кожа' }
+                { key: 'Р—СЂРµРЅРёРµ', value: 'Р“Р»Р°Р·Р°' },
+                { key: 'РЎР»СѓС…', value: 'РЈС€Рё' },
+                { key: 'РћР±РѕРЅСЏРЅРёРµ', value: 'РќРѕСЃ' },
+                { key: 'Р’РєСѓСЃ', value: 'РЇР·С‹Рє' },
+                { key: 'РћСЃСЏР·Р°РЅРёРµ', value: 'РљРѕР¶Р°' }
             ];
             out.push(
                 ...buildMcqFromPairs({
                     prefix: `${prefix}_senses`,
                     pairs: senseToOrgan,
-                    topic: 'Человек',
+                    topic: 'Р§РµР»РѕРІРµРє',
                     difficulty: Math.max(1, diff - 1),
                     seedBase: 71,
-                    questionText: (p) => `Какой орган отвечает за «${p.key}»?`,
+                    questionText: (p) => `РљР°РєРѕР№ РѕСЂРіР°РЅ РѕС‚РІРµС‡Р°РµС‚ Р·Р° В«${p.key}В»?`,
                     optionsFromKeys: (keys, byKey) => keys.map(k => byKey[k]),
                     correctIndexFn: (keys, correctKey) => keys.indexOf(correctKey),
-                    explanationFn: (p) => `${p.key} обеспечивают: ${p.value}.`
+                    explanationFn: (p) => `${p.key} РѕР±РµСЃРїРµС‡РёРІР°СЋС‚: ${p.value}.`
                 })
             );
         }
 
         if (band !== '1-4' && !isSenior) {
             const termToDef = [
-                { key: 'Клетка', value: 'Минимальная живая система' },
-                { key: 'Ткань', value: 'Совокупность клеток, сходных по строению и функциям' },
-                { key: 'Орган', value: 'Часть тела, выполняющая определённую функцию' },
-                { key: 'Система органов', value: 'Группа органов, работающих вместе' },
-                { key: 'ДНК', value: 'Молекула, несущая наследственную информацию' },
-                { key: 'Ген', value: 'Участок ДНК, определяющий признак' },
-                { key: 'Фотосинтез', value: 'Образование органических веществ на свету из CO2 и воды' },
-                { key: 'Популяция', value: 'Совокупность особей одного вида на территории' },
-                { key: 'Экосистема', value: 'Сообщество организмов и среда их обитания' },
-                { key: 'Естественный отбор', value: 'Выживание и размножение наиболее приспособленных' }
+                { key: 'РљР»РµС‚РєР°', value: 'РњРёРЅРёРјР°Р»СЊРЅР°СЏ Р¶РёРІР°СЏ СЃРёСЃС‚РµРјР°' },
+                { key: 'РўРєР°РЅСЊ', value: 'РЎРѕРІРѕРєСѓРїРЅРѕСЃС‚СЊ РєР»РµС‚РѕРє, СЃС…РѕРґРЅС‹С… РїРѕ СЃС‚СЂРѕРµРЅРёСЋ Рё С„СѓРЅРєС†РёСЏРј' },
+                { key: 'РћСЂРіР°РЅ', value: 'Р§Р°СЃС‚СЊ С‚РµР»Р°, РІС‹РїРѕР»РЅСЏСЋС‰Р°СЏ РѕРїСЂРµРґРµР»С‘РЅРЅСѓСЋ С„СѓРЅРєС†РёСЋ' },
+                { key: 'РЎРёСЃС‚РµРјР° РѕСЂРіР°РЅРѕРІ', value: 'Р“СЂСѓРїРїР° РѕСЂРіР°РЅРѕРІ, СЂР°Р±РѕС‚Р°СЋС‰РёС… РІРјРµСЃС‚Рµ' },
+                { key: 'Р”РќРљ', value: 'РњРѕР»РµРєСѓР»Р°, РЅРµСЃСѓС‰Р°СЏ РЅР°СЃР»РµРґСЃС‚РІРµРЅРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ' },
+                { key: 'Р“РµРЅ', value: 'РЈС‡Р°СЃС‚РѕРє Р”РќРљ, РѕРїСЂРµРґРµР»СЏСЋС‰РёР№ РїСЂРёР·РЅР°Рє' },
+                { key: 'Р¤РѕС‚РѕСЃРёРЅС‚РµР·', value: 'РћР±СЂР°Р·РѕРІР°РЅРёРµ РѕСЂРіР°РЅРёС‡РµСЃРєРёС… РІРµС‰РµСЃС‚РІ РЅР° СЃРІРµС‚Сѓ РёР· CO2 Рё РІРѕРґС‹' },
+                { key: 'РџРѕРїСѓР»СЏС†РёСЏ', value: 'РЎРѕРІРѕРєСѓРїРЅРѕСЃС‚СЊ РѕСЃРѕР±РµР№ РѕРґРЅРѕРіРѕ РІРёРґР° РЅР° С‚РµСЂСЂРёС‚РѕСЂРёРё' },
+                { key: 'Р­РєРѕСЃРёСЃС‚РµРјР°', value: 'РЎРѕРѕР±С‰РµСЃС‚РІРѕ РѕСЂРіР°РЅРёР·РјРѕРІ Рё СЃСЂРµРґР° РёС… РѕР±РёС‚Р°РЅРёСЏ' },
+                { key: 'Р•СЃС‚РµСЃС‚РІРµРЅРЅС‹Р№ РѕС‚Р±РѕСЂ', value: 'Р’С‹Р¶РёРІР°РЅРёРµ Рё СЂР°Р·РјРЅРѕР¶РµРЅРёРµ РЅР°РёР±РѕР»РµРµ РїСЂРёСЃРїРѕСЃРѕР±Р»РµРЅРЅС‹С…' }
             ];
-            addTwoWayDefinitions({ suffix: 'terms', pairs: termToDef, topic: band === '5-6' ? 'Основы биологии' : 'Биология', difficulty: diff, seedBase: 37 });
+            addTwoWayDefinitions({ suffix: 'terms', pairs: termToDef, topic: band === '5-6' ? 'РћСЃРЅРѕРІС‹ Р±РёРѕР»РѕРіРёРё' : 'Р‘РёРѕР»РѕРіРёСЏ', difficulty: diff, seedBase: 37 });
         }
 
         if (isMiddle || isGrade9) {
             const cellAdvanced = [
-                { key: 'Ядро', value: 'Хранение ДНК и регуляция процессов в клетке' },
-                { key: 'Рибосомы', value: 'Синтез белка' },
-                { key: 'Митохондрии', value: 'Синтез АТФ при клеточном дыхании' },
-                { key: 'Аппарат Гольджи', value: 'Модификация и упаковка веществ для транспорта' },
-                { key: 'ЭПС', value: 'Синтез/транспорт веществ внутри клетки' },
-                { key: 'Лизосомы', value: 'Внутриклеточное пищеварение' },
-                { key: 'Хлоропласты', value: 'Фотосинтез (у растений)' }
+                { key: 'РЇРґСЂРѕ', value: 'РҐСЂР°РЅРµРЅРёРµ Р”РќРљ Рё СЂРµРіСѓР»СЏС†РёСЏ РїСЂРѕС†РµСЃСЃРѕРІ РІ РєР»РµС‚РєРµ' },
+                { key: 'Р РёР±РѕСЃРѕРјС‹', value: 'РЎРёРЅС‚РµР· Р±РµР»РєР°' },
+                { key: 'РњРёС‚РѕС…РѕРЅРґСЂРёРё', value: 'РЎРёРЅС‚РµР· РђРўР¤ РїСЂРё РєР»РµС‚РѕС‡РЅРѕРј РґС‹С…Р°РЅРёРё' },
+                { key: 'РђРїРїР°СЂР°С‚ Р“РѕР»СЊРґР¶Рё', value: 'РњРѕРґРёС„РёРєР°С†РёСЏ Рё СѓРїР°РєРѕРІРєР° РІРµС‰РµСЃС‚РІ РґР»СЏ С‚СЂР°РЅСЃРїРѕСЂС‚Р°' },
+                { key: 'Р­РџРЎ', value: 'РЎРёРЅС‚РµР·/С‚СЂР°РЅСЃРїРѕСЂС‚ РІРµС‰РµСЃС‚РІ РІРЅСѓС‚СЂРё РєР»РµС‚РєРё' },
+                { key: 'Р›РёР·РѕСЃРѕРјС‹', value: 'Р’РЅСѓС‚СЂРёРєР»РµС‚РѕС‡РЅРѕРµ РїРёС‰РµРІР°СЂРµРЅРёРµ' },
+                { key: 'РҐР»РѕСЂРѕРїР»Р°СЃС‚С‹', value: 'Р¤РѕС‚РѕСЃРёРЅС‚РµР· (Сѓ СЂР°СЃС‚РµРЅРёР№)' }
             ];
-            addTwoWayDefinitions({ suffix: 'cell', pairs: cellAdvanced, topic: 'Клетка', difficulty: Math.min(3, diff), seedBase: 83 });
+            addTwoWayDefinitions({ suffix: 'cell', pairs: cellAdvanced, topic: 'РљР»РµС‚РєР°', difficulty: Math.min(3, diff), seedBase: 83 });
         }
 
         if (band === '1-4' || band === '5-6' || isMiddle) {
             const plantPartToFunc = [
-                { key: 'Корень', value: 'Закрепляет растение и всасывает воду и минеральные вещества' },
-                { key: 'Стебель', value: 'Поддерживает и проводит вещества' },
-                { key: 'Лист', value: 'Фотосинтез и газообмен' },
-                { key: 'Цветок', value: 'Размножение (образование семян)' },
-                { key: 'Плод', value: 'Защищает семена и помогает распространению' }
+                { key: 'РљРѕСЂРµРЅСЊ', value: 'Р—Р°РєСЂРµРїР»СЏРµС‚ СЂР°СЃС‚РµРЅРёРµ Рё РІСЃР°СЃС‹РІР°РµС‚ РІРѕРґСѓ Рё РјРёРЅРµСЂР°Р»СЊРЅС‹Рµ РІРµС‰РµСЃС‚РІР°' },
+                { key: 'РЎС‚РµР±РµР»СЊ', value: 'РџРѕРґРґРµСЂР¶РёРІР°РµС‚ Рё РїСЂРѕРІРѕРґРёС‚ РІРµС‰РµСЃС‚РІР°' },
+                { key: 'Р›РёСЃС‚', value: 'Р¤РѕС‚РѕСЃРёРЅС‚РµР· Рё РіР°Р·РѕРѕР±РјРµРЅ' },
+                { key: 'Р¦РІРµС‚РѕРє', value: 'Р Р°Р·РјРЅРѕР¶РµРЅРёРµ (РѕР±СЂР°Р·РѕРІР°РЅРёРµ СЃРµРјСЏРЅ)' },
+                { key: 'РџР»РѕРґ', value: 'Р—Р°С‰РёС‰Р°РµС‚ СЃРµРјРµРЅР° Рё РїРѕРјРѕРіР°РµС‚ СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅРµРЅРёСЋ' }
             ];
             out.push(
                 ...buildMcqFromPairs({
                     prefix: `${prefix}_plants`,
                     pairs: plantPartToFunc,
-                    topic: 'Растения',
+                    topic: 'Р Р°СЃС‚РµРЅРёСЏ',
                     difficulty: diff,
                     seedBase: 23,
-                    questionText: (p) => `Какова основная роль: «${p.key}»?`,
+                    questionText: (p) => `РљР°РєРѕРІР° РѕСЃРЅРѕРІРЅР°СЏ СЂРѕР»СЊ: В«${p.key}В»?`,
                     optionsFromKeys: (keys, byKey) => keys.map(k => byKey[k]),
                     correctIndexFn: (keys, correctKey) => keys.indexOf(correctKey),
                     explanationFn: (p) => `${p.key}: ${p.value}.`
@@ -4343,32 +4343,32 @@ function generateBiologyByGrade(bandStartGrade, desiredCount = 64) {
 
         if (band === '1-4' || band === '5-6') {
             const seasonToChange = [
-                { key: 'Весна', value: 'Таяние снега и начало роста растений' },
-                { key: 'Лето', value: 'Самые тёплые дни и активный рост' },
-                { key: 'Осень', value: 'Листопад и подготовка к зиме' },
-                { key: 'Зима', value: 'Холод и снежный покров (часто)' }
+                { key: 'Р’РµСЃРЅР°', value: 'РўР°СЏРЅРёРµ СЃРЅРµРіР° Рё РЅР°С‡Р°Р»Рѕ СЂРѕСЃС‚Р° СЂР°СЃС‚РµРЅРёР№' },
+                { key: 'Р›РµС‚Рѕ', value: 'РЎР°РјС‹Рµ С‚С‘РїР»С‹Рµ РґРЅРё Рё Р°РєС‚РёРІРЅС‹Р№ СЂРѕСЃС‚' },
+                { key: 'РћСЃРµРЅСЊ', value: 'Р›РёСЃС‚РѕРїР°Рґ Рё РїРѕРґРіРѕС‚РѕРІРєР° Рє Р·РёРјРµ' },
+                { key: 'Р—РёРјР°', value: 'РҐРѕР»РѕРґ Рё СЃРЅРµР¶РЅС‹Р№ РїРѕРєСЂРѕРІ (С‡Р°СЃС‚Рѕ)' }
             ];
             seasonToChange.forEach((s, idx) => {
                 const seed = 2001 + idx * 17;
-                const seasons = ['Весна', 'Лето', 'Осень', 'Зима'];
+                const seasons = ['Р’РµСЃРЅР°', 'Р›РµС‚Рѕ', 'РћСЃРµРЅСЊ', 'Р—РёРјР°'];
                 const distract = pickDistractors(seasons, s.key, 3, seed);
                 const options = shuffleWithSeed([s.key, ...distract], seed + 1);
                 out.push(
                     makeMcq({
                         id: stableId(`${prefix}_seasons`, idx + 1),
-                        topic: 'Природа',
+                        topic: 'РџСЂРёСЂРѕРґР°',
                         difficulty: Math.max(1, diff - 1),
-                        question: `В какое время года обычно наблюдают: «${s.value}»?`,
+                        question: `Р’ РєР°РєРѕРµ РІСЂРµРјСЏ РіРѕРґР° РѕР±С‹С‡РЅРѕ РЅР°Р±Р»СЋРґР°СЋС‚: В«${s.value}В»?`,
                         options,
                         correct: options.indexOf(s.key),
-                        explanation: `Чаще всего это относится к: ${s.key}.`
+                        explanation: `Р§Р°С‰Рµ РІСЃРµРіРѕ СЌС‚Рѕ РѕС‚РЅРѕСЃРёС‚СЃСЏ Рє: ${s.key}.`
                     })
                 );
             });
         }
     }
 
-    // Финал: уникализируем, перемешиваем, отрезаем desiredCount
+    // Р¤РёРЅР°Р»: СѓРЅРёРєР°Р»РёР·РёСЂСѓРµРј, РїРµСЂРµРјРµС€РёРІР°РµРј, РѕС‚СЂРµР·Р°РµРј desiredCount
     const uniqByText = new Map();
     out.forEach(q => {
         const k = `${(q.question || '').trim()}@@${q.topic || ''}`;
@@ -4391,8 +4391,8 @@ function generateChemistryByGrade(bandStartGrade, desiredCount = 64) {
 
     const addTwoWayDefinitions = ({ suffix, pairs, topic, difficulty, seedBase }) => {
         const defPrompts = [
-            (p) => `Выберите верное определение термина: «${p.key}».`,
-            (p) => `Что означает термин «${p.key}»?`
+            (p) => `Р’С‹Р±РµСЂРёС‚Рµ РІРµСЂРЅРѕРµ РѕРїСЂРµРґРµР»РµРЅРёРµ С‚РµСЂРјРёРЅР°: В«${p.key}В».`,
+            (p) => `Р§С‚Рѕ РѕР·РЅР°С‡Р°РµС‚ С‚РµСЂРјРёРЅ В«${p.key}В»?`
         ];
         defPrompts.forEach((qText, i) => {
             out.push(
@@ -4405,15 +4405,15 @@ function generateChemistryByGrade(bandStartGrade, desiredCount = 64) {
                     questionText: (p) => qText(p),
                     optionsFromKeys: (keys, byKey) => keys.map(k => byKey[k]),
                     correctIndexFn: (keys, correctKey) => keys.indexOf(correctKey),
-                    explanationFn: (p) => `Правильно: ${p.value}.`
+                    explanationFn: (p) => `РџСЂР°РІРёР»СЊРЅРѕ: ${p.value}.`
                 })
             );
         });
 
         const inverted = pairs.map(p => ({ key: p.value, value: p.key }));
         const invPrompts = [
-            (p) => `Какой термин соответствует определению: «${p.key}»?`,
-            (p) => `Выберите термин по описанию: «${p.key}».`
+            (p) => `РљР°РєРѕР№ С‚РµСЂРјРёРЅ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РѕРїСЂРµРґРµР»РµРЅРёСЋ: В«${p.key}В»?`,
+            (p) => `Р’С‹Р±РµСЂРёС‚Рµ С‚РµСЂРјРёРЅ РїРѕ РѕРїРёСЃР°РЅРёСЋ: В«${p.key}В».`
         ];
         invPrompts.forEach((qText, i) => {
             out.push(
@@ -4426,7 +4426,7 @@ function generateChemistryByGrade(bandStartGrade, desiredCount = 64) {
                     questionText: (p) => qText(p),
                     optionsFromKeys: (keys, byKey) => keys.map(k => byKey[k]),
                     correctIndexFn: (keys, correctKey) => keys.indexOf(correctKey),
-                    explanationFn: (p) => `Правильно: ${p.value}.`
+                    explanationFn: (p) => `РџСЂР°РІРёР»СЊРЅРѕ: ${p.value}.`
                 })
             );
         });
@@ -4434,149 +4434,149 @@ function generateChemistryByGrade(bandStartGrade, desiredCount = 64) {
 
     if (isSenior) {
         const core = [
-            { key: 'Моль', value: 'Количество вещества, содержащее число Авогадро частиц' },
-            { key: 'Молярная масса', value: 'Масса 1 моль вещества (г/моль)' },
-            { key: 'Молярная концентрация', value: 'Количество вещества в 1 литре раствора (моль/л)' },
-            { key: 'Степень окисления', value: 'Условный заряд атома в соединении' },
-            { key: 'ОВР', value: 'Реакция с передачей электронов (окисление и восстановление)' },
-            { key: 'Окислитель', value: 'Частица, принимающая электроны (восстанавливается)' },
-            { key: 'Восстановитель', value: 'Частица, отдающая электроны (окисляется)' },
-            { key: 'Химическое равновесие', value: 'Состояние, когда скорости прямой и обратной реакций равны' },
-            { key: 'Константа равновесия', value: 'Величина, характеризующая положение равновесия' },
-            { key: 'Принцип Ле Шателье', value: 'Смещение равновесия при внешнем воздействии' },
-            { key: 'Скорость реакции', value: 'Изменение концентрации реагента/продукта за единицу времени' },
-            { key: 'Катализатор', value: 'Вещество, ускоряющее реакцию и не расходующееся' },
-            { key: 'Тепловой эффект реакции', value: 'Количество теплоты, выделяемое/поглощаемое в реакции' },
-            { key: 'Электролитическая диссоциация', value: 'Распад электролита на ионы в растворе' }
+            { key: 'РњРѕР»СЊ', value: 'РљРѕР»РёС‡РµСЃС‚РІРѕ РІРµС‰РµСЃС‚РІР°, СЃРѕРґРµСЂР¶Р°С‰РµРµ С‡РёСЃР»Рѕ РђРІРѕРіР°РґСЂРѕ С‡Р°СЃС‚РёС†' },
+            { key: 'РњРѕР»СЏСЂРЅР°СЏ РјР°СЃСЃР°', value: 'РњР°СЃСЃР° 1 РјРѕР»СЊ РІРµС‰РµСЃС‚РІР° (Рі/РјРѕР»СЊ)' },
+            { key: 'РњРѕР»СЏСЂРЅР°СЏ РєРѕРЅС†РµРЅС‚СЂР°С†РёСЏ', value: 'РљРѕР»РёС‡РµСЃС‚РІРѕ РІРµС‰РµСЃС‚РІР° РІ 1 Р»РёС‚СЂРµ СЂР°СЃС‚РІРѕСЂР° (РјРѕР»СЊ/Р»)' },
+            { key: 'РЎС‚РµРїРµРЅСЊ РѕРєРёСЃР»РµРЅРёСЏ', value: 'РЈСЃР»РѕРІРЅС‹Р№ Р·Р°СЂСЏРґ Р°С‚РѕРјР° РІ СЃРѕРµРґРёРЅРµРЅРёРё' },
+            { key: 'РћР’Р ', value: 'Р РµР°РєС†РёСЏ СЃ РїРµСЂРµРґР°С‡РµР№ СЌР»РµРєС‚СЂРѕРЅРѕРІ (РѕРєРёСЃР»РµРЅРёРµ Рё РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ)' },
+            { key: 'РћРєРёСЃР»РёС‚РµР»СЊ', value: 'Р§Р°СЃС‚РёС†Р°, РїСЂРёРЅРёРјР°СЋС‰Р°СЏ СЌР»РµРєС‚СЂРѕРЅС‹ (РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ)' },
+            { key: 'Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚РµР»СЊ', value: 'Р§Р°СЃС‚РёС†Р°, РѕС‚РґР°СЋС‰Р°СЏ СЌР»РµРєС‚СЂРѕРЅС‹ (РѕРєРёСЃР»СЏРµС‚СЃСЏ)' },
+            { key: 'РҐРёРјРёС‡РµСЃРєРѕРµ СЂР°РІРЅРѕРІРµСЃРёРµ', value: 'РЎРѕСЃС‚РѕСЏРЅРёРµ, РєРѕРіРґР° СЃРєРѕСЂРѕСЃС‚Рё РїСЂСЏРјРѕР№ Рё РѕР±СЂР°С‚РЅРѕР№ СЂРµР°РєС†РёР№ СЂР°РІРЅС‹' },
+            { key: 'РљРѕРЅСЃС‚Р°РЅС‚Р° СЂР°РІРЅРѕРІРµСЃРёСЏ', value: 'Р’РµР»РёС‡РёРЅР°, С…Р°СЂР°РєС‚РµСЂРёР·СѓСЋС‰Р°СЏ РїРѕР»РѕР¶РµРЅРёРµ СЂР°РІРЅРѕРІРµСЃРёСЏ' },
+            { key: 'РџСЂРёРЅС†РёРї Р›Рµ РЁР°С‚РµР»СЊРµ', value: 'РЎРјРµС‰РµРЅРёРµ СЂР°РІРЅРѕРІРµСЃРёСЏ РїСЂРё РІРЅРµС€РЅРµРј РІРѕР·РґРµР№СЃС‚РІРёРё' },
+            { key: 'РЎРєРѕСЂРѕСЃС‚СЊ СЂРµР°РєС†РёРё', value: 'РР·РјРµРЅРµРЅРёРµ РєРѕРЅС†РµРЅС‚СЂР°С†РёРё СЂРµР°РіРµРЅС‚Р°/РїСЂРѕРґСѓРєС‚Р° Р·Р° РµРґРёРЅРёС†Сѓ РІСЂРµРјРµРЅРё' },
+            { key: 'РљР°С‚Р°Р»РёР·Р°С‚РѕСЂ', value: 'Р’РµС‰РµСЃС‚РІРѕ, СѓСЃРєРѕСЂСЏСЋС‰РµРµ СЂРµР°РєС†РёСЋ Рё РЅРµ СЂР°СЃС…РѕРґСѓСЋС‰РµРµСЃСЏ' },
+            { key: 'РўРµРїР»РѕРІРѕР№ СЌС„С„РµРєС‚ СЂРµР°РєС†РёРё', value: 'РљРѕР»РёС‡РµСЃС‚РІРѕ С‚РµРїР»РѕС‚С‹, РІС‹РґРµР»СЏРµРјРѕРµ/РїРѕРіР»РѕС‰Р°РµРјРѕРµ РІ СЂРµР°РєС†РёРё' },
+            { key: 'Р­Р»РµРєС‚СЂРѕР»РёС‚РёС‡РµСЃРєР°СЏ РґРёСЃСЃРѕС†РёР°С†РёСЏ', value: 'Р Р°СЃРїР°Рґ СЌР»РµРєС‚СЂРѕР»РёС‚Р° РЅР° РёРѕРЅС‹ РІ СЂР°СЃС‚РІРѕСЂРµ' }
         ];
 
         const solutions = [
-            { key: 'Раствор', value: 'Однородная смесь растворителя и растворённого вещества' },
-            { key: 'Растворитель', value: 'Компонент раствора в большем количестве' },
-            { key: 'Растворённое вещество', value: 'Компонент раствора в меньшем количестве' },
-            { key: 'Массовая доля', value: 'Отношение массы вещества к массе раствора' },
-            { key: 'Титр', value: 'Масса растворённого вещества в 1 мл раствора' },
-            { key: 'Электролит', value: 'Вещество, раствор/расплав которого проводит ток' },
-            { key: 'Неэлектролит', value: 'Вещество, раствор которого не проводит ток' },
-            { key: 'Диссоциация', value: 'Распад молекул электролита на ионы' },
-            { key: 'Гидролиз', value: 'Взаимодействие ионов соли с водой' }
+            { key: 'Р Р°СЃС‚РІРѕСЂ', value: 'РћРґРЅРѕСЂРѕРґРЅР°СЏ СЃРјРµСЃСЊ СЂР°СЃС‚РІРѕСЂРёС‚РµР»СЏ Рё СЂР°СЃС‚РІРѕСЂС‘РЅРЅРѕРіРѕ РІРµС‰РµСЃС‚РІР°' },
+            { key: 'Р Р°СЃС‚РІРѕСЂРёС‚РµР»СЊ', value: 'РљРѕРјРїРѕРЅРµРЅС‚ СЂР°СЃС‚РІРѕСЂР° РІ Р±РѕР»СЊС€РµРј РєРѕР»РёС‡РµСЃС‚РІРµ' },
+            { key: 'Р Р°СЃС‚РІРѕСЂС‘РЅРЅРѕРµ РІРµС‰РµСЃС‚РІРѕ', value: 'РљРѕРјРїРѕРЅРµРЅС‚ СЂР°СЃС‚РІРѕСЂР° РІ РјРµРЅСЊС€РµРј РєРѕР»РёС‡РµСЃС‚РІРµ' },
+            { key: 'РњР°СЃСЃРѕРІР°СЏ РґРѕР»СЏ', value: 'РћС‚РЅРѕС€РµРЅРёРµ РјР°СЃСЃС‹ РІРµС‰РµСЃС‚РІР° Рє РјР°СЃСЃРµ СЂР°СЃС‚РІРѕСЂР°' },
+            { key: 'РўРёС‚СЂ', value: 'РњР°СЃСЃР° СЂР°СЃС‚РІРѕСЂС‘РЅРЅРѕРіРѕ РІРµС‰РµСЃС‚РІР° РІ 1 РјР» СЂР°СЃС‚РІРѕСЂР°' },
+            { key: 'Р­Р»РµРєС‚СЂРѕР»РёС‚', value: 'Р’РµС‰РµСЃС‚РІРѕ, СЂР°СЃС‚РІРѕСЂ/СЂР°СЃРїР»Р°РІ РєРѕС‚РѕСЂРѕРіРѕ РїСЂРѕРІРѕРґРёС‚ С‚РѕРє' },
+            { key: 'РќРµСЌР»РµРєС‚СЂРѕР»РёС‚', value: 'Р’РµС‰РµСЃС‚РІРѕ, СЂР°СЃС‚РІРѕСЂ РєРѕС‚РѕСЂРѕРіРѕ РЅРµ РїСЂРѕРІРѕРґРёС‚ С‚РѕРє' },
+            { key: 'Р”РёСЃСЃРѕС†РёР°С†РёСЏ', value: 'Р Р°СЃРїР°Рґ РјРѕР»РµРєСѓР» СЌР»РµРєС‚СЂРѕР»РёС‚Р° РЅР° РёРѕРЅС‹' },
+            { key: 'Р“РёРґСЂРѕР»РёР·', value: 'Р’Р·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ РёРѕРЅРѕРІ СЃРѕР»Рё СЃ РІРѕРґРѕР№' }
         ];
 
         const acidBase = [
-            { key: 'Кислота', value: 'Электролит, диссоциирующий с образованием H+' },
-            { key: 'Основание', value: 'Электролит, диссоциирующий с образованием OH-' },
-            { key: 'Соль', value: 'Соединение катиона металла (или NH4+) с анионом кислотного остатка' },
-            { key: 'pH', value: 'Показатель кислотности раствора' },
-            { key: 'Индикатор', value: 'Вещество, меняющее цвет в зависимости от pH' },
-            { key: 'Нейтрализация', value: 'Реакция кислоты и основания с образованием соли и воды' },
-            { key: 'Амфотерность', value: 'Способность проявлять кислотные и основные свойства' },
-            { key: 'Буферный раствор', value: 'Раствор, сопротивляющийся изменению pH при добавлении кислоты/щелочи' }
+            { key: 'РљРёСЃР»РѕС‚Р°', value: 'Р­Р»РµРєС‚СЂРѕР»РёС‚, РґРёСЃСЃРѕС†РёРёСЂСѓСЋС‰РёР№ СЃ РѕР±СЂР°Р·РѕРІР°РЅРёРµРј H+' },
+            { key: 'РћСЃРЅРѕРІР°РЅРёРµ', value: 'Р­Р»РµРєС‚СЂРѕР»РёС‚, РґРёСЃСЃРѕС†РёРёСЂСѓСЋС‰РёР№ СЃ РѕР±СЂР°Р·РѕРІР°РЅРёРµРј OH-' },
+            { key: 'РЎРѕР»СЊ', value: 'РЎРѕРµРґРёРЅРµРЅРёРµ РєР°С‚РёРѕРЅР° РјРµС‚Р°Р»Р»Р° (РёР»Рё NH4+) СЃ Р°РЅРёРѕРЅРѕРј РєРёСЃР»РѕС‚РЅРѕРіРѕ РѕСЃС‚Р°С‚РєР°' },
+            { key: 'pH', value: 'РџРѕРєР°Р·Р°С‚РµР»СЊ РєРёСЃР»РѕС‚РЅРѕСЃС‚Рё СЂР°СЃС‚РІРѕСЂР°' },
+            { key: 'РРЅРґРёРєР°С‚РѕСЂ', value: 'Р’РµС‰РµСЃС‚РІРѕ, РјРµРЅСЏСЋС‰РµРµ С†РІРµС‚ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ pH' },
+            { key: 'РќРµР№С‚СЂР°Р»РёР·Р°С†РёСЏ', value: 'Р РµР°РєС†РёСЏ РєРёСЃР»РѕС‚С‹ Рё РѕСЃРЅРѕРІР°РЅРёСЏ СЃ РѕР±СЂР°Р·РѕРІР°РЅРёРµРј СЃРѕР»Рё Рё РІРѕРґС‹' },
+            { key: 'РђРјС„РѕС‚РµСЂРЅРѕСЃС‚СЊ', value: 'РЎРїРѕСЃРѕР±РЅРѕСЃС‚СЊ РїСЂРѕСЏРІР»СЏС‚СЊ РєРёСЃР»РѕС‚РЅС‹Рµ Рё РѕСЃРЅРѕРІРЅС‹Рµ СЃРІРѕР№СЃС‚РІР°' },
+            { key: 'Р‘СѓС„РµСЂРЅС‹Р№ СЂР°СЃС‚РІРѕСЂ', value: 'Р Р°СЃС‚РІРѕСЂ, СЃРѕРїСЂРѕС‚РёРІР»СЏСЋС‰РёР№СЃСЏ РёР·РјРµРЅРµРЅРёСЋ pH РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё РєРёСЃР»РѕС‚С‹/С‰РµР»РѕС‡Рё' }
         ];
 
         const structure = [
-            { key: 'Ковалентная связь', value: 'Связь за счёт общих электронных пар' },
-            { key: 'Ионная связь', value: 'Связь за счёт электростатического притяжения ионов' },
-            { key: 'Металлическая связь', value: 'Связь между катионами металла и «электронным газом»' },
-            { key: 'Валентность', value: 'Число связей, которые может образовывать атом' },
-            { key: 'Полярность связи', value: 'Смещение электронной плотности к более электроотрицательному атому' },
-            { key: 'Электроотрицательность', value: 'Способность атома притягивать электроны в связи' },
-            { key: 'Изомерия', value: 'Одинаковый состав, но разное строение и свойства' }
+            { key: 'РљРѕРІР°Р»РµРЅС‚РЅР°СЏ СЃРІСЏР·СЊ', value: 'РЎРІСЏР·СЊ Р·Р° СЃС‡С‘С‚ РѕР±С‰РёС… СЌР»РµРєС‚СЂРѕРЅРЅС‹С… РїР°СЂ' },
+            { key: 'РРѕРЅРЅР°СЏ СЃРІСЏР·СЊ', value: 'РЎРІСЏР·СЊ Р·Р° СЃС‡С‘С‚ СЌР»РµРєС‚СЂРѕСЃС‚Р°С‚РёС‡РµСЃРєРѕРіРѕ РїСЂРёС‚СЏР¶РµРЅРёСЏ РёРѕРЅРѕРІ' },
+            { key: 'РњРµС‚Р°Р»Р»РёС‡РµСЃРєР°СЏ СЃРІСЏР·СЊ', value: 'РЎРІСЏР·СЊ РјРµР¶РґСѓ РєР°С‚РёРѕРЅР°РјРё РјРµС‚Р°Р»Р»Р° Рё В«СЌР»РµРєС‚СЂРѕРЅРЅС‹Рј РіР°Р·РѕРјВ»' },
+            { key: 'Р’Р°Р»РµРЅС‚РЅРѕСЃС‚СЊ', value: 'Р§РёСЃР»Рѕ СЃРІСЏР·РµР№, РєРѕС‚РѕСЂС‹Рµ РјРѕР¶РµС‚ РѕР±СЂР°Р·РѕРІС‹РІР°С‚СЊ Р°С‚РѕРј' },
+            { key: 'РџРѕР»СЏСЂРЅРѕСЃС‚СЊ СЃРІСЏР·Рё', value: 'РЎРјРµС‰РµРЅРёРµ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїР»РѕС‚РЅРѕСЃС‚Рё Рє Р±РѕР»РµРµ СЌР»РµРєС‚СЂРѕРѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРјСѓ Р°С‚РѕРјСѓ' },
+            { key: 'Р­Р»РµРєС‚СЂРѕРѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕСЃС‚СЊ', value: 'РЎРїРѕСЃРѕР±РЅРѕСЃС‚СЊ Р°С‚РѕРјР° РїСЂРёС‚СЏРіРёРІР°С‚СЊ СЌР»РµРєС‚СЂРѕРЅС‹ РІ СЃРІСЏР·Рё' },
+            { key: 'РР·РѕРјРµСЂРёСЏ', value: 'РћРґРёРЅР°РєРѕРІС‹Р№ СЃРѕСЃС‚Р°РІ, РЅРѕ СЂР°Р·РЅРѕРµ СЃС‚СЂРѕРµРЅРёРµ Рё СЃРІРѕР№СЃС‚РІР°' }
         ];
 
         const electrochem = [
-            { key: 'Электрод', value: 'Проводник, погружённый в электролит' },
-            { key: 'Электролиз', value: 'Химические превращения на электродах при прохождении тока' },
-            { key: 'Гальванический элемент', value: 'Источник тока на основе ОВР, протекающей самопроизвольно' },
-            { key: 'Катод', value: 'Электрод, на котором идёт восстановление' },
-            { key: 'Анод', value: 'Электрод, на котором идёт окисление' }
+            { key: 'Р­Р»РµРєС‚СЂРѕРґ', value: 'РџСЂРѕРІРѕРґРЅРёРє, РїРѕРіСЂСѓР¶С‘РЅРЅС‹Р№ РІ СЌР»РµРєС‚СЂРѕР»РёС‚' },
+            { key: 'Р­Р»РµРєС‚СЂРѕР»РёР·', value: 'РҐРёРјРёС‡РµСЃРєРёРµ РїСЂРµРІСЂР°С‰РµРЅРёСЏ РЅР° СЌР»РµРєС‚СЂРѕРґР°С… РїСЂРё РїСЂРѕС…РѕР¶РґРµРЅРёРё С‚РѕРєР°' },
+            { key: 'Р“Р°Р»СЊРІР°РЅРёС‡РµСЃРєРёР№ СЌР»РµРјРµРЅС‚', value: 'РСЃС‚РѕС‡РЅРёРє С‚РѕРєР° РЅР° РѕСЃРЅРѕРІРµ РћР’Р , РїСЂРѕС‚РµРєР°СЋС‰РµР№ СЃР°РјРѕРїСЂРѕРёР·РІРѕР»СЊРЅРѕ' },
+            { key: 'РљР°С‚РѕРґ', value: 'Р­Р»РµРєС‚СЂРѕРґ, РЅР° РєРѕС‚РѕСЂРѕРј РёРґС‘С‚ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ' },
+            { key: 'РђРЅРѕРґ', value: 'Р­Р»РµРєС‚СЂРѕРґ, РЅР° РєРѕС‚РѕСЂРѕРј РёРґС‘С‚ РѕРєРёСЃР»РµРЅРёРµ' }
         ];
 
         const organic = [
-            { key: 'Алканы', value: 'Насыщенные углеводороды с одинарными связями C–C' },
-            { key: 'Алкены', value: 'Углеводороды с двойной связью C=C' },
-            { key: 'Алкины', value: 'Углеводороды с тройной связью C?C' },
-            { key: 'Арены', value: 'Ароматические углеводороды с бензольным кольцом' },
-            { key: 'Спирты', value: 'Органические вещества с группой –OH' },
-            { key: 'Фенолы', value: 'Соединения, где –OH связан с ароматическим кольцом' },
-            { key: 'Альдегиды', value: 'Соединения с группой –CHO' },
-            { key: 'Кетоны', value: 'Соединения с карбонильной группой >C=O' },
-            { key: 'Карбоновые кислоты', value: 'Соединения с группой –COOH' },
-            { key: 'Сложные эфиры', value: 'Производные кислот и спиртов: R–COO–R' },
-            { key: 'Амины', value: 'Производные аммиака с группой –NH2/–NHR/–NR2' },
-            { key: 'Галогеналканы', value: 'Производные алканов, где H замещён на галоген' },
-            { key: 'Полимеры', value: 'Высокомолекулярные вещества из повторяющихся звеньев' },
-            { key: 'Мономер', value: 'Низкомолекулярное вещество — «строительный блок» полимера' },
-            { key: 'Полимеризация', value: 'Реакция образования полимера из мономеров' },
-            { key: 'Эстерификация', value: 'Образование сложного эфира из кислоты и спирта' },
-            { key: 'Гидрирование', value: 'Присоединение водорода по кратной связи' }
+            { key: 'РђР»РєР°РЅС‹', value: 'РќР°СЃС‹С‰РµРЅРЅС‹Рµ СѓРіР»РµРІРѕРґРѕСЂРѕРґС‹ СЃ РѕРґРёРЅР°СЂРЅС‹РјРё СЃРІСЏР·СЏРјРё CвЂ“C' },
+            { key: 'РђР»РєРµРЅС‹', value: 'РЈРіР»РµРІРѕРґРѕСЂРѕРґС‹ СЃ РґРІРѕР№РЅРѕР№ СЃРІСЏР·СЊСЋ C=C' },
+            { key: 'РђР»РєРёРЅС‹', value: 'РЈРіР»РµРІРѕРґРѕСЂРѕРґС‹ СЃ С‚СЂРѕР№РЅРѕР№ СЃРІСЏР·СЊСЋ Cв‰ЎC' },
+            { key: 'РђСЂРµРЅС‹', value: 'РђСЂРѕРјР°С‚РёС‡РµСЃРєРёРµ СѓРіР»РµРІРѕРґРѕСЂРѕРґС‹ СЃ Р±РµРЅР·РѕР»СЊРЅС‹Рј РєРѕР»СЊС†РѕРј' },
+            { key: 'РЎРїРёСЂС‚С‹', value: 'РћСЂРіР°РЅРёС‡РµСЃРєРёРµ РІРµС‰РµСЃС‚РІР° СЃ РіСЂСѓРїРїРѕР№ вЂ“OH' },
+            { key: 'Р¤РµРЅРѕР»С‹', value: 'РЎРѕРµРґРёРЅРµРЅРёСЏ, РіРґРµ вЂ“OH СЃРІСЏР·Р°РЅ СЃ Р°СЂРѕРјР°С‚РёС‡РµСЃРєРёРј РєРѕР»СЊС†РѕРј' },
+            { key: 'РђР»СЊРґРµРіРёРґС‹', value: 'РЎРѕРµРґРёРЅРµРЅРёСЏ СЃ РіСЂСѓРїРїРѕР№ вЂ“CHO' },
+            { key: 'РљРµС‚РѕРЅС‹', value: 'РЎРѕРµРґРёРЅРµРЅРёСЏ СЃ РєР°СЂР±РѕРЅРёР»СЊРЅРѕР№ РіСЂСѓРїРїРѕР№ >C=O' },
+            { key: 'РљР°СЂР±РѕРЅРѕРІС‹Рµ РєРёСЃР»РѕС‚С‹', value: 'РЎРѕРµРґРёРЅРµРЅРёСЏ СЃ РіСЂСѓРїРїРѕР№ вЂ“COOH' },
+            { key: 'РЎР»РѕР¶РЅС‹Рµ СЌС„РёСЂС‹', value: 'РџСЂРѕРёР·РІРѕРґРЅС‹Рµ РєРёСЃР»РѕС‚ Рё СЃРїРёСЂС‚РѕРІ: RвЂ“COOвЂ“R' },
+            { key: 'РђРјРёРЅС‹', value: 'РџСЂРѕРёР·РІРѕРґРЅС‹Рµ Р°РјРјРёР°РєР° СЃ РіСЂСѓРїРїРѕР№ вЂ“NH2/вЂ“NHR/вЂ“NR2' },
+            { key: 'Р“Р°Р»РѕРіРµРЅР°Р»РєР°РЅС‹', value: 'РџСЂРѕРёР·РІРѕРґРЅС‹Рµ Р°Р»РєР°РЅРѕРІ, РіРґРµ H Р·Р°РјРµС‰С‘РЅ РЅР° РіР°Р»РѕРіРµРЅ' },
+            { key: 'РџРѕР»РёРјРµСЂС‹', value: 'Р’С‹СЃРѕРєРѕРјРѕР»РµРєСѓР»СЏСЂРЅС‹Рµ РІРµС‰РµСЃС‚РІР° РёР· РїРѕРІС‚РѕСЂСЏСЋС‰РёС…СЃСЏ Р·РІРµРЅСЊРµРІ' },
+            { key: 'РњРѕРЅРѕРјРµСЂ', value: 'РќРёР·РєРѕРјРѕР»РµРєСѓР»СЏСЂРЅРѕРµ РІРµС‰РµСЃС‚РІРѕ вЂ” В«СЃС‚СЂРѕРёС‚РµР»СЊРЅС‹Р№ Р±Р»РѕРєВ» РїРѕР»РёРјРµСЂР°' },
+            { key: 'РџРѕР»РёРјРµСЂРёР·Р°С†РёСЏ', value: 'Р РµР°РєС†РёСЏ РѕР±СЂР°Р·РѕРІР°РЅРёСЏ РїРѕР»РёРјРµСЂР° РёР· РјРѕРЅРѕРјРµСЂРѕРІ' },
+            { key: 'Р­СЃС‚РµСЂРёС„РёРєР°С†РёСЏ', value: 'РћР±СЂР°Р·РѕРІР°РЅРёРµ СЃР»РѕР¶РЅРѕРіРѕ СЌС„РёСЂР° РёР· РєРёСЃР»РѕС‚С‹ Рё СЃРїРёСЂС‚Р°' },
+            { key: 'Р“РёРґСЂРёСЂРѕРІР°РЅРёРµ', value: 'РџСЂРёСЃРѕРµРґРёРЅРµРЅРёРµ РІРѕРґРѕСЂРѕРґР° РїРѕ РєСЂР°С‚РЅРѕР№ СЃРІСЏР·Рё' }
         ];
 
         const reactions = [
-            { key: 'Замещение', value: 'Один элемент замещает другой в соединении' },
-            { key: 'Соединение', value: 'Из нескольких веществ образуется одно' },
-            { key: 'Разложение', value: 'Из одного вещества образуется несколько' },
-            { key: 'Обмен', value: 'Обмен ионами/частями между двумя веществами' },
-            { key: 'Нейтрализация', value: 'Реакция кислоты и основания с образованием соли и воды' }
+            { key: 'Р—Р°РјРµС‰РµРЅРёРµ', value: 'РћРґРёРЅ СЌР»РµРјРµРЅС‚ Р·Р°РјРµС‰Р°РµС‚ РґСЂСѓРіРѕР№ РІ СЃРѕРµРґРёРЅРµРЅРёРё' },
+            { key: 'РЎРѕРµРґРёРЅРµРЅРёРµ', value: 'РР· РЅРµСЃРєРѕР»СЊРєРёС… РІРµС‰РµСЃС‚РІ РѕР±СЂР°Р·СѓРµС‚СЃСЏ РѕРґРЅРѕ' },
+            { key: 'Р Р°Р·Р»РѕР¶РµРЅРёРµ', value: 'РР· РѕРґРЅРѕРіРѕ РІРµС‰РµСЃС‚РІР° РѕР±СЂР°Р·СѓРµС‚СЃСЏ РЅРµСЃРєРѕР»СЊРєРѕ' },
+            { key: 'РћР±РјРµРЅ', value: 'РћР±РјРµРЅ РёРѕРЅР°РјРё/С‡Р°СЃС‚СЏРјРё РјРµР¶РґСѓ РґРІСѓРјСЏ РІРµС‰РµСЃС‚РІР°РјРё' },
+            { key: 'РќРµР№С‚СЂР°Р»РёР·Р°С†РёСЏ', value: 'Р РµР°РєС†РёСЏ РєРёСЃР»РѕС‚С‹ Рё РѕСЃРЅРѕРІР°РЅРёСЏ СЃ РѕР±СЂР°Р·РѕРІР°РЅРёРµРј СЃРѕР»Рё Рё РІРѕРґС‹' }
         ];
 
-        addTwoWayDefinitions({ suffix: 'core', pairs: core, topic: 'Общая химия', difficulty: 4, seedBase: 2101 });
-        addTwoWayDefinitions({ suffix: 'org', pairs: organic, topic: 'Органическая химия', difficulty: 4, seedBase: 2201 });
-        addTwoWayDefinitions({ suffix: 'rxn', pairs: reactions, topic: 'Типы реакций', difficulty: 4, seedBase: 2301 });
-        addTwoWayDefinitions({ suffix: 'sol', pairs: solutions, topic: 'Растворы', difficulty: 4, seedBase: 2401 });
-        addTwoWayDefinitions({ suffix: 'ab', pairs: acidBase, topic: 'Кислоты и основания', difficulty: 4, seedBase: 2501 });
-        addTwoWayDefinitions({ suffix: 'str', pairs: structure, topic: 'Строение вещества', difficulty: 4, seedBase: 2601 });
-        addTwoWayDefinitions({ suffix: 'el', pairs: electrochem, topic: 'Электрохимия', difficulty: 4, seedBase: 2701 });
+        addTwoWayDefinitions({ suffix: 'core', pairs: core, topic: 'РћР±С‰Р°СЏ С…РёРјРёСЏ', difficulty: 4, seedBase: 2101 });
+        addTwoWayDefinitions({ suffix: 'org', pairs: organic, topic: 'РћСЂРіР°РЅРёС‡РµСЃРєР°СЏ С…РёРјРёСЏ', difficulty: 4, seedBase: 2201 });
+        addTwoWayDefinitions({ suffix: 'rxn', pairs: reactions, topic: 'РўРёРїС‹ СЂРµР°РєС†РёР№', difficulty: 4, seedBase: 2301 });
+        addTwoWayDefinitions({ suffix: 'sol', pairs: solutions, topic: 'Р Р°СЃС‚РІРѕСЂС‹', difficulty: 4, seedBase: 2401 });
+        addTwoWayDefinitions({ suffix: 'ab', pairs: acidBase, topic: 'РљРёСЃР»РѕС‚С‹ Рё РѕСЃРЅРѕРІР°РЅРёСЏ', difficulty: 4, seedBase: 2501 });
+        addTwoWayDefinitions({ suffix: 'str', pairs: structure, topic: 'РЎС‚СЂРѕРµРЅРёРµ РІРµС‰РµСЃС‚РІР°', difficulty: 4, seedBase: 2601 });
+        addTwoWayDefinitions({ suffix: 'el', pairs: electrochem, topic: 'Р­Р»РµРєС‚СЂРѕС…РёРјРёСЏ', difficulty: 4, seedBase: 2701 });
     }
 
     if (!isSenior) {
 
-    // 1) Состояния вещества
+    // 1) РЎРѕСЃС‚РѕСЏРЅРёСЏ РІРµС‰РµСЃС‚РІР°
     const stateExamples = [
-        { key: 'Твёрдое', value: 'Лёд' },
-        { key: 'Твёрдое', value: 'Камень' },
-        { key: 'Твёрдое', value: 'Железо' },
-        { key: 'Жидкость', value: 'Вода' },
-        { key: 'Жидкость', value: 'Молоко' },
-        { key: 'Жидкость', value: 'Масло' },
-        { key: 'Газ', value: 'Воздух' },
-        { key: 'Газ', value: 'Кислород' },
-        { key: 'Газ', value: 'Углекислый газ' }
+        { key: 'РўРІС‘СЂРґРѕРµ', value: 'Р›С‘Рґ' },
+        { key: 'РўРІС‘СЂРґРѕРµ', value: 'РљР°РјРµРЅСЊ' },
+        { key: 'РўРІС‘СЂРґРѕРµ', value: 'Р–РµР»РµР·Рѕ' },
+        { key: 'Р–РёРґРєРѕСЃС‚СЊ', value: 'Р’РѕРґР°' },
+        { key: 'Р–РёРґРєРѕСЃС‚СЊ', value: 'РњРѕР»РѕРєРѕ' },
+        { key: 'Р–РёРґРєРѕСЃС‚СЊ', value: 'РњР°СЃР»Рѕ' },
+        { key: 'Р“Р°Р·', value: 'Р’РѕР·РґСѓС…' },
+        { key: 'Р“Р°Р·', value: 'РљРёСЃР»РѕСЂРѕРґ' },
+        { key: 'Р“Р°Р·', value: 'РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·' }
     ];
 
-    // Генерируем вопросы «что это за состояние?»
+    // Р“РµРЅРµСЂРёСЂСѓРµРј РІРѕРїСЂРѕСЃС‹ В«С‡С‚Рѕ СЌС‚Рѕ Р·Р° СЃРѕСЃС‚РѕСЏРЅРёРµ?В»
     stateExamples.forEach((ex, idx) => {
         const seed = (bandStartGrade * 1000) + idx * 31;
-        const states = ['Твёрдое', 'Жидкость', 'Газ'];
+        const states = ['РўРІС‘СЂРґРѕРµ', 'Р–РёРґРєРѕСЃС‚СЊ', 'Р“Р°Р·'];
         const distract = pickDistractors(states, ex.key, 3, seed);
         const optionStates = shuffleWithSeed([ex.key, ...distract], seed + 9);
         out.push(
             makeMcq({
                 id: stableId(prefix, out.length + 1),
-                topic: 'Состояния вещества',
+                topic: 'РЎРѕСЃС‚РѕСЏРЅРёСЏ РІРµС‰РµСЃС‚РІР°',
                 difficulty: Math.max(1, diff - 1),
-                question: `Какое агрегатное состояние обычно имеет «${ex.value}» при комнатной температуре?`,
+                question: `РљР°РєРѕРµ Р°РіСЂРµРіР°С‚РЅРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ РѕР±С‹С‡РЅРѕ РёРјРµРµС‚ В«${ex.value}В» РїСЂРё РєРѕРјРЅР°С‚РЅРѕР№ С‚РµРјРїРµСЂР°С‚СѓСЂРµ?`,
                 options: optionStates,
                 correct: optionStates.indexOf(ex.key),
-                explanation: `Пример: «${ex.value}» относят к состоянию «${ex.key}» в обычных условиях.`
+                explanation: `РџСЂРёРјРµСЂ: В«${ex.value}В» РѕС‚РЅРѕСЃСЏС‚ Рє СЃРѕСЃС‚РѕСЏРЅРёСЋ В«${ex.key}В» РІ РѕР±С‹С‡РЅС‹С… СѓСЃР»РѕРІРёСЏС….`
             })
         );
     });
 
-    // 2) Разделение смесей (безопасные школьные примеры)
+    // 2) Р Р°Р·РґРµР»РµРЅРёРµ СЃРјРµСЃРµР№ (Р±РµР·РѕРїР°СЃРЅС‹Рµ С€РєРѕР»СЊРЅС‹Рµ РїСЂРёРјРµСЂС‹)
     const mixToMethod = [
-        { key: 'Песок + вода', value: 'Фильтрование' },
-        { key: 'Соль + вода', value: 'Выпаривание' },
-        { key: 'Сахар + вода', value: 'Выпаривание' },
-        { key: 'Камешки + песок', value: 'Просеивание' },
-        { key: 'Опилки + вода', value: 'Отстаивание' },
-        { key: 'Железные опилки + песок', value: 'Магнит' },
-        { key: 'Масло + вода', value: 'Отстаивание' },
-        { key: 'Чайные листья + вода', value: 'Фильтрование' },
-        { key: 'Рис + вода', value: 'Процеживание/фильтрование' },
-        { key: 'Глина + вода', value: 'Отстаивание' }
+        { key: 'РџРµСЃРѕРє + РІРѕРґР°', value: 'Р¤РёР»СЊС‚СЂРѕРІР°РЅРёРµ' },
+        { key: 'РЎРѕР»СЊ + РІРѕРґР°', value: 'Р’С‹РїР°СЂРёРІР°РЅРёРµ' },
+        { key: 'РЎР°С…Р°СЂ + РІРѕРґР°', value: 'Р’С‹РїР°СЂРёРІР°РЅРёРµ' },
+        { key: 'РљР°РјРµС€РєРё + РїРµСЃРѕРє', value: 'РџСЂРѕСЃРµРёРІР°РЅРёРµ' },
+        { key: 'РћРїРёР»РєРё + РІРѕРґР°', value: 'РћС‚СЃС‚Р°РёРІР°РЅРёРµ' },
+        { key: 'Р–РµР»РµР·РЅС‹Рµ РѕРїРёР»РєРё + РїРµСЃРѕРє', value: 'РњР°РіРЅРёС‚' },
+        { key: 'РњР°СЃР»Рѕ + РІРѕРґР°', value: 'РћС‚СЃС‚Р°РёРІР°РЅРёРµ' },
+        { key: 'Р§Р°Р№РЅС‹Рµ Р»РёСЃС‚СЊСЏ + РІРѕРґР°', value: 'Р¤РёР»СЊС‚СЂРѕРІР°РЅРёРµ' },
+        { key: 'Р РёСЃ + РІРѕРґР°', value: 'РџСЂРѕС†РµР¶РёРІР°РЅРёРµ/С„РёР»СЊС‚СЂРѕРІР°РЅРёРµ' },
+        { key: 'Р“Р»РёРЅР° + РІРѕРґР°', value: 'РћС‚СЃС‚Р°РёРІР°РЅРёРµ' }
     ];
 
-    // Вопросы «каким способом разделить?»
+    // Р’РѕРїСЂРѕСЃС‹ В«РєР°РєРёРј СЃРїРѕСЃРѕР±РѕРј СЂР°Р·РґРµР»РёС‚СЊ?В»
     const methods = Array.from(new Set(mixToMethod.map(m => m.value)));
     mixToMethod.forEach((m, idx) => {
         const seed = 777 + idx * 97 + bandStartGrade * 3;
@@ -4585,154 +4585,154 @@ function generateChemistryByGrade(bandStartGrade, desiredCount = 64) {
         out.push(
             makeMcq({
                 id: stableId(prefix, out.length + 1),
-                topic: 'Смеси',
+                topic: 'РЎРјРµСЃРё',
                 difficulty: diff,
-                question: `Как лучше разделить смесь: ${m.key}?`,
+                question: `РљР°Рє Р»СѓС‡С€Рµ СЂР°Р·РґРµР»РёС‚СЊ СЃРјРµСЃСЊ: ${m.key}?`,
                 options,
                 correct: options.indexOf(m.value),
-                explanation: `Подходит способ: ${m.value}.`
+                explanation: `РџРѕРґС…РѕРґРёС‚ СЃРїРѕСЃРѕР±: ${m.value}.`
             })
         );
     });
 
-    // 3) Базовые термины (для 7+)
+    // 3) Р‘Р°Р·РѕРІС‹Рµ С‚РµСЂРјРёРЅС‹ (РґР»СЏ 7+)
     if (band !== '1-4') {
         const termToDef = [
-            { key: 'Атом', value: 'Наименьшая частица химического элемента' },
-            { key: 'Молекула', value: 'Частица вещества, сохраняющая его химические свойства' },
-            { key: 'Элемент', value: 'Вид атомов с одинаковым зарядом ядра' },
-            { key: 'Соединение', value: 'Вещество из атомов разных элементов' },
-            { key: 'Реакция', value: 'Процесс превращения одних веществ в другие' },
-            { key: 'Катализатор', value: 'Вещество, ускоряющее реакцию и не расходующееся' },
-            { key: 'Раствор', value: 'Однородная смесь растворителя и растворённого вещества' },
-            { key: 'Индикатор', value: 'Вещество, меняющее цвет в зависимости от среды' },
-            { key: 'Оксид', value: 'Соединение элемента с кислородом' },
-            { key: 'pH', value: 'Мера кислотности/щелочности раствора' },
-            { key: 'Окисление', value: 'Процесс отдачи электронов (в ОВР)' },
-            { key: 'Восстановление', value: 'Процесс присоединения электронов (в ОВР)' }
+            { key: 'РђС‚РѕРј', value: 'РќР°РёРјРµРЅСЊС€Р°СЏ С‡Р°СЃС‚РёС†Р° С…РёРјРёС‡РµСЃРєРѕРіРѕ СЌР»РµРјРµРЅС‚Р°' },
+            { key: 'РњРѕР»РµРєСѓР»Р°', value: 'Р§Р°СЃС‚РёС†Р° РІРµС‰РµСЃС‚РІР°, СЃРѕС…СЂР°РЅСЏСЋС‰Р°СЏ РµРіРѕ С…РёРјРёС‡РµСЃРєРёРµ СЃРІРѕР№СЃС‚РІР°' },
+            { key: 'Р­Р»РµРјРµРЅС‚', value: 'Р’РёРґ Р°С‚РѕРјРѕРІ СЃ РѕРґРёРЅР°РєРѕРІС‹Рј Р·Р°СЂСЏРґРѕРј СЏРґСЂР°' },
+            { key: 'РЎРѕРµРґРёРЅРµРЅРёРµ', value: 'Р’РµС‰РµСЃС‚РІРѕ РёР· Р°С‚РѕРјРѕРІ СЂР°Р·РЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ' },
+            { key: 'Р РµР°РєС†РёСЏ', value: 'РџСЂРѕС†РµСЃСЃ РїСЂРµРІСЂР°С‰РµРЅРёСЏ РѕРґРЅРёС… РІРµС‰РµСЃС‚РІ РІ РґСЂСѓРіРёРµ' },
+            { key: 'РљР°С‚Р°Р»РёР·Р°С‚РѕСЂ', value: 'Р’РµС‰РµСЃС‚РІРѕ, СѓСЃРєРѕСЂСЏСЋС‰РµРµ СЂРµР°РєС†РёСЋ Рё РЅРµ СЂР°СЃС…РѕРґСѓСЋС‰РµРµСЃСЏ' },
+            { key: 'Р Р°СЃС‚РІРѕСЂ', value: 'РћРґРЅРѕСЂРѕРґРЅР°СЏ СЃРјРµСЃСЊ СЂР°СЃС‚РІРѕСЂРёС‚РµР»СЏ Рё СЂР°СЃС‚РІРѕСЂС‘РЅРЅРѕРіРѕ РІРµС‰РµСЃС‚РІР°' },
+            { key: 'РРЅРґРёРєР°С‚РѕСЂ', value: 'Р’РµС‰РµСЃС‚РІРѕ, РјРµРЅСЏСЋС‰РµРµ С†РІРµС‚ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЃСЂРµРґС‹' },
+            { key: 'РћРєСЃРёРґ', value: 'РЎРѕРµРґРёРЅРµРЅРёРµ СЌР»РµРјРµРЅС‚Р° СЃ РєРёСЃР»РѕСЂРѕРґРѕРј' },
+            { key: 'pH', value: 'РњРµСЂР° РєРёСЃР»РѕС‚РЅРѕСЃС‚Рё/С‰РµР»РѕС‡РЅРѕСЃС‚Рё СЂР°СЃС‚РІРѕСЂР°' },
+            { key: 'РћРєРёСЃР»РµРЅРёРµ', value: 'РџСЂРѕС†РµСЃСЃ РѕС‚РґР°С‡Рё СЌР»РµРєС‚СЂРѕРЅРѕРІ (РІ РћР’Р )' },
+            { key: 'Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ', value: 'РџСЂРѕС†РµСЃСЃ РїСЂРёСЃРѕРµРґРёРЅРµРЅРёСЏ СЌР»РµРєС‚СЂРѕРЅРѕРІ (РІ РћР’Р )' }
         ];
         out.push(
             ...buildMcqFromPairs({
                 prefix: `${prefix}_terms`,
                 pairs: termToDef,
-                topic: 'Основы химии',
+                topic: 'РћСЃРЅРѕРІС‹ С…РёРјРёРё',
                 difficulty: diff,
                 seedBase: 101,
-                questionText: (p) => `Выберите верное определение термина: «${p.key}».`,
+                questionText: (p) => `Р’С‹Р±РµСЂРёС‚Рµ РІРµСЂРЅРѕРµ РѕРїСЂРµРґРµР»РµРЅРёРµ С‚РµСЂРјРёРЅР°: В«${p.key}В».`,
                 optionsFromKeys: (keys, byKey) => keys.map(k => byKey[k]),
                 correctIndexFn: (keys, correctKey) => keys.indexOf(correctKey),
-                explanationFn: (p) => `Правильно: ${p.value}.`
+                explanationFn: (p) => `РџСЂР°РІРёР»СЊРЅРѕ: ${p.value}.`
             })
         );
     }
 
-    // 3b) Безопасность
+    // 3b) Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ
     const safetyRuleToWhy = [
-        { key: 'Читать инструкцию на упаковке', value: 'Чтобы правильно использовать средство и не навредить' },
-        { key: 'Работать в перчатках (если нужно)', value: 'Чтобы защитить кожу' },
-        { key: 'Не пробовать вещества на вкус', value: 'Это опасно и может привести к отравлению' },
-        { key: 'Не смешивать средства без указаний', value: 'Можно получить опасные пары или реакцию' },
-        { key: 'Проветривать помещение', value: 'Чтобы не вдыхать пары' },
-        { key: 'Держать бытовую химию вдали от детей', value: 'Чтобы избежать несчастных случаев' },
-        { key: 'Мыть руки после работы', value: 'Чтобы удалить остатки веществ' },
-        { key: 'Не нагревать неизвестные смеси', value: 'Нагрев может усилить реакцию и опасность' },
-        { key: 'Использовать очки в лаборатории', value: 'Чтобы защитить глаза' },
-        { key: 'Не нюхать вещества напрямую', value: 'Некоторые пары раздражают дыхательные пути' },
-        { key: 'Подписывать ёмкости', value: 'Чтобы не перепутать вещества' },
-        { key: 'Соблюдать порядок на столе', value: 'Чтобы снизить риск проливов и ошибок' }
+        { key: 'Р§РёС‚Р°С‚СЊ РёРЅСЃС‚СЂСѓРєС†РёСЋ РЅР° СѓРїР°РєРѕРІРєРµ', value: 'Р§С‚РѕР±С‹ РїСЂР°РІРёР»СЊРЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЃСЂРµРґСЃС‚РІРѕ Рё РЅРµ РЅР°РІСЂРµРґРёС‚СЊ' },
+        { key: 'Р Р°Р±РѕС‚Р°С‚СЊ РІ РїРµСЂС‡Р°С‚РєР°С… (РµСЃР»Рё РЅСѓР¶РЅРѕ)', value: 'Р§С‚РѕР±С‹ Р·Р°С‰РёС‚РёС‚СЊ РєРѕР¶Сѓ' },
+        { key: 'РќРµ РїСЂРѕР±РѕРІР°С‚СЊ РІРµС‰РµСЃС‚РІР° РЅР° РІРєСѓСЃ', value: 'Р­С‚Рѕ РѕРїР°СЃРЅРѕ Рё РјРѕР¶РµС‚ РїСЂРёРІРµСЃС‚Рё Рє РѕС‚СЂР°РІР»РµРЅРёСЋ' },
+        { key: 'РќРµ СЃРјРµС€РёРІР°С‚СЊ СЃСЂРµРґСЃС‚РІР° Р±РµР· СѓРєР°Р·Р°РЅРёР№', value: 'РњРѕР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ РѕРїР°СЃРЅС‹Рµ РїР°СЂС‹ РёР»Рё СЂРµР°РєС†РёСЋ' },
+        { key: 'РџСЂРѕРІРµС‚СЂРёРІР°С‚СЊ РїРѕРјРµС‰РµРЅРёРµ', value: 'Р§С‚РѕР±С‹ РЅРµ РІРґС‹С…Р°С‚СЊ РїР°СЂС‹' },
+        { key: 'Р”РµСЂР¶Р°С‚СЊ Р±С‹С‚РѕРІСѓСЋ С…РёРјРёСЋ РІРґР°Р»Рё РѕС‚ РґРµС‚РµР№', value: 'Р§С‚РѕР±С‹ РёР·Р±РµР¶Р°С‚СЊ РЅРµСЃС‡Р°СЃС‚РЅС‹С… СЃР»СѓС‡Р°РµРІ' },
+        { key: 'РњС‹С‚СЊ СЂСѓРєРё РїРѕСЃР»Рµ СЂР°Р±РѕС‚С‹', value: 'Р§С‚РѕР±С‹ СѓРґР°Р»РёС‚СЊ РѕСЃС‚Р°С‚РєРё РІРµС‰РµСЃС‚РІ' },
+        { key: 'РќРµ РЅР°РіСЂРµРІР°С‚СЊ РЅРµРёР·РІРµСЃС‚РЅС‹Рµ СЃРјРµСЃРё', value: 'РќР°РіСЂРµРІ РјРѕР¶РµС‚ СѓСЃРёР»РёС‚СЊ СЂРµР°РєС†РёСЋ Рё РѕРїР°СЃРЅРѕСЃС‚СЊ' },
+        { key: 'РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РѕС‡РєРё РІ Р»Р°Р±РѕСЂР°С‚РѕСЂРёРё', value: 'Р§С‚РѕР±С‹ Р·Р°С‰РёС‚РёС‚СЊ РіР»Р°Р·Р°' },
+        { key: 'РќРµ РЅСЋС…Р°С‚СЊ РІРµС‰РµСЃС‚РІР° РЅР°РїСЂСЏРјСѓСЋ', value: 'РќРµРєРѕС‚РѕСЂС‹Рµ РїР°СЂС‹ СЂР°Р·РґСЂР°Р¶Р°СЋС‚ РґС‹С…Р°С‚РµР»СЊРЅС‹Рµ РїСѓС‚Рё' },
+        { key: 'РџРѕРґРїРёСЃС‹РІР°С‚СЊ С‘РјРєРѕСЃС‚Рё', value: 'Р§С‚РѕР±С‹ РЅРµ РїРµСЂРµРїСѓС‚Р°С‚СЊ РІРµС‰РµСЃС‚РІР°' },
+        { key: 'РЎРѕР±Р»СЋРґР°С‚СЊ РїРѕСЂСЏРґРѕРє РЅР° СЃС‚РѕР»Рµ', value: 'Р§С‚РѕР±С‹ СЃРЅРёР·РёС‚СЊ СЂРёСЃРє РїСЂРѕР»РёРІРѕРІ Рё РѕС€РёР±РѕРє' }
     ];
     out.push(
         ...buildMcqFromPairs({
             prefix: `${prefix}_safety`,
             pairs: safetyRuleToWhy,
-            topic: 'Безопасность',
+            topic: 'Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ',
             difficulty: Math.max(1, diff - 1),
             seedBase: 303,
-            questionText: (p) => `Зачем важно правило: «${p.key}»?`,
+            questionText: (p) => `Р—Р°С‡РµРј РІР°Р¶РЅРѕ РїСЂР°РІРёР»Рѕ: В«${p.key}В»?`,
             optionsFromKeys: (keys, byKey) => keys.map(k => byKey[k]),
             correctIndexFn: (keys, correctKey) => keys.indexOf(correctKey),
             explanationFn: (p) => `${p.key}: ${p.value}.`
         })
     );
 
-    // 3c) Физические явления/изменения
+    // 3c) Р¤РёР·РёС‡РµСЃРєРёРµ СЏРІР»РµРЅРёСЏ/РёР·РјРµРЅРµРЅРёСЏ
     const processToResult = [
-        { key: 'Плавление', value: 'Переход из твёрдого в жидкое' },
-        { key: 'Замерзание', value: 'Переход из жидкого в твёрдое' },
-        { key: 'Испарение', value: 'Переход из жидкого в газообразное' },
-        { key: 'Конденсация', value: 'Переход из газообразного в жидкое' },
-        { key: 'Кипение', value: 'Быстрое испарение по всему объёму жидкости' },
-        { key: 'Растворение', value: 'Равномерное распределение вещества в растворителе' },
-        { key: 'Кристаллизация', value: 'Образование кристаллов из раствора/расплава' },
-        { key: 'Сублимация', value: 'Переход из твёрдого сразу в газообразное' },
-        { key: 'Десублимация', value: 'Переход из газа сразу в твёрдое' },
-        { key: 'Диффузия', value: 'Самопроизвольное перемешивание частиц' }
+        { key: 'РџР»Р°РІР»РµРЅРёРµ', value: 'РџРµСЂРµС…РѕРґ РёР· С‚РІС‘СЂРґРѕРіРѕ РІ Р¶РёРґРєРѕРµ' },
+        { key: 'Р—Р°РјРµСЂР·Р°РЅРёРµ', value: 'РџРµСЂРµС…РѕРґ РёР· Р¶РёРґРєРѕРіРѕ РІ С‚РІС‘СЂРґРѕРµ' },
+        { key: 'РСЃРїР°СЂРµРЅРёРµ', value: 'РџРµСЂРµС…РѕРґ РёР· Р¶РёРґРєРѕРіРѕ РІ РіР°Р·РѕРѕР±СЂР°Р·РЅРѕРµ' },
+        { key: 'РљРѕРЅРґРµРЅСЃР°С†РёСЏ', value: 'РџРµСЂРµС…РѕРґ РёР· РіР°Р·РѕРѕР±СЂР°Р·РЅРѕРіРѕ РІ Р¶РёРґРєРѕРµ' },
+        { key: 'РљРёРїРµРЅРёРµ', value: 'Р‘С‹СЃС‚СЂРѕРµ РёСЃРїР°СЂРµРЅРёРµ РїРѕ РІСЃРµРјСѓ РѕР±СЉС‘РјСѓ Р¶РёРґРєРѕСЃС‚Рё' },
+        { key: 'Р Р°СЃС‚РІРѕСЂРµРЅРёРµ', value: 'Р Р°РІРЅРѕРјРµСЂРЅРѕРµ СЂР°СЃРїСЂРµРґРµР»РµРЅРёРµ РІРµС‰РµСЃС‚РІР° РІ СЂР°СЃС‚РІРѕСЂРёС‚РµР»Рµ' },
+        { key: 'РљСЂРёСЃС‚Р°Р»Р»РёР·Р°С†РёСЏ', value: 'РћР±СЂР°Р·РѕРІР°РЅРёРµ РєСЂРёСЃС‚Р°Р»Р»РѕРІ РёР· СЂР°СЃС‚РІРѕСЂР°/СЂР°СЃРїР»Р°РІР°' },
+        { key: 'РЎСѓР±Р»РёРјР°С†РёСЏ', value: 'РџРµСЂРµС…РѕРґ РёР· С‚РІС‘СЂРґРѕРіРѕ СЃСЂР°Р·Сѓ РІ РіР°Р·РѕРѕР±СЂР°Р·РЅРѕРµ' },
+        { key: 'Р”РµСЃСѓР±Р»РёРјР°С†РёСЏ', value: 'РџРµСЂРµС…РѕРґ РёР· РіР°Р·Р° СЃСЂР°Р·Сѓ РІ С‚РІС‘СЂРґРѕРµ' },
+        { key: 'Р”РёС„С„СѓР·РёСЏ', value: 'РЎР°РјРѕРїСЂРѕРёР·РІРѕР»СЊРЅРѕРµ РїРµСЂРµРјРµС€РёРІР°РЅРёРµ С‡Р°СЃС‚РёС†' }
     ];
     out.push(
         ...buildMcqFromPairs({
             prefix: `${prefix}_processes`,
             pairs: processToResult,
-            topic: 'Физические явления',
+            topic: 'Р¤РёР·РёС‡РµСЃРєРёРµ СЏРІР»РµРЅРёСЏ',
             difficulty: Math.max(1, diff - 1),
             seedBase: 505,
-            questionText: (p) => `Что означает процесс: «${p.key}»?`,
+            questionText: (p) => `Р§С‚Рѕ РѕР·РЅР°С‡Р°РµС‚ РїСЂРѕС†РµСЃСЃ: В«${p.key}В»?`,
             optionsFromKeys: (keys, byKey) => keys.map(k => byKey[k]),
             correctIndexFn: (keys, correctKey) => keys.indexOf(correctKey),
             explanationFn: (p) => `${p.key}: ${p.value}.`
         })
     );
 
-    // 3d) Добор простых вопросов для 1–4 классов
+    // 3d) Р”РѕР±РѕСЂ РїСЂРѕСЃС‚С‹С… РІРѕРїСЂРѕСЃРѕРІ РґР»СЏ 1вЂ“4 РєР»Р°СЃСЃРѕРІ
     if (band === '1-4') {
         const solubility = [
-            { name: 'Соль', soluble: true },
-            { name: 'Сахар', soluble: true },
-            { name: 'Сода (пищевая)', soluble: true },
-            { name: 'Песок', soluble: false },
-            { name: 'Глина', soluble: false },
-            { name: 'Мел', soluble: false },
-            { name: 'Масло', soluble: false },
-            { name: 'Мёд', soluble: true },
-            { name: 'Какао-порошок', soluble: false },
-            { name: 'Мука', soluble: false },
-            { name: 'Лимонный сок', soluble: true },
-            { name: 'Уксус', soluble: true },
-            { name: 'Кофе растворимый', soluble: true },
-            { name: 'Рис', soluble: false },
-            { name: 'Опилки', soluble: false },
-            { name: 'Сироп', soluble: true }
+            { name: 'РЎРѕР»СЊ', soluble: true },
+            { name: 'РЎР°С…Р°СЂ', soluble: true },
+            { name: 'РЎРѕРґР° (РїРёС‰РµРІР°СЏ)', soluble: true },
+            { name: 'РџРµСЃРѕРє', soluble: false },
+            { name: 'Р“Р»РёРЅР°', soluble: false },
+            { name: 'РњРµР»', soluble: false },
+            { name: 'РњР°СЃР»Рѕ', soluble: false },
+            { name: 'РњС‘Рґ', soluble: true },
+            { name: 'РљР°РєР°Рѕ-РїРѕСЂРѕС€РѕРє', soluble: false },
+            { name: 'РњСѓРєР°', soluble: false },
+            { name: 'Р›РёРјРѕРЅРЅС‹Р№ СЃРѕРє', soluble: true },
+            { name: 'РЈРєСЃСѓСЃ', soluble: true },
+            { name: 'РљРѕС„Рµ СЂР°СЃС‚РІРѕСЂРёРјС‹Р№', soluble: true },
+            { name: 'Р РёСЃ', soluble: false },
+            { name: 'РћРїРёР»РєРё', soluble: false },
+            { name: 'РЎРёСЂРѕРї', soluble: true }
         ];
         solubility.forEach((x, idx) => {
-            const options = ['Да', 'Нет', 'Зависит от температуры', 'Не знаю'];
+            const options = ['Р”Р°', 'РќРµС‚', 'Р—Р°РІРёСЃРёС‚ РѕС‚ С‚РµРјРїРµСЂР°С‚СѓСЂС‹', 'РќРµ Р·РЅР°СЋ'];
             const correct = x.soluble ? 0 : 1;
             out.push(
                 makeMcq({
                     id: stableId(`${prefix}_solubility`, idx + 1),
-                    topic: 'Растворимость',
+                    topic: 'Р Р°СЃС‚РІРѕСЂРёРјРѕСЃС‚СЊ',
                     difficulty: 1,
-                    question: `Растворится ли «${x.name}» в воде при перемешивании?`,
+                    question: `Р Р°СЃС‚РІРѕСЂРёС‚СЃСЏ Р»Рё В«${x.name}В» РІ РІРѕРґРµ РїСЂРё РїРµСЂРµРјРµС€РёРІР°РЅРёРё?`,
                     options,
                     correct,
-                    explanation: x.soluble ? 'Это вещество обычно растворяется в воде.' : 'Это вещество обычно не растворяется в воде.'
+                    explanation: x.soluble ? 'Р­С‚Рѕ РІРµС‰РµСЃС‚РІРѕ РѕР±С‹С‡РЅРѕ СЂР°СЃС‚РІРѕСЂСЏРµС‚СЃСЏ РІ РІРѕРґРµ.' : 'Р­С‚Рѕ РІРµС‰РµСЃС‚РІРѕ РѕР±С‹С‡РЅРѕ РЅРµ СЂР°СЃС‚РІРѕСЂСЏРµС‚СЃСЏ РІ РІРѕРґРµ.'
                 })
             );
         });
 
         const materials = [
-            { name: 'Железо', prop: 'Притягивается магнитом' },
-            { name: 'Сталь', prop: 'Притягивается магнитом' },
-            { name: 'Медь', prop: 'Проводит электричество' },
-            { name: 'Алюминий', prop: 'Проводит электричество' },
-            { name: 'Дерево', prop: 'Плохо проводит электричество' },
-            { name: 'Пластик', prop: 'Плохо проводит электричество' },
-            { name: 'Стекло', prop: 'Хрупкое (легко разбить)' },
-            { name: 'Резина', prop: 'Эластичная (тянется)' },
-            { name: 'Бумага', prop: 'Легко намокает' },
-            { name: 'Камень', prop: 'Твёрдый материал' },
-            { name: 'Лёд', prop: 'Таёт при нагревании' },
-            { name: 'Вода', prop: 'Может испаряться при нагревании' }
+            { name: 'Р–РµР»РµР·Рѕ', prop: 'РџСЂРёС‚СЏРіРёРІР°РµС‚СЃСЏ РјР°РіРЅРёС‚РѕРј' },
+            { name: 'РЎС‚Р°Р»СЊ', prop: 'РџСЂРёС‚СЏРіРёРІР°РµС‚СЃСЏ РјР°РіРЅРёС‚РѕРј' },
+            { name: 'РњРµРґСЊ', prop: 'РџСЂРѕРІРѕРґРёС‚ СЌР»РµРєС‚СЂРёС‡РµСЃС‚РІРѕ' },
+            { name: 'РђР»СЋРјРёРЅРёР№', prop: 'РџСЂРѕРІРѕРґРёС‚ СЌР»РµРєС‚СЂРёС‡РµСЃС‚РІРѕ' },
+            { name: 'Р”РµСЂРµРІРѕ', prop: 'РџР»РѕС…Рѕ РїСЂРѕРІРѕРґРёС‚ СЌР»РµРєС‚СЂРёС‡РµСЃС‚РІРѕ' },
+            { name: 'РџР»Р°СЃС‚РёРє', prop: 'РџР»РѕС…Рѕ РїСЂРѕРІРѕРґРёС‚ СЌР»РµРєС‚СЂРёС‡РµСЃС‚РІРѕ' },
+            { name: 'РЎС‚РµРєР»Рѕ', prop: 'РҐСЂСѓРїРєРѕРµ (Р»РµРіРєРѕ СЂР°Р·Р±РёС‚СЊ)' },
+            { name: 'Р РµР·РёРЅР°', prop: 'Р­Р»Р°СЃС‚РёС‡РЅР°СЏ (С‚СЏРЅРµС‚СЃСЏ)' },
+            { name: 'Р‘СѓРјР°РіР°', prop: 'Р›РµРіРєРѕ РЅР°РјРѕРєР°РµС‚' },
+            { name: 'РљР°РјРµРЅСЊ', prop: 'РўРІС‘СЂРґС‹Р№ РјР°С‚РµСЂРёР°Р»' },
+            { name: 'Р›С‘Рґ', prop: 'РўР°С‘С‚ РїСЂРё РЅР°РіСЂРµРІР°РЅРёРё' },
+            { name: 'Р’РѕРґР°', prop: 'РњРѕР¶РµС‚ РёСЃРїР°СЂСЏС‚СЊСЃСЏ РїСЂРё РЅР°РіСЂРµРІР°РЅРёРё' }
         ];
-        const props = ['Притягивается магнитом', 'Проводит электричество', 'Плохо проводит электричество', 'Хрупкое (легко разбить)', 'Эластичная (тянется)', 'Легко намокает', 'Твёрдый материал', 'Таёт при нагревании', 'Может испаряться при нагревании'];
+        const props = ['РџСЂРёС‚СЏРіРёРІР°РµС‚СЃСЏ РјР°РіРЅРёС‚РѕРј', 'РџСЂРѕРІРѕРґРёС‚ СЌР»РµРєС‚СЂРёС‡РµСЃС‚РІРѕ', 'РџР»РѕС…Рѕ РїСЂРѕРІРѕРґРёС‚ СЌР»РµРєС‚СЂРёС‡РµСЃС‚РІРѕ', 'РҐСЂСѓРїРєРѕРµ (Р»РµРіРєРѕ СЂР°Р·Р±РёС‚СЊ)', 'Р­Р»Р°СЃС‚РёС‡РЅР°СЏ (С‚СЏРЅРµС‚СЃСЏ)', 'Р›РµРіРєРѕ РЅР°РјРѕРєР°РµС‚', 'РўРІС‘СЂРґС‹Р№ РјР°С‚РµСЂРёР°Р»', 'РўР°С‘С‚ РїСЂРё РЅР°РіСЂРµРІР°РЅРёРё', 'РњРѕР¶РµС‚ РёСЃРїР°СЂСЏС‚СЊСЃСЏ РїСЂРё РЅР°РіСЂРµРІР°РЅРёРё'];
         materials.forEach((m, idx) => {
             const seed = 4004 + idx * 19;
             const distract = pickDistractors(props, m.prop, 3, seed);
@@ -4740,32 +4740,32 @@ function generateChemistryByGrade(bandStartGrade, desiredCount = 64) {
             out.push(
                 makeMcq({
                     id: stableId(`${prefix}_props`, idx + 1),
-                    topic: 'Свойства материалов',
+                    topic: 'РЎРІРѕР№СЃС‚РІР° РјР°С‚РµСЂРёР°Р»РѕРІ',
                     difficulty: 1,
-                    question: `Какое свойство подходит для материала «${m.name}»?`,
+                    question: `РљР°РєРѕРµ СЃРІРѕР№СЃС‚РІРѕ РїРѕРґС…РѕРґРёС‚ РґР»СЏ РјР°С‚РµСЂРёР°Р»Р° В«${m.name}В»?`,
                     options,
                     correct: options.indexOf(m.prop),
-                    explanation: `Для материала «${m.name}» часто указывают: ${m.prop}.`
+                    explanation: `Р”Р»СЏ РјР°С‚РµСЂРёР°Р»Р° В«${m.name}В» С‡Р°СЃС‚Рѕ СѓРєР°Р·С‹РІР°СЋС‚: ${m.prop}.`
                 })
             );
         });
     }
 
-    // 4) Символы элементов (для 7+)
+    // 4) РЎРёРјРІРѕР»С‹ СЌР»РµРјРµРЅС‚РѕРІ (РґР»СЏ 7+)
     if (band !== '1-4') {
         const elementToSymbol = [
-            { key: 'Кислород', value: 'O' },
-            { key: 'Водород', value: 'H' },
-            { key: 'Углерод', value: 'C' },
-            { key: 'Азот', value: 'N' },
-            { key: 'Натрий', value: 'Na' },
-            { key: 'Калий', value: 'K' },
-            { key: 'Кальций', value: 'Ca' },
-            { key: 'Железо', value: 'Fe' },
-            { key: 'Медь', value: 'Cu' },
-            { key: 'Сера', value: 'S' },
-            { key: 'Хлор', value: 'Cl' },
-            { key: 'Магний', value: 'Mg' }
+            { key: 'РљРёСЃР»РѕСЂРѕРґ', value: 'O' },
+            { key: 'Р’РѕРґРѕСЂРѕРґ', value: 'H' },
+            { key: 'РЈРіР»РµСЂРѕРґ', value: 'C' },
+            { key: 'РђР·РѕС‚', value: 'N' },
+            { key: 'РќР°С‚СЂРёР№', value: 'Na' },
+            { key: 'РљР°Р»РёР№', value: 'K' },
+            { key: 'РљР°Р»СЊС†РёР№', value: 'Ca' },
+            { key: 'Р–РµР»РµР·Рѕ', value: 'Fe' },
+            { key: 'РњРµРґСЊ', value: 'Cu' },
+            { key: 'РЎРµСЂР°', value: 'S' },
+            { key: 'РҐР»РѕСЂ', value: 'Cl' },
+            { key: 'РњР°РіРЅРёР№', value: 'Mg' }
         ];
         const names = elementToSymbol.map(x => x.key);
         elementToSymbol.forEach((el, idx) => {
@@ -4775,35 +4775,35 @@ function generateChemistryByGrade(bandStartGrade, desiredCount = 64) {
             out.push(
                 makeMcq({
                     id: stableId(prefix, out.length + 1),
-                    topic: 'Периодическая система',
+                    topic: 'РџРµСЂРёРѕРґРёС‡РµСЃРєР°СЏ СЃРёСЃС‚РµРјР°',
                     difficulty: diff,
-                    question: `Какой элемент обозначается символом «${el.value}»?`,
+                    question: `РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ РѕР±РѕР·РЅР°С‡Р°РµС‚СЃСЏ СЃРёРјРІРѕР»РѕРј В«${el.value}В»?`,
                     options: opts,
                     correct: opts.indexOf(el.key),
-                    explanation: `Символ ${el.value} соответствует элементу: ${el.key}.`
+                    explanation: `РЎРёРјРІРѕР» ${el.value} СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ СЌР»РµРјРµРЅС‚Сѓ: ${el.key}.`
                 })
             );
         });
     }
 
-    // 5) Формулы распространённых веществ (для 7+)
+    // 5) Р¤РѕСЂРјСѓР»С‹ СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅС‘РЅРЅС‹С… РІРµС‰РµСЃС‚РІ (РґР»СЏ 7+)
     if (band !== '1-4') {
         const nameToFormula = [
-            { key: 'Вода', value: 'H2O' },
-            { key: 'Углекислый газ', value: 'CO2' },
-            { key: 'Кислород', value: 'O2' },
-            { key: 'Азот', value: 'N2' },
-            { key: 'Поваренная соль', value: 'NaCl' },
-            { key: 'Аммиак', value: 'NH3' },
-            { key: 'Метан', value: 'CH4' },
-            { key: 'Серная кислота', value: 'H2SO4' },
-            { key: 'Соляная кислота', value: 'HCl' },
-            { key: 'Гидроксид натрия', value: 'NaOH' },
-            { key: 'Кальций карбонат (мел)', value: 'CaCO3' },
-            { key: 'Глюкоза', value: 'C6H12O6' },
-            { key: 'Оксид железа(III)', value: 'Fe2O3' },
-            { key: 'Оксид кальция', value: 'CaO' },
-            { key: 'Этанол', value: 'C2H5OH' }
+            { key: 'Р’РѕРґР°', value: 'H2O' },
+            { key: 'РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·', value: 'CO2' },
+            { key: 'РљРёСЃР»РѕСЂРѕРґ', value: 'O2' },
+            { key: 'РђР·РѕС‚', value: 'N2' },
+            { key: 'РџРѕРІР°СЂРµРЅРЅР°СЏ СЃРѕР»СЊ', value: 'NaCl' },
+            { key: 'РђРјРјРёР°Рє', value: 'NH3' },
+            { key: 'РњРµС‚Р°РЅ', value: 'CH4' },
+            { key: 'РЎРµСЂРЅР°СЏ РєРёСЃР»РѕС‚Р°', value: 'H2SO4' },
+            { key: 'РЎРѕР»СЏРЅР°СЏ РєРёСЃР»РѕС‚Р°', value: 'HCl' },
+            { key: 'Р“РёРґСЂРѕРєСЃРёРґ РЅР°С‚СЂРёСЏ', value: 'NaOH' },
+            { key: 'РљР°Р»СЊС†РёР№ РєР°СЂР±РѕРЅР°С‚ (РјРµР»)', value: 'CaCO3' },
+            { key: 'Р“Р»СЋРєРѕР·Р°', value: 'C6H12O6' },
+            { key: 'РћРєСЃРёРґ Р¶РµР»РµР·Р°(III)', value: 'Fe2O3' },
+            { key: 'РћРєСЃРёРґ РєР°Р»СЊС†РёСЏ', value: 'CaO' },
+            { key: 'Р­С‚Р°РЅРѕР»', value: 'C2H5OH' }
         ];
         const formulas = nameToFormula.map(x => x.value);
         nameToFormula.forEach((x, idx) => {
@@ -4813,12 +4813,12 @@ function generateChemistryByGrade(bandStartGrade, desiredCount = 64) {
             out.push(
                 makeMcq({
                     id: stableId(`${prefix}_formulas`, idx + 1),
-                    topic: 'Формулы',
+                    topic: 'Р¤РѕСЂРјСѓР»С‹',
                     difficulty: diff,
-                    question: `Какая формула у вещества: «${x.key}»?`,
+                    question: `РљР°РєР°СЏ С„РѕСЂРјСѓР»Р° Сѓ РІРµС‰РµСЃС‚РІР°: В«${x.key}В»?`,
                     options,
                     correct: options.indexOf(x.value),
-                    explanation: `«${x.key}» записывают как ${x.value}.`
+                    explanation: `В«${x.key}В» Р·Р°РїРёСЃС‹РІР°СЋС‚ РєР°Рє ${x.value}.`
                 })
             );
         });
@@ -4826,7 +4826,7 @@ function generateChemistryByGrade(bandStartGrade, desiredCount = 64) {
 
     }
 
-    // Финал: уникализируем и берём ровно desiredCount
+    // Р¤РёРЅР°Р»: СѓРЅРёРєР°Р»РёР·РёСЂСѓРµРј Рё Р±РµСЂС‘Рј СЂРѕРІРЅРѕ desiredCount
     const uniq = new Map();
     out.forEach(q => {
         const k = `${q.question}@@${q.topic}`;
@@ -4839,11 +4839,11 @@ function generateChemistryByGrade(bandStartGrade, desiredCount = 64) {
         .map(q => ({ ...q, subject: 'chemistry', gradeBand: band }));
 }
 
-// База данных вопросов по классам и сложности
-// Динамическая база данных вопросов - используем сгенерированные данные
+// Р‘Р°Р·Р° РґР°РЅРЅС‹С… РІРѕРїСЂРѕСЃРѕРІ РїРѕ РєР»Р°СЃСЃР°Рј Рё СЃР»РѕР¶РЅРѕСЃС‚Рё
+// Р”РёРЅР°РјРёС‡РµСЃРєР°СЏ Р±Р°Р·Р° РґР°РЅРЅС‹С… РІРѕРїСЂРѕСЃРѕРІ - РёСЃРїРѕР»СЊР·СѓРµРј СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Рµ РґР°РЅРЅС‹Рµ
 console.log('Initializing questionDatabase...');
 
-// 20 карточек тестов (как в UI). Делаем большие банки, чтобы вопросы не повторялись.
+// 20 РєР°СЂС‚РѕС‡РµРє С‚РµСЃС‚РѕРІ (РєР°Рє РІ UI). Р”РµР»Р°РµРј Р±РѕР»СЊС€РёРµ Р±Р°РЅРєРё, С‡С‚РѕР±С‹ РІРѕРїСЂРѕСЃС‹ РЅРµ РїРѕРІС‚РѕСЂСЏР»РёСЃСЊ.
 const TEST_CARD_IDS = [
     'profession_general_1','profession_general_5','profession_general_7','profession_general_9','profession_general_10',
     'profession_med_1','profession_med_5','profession_med_7','profession_med_9','profession_med_10',
@@ -4861,13 +4861,13 @@ function targetCountByBandStart(bandStartGrade) {
     return 180;
 }
 
-// Meta для статистики и для ленивой генерации
+// Meta РґР»СЏ СЃС‚Р°С‚РёСЃС‚РёРєРё Рё РґР»СЏ Р»РµРЅРёРІРѕР№ РіРµРЅРµСЂР°С†РёРё
 const QUESTION_COUNTS_BY_TEST_ID = {};
 TEST_CARD_IDS.forEach((id) => {
     const bandStart = inferBandStartFromTestId(id);
     QUESTION_COUNTS_BY_TEST_ID[id] = targetCountByBandStart(bandStart || 7);
 });
-// Экспортируем в window, чтобы главная могла показать количество даже при lazy-генерации
+// Р­РєСЃРїРѕСЂС‚РёСЂСѓРµРј РІ window, С‡С‚РѕР±С‹ РіР»Р°РІРЅР°СЏ РјРѕРіР»Р° РїРѕРєР°Р·Р°С‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РґР°Р¶Рµ РїСЂРё lazy-РіРµРЅРµСЂР°С†РёРё
 window.__questionCountsByTestId = QUESTION_COUNTS_BY_TEST_ID;
 
 function desiredCountForTestId(testId) {
@@ -4876,33 +4876,33 @@ function desiredCountForTestId(testId) {
 }
 
 const questionDatabase = {
-    // Профориентация общая
+    // РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ РѕР±С‰Р°СЏ
     profession_general_1: () => generateProfessionGeneralQuestions(1, desiredCountForTestId('profession_general_1')),
     profession_general_5: () => generateProfessionGeneralQuestions(5, desiredCountForTestId('profession_general_5')),
     profession_general_7: () => generateProfessionGeneralQuestions(7, desiredCountForTestId('profession_general_7')),
     profession_general_9: () => generateProfessionGeneralQuestions(9, desiredCountForTestId('profession_general_9')),
     profession_general_10: () => generateProfessionGeneralQuestions(10, desiredCountForTestId('profession_general_10')),
-    // Медицинская профориентация
+    // РњРµРґРёС†РёРЅСЃРєР°СЏ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ
     profession_med_1: () => generateMedicalProfessionQuestions(1, desiredCountForTestId('profession_med_1')),
     profession_med_5: () => generateMedicalProfessionQuestions(5, desiredCountForTestId('profession_med_5')),
     profession_med_7: () => generateMedicalProfessionQuestions(7, desiredCountForTestId('profession_med_7')),
     profession_med_9: () => generateMedicalProfessionQuestions(9, desiredCountForTestId('profession_med_9')),
     profession_med_10: () => generateMedicalProfessionQuestions(10, desiredCountForTestId('profession_med_10')),
-    // Биология
+    // Р‘РёРѕР»РѕРіРёСЏ
     biology_1: () => generateBiologyByGrade(1, desiredCountForTestId('biology_1')),
     biology_5: () => generateBiologyByGrade(5, desiredCountForTestId('biology_5')),
     biology_7: () => generateBiologyByGrade(7, desiredCountForTestId('biology_7')),
     biology_9: () => generateBiologyByGrade(9, desiredCountForTestId('biology_9')),
     biology_10: () => generateBiologyByGrade(10, desiredCountForTestId('biology_10')),
-    // Химия
+    // РҐРёРјРёСЏ
     chemistry_1: () => generateChemistryByGrade(1, desiredCountForTestId('chemistry_1')),
     chemistry_5: () => generateChemistryByGrade(5, desiredCountForTestId('chemistry_5')),
     chemistry_7: () => generateChemistryByGrade(7, desiredCountForTestId('chemistry_7')),
     chemistry_9: () => generateChemistryByGrade(9, desiredCountForTestId('chemistry_9')),
     chemistry_10: () => generateChemistryByGrade(10, desiredCountForTestId('chemistry_10')),
     
-    // === ТЕСТЫ ПО КЛАССАМ (1-11) ===
-    // Профориентация по классам
+    // === РўР•РЎРўР« РџРћ РљР›РђРЎРЎРђРњ (1-11) ===
+    // РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ РїРѕ РєР»Р°СЃСЃР°Рј
     profession_grade_1: () => generateGradeQuestions('profession', 1, 100),
     profession_grade_2: () => generateGradeQuestions('profession', 2, 100),
     profession_grade_3: () => generateGradeQuestions('profession', 3, 100),
@@ -4915,7 +4915,7 @@ const questionDatabase = {
     profession_grade_10: () => generateGradeQuestions('profession', 10, 100),
     profession_grade_11: () => generateGradeQuestions('profession', 11, 100),
     
-    // Химия по классам
+    // РҐРёРјРёСЏ РїРѕ РєР»Р°СЃСЃР°Рј
     chemistry_grade_1: () => generateGradeQuestions('chemistry', 1, 100),
     chemistry_grade_2: () => generateGradeQuestions('chemistry', 2, 100),
     chemistry_grade_3: () => generateGradeQuestions('chemistry', 3, 100),
@@ -4928,7 +4928,7 @@ const questionDatabase = {
     chemistry_grade_10: () => generateGradeQuestions('chemistry', 10, 100),
     chemistry_grade_11: () => generateGradeQuestions('chemistry', 11, 100),
     
-    // Биология по классам
+    // Р‘РёРѕР»РѕРіРёСЏ РїРѕ РєР»Р°СЃСЃР°Рј
     biology_grade_1: () => generateGradeQuestions('biology', 1, 100),
     biology_grade_2: () => generateGradeQuestions('biology', 2, 100),
     biology_grade_3: () => generateGradeQuestions('biology', 3, 100),
@@ -4941,7 +4941,7 @@ const questionDatabase = {
     biology_grade_10: () => generateGradeQuestions('biology', 10, 100),
     biology_grade_11: () => generateGradeQuestions('biology', 11, 100),
     
-    // Специальность по классам
+    // РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ РїРѕ РєР»Р°СЃСЃР°Рј
     specialty_grade_1: () => generateGradeQuestions('specialty', 1, 100),
     specialty_grade_2: () => generateGradeQuestions('specialty', 2, 100),
     specialty_grade_3: () => generateGradeQuestions('specialty', 3, 100),
@@ -4954,7 +4954,7 @@ const questionDatabase = {
     specialty_grade_10: () => generateGradeQuestions('specialty', 10, 100),
     specialty_grade_11: () => generateGradeQuestions('specialty', 11, 100),
     
-    // Старые названия для совместимости
+    // РЎС‚Р°СЂС‹Рµ РЅР°Р·РІР°РЅРёСЏ РґР»СЏ СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё
     biology: () => generateBiologyByGrade(9, desiredCountForTestId('biology_9')),
     chemistry: () => generateChemistryByGrade(9, desiredCountForTestId('chemistry_9')),
     profession: () => generateProfessionGeneralQuestions(9, desiredCountForTestId('profession_general_9'))
@@ -4962,8 +4962,8 @@ const questionDatabase = {
 console.log('QuestionDatabase initialized with', Object.keys(questionDatabase).length, 'test types');
 
 // ==============================
-// Сопоставление «общих» кнопок к карточкам по классу
-// (чтобы 10–11 класс не получал вопросы уровня 1–6)
+// РЎРѕРїРѕСЃС‚Р°РІР»РµРЅРёРµ В«РѕР±С‰РёС…В» РєРЅРѕРїРѕРє Рє РєР°СЂС‚РѕС‡РєР°Рј РїРѕ РєР»Р°СЃСЃСѓ
+// (С‡С‚РѕР±С‹ 10вЂ“11 РєР»Р°СЃСЃ РЅРµ РїРѕР»СѓС‡Р°Р» РІРѕРїСЂРѕСЃС‹ СѓСЂРѕРІРЅСЏ 1вЂ“6)
 // ==============================
 function bandStartFromUserGrade(userGrade) {
     const g = parseInt(userGrade, 10);
@@ -4979,7 +4979,7 @@ function resolveTestIdByUserGrade(subject, userGrade) {
     const s = String(subject || '');
     const bandStart = bandStartFromUserGrade(userGrade);
 
-    // Если уже передан id карточки (biology_10 и т.п.) — оставляем.
+    // Р•СЃР»Рё СѓР¶Рµ РїРµСЂРµРґР°РЅ id РєР°СЂС‚РѕС‡РєРё (biology_10 Рё С‚.Рї.) вЂ” РѕСЃС‚Р°РІР»СЏРµРј.
     if (questionDatabase[s]) return s;
 
     const bandSuffix = String(bandStart);
@@ -4987,13 +4987,13 @@ function resolveTestIdByUserGrade(subject, userGrade) {
     if (s === 'biology') return `biology_${bandSuffix}`;
     if (s === 'chemistry') return `chemistry_${bandSuffix}`;
 
-    // Кнопки/ссылки могут использовать общий subject для профориентации
+    // РљРЅРѕРїРєРё/СЃСЃС‹Р»РєРё РјРѕРіСѓС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РѕР±С‰РёР№ subject РґР»СЏ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёРё
     if (s === 'profession') {
-        // Для 10–11 берём старшую карточку, иначе 9-ю
+        // Р”Р»СЏ 10вЂ“11 Р±РµСЂС‘Рј СЃС‚Р°СЂС€СѓСЋ РєР°СЂС‚РѕС‡РєСѓ, РёРЅР°С‡Рµ 9-СЋ
         return bandStart >= 10 ? 'profession_general_10' : 'profession_general_9';
     }
 
-    // На будущее: если когда-то появятся короткие id категорий
+    // РќР° Р±СѓРґСѓС‰РµРµ: РµСЃР»Рё РєРѕРіРґР°-С‚Рѕ РїРѕСЏРІСЏС‚СЃСЏ РєРѕСЂРѕС‚РєРёРµ id РєР°С‚РµРіРѕСЂРёР№
     if (s === 'profession_general') return bandStart >= 10 ? 'profession_general_10' : 'profession_general_9';
     if (s === 'profession_med') return bandStart >= 10 ? 'profession_med_10' : 'profession_med_9';
 
@@ -5001,7 +5001,7 @@ function resolveTestIdByUserGrade(subject, userGrade) {
 }
 
 // ==============================
-// Анти-повторы между прохождениями (персистентно)
+// РђРЅС‚Рё-РїРѕРІС‚РѕСЂС‹ РјРµР¶РґСѓ РїСЂРѕС…РѕР¶РґРµРЅРёСЏРјРё (РїРµСЂСЃРёСЃС‚РµРЅС‚РЅРѕ)
 // ==============================
 const USED_KEYS_STORAGE_VERSION = 'v1';
 function usedKeysStorageKey(testId) {
@@ -5015,7 +5015,7 @@ function loadUsedQuestionKeys(testId) {
         if (!raw) return new Set();
         const arr = JSON.parse(raw);
         if (!Array.isArray(arr)) return new Set();
-        // ограничиваем размер на чтении (защита от раздувания)
+        // РѕРіСЂР°РЅРёС‡РёРІР°РµРј СЂР°Р·РјРµСЂ РЅР° С‡С‚РµРЅРёРё (Р·Р°С‰РёС‚Р° РѕС‚ СЂР°Р·РґСѓРІР°РЅРёСЏ)
         return new Set(arr.slice(-4000).map(String));
     } catch {
         return new Set();
@@ -5028,7 +5028,7 @@ function saveUsedQuestionKeys(testId, setOrArray) {
         const arr = Array.isArray(setOrArray)
             ? setOrArray.map(String)
             : Array.from((setOrArray instanceof Set ? setOrArray : new Set())).map(String);
-        // храним хвост, чтобы localStorage не разрастался бесконечно
+        // С…СЂР°РЅРёРј С…РІРѕСЃС‚, С‡С‚РѕР±С‹ localStorage РЅРµ СЂР°Р·СЂР°СЃС‚Р°Р»СЃСЏ Р±РµСЃРєРѕРЅРµС‡РЅРѕ
         const trimmed = arr.slice(-4000);
         localStorage.setItem(key, JSON.stringify(trimmed));
     } catch {
@@ -5036,7 +5036,7 @@ function saveUsedQuestionKeys(testId, setOrArray) {
     }
 }
 
-// Система адаптивного тестирования
+// РЎРёСЃС‚РµРјР° Р°РґР°РїС‚РёРІРЅРѕРіРѕ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ
 class AdaptiveTestSystem {
     constructor() {
         this.currentTest = null;
@@ -5050,7 +5050,7 @@ class AdaptiveTestSystem {
         this._persistCounter = 0;
         this._persistEvery = 8;
         this.skippedQuestions = [];
-        this.totalQuestions = 25; // По умолчанию 25 вопросов
+        this.totalQuestions = 25; // РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ 25 РІРѕРїСЂРѕСЃРѕРІ
         this.maxDifficulty = 4;
         this.startTime = null;
         this.testResults = null;
@@ -5063,7 +5063,7 @@ class AdaptiveTestSystem {
         const topic = q.topic || '';
         const dim = q.dimension || '';
         const text = (q.question || '').trim();
-        // Если вдруг нет текста, используем id/индекс
+        // Р•СЃР»Рё РІРґСЂСѓРі РЅРµС‚ С‚РµРєСЃС‚Р°, РёСЃРїРѕР»СЊР·СѓРµРј id/РёРЅРґРµРєСЃ
         const base = text || String(q.id || fallbackIndex);
         return `${kind}|${topic}|${dim}|${base}`;
     }
@@ -5073,7 +5073,7 @@ class AdaptiveTestSystem {
         if (!subject) return [];
         if (Array.isArray(subject)) return subject;
 
-        // Lazy generator: функция, возвращающая массив вопросов
+        // Lazy generator: С„СѓРЅРєС†РёСЏ, РІРѕР·РІСЂР°С‰Р°СЋС‰Р°СЏ РјР°СЃСЃРёРІ РІРѕРїСЂРѕСЃРѕРІ
         if (typeof subject === 'function') {
             try {
                 const generated = subject();
@@ -5104,15 +5104,15 @@ class AdaptiveTestSystem {
     startTest(subject, userGrade = 5) {
         console.log('AdaptiveTestSystem.startTest called with:', subject, userGrade);
         
-        // На случай вызова startTest('biology') / startTest('chemistry') и т.п.
-        // приводим к конкретной карточке по классу.
+        // РќР° СЃР»СѓС‡Р°Р№ РІС‹Р·РѕРІР° startTest('biology') / startTest('chemistry') Рё С‚.Рї.
+        // РїСЂРёРІРѕРґРёРј Рє РєРѕРЅРєСЂРµС‚РЅРѕР№ РєР°СЂС‚РѕС‡РєРµ РїРѕ РєР»Р°СЃСЃСѓ.
         const resolved = resolveTestIdByUserGrade(subject, userGrade);
         this.currentTest = resolved;
         this.currentQuestion = 0;
         this.score = 0;
         this.answers = [];
 
-        // Сложность определяется карточкой теста (biology_10 / chemistry_9 и т.п.)
+        // РЎР»РѕР¶РЅРѕСЃС‚СЊ РѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ РєР°СЂС‚РѕС‡РєРѕР№ С‚РµСЃС‚Р° (biology_10 / chemistry_9 Рё С‚.Рї.)
         const bandStart = inferBandStartFromTestId(this.currentTest);
         const band = bandStart ? normalizeBandLabel(bandStart) : null;
         const byCard = band ? difficultyByBand(band) : null;
@@ -5120,7 +5120,7 @@ class AdaptiveTestSystem {
         this.currentDifficulty = this.maxDifficulty;
         this.questionsUsed.clear();
         this.questionKeysUsed.clear();
-        // Сбрасываем историю использованных вопросов для каждого нового теста
+        // РЎР±СЂР°СЃС‹РІР°РµРј РёСЃС‚РѕСЂРёСЋ РёСЃРїРѕР»СЊР·РѕРІР°РЅРЅС‹С… РІРѕРїСЂРѕСЃРѕРІ РґР»СЏ РєР°Р¶РґРѕРіРѕ РЅРѕРІРѕРіРѕ С‚РµСЃС‚Р°
         this.persistedUsedKeys = new Set();
         this._persistCounter = 0;
         this.skippedQuestions = [];
@@ -5128,9 +5128,9 @@ class AdaptiveTestSystem {
         this.testResults = null;
         this.updateSkippedInfo();
 
-        // Устанавливаем количество вопросов по типу теста:
-        // Профориентация = 45 вопросов
-        // Биология, Химия, Специальность = 25 вопросов
+        // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ РІРѕРїСЂРѕСЃРѕРІ РїРѕ С‚РёРїСѓ С‚РµСЃС‚Р°:
+        // РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ = 45 РІРѕРїСЂРѕСЃРѕРІ
+        // Р‘РёРѕР»РѕРіРёСЏ, РҐРёРјРёСЏ, РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊ = 25 РІРѕРїСЂРѕСЃРѕРІ
         const isProfession = this.currentTest && this.currentTest.includes('profession');
         this.totalQuestions = isProfession ? 45 : 25;
         
@@ -5142,7 +5142,7 @@ class AdaptiveTestSystem {
         const questions = this.collectQuestionsForCurrentTest();
         if (!questions || questions.length === 0) return null;
 
-        // Фильтруем уже использованные вопросы (по id и по ключу текста)
+        // Р¤РёР»СЊС‚СЂСѓРµРј СѓР¶Рµ РёСЃРїРѕР»СЊР·РѕРІР°РЅРЅС‹Рµ РІРѕРїСЂРѕСЃС‹ (РїРѕ id Рё РїРѕ РєР»СЋС‡Сѓ С‚РµРєСЃС‚Р°)
         const availableQuestions = questions.filter((q, index) => {
             const idKey = q && q.id ? String(q.id) : String(index);
             const uniqKey = this.getQuestionUniqueKey(q, index);
@@ -5152,8 +5152,8 @@ class AdaptiveTestSystem {
         });
 
         if (availableQuestions.length === 0) {
-            // Если всё уже было использовано в прошлых попытках — сбрасываем историю для этой карточки.
-            // Так пользователь сможет пройти тест снова, даже если банк исчерпан.
+            // Р•СЃР»Рё РІСЃС‘ СѓР¶Рµ Р±С‹Р»Рѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРѕ РІ РїСЂРѕС€Р»С‹С… РїРѕРїС‹С‚РєР°С… вЂ” СЃР±СЂР°СЃС‹РІР°РµРј РёСЃС‚РѕСЂРёСЋ РґР»СЏ СЌС‚РѕР№ РєР°СЂС‚РѕС‡РєРё.
+            // РўР°Рє РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃРјРѕР¶РµС‚ РїСЂРѕР№С‚Рё С‚РµСЃС‚ СЃРЅРѕРІР°, РґР°Р¶Рµ РµСЃР»Рё Р±Р°РЅРє РёСЃС‡РµСЂРїР°РЅ.
             try {
                 if (this.persistedUsedKeys && this.persistedUsedKeys.size > 0) {
                     this.persistedUsedKeys.clear();
@@ -5167,7 +5167,7 @@ class AdaptiveTestSystem {
 
         const isOrientation = isOrientationSubjectId(this.currentTest);
 
-        // Для предметных тестов стараемся держаться около текущей сложности
+        // Р”Р»СЏ РїСЂРµРґРјРµС‚РЅС‹С… С‚РµСЃС‚РѕРІ СЃС‚Р°СЂР°РµРјСЃСЏ РґРµСЂР¶Р°С‚СЊСЃСЏ РѕРєРѕР»Рѕ С‚РµРєСѓС‰РµР№ СЃР»РѕР¶РЅРѕСЃС‚Рё
         let question = null;
         if (!isOrientation) {
             const target = Math.min(4, Math.max(1, this.currentDifficulty || this.maxDifficulty || 3));
@@ -5177,11 +5177,11 @@ class AdaptiveTestSystem {
                 return { q, d, dist };
             });
 
-            // Пытаемся брать вопросы с dist 0..1, иначе fallback
+            // РџС‹С‚Р°РµРјСЃСЏ Р±СЂР°С‚СЊ РІРѕРїСЂРѕСЃС‹ СЃ dist 0..1, РёРЅР°С‡Рµ fallback
             const near = withDist.filter(x => x.dist <= 1);
             const pool = near.length > 0 ? near : withDist;
 
-            // Взвешенный выбор: ближе к target — выше шанс
+            // Р’Р·РІРµС€РµРЅРЅС‹Р№ РІС‹Р±РѕСЂ: Р±Р»РёР¶Рµ Рє target вЂ” РІС‹С€Рµ С€Р°РЅСЃ
             const weights = pool.map(x => (x.dist === 0 ? 3 : x.dist === 1 ? 2 : 1));
             const totalW = weights.reduce((s, w) => s + w, 0);
             let r = Math.random() * totalW;
@@ -5192,7 +5192,7 @@ class AdaptiveTestSystem {
             }
             question = picked.q;
         } else {
-            // Профориентация: случайный вопрос
+            // РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ: СЃР»СѓС‡Р°Р№РЅС‹Р№ РІРѕРїСЂРѕСЃ
             const randomIndex = Math.floor(Math.random() * availableQuestions.length);
             question = availableQuestions[randomIndex];
         }
@@ -5204,7 +5204,7 @@ class AdaptiveTestSystem {
         this.questionsUsed.add(idKey);
         this.questionKeysUsed.add(uniqKey);
 
-        // Запоминаем вопрос между прохождениями
+        // Р—Р°РїРѕРјРёРЅР°РµРј РІРѕРїСЂРѕСЃ РјРµР¶РґСѓ РїСЂРѕС…РѕР¶РґРµРЅРёСЏРјРё
         try {
             this.persistedUsedKeys.add(uniqKey);
             this._persistCounter += 1;
@@ -5242,7 +5242,7 @@ class AdaptiveTestSystem {
 
         let question = null;
         if (skippedCount > 0 && skippedCount >= remainingSlots) {
-            // Если пропущенных достаточно, чтобы закрыть оставшиеся слоты, сначала вернём их
+            // Р•СЃР»Рё РїСЂРѕРїСѓС‰РµРЅРЅС‹С… РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ, С‡С‚РѕР±С‹ Р·Р°РєСЂС‹С‚СЊ РѕСЃС‚Р°РІС€РёРµСЃСЏ СЃР»РѕС‚С‹, СЃРЅР°С‡Р°Р»Р° РІРµСЂРЅС‘Рј РёС…
             question = this.skippedQuestions.shift();
         } else {
             question = this.getNextQuestion() || this.skippedQuestions.shift();
@@ -5262,7 +5262,7 @@ class AdaptiveTestSystem {
     }
 
     renderQuestion(question, displayNumber) {
-        // Отображаем вопрос с проверкой существования элементов
+        // РћС‚РѕР±СЂР°Р¶Р°РµРј РІРѕРїСЂРѕСЃ СЃ РїСЂРѕРІРµСЂРєРѕР№ СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ
         const questionCounter = document.getElementById('question-counter');
         const questionText = document.getElementById('question-text');
         const difficultyIndicator = document.getElementById('difficulty-indicator');
@@ -5270,7 +5270,7 @@ class AdaptiveTestSystem {
 
         if (questionCounter) {
             const num = Math.min(displayNumber, this.totalQuestions);
-            questionCounter.textContent = `Вопрос ${num} из ${this.totalQuestions}`;
+            questionCounter.textContent = `Р’РѕРїСЂРѕСЃ ${num} РёР· ${this.totalQuestions}`;
         }
 
         if (questionText) {
@@ -5278,9 +5278,9 @@ class AdaptiveTestSystem {
         }
 
         if (difficultyIndicator) {
-            const difficultyLevels = ['Начальный', 'Лёгкий', 'Средний', 'Сложный', 'Продвинутый'];
+            const difficultyLevels = ['РќР°С‡Р°Р»СЊРЅС‹Р№', 'Р›С‘РіРєРёР№', 'РЎСЂРµРґРЅРёР№', 'РЎР»РѕР¶РЅС‹Р№', 'РџСЂРѕРґРІРёРЅСѓС‚С‹Р№'];
             const level = Math.min(4, Math.max(0, (question.difficulty || 1) - 1));
-            difficultyIndicator.textContent = `Уровень сложности: ${difficultyLevels[level]}`;
+            difficultyIndicator.textContent = `РЈСЂРѕРІРµРЅСЊ СЃР»РѕР¶РЅРѕСЃС‚Рё: ${difficultyLevels[level]}`;
         }
 
         if (optionsContainer) {
@@ -5297,14 +5297,14 @@ class AdaptiveTestSystem {
             });
         }
 
-        // Блокируем кнопку ответа до выбора варианта
+        // Р‘Р»РѕРєРёСЂСѓРµРј РєРЅРѕРїРєСѓ РѕС‚РІРµС‚Р° РґРѕ РІС‹Р±РѕСЂР° РІР°СЂРёР°РЅС‚Р°
         const nextBtn = document.getElementById('adaptive-next-btn');
         if (nextBtn) {
             nextBtn.disabled = true;
             nextBtn.style.display = 'inline-flex';
         }
 
-        // Включаем/выключаем кнопку "Назад" (предыдущий вопрос)
+        // Р’РєР»СЋС‡Р°РµРј/РІС‹РєР»СЋС‡Р°РµРј РєРЅРѕРїРєСѓ "РќР°Р·Р°Рґ" (РїСЂРµРґС‹РґСѓС‰РёР№ РІРѕРїСЂРѕСЃ)
         const prevBtn = document.getElementById('adaptive-prev-btn');
         if (prevBtn) {
             prevBtn.disabled = this.answers.length === 0;
@@ -5334,7 +5334,7 @@ class AdaptiveTestSystem {
         const isOrientation = this.currentQuestionData && this.currentQuestionData.kind === 'likert';
         const isCorrect = isOrientation ? null : (selectedIndex === this.currentQuestionData.correct);
         
-        // сохраняем снапшот вопроса, чтобы можно было вернуться "Назад"
+        // СЃРѕС…СЂР°РЅСЏРµРј СЃРЅР°РїС€РѕС‚ РІРѕРїСЂРѕСЃР°, С‡С‚РѕР±С‹ РјРѕР¶РЅРѕ Р±С‹Р»Рѕ РІРµСЂРЅСѓС‚СЊСЃСЏ "РќР°Р·Р°Рґ"
         const questionSnapshot = {
             id: this.currentQuestionData.id,
             kind: this.currentQuestionData.kind,
@@ -5363,7 +5363,7 @@ class AdaptiveTestSystem {
 
         if (!isOrientation && isCorrect) this.score++;
 
-        // Простая адаптация сложности: вверх за правильный, вниз за неправильный
+        // РџСЂРѕСЃС‚Р°СЏ Р°РґР°РїС‚Р°С†РёСЏ СЃР»РѕР¶РЅРѕСЃС‚Рё: РІРІРµСЂС… Р·Р° РїСЂР°РІРёР»СЊРЅС‹Р№, РІРЅРёР· Р·Р° РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№
         if (!isOrientation) {
             if (isCorrect === true && this.currentDifficulty < this.maxDifficulty) {
                 this.currentDifficulty += 1;
@@ -5383,19 +5383,19 @@ class AdaptiveTestSystem {
         if (!this.answers || this.answers.length === 0) return;
 
         const last = this.answers.pop();
-        // откатываем score только для предметных тестов
+        // РѕС‚РєР°С‚С‹РІР°РµРј score С‚РѕР»СЊРєРѕ РґР»СЏ РїСЂРµРґРјРµС‚РЅС‹С… С‚РµСЃС‚РѕРІ
         if (!isOrientationSubjectId(this.currentTest) && last && last.isCorrect) {
             this.score = Math.max(0, this.score - 1);
         }
 
-        // показываем тот же вопрос снова
+        // РїРѕРєР°Р·С‹РІР°РµРј С‚РѕС‚ Р¶Рµ РІРѕРїСЂРѕСЃ СЃРЅРѕРІР°
         const q = last && last.questionData ? last.questionData : null;
         if (!q) {
             this.showQuestion();
             return;
         }
 
-        // Возвращаем вопрос в поток: убираем из used, чтобы не терялся
+        // Р’РѕР·РІСЂР°С‰Р°РµРј РІРѕРїСЂРѕСЃ РІ РїРѕС‚РѕРє: СѓР±РёСЂР°РµРј РёР· used, С‡С‚РѕР±С‹ РЅРµ С‚РµСЂСЏР»СЃСЏ
         try {
             if (q.id) this.questionsUsed.delete(String(q.id));
             this.questionKeysUsed.delete(this.getQuestionUniqueKey(q, 0));
@@ -5404,7 +5404,7 @@ class AdaptiveTestSystem {
         }
         this.currentQuestionData = q;
 
-        // Рендерим как "текущий" (номер = answers.length + 1)
+        // Р РµРЅРґРµСЂРёРј РєР°Рє "С‚РµРєСѓС‰РёР№" (РЅРѕРјРµСЂ = answers.length + 1)
         this.renderQuestion(q, this.answers.length + 1);
         this.updateProgressBar();
         this.updateSkippedInfo();
@@ -5431,8 +5431,8 @@ class AdaptiveTestSystem {
         if (!skippedInfo) return;
         const skipped = this.skippedQuestions.length;
         skippedInfo.textContent = skipped > 0
-            ? `Пропущено: ${skipped}`
-            : 'Нет пропущенных вопросов';
+            ? `РџСЂРѕРїСѓС‰РµРЅРѕ: ${skipped}`
+            : 'РќРµС‚ РїСЂРѕРїСѓС‰РµРЅРЅС‹С… РІРѕРїСЂРѕСЃРѕРІ';
     }
 
     finishTest() {
@@ -5465,7 +5465,7 @@ class AdaptiveTestSystem {
         this.showResults();
         this.saveResults();
 
-        // Сохраняем анти-повтор ключи (на всякий случай, если тест завершили быстро)
+        // РЎРѕС…СЂР°РЅСЏРµРј Р°РЅС‚Рё-РїРѕРІС‚РѕСЂ РєР»СЋС‡Рё (РЅР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№, РµСЃР»Рё С‚РµСЃС‚ Р·Р°РІРµСЂС€РёР»Рё Р±С‹СЃС‚СЂРѕ)
         try {
             saveUsedQuestionKeys(this.currentTest, this.persistedUsedKeys);
         } catch {
@@ -5474,12 +5474,12 @@ class AdaptiveTestSystem {
     }
 
     showResults() {
-        // Скрыть только адаптивный контейнер теста внутри секции tests (не старый)
+        // РЎРєСЂС‹С‚СЊ С‚РѕР»СЊРєРѕ Р°РґР°РїС‚РёРІРЅС‹Р№ РєРѕРЅС‚РµР№РЅРµСЂ С‚РµСЃС‚Р° РІРЅСѓС‚СЂРё СЃРµРєС†РёРё tests (РЅРµ СЃС‚Р°СЂС‹Р№)
         const adaptiveContainer = [...document.querySelectorAll('#tests .test-container')]
             .find(c => c.id !== 'test-questions-container');
         if (adaptiveContainer) adaptiveContainer.style.display = 'none';
 
-        // Показать контейнер результатов новой системы
+        // РџРѕРєР°Р·Р°С‚СЊ РєРѕРЅС‚РµР№РЅРµСЂ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РЅРѕРІРѕР№ СЃРёСЃС‚РµРјС‹
         const adaptiveResultContainer = document.getElementById('adaptive-result-container');
         if (adaptiveResultContainer) {
             adaptiveResultContainer.style.display = 'block';
@@ -5500,24 +5500,24 @@ class AdaptiveTestSystem {
             const incorrectCount = this.testResults.isOrientation ? 0 : (this.testResults.total - this.testResults.score);
             statsContainer.innerHTML = `
                 <div class="stat-item">
-                    <span class="stat-icon">${this.testResults.isOrientation ? '??' : '?'}</span>
+                    <span class="stat-icon">${this.testResults.isOrientation ? 'рџ§­' : 'вњ…'}</span>
                     <span class="stat-value">${this.testResults.isOrientation ? this.testResults.total : this.testResults.score}</span>
-                    <span class="stat-label">${this.testResults.isOrientation ? 'Ответов' : 'Правильных'}</span>
+                    <span class="stat-label">${this.testResults.isOrientation ? 'РћС‚РІРµС‚РѕРІ' : 'РџСЂР°РІРёР»СЊРЅС‹С…'}</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-icon">${this.testResults.isOrientation ? '??' : '?'}</span>
+                    <span class="stat-icon">${this.testResults.isOrientation ? 'рџ“Њ' : 'вќЊ'}</span>
                     <span class="stat-value">${this.testResults.isOrientation ? this.skippedQuestions.length : incorrectCount}</span>
-                    <span class="stat-label">${this.testResults.isOrientation ? 'Пропущено' : 'Неправильных'}</span>
+                    <span class="stat-label">${this.testResults.isOrientation ? 'РџСЂРѕРїСѓС‰РµРЅРѕ' : 'РќРµРїСЂР°РІРёР»СЊРЅС‹С…'}</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-icon">??</span>
+                    <span class="stat-icon">вЏ±пёЏ</span>
                     <span class="stat-value">${Math.floor(this.testResults.timeSpent / 60)}:${(this.testResults.timeSpent % 60).toString().padStart(2, '0')}</span>
-                    <span class="stat-label">Время</span>
+                    <span class="stat-label">Р’СЂРµРјСЏ</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-icon">??</span>
+                    <span class="stat-icon">рџ“Љ</span>
                     <span class="stat-value">${this.testResults.percentage}%</span>
-                    <span class="stat-label">${this.testResults.isOrientation ? 'Профиль' : 'Точность'}</span>
+                    <span class="stat-label">${this.testResults.isOrientation ? 'РџСЂРѕС„РёР»СЊ' : 'РўРѕС‡РЅРѕСЃС‚СЊ'}</span>
                 </div>
             `;
         }
@@ -5542,26 +5542,26 @@ class AdaptiveTestSystem {
                     const push = (v) => { if (v && !list.includes(v)) list.push(v); };
                     const has = (k) => keys.includes(k);
 
-                    // Мед.трек — больше упор на мед.профессии
+                    // РњРµРґ.С‚СЂРµРє вЂ” Р±РѕР»СЊС€Рµ СѓРїРѕСЂ РЅР° РјРµРґ.РїСЂРѕС„РµСЃСЃРёРё
                     if (subject.startsWith('profession_med_')) {
-                        if (has('empathy') || has('people')) { push('Медсестра / медбрат'); push('Педиатр'); }
-                        if (has('science') || has('analysis')) { push('Лаборант / лабораторная диагностика'); push('Фармацевт'); }
-                        if (has('accuracy')) { push('Стоматолог'); push('Медицинский лабораторный техник'); }
-                        if (has('stress')) { push('Скорая помощь (фельдшер)'); }
-                        if (has('teamwork')) { push('Врач в стационаре (командная работа)'); }
-                        if (has('responsibility')) { push('Врач общей практики'); }
-                        // универсальные
-                        push('Психолог (медицинский/клинический)');
+                        if (has('empathy') || has('people')) { push('РњРµРґСЃРµСЃС‚СЂР° / РјРµРґР±СЂР°С‚'); push('РџРµРґРёР°С‚СЂ'); }
+                        if (has('science') || has('analysis')) { push('Р›Р°Р±РѕСЂР°РЅС‚ / Р»Р°Р±РѕСЂР°С‚РѕСЂРЅР°СЏ РґРёР°РіРЅРѕСЃС‚РёРєР°'); push('Р¤Р°СЂРјР°С†РµРІС‚'); }
+                        if (has('accuracy')) { push('РЎС‚РѕРјР°С‚РѕР»РѕРі'); push('РњРµРґРёС†РёРЅСЃРєРёР№ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Р№ С‚РµС…РЅРёРє'); }
+                        if (has('stress')) { push('РЎРєРѕСЂР°СЏ РїРѕРјРѕС‰СЊ (С„РµР»СЊРґС€РµСЂ)'); }
+                        if (has('teamwork')) { push('Р’СЂР°С‡ РІ СЃС‚Р°С†РёРѕРЅР°СЂРµ (РєРѕРјР°РЅРґРЅР°СЏ СЂР°Р±РѕС‚Р°)'); }
+                        if (has('responsibility')) { push('Р’СЂР°С‡ РѕР±С‰РµР№ РїСЂР°РєС‚РёРєРё'); }
+                        // СѓРЅРёРІРµСЂСЃР°Р»СЊРЅС‹Рµ
+                        push('РџСЃРёС…РѕР»РѕРі (РјРµРґРёС†РёРЅСЃРєРёР№/РєР»РёРЅРёС‡РµСЃРєРёР№)');
                         return list.slice(0, 7);
                     }
 
-                    // Общая профориентация
-                    if (has('people')) { push('Психолог'); push('Преподаватель'); push('HR-специалист'); }
-                    if (has('analysis')) { push('Аналитик'); push('Программист'); push('Инженер'); }
-                    if (has('creativity')) { push('Дизайнер'); push('Маркетолог'); push('Контент-менеджер'); }
-                    if (has('practice')) { push('Техник'); push('Мастер/специалист по оборудованию'); }
-                    if (has('science')) { push('Исследователь'); push('Лаборант'); }
-                    if (has('teamwork')) { push('Менеджер проектов'); push('Организатор мероприятий'); }
+                    // РћР±С‰Р°СЏ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ
+                    if (has('people')) { push('РџСЃРёС…РѕР»РѕРі'); push('РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ'); push('HR-СЃРїРµС†РёР°Р»РёСЃС‚'); }
+                    if (has('analysis')) { push('РђРЅР°Р»РёС‚РёРє'); push('РџСЂРѕРіСЂР°РјРјРёСЃС‚'); push('РРЅР¶РµРЅРµСЂ'); }
+                    if (has('creativity')) { push('Р”РёР·Р°Р№РЅРµСЂ'); push('РњР°СЂРєРµС‚РѕР»РѕРі'); push('РљРѕРЅС‚РµРЅС‚-РјРµРЅРµРґР¶РµСЂ'); }
+                    if (has('practice')) { push('РўРµС…РЅРёРє'); push('РњР°СЃС‚РµСЂ/СЃРїРµС†РёР°Р»РёСЃС‚ РїРѕ РѕР±РѕСЂСѓРґРѕРІР°РЅРёСЋ'); }
+                    if (has('science')) { push('РСЃСЃР»РµРґРѕРІР°С‚РµР»СЊ'); push('Р›Р°Р±РѕСЂР°РЅС‚'); }
+                    if (has('teamwork')) { push('РњРµРЅРµРґР¶РµСЂ РїСЂРѕРµРєС‚РѕРІ'); push('РћСЂРіР°РЅРёР·Р°С‚РѕСЂ РјРµСЂРѕРїСЂРёСЏС‚РёР№'); }
 
                     return list.slice(0, 7);
                 };
@@ -5569,32 +5569,32 @@ class AdaptiveTestSystem {
                 const careers = suggestCareers();
 
                 analysisContainer.innerHTML = `
-                    <h3><i class="fas fa-compass"></i> Ваш профориентационный профиль</h3>
+                    <h3><i class="fas fa-compass"></i> Р’Р°С€ РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёРѕРЅРЅС‹Р№ РїСЂРѕС„РёР»СЊ</h3>
                     <div class="grade-estimate">
-                        ?? Итог: <strong>${levelInfo.level}</strong>
+                        рџ§­ РС‚РѕРі: <strong>${levelInfo.level}</strong>
                         <br><small style="opacity: 0.9; margin-top: 8px; display: block;">${levelInfo.description}</small>
                     </div>
 
                     <div class="strengths">
-                        <h4>Что вам подходит сильнее всего</h4>
+                        <h4>Р§С‚Рѕ РІР°Рј РїРѕРґС…РѕРґРёС‚ СЃРёР»СЊРЅРµРµ РІСЃРµРіРѕ</h4>
                         <div class="category-list">
                             <ul>
-                                ${(top.length ? top : scores.slice(0, 3)).map(s => `<li>${labelOf(s.key)} — ${s.score}%</li>`).join('')}
+                                ${(top.length ? top : scores.slice(0, 3)).map(s => `<li>${labelOf(s.key)} вЂ” ${s.score}%</li>`).join('')}
                             </ul>
                         </div>
                     </div>
 
                     <div class="recommendations">
-                        <h4>Кем можно быть (примеры)</h4>
+                        <h4>РљРµРј РјРѕР¶РЅРѕ Р±С‹С‚СЊ (РїСЂРёРјРµСЂС‹)</h4>
                         <div class="category-list">
                             <ul>
-                                ${(careers.length ? careers : ['Рекомендаций пока мало — ответьте на больше вопросов или пройдите тест ещё раз.']).map(c => `<li>${c}</li>`).join('')}
+                                ${(careers.length ? careers : ['Р РµРєРѕРјРµРЅРґР°С†РёР№ РїРѕРєР° РјР°Р»Рѕ вЂ” РѕС‚РІРµС‚СЊС‚Рµ РЅР° Р±РѕР»СЊС€Рµ РІРѕРїСЂРѕСЃРѕРІ РёР»Рё РїСЂРѕР№РґРёС‚Рµ С‚РµСЃС‚ РµС‰С‘ СЂР°Р·.']).map(c => `<li>${c}</li>`).join('')}
                             </ul>
                         </div>
                     </div>
 
                     <div class="recommendations">
-                        <h4>Что попробовать дальше</h4>
+                        <h4>Р§С‚Рѕ РїРѕРїСЂРѕР±РѕРІР°С‚СЊ РґР°Р»СЊС€Рµ</h4>
                         <div class="category-list">
                             <ul>
                                 ${this.getRecommendations().map(rec => `<li>${rec}</li>`).join('')}
@@ -5604,15 +5604,15 @@ class AdaptiveTestSystem {
                 `;
             } else {
                 analysisContainer.innerHTML = `
-                    <h3><i class="fas fa-chart-line"></i> Анализ вашего результата</h3>
+                    <h3><i class="fas fa-chart-line"></i> РђРЅР°Р»РёР· РІР°С€РµРіРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°</h3>
                     
                     <div class="grade-estimate">
-                        ?? Ваш уровень подготовки: <strong>${levelInfo.level}</strong>
+                        рџ“€ Р’Р°С€ СѓСЂРѕРІРµРЅСЊ РїРѕРґРіРѕС‚РѕРІРєРё: <strong>${levelInfo.level}</strong>
                         <br><small style="opacity: 0.9; margin-top: 8px; display: block;">${levelInfo.description}</small>
                     </div>
                     
                     <div class="strengths">
-                        <h4>Сильные стороны</h4>
+                        <h4>РЎРёР»СЊРЅС‹Рµ СЃС‚РѕСЂРѕРЅС‹</h4>
                         <div class="category-list">
                             <ul>
                                 ${this.getStrengths().map(strength => `<li>${strength}</li>`).join('')}
@@ -5621,7 +5621,7 @@ class AdaptiveTestSystem {
                     </div>
                     
                     <div class="weaknesses">
-                        <h4>Области для улучшения</h4>
+                        <h4>РћР±Р»Р°СЃС‚Рё РґР»СЏ СѓР»СѓС‡С€РµРЅРёСЏ</h4>
                         <div class="category-list">
                             <ul>
                                 ${weaknesses.map(weakness => `<li>${weakness}</li>`).join('')}
@@ -5630,7 +5630,7 @@ class AdaptiveTestSystem {
                     </div>
                     
                     <div class="recommendations">
-                        <h4>Рекомендации</h4>
+                        <h4>Р РµРєРѕРјРµРЅРґР°С†РёРё</h4>
                         <div class="category-list">
                             <ul>
                                 ${this.getRecommendations().map(rec => `<li>${rec}</li>`).join('')}
@@ -5643,21 +5643,21 @@ class AdaptiveTestSystem {
         
         const answersContainer = document.getElementById('adaptive-detailed-answers');
         if (answersContainer) {
-            const difficultyNames = ['Начальный', 'Лёгкий', 'Средний', 'Сложный'];
+            const difficultyNames = ['РќР°С‡Р°Р»СЊРЅС‹Р№', 'Р›С‘РіРєРёР№', 'РЎСЂРµРґРЅРёР№', 'РЎР»РѕР¶РЅС‹Р№'];
             const isOrientationTest = !!this.testResults.isOrientation;
             
             answersContainer.innerHTML = `
-                <h3>?? Детальный разбор ответов</h3>
+                <h3>рџ“‹ Р”РµС‚Р°Р»СЊРЅС‹Р№ СЂР°Р·Р±РѕСЂ РѕС‚РІРµС‚РѕРІ</h3>
                 ${this.testResults.answers.map((answer, index) => {
-                    const difficultyName = difficultyNames[Math.min(answer.difficulty - 1, 3)] || 'Средний';
+                    const difficultyName = difficultyNames[Math.min(answer.difficulty - 1, 3)] || 'РЎСЂРµРґРЅРёР№';
                     const statusClass = isOrientationTest ? 'orientation' : (answer.isCorrect ? 'correct' : 'incorrect');
                     const statusText = isOrientationTest
-                        ? `?? ${LIKERT_5[clamp(answer.selectedIndex, 0, 4)]}`
-                        : (answer.isCorrect ? '? Верно' : '? Неверно');
+                        ? `рџ§­ ${LIKERT_5[clamp(answer.selectedIndex, 0, 4)]}`
+                        : (answer.isCorrect ? 'вњ“ Р’РµСЂРЅРѕ' : 'вњ— РќРµРІРµСЂРЅРѕ');
                     return `
                     <div class="answer-review ${statusClass}">
                         <div class="answer-header">
-                            <span class="question-num">Вопрос ${index + 1}</span>
+                            <span class="question-num">Р’РѕРїСЂРѕСЃ ${index + 1}</span>
                             <span class="difficulty-badge">${difficultyName}</span>
                             <span class="result-badge ${statusClass}">
                                 ${statusText}
@@ -5665,7 +5665,7 @@ class AdaptiveTestSystem {
                         </div>
                         <div class="answer-question">${answer.question}</div>
                         <div class="answer-explanation">
-                            <strong>?? Объяснение:</strong> ${answer.explanation || 'Объяснение отсутствует'}
+                            <strong>рџ’Ў РћР±СЉСЏСЃРЅРµРЅРёРµ:</strong> ${answer.explanation || 'РћР±СЉСЏСЃРЅРµРЅРёРµ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚'}
                         </div>
                     </div>
                 `}).join('')}
@@ -5693,12 +5693,12 @@ class AdaptiveTestSystem {
             }))
             .sort((a, b) => b.score - a.score);
 
-        // Общий «индекс выраженности»: чем выше среднее по всем шкалам, тем яснее профиль
+        // РћР±С‰РёР№ В«РёРЅРґРµРєСЃ РІС‹СЂР°Р¶РµРЅРЅРѕСЃС‚РёВ»: С‡РµРј РІС‹С€Рµ СЃСЂРµРґРЅРµРµ РїРѕ РІСЃРµРј С€РєР°Р»Р°Рј, С‚РµРј СЏСЃРЅРµРµ РїСЂРѕС„РёР»СЊ
         const avg = scores.length > 0
             ? Math.round(scores.reduce((acc, s) => acc + s.score, 0) / scores.length)
             : 0;
 
-        // Для мед.профориентации считаем «медицинскую пригодность» по ключевым шкалам
+        // Р”Р»СЏ РјРµРґ.РїСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёРё СЃС‡РёС‚Р°РµРј В«РјРµРґРёС†РёРЅСЃРєСѓСЋ РїСЂРёРіРѕРґРЅРѕСЃС‚СЊВ» РїРѕ РєР»СЋС‡РµРІС‹Рј С€РєР°Р»Р°Рј
         const scoreByKey = Object.fromEntries(scores.map(s => [s.key, s.score]));
         const medKeys = ['empathy', 'responsibility', 'stress', 'accuracy', 'science', 'teamwork'];
         const medAvg = Math.round(medKeys.reduce((acc, k) => acc + (scoreByKey[k] ?? 0), 0) / medKeys.length);
@@ -5716,23 +5716,23 @@ class AdaptiveTestSystem {
             const p = this.testResults.profile;
             const overall = p?.overallScore ?? this.testResults.percentage;
             if (overall >= 80) {
-                return { level: 'Профиль выражен', description: 'Ответы достаточно устойчивые: видно, какие форматы деятельности вам подходят.' };
+                return { level: 'РџСЂРѕС„РёР»СЊ РІС‹СЂР°Р¶РµРЅ', description: 'РћС‚РІРµС‚С‹ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СѓСЃС‚РѕР№С‡РёРІС‹Рµ: РІРёРґРЅРѕ, РєР°РєРёРµ С„РѕСЂРјР°С‚С‹ РґРµСЏС‚РµР»СЊРЅРѕСЃС‚Рё РІР°Рј РїРѕРґС…РѕРґСЏС‚.' };
             }
             if (overall >= 60) {
-                return { level: 'Профиль формируется', description: 'Есть предпочтения, но часть шкал пока выражена умеренно — это нормально.' };
+                return { level: 'РџСЂРѕС„РёР»СЊ С„РѕСЂРјРёСЂСѓРµС‚СЃСЏ', description: 'Р•СЃС‚СЊ РїСЂРµРґРїРѕС‡С‚РµРЅРёСЏ, РЅРѕ С‡Р°СЃС‚СЊ С€РєР°Р» РїРѕРєР° РІС‹СЂР°Р¶РµРЅР° СѓРјРµСЂРµРЅРЅРѕ вЂ” СЌС‚Рѕ РЅРѕСЂРјР°Р»СЊРЅРѕ.' };
             }
-            return { level: 'Профиль неустойчив', description: 'Рекомендация: пройти тест ещё раз через несколько дней и сравнить результаты.' };
+            return { level: 'РџСЂРѕС„РёР»СЊ РЅРµСѓСЃС‚РѕР№С‡РёРІ', description: 'Р РµРєРѕРјРµРЅРґР°С†РёСЏ: РїСЂРѕР№С‚Рё С‚РµСЃС‚ РµС‰С‘ СЂР°Р· С‡РµСЂРµР· РЅРµСЃРєРѕР»СЊРєРѕ РґРЅРµР№ Рё СЃСЂР°РІРЅРёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹.' };
         }
 
         const percentage = this.testResults.percentage;
         if (percentage >= 90) {
-            return { level: 'Отлично (5)', description: 'Превосходное знание материала! Вы готовы к углублённому изучению.' };
+            return { level: 'РћС‚Р»РёС‡РЅРѕ (5)', description: 'РџСЂРµРІРѕСЃС…РѕРґРЅРѕРµ Р·РЅР°РЅРёРµ РјР°С‚РµСЂРёР°Р»Р°! Р’С‹ РіРѕС‚РѕРІС‹ Рє СѓРіР»СѓР±Р»С‘РЅРЅРѕРјСѓ РёР·СѓС‡РµРЅРёСЋ.' };
         } else if (percentage >= 75) {
-            return { level: 'Хорошо (4)', description: 'Хороший уровень подготовки. Ещё немного практики для совершенства!' };
+            return { level: 'РҐРѕСЂРѕС€Рѕ (4)', description: 'РҐРѕСЂРѕС€РёР№ СѓСЂРѕРІРµРЅСЊ РїРѕРґРіРѕС‚РѕРІРєРё. Р•С‰С‘ РЅРµРјРЅРѕРіРѕ РїСЂР°РєС‚РёРєРё РґР»СЏ СЃРѕРІРµСЂС€РµРЅСЃС‚РІР°!' };
         } else if (percentage >= 60) {
-            return { level: 'Удовлетворительно (3)', description: 'Базовые знания есть, но требуется дополнительная работа.' };
+            return { level: 'РЈРґРѕРІР»РµС‚РІРѕСЂРёС‚РµР»СЊРЅРѕ (3)', description: 'Р‘Р°Р·РѕРІС‹Рµ Р·РЅР°РЅРёСЏ РµСЃС‚СЊ, РЅРѕ С‚СЂРµР±СѓРµС‚СЃСЏ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ СЂР°Р±РѕС‚Р°.' };
         } else {
-            return { level: 'Требуется подготовка', description: 'Рекомендуем повторить материал и пройти тест снова.' };
+            return { level: 'РўСЂРµР±СѓРµС‚СЃСЏ РїРѕРґРіРѕС‚РѕРІРєР°', description: 'Р РµРєРѕРјРµРЅРґСѓРµРј РїРѕРІС‚РѕСЂРёС‚СЊ РјР°С‚РµСЂРёР°Р» Рё РїСЂРѕР№С‚Рё С‚РµСЃС‚ СЃРЅРѕРІР°.' };
         }
     }
     
@@ -5740,9 +5740,9 @@ class AdaptiveTestSystem {
         if (this.testResults.isOrientation) {
             const scores = this.testResults.profile?.scores || [];
             const bottom = [...scores].reverse().slice(0, 2);
-            if (bottom.length === 0) return ['Недостаточно данных: ответьте на большее число вопросов.'];
+            if (bottom.length === 0) return ['РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РґР°РЅРЅС‹С…: РѕС‚РІРµС‚СЊС‚Рµ РЅР° Р±РѕР»СЊС€РµРµ С‡РёСЃР»Рѕ РІРѕРїСЂРѕСЃРѕРІ.'];
             const labelOf = (k) => (typeof ORIENTATION_DIM_LABELS === 'object' && ORIENTATION_DIM_LABELS && ORIENTATION_DIM_LABELS[k]) ? ORIENTATION_DIM_LABELS[k] : String(k);
-            return bottom.map(s => `Шкала «${labelOf(s.key)}»: ${s.score}% — можно усилить через практику и пробные активности`);
+            return bottom.map(s => `РЁРєР°Р»Р° В«${labelOf(s.key)}В»: ${s.score}% вЂ” РјРѕР¶РЅРѕ СѓСЃРёР»РёС‚СЊ С‡РµСЂРµР· РїСЂР°РєС‚РёРєСѓ Рё РїСЂРѕР±РЅС‹Рµ Р°РєС‚РёРІРЅРѕСЃС‚Рё`);
         }
 
         const incorrectAnswers = this.testResults.answers.filter(a => a.isCorrect === false);
@@ -5754,18 +5754,18 @@ class AdaptiveTestSystem {
             const hardMistakes = incorrectAnswers.filter(a => a.difficulty > 4).length;
             
             if (easyMistakes > 0) {
-                weaknesses.push(`Ошибки в базовых вопросах (${easyMistakes} шт.) - повторите основы`);
+                weaknesses.push(`РћС€РёР±РєРё РІ Р±Р°Р·РѕРІС‹С… РІРѕРїСЂРѕСЃР°С… (${easyMistakes} С€С‚.) - РїРѕРІС‚РѕСЂРёС‚Рµ РѕСЃРЅРѕРІС‹`);
             }
             if (mediumMistakes > 0) {
-                weaknesses.push(`Ошибки в вопросах средней сложности (${mediumMistakes} шт.)`);
+                weaknesses.push(`РћС€РёР±РєРё РІ РІРѕРїСЂРѕСЃР°С… СЃСЂРµРґРЅРµР№ СЃР»РѕР¶РЅРѕСЃС‚Рё (${mediumMistakes} С€С‚.)`);
             }
             if (hardMistakes > 0) {
-                weaknesses.push(`Сложные вопросы требуют доработки (${hardMistakes} шт.)`);
+                weaknesses.push(`РЎР»РѕР¶РЅС‹Рµ РІРѕРїСЂРѕСЃС‹ С‚СЂРµР±СѓСЋС‚ РґРѕСЂР°Р±РѕС‚РєРё (${hardMistakes} С€С‚.)`);
             }
         }
         
         if (weaknesses.length === 0) {
-            weaknesses.push('Отличный результат! Особых слабых мест не выявлено.');
+            weaknesses.push('РћС‚Р»РёС‡РЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚! РћСЃРѕР±С‹С… СЃР»Р°Р±С‹С… РјРµСЃС‚ РЅРµ РІС‹СЏРІР»РµРЅРѕ.');
         }
         
         return weaknesses;
@@ -5775,20 +5775,20 @@ class AdaptiveTestSystem {
         if (this.testResults.isOrientation) {
             const scores = this.testResults.profile?.scores || [];
             const top = scores.slice(0, 3);
-            if (top.length === 0) return ['Недостаточно данных: ответьте на большее число вопросов.'];
+            if (top.length === 0) return ['РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РґР°РЅРЅС‹С…: РѕС‚РІРµС‚СЊС‚Рµ РЅР° Р±РѕР»СЊС€РµРµ С‡РёСЃР»Рѕ РІРѕРїСЂРѕСЃРѕРІ.'];
             const labelOf = (k) => (typeof ORIENTATION_DIM_LABELS === 'object' && ORIENTATION_DIM_LABELS && ORIENTATION_DIM_LABELS[k]) ? ORIENTATION_DIM_LABELS[k] : String(k);
-            return top.map(s => `Шкала «${labelOf(s.key)}»: ${s.score}% — выражена сильнее всего`);
+            return top.map(s => `РЁРєР°Р»Р° В«${labelOf(s.key)}В»: ${s.score}% вЂ” РІС‹СЂР°Р¶РµРЅР° СЃРёР»СЊРЅРµРµ РІСЃРµРіРѕ`);
         }
 
-        // Для предметов: анализ по темам
+        // Р”Р»СЏ РїСЂРµРґРјРµС‚РѕРІ: Р°РЅР°Р»РёР· РїРѕ С‚РµРјР°Рј
         const topicStats = this.getTopicStats();
         const strengths = [];
         if (topicStats.length > 0) {
-            topicStats.slice(0, 3).forEach(t => strengths.push(`Тема «${t.topic}»: ${t.accuracy}% правильных (${t.correct}/${t.total})`));
+            topicStats.slice(0, 3).forEach(t => strengths.push(`РўРµРјР° В«${t.topic}В»: ${t.accuracy}% РїСЂР°РІРёР»СЊРЅС‹С… (${t.correct}/${t.total})`));
         }
 
         if (strengths.length === 0) {
-            strengths.push('Есть базовые знания, но требуется развитие.' );
+            strengths.push('Р•СЃС‚СЊ Р±Р°Р·РѕРІС‹Рµ Р·РЅР°РЅРёСЏ, РЅРѕ С‚СЂРµР±СѓРµС‚СЃСЏ СЂР°Р·РІРёС‚РёРµ.' );
         }
         return strengths;
     }
@@ -5811,7 +5811,7 @@ class AdaptiveTestSystem {
             accuracy: s.total > 0 ? Math.round((s.correct / s.total) * 100) : 0
         }));
 
-        // Сильные — сверху, слабые — снизу
+        // РЎРёР»СЊРЅС‹Рµ вЂ” СЃРІРµСЂС…Сѓ, СЃР»Р°Р±С‹Рµ вЂ” СЃРЅРёР·Сѓ
         stats.sort((a, b) => b.accuracy - a.accuracy);
         return stats;
     }
@@ -5822,16 +5822,16 @@ class AdaptiveTestSystem {
             const top = (this.testResults.profile?.scores || []).slice(0, 2);
             const rec = [];
             if (this.testResults.subject.startsWith('profession_med_')) {
-                rec.push('Попробуйте «погружение»: волонтёрство/мед.кружок/День открытых дверей в колледже/вузе.');
-                rec.push('Проверьте базу: биология + химия — это фундамент для поступления.');
-                if (overall < 60) rec.push('Соберите больше опыта: 2–3 недели наблюдений и повторное прохождение теста.');
-                if (top.length > 0) rec.push(`Сфокусируйтесь на сильных шкалах: ${top.map(t => t.key).join(', ')}.`);
+                rec.push('РџРѕРїСЂРѕР±СѓР№С‚Рµ В«РїРѕРіСЂСѓР¶РµРЅРёРµВ»: РІРѕР»РѕРЅС‚С‘СЂСЃС‚РІРѕ/РјРµРґ.РєСЂСѓР¶РѕРє/Р”РµРЅСЊ РѕС‚РєСЂС‹С‚С‹С… РґРІРµСЂРµР№ РІ РєРѕР»Р»РµРґР¶Рµ/РІСѓР·Рµ.');
+                rec.push('РџСЂРѕРІРµСЂСЊС‚Рµ Р±Р°Р·Сѓ: Р±РёРѕР»РѕРіРёСЏ + С…РёРјРёСЏ вЂ” СЌС‚Рѕ С„СѓРЅРґР°РјРµРЅС‚ РґР»СЏ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ.');
+                if (overall < 60) rec.push('РЎРѕР±РµСЂРёС‚Рµ Р±РѕР»СЊС€Рµ РѕРїС‹С‚Р°: 2вЂ“3 РЅРµРґРµР»Рё РЅР°Р±Р»СЋРґРµРЅРёР№ Рё РїРѕРІС‚РѕСЂРЅРѕРµ РїСЂРѕС…РѕР¶РґРµРЅРёРµ С‚РµСЃС‚Р°.');
+                if (top.length > 0) rec.push(`РЎС„РѕРєСѓСЃРёСЂСѓР№С‚РµСЃСЊ РЅР° СЃРёР»СЊРЅС‹С… С€РєР°Р»Р°С…: ${top.map(t => t.key).join(', ')}.`);
                 return rec;
             }
-            rec.push('Составьте список 5 профессий и сравните их по интересам/задачам/условиям труда.');
-            rec.push('Поговорите с 1–2 людьми из интересных сфер (интервью на 10–15 минут).');
-            if (overall < 60) rec.push('Попробуйте проект/кружок на 2 недели и пройдите тест повторно.');
-            if (top.length > 0) rec.push(`Ваши ведущие направления: ${top.map(t => t.key).join(', ')}.`);
+            rec.push('РЎРѕСЃС‚Р°РІСЊС‚Рµ СЃРїРёСЃРѕРє 5 РїСЂРѕС„РµСЃСЃРёР№ Рё СЃСЂР°РІРЅРёС‚Рµ РёС… РїРѕ РёРЅС‚РµСЂРµСЃР°Рј/Р·Р°РґР°С‡Р°Рј/СѓСЃР»РѕРІРёСЏРј С‚СЂСѓРґР°.');
+            rec.push('РџРѕРіРѕРІРѕСЂРёС‚Рµ СЃ 1вЂ“2 Р»СЋРґСЊРјРё РёР· РёРЅС‚РµСЂРµСЃРЅС‹С… СЃС„РµСЂ (РёРЅС‚РµСЂРІСЊСЋ РЅР° 10вЂ“15 РјРёРЅСѓС‚).');
+            if (overall < 60) rec.push('РџРѕРїСЂРѕР±СѓР№С‚Рµ РїСЂРѕРµРєС‚/РєСЂСѓР¶РѕРє РЅР° 2 РЅРµРґРµР»Рё Рё РїСЂРѕР№РґРёС‚Рµ С‚РµСЃС‚ РїРѕРІС‚РѕСЂРЅРѕ.');
+            if (top.length > 0) rec.push(`Р’Р°С€Рё РІРµРґСѓС‰РёРµ РЅР°РїСЂР°РІР»РµРЅРёСЏ: ${top.map(t => t.key).join(', ')}.`);
             return rec;
         }
 
@@ -5839,21 +5839,21 @@ class AdaptiveTestSystem {
         const topicStats = this.getTopicStats();
         const weak = [...topicStats].reverse().slice(0, 3);
         if (weak.length > 0) {
-            recommendations.push(`Повторите темы: ${weak.map(w => `«${w.topic}»`).join(', ')}`);
-            recommendations.push('Сделайте 10–15 задач по каждой слабой теме и снова пройдите тест.' );
+            recommendations.push(`РџРѕРІС‚РѕСЂРёС‚Рµ С‚РµРјС‹: ${weak.map(w => `В«${w.topic}В»`).join(', ')}`);
+            recommendations.push('РЎРґРµР»Р°Р№С‚Рµ 10вЂ“15 Р·Р°РґР°С‡ РїРѕ РєР°Р¶РґРѕР№ СЃР»Р°Р±РѕР№ С‚РµРјРµ Рё СЃРЅРѕРІР° РїСЂРѕР№РґРёС‚Рµ С‚РµСЃС‚.' );
         }
 
         const percentage = this.testResults.percentage;
         if (percentage < 60) {
-            recommendations.push('Начните с базовых определений и примеров, затем переходите к задачам.' );
+            recommendations.push('РќР°С‡РЅРёС‚Рµ СЃ Р±Р°Р·РѕРІС‹С… РѕРїСЂРµРґРµР»РµРЅРёР№ Рё РїСЂРёРјРµСЂРѕРІ, Р·Р°С‚РµРј РїРµСЂРµС…РѕРґРёС‚Рµ Рє Р·Р°РґР°С‡Р°Рј.' );
         } else if (percentage < 80) {
-            recommendations.push('Добавьте задачи среднего уровня и разбор ошибок по объяснениям.' );
+            recommendations.push('Р”РѕР±Р°РІСЊС‚Рµ Р·Р°РґР°С‡Рё СЃСЂРµРґРЅРµРіРѕ СѓСЂРѕРІРЅСЏ Рё СЂР°Р·Р±РѕСЂ РѕС€РёР±РѕРє РїРѕ РѕР±СЉСЏСЃРЅРµРЅРёСЏРј.' );
         } else {
-            recommendations.push('Переходите к более сложным задачам и заданиям на применение знаний.' );
+            recommendations.push('РџРµСЂРµС…РѕРґРёС‚Рµ Рє Р±РѕР»РµРµ СЃР»РѕР¶РЅС‹Рј Р·Р°РґР°С‡Р°Рј Рё Р·Р°РґР°РЅРёСЏРј РЅР° РїСЂРёРјРµРЅРµРЅРёРµ Р·РЅР°РЅРёР№.' );
         }
 
         if (recommendations.length === 0) {
-            recommendations.push('Продолжайте изучение более сложных тем.' );
+            recommendations.push('РџСЂРѕРґРѕР»Р¶Р°Р№С‚Рµ РёР·СѓС‡РµРЅРёРµ Р±РѕР»РµРµ СЃР»РѕР¶РЅС‹С… С‚РµРј.' );
         }
         return recommendations;
     }
@@ -5862,13 +5862,13 @@ class AdaptiveTestSystem {
         return this.answers.map((answer, index) => `
             <div class="answer-review ${answer.isCorrect ? 'correct' : 'incorrect'}">
                 <div class="answer-header">
-                    <span class="question-num">Вопрос ${index + 1}</span>
-                    <span class="difficulty-badge">Сложность: ${answer.difficulty}/7</span>
-                    <span class="result-badge">${answer.isCorrect ? '? Правильно' : '? Неправильно'}</span>
+                    <span class="question-num">Р’РѕРїСЂРѕСЃ ${index + 1}</span>
+                    <span class="difficulty-badge">РЎР»РѕР¶РЅРѕСЃС‚СЊ: ${answer.difficulty}/7</span>
+                    <span class="result-badge">${answer.isCorrect ? 'вњ… РџСЂР°РІРёР»СЊРЅРѕ' : 'вќЊ РќРµРїСЂР°РІРёР»СЊРЅРѕ'}</span>
                 </div>
                 <div class="answer-question">${answer.question}</div>
                 <div class="answer-explanation">
-                    <strong>Объяснение:</strong> ${answer.explanation}
+                    <strong>РћР±СЉСЏСЃРЅРµРЅРёРµ:</strong> ${answer.explanation}
                 </div>
             </div>
         `).join('');
@@ -5913,43 +5913,43 @@ function setUserGrade(value) {
     }
     const hint = document.getElementById('grade-hint');
     if (hint) {
-        hint.textContent = `Сложность адаптируется под ${grade}-й класс`;
+        hint.textContent = `РЎР»РѕР¶РЅРѕСЃС‚СЊ Р°РґР°РїС‚РёСЂСѓРµС‚СЃСЏ РїРѕРґ ${grade}-Р№ РєР»Р°СЃСЃ`;
     }
 }
 
-// Текущий выбранный класс
+// РўРµРєСѓС‰РёР№ РІС‹Р±СЂР°РЅРЅС‹Р№ РєР»Р°СЃСЃ
 let currentSelectedGrade = 9;
 let currentGradeFilter = 'all';
 let currentCategoryFilter = 'all';
 
-// Фильтр по классам
+// Р¤РёР»СЊС‚СЂ РїРѕ РєР»Р°СЃСЃР°Рј
 function filterByGrade(grade, btn) {
-    // Преобразуем в число
+    // РџСЂРµРѕР±СЂР°Р·СѓРµРј РІ С‡РёСЃР»Рѕ
     grade = parseInt(grade);
     currentSelectedGrade = grade;
     currentGradeFilter = grade;
     localStorage.setItem('userGrade', String(grade));
     
-    // Обновляем активную кнопку - снимаем active со ВСЕХ кнопок
+    // РћР±РЅРѕРІР»СЏРµРј Р°РєС‚РёРІРЅСѓСЋ РєРЅРѕРїРєСѓ - СЃРЅРёРјР°РµРј active СЃРѕ Р’РЎР•РҐ РєРЅРѕРїРѕРє
     const allGradeBtns = document.querySelectorAll('.grade-btn');
     allGradeBtns.forEach(b => {
         b.classList.remove('active');
     });
     
-    // Ставим active на нажатую кнопку
+    // РЎС‚Р°РІРёРј active РЅР° РЅР°Р¶Р°С‚СѓСЋ РєРЅРѕРїРєСѓ
     if (btn) {
         btn.classList.add('active');
     }
     
-    // Обновляем заголовок
+    // РћР±РЅРѕРІР»СЏРµРј Р·Р°РіРѕР»РѕРІРѕРє
     const titleEl = document.getElementById('current-grade-title');
     if (titleEl) {
-        titleEl.textContent = `?? Тесты для ${grade} класса`;
+        titleEl.textContent = `рџ“љ РўРµСЃС‚С‹ РґР»СЏ ${grade} РєР»Р°СЃСЃР°`;
     }
     
-    console.log('Выбран класс:', grade, 'currentSelectedGrade =', currentSelectedGrade);
+    console.log('Р’С‹Р±СЂР°РЅ РєР»Р°СЃСЃ:', grade, 'currentSelectedGrade =', currentSelectedGrade);
 
-    // Перерисовываем карточки тестов под выбранный класс
+    // РџРµСЂРµСЂРёСЃРѕРІС‹РІР°РµРј РєР°СЂС‚РѕС‡РєРё С‚РµСЃС‚РѕРІ РїРѕРґ РІС‹Р±СЂР°РЅРЅС‹Р№ РєР»Р°СЃСЃ
     try {
         applyFilters();
     } catch {
@@ -5957,9 +5957,9 @@ function filterByGrade(grade, btn) {
     }
 }
 
-// Запуск теста для выбранного класса
+// Р—Р°РїСѓСЃРє С‚РµСЃС‚Р° РґР»СЏ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РєР»Р°СЃСЃР°
 function startGradeTest(category) {
-    // Берём актуальный класс из переменной
+    // Р‘РµСЂС‘Рј Р°РєС‚СѓР°Р»СЊРЅС‹Р№ РєР»Р°СЃСЃ РёР· РїРµСЂРµРјРµРЅРЅРѕР№
     const grade = currentSelectedGrade;
     const testId = `${category}_grade_${grade}`;
     
@@ -5968,17 +5968,17 @@ function startGradeTest(category) {
     console.log('currentSelectedGrade:', currentSelectedGrade);
     console.log('testId:', testId);
     
-    // Сохраняем информацию о тесте
+    // РЎРѕС…СЂР°РЅСЏРµРј РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ С‚РµСЃС‚Рµ
     localStorage.setItem('mo_last_test_subject', testId);
     localStorage.setItem('mo_last_test_grade', String(grade));
     
-    // Скрываем карточки выбора тестов
+    // РЎРєСЂС‹РІР°РµРј РєР°СЂС‚РѕС‡РєРё РІС‹Р±РѕСЂР° С‚РµСЃС‚РѕРІ
     const testCards = document.querySelector('#tests .test-cards');
     if (testCards) {
         testCards.style.display = 'none';
     }
     
-    // Скрываем фильтры
+    // РЎРєСЂС‹РІР°РµРј С„РёР»СЊС‚СЂС‹
     const filterPanel = document.querySelector('.tests-filter-panel');
     if (filterPanel) {
         filterPanel.style.display = 'none';
@@ -5988,16 +5988,16 @@ function startGradeTest(category) {
         gradeTitle.style.display = 'none';
     }
     
-    // Показываем новый адаптивный контейнер теста (не legacy)
+    // РџРѕРєР°Р·С‹РІР°РµРј РЅРѕРІС‹Р№ Р°РґР°РїС‚РёРІРЅС‹Р№ РєРѕРЅС‚РµР№РЅРµСЂ С‚РµСЃС‚Р° (РЅРµ legacy)
     const adaptiveContainer = [...document.querySelectorAll('.test-container')]
         .find(c => c.id !== 'test-questions-container');
     if (adaptiveContainer) {
         adaptiveContainer.style.display = 'block';
-        // Скрываем контейнеры результатов от предыдущих прохождений
+        // РЎРєСЂС‹РІР°РµРј РєРѕРЅС‚РµР№РЅРµСЂС‹ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РѕС‚ РїСЂРµРґС‹РґСѓС‰РёС… РїСЂРѕС…РѕР¶РґРµРЅРёР№
         const resultContainers = document.querySelectorAll('.result-container');
         resultContainers.forEach(c => c.style.display = 'none');
 
-        // Подскроллим к карточке вопроса на мобильных
+        // РџРѕРґСЃРєСЂРѕР»Р»РёРј Рє РєР°СЂС‚РѕС‡РєРµ РІРѕРїСЂРѕСЃР° РЅР° РјРѕР±РёР»СЊРЅС‹С…
         setTimeout(() => {
             const questionCard = document.getElementById('question-card');
             const target = questionCard || adaptiveContainer;
@@ -6007,47 +6007,47 @@ function startGradeTest(category) {
         }, 50);
     }
     
-    // Запускаем тест
+    // Р—Р°РїСѓСЃРєР°РµРј С‚РµСЃС‚
     testSystem.startTest(testId, grade);
 
-    // Сохраняем последний тест и заголовок для UI/рестарта
+    // РЎРѕС…СЂР°РЅСЏРµРј РїРѕСЃР»РµРґРЅРёР№ С‚РµСЃС‚ Рё Р·Р°РіРѕР»РѕРІРѕРє РґР»СЏ UI/СЂРµСЃС‚Р°СЂС‚Р°
     const friendlyNames = {
-        chemistry: 'Химия',
-        biology: 'Биология',
-        profession: 'Профориентация',
-        specialty: 'Профильные склонности'
+        chemistry: 'РҐРёРјРёСЏ',
+        biology: 'Р‘РёРѕР»РѕРіРёСЏ',
+        profession: 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ',
+        specialty: 'РџСЂРѕС„РёР»СЊРЅС‹Рµ СЃРєР»РѕРЅРЅРѕСЃС‚Рё'
     };
     const friendly = friendlyNames[category] || category;
-    const title = `${friendly} (${grade} класс)`;
+    const title = `${friendly} (${grade} РєР»Р°СЃСЃ)`;
     try { localStorage.setItem('mo_last_test_subject', String(testId)); } catch { /* ignore */ }
     try { localStorage.setItem('mo_last_test_title', title); } catch { /* ignore */ }
 
-    // Обновляем подписи и подсветку выбранного теста
+    // РћР±РЅРѕРІР»СЏРµРј РїРѕРґРїРёСЃРё Рё РїРѕРґСЃРІРµС‚РєСѓ РІС‹Р±СЂР°РЅРЅРѕРіРѕ С‚РµСЃС‚Р°
     try { if (typeof updateCurrentTestUI === 'function') updateCurrentTestUI(); } catch { /* ignore */ }
 }
 
-// Инициализация селектора класса при загрузке
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРµР»РµРєС‚РѕСЂР° РєР»Р°СЃСЃР° РїСЂРё Р·Р°РіСЂСѓР·РєРµ
 document.addEventListener('DOMContentLoaded', () => {
     const saved = localStorage.getItem('userGrade') || '9';
     currentSelectedGrade = parseInt(saved);
     
-    // Снимаем active со всех кнопок и ставим на нужную
+    // РЎРЅРёРјР°РµРј active СЃРѕ РІСЃРµС… РєРЅРѕРїРѕРє Рё СЃС‚Р°РІРёРј РЅР° РЅСѓР¶РЅСѓСЋ
     const allGradeBtns = document.querySelectorAll('.grade-btn');
     allGradeBtns.forEach(btn => {
         btn.classList.remove('active');
-        // Проверяем текст кнопки на соответствие классу
-        if (btn.textContent.includes(currentSelectedGrade + ' класс')) {
+        // РџСЂРѕРІРµСЂСЏРµРј С‚РµРєСЃС‚ РєРЅРѕРїРєРё РЅР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ РєР»Р°СЃСЃСѓ
+        if (btn.textContent.includes(currentSelectedGrade + ' РєР»Р°СЃСЃ')) {
             btn.classList.add('active');
         }
     });
     
-    // Обновляем заголовок
+    // РћР±РЅРѕРІР»СЏРµРј Р·Р°РіРѕР»РѕРІРѕРє
     const titleEl = document.getElementById('current-grade-title');
     if (titleEl) {
-        titleEl.textContent = `?? Тесты для ${currentSelectedGrade} класса`;
+        titleEl.textContent = `рџ“љ РўРµСЃС‚С‹ РґР»СЏ ${currentSelectedGrade} РєР»Р°СЃСЃР°`;
     }
     
-    console.log('Инициализация: выбран класс', currentSelectedGrade);
+    console.log('РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ: РІС‹Р±СЂР°РЅ РєР»Р°СЃСЃ', currentSelectedGrade);
 });
 
 function startTest(subject) {
@@ -6070,21 +6070,21 @@ function startTest(subject) {
 
         try { if (typeof updateCurrentTestUI === 'function') updateCurrentTestUI(); } catch { /* ignore */ }
         
-        // Скрыть только карточки выбора тестов (а не всю секцию)
+        // РЎРєСЂС‹С‚СЊ С‚РѕР»СЊРєРѕ РєР°СЂС‚РѕС‡РєРё РІС‹Р±РѕСЂР° С‚РµСЃС‚РѕРІ (Р° РЅРµ РІСЃСЋ СЃРµРєС†РёСЋ)
         const testCards = document.querySelector('#tests .test-cards');
         if (testCards) {
             testCards.style.display = 'none';
             console.log('Test cards hidden');
         }
-        // На всякий случай скрыть старый контейнер тестов
+        // РќР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№ СЃРєСЂС‹С‚СЊ СЃС‚Р°СЂС‹Р№ РєРѕРЅС‚РµР№РЅРµСЂ С‚РµСЃС‚РѕРІ
         const legacyContainer = document.getElementById('test-questions-container');
         if (legacyContainer) legacyContainer.style.display = 'none';
         
-        // Показать контейнер адаптивного теста (НЕ старый test-questions-container)
+        // РџРѕРєР°Р·Р°С‚СЊ РєРѕРЅС‚РµР№РЅРµСЂ Р°РґР°РїС‚РёРІРЅРѕРіРѕ С‚РµСЃС‚Р° (РќР• СЃС‚Р°СЂС‹Р№ test-questions-container)
         const testContainers = document.querySelectorAll('.test-container');
         console.log('Found test containers:', testContainers.length);
         
-        // Найдем правильный контейнер - второй по порядку (не test-questions-container)
+        // РќР°Р№РґРµРј РїСЂР°РІРёР»СЊРЅС‹Р№ РєРѕРЅС‚РµР№РЅРµСЂ - РІС‚РѕСЂРѕР№ РїРѕ РїРѕСЂСЏРґРєСѓ (РЅРµ test-questions-container)
         let adaptiveContainer = null;
         testContainers.forEach((container, index) => {
             if (container.id !== 'test-questions-container') {
@@ -6100,8 +6100,8 @@ function startTest(subject) {
             console.log('Container visibility:', window.getComputedStyle(adaptiveContainer).visibility);
             console.log('Container height:', window.getComputedStyle(adaptiveContainer).height);
 
-            // На мобильных после скрытия сетки карточек часто остаёмся «внизу» страницы.
-            // Прокручиваем к карточке вопроса, чтобы было видно, что тест стартовал.
+            // РќР° РјРѕР±РёР»СЊРЅС‹С… РїРѕСЃР»Рµ СЃРєСЂС‹С‚РёСЏ СЃРµС‚РєРё РєР°СЂС‚РѕС‡РµРє С‡Р°СЃС‚Рѕ РѕСЃС‚Р°С‘РјСЃСЏ В«РІРЅРёР·СѓВ» СЃС‚СЂР°РЅРёС†С‹.
+            // РџСЂРѕРєСЂСѓС‡РёРІР°РµРј Рє РєР°СЂС‚РѕС‡РєРµ РІРѕРїСЂРѕСЃР°, С‡С‚РѕР±С‹ Р±С‹Р»Рѕ РІРёРґРЅРѕ, С‡С‚Рѕ С‚РµСЃС‚ СЃС‚Р°СЂС‚РѕРІР°Р».
             setTimeout(() => {
                 const questionCard = document.getElementById('question-card');
                 const scrollTarget = questionCard || adaptiveContainer;
@@ -6113,13 +6113,13 @@ function startTest(subject) {
             console.error('Adaptive test container not found');
         }
         
-        // Скрыть контейнер результатов
+        // РЎРєСЂС‹С‚СЊ РєРѕРЅС‚РµР№РЅРµСЂ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ
         const resultContainers = document.querySelectorAll('.result-container');
         resultContainers.forEach(container => {
             container.style.display = 'none';
         });
         
-        // Скрыть кнопку next изначально
+        // РЎРєСЂС‹С‚СЊ РєРЅРѕРїРєСѓ next РёР·РЅР°С‡Р°Р»СЊРЅРѕ
         const nextBtn = document.getElementById('next-btn');
         if (nextBtn) {
             nextBtn.style.display = 'none';
@@ -6164,10 +6164,10 @@ function updateCurrentTestUI() {
 
     const label = document.getElementById('current-test-label');
     if (label) {
-        label.textContent = displayName ? displayName : 'Выберите тест, чтобы начать';
+        label.textContent = displayName ? displayName : 'Р’С‹Р±РµСЂРёС‚Рµ С‚РµСЃС‚, С‡С‚РѕР±С‹ РЅР°С‡Р°С‚СЊ';
     }
 
-    // Подсветка карточки выбранного теста
+    // РџРѕРґСЃРІРµС‚РєР° РєР°СЂС‚РѕС‡РєРё РІС‹Р±СЂР°РЅРЅРѕРіРѕ С‚РµСЃС‚Р°
     try {
         document.querySelectorAll('#tests .test-card.active-test').forEach(el => el.classList.remove('active-test'));
         if (subject) {
@@ -6203,7 +6203,7 @@ function selectAnswer(optionIndex) {
 function restartTest() {
     console.log('restartTest called');
     if (testSystem && testSystem.currentTest) {
-        // Скрыть результаты перед запуском
+        // РЎРєСЂС‹С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹ РїРµСЂРµРґ Р·Р°РїСѓСЃРєРѕРј
         const resultContainers = document.querySelectorAll('.result-container');
         resultContainers.forEach(c => c.style.display = 'none');
         
@@ -6221,15 +6221,15 @@ function restartCurrentTest() {
 function goBackToTests() {
     console.log('goBackToTests called');
     
-    // 1. Скрыть все контейнеры тестов
+    // 1. РЎРєСЂС‹С‚СЊ РІСЃРµ РєРѕРЅС‚РµР№РЅРµСЂС‹ С‚РµСЃС‚РѕРІ
     const allTestContainers = document.querySelectorAll('.test-container');
     allTestContainers.forEach(c => c.style.display = 'none');
 
-    // 2. Скрыть все контейнеры результатов
+    // 2. РЎРєСЂС‹С‚СЊ РІСЃРµ РєРѕРЅС‚РµР№РЅРµСЂС‹ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ
     const resultContainers = document.querySelectorAll('.result-container');
     resultContainers.forEach(c => c.style.display = 'none');
 
-    // 3. Показать секцию тестов и карточки
+    // 3. РџРѕРєР°Р·Р°С‚СЊ СЃРµРєС†РёСЋ С‚РµСЃС‚РѕРІ Рё РєР°СЂС‚РѕС‡РєРё
     const testsSection = document.getElementById('tests');
     if (testsSection) {
         testsSection.style.display = 'block';
@@ -6239,14 +6239,14 @@ function goBackToTests() {
     const testCards = document.querySelector('#tests .test-cards');
     if (testCards) testCards.style.display = 'grid';
 
-    // Вернуть фильтры и подпись выбранного класса
+    // Р’РµСЂРЅСѓС‚СЊ С„РёР»СЊС‚СЂС‹ Рё РїРѕРґРїРёСЃСЊ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РєР»Р°СЃСЃР°
     const filterPanel = document.querySelector('.tests-filter-panel');
     if (filterPanel) filterPanel.style.display = 'block';
 
     const gradeTitle = document.querySelector('.selected-grade-title');
     if (gradeTitle) gradeTitle.style.display = 'block';
     
-    // Восстанавливаем активную кнопку класса
+    // Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј Р°РєС‚РёРІРЅСѓСЋ РєРЅРѕРїРєСѓ РєР»Р°СЃСЃР°
     const savedGrade = localStorage.getItem('userGrade') || '9';
     const gradeBtns = document.querySelectorAll('.grade-btn');
     gradeBtns.forEach(btn => {
@@ -6257,12 +6257,12 @@ function goBackToTests() {
         }
     });
 
-    // 4. Использовать общий роутер для обновления состояния навигации
+    // 4. РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РѕР±С‰РёР№ СЂРѕСѓС‚РµСЂ РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ СЃРѕСЃС‚РѕСЏРЅРёСЏ РЅР°РІРёРіР°С†РёРё
     if (typeof showSection === 'function') {
         showSection('tests');
     }
     
-    // 5. Сброс скролла
+    // 5. РЎР±СЂРѕСЃ СЃРєСЂРѕР»Р»Р°
     window.scrollTo(0, 0);
 
     try { if (typeof updateCurrentTestUI === 'function') updateCurrentTestUI(); } catch { /* ignore */ }
@@ -6272,17 +6272,17 @@ function shareResults() {
     if (testSystem && testSystem.testResults) {
         const results = testSystem.testResults;
         const time = `${Math.floor(results.timeSpent / 60)}:${(results.timeSpent % 60).toString().padStart(2, '0')}`;
-        const title = `Результаты теста - ${getTestName(results.subject)}`;
+        const title = `Р РµР·СѓР»СЊС‚Р°С‚С‹ С‚РµСЃС‚Р° - ${getTestName(results.subject)}`;
 
-        let text = `?? Мой результат: ${results.percentage}%\n?? Время: ${time}`;
+        let text = `рџЋЇ РњРѕР№ СЂРµР·СѓР»СЊС‚Р°С‚: ${results.percentage}%\nвЏ±пёЏ Р’СЂРµРјСЏ: ${time}`;
         if (results.isOrientation) {
             const top = (results.profile?.scores || []).slice(0, 3);
             const labelOf = (k) => (typeof ORIENTATION_DIM_LABELS === 'object' && ORIENTATION_DIM_LABELS && ORIENTATION_DIM_LABELS[k]) ? ORIENTATION_DIM_LABELS[k] : String(k);
-            if (top.length) text += `\n?? Топ-направления: ${top.map(t => `${labelOf(t.key)} (${t.score}%)`).join(', ')}`;
+            if (top.length) text += `\nрџ§­ РўРѕРї-РЅР°РїСЂР°РІР»РµРЅРёСЏ: ${top.map(t => `${labelOf(t.key)} (${t.score}%)`).join(', ')}`;
         } else {
-            text += `\n? Правильных: ${results.score}/${results.total}`;
+            text += `\nвњ… РџСЂР°РІРёР»СЊРЅС‹С…: ${results.score}/${results.total}`;
         }
-        text += `\n\nПройди тест на ${location.origin}!`;
+        text += `\n\nРџСЂРѕР№РґРё С‚РµСЃС‚ РЅР° ${location.origin}!`;
         
         if (navigator.share) {
             navigator.share({
@@ -6290,33 +6290,33 @@ function shareResults() {
                 text
             }).catch(console.error);
         } else {
-            // Копируем в буфер обмена
+            // РљРѕРїРёСЂСѓРµРј РІ Р±СѓС„РµСЂ РѕР±РјРµРЅР°
             navigator.clipboard.writeText(text).then(() => {
-                alert('Результат скопирован в буфер обмена!');
+                alert('Р РµР·СѓР»СЊС‚Р°С‚ СЃРєРѕРїРёСЂРѕРІР°РЅ РІ Р±СѓС„РµСЂ РѕР±РјРµРЅР°!');
             }).catch(() => {
-                alert('Не удалось скопировать результат');
+                alert('РќРµ СѓРґР°Р»РѕСЃСЊ СЃРєРѕРїРёСЂРѕРІР°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚');
             });
         }
     }
 }
 
-// Скачать результаты как PDF (простая реализация)
+// РЎРєР°С‡Р°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹ РєР°Рє PDF (РїСЂРѕСЃС‚Р°СЏ СЂРµР°Р»РёР·Р°С†РёСЏ)
 function downloadResultsPDF() {
     if (!testSystem || !testSystem.testResults) {
-        showNotification('Нет результатов для скачивания', 'warning');
+        showNotification('РќРµС‚ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РґР»СЏ СЃРєР°С‡РёРІР°РЅРёСЏ', 'warning');
         return;
     }
     
     const results = testSystem.testResults;
     const testName = getTestName(results.subject);
     
-    // Создаём HTML для печати/PDF
+    // РЎРѕР·РґР°С‘Рј HTML РґР»СЏ РїРµС‡Р°С‚Рё/PDF
     const htmlContent = `
         <!DOCTYPE html>
         <html>
         <head>
             <meta charset="UTF-8">
-            <title>Результаты теста - ${testName}</title>
+            <title>Р РµР·СѓР»СЊС‚Р°С‚С‹ С‚РµСЃС‚Р° - ${testName}</title>
             <style>
                 body { font-family: Arial, sans-serif; padding: 40px; max-width: 800px; margin: 0 auto; }
                 h1 { color: #667eea; text-align: center; }
@@ -6330,7 +6330,7 @@ function downloadResultsPDF() {
             </style>
         </head>
         <body>
-            <h1>?? Результаты теста</h1>
+            <h1>рџЏҐ Р РµР·СѓР»СЊС‚Р°С‚С‹ С‚РµСЃС‚Р°</h1>
             <h2 style="text-align: center; color: #666;">${testName}</h2>
             
             <div class="score">${results.percentage}%</div>
@@ -6338,48 +6338,48 @@ function downloadResultsPDF() {
             <div class="stats">
                 ${results.isOrientation ? `
                 <div class="stat">
-                    <div class="stat-value">?? ${results.percentage}%</div>
-                    <div class="stat-label">Профиль</div>
+                    <div class="stat-value">рџ§­ ${results.percentage}%</div>
+                    <div class="stat-label">РџСЂРѕС„РёР»СЊ</div>
                 </div>
                 ` : `
                 <div class="stat">
-                    <div class="stat-value">? ${results.score}</div>
-                    <div class="stat-label">Правильных</div>
+                    <div class="stat-value">вњ… ${results.score}</div>
+                    <div class="stat-label">РџСЂР°РІРёР»СЊРЅС‹С…</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">? ${results.total - results.score}</div>
-                    <div class="stat-label">Неправильных</div>
+                    <div class="stat-value">вќЊ ${results.total - results.score}</div>
+                    <div class="stat-label">РќРµРїСЂР°РІРёР»СЊРЅС‹С…</div>
                 </div>
                 `}
                 <div class="stat">
-                    <div class="stat-value">?? ${Math.floor(results.timeSpent / 60)}:${(results.timeSpent % 60).toString().padStart(2, '0')}</div>
-                    <div class="stat-label">Время</div>
+                    <div class="stat-value">вЏ±пёЏ ${Math.floor(results.timeSpent / 60)}:${(results.timeSpent % 60).toString().padStart(2, '0')}</div>
+                    <div class="stat-label">Р’СЂРµРјСЏ</div>
                 </div>
             </div>
             
             <div class="section">
-                <h3>?? Анализ</h3>
-                <p>${results.isOrientation ? 'Профориентация: в этом тесте нет «правильных» ответов — важны ваши предпочтения.' : `Уровень подготовки: ${results.percentage >= 90 ? 'Отлично' : results.percentage >= 75 ? 'Хорошо' : results.percentage >= 60 ? 'Удовлетворительно' : 'Требуется подготовка'}`}</p>
+                <h3>рџ“Љ РђРЅР°Р»РёР·</h3>
+                <p>${results.isOrientation ? 'РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ: РІ СЌС‚РѕРј С‚РµСЃС‚Рµ РЅРµС‚ В«РїСЂР°РІРёР»СЊРЅС‹С…В» РѕС‚РІРµС‚РѕРІ вЂ” РІР°Р¶РЅС‹ РІР°С€Рё РїСЂРµРґРїРѕС‡С‚РµРЅРёСЏ.' : `РЈСЂРѕРІРµРЅСЊ РїРѕРґРіРѕС‚РѕРІРєРё: ${results.percentage >= 90 ? 'РћС‚Р»РёС‡РЅРѕ' : results.percentage >= 75 ? 'РҐРѕСЂРѕС€Рѕ' : results.percentage >= 60 ? 'РЈРґРѕРІР»РµС‚РІРѕСЂРёС‚РµР»СЊРЅРѕ' : 'РўСЂРµР±СѓРµС‚СЃСЏ РїРѕРґРіРѕС‚РѕРІРєР°'}`}</p>
             </div>
             
             <div class="footer">
-                <p>Дата: ${new Date().toLocaleDateString('ru-RU')}</p>
-                <p>Медицинская Профориентация © ${new Date().getFullYear()}</p>
+                <p>Р”Р°С‚Р°: ${new Date().toLocaleDateString('ru-RU')}</p>
+                <p>РњРµРґРёС†РёРЅСЃРєР°СЏ РџСЂРѕС„РѕСЂРёРµРЅС‚Р°С†РёСЏ В© ${new Date().getFullYear()}</p>
             </div>
         </body>
         </html>
     `;
     
-    // Открываем окно для печати/сохранения
+    // РћС‚РєСЂС‹РІР°РµРј РѕРєРЅРѕ РґР»СЏ РїРµС‡Р°С‚Рё/СЃРѕС…СЂР°РЅРµРЅРёСЏ
     const printWindow = window.open('', '_blank');
     printWindow.document.write(htmlContent);
     printWindow.document.close();
     printWindow.print();
     
-    showNotification('PDF готов к сохранению', 'success');
+    showNotification('PDF РіРѕС‚РѕРІ Рє СЃРѕС…СЂР°РЅРµРЅРёСЋ', 'success');
 }
 
-// Печать результатов
+// РџРµС‡Р°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ
 function printResults() {
     downloadResultsPDF();
 }
@@ -6393,7 +6393,7 @@ function viewDetailedAnalysis() {
     analysisSection.style.display = analysisSection.style.display === 'none' ? 'block' : 'none';
 }
 
-// Анимация появления элементов при скролле
+// РђРЅРёРјР°С†РёСЏ РїРѕСЏРІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ РїСЂРё СЃРєСЂРѕР»Р»Рµ
 function isPerfLiteMode() {
     try {
         const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -6422,13 +6422,13 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animate-fadeIn');
-            // Сразу перестаём наблюдать, чтобы не грузить CPU/GPU
+            // РЎСЂР°Р·Сѓ РїРµСЂРµСЃС‚Р°С‘Рј РЅР°Р±Р»СЋРґР°С‚СЊ, С‡С‚РѕР±С‹ РЅРµ РіСЂСѓР·РёС‚СЊ CPU/GPU
             try { observer.unobserve(entry.target); } catch { /* ignore */ }
         }
     });
 }, observerOptions);
 
-// Наблюдаем за карточками
+// РќР°Р±Р»СЋРґР°РµРј Р·Р° РєР°СЂС‚РѕС‡РєР°РјРё
 document.addEventListener('DOMContentLoaded', () => {
     console.log('=== DOM CONTENT LOADED ===');
     if (!PERF_LITE) {
@@ -6441,9 +6441,9 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('perf-lite enabled: skipping scroll reveal observer');
     }
 
-    // Мобильный фикс: при прокрутке пальцем по карточкам иногда срабатывает click,
-    // из-за чего внезапно запускается тест и сетка «пропадает».
-    // Подавляем click, если был жест прокрутки (движение больше порога).
+    // РњРѕР±РёР»СЊРЅС‹Р№ С„РёРєСЃ: РїСЂРё РїСЂРѕРєСЂСѓС‚РєРµ РїР°Р»СЊС†РµРј РїРѕ РєР°СЂС‚РѕС‡РєР°Рј РёРЅРѕРіРґР° СЃСЂР°Р±Р°С‚С‹РІР°РµС‚ click,
+    // РёР·-Р·Р° С‡РµРіРѕ РІРЅРµР·Р°РїРЅРѕ Р·Р°РїСѓСЃРєР°РµС‚СЃСЏ С‚РµСЃС‚ Рё СЃРµС‚РєР° В«РїСЂРѕРїР°РґР°РµС‚В».
+    // РџРѕРґР°РІР»СЏРµРј click, РµСЃР»Рё Р±С‹Р» Р¶РµСЃС‚ РїСЂРѕРєСЂСѓС‚РєРё (РґРІРёР¶РµРЅРёРµ Р±РѕР»СЊС€Рµ РїРѕСЂРѕРіР°).
     (function installTestCardsTapGuard() {
         const MOVE_THRESHOLD = 10; // px
         let activeCard = null;
@@ -6511,23 +6511,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })();
     
-    // Инициализация цитаты дня (если функция существует)
+    // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С†РёС‚Р°С‚С‹ РґРЅСЏ (РµСЃР»Рё С„СѓРЅРєС†РёСЏ СЃСѓС‰РµСЃС‚РІСѓРµС‚)
     if (typeof initDailyQuote === 'function') {
         initDailyQuote();
     }
     
-    // Инициализация прогресс-бара скролла (дорого на слабых ПК)
+    // РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїСЂРѕРіСЂРµСЃСЃ-Р±Р°СЂР° СЃРєСЂРѕР»Р»Р° (РґРѕСЂРѕРіРѕ РЅР° СЃР»Р°Р±С‹С… РџРљ)
     if (!PERF_LITE && typeof initScrollProgress === 'function') {
         initScrollProgress();
     }
     
-    // Проверяем, что все нужные функции доступны
+    // РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РІСЃРµ РЅСѓР¶РЅС‹Рµ С„СѓРЅРєС†РёРё РґРѕСЃС‚СѓРїРЅС‹
     console.log('Functions check:');
     console.log('- startTest:', typeof startTest);
     console.log('- testSystem:', typeof testSystem, testSystem);
     console.log('- questionDatabase keys:', Object.keys(questionDatabase || {}));
     
-    // Проверяем кнопки тестов
+    // РџСЂРѕРІРµСЂСЏРµРј РєРЅРѕРїРєРё С‚РµСЃС‚РѕРІ
     const testCards = document.querySelectorAll('.test-card');
     console.log('Test cards found:', testCards.length);
     testCards.forEach((card, index) => {
@@ -6547,17 +6547,17 @@ function prevFact() {
     showFact(currentFactIndex);
 }
 
-// Цитата дня
+// Р¦РёС‚Р°С‚Р° РґРЅСЏ
 function initDailyQuote() {
     const quotes = [
-        { text: "Медицина — это не только наука, но и искусство. Она требует не только знаний, но и сердца.", author: "Гиппократ" },
-        { text: "Врач должен иметь голову льва, глаз орла и руки женщины.", author: "Абу Бакр ар-Рази" },
-        { text: "Где есть любовь к людям, там есть и любовь к искусству врачевания.", author: "Гиппократ" },
-        { text: "Медицина поистине есть самое благородное из всех искусств.", author: "Гиппократ" },
-        { text: "Хороший врач лечит болезнь, великий врач лечит пациента.", author: "Уильям Ослер" },
-        { text: "Профилактика — лучшее лечение.", author: "Народная мудрость" },
-        { text: "Лучшее лекарство — это доброе слово.", author: "Авиценна" },
-        { text: "Нет неизлечимых болезней, есть недостаток знаний.", author: "Гиппократ" }
+        { text: "РњРµРґРёС†РёРЅР° вЂ” СЌС‚Рѕ РЅРµ С‚РѕР»СЊРєРѕ РЅР°СѓРєР°, РЅРѕ Рё РёСЃРєСѓСЃСЃС‚РІРѕ. РћРЅР° С‚СЂРµР±СѓРµС‚ РЅРµ С‚РѕР»СЊРєРѕ Р·РЅР°РЅРёР№, РЅРѕ Рё СЃРµСЂРґС†Р°.", author: "Р“РёРїРїРѕРєСЂР°С‚" },
+        { text: "Р’СЂР°С‡ РґРѕР»Р¶РµРЅ РёРјРµС‚СЊ РіРѕР»РѕРІСѓ Р»СЊРІР°, РіР»Р°Р· РѕСЂР»Р° Рё СЂСѓРєРё Р¶РµРЅС‰РёРЅС‹.", author: "РђР±Сѓ Р‘Р°РєСЂ Р°СЂ-Р Р°Р·Рё" },
+        { text: "Р“РґРµ РµСЃС‚СЊ Р»СЋР±РѕРІСЊ Рє Р»СЋРґСЏРј, С‚Р°Рј РµСЃС‚СЊ Рё Р»СЋР±РѕРІСЊ Рє РёСЃРєСѓСЃСЃС‚РІСѓ РІСЂР°С‡РµРІР°РЅРёСЏ.", author: "Р“РёРїРїРѕРєСЂР°С‚" },
+        { text: "РњРµРґРёС†РёРЅР° РїРѕРёСЃС‚РёРЅРµ РµСЃС‚СЊ СЃР°РјРѕРµ Р±Р»Р°РіРѕСЂРѕРґРЅРѕРµ РёР· РІСЃРµС… РёСЃРєСѓСЃСЃС‚РІ.", author: "Р“РёРїРїРѕРєСЂР°С‚" },
+        { text: "РҐРѕСЂРѕС€РёР№ РІСЂР°С‡ Р»РµС‡РёС‚ Р±РѕР»РµР·РЅСЊ, РІРµР»РёРєРёР№ РІСЂР°С‡ Р»РµС‡РёС‚ РїР°С†РёРµРЅС‚Р°.", author: "РЈРёР»СЊСЏРј РћСЃР»РµСЂ" },
+        { text: "РџСЂРѕС„РёР»Р°РєС‚РёРєР° вЂ” Р»СѓС‡С€РµРµ Р»РµС‡РµРЅРёРµ.", author: "РќР°СЂРѕРґРЅР°СЏ РјСѓРґСЂРѕСЃС‚СЊ" },
+        { text: "Р›СѓС‡С€РµРµ Р»РµРєР°СЂСЃС‚РІРѕ вЂ” СЌС‚Рѕ РґРѕР±СЂРѕРµ СЃР»РѕРІРѕ.", author: "РђРІРёС†РµРЅРЅР°" },
+        { text: "РќРµС‚ РЅРµРёР·Р»РµС‡РёРјС‹С… Р±РѕР»РµР·РЅРµР№, РµСЃС‚СЊ РЅРµРґРѕСЃС‚Р°С‚РѕРє Р·РЅР°РЅРёР№.", author: "Р“РёРїРїРѕРєСЂР°С‚" }
     ];
     
     const today = new Date();
@@ -6569,10 +6569,10 @@ function initDailyQuote() {
     const authorEl = document.getElementById('quote-author');
     
     if (quoteEl) quoteEl.textContent = `"${quote.text}"`;
-    if (authorEl) authorEl.textContent = `— ${quote.author}`;
+    if (authorEl) authorEl.textContent = `вЂ” ${quote.author}`;
 }
 
-// Прогресс-бар скролла
+// РџСЂРѕРіСЂРµСЃСЃ-Р±Р°СЂ СЃРєСЂРѕР»Р»Р°
 function initScrollProgress() {
     const progressBar = document.createElement('div');
     progressBar.className = 'scroll-progress';
@@ -6587,13 +6587,13 @@ function initScrollProgress() {
 }
 
 // ========================================
-// ФУНКЦИИ ФИЛЬТРАЦИИ ТЕСТОВ
+// Р¤РЈРќРљР¦РР Р¤РР›Р¬РўР РђР¦РР РўР•РЎРўРћР’
 // ========================================
 
 function filterByCategory(category) {
     currentCategoryFilter = category;
     
-    // Обновляем активную кнопку в фильтре категорий
+    // РћР±РЅРѕРІР»СЏРµРј Р°РєС‚РёРІРЅСѓСЋ РєРЅРѕРїРєСѓ РІ С„РёР»СЊС‚СЂРµ РєР°С‚РµРіРѕСЂРёР№
     document.querySelectorAll('.category-btn').forEach(btn => {
         btn.classList.remove('active');
     });
@@ -6626,14 +6626,14 @@ function applyFilters() {
         }
     });
     
-    // Показываем сообщение если нет результатов
+    // РџРѕРєР°Р·С‹РІР°РµРј СЃРѕРѕР±С‰РµРЅРёРµ РµСЃР»Рё РЅРµС‚ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ
     const noResultsMsg = document.getElementById('no-tests-message');
     if (visibleCount === 0) {
         if (!noResultsMsg) {
             const msg = document.createElement('div');
             msg.id = 'no-tests-message';
             msg.className = 'no-tests-message';
-            msg.innerHTML = '<i class="fas fa-search"></i> Тесты для выбранных фильтров не найдены';
+            msg.innerHTML = '<i class="fas fa-search"></i> РўРµСЃС‚С‹ РґР»СЏ РІС‹Р±СЂР°РЅРЅС‹С… С„РёР»СЊС‚СЂРѕРІ РЅРµ РЅР°Р№РґРµРЅС‹';
             msg.style.cssText = `
                 text-align: center;
                 padding: 40px;
@@ -6649,21 +6649,21 @@ function applyFilters() {
 }
 
 // ========================================
-// ФУНКЦИИ РЕДАКТИРОВАНИЯ ПРОФИЛЯ
+// Р¤РЈРќРљР¦РР Р Р•Р”РђРљРўРР РћР’РђРќРРЇ РџР РћР¤РР›РЇ
 // ========================================
 
 function editProfileName() {
     const currentName = document.getElementById('profile-name').textContent;
-    const newName = prompt('Введите новое имя:', currentName);
+    const newName = prompt('Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ РёРјСЏ:', currentName);
     
     if (newName && newName.trim() !== '') {
-        // Обновляем в localStorage
+        // РћР±РЅРѕРІР»СЏРµРј РІ localStorage
         const currentUser = JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
         if (currentUser) {
             currentUser.username = newName.trim();
             localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(currentUser));
             
-            // Обновляем в списке пользователей
+            // РћР±РЅРѕРІР»СЏРµРј РІ СЃРїРёСЃРєРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
             const users = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
             const userIndex = users.findIndex(u => u.id === currentUser.id);
             if (userIndex !== -1) {
@@ -6671,23 +6671,23 @@ function editProfileName() {
                 localStorage.setItem(USERS_KEY, JSON.stringify(users));
             }
             
-            // Обновляем интерфейс
+            // РћР±РЅРѕРІР»СЏРµРј РёРЅС‚РµСЂС„РµР№СЃ
             document.getElementById('profile-name').textContent = newName.trim();
             
-            // Обновляем аватар-плейсхолдер
+            // РћР±РЅРѕРІР»СЏРµРј Р°РІР°С‚Р°СЂ-РїР»РµР№СЃС…РѕР»РґРµСЂ
             const avatarPlaceholder = document.getElementById('avatar-placeholder');
             if (avatarPlaceholder && avatarPlaceholder.style.display !== 'none') {
                 avatarPlaceholder.textContent = getInitials(newName.trim());
             }
             
-            // Показываем уведомление
-            showNotification('? Имя успешно изменено!', 'success');
+            // РџРѕРєР°Р·С‹РІР°РµРј СѓРІРµРґРѕРјР»РµРЅРёРµ
+            showNotification('вњ… РРјСЏ СѓСЃРїРµС€РЅРѕ РёР·РјРµРЅРµРЅРѕ!', 'success');
         }
     }
 }
 
 function viewTestHistory() {
-    // Скролл к истории тестов
+    // РЎРєСЂРѕР»Р» Рє РёСЃС‚РѕСЂРёРё С‚РµСЃС‚РѕРІ
     const historySection = document.querySelector('.test-history');
     if (historySection) {
         historySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -6697,7 +6697,7 @@ function viewTestHistory() {
 
 console.log('=== SCRIPT END ===');
 
-// ===== ФОНОВАЯ МУЗЫКА - ПЛЕЙЛИСТ С CROSSFADE =====
+// ===== Р¤РћРќРћР’РђРЇ РњРЈР—Р«РљРђ - РџР›Р•Р™Р›РРЎРў РЎ CROSSFADE =====
 const jazzPlaylist = [
     'audio/Miles Davis - So What.mp3',
     'audio/Miles Davis - Generique.mp3',
@@ -6707,28 +6707,28 @@ const jazzPlaylist = [
     'audio/Miles Davis, Charlie Parker - Out Of Nowhere.mp3'
 ];
 
-// Перемешиваем плейлист
+// РџРµСЂРµРјРµС€РёРІР°РµРј РїР»РµР№Р»РёСЃС‚
 let shuffledPlaylist = shuffleArray(jazzPlaylist);
 let currentTrackIndex = 0;
-let activePlayer = 1; // 1 или 2 - для crossfade
+let activePlayer = 1; // 1 РёР»Рё 2 - РґР»СЏ crossfade
 
 const player1 = document.getElementById('background-music-1');
 const player2 = document.getElementById('background-music-2');
 
 const VOLUME_MAX = 0.3;
-const CROSSFADE_DURATION = 3000; // 3 секунды плавного перехода
+const CROSSFADE_DURATION = 3000; // 3 СЃРµРєСѓРЅРґС‹ РїР»Р°РІРЅРѕРіРѕ РїРµСЂРµС…РѕРґР°
 
 if (player1 && player2) {
     player1.volume = 0;
     player2.volume = 0;
     
-    // Загружаем первый трек
+    // Р—Р°РіСЂСѓР¶Р°РµРј РїРµСЂРІС‹Р№ С‚СЂРµРє
     function loadTrack(player, trackIndex) {
         player.src = shuffledPlaylist[trackIndex % shuffledPlaylist.length];
         player.load();
     }
     
-    // Плавное изменение громкости
+    // РџР»Р°РІРЅРѕРµ РёР·РјРµРЅРµРЅРёРµ РіСЂРѕРјРєРѕСЃС‚Рё
     function fadeVolume(player, from, to, duration, callback) {
         const steps = 50;
         const stepTime = duration / steps;
@@ -6747,24 +6747,24 @@ if (player1 && player2) {
         }, stepTime);
     }
     
-    // Crossfade к следующему треку
+    // Crossfade Рє СЃР»РµРґСѓСЋС‰РµРјСѓ С‚СЂРµРєСѓ
     function crossfadeToNext() {
         const currentPlayer = activePlayer === 1 ? player1 : player2;
         const nextPlayer = activePlayer === 1 ? player2 : player1;
         
         currentTrackIndex++;
         
-        // Если прошли весь плейлист - перемешиваем заново
+        // Р•СЃР»Рё РїСЂРѕС€Р»Рё РІРµСЃСЊ РїР»РµР№Р»РёСЃС‚ - РїРµСЂРµРјРµС€РёРІР°РµРј Р·Р°РЅРѕРІРѕ
         if (currentTrackIndex >= shuffledPlaylist.length) {
             currentTrackIndex = 0;
             shuffledPlaylist = shuffleArray(jazzPlaylist);
         }
         
-        // Загружаем следующий трек
+        // Р—Р°РіСЂСѓР¶Р°РµРј СЃР»РµРґСѓСЋС‰РёР№ С‚СЂРµРє
         loadTrack(nextPlayer, currentTrackIndex);
         
         nextPlayer.play().then(() => {
-            // Плавный crossfade
+            // РџР»Р°РІРЅС‹Р№ crossfade
             fadeVolume(currentPlayer, VOLUME_MAX, 0, CROSSFADE_DURATION, () => {
                 currentPlayer.pause();
                 currentPlayer.currentTime = 0;
@@ -6775,7 +6775,7 @@ if (player1 && player2) {
         }).catch(err => console.log('Crossfade error:', err));
     }
     
-    // Слушаем окончание трека (за 3 секунды до конца начинаем crossfade)
+    // РЎР»СѓС€Р°РµРј РѕРєРѕРЅС‡Р°РЅРёРµ С‚СЂРµРєР° (Р·Р° 3 СЃРµРєСѓРЅРґС‹ РґРѕ РєРѕРЅС†Р° РЅР°С‡РёРЅР°РµРј crossfade)
     function setupTrackEndListener(player) {
         player.addEventListener('timeupdate', function() {
             if (player.duration && player.currentTime > 0) {
@@ -6786,7 +6786,7 @@ if (player1 && player2) {
             }
         });
         
-        // Запасной вариант если трек закончился внезапно
+        // Р—Р°РїР°СЃРЅРѕР№ РІР°СЂРёР°РЅС‚ РµСЃР»Рё С‚СЂРµРє Р·Р°РєРѕРЅС‡РёР»СЃСЏ РІРЅРµР·Р°РїРЅРѕ
         player.addEventListener('ended', function() {
             if (this.volume > 0) {
                 crossfadeToNext();
@@ -6797,14 +6797,14 @@ if (player1 && player2) {
     setupTrackEndListener(player1);
     setupTrackEndListener(player2);
     
-    // Запуск первого трека
+    // Р—Р°РїСѓСЃРє РїРµСЂРІРѕРіРѕ С‚СЂРµРєР°
     function startPlaylist() {
         loadTrack(player1, 0);
         player1.play().then(() => {
             fadeVolume(player1, 0, VOLUME_MAX, 2000);
             activePlayer = 1;
         }).catch(err => {
-            // Браузер заблокировал, ждём клик
+            // Р‘СЂР°СѓР·РµСЂ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р», Р¶РґС‘Рј РєР»РёРє
             document.addEventListener('click', function playOnClick() {
                 player1.play().then(() => {
                     fadeVolume(player1, 0, VOLUME_MAX, 2000);
@@ -6815,7 +6815,7 @@ if (player1 && player2) {
         });
     }
     
-    // Запуск при загрузке
+    // Р—Р°РїСѓСЃРє РїСЂРё Р·Р°РіСЂСѓР·РєРµ
     if (document.readyState === 'complete') {
         startPlaylist();
     } else {
@@ -6826,7 +6826,7 @@ if (player1 && player2) {
 let hasInteracted = false;
 let audioContext = null;
 
-// Инициализация Web Audio API для звуковых эффектов
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Web Audio API РґР»СЏ Р·РІСѓРєРѕРІС‹С… СЌС„С„РµРєС‚РѕРІ
 function initAudioContext() {
     if (!audioContext) {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -6834,21 +6834,21 @@ function initAudioContext() {
     return audioContext;
 }
 
-// Генерация хакерского звука печати через Web Audio API
+// Р“РµРЅРµСЂР°С†РёСЏ С…Р°РєРµСЂСЃРєРѕРіРѕ Р·РІСѓРєР° РїРµС‡Р°С‚Рё С‡РµСЂРµР· Web Audio API
 function playTypeSound() {
     if (!hasInteracted) return;
     
     try {
         const ctx = initAudioContext();
         
-        // Создаём несколько быстрых "кликов" как печать на клавиатуре
-        const numClicks = 3 + Math.floor(Math.random() * 4); // 3-6 кликов
+        // РЎРѕР·РґР°С‘Рј РЅРµСЃРєРѕР»СЊРєРѕ Р±С‹СЃС‚СЂС‹С… "РєР»РёРєРѕРІ" РєР°Рє РїРµС‡Р°С‚СЊ РЅР° РєР»Р°РІРёР°С‚СѓСЂРµ
+        const numClicks = 3 + Math.floor(Math.random() * 4); // 3-6 РєР»РёРєРѕРІ
         
         for (let i = 0; i < numClicks; i++) {
-            const delay = i * 0.04 + Math.random() * 0.02; // Небольшая случайность
+            const delay = i * 0.04 + Math.random() * 0.02; // РќРµР±РѕР»СЊС€Р°СЏ СЃР»СѓС‡Р°Р№РЅРѕСЃС‚СЊ
             
-            // Создаём белый шум для клика
-            const bufferSize = ctx.sampleRate * 0.02; // 20мс
+            // РЎРѕР·РґР°С‘Рј Р±РµР»С‹Р№ С€СѓРј РґР»СЏ РєР»РёРєР°
+            const bufferSize = ctx.sampleRate * 0.02; // 20РјСЃ
             const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
             const output = noiseBuffer.getChannelData(0);
             
@@ -6859,13 +6859,13 @@ function playTypeSound() {
             const noise = ctx.createBufferSource();
             noise.buffer = noiseBuffer;
             
-            // Фильтр для более "механического" звука
+            // Р¤РёР»СЊС‚СЂ РґР»СЏ Р±РѕР»РµРµ "РјРµС…Р°РЅРёС‡РµСЃРєРѕРіРѕ" Р·РІСѓРєР°
             const filter = ctx.createBiquadFilter();
             filter.type = 'bandpass';
             filter.frequency.value = 2000 + Math.random() * 2000;
             filter.Q.value = 1;
             
-            // Громкость
+            // Р“СЂРѕРјРєРѕСЃС‚СЊ
             const gainNode = ctx.createGain();
             gainNode.gain.setValueAtTime(0.12, ctx.currentTime + delay);
             gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + 0.03);
@@ -6878,7 +6878,7 @@ function playTypeSound() {
             noise.stop(ctx.currentTime + delay + 0.03);
         }
         
-        // Добавляем "бип" терминала в конце
+        // Р”РѕР±Р°РІР»СЏРµРј "Р±РёРї" С‚РµСЂРјРёРЅР°Р»Р° РІ РєРѕРЅС†Рµ
         const oscillator = ctx.createOscillator();
         const oscGain = ctx.createGain();
         
@@ -6895,19 +6895,19 @@ function playTypeSound() {
         oscillator.stop(ctx.currentTime + numClicks * 0.04 + 0.05);
         
     } catch (e) {
-        console.log('Web Audio не поддерживается:', e);
+        console.log('Web Audio РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ:', e);
     }
 }
 
-// Анимация появления элементов на landing page (Google Style)
+// РђРЅРёРјР°С†РёСЏ РїРѕСЏРІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ РЅР° landing page (Google Style)
 function animateLandingElements() {
-    // Добавляем класс для запуска CSS анимаций
+    // Р”РѕР±Р°РІР»СЏРµРј РєР»Р°СЃСЃ РґР»СЏ Р·Р°РїСѓСЃРєР° CSS Р°РЅРёРјР°С†РёР№
     const landingPage = document.querySelector('.landing-page');
     if (landingPage) {
         landingPage.classList.add('animate-in');
     }
     
-    // Анимируем навигацию
+    // РђРЅРёРјРёСЂСѓРµРј РЅР°РІРёРіР°С†РёСЋ
     const nav = document.querySelector('.google-nav');
     if (nav) {
         nav.style.opacity = '0';
@@ -6920,5 +6920,5 @@ function animateLandingElements() {
     }
 }
 
-// Запускаем анимации при загрузке
+// Р—Р°РїСѓСЃРєР°РµРј Р°РЅРёРјР°С†РёРё РїСЂРё Р·Р°РіСЂСѓР·РєРµ
 document.addEventListener('DOMContentLoaded', animateLandingElements);

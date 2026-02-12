@@ -1,188 +1,188 @@
-/* ============================================
-   CHEMISTRY LABORATORY — GAME ENGINE v3
+п»ї/* ============================================
+   CHEMISTRY LABORATORY вЂ” GAME ENGINE v3
    Realistic colors, 65+ reactions, XP/levels/achievements
    ============================================ */
 (function() {
 'use strict';
 
 const SUBSTANCES = {
-    H:{id:'H',symbol:'H',name:'Водород',cat:'nonmetal',num:1,color:'#e8e8ff',rc:'бесцветный газ'},
-    He:{id:'He',symbol:'He',name:'Гелий',cat:'noble',num:2,color:'#ffe4f0',rc:'бесцветный газ'},
-    Li:{id:'Li',symbol:'Li',name:'Литий',cat:'alkali',num:3,color:'#c0c0c0',rc:'серебристый мягкий'},
-    C:{id:'C',symbol:'C',name:'Углерод',cat:'nonmetal',num:6,color:'#2d2d2d',rc:'чёрный (графит)'},
-    N:{id:'N',symbol:'N',name:'Азот',cat:'nonmetal',num:7,color:'#d4e8ff',rc:'бесцветный газ'},
-    O:{id:'O',symbol:'O',name:'Кислород',cat:'nonmetal',num:8,color:'#a8d8ff',rc:'бесцветный газ'},
-    F:{id:'F',symbol:'F',name:'Фтор',cat:'halogen',num:9,color:'#e8ffa0',rc:'бледно-жёлтый газ'},
-    Na:{id:'Na',symbol:'Na',name:'Натрий',cat:'alkali',num:11,color:'#e8e0d0',rc:'серебристо-белый'},
-    Mg:{id:'Mg',symbol:'Mg',name:'Магний',cat:'alkaline',num:12,color:'#d0d0d0',rc:'серебристо-белый'},
-    Al:{id:'Al',symbol:'Al',name:'Алюминий',cat:'metal',num:13,color:'#c8d0d8',rc:'серебристый'},
-    Si:{id:'Si',symbol:'Si',name:'Кремний',cat:'nonmetal',num:14,color:'#4a5568',rc:'тёмно-серый'},
-    P:{id:'P',symbol:'P',name:'Фосфор',cat:'nonmetal',num:15,color:'#fffde8',rc:'белый восковой'},
-    S:{id:'S',symbol:'S',name:'Сера',cat:'nonmetal',num:16,color:'#ffd700',rc:'жёлтый порошок'},
-    Cl:{id:'Cl',symbol:'Cl',name:'Хлор',cat:'halogen',num:17,color:'#b8e986',rc:'жёлто-зелёный газ'},
-    K:{id:'K',symbol:'K',name:'Калий',cat:'alkali',num:19,color:'#d8d0c8',rc:'серебристо-белый'},
-    Ca:{id:'Ca',symbol:'Ca',name:'Кальций',cat:'alkaline',num:20,color:'#f0ece0',rc:'серебристо-белый'},
-    Ti:{id:'Ti',symbol:'Ti',name:'Титан',cat:'transition',num:22,color:'#b0b8c0',rc:'серебристый'},
-    Cr:{id:'Cr',symbol:'Cr',name:'Хром',cat:'transition',num:24,color:'#a8b8c8',rc:'серебристый'},
-    Mn:{id:'Mn',symbol:'Mn',name:'Марганец',cat:'transition',num:25,color:'#a0a0a0',rc:'серебристо-серый'},
-    Fe:{id:'Fe',symbol:'Fe',name:'Железо',cat:'transition',num:26,color:'#8a8a8a',rc:'серебристо-серый'},
-    Co:{id:'Co',symbol:'Co',name:'Кобальт',cat:'transition',num:27,color:'#7888a0',rc:'серебристо-голубоватый'},
-    Ni:{id:'Ni',symbol:'Ni',name:'Никель',cat:'transition',num:28,color:'#a8a898',rc:'серебристо-белый'},
-    Cu:{id:'Cu',symbol:'Cu',name:'Медь',cat:'transition',num:29,color:'#b87333',rc:'красно-оранжевый'},
-    Zn:{id:'Zn',symbol:'Zn',name:'Цинк',cat:'transition',num:30,color:'#b8c0c8',rc:'голубовато-серый'},
-    Br:{id:'Br',symbol:'Br',name:'Бром',cat:'halogen',num:35,color:'#8B0000',rc:'тёмно-красная жидкость'},
-    Ag:{id:'Ag',symbol:'Ag',name:'Серебро',cat:'transition',num:47,color:'#e8e8e8',rc:'блестящий серебристый'},
-    Sn:{id:'Sn',symbol:'Sn',name:'Олово',cat:'transition',num:50,color:'#d0d0c8',rc:'серебристо-белый'},
-    I:{id:'I',symbol:'I',name:'Йод',cat:'halogen',num:53,color:'#4a0080',rc:'тёмно-фиолетовый'},
-    Ba:{id:'Ba',symbol:'Ba',name:'Барий',cat:'alkaline',num:56,color:'#c8c0b0',rc:'серебристо-белый'},
-    W:{id:'W',symbol:'W',name:'Вольфрам',cat:'transition',num:74,color:'#808890',rc:'серо-стальной'},
-    Pt:{id:'Pt',symbol:'Pt',name:'Платина',cat:'transition',num:78,color:'#d8d8d0',rc:'серебристо-белый'},
-    Au:{id:'Au',symbol:'Au',name:'Золото',cat:'transition',num:79,color:'#FFD700',rc:'жёлтый блестящий'},
-    Hg:{id:'Hg',symbol:'Hg',name:'Ртуть',cat:'transition',num:80,color:'#c0c0c8',rc:'серебристая жидкость'},
-    Pb:{id:'Pb',symbol:'Pb',name:'Свинец',cat:'transition',num:82,color:'#6b6b78',rc:'голубовато-серый'},
+    H:{id:'H',symbol:'H',name:'Р’РѕРґРѕСЂРѕРґ',cat:'nonmetal',num:1,color:'#e8e8ff',rc:'Р±РµСЃС†РІРµС‚РЅС‹Р№ РіР°Р·'},
+    He:{id:'He',symbol:'He',name:'Р“РµР»РёР№',cat:'noble',num:2,color:'#ffe4f0',rc:'Р±РµСЃС†РІРµС‚РЅС‹Р№ РіР°Р·'},
+    Li:{id:'Li',symbol:'Li',name:'Р›РёС‚РёР№',cat:'alkali',num:3,color:'#c0c0c0',rc:'СЃРµСЂРµР±СЂРёСЃС‚С‹Р№ РјСЏРіРєРёР№'},
+    C:{id:'C',symbol:'C',name:'РЈРіР»РµСЂРѕРґ',cat:'nonmetal',num:6,color:'#2d2d2d',rc:'С‡С‘СЂРЅС‹Р№ (РіСЂР°С„РёС‚)'},
+    N:{id:'N',symbol:'N',name:'РђР·РѕС‚',cat:'nonmetal',num:7,color:'#d4e8ff',rc:'Р±РµСЃС†РІРµС‚РЅС‹Р№ РіР°Р·'},
+    O:{id:'O',symbol:'O',name:'РљРёСЃР»РѕСЂРѕРґ',cat:'nonmetal',num:8,color:'#a8d8ff',rc:'Р±РµСЃС†РІРµС‚РЅС‹Р№ РіР°Р·'},
+    F:{id:'F',symbol:'F',name:'Р¤С‚РѕСЂ',cat:'halogen',num:9,color:'#e8ffa0',rc:'Р±Р»РµРґРЅРѕ-Р¶С‘Р»С‚С‹Р№ РіР°Р·'},
+    Na:{id:'Na',symbol:'Na',name:'РќР°С‚СЂРёР№',cat:'alkali',num:11,color:'#e8e0d0',rc:'СЃРµСЂРµР±СЂРёСЃС‚Рѕ-Р±РµР»С‹Р№'},
+    Mg:{id:'Mg',symbol:'Mg',name:'РњР°РіРЅРёР№',cat:'alkaline',num:12,color:'#d0d0d0',rc:'СЃРµСЂРµР±СЂРёСЃС‚Рѕ-Р±РµР»С‹Р№'},
+    Al:{id:'Al',symbol:'Al',name:'РђР»СЋРјРёРЅРёР№',cat:'metal',num:13,color:'#c8d0d8',rc:'СЃРµСЂРµР±СЂРёСЃС‚С‹Р№'},
+    Si:{id:'Si',symbol:'Si',name:'РљСЂРµРјРЅРёР№',cat:'nonmetal',num:14,color:'#4a5568',rc:'С‚С‘РјРЅРѕ-СЃРµСЂС‹Р№'},
+    P:{id:'P',symbol:'P',name:'Р¤РѕСЃС„РѕСЂ',cat:'nonmetal',num:15,color:'#fffde8',rc:'Р±РµР»С‹Р№ РІРѕСЃРєРѕРІРѕР№'},
+    S:{id:'S',symbol:'S',name:'РЎРµСЂР°',cat:'nonmetal',num:16,color:'#ffd700',rc:'Р¶С‘Р»С‚С‹Р№ РїРѕСЂРѕС€РѕРє'},
+    Cl:{id:'Cl',symbol:'Cl',name:'РҐР»РѕСЂ',cat:'halogen',num:17,color:'#b8e986',rc:'Р¶С‘Р»С‚Рѕ-Р·РµР»С‘РЅС‹Р№ РіР°Р·'},
+    K:{id:'K',symbol:'K',name:'РљР°Р»РёР№',cat:'alkali',num:19,color:'#d8d0c8',rc:'СЃРµСЂРµР±СЂРёСЃС‚Рѕ-Р±РµР»С‹Р№'},
+    Ca:{id:'Ca',symbol:'Ca',name:'РљР°Р»СЊС†РёР№',cat:'alkaline',num:20,color:'#f0ece0',rc:'СЃРµСЂРµР±СЂРёСЃС‚Рѕ-Р±РµР»С‹Р№'},
+    Ti:{id:'Ti',symbol:'Ti',name:'РўРёС‚Р°РЅ',cat:'transition',num:22,color:'#b0b8c0',rc:'СЃРµСЂРµР±СЂРёСЃС‚С‹Р№'},
+    Cr:{id:'Cr',symbol:'Cr',name:'РҐСЂРѕРј',cat:'transition',num:24,color:'#a8b8c8',rc:'СЃРµСЂРµР±СЂРёСЃС‚С‹Р№'},
+    Mn:{id:'Mn',symbol:'Mn',name:'РњР°СЂРіР°РЅРµС†',cat:'transition',num:25,color:'#a0a0a0',rc:'СЃРµСЂРµР±СЂРёСЃС‚Рѕ-СЃРµСЂС‹Р№'},
+    Fe:{id:'Fe',symbol:'Fe',name:'Р–РµР»РµР·Рѕ',cat:'transition',num:26,color:'#8a8a8a',rc:'СЃРµСЂРµР±СЂРёСЃС‚Рѕ-СЃРµСЂС‹Р№'},
+    Co:{id:'Co',symbol:'Co',name:'РљРѕР±Р°Р»СЊС‚',cat:'transition',num:27,color:'#7888a0',rc:'СЃРµСЂРµР±СЂРёСЃС‚Рѕ-РіРѕР»СѓР±РѕРІР°С‚С‹Р№'},
+    Ni:{id:'Ni',symbol:'Ni',name:'РќРёРєРµР»СЊ',cat:'transition',num:28,color:'#a8a898',rc:'СЃРµСЂРµР±СЂРёСЃС‚Рѕ-Р±РµР»С‹Р№'},
+    Cu:{id:'Cu',symbol:'Cu',name:'РњРµРґСЊ',cat:'transition',num:29,color:'#b87333',rc:'РєСЂР°СЃРЅРѕ-РѕСЂР°РЅР¶РµРІС‹Р№'},
+    Zn:{id:'Zn',symbol:'Zn',name:'Р¦РёРЅРє',cat:'transition',num:30,color:'#b8c0c8',rc:'РіРѕР»СѓР±РѕРІР°С‚Рѕ-СЃРµСЂС‹Р№'},
+    Br:{id:'Br',symbol:'Br',name:'Р‘СЂРѕРј',cat:'halogen',num:35,color:'#8B0000',rc:'С‚С‘РјРЅРѕ-РєСЂР°СЃРЅР°СЏ Р¶РёРґРєРѕСЃС‚СЊ'},
+    Ag:{id:'Ag',symbol:'Ag',name:'РЎРµСЂРµР±СЂРѕ',cat:'transition',num:47,color:'#e8e8e8',rc:'Р±Р»РµСЃС‚СЏС‰РёР№ СЃРµСЂРµР±СЂРёСЃС‚С‹Р№'},
+    Sn:{id:'Sn',symbol:'Sn',name:'РћР»РѕРІРѕ',cat:'transition',num:50,color:'#d0d0c8',rc:'СЃРµСЂРµР±СЂРёСЃС‚Рѕ-Р±РµР»С‹Р№'},
+    I:{id:'I',symbol:'I',name:'Р™РѕРґ',cat:'halogen',num:53,color:'#4a0080',rc:'С‚С‘РјРЅРѕ-С„РёРѕР»РµС‚РѕРІС‹Р№'},
+    Ba:{id:'Ba',symbol:'Ba',name:'Р‘Р°СЂРёР№',cat:'alkaline',num:56,color:'#c8c0b0',rc:'СЃРµСЂРµР±СЂРёСЃС‚Рѕ-Р±РµР»С‹Р№'},
+    W:{id:'W',symbol:'W',name:'Р’РѕР»СЊС„СЂР°Рј',cat:'transition',num:74,color:'#808890',rc:'СЃРµСЂРѕ-СЃС‚Р°Р»СЊРЅРѕР№'},
+    Pt:{id:'Pt',symbol:'Pt',name:'РџР»Р°С‚РёРЅР°',cat:'transition',num:78,color:'#d8d8d0',rc:'СЃРµСЂРµР±СЂРёСЃС‚Рѕ-Р±РµР»С‹Р№'},
+    Au:{id:'Au',symbol:'Au',name:'Р—РѕР»РѕС‚Рѕ',cat:'transition',num:79,color:'#FFD700',rc:'Р¶С‘Р»С‚С‹Р№ Р±Р»РµСЃС‚СЏС‰РёР№'},
+    Hg:{id:'Hg',symbol:'Hg',name:'Р С‚СѓС‚СЊ',cat:'transition',num:80,color:'#c0c0c8',rc:'СЃРµСЂРµР±СЂРёСЃС‚Р°СЏ Р¶РёРґРєРѕСЃС‚СЊ'},
+    Pb:{id:'Pb',symbol:'Pb',name:'РЎРІРёРЅРµС†',cat:'transition',num:82,color:'#6b6b78',rc:'РіРѕР»СѓР±РѕРІР°С‚Рѕ-СЃРµСЂС‹Р№'},
 
-    HCl:{id:'HCl',symbol:'HCl',name:'Соляная кислота',cat:'acid',color:'#e8e8e8',rc:'бесцветная жидкость'},
-    H2SO4:{id:'H2SO4',symbol:'H?SO?',name:'Серная кислота',cat:'acid',color:'#f0f0e0',rc:'бесцветная маслянистая'},
-    HNO3:{id:'HNO3',symbol:'HNO?',name:'Азотная кислота',cat:'acid',color:'#fff8e0',rc:'бесц./желтоватая'},
-    H3PO4:{id:'H3PO4',symbol:'H?PO?',name:'Фосфорная кислота',cat:'acid',color:'#f8f8f0',rc:'бесцветная'},
-    CH3COOH:{id:'CH3COOH',symbol:'CH?COOH',name:'Уксусная кислота',cat:'acid',color:'#f8f8f0',rc:'бесцветная, резкий запах'},
-    HF:{id:'HF',symbol:'HF',name:'Плавиковая кислота',cat:'acid',color:'#f0f0f0',rc:'бесцветная'},
-    H2CO3:{id:'H2CO3',symbol:'H?CO?',name:'Угольная кислота',cat:'acid',color:'#e8f0f8',rc:'бесцветная (газировка)'},
-    HBr:{id:'HBr',symbol:'HBr',name:'Бромоводородная к-та',cat:'acid',color:'#f0e8e0',rc:'бесцветная'},
-    HCN:{id:'HCN',symbol:'HCN',name:'Синильная кислота',cat:'acid',color:'#f8f0f0',rc:'бесцветная, миндаль'},
-    H2S:{id:'H2S',symbol:'H?S',name:'Сероводород',cat:'acid',color:'#f0f0d0',rc:'бесцветный газ, тухлый'},
+    HCl:{id:'HCl',symbol:'HCl',name:'РЎРѕР»СЏРЅР°СЏ РєРёСЃР»РѕС‚Р°',cat:'acid',color:'#e8e8e8',rc:'Р±РµСЃС†РІРµС‚РЅР°СЏ Р¶РёРґРєРѕСЃС‚СЊ'},
+    H2SO4:{id:'H2SO4',symbol:'Hв‚‚SOв‚„',name:'РЎРµСЂРЅР°СЏ РєРёСЃР»РѕС‚Р°',cat:'acid',color:'#f0f0e0',rc:'Р±РµСЃС†РІРµС‚РЅР°СЏ РјР°СЃР»СЏРЅРёСЃС‚Р°СЏ'},
+    HNO3:{id:'HNO3',symbol:'HNOв‚ѓ',name:'РђР·РѕС‚РЅР°СЏ РєРёСЃР»РѕС‚Р°',cat:'acid',color:'#fff8e0',rc:'Р±РµСЃС†./Р¶РµР»С‚РѕРІР°С‚Р°СЏ'},
+    H3PO4:{id:'H3PO4',symbol:'Hв‚ѓPOв‚„',name:'Р¤РѕСЃС„РѕСЂРЅР°СЏ РєРёСЃР»РѕС‚Р°',cat:'acid',color:'#f8f8f0',rc:'Р±РµСЃС†РІРµС‚РЅР°СЏ'},
+    CH3COOH:{id:'CH3COOH',symbol:'CHв‚ѓCOOH',name:'РЈРєСЃСѓСЃРЅР°СЏ РєРёСЃР»РѕС‚Р°',cat:'acid',color:'#f8f8f0',rc:'Р±РµСЃС†РІРµС‚РЅР°СЏ, СЂРµР·РєРёР№ Р·Р°РїР°С…'},
+    HF:{id:'HF',symbol:'HF',name:'РџР»Р°РІРёРєРѕРІР°СЏ РєРёСЃР»РѕС‚Р°',cat:'acid',color:'#f0f0f0',rc:'Р±РµСЃС†РІРµС‚РЅР°СЏ'},
+    H2CO3:{id:'H2CO3',symbol:'Hв‚‚COв‚ѓ',name:'РЈРіРѕР»СЊРЅР°СЏ РєРёСЃР»РѕС‚Р°',cat:'acid',color:'#e8f0f8',rc:'Р±РµСЃС†РІРµС‚РЅР°СЏ (РіР°Р·РёСЂРѕРІРєР°)'},
+    HBr:{id:'HBr',symbol:'HBr',name:'Р‘СЂРѕРјРѕРІРѕРґРѕСЂРѕРґРЅР°СЏ Рє-С‚Р°',cat:'acid',color:'#f0e8e0',rc:'Р±РµСЃС†РІРµС‚РЅР°СЏ'},
+    HCN:{id:'HCN',symbol:'HCN',name:'РЎРёРЅРёР»СЊРЅР°СЏ РєРёСЃР»РѕС‚Р°',cat:'acid',color:'#f8f0f0',rc:'Р±РµСЃС†РІРµС‚РЅР°СЏ, РјРёРЅРґР°Р»СЊ'},
+    H2S:{id:'H2S',symbol:'Hв‚‚S',name:'РЎРµСЂРѕРІРѕРґРѕСЂРѕРґ',cat:'acid',color:'#f0f0d0',rc:'Р±РµСЃС†РІРµС‚РЅС‹Р№ РіР°Р·, С‚СѓС…Р»С‹Р№'},
 
-    NaOH:{id:'NaOH',symbol:'NaOH',name:'Гидроксид натрия',cat:'base',color:'#ffffff',rc:'белые гранулы'},
-    KOH:{id:'KOH',symbol:'KOH',name:'Гидроксид калия',cat:'base',color:'#ffffff',rc:'белые гранулы'},
-    Ca_OH_2:{id:'Ca_OH_2',symbol:'Ca(OH)?',name:'Гидроксид кальция',cat:'base',color:'#f8f8f0',rc:'белый порошок'},
-    Ba_OH_2:{id:'Ba_OH_2',symbol:'Ba(OH)?',name:'Гидроксид бария',cat:'base',color:'#f0f0f0',rc:'белые кристаллы'},
-    NH4OH:{id:'NH4OH',symbol:'NH?OH',name:'Гидроксид аммония',cat:'base',color:'#f0f8f0',rc:'бесцветный р-р'},
+    NaOH:{id:'NaOH',symbol:'NaOH',name:'Р“РёРґСЂРѕРєСЃРёРґ РЅР°С‚СЂРёСЏ',cat:'base',color:'#ffffff',rc:'Р±РµР»С‹Рµ РіСЂР°РЅСѓР»С‹'},
+    KOH:{id:'KOH',symbol:'KOH',name:'Р“РёРґСЂРѕРєСЃРёРґ РєР°Р»РёСЏ',cat:'base',color:'#ffffff',rc:'Р±РµР»С‹Рµ РіСЂР°РЅСѓР»С‹'},
+    Ca_OH_2:{id:'Ca_OH_2',symbol:'Ca(OH)в‚‚',name:'Р“РёРґСЂРѕРєСЃРёРґ РєР°Р»СЊС†РёСЏ',cat:'base',color:'#f8f8f0',rc:'Р±РµР»С‹Р№ РїРѕСЂРѕС€РѕРє'},
+    Ba_OH_2:{id:'Ba_OH_2',symbol:'Ba(OH)в‚‚',name:'Р“РёРґСЂРѕРєСЃРёРґ Р±Р°СЂРёСЏ',cat:'base',color:'#f0f0f0',rc:'Р±РµР»С‹Рµ РєСЂРёСЃС‚Р°Р»Р»С‹'},
+    NH4OH:{id:'NH4OH',symbol:'NHв‚„OH',name:'Р“РёРґСЂРѕРєСЃРёРґ Р°РјРјРѕРЅРёСЏ',cat:'base',color:'#f0f8f0',rc:'Р±РµСЃС†РІРµС‚РЅС‹Р№ СЂ-СЂ'},
 
-    NaCl:{id:'NaCl',symbol:'NaCl',name:'Хлорид натрия',cat:'salt',color:'#ffffff',rc:'белые кристаллы'},
-    KCl:{id:'KCl',symbol:'KCl',name:'Хлорид калия',cat:'salt',color:'#ffffff',rc:'белые кристаллы'},
-    CaCO3:{id:'CaCO3',symbol:'CaCO?',name:'Карбонат кальция',cat:'salt',color:'#f8f8f0',rc:'белый (мрамор/мел)'},
-    Na2CO3:{id:'Na2CO3',symbol:'Na?CO?',name:'Карбонат натрия',cat:'salt',color:'#ffffff',rc:'белый порошок'},
-    NaHCO3:{id:'NaHCO3',symbol:'NaHCO?',name:'Сода пищевая',cat:'salt',color:'#ffffff',rc:'белый порошок'},
-    CuSO4:{id:'CuSO4',symbol:'CuSO?',name:'Сульфат меди',cat:'salt',color:'#1E90FF',rc:'ярко-синие кристаллы'},
-    FeCl3:{id:'FeCl3',symbol:'FeCl?',name:'Хлорид железа(III)',cat:'salt',color:'#8B4513',rc:'тёмно-коричневый'},
-    AgNO3:{id:'AgNO3',symbol:'AgNO?',name:'Нитрат серебра',cat:'salt',color:'#f0f0f0',rc:'бесцветные кристаллы'},
-    KMnO4:{id:'KMnO4',symbol:'KMnO?',name:'Перманганат калия',cat:'salt',color:'#800080',rc:'тёмно-фиолетовый'},
-    BaCl2:{id:'BaCl2',symbol:'BaCl?',name:'Хлорид бария',cat:'salt',color:'#f0f0f0',rc:'белые кристаллы'},
-    PbNO3_2:{id:'PbNO3_2',symbol:'Pb(NO?)?',name:'Нитрат свинца',cat:'salt',color:'#f0f0f0',rc:'белые кристаллы'},
-    KI:{id:'KI',symbol:'KI',name:'Йодид калия',cat:'salt',color:'#f8f8f0',rc:'белые кристаллы'},
-    FeSO4:{id:'FeSO4',symbol:'FeSO?',name:'Сульфат железа(II)',cat:'salt',color:'#90EE90',rc:'бледно-зелёные крист.'},
-    ZnSO4:{id:'ZnSO4',symbol:'ZnSO?',name:'Сульфат цинка',cat:'salt',color:'#f0f0f0',rc:'бесцветные кристаллы'},
-    CaCl2:{id:'CaCl2',symbol:'CaCl?',name:'Хлорид кальция',cat:'salt',color:'#f0f0f0',rc:'белые гранулы'},
-    Na2S:{id:'Na2S',symbol:'Na?S',name:'Сульфид натрия',cat:'salt',color:'#f8f0e0',rc:'желтоватые кристаллы'},
-    K2Cr2O7:{id:'K2Cr2O7',symbol:'K?Cr?O?',name:'Дихромат калия',cat:'salt',color:'#FF4500',rc:'ярко-оранжевые крист.'},
-    NH4Cl:{id:'NH4Cl',symbol:'NH?Cl',name:'Хлорид аммония',cat:'salt',color:'#ffffff',rc:'белый порошок'},
+    NaCl:{id:'NaCl',symbol:'NaCl',name:'РҐР»РѕСЂРёРґ РЅР°С‚СЂРёСЏ',cat:'salt',color:'#ffffff',rc:'Р±РµР»С‹Рµ РєСЂРёСЃС‚Р°Р»Р»С‹'},
+    KCl:{id:'KCl',symbol:'KCl',name:'РҐР»РѕСЂРёРґ РєР°Р»РёСЏ',cat:'salt',color:'#ffffff',rc:'Р±РµР»С‹Рµ РєСЂРёСЃС‚Р°Р»Р»С‹'},
+    CaCO3:{id:'CaCO3',symbol:'CaCOв‚ѓ',name:'РљР°СЂР±РѕРЅР°С‚ РєР°Р»СЊС†РёСЏ',cat:'salt',color:'#f8f8f0',rc:'Р±РµР»С‹Р№ (РјСЂР°РјРѕСЂ/РјРµР»)'},
+    Na2CO3:{id:'Na2CO3',symbol:'Naв‚‚COв‚ѓ',name:'РљР°СЂР±РѕРЅР°С‚ РЅР°С‚СЂРёСЏ',cat:'salt',color:'#ffffff',rc:'Р±РµР»С‹Р№ РїРѕСЂРѕС€РѕРє'},
+    NaHCO3:{id:'NaHCO3',symbol:'NaHCOв‚ѓ',name:'РЎРѕРґР° РїРёС‰РµРІР°СЏ',cat:'salt',color:'#ffffff',rc:'Р±РµР»С‹Р№ РїРѕСЂРѕС€РѕРє'},
+    CuSO4:{id:'CuSO4',symbol:'CuSOв‚„',name:'РЎСѓР»СЊС„Р°С‚ РјРµРґРё',cat:'salt',color:'#1E90FF',rc:'СЏСЂРєРѕ-СЃРёРЅРёРµ РєСЂРёСЃС‚Р°Р»Р»С‹'},
+    FeCl3:{id:'FeCl3',symbol:'FeClв‚ѓ',name:'РҐР»РѕСЂРёРґ Р¶РµР»РµР·Р°(III)',cat:'salt',color:'#8B4513',rc:'С‚С‘РјРЅРѕ-РєРѕСЂРёС‡РЅРµРІС‹Р№'},
+    AgNO3:{id:'AgNO3',symbol:'AgNOв‚ѓ',name:'РќРёС‚СЂР°С‚ СЃРµСЂРµР±СЂР°',cat:'salt',color:'#f0f0f0',rc:'Р±РµСЃС†РІРµС‚РЅС‹Рµ РєСЂРёСЃС‚Р°Р»Р»С‹'},
+    KMnO4:{id:'KMnO4',symbol:'KMnOв‚„',name:'РџРµСЂРјР°РЅРіР°РЅР°С‚ РєР°Р»РёСЏ',cat:'salt',color:'#800080',rc:'С‚С‘РјРЅРѕ-С„РёРѕР»РµС‚РѕРІС‹Р№'},
+    BaCl2:{id:'BaCl2',symbol:'BaClв‚‚',name:'РҐР»РѕСЂРёРґ Р±Р°СЂРёСЏ',cat:'salt',color:'#f0f0f0',rc:'Р±РµР»С‹Рµ РєСЂРёСЃС‚Р°Р»Р»С‹'},
+    PbNO3_2:{id:'PbNO3_2',symbol:'Pb(NOв‚ѓ)в‚‚',name:'РќРёС‚СЂР°С‚ СЃРІРёРЅС†Р°',cat:'salt',color:'#f0f0f0',rc:'Р±РµР»С‹Рµ РєСЂРёСЃС‚Р°Р»Р»С‹'},
+    KI:{id:'KI',symbol:'KI',name:'Р™РѕРґРёРґ РєР°Р»РёСЏ',cat:'salt',color:'#f8f8f0',rc:'Р±РµР»С‹Рµ РєСЂРёСЃС‚Р°Р»Р»С‹'},
+    FeSO4:{id:'FeSO4',symbol:'FeSOв‚„',name:'РЎСѓР»СЊС„Р°С‚ Р¶РµР»РµР·Р°(II)',cat:'salt',color:'#90EE90',rc:'Р±Р»РµРґРЅРѕ-Р·РµР»С‘РЅС‹Рµ РєСЂРёСЃС‚.'},
+    ZnSO4:{id:'ZnSO4',symbol:'ZnSOв‚„',name:'РЎСѓР»СЊС„Р°С‚ С†РёРЅРєР°',cat:'salt',color:'#f0f0f0',rc:'Р±РµСЃС†РІРµС‚РЅС‹Рµ РєСЂРёСЃС‚Р°Р»Р»С‹'},
+    CaCl2:{id:'CaCl2',symbol:'CaClв‚‚',name:'РҐР»РѕСЂРёРґ РєР°Р»СЊС†РёСЏ',cat:'salt',color:'#f0f0f0',rc:'Р±РµР»С‹Рµ РіСЂР°РЅСѓР»С‹'},
+    Na2S:{id:'Na2S',symbol:'Naв‚‚S',name:'РЎСѓР»СЊС„РёРґ РЅР°С‚СЂРёСЏ',cat:'salt',color:'#f8f0e0',rc:'Р¶РµР»С‚РѕРІР°С‚С‹Рµ РєСЂРёСЃС‚Р°Р»Р»С‹'},
+    K2Cr2O7:{id:'K2Cr2O7',symbol:'Kв‚‚Crв‚‚Oв‚‡',name:'Р”РёС…СЂРѕРјР°С‚ РєР°Р»РёСЏ',cat:'salt',color:'#FF4500',rc:'СЏСЂРєРѕ-РѕСЂР°РЅР¶РµРІС‹Рµ РєСЂРёСЃС‚.'},
+    NH4Cl:{id:'NH4Cl',symbol:'NHв‚„Cl',name:'РҐР»РѕСЂРёРґ Р°РјРјРѕРЅРёСЏ',cat:'salt',color:'#ffffff',rc:'Р±РµР»С‹Р№ РїРѕСЂРѕС€РѕРє'},
 
-    H2O:{id:'H2O',symbol:'H?O',name:'Вода',cat:'oxide',color:'#4fc3f7',rc:'бесцветная жидкость'},
-    CO2:{id:'CO2',symbol:'CO?',name:'Углекислый газ',cat:'oxide',color:'#e0e8f0',rc:'бесцветный газ'},
-    SO2:{id:'SO2',symbol:'SO?',name:'Сернистый газ',cat:'oxide',color:'#e8e8d0',rc:'бесцветный, резкий'},
-    NO2:{id:'NO2',symbol:'NO?',name:'Диоксид азота',cat:'oxide',color:'#8B4513',rc:'бурый ядовитый газ'},
-    CaO:{id:'CaO',symbol:'CaO',name:'Негашёная известь',cat:'oxide',color:'#f8f8f0',rc:'белые комки'},
-    Na2O:{id:'Na2O',symbol:'Na?O',name:'Оксид натрия',cat:'oxide',color:'#ffffff',rc:'белый порошок'},
-    Fe2O3:{id:'Fe2O3',symbol:'Fe?O?',name:'Оксид железа(III)',cat:'oxide',color:'#8B0000',rc:'бурый (ржавчина)'},
-    Al2O3:{id:'Al2O3',symbol:'Al?O?',name:'Оксид алюминия',cat:'oxide',color:'#f0f0f0',rc:'белый порошок'},
-    MnO2:{id:'MnO2',symbol:'MnO?',name:'Диоксид марганца',cat:'oxide',color:'#2d2d2d',rc:'чёрный порошок'},
+    H2O:{id:'H2O',symbol:'Hв‚‚O',name:'Р’РѕРґР°',cat:'oxide',color:'#4fc3f7',rc:'Р±РµСЃС†РІРµС‚РЅР°СЏ Р¶РёРґРєРѕСЃС‚СЊ'},
+    CO2:{id:'CO2',symbol:'COв‚‚',name:'РЈРіР»РµРєРёСЃР»С‹Р№ РіР°Р·',cat:'oxide',color:'#e0e8f0',rc:'Р±РµСЃС†РІРµС‚РЅС‹Р№ РіР°Р·'},
+    SO2:{id:'SO2',symbol:'SOв‚‚',name:'РЎРµСЂРЅРёСЃС‚С‹Р№ РіР°Р·',cat:'oxide',color:'#e8e8d0',rc:'Р±РµСЃС†РІРµС‚РЅС‹Р№, СЂРµР·РєРёР№'},
+    NO2:{id:'NO2',symbol:'NOв‚‚',name:'Р”РёРѕРєСЃРёРґ Р°Р·РѕС‚Р°',cat:'oxide',color:'#8B4513',rc:'Р±СѓСЂС‹Р№ СЏРґРѕРІРёС‚С‹Р№ РіР°Р·'},
+    CaO:{id:'CaO',symbol:'CaO',name:'РќРµРіР°С€С‘РЅР°СЏ РёР·РІРµСЃС‚СЊ',cat:'oxide',color:'#f8f8f0',rc:'Р±РµР»С‹Рµ РєРѕРјРєРё'},
+    Na2O:{id:'Na2O',symbol:'Naв‚‚O',name:'РћРєСЃРёРґ РЅР°С‚СЂРёСЏ',cat:'oxide',color:'#ffffff',rc:'Р±РµР»С‹Р№ РїРѕСЂРѕС€РѕРє'},
+    Fe2O3:{id:'Fe2O3',symbol:'Feв‚‚Oв‚ѓ',name:'РћРєСЃРёРґ Р¶РµР»РµР·Р°(III)',cat:'oxide',color:'#8B0000',rc:'Р±СѓСЂС‹Р№ (СЂР¶Р°РІС‡РёРЅР°)'},
+    Al2O3:{id:'Al2O3',symbol:'Alв‚‚Oв‚ѓ',name:'РћРєСЃРёРґ Р°Р»СЋРјРёРЅРёСЏ',cat:'oxide',color:'#f0f0f0',rc:'Р±РµР»С‹Р№ РїРѕСЂРѕС€РѕРє'},
+    MnO2:{id:'MnO2',symbol:'MnOв‚‚',name:'Р”РёРѕРєСЃРёРґ РјР°СЂРіР°РЅС†Р°',cat:'oxide',color:'#2d2d2d',rc:'С‡С‘СЂРЅС‹Р№ РїРѕСЂРѕС€РѕРє'},
 
-    NH3:{id:'NH3',symbol:'NH?',name:'Аммиак',cat:'compound',color:'#e0f0e0',rc:'бесцветный газ, резкий'},
-    H2O2:{id:'H2O2',symbol:'H?O?',name:'Перекись водорода',cat:'compound',color:'#e8f0ff',rc:'бесцветная жидкость'},
-    C2H5OH:{id:'C2H5OH',symbol:'C?H?OH',name:'Этанол',cat:'organic',color:'#f8f0e0',rc:'бесцветная жидкость'},
-    CH3OH:{id:'CH3OH',symbol:'CH?OH',name:'Метанол',cat:'organic',color:'#f0e8e0',rc:'бесцветная жидкость'},
-    C6H12O6:{id:'C6H12O6',symbol:'C?H??O?',name:'Глюкоза',cat:'organic',color:'#ffffff',rc:'белые кристаллы'},
-    C3H8:{id:'C3H8',symbol:'C?H?',name:'Пропан',cat:'organic',color:'#e8e8f0',rc:'бесцветный газ'},
-    C6H6:{id:'C6H6',symbol:'C?H?',name:'Бензол',cat:'organic',color:'#f0f0e0',rc:'бесцветная жидкость'},
-    CH4:{id:'CH4',symbol:'CH?',name:'Метан',cat:'organic',color:'#e8e8f0',rc:'бесцветный газ'},
-    C2H2:{id:'C2H2',symbol:'C?H?',name:'Ацетилен',cat:'organic',color:'#f0f0e8',rc:'бесцветный газ'},
+    NH3:{id:'NH3',symbol:'NHв‚ѓ',name:'РђРјРјРёР°Рє',cat:'compound',color:'#e0f0e0',rc:'Р±РµСЃС†РІРµС‚РЅС‹Р№ РіР°Р·, СЂРµР·РєРёР№'},
+    H2O2:{id:'H2O2',symbol:'Hв‚‚Oв‚‚',name:'РџРµСЂРµРєРёСЃСЊ РІРѕРґРѕСЂРѕРґР°',cat:'compound',color:'#e8f0ff',rc:'Р±РµСЃС†РІРµС‚РЅР°СЏ Р¶РёРґРєРѕСЃС‚СЊ'},
+    C2H5OH:{id:'C2H5OH',symbol:'Cв‚‚Hв‚…OH',name:'Р­С‚Р°РЅРѕР»',cat:'organic',color:'#f8f0e0',rc:'Р±РµСЃС†РІРµС‚РЅР°СЏ Р¶РёРґРєРѕСЃС‚СЊ'},
+    CH3OH:{id:'CH3OH',symbol:'CHв‚ѓOH',name:'РњРµС‚Р°РЅРѕР»',cat:'organic',color:'#f0e8e0',rc:'Р±РµСЃС†РІРµС‚РЅР°СЏ Р¶РёРґРєРѕСЃС‚СЊ'},
+    C6H12O6:{id:'C6H12O6',symbol:'Cв‚†Hв‚Ѓв‚‚Oв‚†',name:'Р“Р»СЋРєРѕР·Р°',cat:'organic',color:'#ffffff',rc:'Р±РµР»С‹Рµ РєСЂРёСЃС‚Р°Р»Р»С‹'},
+    C3H8:{id:'C3H8',symbol:'Cв‚ѓHв‚€',name:'РџСЂРѕРїР°РЅ',cat:'organic',color:'#e8e8f0',rc:'Р±РµСЃС†РІРµС‚РЅС‹Р№ РіР°Р·'},
+    C6H6:{id:'C6H6',symbol:'Cв‚†Hв‚†',name:'Р‘РµРЅР·РѕР»',cat:'organic',color:'#f0f0e0',rc:'Р±РµСЃС†РІРµС‚РЅР°СЏ Р¶РёРґРєРѕСЃС‚СЊ'},
+    CH4:{id:'CH4',symbol:'CHв‚„',name:'РњРµС‚Р°РЅ',cat:'organic',color:'#e8e8f0',rc:'Р±РµСЃС†РІРµС‚РЅС‹Р№ РіР°Р·'},
+    C2H2:{id:'C2H2',symbol:'Cв‚‚Hв‚‚',name:'РђС†РµС‚РёР»РµРЅ',cat:'organic',color:'#f0f0e8',rc:'Р±РµСЃС†РІРµС‚РЅС‹Р№ РіР°Р·'},
 
-    phenol:{id:'phenol',symbol:'Фенолфт.',name:'Фенолфталеин',cat:'indicator',color:'#f0f0f0',rc:'бесцветный'},
-    litmus:{id:'litmus',symbol:'Лакмус',name:'Лакмус',cat:'indicator',color:'#9370DB',rc:'фиолетовый'},
-    methyl_o:{id:'methyl_o',symbol:'Мет.оранж',name:'Метилоранж',cat:'indicator',color:'#FFA500',rc:'оранжевый'}
+    phenol:{id:'phenol',symbol:'Р¤РµРЅРѕР»С„С‚.',name:'Р¤РµРЅРѕР»С„С‚Р°Р»РµРёРЅ',cat:'indicator',color:'#f0f0f0',rc:'Р±РµСЃС†РІРµС‚РЅС‹Р№'},
+    litmus:{id:'litmus',symbol:'Р›Р°РєРјСѓСЃ',name:'Р›Р°РєРјСѓСЃ',cat:'indicator',color:'#9370DB',rc:'С„РёРѕР»РµС‚РѕРІС‹Р№'},
+    methyl_o:{id:'methyl_o',symbol:'РњРµС‚.РѕСЂР°РЅР¶',name:'РњРµС‚РёР»РѕСЂР°РЅР¶',cat:'indicator',color:'#FFA500',rc:'РѕСЂР°РЅР¶РµРІС‹Р№'}
 };
 
 const REACTIONS = [
-    {r:['NaOH','HCl'],eq:'NaOH + HCl > NaCl + H?O',name:'Нейтрализация',type:'exo',energy:'-57 кДж/моль',rc:'#e8e8f0',anim:'heat',desc:'Щёлочь + кислота > соль + вода. Раствор нагревается!',med:'Принцип антацидов (Маалокс).',cond:'t° комнатная',products:['NaCl','H?O'],danger:0,xp:10},
-    {r:['KOH','HCl'],eq:'KOH + HCl > KCl + H?O',name:'KOH + HCl',type:'exo',energy:'-57 кДж/моль',rc:'#e8e8f0',anim:'heat',desc:'Нейтрализация — раствор прозрачный, нагревается.',med:'KCl — препарат при гипокалиемии.',cond:'t° комнатная',products:['KCl','H?O'],danger:0,xp:10},
-    {r:['NaOH','H2SO4'],eq:'2NaOH + H?SO? > Na?SO? + 2H?O',name:'NaOH + серная',type:'exo',energy:'-114 кДж/моль',rc:'#f0f0e8',anim:'boil',desc:'Сильный нагрев! Раствор кипит!',med:'Na?SO? (глауберова соль) — слабительное.',cond:'Осторожно!',products:['Na?SO?','H?O'],danger:1,xp:15},
-    {r:['NaOH','HNO3'],eq:'NaOH + HNO? > NaNO? + H?O',name:'NaOH + азотная',type:'exo',energy:'-55 кДж/моль',rc:'#f0f0f0',anim:'heat',desc:'Нейтрализация. Прозрачный раствор.',med:'NaNO? — консервант (E251).',cond:'t° комнатная',products:['NaNO?','H?O'],danger:0,xp:10},
-    {r:['Ca_OH_2','CO2'],eq:'Ca(OH)? + CO? > CaCO?v + H?O',name:'Помутнение известковой воды',type:'exo',energy:'-113 кДж/моль',rc:'#ffffff',anim:'precipitate',desc:'Раствор МУТНЕЕТ — белый осадок CaCO?!',med:'Качественная реакция на CO? в выдыхаемом воздухе.',cond:'t° комнатная',products:['CaCO?','H?O'],danger:0,xp:20},
-    {r:['CH3COOH','NaOH'],eq:'CH?COOH + NaOH > CH?COONa + H?O',name:'Уксус + щёлочь',type:'exo',energy:'-56 кДж/моль',rc:'#f0f0f0',anim:'heat',desc:'Слабая кислота + сильная щёлочь > ацетат натрия.',med:'Ацетатные буферы в гемодиализе.',cond:'t° комнатная',products:['CH?COONa','H?O'],danger:0,xp:10},
-    {r:['Ba_OH_2','H2SO4'],eq:'Ba(OH)? + H?SO? > BaSO?v + 2H?O',name:'Осадок BaSO?',type:'exo',energy:'-120 кДж/моль',rc:'#ffffff',anim:'precipitate',desc:'Белый тяжёлый осадок BaSO?!',med:'BaSO? — рентгеноконтраст для ЖКТ.',cond:'t° комнатная',products:['BaSO?','H?O'],danger:0,xp:20},
+    {r:['NaOH','HCl'],eq:'NaOH + HCl в†’ NaCl + Hв‚‚O',name:'РќРµР№С‚СЂР°Р»РёР·Р°С†РёСЏ',type:'exo',energy:'-57 РєР”Р¶/РјРѕР»СЊ',rc:'#e8e8f0',anim:'heat',desc:'Р©С‘Р»РѕС‡СЊ + РєРёСЃР»РѕС‚Р° в†’ СЃРѕР»СЊ + РІРѕРґР°. Р Р°СЃС‚РІРѕСЂ РЅР°РіСЂРµРІР°РµС‚СЃСЏ!',med:'РџСЂРёРЅС†РёРї Р°РЅС‚Р°С†РёРґРѕРІ (РњР°Р°Р»РѕРєСЃ).',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['NaCl','Hв‚‚O'],danger:0,xp:10},
+    {r:['KOH','HCl'],eq:'KOH + HCl в†’ KCl + Hв‚‚O',name:'KOH + HCl',type:'exo',energy:'-57 РєР”Р¶/РјРѕР»СЊ',rc:'#e8e8f0',anim:'heat',desc:'РќРµР№С‚СЂР°Р»РёР·Р°С†РёСЏ вЂ” СЂР°СЃС‚РІРѕСЂ РїСЂРѕР·СЂР°С‡РЅС‹Р№, РЅР°РіСЂРµРІР°РµС‚СЃСЏ.',med:'KCl вЂ” РїСЂРµРїР°СЂР°С‚ РїСЂРё РіРёРїРѕРєР°Р»РёРµРјРёРё.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['KCl','Hв‚‚O'],danger:0,xp:10},
+    {r:['NaOH','H2SO4'],eq:'2NaOH + Hв‚‚SOв‚„ в†’ Naв‚‚SOв‚„ + 2Hв‚‚O',name:'NaOH + СЃРµСЂРЅР°СЏ',type:'exo',energy:'-114 РєР”Р¶/РјРѕР»СЊ',rc:'#f0f0e8',anim:'boil',desc:'РЎРёР»СЊРЅС‹Р№ РЅР°РіСЂРµРІ! Р Р°СЃС‚РІРѕСЂ РєРёРїРёС‚!',med:'Naв‚‚SOв‚„ (РіР»Р°СѓР±РµСЂРѕРІР° СЃРѕР»СЊ) вЂ” СЃР»Р°Р±РёС‚РµР»СЊРЅРѕРµ.',cond:'РћСЃС‚РѕСЂРѕР¶РЅРѕ!',products:['Naв‚‚SOв‚„','Hв‚‚O'],danger:1,xp:15},
+    {r:['NaOH','HNO3'],eq:'NaOH + HNOв‚ѓ в†’ NaNOв‚ѓ + Hв‚‚O',name:'NaOH + Р°Р·РѕС‚РЅР°СЏ',type:'exo',energy:'-55 РєР”Р¶/РјРѕР»СЊ',rc:'#f0f0f0',anim:'heat',desc:'РќРµР№С‚СЂР°Р»РёР·Р°С†РёСЏ. РџСЂРѕР·СЂР°С‡РЅС‹Р№ СЂР°СЃС‚РІРѕСЂ.',med:'NaNOв‚ѓ вЂ” РєРѕРЅСЃРµСЂРІР°РЅС‚ (E251).',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['NaNOв‚ѓ','Hв‚‚O'],danger:0,xp:10},
+    {r:['Ca_OH_2','CO2'],eq:'Ca(OH)в‚‚ + COв‚‚ в†’ CaCOв‚ѓв†“ + Hв‚‚O',name:'РџРѕРјСѓС‚РЅРµРЅРёРµ РёР·РІРµСЃС‚РєРѕРІРѕР№ РІРѕРґС‹',type:'exo',energy:'-113 РєР”Р¶/РјРѕР»СЊ',rc:'#ffffff',anim:'precipitate',desc:'Р Р°СЃС‚РІРѕСЂ РњРЈРўРќР•Р•Рў вЂ” Р±РµР»С‹Р№ РѕСЃР°РґРѕРє CaCOв‚ѓ!',med:'РљР°С‡РµСЃС‚РІРµРЅРЅР°СЏ СЂРµР°РєС†РёСЏ РЅР° COв‚‚ РІ РІС‹РґС‹С…Р°РµРјРѕРј РІРѕР·РґСѓС…Рµ.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['CaCOв‚ѓ','Hв‚‚O'],danger:0,xp:20},
+    {r:['CH3COOH','NaOH'],eq:'CHв‚ѓCOOH + NaOH в†’ CHв‚ѓCOONa + Hв‚‚O',name:'РЈРєСЃСѓСЃ + С‰С‘Р»РѕС‡СЊ',type:'exo',energy:'-56 РєР”Р¶/РјРѕР»СЊ',rc:'#f0f0f0',anim:'heat',desc:'РЎР»Р°Р±Р°СЏ РєРёСЃР»РѕС‚Р° + СЃРёР»СЊРЅР°СЏ С‰С‘Р»РѕС‡СЊ в†’ Р°С†РµС‚Р°С‚ РЅР°С‚СЂРёСЏ.',med:'РђС†РµС‚Р°С‚РЅС‹Рµ Р±СѓС„РµСЂС‹ РІ РіРµРјРѕРґРёР°Р»РёР·Рµ.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['CHв‚ѓCOONa','Hв‚‚O'],danger:0,xp:10},
+    {r:['Ba_OH_2','H2SO4'],eq:'Ba(OH)в‚‚ + Hв‚‚SOв‚„ в†’ BaSOв‚„в†“ + 2Hв‚‚O',name:'РћСЃР°РґРѕРє BaSOв‚„',type:'exo',energy:'-120 РєР”Р¶/РјРѕР»СЊ',rc:'#ffffff',anim:'precipitate',desc:'Р‘РµР»С‹Р№ С‚СЏР¶С‘Р»С‹Р№ РѕСЃР°РґРѕРє BaSOв‚„!',med:'BaSOв‚„ вЂ” СЂРµРЅС‚РіРµРЅРѕРєРѕРЅС‚СЂР°СЃС‚ РґР»СЏ Р–РљРў.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['BaSOв‚„','Hв‚‚O'],danger:0,xp:20},
 
-    {r:['Na','H2O'],eq:'2Na + 2H?O > 2NaOH + H?^',name:'Натрий в воде ??',type:'exo',energy:'-184 кДж/моль',rc:'#f0f0f0',anim:'explode',desc:'Натрий бегает по воде, ЗАГОРАЕТСЯ! Водород воспламеняется!',med:'Na — основной внеклет. катион. Физраствор.',cond:'ВЗРЫВООПАСНО!',products:['NaOH','H?'],danger:3,xp:50},
-    {r:['K','H2O'],eq:'2K + 2H?O > 2KOH + H?^',name:'Калий в воде ????',type:'exo',energy:'-196 кДж/моль',rc:'#e0d0ff',anim:'explode',desc:'МГНОВЕННЫЙ ВЗРЫВ! Фиолетовое пламя калия!',med:'K — основной внутриклет. катион.',cond:'ВЗРЫВ!',products:['KOH','H?'],danger:4,xp:60},
-    {r:['Li','H2O'],eq:'2Li + 2H?O > 2LiOH + H?^',name:'Литий в воде',type:'exo',energy:'-222 кДж/моль',rc:'#f0f0f0',anim:'bubble',desc:'Литий реагирует спокойнее — медленно пузырится.',med:'Li?CO? > лечение биполярного расстройства.',cond:'t° комнатная',products:['LiOH','H?'],danger:1,xp:25},
-    {r:['Ca','H2O'],eq:'Ca + 2H?O > Ca(OH)? + H?^',name:'Кальций в воде',type:'exo',energy:'-414 кДж/моль',rc:'#f0f0e8',anim:'bubble',desc:'Кальций пузырится, раствор мутнеет.',med:'Ca(OH)? в стоматологии.',cond:'t° комнатная',products:['Ca(OH)?','H?'],danger:1,xp:25},
+    {r:['Na','H2O'],eq:'2Na + 2Hв‚‚O в†’ 2NaOH + Hв‚‚в†‘',name:'РќР°С‚СЂРёР№ РІ РІРѕРґРµ рџ’Ґ',type:'exo',energy:'-184 РєР”Р¶/РјРѕР»СЊ',rc:'#f0f0f0',anim:'explode',desc:'РќР°С‚СЂРёР№ Р±РµРіР°РµС‚ РїРѕ РІРѕРґРµ, Р—РђР“РћР РђР•РўРЎРЇ! Р’РѕРґРѕСЂРѕРґ РІРѕСЃРїР»Р°РјРµРЅСЏРµС‚СЃСЏ!',med:'Na вЂ” РѕСЃРЅРѕРІРЅРѕР№ РІРЅРµРєР»РµС‚. РєР°С‚РёРѕРЅ. Р¤РёР·СЂР°СЃС‚РІРѕСЂ.',cond:'Р’Р—Р Р«Р’РћРћРџРђРЎРќРћ!',products:['NaOH','Hв‚‚'],danger:3,xp:50},
+    {r:['K','H2O'],eq:'2K + 2Hв‚‚O в†’ 2KOH + Hв‚‚в†‘',name:'РљР°Р»РёР№ РІ РІРѕРґРµ рџ”Ґрџ’Ґ',type:'exo',energy:'-196 РєР”Р¶/РјРѕР»СЊ',rc:'#e0d0ff',anim:'explode',desc:'РњР“РќРћР’Р•РќРќР«Р™ Р’Р—Р Р«Р’! Р¤РёРѕР»РµС‚РѕРІРѕРµ РїР»Р°РјСЏ РєР°Р»РёСЏ!',med:'K вЂ” РѕСЃРЅРѕРІРЅРѕР№ РІРЅСѓС‚СЂРёРєР»РµС‚. РєР°С‚РёРѕРЅ.',cond:'Р’Р—Р Р«Р’!',products:['KOH','Hв‚‚'],danger:4,xp:60},
+    {r:['Li','H2O'],eq:'2Li + 2Hв‚‚O в†’ 2LiOH + Hв‚‚в†‘',name:'Р›РёС‚РёР№ РІ РІРѕРґРµ',type:'exo',energy:'-222 РєР”Р¶/РјРѕР»СЊ',rc:'#f0f0f0',anim:'bubble',desc:'Р›РёС‚РёР№ СЂРµР°РіРёСЂСѓРµС‚ СЃРїРѕРєРѕР№РЅРµРµ вЂ” РјРµРґР»РµРЅРЅРѕ РїСѓР·С‹СЂРёС‚СЃСЏ.',med:'Liв‚‚COв‚ѓ в†’ Р»РµС‡РµРЅРёРµ Р±РёРїРѕР»СЏСЂРЅРѕРіРѕ СЂР°СЃСЃС‚СЂРѕР№СЃС‚РІР°.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['LiOH','Hв‚‚'],danger:1,xp:25},
+    {r:['Ca','H2O'],eq:'Ca + 2Hв‚‚O в†’ Ca(OH)в‚‚ + Hв‚‚в†‘',name:'РљР°Р»СЊС†РёР№ РІ РІРѕРґРµ',type:'exo',energy:'-414 РєР”Р¶/РјРѕР»СЊ',rc:'#f0f0e8',anim:'bubble',desc:'РљР°Р»СЊС†РёР№ РїСѓР·С‹СЂРёС‚СЃСЏ, СЂР°СЃС‚РІРѕСЂ РјСѓС‚РЅРµРµС‚.',med:'Ca(OH)в‚‚ РІ СЃС‚РѕРјР°С‚РѕР»РѕРіРёРё.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['Ca(OH)в‚‚','Hв‚‚'],danger:1,xp:25},
 
-    {r:['Fe','HCl'],eq:'Fe + 2HCl > FeCl? + H?^',name:'Железо + HCl',type:'exo',energy:'-89 кДж/моль',rc:'#90b890',anim:'bubble',desc:'Железо растворяется, раствор ЗЕЛЕНЕЕТ (Fe??), пузырьки H?!',med:'Дефицит Fe > анемия.',cond:'t° комнатная',products:['FeCl?','H?'],danger:0,xp:15},
-    {r:['Zn','HCl'],eq:'Zn + 2HCl > ZnCl? + H?^',name:'Цинк + HCl',type:'exo',energy:'-153 кДж/моль',rc:'#e8e8e8',anim:'bubble',desc:'Цинк активно растворяется — бурные пузырьки H?!',med:'Zn важен для иммунитета.',cond:'t° комнатная',products:['ZnCl?','H?'],danger:0,xp:15},
-    {r:['Zn','H2SO4'],eq:'Zn + H?SO?(разб.) > ZnSO? + H?^',name:'Цинк + серная',type:'exo',energy:'-156 кДж/моль',rc:'#e8e8e8',anim:'bubble',desc:'Растворение с пузырьками водорода.',med:'ZnSO? в глазных каплях.',cond:'Разбавленная',products:['ZnSO?','H?'],danger:0,xp:15},
-    {r:['Mg','HCl'],eq:'Mg + 2HCl > MgCl? + H?^',name:'Магний + HCl',type:'exo',energy:'-462 кДж/моль',rc:'#e8e8e8',anim:'boil',desc:'Магний БУРНО реагирует! Интенсивные пузырьки!',med:'Магнезия — спазмолитик.',cond:'t° комнатная',products:['MgCl?','H?'],danger:1,xp:20},
-    {r:['Al','HCl'],eq:'2Al + 6HCl > 2AlCl? + 3H?^',name:'Алюминий + HCl',type:'exo',energy:'-1049 кДж/моль',rc:'#e8e8e8',anim:'bubble',desc:'Сначала медленно (плёнка), затем бурно!',med:'Al(OH)? — антациды (Алмагель).',cond:'t° комнатная',products:['AlCl?','H?'],danger:1,xp:20},
-    {r:['Cu','HNO3'],eq:'3Cu + 8HNO? > 3Cu(NO?)? + 2NO^ + 4H?O',name:'Медь + азотная ??',type:'exo',energy:'-156 кДж/моль',rc:'#1E90FF',anim:'smoke',desc:'Медь > ярко-СИНИЙ раствор Cu??! Бурый ядовитый газ NO?!',med:'Cu важна для ферментов.',cond:'ЯДОВИТЫЙ ГАЗ!',products:['Cu(NO?)?','NO','H?O'],danger:3,xp:40},
-    {r:['Au','HNO3'],eq:'Au + HNO? > НЕ РЕАГИРУЕТ',name:'Золото + HNO? ?',type:'neutral',energy:'0',rc:'#FFD700',anim:'none',desc:'Золото НЕ растворяется! Нужна «царская водка» (HCl+HNO?)!',med:'Au > ауротерапия (ревм. артрит).',cond:'Не реагирует',products:['Au'],danger:0,xp:15},
+    {r:['Fe','HCl'],eq:'Fe + 2HCl в†’ FeClв‚‚ + Hв‚‚в†‘',name:'Р–РµР»РµР·Рѕ + HCl',type:'exo',energy:'-89 РєР”Р¶/РјРѕР»СЊ',rc:'#90b890',anim:'bubble',desc:'Р–РµР»РµР·Рѕ СЂР°СЃС‚РІРѕСЂСЏРµС‚СЃСЏ, СЂР°СЃС‚РІРѕСЂ Р—Р•Р›Р•РќР•Р•Рў (FeВІвЃє), РїСѓР·С‹СЂСЊРєРё Hв‚‚!',med:'Р”РµС„РёС†РёС‚ Fe в†’ Р°РЅРµРјРёСЏ.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['FeClв‚‚','Hв‚‚'],danger:0,xp:15},
+    {r:['Zn','HCl'],eq:'Zn + 2HCl в†’ ZnClв‚‚ + Hв‚‚в†‘',name:'Р¦РёРЅРє + HCl',type:'exo',energy:'-153 РєР”Р¶/РјРѕР»СЊ',rc:'#e8e8e8',anim:'bubble',desc:'Р¦РёРЅРє Р°РєС‚РёРІРЅРѕ СЂР°СЃС‚РІРѕСЂСЏРµС‚СЃСЏ вЂ” Р±СѓСЂРЅС‹Рµ РїСѓР·С‹СЂСЊРєРё Hв‚‚!',med:'Zn РІР°Р¶РµРЅ РґР»СЏ РёРјРјСѓРЅРёС‚РµС‚Р°.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['ZnClв‚‚','Hв‚‚'],danger:0,xp:15},
+    {r:['Zn','H2SO4'],eq:'Zn + Hв‚‚SOв‚„(СЂР°Р·Р±.) в†’ ZnSOв‚„ + Hв‚‚в†‘',name:'Р¦РёРЅРє + СЃРµСЂРЅР°СЏ',type:'exo',energy:'-156 РєР”Р¶/РјРѕР»СЊ',rc:'#e8e8e8',anim:'bubble',desc:'Р Р°СЃС‚РІРѕСЂРµРЅРёРµ СЃ РїСѓР·С‹СЂСЊРєР°РјРё РІРѕРґРѕСЂРѕРґР°.',med:'ZnSOв‚„ РІ РіР»Р°Р·РЅС‹С… РєР°РїР»СЏС….',cond:'Р Р°Р·Р±Р°РІР»РµРЅРЅР°СЏ',products:['ZnSOв‚„','Hв‚‚'],danger:0,xp:15},
+    {r:['Mg','HCl'],eq:'Mg + 2HCl в†’ MgClв‚‚ + Hв‚‚в†‘',name:'РњР°РіРЅРёР№ + HCl',type:'exo',energy:'-462 РєР”Р¶/РјРѕР»СЊ',rc:'#e8e8e8',anim:'boil',desc:'РњР°РіРЅРёР№ Р‘РЈР РќРћ СЂРµР°РіРёСЂСѓРµС‚! РРЅС‚РµРЅСЃРёРІРЅС‹Рµ РїСѓР·С‹СЂСЊРєРё!',med:'РњР°РіРЅРµР·РёСЏ вЂ” СЃРїР°Р·РјРѕР»РёС‚РёРє.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['MgClв‚‚','Hв‚‚'],danger:1,xp:20},
+    {r:['Al','HCl'],eq:'2Al + 6HCl в†’ 2AlClв‚ѓ + 3Hв‚‚в†‘',name:'РђР»СЋРјРёРЅРёР№ + HCl',type:'exo',energy:'-1049 РєР”Р¶/РјРѕР»СЊ',rc:'#e8e8e8',anim:'bubble',desc:'РЎРЅР°С‡Р°Р»Р° РјРµРґР»РµРЅРЅРѕ (РїР»С‘РЅРєР°), Р·Р°С‚РµРј Р±СѓСЂРЅРѕ!',med:'Al(OH)в‚ѓ вЂ” Р°РЅС‚Р°С†РёРґС‹ (РђР»РјР°РіРµР»СЊ).',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['AlClв‚ѓ','Hв‚‚'],danger:1,xp:20},
+    {r:['Cu','HNO3'],eq:'3Cu + 8HNOв‚ѓ в†’ 3Cu(NOв‚ѓ)в‚‚ + 2NOв†‘ + 4Hв‚‚O',name:'РњРµРґСЊ + Р°Р·РѕС‚РЅР°СЏ рџ§Ў',type:'exo',energy:'-156 РєР”Р¶/РјРѕР»СЊ',rc:'#1E90FF',anim:'smoke',desc:'РњРµРґСЊ в†’ СЏСЂРєРѕ-РЎРРќРР™ СЂР°СЃС‚РІРѕСЂ CuВІвЃє! Р‘СѓСЂС‹Р№ СЏРґРѕРІРёС‚С‹Р№ РіР°Р· NOв‚‚!',med:'Cu РІР°Р¶РЅР° РґР»СЏ С„РµСЂРјРµРЅС‚РѕРІ.',cond:'РЇР”РћР’РРўР«Р™ Р“РђР—!',products:['Cu(NOв‚ѓ)в‚‚','NO','Hв‚‚O'],danger:3,xp:40},
+    {r:['Au','HNO3'],eq:'Au + HNOв‚ѓ в†’ РќР• Р Р•РђР“РР РЈР•Рў',name:'Р—РѕР»РѕС‚Рѕ + HNOв‚ѓ вќЊ',type:'neutral',energy:'0',rc:'#FFD700',anim:'none',desc:'Р—РѕР»РѕС‚Рѕ РќР• СЂР°СЃС‚РІРѕСЂСЏРµС‚СЃСЏ! РќСѓР¶РЅР° В«С†Р°СЂСЃРєР°СЏ РІРѕРґРєР°В» (HCl+HNOв‚ѓ)!',med:'Au в†’ Р°СѓСЂРѕС‚РµСЂР°РїРёСЏ (СЂРµРІРј. Р°СЂС‚СЂРёС‚).',cond:'РќРµ СЂРµР°РіРёСЂСѓРµС‚',products:['Au'],danger:0,xp:15},
 
-    {r:['CaCO3','HCl'],eq:'CaCO? + 2HCl > CaCl? + H?O + CO?^',name:'Мрамор + кислота ??',type:'exo',energy:'-24 кДж/моль',rc:'#e8f0f8',anim:'fizz',desc:'Мрамор шипит — фонтан пузырьков CO?!',med:'CaCO? — антацид (Ренни).',cond:'Любая t°',products:['CaCl?','H?O','CO?'],danger:0,xp:15},
-    {r:['Na2CO3','HCl'],eq:'Na?CO? + 2HCl > 2NaCl + H?O + CO?^',name:'Сода + кислота ??',type:'exo',energy:'-26 кДж/моль',rc:'#e8e8f0',anim:'fizz',desc:'«Вулкан» — бурное выделение CO?!',med:'Сода для коррекции ацидоза.',cond:'t° комнатная',products:['NaCl','H?O','CO?'],danger:0,xp:15},
-    {r:['NaHCO3','HCl'],eq:'NaHCO? + HCl > NaCl + H?O + CO?^',name:'Пищевая сода + HCl ??',type:'exo',energy:'-12 кДж/моль',rc:'#f0f0f0',anim:'fizz',desc:'Бурные пузырьки CO?!',med:'Сода — антацид при изжоге.',cond:'t° комнатная',products:['NaCl','H?O','CO?'],danger:0,xp:10},
-    {r:['NaHCO3','CH3COOH'],eq:'NaHCO? + CH?COOH > CH?COONa + H?O + CO?^',name:'Сода + уксус ??',type:'exo',energy:'-10 кДж/моль',rc:'#f0f0e8',anim:'fizz',desc:'Самый знаменитый «вулкан»! Фонтан пены!',med:'Безопасная домашняя реакция.',cond:'t° комнатная',products:['CH?COONa','H?O','CO?'],danger:0,xp:10},
-    {r:['CaCO3','CH3COOH'],eq:'CaCO? + 2CH?COOH > Ca(CH?COO)? + H?O + CO?^',name:'Скорлупа + уксус',type:'exo',energy:'-15 кДж/моль',rc:'#f0f0e8',anim:'fizz',desc:'Яичная скорлупа растворяется с пузырьками!',med:'Уксусная кислота — антисептик.',cond:'t° комнатная',products:['Ca(CH?COO)?','H?O','CO?'],danger:0,xp:15},
+    {r:['CaCO3','HCl'],eq:'CaCOв‚ѓ + 2HCl в†’ CaClв‚‚ + Hв‚‚O + COв‚‚в†‘',name:'РњСЂР°РјРѕСЂ + РєРёСЃР»РѕС‚Р° рџ«§',type:'exo',energy:'-24 РєР”Р¶/РјРѕР»СЊ',rc:'#e8f0f8',anim:'fizz',desc:'РњСЂР°РјРѕСЂ С€РёРїРёС‚ вЂ” С„РѕРЅС‚Р°РЅ РїСѓР·С‹СЂСЊРєРѕРІ COв‚‚!',med:'CaCOв‚ѓ вЂ” Р°РЅС‚Р°С†РёРґ (Р РµРЅРЅРё).',cond:'Р›СЋР±Р°СЏ tВ°',products:['CaClв‚‚','Hв‚‚O','COв‚‚'],danger:0,xp:15},
+    {r:['Na2CO3','HCl'],eq:'Naв‚‚COв‚ѓ + 2HCl в†’ 2NaCl + Hв‚‚O + COв‚‚в†‘',name:'РЎРѕРґР° + РєРёСЃР»РѕС‚Р° рџ«§',type:'exo',energy:'-26 РєР”Р¶/РјРѕР»СЊ',rc:'#e8e8f0',anim:'fizz',desc:'В«Р’СѓР»РєР°РЅВ» вЂ” Р±СѓСЂРЅРѕРµ РІС‹РґРµР»РµРЅРёРµ COв‚‚!',med:'РЎРѕРґР° РґР»СЏ РєРѕСЂСЂРµРєС†РёРё Р°С†РёРґРѕР·Р°.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['NaCl','Hв‚‚O','COв‚‚'],danger:0,xp:15},
+    {r:['NaHCO3','HCl'],eq:'NaHCOв‚ѓ + HCl в†’ NaCl + Hв‚‚O + COв‚‚в†‘',name:'РџРёС‰РµРІР°СЏ СЃРѕРґР° + HCl рџ«§',type:'exo',energy:'-12 РєР”Р¶/РјРѕР»СЊ',rc:'#f0f0f0',anim:'fizz',desc:'Р‘СѓСЂРЅС‹Рµ РїСѓР·С‹СЂСЊРєРё COв‚‚!',med:'РЎРѕРґР° вЂ” Р°РЅС‚Р°С†РёРґ РїСЂРё РёР·Р¶РѕРіРµ.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['NaCl','Hв‚‚O','COв‚‚'],danger:0,xp:10},
+    {r:['NaHCO3','CH3COOH'],eq:'NaHCOв‚ѓ + CHв‚ѓCOOH в†’ CHв‚ѓCOONa + Hв‚‚O + COв‚‚в†‘',name:'РЎРѕРґР° + СѓРєСЃСѓСЃ рџЊ‹',type:'exo',energy:'-10 РєР”Р¶/РјРѕР»СЊ',rc:'#f0f0e8',anim:'fizz',desc:'РЎР°РјС‹Р№ Р·РЅР°РјРµРЅРёС‚С‹Р№ В«РІСѓР»РєР°РЅВ»! Р¤РѕРЅС‚Р°РЅ РїРµРЅС‹!',med:'Р‘РµР·РѕРїР°СЃРЅР°СЏ РґРѕРјР°С€РЅСЏСЏ СЂРµР°РєС†РёСЏ.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['CHв‚ѓCOONa','Hв‚‚O','COв‚‚'],danger:0,xp:10},
+    {r:['CaCO3','CH3COOH'],eq:'CaCOв‚ѓ + 2CHв‚ѓCOOH в†’ Ca(CHв‚ѓCOO)в‚‚ + Hв‚‚O + COв‚‚в†‘',name:'РЎРєРѕСЂР»СѓРїР° + СѓРєСЃСѓСЃ',type:'exo',energy:'-15 РєР”Р¶/РјРѕР»СЊ',rc:'#f0f0e8',anim:'fizz',desc:'РЇРёС‡РЅР°СЏ СЃРєРѕСЂР»СѓРїР° СЂР°СЃС‚РІРѕСЂСЏРµС‚СЃСЏ СЃ РїСѓР·С‹СЂСЊРєР°РјРё!',med:'РЈРєСЃСѓСЃРЅР°СЏ РєРёСЃР»РѕС‚Р° вЂ” Р°РЅС‚РёСЃРµРїС‚РёРє.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['Ca(CHв‚ѓCOO)в‚‚','Hв‚‚O','COв‚‚'],danger:0,xp:15},
 
-    {r:['AgNO3','NaCl'],eq:'AgNO? + NaCl > AgClv + NaNO?',name:'Белый осадок AgCl',type:'neutral',energy:'-65 кДж/моль',rc:'#ffffff',anim:'precipitate',desc:'БЕЛЫЙ ТВОРОЖИСТЫЙ осадок! Качественная на Cl?.',med:'Определение хлоридов в моче.',cond:'t° комнатная',products:['AgCl','NaNO?'],danger:0,xp:20},
-    {r:['BaCl2','H2SO4'],eq:'BaCl? + H?SO? > BaSO?v + 2HCl',name:'Белый осадок BaSO?',type:'neutral',energy:'-50 кДж/моль',rc:'#ffffff',anim:'precipitate',desc:'БЕЛЫЙ нерастворимый осадок. Качественная на SO???.',med:'BaSO? — рентгеноконтраст.',cond:'t° комнатная',products:['BaSO?','HCl'],danger:0,xp:20},
-    {r:['FeCl3','NaOH'],eq:'FeCl? + 3NaOH > Fe(OH)?v + 3NaCl',name:'БУРЫЙ осадок Fe(OH)? ??',type:'neutral',energy:'-72 кДж/моль',rc:'#8B4513',anim:'precipitate',desc:'РЫЖЕ-БУРЫЙ осадок! Реакция на Fe??!',med:'Fe(OH)? — антидот при отравлении мышьяком!',cond:'t° комнатная',products:['Fe(OH)?','NaCl'],danger:0,xp:25},
-    {r:['CuSO4','NaOH'],eq:'CuSO? + 2NaOH > Cu(OH)?v + Na?SO?',name:'ГОЛУБОЙ осадок Cu(OH)? ??',type:'neutral',energy:'-63 кДж/моль',rc:'#4169E1',anim:'precipitate',desc:'НЕЖНО-ГОЛУБОЙ гелеобразный осадок! Красота!',med:'Биуретовая реакция на белки!',cond:'t° комнатная',products:['Cu(OH)?','Na?SO?'],danger:0,xp:25},
-    {r:['AgNO3','KI'],eq:'AgNO? + KI > AgIv + KNO?',name:'ЖЁЛТЫЙ осадок AgI ??',type:'neutral',energy:'-62 кДж/моль',rc:'#FFD700',anim:'precipitate',desc:'ЯРКО-ЖЁЛТЫЙ осадок иодида серебра!',med:'AgI — рентгенографические плёнки.',cond:'t° комнатная',products:['AgI','KNO?'],danger:0,xp:25},
-    {r:['PbNO3_2','KI'],eq:'Pb(NO?)? + 2KI > PbI?v + 2KNO?',name:'«Золотой дождь» ?',type:'neutral',energy:'-98 кДж/моль',rc:'#FFD700',anim:'golden',desc:'КРАСИВЕЙШАЯ реакция! Золотые кристаллы!',med:'?? Свинец ТОКСИЧЕН!',cond:'горячий > охлаждение',products:['PbI?','KNO?'],danger:2,xp:40},
-    {r:['Na2S','PbNO3_2'],eq:'Na?S + Pb(NO?)? > PbSv + 2NaNO?',name:'ЧЁРНЫЙ осадок PbS ?',type:'neutral',energy:'-85 кДж/моль',rc:'#1a1a1a',anim:'precipitate',desc:'ЧЁРНЫЙ осадок!',med:'Реакция на свинец в биожидкостях.',cond:'t° комнатная',products:['PbS','NaNO?'],danger:2,xp:30},
+    {r:['AgNO3','NaCl'],eq:'AgNOв‚ѓ + NaCl в†’ AgClв†“ + NaNOв‚ѓ',name:'Р‘РµР»С‹Р№ РѕСЃР°РґРѕРє AgCl',type:'neutral',energy:'-65 РєР”Р¶/РјРѕР»СЊ',rc:'#ffffff',anim:'precipitate',desc:'Р‘Р•Р›Р«Р™ РўР’РћР РћР–РРЎРўР«Р™ РѕСЃР°РґРѕРє! РљР°С‡РµСЃС‚РІРµРЅРЅР°СЏ РЅР° ClвЃ».',med:'РћРїСЂРµРґРµР»РµРЅРёРµ С…Р»РѕСЂРёРґРѕРІ РІ РјРѕС‡Рµ.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['AgCl','NaNOв‚ѓ'],danger:0,xp:20},
+    {r:['BaCl2','H2SO4'],eq:'BaClв‚‚ + Hв‚‚SOв‚„ в†’ BaSOв‚„в†“ + 2HCl',name:'Р‘РµР»С‹Р№ РѕСЃР°РґРѕРє BaSOв‚„',type:'neutral',energy:'-50 РєР”Р¶/РјРѕР»СЊ',rc:'#ffffff',anim:'precipitate',desc:'Р‘Р•Р›Р«Р™ РЅРµСЂР°СЃС‚РІРѕСЂРёРјС‹Р№ РѕСЃР°РґРѕРє. РљР°С‡РµСЃС‚РІРµРЅРЅР°СЏ РЅР° SOв‚„ВІвЃ».',med:'BaSOв‚„ вЂ” СЂРµРЅС‚РіРµРЅРѕРєРѕРЅС‚СЂР°СЃС‚.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['BaSOв‚„','HCl'],danger:0,xp:20},
+    {r:['FeCl3','NaOH'],eq:'FeClв‚ѓ + 3NaOH в†’ Fe(OH)в‚ѓв†“ + 3NaCl',name:'Р‘РЈР Р«Р™ РѕСЃР°РґРѕРє Fe(OH)в‚ѓ рџџ¤',type:'neutral',energy:'-72 РєР”Р¶/РјРѕР»СЊ',rc:'#8B4513',anim:'precipitate',desc:'Р Р«Р–Р•-Р‘РЈР Р«Р™ РѕСЃР°РґРѕРє! Р РµР°РєС†РёСЏ РЅР° FeВівЃє!',med:'Fe(OH)в‚ѓ вЂ” Р°РЅС‚РёРґРѕС‚ РїСЂРё РѕС‚СЂР°РІР»РµРЅРёРё РјС‹С€СЊСЏРєРѕРј!',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['Fe(OH)в‚ѓ','NaCl'],danger:0,xp:25},
+    {r:['CuSO4','NaOH'],eq:'CuSOв‚„ + 2NaOH в†’ Cu(OH)в‚‚в†“ + Naв‚‚SOв‚„',name:'Р“РћР›РЈР‘РћР™ РѕСЃР°РґРѕРє Cu(OH)в‚‚ рџ”µ',type:'neutral',energy:'-63 РєР”Р¶/РјРѕР»СЊ',rc:'#4169E1',anim:'precipitate',desc:'РќР•Р–РќРћ-Р“РћР›РЈР‘РћР™ РіРµР»РµРѕР±СЂР°Р·РЅС‹Р№ РѕСЃР°РґРѕРє! РљСЂР°СЃРѕС‚Р°!',med:'Р‘РёСѓСЂРµС‚РѕРІР°СЏ СЂРµР°РєС†РёСЏ РЅР° Р±РµР»РєРё!',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['Cu(OH)в‚‚','Naв‚‚SOв‚„'],danger:0,xp:25},
+    {r:['AgNO3','KI'],eq:'AgNOв‚ѓ + KI в†’ AgIв†“ + KNOв‚ѓ',name:'Р–РЃР›РўР«Р™ РѕСЃР°РґРѕРє AgI рџџЎ',type:'neutral',energy:'-62 РєР”Р¶/РјРѕР»СЊ',rc:'#FFD700',anim:'precipitate',desc:'РЇР РљРћ-Р–РЃР›РўР«Р™ РѕСЃР°РґРѕРє РёРѕРґРёРґР° СЃРµСЂРµР±СЂР°!',med:'AgI вЂ” СЂРµРЅС‚РіРµРЅРѕРіСЂР°С„РёС‡РµСЃРєРёРµ РїР»С‘РЅРєРё.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['AgI','KNOв‚ѓ'],danger:0,xp:25},
+    {r:['PbNO3_2','KI'],eq:'Pb(NOв‚ѓ)в‚‚ + 2KI в†’ PbIв‚‚в†“ + 2KNOв‚ѓ',name:'В«Р—РѕР»РѕС‚РѕР№ РґРѕР¶РґСЊВ» вњЁ',type:'neutral',energy:'-98 РєР”Р¶/РјРѕР»СЊ',rc:'#FFD700',anim:'golden',desc:'РљР РђРЎРР’Р•Р™РЁРђРЇ СЂРµР°РєС†РёСЏ! Р—РѕР»РѕС‚С‹Рµ РєСЂРёСЃС‚Р°Р»Р»С‹!',med:'вљ пёЏ РЎРІРёРЅРµС† РўРћРљРЎРР§Р•Рќ!',cond:'РіРѕСЂСЏС‡РёР№ в†’ РѕС…Р»Р°Р¶РґРµРЅРёРµ',products:['PbIв‚‚','KNOв‚ѓ'],danger:2,xp:40},
+    {r:['Na2S','PbNO3_2'],eq:'Naв‚‚S + Pb(NOв‚ѓ)в‚‚ в†’ PbSв†“ + 2NaNOв‚ѓ',name:'Р§РЃР РќР«Р™ РѕСЃР°РґРѕРє PbS вљ«',type:'neutral',energy:'-85 РєР”Р¶/РјРѕР»СЊ',rc:'#1a1a1a',anim:'precipitate',desc:'Р§РЃР РќР«Р™ РѕСЃР°РґРѕРє!',med:'Р РµР°РєС†РёСЏ РЅР° СЃРІРёРЅРµС† РІ Р±РёРѕР¶РёРґРєРѕСЃС‚СЏС….',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['PbS','NaNOв‚ѓ'],danger:2,xp:30},
 
-    {r:['Cu','AgNO3'],eq:'Cu + 2AgNO? > Cu(NO?)? + 2Agv',name:'Дерево серебра ??',type:'exo',energy:'-148 кДж/моль',rc:'#87CEEB',anim:'crystals',desc:'На меди «иголки» серебра! Раствор голубеет!',med:'AgNO? (ляпис) — антисептик.',cond:'t° комнатная',products:['Cu(NO?)?','Ag'],danger:0,xp:30},
-    {r:['Fe','CuSO4'],eq:'Fe + CuSO? > FeSO? + Cuv',name:'Красная медь на железе',type:'exo',energy:'-153 кДж/моль',rc:'#90EE90',anim:'coat',desc:'На гвозде — КРАСНЫЙ налёт меди! Раствор зеленеет!',med:'Болезнь Вильсона — нарушение обмена Cu.',cond:'t° комнатная',products:['FeSO?','Cu'],danger:0,xp:25},
-    {r:['Zn','CuSO4'],eq:'Zn + CuSO? > ZnSO? + Cuv',name:'Цинк > медь',type:'exo',energy:'-218 кДж/моль',rc:'#e0e8e0',anim:'coat',desc:'Красный налёт Cu на цинке. Раствор обесцвечивается!',med:'Zn и Cu — микроэлементы.',cond:'t° комнатная',products:['ZnSO?','Cu'],danger:0,xp:25},
+    {r:['Cu','AgNO3'],eq:'Cu + 2AgNOв‚ѓ в†’ Cu(NOв‚ѓ)в‚‚ + 2Agв†“',name:'Р”РµСЂРµРІРѕ СЃРµСЂРµР±СЂР° рџЊІ',type:'exo',energy:'-148 РєР”Р¶/РјРѕР»СЊ',rc:'#87CEEB',anim:'crystals',desc:'РќР° РјРµРґРё В«РёРіРѕР»РєРёВ» СЃРµСЂРµР±СЂР°! Р Р°СЃС‚РІРѕСЂ РіРѕР»СѓР±РµРµС‚!',med:'AgNOв‚ѓ (Р»СЏРїРёСЃ) вЂ” Р°РЅС‚РёСЃРµРїС‚РёРє.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['Cu(NOв‚ѓ)в‚‚','Ag'],danger:0,xp:30},
+    {r:['Fe','CuSO4'],eq:'Fe + CuSOв‚„ в†’ FeSOв‚„ + Cuв†“',name:'РљСЂР°СЃРЅР°СЏ РјРµРґСЊ РЅР° Р¶РµР»РµР·Рµ',type:'exo',energy:'-153 РєР”Р¶/РјРѕР»СЊ',rc:'#90EE90',anim:'coat',desc:'РќР° РіРІРѕР·РґРµ вЂ” РљР РђРЎРќР«Р™ РЅР°Р»С‘С‚ РјРµРґРё! Р Р°СЃС‚РІРѕСЂ Р·РµР»РµРЅРµРµС‚!',med:'Р‘РѕР»РµР·РЅСЊ Р’РёР»СЊСЃРѕРЅР° вЂ” РЅР°СЂСѓС€РµРЅРёРµ РѕР±РјРµРЅР° Cu.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['FeSOв‚„','Cu'],danger:0,xp:25},
+    {r:['Zn','CuSO4'],eq:'Zn + CuSOв‚„ в†’ ZnSOв‚„ + Cuв†“',name:'Р¦РёРЅРє в†’ РјРµРґСЊ',type:'exo',energy:'-218 РєР”Р¶/РјРѕР»СЊ',rc:'#e0e8e0',anim:'coat',desc:'РљСЂР°СЃРЅС‹Р№ РЅР°Р»С‘С‚ Cu РЅР° С†РёРЅРєРµ. Р Р°СЃС‚РІРѕСЂ РѕР±РµСЃС†РІРµС‡РёРІР°РµС‚СЃСЏ!',med:'Zn Рё Cu вЂ” РјРёРєСЂРѕСЌР»РµРјРµРЅС‚С‹.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['ZnSOв‚„','Cu'],danger:0,xp:25},
 
-    {r:['H','O'],eq:'2H? + O? > 2H?O',name:'Гремучий газ ????',type:'exo',energy:'-572 кДж/моль',rc:'#a8d8ff',anim:'explode',desc:'ГРЕМУЧИЙ ГАЗ! H?+O? > мощный ВЗРЫВ!',med:'Вода — 60% массы человека.',cond:'t° > 500°C',products:['H?O'],danger:4,xp:50},
-    {r:['C','O'],eq:'C + O? > CO?',name:'Горение углерода',type:'exo',energy:'-393 кДж/моль',rc:'#e0e0e0',anim:'burn',desc:'Углерод горит, образуя CO?.',med:'CO? — конечный продукт дыхания.',cond:'Поджиг',products:['CO?'],danger:1,xp:15},
-    {r:['S','O'],eq:'S + O? > SO?',name:'Голубое пламя серы ??',type:'exo',energy:'-297 кДж/моль',rc:'#6495ED',anim:'burn',desc:'Сера горит ГОЛУБЫМ пламенем! Резкий запах!',med:'SO? — Е220 (консервант).',cond:'Поджиг',products:['SO?'],danger:2,xp:25},
-    {r:['Fe','O'],eq:'4Fe + 3O? > 2Fe?O?',name:'Горение железа ??',type:'exo',energy:'-1648 кДж/моль',rc:'#8B0000',anim:'sparks',desc:'В чистом O? железо ГОРИТ яркими ИСКРАМИ!',med:'Fe в гемоглобине > транспорт O?.',cond:'В чистом O?',products:['Fe?O?'],danger:2,xp:30},
-    {r:['Mg','O'],eq:'2Mg + O? > 2MgO',name:'Ослепительная вспышка ??',type:'exo',energy:'-1204 кДж/моль',rc:'#ffffff',anim:'flash',desc:'ОСЛЕПИТЕЛЬНЫЙ белый свет! НЕ смотреть!',med:'MgO — антацид. Mg — 600+ ферментов.',cond:'Поджиг',products:['MgO'],danger:3,xp:40},
-    {r:['P','O'],eq:'4P + 5O? > 2P?O?',name:'Фосфор горит ????',type:'exo',energy:'-3010 кДж/моль',rc:'#fffde8',anim:'burn',desc:'Белый фосфор САМОВОСПЛАМЕНЯЕТСЯ!',med:'Фосфорные ожоги — тяжелейшие!',cond:'t° > 34°C',products:['P?O?'],danger:5,xp:60},
-    {r:['CH4','O'],eq:'CH? + 2O? > CO? + 2H?O',name:'Горение метана ??',type:'exo',energy:'-890 кДж/моль',rc:'#a0c0ff',anim:'burn',desc:'Природный газ > синее пламя. Утечка > ВЗРЫВ!',med:'Метан > асфиксия.',cond:'Поджиг',products:['CO?','H?O'],danger:3,xp:35},
-    {r:['C2H2','O'],eq:'2C?H? + 5O? > 4CO? + 2H?O',name:'Горение ацетилена ??',type:'exo',energy:'-2600 кДж/моль',rc:'#FFD700',anim:'burn',desc:'Яркое коптящее пламя! Сварка (3000°C)!',med:'Ацетилен ВЗРЫВООПАСЕН!',cond:'Поджиг',products:['CO?','H?O'],danger:4,xp:45},
-    {r:['C2H5OH','O'],eq:'C?H?OH + 3O? > 2CO? + 3H?O',name:'Горение спирта ??',type:'exo',energy:'-1367 кДж/моль',rc:'#a8c0ff',anim:'burn',desc:'Почти невидимое голубоватое пламя!',med:'70% этанол — антисептик.',cond:'Поджиг',products:['CO?','H?O'],danger:2,xp:25},
-    {r:['C3H8','O'],eq:'C?H? + 5O? > 3CO? + 4H?O',name:'Горение пропана ??',type:'exo',energy:'-2220 кДж/моль',rc:'#ffe0a0',anim:'explode',desc:'Газовый баллон! Утечка > ВЗРЫВ!',med:'Ожоги пропаном — частая травма.',cond:'Поджиг',products:['CO?','H?O'],danger:4,xp:45},
+    {r:['H','O'],eq:'2Hв‚‚ + Oв‚‚ в†’ 2Hв‚‚O',name:'Р“СЂРµРјСѓС‡РёР№ РіР°Р· рџ”Ґрџ’Ґ',type:'exo',energy:'-572 РєР”Р¶/РјРѕР»СЊ',rc:'#a8d8ff',anim:'explode',desc:'Р“Р Р•РњРЈР§РР™ Р“РђР—! Hв‚‚+Oв‚‚ в†’ РјРѕС‰РЅС‹Р№ Р’Р—Р Р«Р’!',med:'Р’РѕРґР° вЂ” 60% РјР°СЃСЃС‹ С‡РµР»РѕРІРµРєР°.',cond:'tВ° > 500В°C',products:['Hв‚‚O'],danger:4,xp:50},
+    {r:['C','O'],eq:'C + Oв‚‚ в†’ COв‚‚',name:'Р“РѕСЂРµРЅРёРµ СѓРіР»РµСЂРѕРґР°',type:'exo',energy:'-393 РєР”Р¶/РјРѕР»СЊ',rc:'#e0e0e0',anim:'burn',desc:'РЈРіР»РµСЂРѕРґ РіРѕСЂРёС‚, РѕР±СЂР°Р·СѓСЏ COв‚‚.',med:'COв‚‚ вЂ” РєРѕРЅРµС‡РЅС‹Р№ РїСЂРѕРґСѓРєС‚ РґС‹С…Р°РЅРёСЏ.',cond:'РџРѕРґР¶РёРі',products:['COв‚‚'],danger:1,xp:15},
+    {r:['S','O'],eq:'S + Oв‚‚ в†’ SOв‚‚',name:'Р“РѕР»СѓР±РѕРµ РїР»Р°РјСЏ СЃРµСЂС‹ рџ”µ',type:'exo',energy:'-297 РєР”Р¶/РјРѕР»СЊ',rc:'#6495ED',anim:'burn',desc:'РЎРµСЂР° РіРѕСЂРёС‚ Р“РћР›РЈР‘Р«Рњ РїР»Р°РјРµРЅРµРј! Р РµР·РєРёР№ Р·Р°РїР°С…!',med:'SOв‚‚ вЂ” Р•220 (РєРѕРЅСЃРµСЂРІР°РЅС‚).',cond:'РџРѕРґР¶РёРі',products:['SOв‚‚'],danger:2,xp:25},
+    {r:['Fe','O'],eq:'4Fe + 3Oв‚‚ в†’ 2Feв‚‚Oв‚ѓ',name:'Р“РѕСЂРµРЅРёРµ Р¶РµР»РµР·Р° рџ”Ґ',type:'exo',energy:'-1648 РєР”Р¶/РјРѕР»СЊ',rc:'#8B0000',anim:'sparks',desc:'Р’ С‡РёСЃС‚РѕРј Oв‚‚ Р¶РµР»РµР·Рѕ Р“РћР РРў СЏСЂРєРёРјРё РРЎРљР РђРњР!',med:'Fe РІ РіРµРјРѕРіР»РѕР±РёРЅРµ в†’ С‚СЂР°РЅСЃРїРѕСЂС‚ Oв‚‚.',cond:'Р’ С‡РёСЃС‚РѕРј Oв‚‚',products:['Feв‚‚Oв‚ѓ'],danger:2,xp:30},
+    {r:['Mg','O'],eq:'2Mg + Oв‚‚ в†’ 2MgO',name:'РћСЃР»РµРїРёС‚РµР»СЊРЅР°СЏ РІСЃРїС‹С€РєР° вЂпёЏ',type:'exo',energy:'-1204 РєР”Р¶/РјРѕР»СЊ',rc:'#ffffff',anim:'flash',desc:'РћРЎР›Р•РџРРўР•Р›Р¬РќР«Р™ Р±РµР»С‹Р№ СЃРІРµС‚! РќР• СЃРјРѕС‚СЂРµС‚СЊ!',med:'MgO вЂ” Р°РЅС‚Р°С†РёРґ. Mg вЂ” 600+ С„РµСЂРјРµРЅС‚РѕРІ.',cond:'РџРѕРґР¶РёРі',products:['MgO'],danger:3,xp:40},
+    {r:['P','O'],eq:'4P + 5Oв‚‚ в†’ 2Pв‚‚Oв‚…',name:'Р¤РѕСЃС„РѕСЂ РіРѕСЂРёС‚ в пёЏрџ”Ґ',type:'exo',energy:'-3010 РєР”Р¶/РјРѕР»СЊ',rc:'#fffde8',anim:'burn',desc:'Р‘РµР»С‹Р№ С„РѕСЃС„РѕСЂ РЎРђРњРћР’РћРЎРџР›РђРњР•РќРЇР•РўРЎРЇ!',med:'Р¤РѕСЃС„РѕСЂРЅС‹Рµ РѕР¶РѕРіРё вЂ” С‚СЏР¶РµР»РµР№С€РёРµ!',cond:'tВ° > 34В°C',products:['Pв‚‚Oв‚…'],danger:5,xp:60},
+    {r:['CH4','O'],eq:'CHв‚„ + 2Oв‚‚ в†’ COв‚‚ + 2Hв‚‚O',name:'Р“РѕСЂРµРЅРёРµ РјРµС‚Р°РЅР° рџ”Ґ',type:'exo',energy:'-890 РєР”Р¶/РјРѕР»СЊ',rc:'#a0c0ff',anim:'burn',desc:'РџСЂРёСЂРѕРґРЅС‹Р№ РіР°Р· в†’ СЃРёРЅРµРµ РїР»Р°РјСЏ. РЈС‚РµС‡РєР° в†’ Р’Р—Р Р«Р’!',med:'РњРµС‚Р°РЅ в†’ Р°СЃС„РёРєСЃРёСЏ.',cond:'РџРѕРґР¶РёРі',products:['COв‚‚','Hв‚‚O'],danger:3,xp:35},
+    {r:['C2H2','O'],eq:'2Cв‚‚Hв‚‚ + 5Oв‚‚ в†’ 4COв‚‚ + 2Hв‚‚O',name:'Р“РѕСЂРµРЅРёРµ Р°С†РµС‚РёР»РµРЅР° рџ”Ґ',type:'exo',energy:'-2600 РєР”Р¶/РјРѕР»СЊ',rc:'#FFD700',anim:'burn',desc:'РЇСЂРєРѕРµ РєРѕРїС‚СЏС‰РµРµ РїР»Р°РјСЏ! РЎРІР°СЂРєР° (3000В°C)!',med:'РђС†РµС‚РёР»РµРЅ Р’Р—Р Р«Р’РћРћРџРђРЎР•Рќ!',cond:'РџРѕРґР¶РёРі',products:['COв‚‚','Hв‚‚O'],danger:4,xp:45},
+    {r:['C2H5OH','O'],eq:'Cв‚‚Hв‚…OH + 3Oв‚‚ в†’ 2COв‚‚ + 3Hв‚‚O',name:'Р“РѕСЂРµРЅРёРµ СЃРїРёСЂС‚Р° рџ”Ґ',type:'exo',energy:'-1367 РєР”Р¶/РјРѕР»СЊ',rc:'#a8c0ff',anim:'burn',desc:'РџРѕС‡С‚Рё РЅРµРІРёРґРёРјРѕРµ РіРѕР»СѓР±РѕРІР°С‚РѕРµ РїР»Р°РјСЏ!',med:'70% СЌС‚Р°РЅРѕР» вЂ” Р°РЅС‚РёСЃРµРїС‚РёРє.',cond:'РџРѕРґР¶РёРі',products:['COв‚‚','Hв‚‚O'],danger:2,xp:25},
+    {r:['C3H8','O'],eq:'Cв‚ѓHв‚€ + 5Oв‚‚ в†’ 3COв‚‚ + 4Hв‚‚O',name:'Р“РѕСЂРµРЅРёРµ РїСЂРѕРїР°РЅР° рџ’Ґ',type:'exo',energy:'-2220 РєР”Р¶/РјРѕР»СЊ',rc:'#ffe0a0',anim:'explode',desc:'Р“Р°Р·РѕРІС‹Р№ Р±Р°Р»Р»РѕРЅ! РЈС‚РµС‡РєР° в†’ Р’Р—Р Р«Р’!',med:'РћР¶РѕРіРё РїСЂРѕРїР°РЅРѕРј вЂ” С‡Р°СЃС‚Р°СЏ С‚СЂР°РІРјР°.',cond:'РџРѕРґР¶РёРі',products:['COв‚‚','Hв‚‚O'],danger:4,xp:45},
 
-    {r:['N','H'],eq:'N? + 3H? ? 2NH?',name:'Синтез аммиака (Габер)',type:'exo',energy:'-92 кДж/моль',rc:'#e0ffe0',anim:'heat',desc:'Важнейшая промышленная реакция! Fe, 450°C, 200 атм.',med:'NH? > мочевина. Печ. недостаточность.',cond:'450°C, 200 атм',products:['NH?'],danger:1,xp:35},
-    {r:['Na','Cl'],eq:'2Na + Cl? > 2NaCl',name:'Натрий + хлор ????',type:'exo',energy:'-822 кДж/моль',rc:'#ffffff',anim:'explode',desc:'ЯРКАЯ вспышка! Натрий ГОРИТ в хлоре > поваренная соль!',med:'NaCl 0.9% — физраствор.',cond:'Поджиг',products:['NaCl'],danger:4,xp:50},
-    {r:['Fe','S'],eq:'Fe + S > FeS',name:'Железо + сера',type:'exo',energy:'-100 кДж/моль',rc:'#4a4a30',anim:'burn',desc:'Смесь порошков > вспышка! Сульфид железа.',med:'H?S — регулятор тонуса сосудов.',cond:'Нагрев',products:['FeS'],danger:1,xp:20},
-    {r:['CaO','H2O'],eq:'CaO + H?O > Ca(OH)?',name:'Гашение извести ??',type:'exo',energy:'-65 кДж/моль',rc:'#f8f8f0',anim:'boil',desc:'Негашёная известь + вода = СИЛЬНЫЙ нагрев! Пар, кипение!',med:'Ca(OH)? в стоматологии.',cond:'t° комнатная',products:['Ca(OH)?'],danger:2,xp:25},
+    {r:['N','H'],eq:'Nв‚‚ + 3Hв‚‚ в‡Њ 2NHв‚ѓ',name:'РЎРёРЅС‚РµР· Р°РјРјРёР°РєР° (Р“Р°Р±РµСЂ)',type:'exo',energy:'-92 РєР”Р¶/РјРѕР»СЊ',rc:'#e0ffe0',anim:'heat',desc:'Р’Р°Р¶РЅРµР№С€Р°СЏ РїСЂРѕРјС‹С€Р»РµРЅРЅР°СЏ СЂРµР°РєС†РёСЏ! Fe, 450В°C, 200 Р°С‚Рј.',med:'NHв‚ѓ в†’ РјРѕС‡РµРІРёРЅР°. РџРµС‡. РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕСЃС‚СЊ.',cond:'450В°C, 200 Р°С‚Рј',products:['NHв‚ѓ'],danger:1,xp:35},
+    {r:['Na','Cl'],eq:'2Na + Clв‚‚ в†’ 2NaCl',name:'РќР°С‚СЂРёР№ + С…Р»РѕСЂ рџ’Ґрџ”Ґ',type:'exo',energy:'-822 РєР”Р¶/РјРѕР»СЊ',rc:'#ffffff',anim:'explode',desc:'РЇР РљРђРЇ РІСЃРїС‹С€РєР°! РќР°С‚СЂРёР№ Р“РћР РРў РІ С…Р»РѕСЂРµ в†’ РїРѕРІР°СЂРµРЅРЅР°СЏ СЃРѕР»СЊ!',med:'NaCl 0.9% вЂ” С„РёР·СЂР°СЃС‚РІРѕСЂ.',cond:'РџРѕРґР¶РёРі',products:['NaCl'],danger:4,xp:50},
+    {r:['Fe','S'],eq:'Fe + S в†’ FeS',name:'Р–РµР»РµР·Рѕ + СЃРµСЂР°',type:'exo',energy:'-100 РєР”Р¶/РјРѕР»СЊ',rc:'#4a4a30',anim:'burn',desc:'РЎРјРµСЃСЊ РїРѕСЂРѕС€РєРѕРІ в†’ РІСЃРїС‹С€РєР°! РЎСѓР»СЊС„РёРґ Р¶РµР»РµР·Р°.',med:'Hв‚‚S вЂ” СЂРµРіСѓР»СЏС‚РѕСЂ С‚РѕРЅСѓСЃР° СЃРѕСЃСѓРґРѕРІ.',cond:'РќР°РіСЂРµРІ',products:['FeS'],danger:1,xp:20},
+    {r:['CaO','H2O'],eq:'CaO + Hв‚‚O в†’ Ca(OH)в‚‚',name:'Р“Р°С€РµРЅРёРµ РёР·РІРµСЃС‚Рё рџ”Ґ',type:'exo',energy:'-65 РєР”Р¶/РјРѕР»СЊ',rc:'#f8f8f0',anim:'boil',desc:'РќРµРіР°С€С‘РЅР°СЏ РёР·РІРµСЃС‚СЊ + РІРѕРґР° = РЎРР›Р¬РќР«Р™ РЅР°РіСЂРµРІ! РџР°СЂ, РєРёРїРµРЅРёРµ!',med:'Ca(OH)в‚‚ РІ СЃС‚РѕРјР°С‚РѕР»РѕРіРёРё.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['Ca(OH)в‚‚'],danger:2,xp:25},
 
-    {r:['H2O2','MnO2'],eq:'2H?O? > 2H?O + O?^ (кат. MnO?)',name:'«Зубная паста слона» ??',type:'exo',energy:'-196 кДж',rc:'#e8f0ff',anim:'foam',desc:'Перекись БУРНО разлагается! Пена, кислород!',med:'H?O? 3% — антисептик для ран.',cond:'Кат. MnO?',products:['H?O','O?'],danger:1,xp:25},
-    {r:['KMnO4','H2SO4'],eq:'2KMnO? + H?SO? > Mn?O? + K?SO? + H?O',name:'Марганцовка + серная ????',type:'exo',energy:'-312 кДж',rc:'#4B0082',anim:'explode',desc:'КРАЙНЕ ОПАСНО! Mn?O? может ВЗОРВАТЬСЯ!',med:'KMnO? (марганцовка) — антисептик.',cond:'Конц. H?SO?',products:['Mn?O?','K?SO?','H?O'],danger:5,xp:70},
-    {r:['Al','Fe2O3'],eq:'2Al + Fe?O? > Al?O? + 2Fe',name:'ТЕРМИТ ??????',type:'exo',energy:'-852 кДж/моль',rc:'#FF4500',anim:'thermite',desc:'t° > 2500°C! РАСПЛАВЛЕННОЕ железо! Горит под водой!',med:'Ожоги термитом — катастрофические.',cond:'Mg как запал',products:['Al?O?','Fe'],danger:5,xp:80},
-    {r:['H2O2','KMnO4'],eq:'5H?O? + 2KMnO? > 5O?^ + 2MnO? + 2KOH + 3H?O',name:'Перекись + марганцовка',type:'exo',energy:'-196 кДж',rc:'#DDA0DD',anim:'foam',desc:'Фиолетовый > обесцвечивается! Бурный O?!',med:'Оба — антисептики.',cond:'t° комнатная',products:['O?','MnO?','KOH','H?O'],danger:1,xp:25},
-    {r:['NH3','HCl'],eq:'NH? + HCl > NH?Cl',name:'«Дым без огня» ??',type:'exo',energy:'-176 кДж/моль',rc:'#f0f0f0',anim:'smoke',desc:'Белый «дым» (аэрозоль NH?Cl)!',med:'Нашатырный спирт при обмороках.',cond:'Газовая фаза',products:['NH?Cl'],danger:1,xp:25},
+    {r:['H2O2','MnO2'],eq:'2Hв‚‚Oв‚‚ в†’ 2Hв‚‚O + Oв‚‚в†‘ (РєР°С‚. MnOв‚‚)',name:'В«Р—СѓР±РЅР°СЏ РїР°СЃС‚Р° СЃР»РѕРЅР°В» рџђ',type:'exo',energy:'-196 РєР”Р¶',rc:'#e8f0ff',anim:'foam',desc:'РџРµСЂРµРєРёСЃСЊ Р‘РЈР РќРћ СЂР°Р·Р»Р°РіР°РµС‚СЃСЏ! РџРµРЅР°, РєРёСЃР»РѕСЂРѕРґ!',med:'Hв‚‚Oв‚‚ 3% вЂ” Р°РЅС‚РёСЃРµРїС‚РёРє РґР»СЏ СЂР°РЅ.',cond:'РљР°С‚. MnOв‚‚',products:['Hв‚‚O','Oв‚‚'],danger:1,xp:25},
+    {r:['KMnO4','H2SO4'],eq:'2KMnOв‚„ + Hв‚‚SOв‚„ в†’ Mnв‚‚Oв‚‡ + Kв‚‚SOв‚„ + Hв‚‚O',name:'РњР°СЂРіР°РЅС†РѕРІРєР° + СЃРµСЂРЅР°СЏ в пёЏрџ”Ґ',type:'exo',energy:'-312 РєР”Р¶',rc:'#4B0082',anim:'explode',desc:'РљР РђР™РќР• РћРџРђРЎРќРћ! Mnв‚‚Oв‚‡ РјРѕР¶РµС‚ Р’Р—РћР Р’РђРўР¬РЎРЇ!',med:'KMnOв‚„ (РјР°СЂРіР°РЅС†РѕРІРєР°) вЂ” Р°РЅС‚РёСЃРµРїС‚РёРє.',cond:'РљРѕРЅС†. Hв‚‚SOв‚„',products:['Mnв‚‚Oв‚‡','Kв‚‚SOв‚„','Hв‚‚O'],danger:5,xp:70},
+    {r:['Al','Fe2O3'],eq:'2Al + Feв‚‚Oв‚ѓ в†’ Alв‚‚Oв‚ѓ + 2Fe',name:'РўР•Р РњРРў рџ”Ґрџ’Ґв пёЏ',type:'exo',energy:'-852 РєР”Р¶/РјРѕР»СЊ',rc:'#FF4500',anim:'thermite',desc:'tВ° > 2500В°C! Р РђРЎРџР›РђР’Р›Р•РќРќРћР• Р¶РµР»РµР·Рѕ! Р“РѕСЂРёС‚ РїРѕРґ РІРѕРґРѕР№!',med:'РћР¶РѕРіРё С‚РµСЂРјРёС‚РѕРј вЂ” РєР°С‚Р°СЃС‚СЂРѕС„РёС‡РµСЃРєРёРµ.',cond:'Mg РєР°Рє Р·Р°РїР°Р»',products:['Alв‚‚Oв‚ѓ','Fe'],danger:5,xp:80},
+    {r:['H2O2','KMnO4'],eq:'5Hв‚‚Oв‚‚ + 2KMnOв‚„ в†’ 5Oв‚‚в†‘ + 2MnOв‚‚ + 2KOH + 3Hв‚‚O',name:'РџРµСЂРµРєРёСЃСЊ + РјР°СЂРіР°РЅС†РѕРІРєР°',type:'exo',energy:'-196 РєР”Р¶',rc:'#DDA0DD',anim:'foam',desc:'Р¤РёРѕР»РµС‚РѕРІС‹Р№ в†’ РѕР±РµСЃС†РІРµС‡РёРІР°РµС‚СЃСЏ! Р‘СѓСЂРЅС‹Р№ Oв‚‚!',med:'РћР±Р° вЂ” Р°РЅС‚РёСЃРµРїС‚РёРєРё.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['Oв‚‚','MnOв‚‚','KOH','Hв‚‚O'],danger:1,xp:25},
+    {r:['NH3','HCl'],eq:'NHв‚ѓ + HCl в†’ NHв‚„Cl',name:'В«Р”С‹Рј Р±РµР· РѕРіРЅСЏВ» рџ’Ё',type:'exo',energy:'-176 РєР”Р¶/РјРѕР»СЊ',rc:'#f0f0f0',anim:'smoke',desc:'Р‘РµР»С‹Р№ В«РґС‹РјВ» (Р°СЌСЂРѕР·РѕР»СЊ NHв‚„Cl)!',med:'РќР°С€Р°С‚С‹СЂРЅС‹Р№ СЃРїРёСЂС‚ РїСЂРё РѕР±РјРѕСЂРѕРєР°С….',cond:'Р“Р°Р·РѕРІР°СЏ С„Р°Р·Р°',products:['NHв‚„Cl'],danger:1,xp:25},
 
-    {r:['Na','C2H5OH'],eq:'2C?H?OH + 2Na > 2C?H?ONa + H?^',name:'Натрий + этанол',type:'exo',energy:'-90 кДж/моль',rc:'#f0e8d8',anim:'bubble',desc:'Натрий медленно реагирует с этанолом.',med:'Этилат натрия — реагент.',cond:'t° комнатная',products:['C?H?ONa','H?'],danger:2,xp:30},
-    {r:['HCN','NaOH'],eq:'HCN + NaOH > NaCN + H?O',name:'Синильная кислота + NaOH ??',type:'exo',energy:'-42 кДж/моль',rc:'#f0f0e8',anim:'toxic',desc:'СИНИЛЬНАЯ КИСЛОТА — СМЕРТЕЛЬНА!',med:'HCN блокирует цитохромоксидазу. Антидот: амилнитрит.',cond:'t° комнатная',products:['NaCN','H?O'],danger:5,xp:60},
-    {r:['Hg','HNO3'],eq:'3Hg + 8HNO? > 3Hg(NO?)? + 2NO^ + 4H?O',name:'Ртуть + азотная ??',type:'exo',energy:'-140 кДж/моль',rc:'#c0c0c0',anim:'toxic',desc:'Пары ртути КРАЙНЕ ЯДОВИТЫ!',med:'Отравление ртутью. Антидот — унитиол.',cond:'t° комнатная',products:['Hg(NO?)?','NO','H?O'],danger:5,xp:60},
-    {r:['K2Cr2O7','H2SO4'],eq:'K?Cr?O? + H?SO? > хромовая смесь ??',name:'Хромовая смесь ??',type:'exo',energy:'-200 кДж',rc:'#FF4500',anim:'toxic',desc:'Мощнейший ОКИСЛИТЕЛЬ! Cr?? — канцероген!',med:'Хром(VI) > рак лёгких.',cond:'Конц. H?SO?',products:['CrO?','K?SO?','H?O'],danger:5,xp:60},
-    {r:['C6H6','Br'],eq:'C?H? + Br? > C?H?Br + HBr',name:'Бромирование бензола',type:'exo',energy:'-50 кДж/моль',rc:'#DEB887',anim:'smoke',desc:'Замещение H на Br. Бром — ЕДКИЙ!',med:'Бром вызывает ожоги.',cond:'Кат. FeBr?',products:['C?H?Br','HBr'],danger:3,xp:35},
+    {r:['Na','C2H5OH'],eq:'2Cв‚‚Hв‚…OH + 2Na в†’ 2Cв‚‚Hв‚…ONa + Hв‚‚в†‘',name:'РќР°С‚СЂРёР№ + СЌС‚Р°РЅРѕР»',type:'exo',energy:'-90 РєР”Р¶/РјРѕР»СЊ',rc:'#f0e8d8',anim:'bubble',desc:'РќР°С‚СЂРёР№ РјРµРґР»РµРЅРЅРѕ СЂРµР°РіРёСЂСѓРµС‚ СЃ СЌС‚Р°РЅРѕР»РѕРј.',med:'Р­С‚РёР»Р°С‚ РЅР°С‚СЂРёСЏ вЂ” СЂРµР°РіРµРЅС‚.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['Cв‚‚Hв‚…ONa','Hв‚‚'],danger:2,xp:30},
+    {r:['HCN','NaOH'],eq:'HCN + NaOH в†’ NaCN + Hв‚‚O',name:'РЎРёРЅРёР»СЊРЅР°СЏ РєРёСЃР»РѕС‚Р° + NaOH в пёЏ',type:'exo',energy:'-42 РєР”Р¶/РјРѕР»СЊ',rc:'#f0f0e8',anim:'toxic',desc:'РЎРРќРР›Р¬РќРђРЇ РљРРЎР›РћРўРђ вЂ” РЎРњР•Р РўР•Р›Р¬РќРђ!',med:'HCN Р±Р»РѕРєРёСЂСѓРµС‚ С†РёС‚РѕС…СЂРѕРјРѕРєСЃРёРґР°Р·Сѓ. РђРЅС‚РёРґРѕС‚: Р°РјРёР»РЅРёС‚СЂРёС‚.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['NaCN','Hв‚‚O'],danger:5,xp:60},
+    {r:['Hg','HNO3'],eq:'3Hg + 8HNOв‚ѓ в†’ 3Hg(NOв‚ѓ)в‚‚ + 2NOв†‘ + 4Hв‚‚O',name:'Р С‚СѓС‚СЊ + Р°Р·РѕС‚РЅР°СЏ в пёЏ',type:'exo',energy:'-140 РєР”Р¶/РјРѕР»СЊ',rc:'#c0c0c0',anim:'toxic',desc:'РџР°СЂС‹ СЂС‚СѓС‚Рё РљР РђР™РќР• РЇР”РћР’РРўР«!',med:'РћС‚СЂР°РІР»РµРЅРёРµ СЂС‚СѓС‚СЊСЋ. РђРЅС‚РёРґРѕС‚ вЂ” СѓРЅРёС‚РёРѕР».',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['Hg(NOв‚ѓ)в‚‚','NO','Hв‚‚O'],danger:5,xp:60},
+    {r:['K2Cr2O7','H2SO4'],eq:'Kв‚‚Crв‚‚Oв‚‡ + Hв‚‚SOв‚„ в†’ С…СЂРѕРјРѕРІР°СЏ СЃРјРµСЃСЊ в пёЏ',name:'РҐСЂРѕРјРѕРІР°СЏ СЃРјРµСЃСЊ в пёЏ',type:'exo',energy:'-200 РєР”Р¶',rc:'#FF4500',anim:'toxic',desc:'РњРѕС‰РЅРµР№С€РёР№ РћРљРРЎР›РРўР•Р›Р¬! CrвЃ¶вЃє вЂ” РєР°РЅС†РµСЂРѕРіРµРЅ!',med:'РҐСЂРѕРј(VI) в†’ СЂР°Рє Р»С‘РіРєРёС….',cond:'РљРѕРЅС†. Hв‚‚SOв‚„',products:['CrOв‚ѓ','Kв‚‚SOв‚„','Hв‚‚O'],danger:5,xp:60},
+    {r:['C6H6','Br'],eq:'Cв‚†Hв‚† + Brв‚‚ в†’ Cв‚†Hв‚…Br + HBr',name:'Р‘СЂРѕРјРёСЂРѕРІР°РЅРёРµ Р±РµРЅР·РѕР»Р°',type:'exo',energy:'-50 РєР”Р¶/РјРѕР»СЊ',rc:'#DEB887',anim:'smoke',desc:'Р—Р°РјРµС‰РµРЅРёРµ H РЅР° Br. Р‘СЂРѕРј вЂ” Р•Р”РљРР™!',med:'Р‘СЂРѕРј РІС‹Р·С‹РІР°РµС‚ РѕР¶РѕРіРё.',cond:'РљР°С‚. FeBrв‚ѓ',products:['Cв‚†Hв‚…Br','HBr'],danger:3,xp:35},
 
-    {r:['C6H12O6','O'],eq:'C?H??O? + 6O? > 6CO? + 6H?O',name:'Клеточное дыхание ??',type:'exo',energy:'-2803 кДж/моль',rc:'#e8e0d0',anim:'glow',desc:'КЛЕТОЧНОЕ ДЫХАНИЕ! Энергия жизни!',med:'Глюкоза 5% — р-р для капельниц. Диабет.',cond:'Ферменты, 37°C',products:['CO?','H?O'],danger:0,xp:30},
-    {r:['FeSO4','KMnO4'],eq:'10FeSO? + 2KMnO? + 8H?SO? > ...',name:'Перманганатометрия',type:'exo',energy:'-500 кДж',rc:'#90EE90',anim:'decolor',desc:'Фиолетовый KMnO? ОБЕСЦВЕЧИВАЕТСЯ! Титрование.',med:'Определение Fe?? в крови.',cond:'Кислая среда',products:['Fe?(SO?)?','MnSO?'],danger:0,xp:30},
+    {r:['C6H12O6','O'],eq:'Cв‚†Hв‚Ѓв‚‚Oв‚† + 6Oв‚‚ в†’ 6COв‚‚ + 6Hв‚‚O',name:'РљР»РµС‚РѕС‡РЅРѕРµ РґС‹С…Р°РЅРёРµ рџ«Ѓ',type:'exo',energy:'-2803 РєР”Р¶/РјРѕР»СЊ',rc:'#e8e0d0',anim:'glow',desc:'РљР›Р•РўРћР§РќРћР• Р”Р«РҐРђРќРР•! Р­РЅРµСЂРіРёСЏ Р¶РёР·РЅРё!',med:'Р“Р»СЋРєРѕР·Р° 5% вЂ” СЂ-СЂ РґР»СЏ РєР°РїРµР»СЊРЅРёС†. Р”РёР°Р±РµС‚.',cond:'Р¤РµСЂРјРµРЅС‚С‹, 37В°C',products:['COв‚‚','Hв‚‚O'],danger:0,xp:30},
+    {r:['FeSO4','KMnO4'],eq:'10FeSOв‚„ + 2KMnOв‚„ + 8Hв‚‚SOв‚„ в†’ ...',name:'РџРµСЂРјР°РЅРіР°РЅР°С‚РѕРјРµС‚СЂРёСЏ',type:'exo',energy:'-500 РєР”Р¶',rc:'#90EE90',anim:'decolor',desc:'Р¤РёРѕР»РµС‚РѕРІС‹Р№ KMnOв‚„ РћР‘Р•РЎР¦Р’Р•Р§РР’РђР•РўРЎРЇ! РўРёС‚СЂРѕРІР°РЅРёРµ.',med:'РћРїСЂРµРґРµР»РµРЅРёРµ FeВІвЃє РІ РєСЂРѕРІРё.',cond:'РљРёСЃР»Р°СЏ СЃСЂРµРґР°',products:['Feв‚‚(SOв‚„)в‚ѓ','MnSOв‚„'],danger:0,xp:30},
 
-    {r:['phenol','NaOH'],eq:'Фенолфталеин в щёлочи > МАЛИНОВЫЙ',name:'Малиновый цвет! ??',type:'neutral',energy:'0',rc:'#FF1493',anim:'color',desc:'Бесцветный > ЯРКИЙ МАЛИНОВЫЙ! pH > 8.2',med:'Фенолфталеин (пурген) — слабительное.',cond:'pH > 8.2',products:['Малиновый р-р'],danger:0,xp:20},
-    {r:['litmus','HCl'],eq:'Лакмус + кислота > КРАСНЫЙ',name:'Лакмус краснеет! ??',type:'neutral',energy:'0',rc:'#DC143C',anim:'color',desc:'Фиолетовый > КРАСНЫЙ в кислоте!',med:'Экспресс-определение pH.',cond:'pH < 5',products:['Красный р-р'],danger:0,xp:15},
-    {r:['litmus','NaOH'],eq:'Лакмус + щёлочь > СИНИЙ',name:'Лакмус синеет! ??',type:'neutral',energy:'0',rc:'#0000CD',anim:'color',desc:'Фиолетовый > СИНИЙ в щёлочи!',med:'Определение pH мочи, слюны.',cond:'pH > 8',products:['Синий р-р'],danger:0,xp:15},
-    {r:['methyl_o','HCl'],eq:'Метилоранж + кислота > КРАСНЫЙ',name:'Метилоранж краснеет!',type:'neutral',energy:'0',rc:'#FF4500',anim:'color',desc:'Оранжевый > КРАСНЫЙ в кислоте!',med:'Титрование лекарственных р-ров.',cond:'pH < 3.1',products:['Красный р-р'],danger:0,xp:15},
+    {r:['phenol','NaOH'],eq:'Р¤РµРЅРѕР»С„С‚Р°Р»РµРёРЅ РІ С‰С‘Р»РѕС‡Рё в†’ РњРђР›РРќРћР’Р«Р™',name:'РњР°Р»РёРЅРѕРІС‹Р№ С†РІРµС‚! рџ©·',type:'neutral',energy:'0',rc:'#FF1493',anim:'color',desc:'Р‘РµСЃС†РІРµС‚РЅС‹Р№ в†’ РЇР РљРР™ РњРђР›РРќРћР’Р«Р™! pH > 8.2',med:'Р¤РµРЅРѕР»С„С‚Р°Р»РµРёРЅ (РїСѓСЂРіРµРЅ) вЂ” СЃР»Р°Р±РёС‚РµР»СЊРЅРѕРµ.',cond:'pH > 8.2',products:['РњР°Р»РёРЅРѕРІС‹Р№ СЂ-СЂ'],danger:0,xp:20},
+    {r:['litmus','HCl'],eq:'Р›Р°РєРјСѓСЃ + РєРёСЃР»РѕС‚Р° в†’ РљР РђРЎРќР«Р™',name:'Р›Р°РєРјСѓСЃ РєСЂР°СЃРЅРµРµС‚! рџ”ґ',type:'neutral',energy:'0',rc:'#DC143C',anim:'color',desc:'Р¤РёРѕР»РµС‚РѕРІС‹Р№ в†’ РљР РђРЎРќР«Р™ РІ РєРёСЃР»РѕС‚Рµ!',med:'Р­РєСЃРїСЂРµСЃСЃ-РѕРїСЂРµРґРµР»РµРЅРёРµ pH.',cond:'pH < 5',products:['РљСЂР°СЃРЅС‹Р№ СЂ-СЂ'],danger:0,xp:15},
+    {r:['litmus','NaOH'],eq:'Р›Р°РєРјСѓСЃ + С‰С‘Р»РѕС‡СЊ в†’ РЎРРќРР™',name:'Р›Р°РєРјСѓСЃ СЃРёРЅРµРµС‚! рџ”µ',type:'neutral',energy:'0',rc:'#0000CD',anim:'color',desc:'Р¤РёРѕР»РµС‚РѕРІС‹Р№ в†’ РЎРРќРР™ РІ С‰С‘Р»РѕС‡Рё!',med:'РћРїСЂРµРґРµР»РµРЅРёРµ pH РјРѕС‡Рё, СЃР»СЋРЅС‹.',cond:'pH > 8',products:['РЎРёРЅРёР№ СЂ-СЂ'],danger:0,xp:15},
+    {r:['methyl_o','HCl'],eq:'РњРµС‚РёР»РѕСЂР°РЅР¶ + РєРёСЃР»РѕС‚Р° в†’ РљР РђРЎРќР«Р™',name:'РњРµС‚РёР»РѕСЂР°РЅР¶ РєСЂР°СЃРЅРµРµС‚!',type:'neutral',energy:'0',rc:'#FF4500',anim:'color',desc:'РћСЂР°РЅР¶РµРІС‹Р№ в†’ РљР РђРЎРќР«Р™ РІ РєРёСЃР»РѕС‚Рµ!',med:'РўРёС‚СЂРѕРІР°РЅРёРµ Р»РµРєР°СЂСЃС‚РІРµРЅРЅС‹С… СЂ-СЂРѕРІ.',cond:'pH < 3.1',products:['РљСЂР°СЃРЅС‹Р№ СЂ-СЂ'],danger:0,xp:15},
 
-    {r:['H2S','FeCl3'],eq:'H?S + 2FeCl? > Sv + 2FeCl? + 2HCl',name:'Сера выпадает!',type:'exo',energy:'-80 кДж/моль',rc:'#FFFF00',anim:'precipitate',desc:'ЖЁЛТЫЙ осадок серы! H?S — тухлые яйца!',med:'H?S — газотрансмиттер.',cond:'t° комнатная',products:['S','FeCl?','HCl'],danger:3,xp:30},
-    {r:['Na2O','H2O'],eq:'Na?O + H?O > 2NaOH',name:'Оксид натрия + вода',type:'exo',energy:'-146 кДж/моль',rc:'#f0f0f8',anim:'boil',desc:'Оксид + вода > щёлочь! Сильный нагрев!',med:'NaOH разъедает кожу!',cond:'t° комнатная',products:['NaOH'],danger:2,xp:20},
-    {r:['SO2','H2O'],eq:'SO? + H?O > H?SO?',name:'Кислотный дождь ?',type:'exo',energy:'-42 кДж/моль',rc:'#e8e8d0',anim:'heat',desc:'Причина кислотных дождей!',med:'SO? > бронхоспазм у астматиков.',cond:'t° комнатная',products:['H?SO?'],danger:2,xp:20},
-    {r:['CO2','H2O'],eq:'CO? + H?O ? H?CO?',name:'Газировка! ??',type:'neutral',energy:'-20 кДж/моль',rc:'#e0f0ff',anim:'fizz',desc:'Газированная вода! CO? + H?O > угольная кислота.',med:'Бикарбонатный буфер крови.',cond:'t° комнатная',products:['H?CO?'],danger:0,xp:10},
-    {r:['NH4Cl','NaOH'],eq:'NH?Cl + NaOH > NaCl + NH?^ + H?O',name:'Аммиак выделяется!',type:'endo',energy:'+16 кДж/моль',rc:'#e0ffe0',anim:'smoke',desc:'Резкий запах NH?! Лакмус синеет от паров!',med:'Нашатырный спирт > пробуждение.',cond:'Нагрев',products:['NaCl','NH?','H?O'],danger:1,xp:20}
+    {r:['H2S','FeCl3'],eq:'Hв‚‚S + 2FeClв‚ѓ в†’ Sв†“ + 2FeClв‚‚ + 2HCl',name:'РЎРµСЂР° РІС‹РїР°РґР°РµС‚!',type:'exo',energy:'-80 РєР”Р¶/РјРѕР»СЊ',rc:'#FFFF00',anim:'precipitate',desc:'Р–РЃР›РўР«Р™ РѕСЃР°РґРѕРє СЃРµСЂС‹! Hв‚‚S вЂ” С‚СѓС…Р»С‹Рµ СЏР№С†Р°!',med:'Hв‚‚S вЂ” РіР°Р·РѕС‚СЂР°РЅСЃРјРёС‚С‚РµСЂ.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['S','FeClв‚‚','HCl'],danger:3,xp:30},
+    {r:['Na2O','H2O'],eq:'Naв‚‚O + Hв‚‚O в†’ 2NaOH',name:'РћРєСЃРёРґ РЅР°С‚СЂРёСЏ + РІРѕРґР°',type:'exo',energy:'-146 РєР”Р¶/РјРѕР»СЊ',rc:'#f0f0f8',anim:'boil',desc:'РћРєСЃРёРґ + РІРѕРґР° в†’ С‰С‘Р»РѕС‡СЊ! РЎРёР»СЊРЅС‹Р№ РЅР°РіСЂРµРІ!',med:'NaOH СЂР°Р·СЉРµРґР°РµС‚ РєРѕР¶Сѓ!',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['NaOH'],danger:2,xp:20},
+    {r:['SO2','H2O'],eq:'SOв‚‚ + Hв‚‚O в†’ Hв‚‚SOв‚ѓ',name:'РљРёСЃР»РѕС‚РЅС‹Р№ РґРѕР¶РґСЊ в”',type:'exo',energy:'-42 РєР”Р¶/РјРѕР»СЊ',rc:'#e8e8d0',anim:'heat',desc:'РџСЂРёС‡РёРЅР° РєРёСЃР»РѕС‚РЅС‹С… РґРѕР¶РґРµР№!',med:'SOв‚‚ в†’ Р±СЂРѕРЅС…РѕСЃРїР°Р·Рј Сѓ Р°СЃС‚РјР°С‚РёРєРѕРІ.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['Hв‚‚SOв‚ѓ'],danger:2,xp:20},
+    {r:['CO2','H2O'],eq:'COв‚‚ + Hв‚‚O в‡Њ Hв‚‚COв‚ѓ',name:'Р“Р°Р·РёСЂРѕРІРєР°! рџҐ¤',type:'neutral',energy:'-20 РєР”Р¶/РјРѕР»СЊ',rc:'#e0f0ff',anim:'fizz',desc:'Р“Р°Р·РёСЂРѕРІР°РЅРЅР°СЏ РІРѕРґР°! COв‚‚ + Hв‚‚O в†’ СѓРіРѕР»СЊРЅР°СЏ РєРёСЃР»РѕС‚Р°.',med:'Р‘РёРєР°СЂР±РѕРЅР°С‚РЅС‹Р№ Р±СѓС„РµСЂ РєСЂРѕРІРё.',cond:'tВ° РєРѕРјРЅР°С‚РЅР°СЏ',products:['Hв‚‚COв‚ѓ'],danger:0,xp:10},
+    {r:['NH4Cl','NaOH'],eq:'NHв‚„Cl + NaOH в†’ NaCl + NHв‚ѓв†‘ + Hв‚‚O',name:'РђРјРјРёР°Рє РІС‹РґРµР»СЏРµС‚СЃСЏ!',type:'endo',energy:'+16 РєР”Р¶/РјРѕР»СЊ',rc:'#e0ffe0',anim:'smoke',desc:'Р РµР·РєРёР№ Р·Р°РїР°С… NHв‚ѓ! Р›Р°РєРјСѓСЃ СЃРёРЅРµРµС‚ РѕС‚ РїР°СЂРѕРІ!',med:'РќР°С€Р°С‚С‹СЂРЅС‹Р№ СЃРїРёСЂС‚ в†’ РїСЂРѕР±СѓР¶РґРµРЅРёРµ.',cond:'РќР°РіСЂРµРІ',products:['NaCl','NHв‚ѓ','Hв‚‚O'],danger:1,xp:20}
 ];
 
 let tableItems=[], flaskItems=[], history=[], totalReactions=0;
@@ -191,29 +191,29 @@ let discoveredReactions=new Set(), achievements=[];
 let activeCategory='all', searchQuery='';
 
 const ACHIEVEMENTS_LIST=[
-    {id:'first',icon:'??',name:'Первая реакция',desc:'Проведи первую реакцию',check:()=>totalReactions>=1},
-    {id:'five',icon:'??',name:'Начинающий химик',desc:'Проведи 5 реакций',check:()=>totalReactions>=5},
-    {id:'ten',icon:'??',name:'Лаборант',desc:'Проведи 10 реакций',check:()=>totalReactions>=10},
-    {id:'twenty',icon:'?????',name:'Учёный',desc:'Проведи 20 реакций',check:()=>totalReactions>=20},
-    {id:'fifty',icon:'??',name:'Профессор химии',desc:'Проведи 50 реакций',check:()=>totalReactions>=50},
-    {id:'disc5',icon:'???',name:'Исследователь',desc:'Открой 5 уникальных реакций',check:()=>discoveredReactions.size>=5},
-    {id:'disc15',icon:'??',name:'Энциклопедист',desc:'Открой 15 уникальных реакций',check:()=>discoveredReactions.size>=15},
-    {id:'disc30',icon:'??',name:'Мастер реакций',desc:'Открой 30 уникальных реакций',check:()=>discoveredReactions.size>=30},
-    {id:'danger',icon:'??',name:'Смельчак',desc:'Проведи опасную реакцию',check:()=>history.some(h=>h.danger>=3)},
-    {id:'deadly',icon:'??',name:'Безумный учёный',desc:'Проведи смертельную реакцию',check:()=>history.some(h=>h.danger>=5)},
-    {id:'combo3',icon:'??',name:'Комбо x3',desc:'Сделай 3 реакции подряд',check:()=>combo>=3},
-    {id:'combo5',icon:'??',name:'Комбо x5',desc:'Сделай 5 реакций подряд',check:()=>combo>=5},
-    {id:'lvl5',icon:'?',name:'Уровень 5',desc:'Достигни 5 уровня',check:()=>level>=5},
-    {id:'lvl10',icon:'??',name:'Уровень 10',desc:'Достигни 10 уровня',check:()=>level>=10},
-    {id:'indicator',icon:'??',name:'Колорист',desc:'Проведи индикаторную реакцию',check:()=>history.some(h=>h.name.includes('Лакмус')||h.name.includes('Малинов')||h.name.includes('Метилоранж'))}
+    {id:'first',icon:'рџ§Є',name:'РџРµСЂРІР°СЏ СЂРµР°РєС†РёСЏ',desc:'РџСЂРѕРІРµРґРё РїРµСЂРІСѓСЋ СЂРµР°РєС†РёСЋ',check:()=>totalReactions>=1},
+    {id:'five',icon:'рџ”¬',name:'РќР°С‡РёРЅР°СЋС‰РёР№ С…РёРјРёРє',desc:'РџСЂРѕРІРµРґРё 5 СЂРµР°РєС†РёР№',check:()=>totalReactions>=5},
+    {id:'ten',icon:'вљ—пёЏ',name:'Р›Р°Р±РѕСЂР°РЅС‚',desc:'РџСЂРѕРІРµРґРё 10 СЂРµР°РєС†РёР№',check:()=>totalReactions>=10},
+    {id:'twenty',icon:'рџ‘ЁвЂЌрџ”¬',name:'РЈС‡С‘РЅС‹Р№',desc:'РџСЂРѕРІРµРґРё 20 СЂРµР°РєС†РёР№',check:()=>totalReactions>=20},
+    {id:'fifty',icon:'рџЏ†',name:'РџСЂРѕС„РµСЃСЃРѕСЂ С…РёРјРёРё',desc:'РџСЂРѕРІРµРґРё 50 СЂРµР°РєС†РёР№',check:()=>totalReactions>=50},
+    {id:'disc5',icon:'рџ—єпёЏ',name:'РСЃСЃР»РµРґРѕРІР°С‚РµР»СЊ',desc:'РћС‚РєСЂРѕР№ 5 СѓРЅРёРєР°Р»СЊРЅС‹С… СЂРµР°РєС†РёР№',check:()=>discoveredReactions.size>=5},
+    {id:'disc15',icon:'рџ“–',name:'Р­РЅС†РёРєР»РѕРїРµРґРёСЃС‚',desc:'РћС‚РєСЂРѕР№ 15 СѓРЅРёРєР°Р»СЊРЅС‹С… СЂРµР°РєС†РёР№',check:()=>discoveredReactions.size>=15},
+    {id:'disc30',icon:'рџЊџ',name:'РњР°СЃС‚РµСЂ СЂРµР°РєС†РёР№',desc:'РћС‚РєСЂРѕР№ 30 СѓРЅРёРєР°Р»СЊРЅС‹С… СЂРµР°РєС†РёР№',check:()=>discoveredReactions.size>=30},
+    {id:'danger',icon:'в пёЏ',name:'РЎРјРµР»СЊС‡Р°Рє',desc:'РџСЂРѕРІРµРґРё РѕРїР°СЃРЅСѓСЋ СЂРµР°РєС†РёСЋ',check:()=>history.some(h=>h.danger>=3)},
+    {id:'deadly',icon:'рџ’Ђ',name:'Р‘РµР·СѓРјРЅС‹Р№ СѓС‡С‘РЅС‹Р№',desc:'РџСЂРѕРІРµРґРё СЃРјРµСЂС‚РµР»СЊРЅСѓСЋ СЂРµР°РєС†РёСЋ',check:()=>history.some(h=>h.danger>=5)},
+    {id:'combo3',icon:'рџ”Ґ',name:'РљРѕРјР±Рѕ x3',desc:'РЎРґРµР»Р°Р№ 3 СЂРµР°РєС†РёРё РїРѕРґСЂСЏРґ',check:()=>combo>=3},
+    {id:'combo5',icon:'рџ’Ґ',name:'РљРѕРјР±Рѕ x5',desc:'РЎРґРµР»Р°Р№ 5 СЂРµР°РєС†РёР№ РїРѕРґСЂСЏРґ',check:()=>combo>=5},
+    {id:'lvl5',icon:'в­ђ',name:'РЈСЂРѕРІРµРЅСЊ 5',desc:'Р”РѕСЃС‚РёРіРЅРё 5 СѓСЂРѕРІРЅСЏ',check:()=>level>=5},
+    {id:'lvl10',icon:'рџЊ™',name:'РЈСЂРѕРІРµРЅСЊ 10',desc:'Р”РѕСЃС‚РёРіРЅРё 10 СѓСЂРѕРІРЅСЏ',check:()=>level>=10},
+    {id:'indicator',icon:'рџЋЁ',name:'РљРѕР»РѕСЂРёСЃС‚',desc:'РџСЂРѕРІРµРґРё РёРЅРґРёРєР°С‚РѕСЂРЅСѓСЋ СЂРµР°РєС†РёСЋ',check:()=>history.some(h=>h.name.includes('Р›Р°РєРјСѓСЃ')||h.name.includes('РњР°Р»РёРЅРѕРІ')||h.name.includes('РњРµС‚РёР»РѕСЂР°РЅР¶'))}
 ];
 
 const CATEGORIES=[
-    {key:'all',label:'?? Все'},{key:'nonmetal',label:'Неметаллы'},{key:'alkali',label:'?? Щелочные'},
-    {key:'alkaline',label:'Щёл.зем.'},{key:'transition',label:'?? Переходные'},{key:'metal',label:'Металлы'},
-    {key:'halogen',label:'Галогены'},{key:'noble',label:'Благородные'},{key:'acid',label:'?? Кислоты'},
-    {key:'base',label:'Основания'},{key:'salt',label:'?? Соли'},{key:'oxide',label:'Оксиды'},
-    {key:'organic',label:'?? Органика'},{key:'compound',label:'Вещества'},{key:'indicator',label:'?? Индикаторы'}
+    {key:'all',label:'рџ§Є Р’СЃРµ'},{key:'nonmetal',label:'РќРµРјРµС‚Р°Р»Р»С‹'},{key:'alkali',label:'рџ”Ґ Р©РµР»РѕС‡РЅС‹Рµ'},
+    {key:'alkaline',label:'Р©С‘Р».Р·РµРј.'},{key:'transition',label:'вљ™пёЏ РџРµСЂРµС…РѕРґРЅС‹Рµ'},{key:'metal',label:'РњРµС‚Р°Р»Р»С‹'},
+    {key:'halogen',label:'Р“Р°Р»РѕРіРµРЅС‹'},{key:'noble',label:'Р‘Р»Р°РіРѕСЂРѕРґРЅС‹Рµ'},{key:'acid',label:'рџ§« РљРёСЃР»РѕС‚С‹'},
+    {key:'base',label:'РћСЃРЅРѕРІР°РЅРёСЏ'},{key:'salt',label:'рџ§‚ РЎРѕР»Рё'},{key:'oxide',label:'РћРєСЃРёРґС‹'},
+    {key:'organic',label:'рџЊї РћСЂРіР°РЅРёРєР°'},{key:'compound',label:'Р’РµС‰РµСЃС‚РІР°'},{key:'indicator',label:'рџЋЁ РРЅРґРёРєР°С‚РѕСЂС‹'}
 ];
 
 function xpForLevel(l){return l*80;}
@@ -228,7 +228,7 @@ function init(){
     renderHistory();
     renderGameBar();
     bindSearch();
-    console.log('? ChemLab v3 GAME: '+REACTIONS.length+' reactions, '+Object.keys(SUBSTANCES).length+' substances');
+    console.log('вњ… ChemLab v3 GAME: '+REACTIONS.length+' reactions, '+Object.keys(SUBSTANCES).length+' substances');
 }
 
 function renderGameBar(){
@@ -239,14 +239,14 @@ function renderGameBar(){
     const pct=Math.min(100,(current/needed*100));
     bar.innerHTML=`
         <div class="game-level">
-            <span class="game-level-badge">Ур. ${level}</span>
+            <span class="game-level-badge">РЈСЂ. ${level}</span>
             <div class="game-xp-bar"><div class="game-xp-fill" style="width:${pct}%"></div></div>
             <span class="game-xp-text">${current}/${needed} XP</span>
         </div>
         <div class="game-stats-row">
-            <div class="game-stat"><span class="game-stat-value">${totalReactions}</span><span class="game-stat-label">Реакций</span></div>
-            <div class="game-stat"><span class="game-stat-value">${discoveredReactions.size}/${REACTIONS.length}</span><span class="game-stat-label">Открыто</span></div>
-            ${combo>=2?'<div class="game-stat combo-glow"><span class="game-stat-value">x'+combo+'</span><span class="game-stat-label">Комбо!</span></div>':''}
+            <div class="game-stat"><span class="game-stat-value">${totalReactions}</span><span class="game-stat-label">Р РµР°РєС†РёР№</span></div>
+            <div class="game-stat"><span class="game-stat-value">${discoveredReactions.size}/${REACTIONS.length}</span><span class="game-stat-label">РћС‚РєСЂС‹С‚Рѕ</span></div>
+            ${combo>=2?'<div class="game-stat combo-glow"><span class="game-stat-value">x'+combo+'</span><span class="game-stat-label">РљРѕРјР±Рѕ!</span></div>':''}
         </div>`;
 }
 
@@ -272,10 +272,10 @@ function renderShelf(){
         const matchSearch=!searchQuery||s.name.toLowerCase().includes(searchQuery)||s.symbol.toLowerCase().includes(searchQuery)||s.id.toLowerCase().includes(searchQuery);
         return matchCat&&matchSearch;
     });
-    if(!filtered.length){c.innerHTML='<div style="grid-column:1/-1;text-align:center;color:rgba(255,255,255,0.3);padding:30px">?? Ничего не найдено</div>';return;}
+    if(!filtered.length){c.innerHTML='<div style="grid-column:1/-1;text-align:center;color:rgba(255,255,255,0.3);padding:30px">рџ”Ќ РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ</div>';return;}
     c.innerHTML=filtered.map(s=>{
         const onT=tableItems.includes(s.id);
-        return '<div class="chem-bottle'+(onT?' on-table':'')+'" onclick="ChemLab.addToTable(\''+s.id+'\')" title="'+s.name+' — '+s.rc+'">'
+        return '<div class="chem-bottle'+(onT?' on-table':'')+'" onclick="ChemLab.addToTable(\''+s.id+'\')" title="'+s.name+' вЂ” '+s.rc+'">'
             +(s.num?'<span class="bottle-number">'+s.num+'</span>':'')
             +'<div class="bottle-icon" style="background:'+s.color+';color:'+(isLight(s.color)?'#222':'#fff')+'">'+s.symbol+'</div>'
             +'<div class="bottle-name">'+s.name+'</div>'
@@ -292,7 +292,7 @@ function bindSearch(){
 
 function addToTable(id){
     if(tableItems.includes(id)){removeFromTable(id);return;}
-    if(tableItems.length>=5){toast('?? Макс 5 веществ на столе');return;}
+    if(tableItems.length>=5){toast('рџ“¦ РњР°РєСЃ 5 РІРµС‰РµСЃС‚РІ РЅР° СЃС‚РѕР»Рµ');return;}
     tableItems.push(id);
     renderTable();renderShelf();
     if(tableItems.length>=2)checkHint();
@@ -307,21 +307,21 @@ function removeFromTable(id){
 function renderTable(){
     const c=document.getElementById('chem-table-items');
     if(!c)return;
-    if(!tableItems.length){c.innerHTML='<div class="table-empty">Нажми на вещество на полке ??</div>';return;}
+    if(!tableItems.length){c.innerHTML='<div class="table-empty">РќР°Р¶РјРё РЅР° РІРµС‰РµСЃС‚РІРѕ РЅР° РїРѕР»РєРµ вќпёЏ</div>';return;}
     c.innerHTML=tableItems.map(id=>{
         const s=SUBSTANCES[id];if(!s)return'';
         const inF=flaskItems.includes(id);
         return '<div class="table-substance'+(inF?' in-flask':'')+'" onclick="ChemLab.pourToFlask(\''+id+'\')">'
             +'<span class="sub-symbol" style="background:'+s.color+';color:'+(isLight(s.color)?'#222':'#fff')+'">'+s.symbol+'</span>'
             +'<span class="sub-name">'+s.name+'</span>'
-            +'<div class="sub-remove" onclick="event.stopPropagation();ChemLab.removeFromTable(\''+id+'\')">?</div>'
+            +'<div class="sub-remove" onclick="event.stopPropagation();ChemLab.removeFromTable(\''+id+'\')">Г—</div>'
             +'</div>';
     }).join('');
 }
 
 function pourToFlask(id){
     if(flaskItems.includes(id)){flaskItems=flaskItems.filter(x=>x!==id);}
-    else{if(flaskItems.length>=3){toast('?? Макс 3 вещества в колбе');return;}flaskItems.push(id);}
+    else{if(flaskItems.length>=3){toast('рџ§Є РњР°РєСЃ 3 РІРµС‰РµСЃС‚РІР° РІ РєРѕР»Р±Рµ');return;}flaskItems.push(id);}
     renderFlask();renderTable();
 }
 
@@ -349,7 +349,7 @@ function checkHint(){
             for(const r of REACTIONS){
                 if([...r.r].sort().join(',')===pair){
                     const h=document.getElementById('chem-hint');
-                    if(h){h.innerHTML='?? <strong>'+SUBSTANCES[tableItems[i]]?.name+'</strong> + <strong>'+SUBSTANCES[tableItems[j]]?.name+'</strong> — можно смешать!';h.classList.add('visible');setTimeout(()=>h.classList.remove('visible'),5000);}
+                    if(h){h.innerHTML='рџ’Ў <strong>'+SUBSTANCES[tableItems[i]]?.name+'</strong> + <strong>'+SUBSTANCES[tableItems[j]]?.name+'</strong> вЂ” РјРѕР¶РЅРѕ СЃРјРµС€Р°С‚СЊ!';h.classList.add('visible');setTimeout(()=>h.classList.remove('visible'),5000);}
                     return;
                 }
             }
@@ -361,11 +361,11 @@ function getRandomHint(){
     const und=REACTIONS.filter(r=>!discoveredReactions.has(r.name));
     const pool=und.length>0?und:REACTIONS;
     const r=pool[Math.floor(Math.random()*pool.length)];
-    toast('?? Подсказка: смешай '+(SUBSTANCES[r.r[0]]?.name||r.r[0])+' и '+(SUBSTANCES[r.r[1]]?.name||r.r[1])+'!');
+    toast('рџ’Ў РџРѕРґСЃРєР°Р·РєР°: СЃРјРµС€Р°Р№ '+(SUBSTANCES[r.r[0]]?.name||r.r[0])+' Рё '+(SUBSTANCES[r.r[1]]?.name||r.r[1])+'!');
 }
 
 function mixReactants(){
-    if(flaskItems.length<2){toast('Добавь минимум 2 вещества в колбу!');return;}
+    if(flaskItems.length<2){toast('Р”РѕР±Р°РІСЊ РјРёРЅРёРјСѓРј 2 РІРµС‰РµСЃС‚РІР° РІ РєРѕР»Р±Сѓ!');return;}
     const reaction=findReaction(flaskItems);
     if(!reaction){showNoReaction();return;}
     playReaction(reaction);
@@ -389,7 +389,7 @@ function playReaction(reaction){
     if(btn){btn.classList.add('reacting');setTimeout(()=>btn.classList.remove('reacting'),800);}
     if(reaction.danger>=3){zone?.classList.add('shake-danger');setTimeout(()=>zone?.classList.remove('shake-danger'),600);}
 
-    // ========== 3D РЕАЛИСТИЧНЫЕ ЭФФЕКТЫ ==========
+    // ========== 3D Р Р•РђР›РРЎРўРР§РќР«Р• Р­Р¤Р¤Р•РљРўР« ==========
     const anim=reaction.anim||'heat';
     flask?.classList.add('flask-3d-active');
     setTimeout(()=>flask?.classList.remove('flask-3d-active'),3000);
@@ -497,14 +497,14 @@ function playReaction(reaction){
 function showNoReaction(){
     const names=flaskItems.map(id=>SUBSTANCES[id]?.name||id).join(' + ');
     const eqBox=document.getElementById('chem-equation-box');
-    if(eqBox){eqBox.innerHTML='<span style="color:rgba(255,255,255,0.4)">? '+names+' — реакция не идёт</span>';eqBox.classList.add('visible');}
+    if(eqBox){eqBox.innerHTML='<span style="color:rgba(255,255,255,0.4)">вќЊ '+names+' вЂ” СЂРµР°РєС†РёСЏ РЅРµ РёРґС‘С‚</span>';eqBox.classList.add('visible');}
     hideInfoCard();combo=0;renderGameBar();
-    toast('Эти вещества не реагируют ?? Попробуй другие!');
+    toast('Р­С‚Рё РІРµС‰РµСЃС‚РІР° РЅРµ СЂРµР°РіРёСЂСѓСЋС‚ рџ¤” РџРѕРїСЂРѕР±СѓР№ РґСЂСѓРіРёРµ!');
 }
 
 function showXpPopup(amount,isNew,currentCombo){
     const p=document.createElement('div');p.className='xp-popup';
-    let t='+'+amount+' XP';if(isNew)t+=' ??';if(currentCombo>=3)t+=' (x'+currentCombo+' комбо!)';
+    let t='+'+amount+' XP';if(isNew)t+=' рџ†•';if(currentCombo>=3)t+=' (x'+currentCombo+' РєРѕРјР±Рѕ!)';
     p.textContent=t;document.body.appendChild(p);
     requestAnimationFrame(()=>p.classList.add('show'));
     setTimeout(()=>{p.classList.remove('show');setTimeout(()=>p.remove(),300);},2000);
@@ -512,7 +512,7 @@ function showXpPopup(amount,isNew,currentCombo){
 
 function showLevelUp(newLevel){
     const o=document.createElement('div');o.className='level-up-overlay';
-    o.innerHTML='<div class="level-up-card"><div class="level-up-icon">?</div><h3>УРОВЕНЬ '+newLevel+'!</h3><p>Ты становишься настоящим химиком!</p></div>';
+    o.innerHTML='<div class="level-up-card"><div class="level-up-icon">в­ђ</div><h3>РЈР РћР’Р•РќР¬ '+newLevel+'!</h3><p>РўС‹ СЃС‚Р°РЅРѕРІРёС€СЊСЃСЏ РЅР°СЃС‚РѕСЏС‰РёРј С…РёРјРёРєРѕРј!</p></div>';
     document.body.appendChild(o);requestAnimationFrame(()=>o.classList.add('show'));
     setTimeout(()=>{o.classList.remove('show');setTimeout(()=>o.remove(),500);},3000);
     if(navigator.vibrate)navigator.vibrate([100,100,200]);
@@ -527,7 +527,7 @@ function checkAchievements(){
 
 function showAchievement(a){
     const e=document.createElement('div');e.className='achievement-popup';
-    e.innerHTML='<span class="ach-icon">'+a.icon+'</span><div><strong>Достижение!</strong><br>'+a.name+'</div>';
+    e.innerHTML='<span class="ach-icon">'+a.icon+'</span><div><strong>Р”РѕСЃС‚РёР¶РµРЅРёРµ!</strong><br>'+a.name+'</div>';
     document.body.appendChild(e);requestAnimationFrame(()=>e.classList.add('show'));
     setTimeout(()=>{e.classList.remove('show');setTimeout(()=>e.remove(),300);},3500);
     if(navigator.vibrate)navigator.vibrate([50,50,100]);
@@ -535,19 +535,19 @@ function showAchievement(a){
 
 function showInfoCard(r){
     const card=document.getElementById('chem-info-card');if(!card)return;
-    const tl=r.type==='exo'?'?? Экзотермическая':r.type==='endo'?'?? Эндотермическая':'?? Обменная';
-    const db='??'.repeat(Math.min(r.danger,5));
+    const tl=r.type==='exo'?'рџ”Ґ Р­РєР·РѕС‚РµСЂРјРёС‡РµСЃРєР°СЏ':r.type==='endo'?'вќ„пёЏ Р­РЅРґРѕС‚РµСЂРјРёС‡РµСЃРєР°СЏ':'рџ”„ РћР±РјРµРЅРЅР°СЏ';
+    const db='вљ пёЏ'.repeat(Math.min(r.danger,5));
     card.innerHTML='<div class="info-card-header"><h4>'+r.name+'</h4><span class="reaction-badge badge-'+r.type+'">'+tl+'</span>'
-        +(r.danger>=3?'<span class="reaction-badge badge-danger">?? ОПАСНО</span>':'')+'</div>'
+        +(r.danger>=3?'<span class="reaction-badge badge-danger">в пёЏ РћРџРђРЎРќРћ</span>':'')+'</div>'
         +'<div class="info-card-body"><div class="info-details-grid">'
-        +'<div class="info-detail"><div class="info-detail-label">Энергия</div><div class="info-detail-value">'+r.energy+'</div></div>'
-        +'<div class="info-detail"><div class="info-detail-label">Условия</div><div class="info-detail-value">'+r.cond+'</div></div>'
-        +'<div class="info-detail"><div class="info-detail-label">Продукты</div><div class="info-detail-value">'+r.products.join(', ')+'</div></div>'
-        +'<div class="info-detail"><div class="info-detail-label">Опасность</div><div class="info-detail-value">'+(r.danger===0?'? Безопасно':db+' '+r.danger+'/5')+'</div></div>'
+        +'<div class="info-detail"><div class="info-detail-label">Р­РЅРµСЂРіРёСЏ</div><div class="info-detail-value">'+r.energy+'</div></div>'
+        +'<div class="info-detail"><div class="info-detail-label">РЈСЃР»РѕРІРёСЏ</div><div class="info-detail-value">'+r.cond+'</div></div>'
+        +'<div class="info-detail"><div class="info-detail-label">РџСЂРѕРґСѓРєС‚С‹</div><div class="info-detail-value">'+r.products.join(', ')+'</div></div>'
+        +'<div class="info-detail"><div class="info-detail-label">РћРїР°СЃРЅРѕСЃС‚СЊ</div><div class="info-detail-value">'+(r.danger===0?'вњ… Р‘РµР·РѕРїР°СЃРЅРѕ':db+' '+r.danger+'/5')+'</div></div>'
         +'<div class="info-detail"><div class="info-detail-label">XP</div><div class="info-detail-value">+'+( r.xp||10)+'</div></div>'
         +'</div><div class="info-description">'+r.desc+'</div>'
-        +(r.med?'<div class="info-medical"><h5>?? Медицина</h5><p>'+r.med+'</p></div>':'')
-        +(r.danger>=3?'<div class="info-danger-warning">?? <strong>НЕ ПОВТОРЯТЬ</strong> без профессионального надзора!</div>':'')
+        +(r.med?'<div class="info-medical"><h5>рџЏҐ РњРµРґРёС†РёРЅР°</h5><p>'+r.med+'</p></div>':'')
+        +(r.danger>=3?'<div class="info-danger-warning">в пёЏ <strong>РќР• РџРћР’РўРћР РЇРўР¬</strong> Р±РµР· РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕРіРѕ РЅР°РґР·РѕСЂР°!</div>':'')
         +'</div>';
     card.classList.add('visible');
 }
@@ -555,13 +555,13 @@ function showInfoCard(r){
 function hideInfoCard(){const c=document.getElementById('chem-info-card');if(c)c.classList.remove('visible');}
 
 function formatEquation(eq){
-    return eq.replace(/>/g,'<span class="eq-arrow">></span>')
-        .replace(/?/g,'<span class="eq-arrow">?</span>')
-        .replace(/^/g,'<span class="eq-state gas">^</span>')
-        .replace(/v/g,'<span class="eq-state ppt">v</span>');
+    return eq.replace(/в†’/g,'<span class="eq-arrow">в†’</span>')
+        .replace(/в‡Њ/g,'<span class="eq-arrow">в‡Њ</span>')
+        .replace(/в†‘/g,'<span class="eq-state gas">в†‘</span>')
+        .replace(/в†“/g,'<span class="eq-state ppt">в†“</span>');
 }
 
-// ========== 3D РЕАЛИСТИЧНЫЕ ВИЗУАЛЬНЫЕ ЭФФЕКТЫ v4 ==========
+// ========== 3D Р Р•РђР›РРЎРўРР§РќР«Р• Р’РР—РЈРђР›Р¬РќР«Р• Р­Р¤Р¤Р•РљРўР« v4 ==========
 
 function spawnParticles(target,reaction,count){
     if(!target)return;
@@ -844,12 +844,12 @@ function renderHistory(){
     if(valR)valR.textContent=totalReactions;
     if(valU)valU.textContent=discoveredReactions.size;
     if(!list)return;
-    if(!history.length){list.innerHTML='<div class="history-empty-msg">?? Проведи первую реакцию!<br><small>Полка > Стол > Колба > Смешать!</small></div>';return;}
+    if(!history.length){list.innerHTML='<div class="history-empty-msg">рџ§Є РџСЂРѕРІРµРґРё РїРµСЂРІСѓСЋ СЂРµР°РєС†РёСЋ!<br><small>РџРѕР»РєР° в†’ РЎС‚РѕР» в†’ РљРѕР»Р±Р° в†’ РЎРјРµС€Р°С‚СЊ!</small></div>';return;}
     list.innerHTML=history.slice(0,20).map((h,i)=>
         '<div class="hist-item" onclick="ChemLab.replayReaction('+i+')">'
-        +'<div style="flex:1;min-width:0"><div class="hist-eq">'+h.eq.substring(0,50)+(h.eq.length>50?'…':'')+'</div><div class="hist-name">'+h.name+'</div></div>'
+        +'<div style="flex:1;min-width:0"><div class="hist-eq">'+h.eq.substring(0,50)+(h.eq.length>50?'вЂ¦':'')+'</div><div class="hist-name">'+h.name+'</div></div>'
         +'<span class="hist-xp">+'+h.xp+'</span>'
-        +(h.danger>=3?'<span class="hist-badge badge-danger">??</span>':'')
+        +(h.danger>=3?'<span class="hist-badge badge-danger">в пёЏ</span>':'')
         +'</div>'
     ).join('');
 }

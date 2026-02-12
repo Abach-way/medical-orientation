@@ -267,6 +267,7 @@ function isLight(hex){
 function renderShelf(){
     const c=document.getElementById('chem-shelf');
     if(!c)return;
+    const scrollTop=c.scrollTop;
     const filtered=Object.values(SUBSTANCES).filter(s=>{
         const matchCat=activeCategory==='all'||s.cat===activeCategory;
         const matchSearch=!searchQuery||s.name.toLowerCase().includes(searchQuery)||s.symbol.toLowerCase().includes(searchQuery)||s.id.toLowerCase().includes(searchQuery);
@@ -282,6 +283,7 @@ function renderShelf(){
             +'<div class="bottle-real-color">'+s.rc+'</div>'
             +'</div>';
     }).join('');
+    c.scrollTop=scrollTop;
 }
 
 function bindSearch(){
@@ -290,7 +292,10 @@ function bindSearch(){
     i.addEventListener('input',function(){searchQuery=this.value.toLowerCase().trim();renderShelf();});
 }
 
+var _addLock=false;
 function addToTable(id){
+    if(_addLock)return;
+    _addLock=true;setTimeout(function(){_addLock=false;},300);
     if(tableItems.includes(id)){removeFromTable(id);return;}
     if(tableItems.length>=5){toast('📦 Макс 5 веществ на столе');return;}
     tableItems.push(id);

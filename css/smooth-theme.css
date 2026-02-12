@@ -2922,6 +2922,13 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px;
   }
   
+  .profile-hero-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+  
   .avatar-container {
     width: 80px;
     height: 80px;
@@ -2933,6 +2940,35 @@ h1, h2, h3, h4, h5, h6 {
   
   .profile-info h1 {
     font-size: 1.4rem;
+  }
+  
+  .profile-quick-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .quick-stat {
+    min-width: unset;
+    padding: 14px;
+    gap: 10px;
+  }
+  
+  .quick-stat-icon {
+    font-size: 1.5rem;
+  }
+  
+  .quick-stat-value {
+    font-size: 1.2rem;
+  }
+  
+  .profile-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .profile-card {
+    padding: 16px;
   }
   
   .stats-grid {
@@ -3059,6 +3095,14 @@ h1, h2, h3, h4, h5, h6 {
   
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .profile-quick-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .profile-hero {
+    padding: 15px;
   }
   
   .demo-card-question {

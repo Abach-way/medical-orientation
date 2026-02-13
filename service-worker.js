@@ -5,7 +5,7 @@
 
 // Bump this value whenever you change static assets so clients don't get stuck
 // on stale cached CSS/JS.
-const CACHE_NAME = 'medical-orientation-v36';
+const CACHE_NAME = 'medical-orientation-v37';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -202,4 +202,5 @@ self.addEventListener('message', (event) => {
         self.skipWaiting();
     }
 });
+
 

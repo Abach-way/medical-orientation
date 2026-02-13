@@ -248,7 +248,7 @@
     <!-- Force clear stale service worker caches (v32 migration) -->
     <script>
     (function(){
-        var CURRENT='medical-orientation-v35';
+        var CURRENT='medical-orientation-v36';
         if('caches' in window){
             caches.keys().then(function(names){
                 names.forEach(function(name){
@@ -1591,6 +1591,17 @@
                                 <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="abdominal_pain">🤒 Боль в животе</button>
                                 <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="dark_urine">🟤 Тёмная моча</button>
                                 <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="palpitations">💓 Учащённое сердцебиение</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="back_pain">🔙 Боль в пояснице</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="rash">🔴 Сыпь на коже</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="cough">🤧 Кашель</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="insomnia">😵‍💫 Бессонница</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="hair_loss">💇 Выпадение волос</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="menstrual_pain">🩸 Менструальные боли</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="anxiety">😰 Тревожность</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="appetite_loss">🍽️ Потеря аппетита</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="constipation">⛔ Запор</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="diarrhea">💩 Диарея</button>
+                                <button class="symptom-chip" onclick="toggleSymptom(this)" data-symptom="vision_problems">👁️ Нарушение зрения</button>
                             </div>
                         </div>
 
@@ -1821,12 +1832,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" defer></script>
-    <script src="js/organs-3d-models.js?v=35" defer></script>
-    <script src="js/ai-tutor.js?v=35" defer></script>
-    <script src="js/organs-biochem.js?v=35" defer></script>
-    <script src="js/chem-lab.js?v=35" defer></script>
-    <script src="js/questions-database.js?v=35" defer></script>
-    <script src="js/app.js?v=35" defer></script>
+    <script src="js/organs-3d-models.js?v=36" defer></script>
+    <script src="js/ai-tutor.js?v=36" defer></script>
+    <script src="js/organs-biochem.js?v=36" defer></script>
+    <script src="js/chem-lab.js?v=36" defer></script>
+    <script src="js/questions-database.js?v=36" defer></script>
+    <script src="js/app.js?v=36" defer></script>
     
 </body>
 </html>

@@ -490,6 +490,59 @@
     border: 1px solid rgba(0, 184, 148, 0.3);
 }
 
+/* Context-aware highlights */
+.context-highlight {
+    margin: 12px 0;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.context-highlight i {
+    margin-right: 6px;
+}
+
+.menstrual-note {
+    background: rgba(255, 107, 129, 0.12);
+    border: 1px solid rgba(255, 107, 129, 0.35);
+    color: #ff6b81;
+}
+
+.menstrual-note strong {
+    color: #ff4757;
+}
+
+.child-note {
+    background: rgba(116, 185, 255, 0.12);
+    border: 1px solid rgba(116, 185, 255, 0.35);
+    color: #74b9ff;
+}
+
+.child-note strong {
+    color: #0984e3;
+}
+
+.elderly-note {
+    background: rgba(253, 203, 110, 0.12);
+    border: 1px solid rgba(253, 203, 110, 0.35);
+    color: #fdcb6e;
+}
+
+.elderly-note strong {
+    color: #f39c12;
+}
+
+.urgent-note {
+    background: rgba(255, 71, 87, 0.15);
+    border: 1px solid rgba(255, 71, 87, 0.4);
+    color: #ff4757;
+}
+
+.urgent-note strong {
+    color: #ff3838;
+}
+
 /* Biochem Table */
 .biochem-table-wrapper {
     overflow-x: auto;

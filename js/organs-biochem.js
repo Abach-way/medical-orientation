@@ -663,7 +663,9 @@ const symptomBiochemDB = {
             { name: 'МНО/ПТВ', code: 'INR', norm: 'МНО 0.8-1.2', deviation: '↑ Повышение', significance: 'high', direction: 'up' },
             { name: 'АЧТВ', code: 'APTT', norm: '25-35 сек', deviation: '↑ Удлинение', significance: 'high', direction: 'up' },
             { name: 'Фибриноген', code: 'Fib', norm: '2-4 г/л', deviation: '↓ Снижение', significance: 'medium', direction: 'down' },
-            { name: 'D-димер', code: 'D-dimer', norm: '< 500 нг/мл', deviation: '↑ Повышение (ДВС)', significance: 'medium', direction: 'up' }
+            { name: 'D-димер', code: 'D-dimer', norm: '< 500 нг/мл', deviation: '↑ Повышение (ДВС)', significance: 'medium', direction: 'up' },
+            { name: 'Гемоглобин', code: 'Hb', norm: '120-150 г/л (Ж), 130-170 (М)', deviation: '↓ Снижение (анемия при кровопотере)', significance: 'high', direction: 'down' },
+            { name: 'Ферритин', code: 'Ferritin', norm: '10-120 нг/мл (Ж)', deviation: '↓ Снижение', significance: 'medium', direction: 'down' }
         ],
         possibleConditions: ['Тромбоцитопения', 'Гемофилия', 'ДВС-синдром', 'Печёночная недостаточность'],
         organs: ['liver'],
@@ -677,7 +679,8 @@ const symptomBiochemDB = {
             { name: 'АЛТ, АСТ', code: 'ALT/AST', norm: '< 40 Ед/л', deviation: '↑ Повышение', significance: 'medium', direction: 'up' },
             { name: 'Лейкоциты', code: 'WBC', norm: '4.0-9.0 ×10⁹/л', deviation: '↑ Лейкоцитоз', significance: 'high', direction: 'up' },
             { name: 'СРБ', code: 'CRP', norm: '< 5 мг/л', deviation: '↑ Повышение', significance: 'medium', direction: 'up' },
-            { name: 'Билирубин', code: 'Bil', norm: '3.4-20.5 мкмоль/л', deviation: '↑ Повышение', significance: 'medium', direction: 'up' }
+            { name: 'Билирубин', code: 'Bil', norm: '3.4-20.5 мкмоль/л', deviation: '↑ Повышение', significance: 'medium', direction: 'up' },
+            { name: 'ХГЧ (бета)', code: 'bHCG', norm: '< 5 мЕд/мл (не беременна)', deviation: '↑ Повышение', significance: 'medium', direction: 'up' }
         ],
         possibleConditions: ['Панкреатит', 'Аппендицит', 'Холецистит', 'Гепатит', 'Язвенная болезнь'],
         organs: ['stomach', 'liver'],
@@ -708,6 +711,156 @@ const symptomBiochemDB = {
         possibleConditions: ['Тиреотоксикоз', 'Аритмия', 'Гипокалиемия', 'Анемия'],
         organs: ['heart'],
         recommendations: ['ТТГ, свободный Т3 и Т4', 'Электролиты (K, Mg, Ca)', 'ЭКГ, холтер-мониторинг', 'Общий анализ крови (гемоглобин)']
+    },
+    // Новые симптомы
+    back_pain: {
+        name: 'Боль в пояснице',
+        markers: [
+            { name: 'Креатинин', code: 'Creat', norm: '62-115 мкмоль/л', deviation: '↑ Повышение', significance: 'high', direction: 'up' },
+            { name: 'Мочевина', code: 'Urea', norm: '2.5-8.3 ммоль/л', deviation: '↑ Повышение', significance: 'medium', direction: 'up' },
+            { name: 'Общий анализ мочи', code: 'OAM', norm: 'Без патологии', deviation: 'Лейкоцитурия, гематурия', significance: 'high', direction: 'up' },
+            { name: 'СРБ', code: 'CRP', norm: '< 5 мг/л', deviation: '↑ Повышение', significance: 'medium', direction: 'up' },
+            { name: 'Кальций (Ca²⁺)', code: 'Ca', norm: '2.15-2.55 ммоль/л', deviation: '↓ Гипокальциемия', significance: 'low', direction: 'down' },
+            { name: 'Витамин D (25-OH)', code: 'VitD', norm: '30-100 нг/мл', deviation: '↓ Снижение', significance: 'medium', direction: 'down' }
+        ],
+        possibleConditions: ['Пиелонефрит', 'Мочекаменная болезнь', 'Остеохондроз', 'Дефицит витамина D'],
+        organs: ['kidneys'],
+        recommendations: ['Креатинин, мочевина', 'Общий анализ мочи', 'СРБ', 'Кальций, витамин D', 'УЗИ почек']
+    },
+    rash: {
+        name: 'Сыпь на коже',
+        markers: [
+            { name: 'IgE общий', code: 'IgE', norm: '< 100 МЕ/мл', deviation: '↑ Повышение (аллергия)', significance: 'high', direction: 'up' },
+            { name: 'Эозинофилы', code: 'Eos', norm: '0.5-5%', deviation: '↑ Эозинофилия', significance: 'high', direction: 'up' },
+            { name: 'СОЭ', code: 'ESR', norm: '1-15 мм/ч', deviation: '↑ Повышение', significance: 'medium', direction: 'up' },
+            { name: 'АНА', code: 'ANA', norm: 'Отрицательный', deviation: '↑ Положительный', significance: 'medium', direction: 'up' },
+            { name: 'Тромбоциты', code: 'PLT', norm: '150-400 ×10⁹/л', deviation: '↓ Снижение', significance: 'low', direction: 'down' }
+        ],
+        possibleConditions: ['Аллергическая реакция', 'Крапивница', 'Васкулит', 'СКВ', 'Инфекция'],
+        organs: [],
+        recommendations: ['Общий анализ крови + эозинофилы', 'IgE общий', 'СОЭ, СРБ', 'АНА (при подозр. на СКВ)', 'Аллергопанель']
+    },
+    cough: {
+        name: 'Кашель',
+        markers: [
+            { name: 'Лейкоциты (WBC)', code: 'WBC', norm: '4.0-9.0 ×10⁹/л', deviation: '↑ Лейкоцитоз', significance: 'high', direction: 'up' },
+            { name: 'СРБ', code: 'CRP', norm: '< 5 мг/л', deviation: '↑ Повышение', significance: 'high', direction: 'up' },
+            { name: 'Прокальцитонин', code: 'PCT', norm: '< 0.5 нг/мл', deviation: '↑ Повышение (бактериальная)', significance: 'high', direction: 'up' },
+            { name: 'IgE общий', code: 'IgE', norm: '< 100 МЕ/мл', deviation: '↑ (аллерг. кашель/астма)', significance: 'medium', direction: 'up' },
+            { name: 'Эозинофилы', code: 'Eos', norm: '0.5-5%', deviation: '↑ Эозинофилия (астма)', significance: 'medium', direction: 'up' }
+        ],
+        possibleConditions: ['Бронхит', 'Пневмония', 'Бронхиальная астма', 'ОРВИ', 'Коклюш'],
+        organs: ['lungs'],
+        recommendations: ['Общий анализ крови', 'СРБ, прокальцитонин', 'Рентген грудной клетки', 'Спирометрия (при подозр. на астму)', 'IgE, эозинофилы']
+    },
+    insomnia: {
+        name: 'Бессонница',
+        markers: [
+            { name: 'ТТГ', code: 'TSH', norm: '0.4-4.0 мЕд/л', deviation: '↑↓ Отклонение', significance: 'high', direction: 'up' },
+            { name: 'Кортизол (утро)', code: 'Cortisol', norm: '138-635 нмоль/л', deviation: '↑ Повышение', significance: 'medium', direction: 'up' },
+            { name: 'Магний (Mg²⁺)', code: 'Mg', norm: '0.66-1.07 ммоль/л', deviation: '↓ Снижение', significance: 'medium', direction: 'down' },
+            { name: 'Железо/ферритин', code: 'Fe/Ferr', norm: 'Ферритин > 30 нг/мл', deviation: '↓ Снижение', significance: 'low', direction: 'down' },
+            { name: 'Глюкоза', code: 'Glu', norm: '3.9-6.1 ммоль/л', deviation: '↑ Повышение', significance: 'low', direction: 'up' }
+        ],
+        possibleConditions: ['Тиреотоксикоз', 'Синдром Кушинга', 'Дефицит магния', 'Тревожное расстройство'],
+        organs: ['brain'],
+        recommendations: ['ТТГ, свободный Т3/Т4', 'Кортизол (утро)', 'Магний, кальций', 'Ферритин']
+    },
+    hair_loss: {
+        name: 'Выпадение волос',
+        markers: [
+            { name: 'Ферритин', code: 'Ferritin', norm: '10-120 нг/мл (Ж)', deviation: '↓ Снижение', significance: 'high', direction: 'down' },
+            { name: 'ТТГ', code: 'TSH', norm: '0.4-4.0 мЕд/л', deviation: '↑ Повышение (гипотиреоз)', significance: 'high', direction: 'up' },
+            { name: 'Витамин D', code: 'VitD', norm: '30-100 нг/мл', deviation: '↓ Снижение', significance: 'medium', direction: 'down' },
+            { name: 'Цинк (Zn)', code: 'Zn', norm: '10-18 мкмоль/л', deviation: '↓ Снижение', significance: 'medium', direction: 'down' },
+            { name: 'Железо сывороточное', code: 'Fe', norm: '12.5-32.2 мкмоль/л', deviation: '↓ Снижение', significance: 'high', direction: 'down' },
+            { name: 'Тестостерон/ДГЭА-С', code: 'Testo/DHEA', norm: 'Зависит от пола/возраста', deviation: '↑ Повышение (андрогенная алопеция)', significance: 'medium', direction: 'up' }
+        ],
+        possibleConditions: ['Железодефицитная анемия', 'Гипотиреоз', 'Дефицит витамина D', 'Андрогенная алопеция', 'Дефицит цинка'],
+        organs: [],
+        recommendations: ['Ферритин, железо, ОЖСС', 'ТТГ, свободный Т4', 'Витамин D, цинк', 'Тестостерон, ДГЭА-С (у женщин)']
+    },
+    menstrual_pain: {
+        name: 'Менструальные боли / нарушения цикла',
+        markers: [
+            { name: 'Гемоглобин', code: 'Hb', norm: '120-150 г/л (Ж)', deviation: '↓ Снижение (менструальная кровопотеря)', significance: 'high', direction: 'down' },
+            { name: 'Ферритин', code: 'Ferritin', norm: '10-120 нг/мл', deviation: '↓ Снижение (латентный дефицит Fe)', significance: 'high', direction: 'down' },
+            { name: 'ЛГ / ФСГ', code: 'LH/FSH', norm: 'Зависит от фазы цикла', deviation: '↑ Дисбаланс (СПКЯ)', significance: 'high', direction: 'up' },
+            { name: 'Эстрадиол', code: 'E2', norm: 'Зависит от фазы цикла', deviation: '↓↑ Отклонение', significance: 'high', direction: 'up' },
+            { name: 'Прогестерон', code: 'Prog', norm: '> 10 нмоль/л (лютеиновая)', deviation: '↓ Снижение', significance: 'medium', direction: 'down' },
+            { name: 'Пролактин', code: 'PRL', norm: '4.5-23 нг/мл (Ж)', deviation: '↑ Повышение', significance: 'medium', direction: 'up' },
+            { name: 'ТТГ', code: 'TSH', norm: '0.4-4.0 мЕд/л', deviation: '↑↓ (тиреопатия → нарушения цикла)', significance: 'medium', direction: 'up' },
+            { name: 'ХГЧ (бета)', code: 'bHCG', norm: '< 5 мЕд/мл', deviation: '↑ (исключение беременности)', significance: 'high', direction: 'up' },
+            { name: 'Тестостерон общий', code: 'Testo', norm: '0.2-2.0 нмоль/л (Ж)', deviation: '↑ Повышение (СПКЯ)', significance: 'medium', direction: 'up' }
+        ],
+        possibleConditions: ['Менструация (физиологическая норма)', 'Дисменорея', 'СПКЯ (синдром поликистозных яичников)', 'Железодефицитная анемия', 'Эндометриоз', 'Гиперпролактинемия'],
+        organs: ['stomach'],
+        recommendations: ['Общий анализ крови (Hb, ферритин, Fe)', 'Гормоны: ЛГ, ФСГ, эстрадиол, прогестерон', 'Пролактин, ТТГ', 'ХГЧ (исключение беременности)', 'УЗИ органов малого таза', 'При необходимости — тестостерон, ДГЭА-С']
+    },
+    anxiety: {
+        name: 'Тревожность / нервозность',
+        markers: [
+            { name: 'ТТГ, свободный Т4', code: 'TSH/fT4', norm: 'ТТГ 0.4-4.0', deviation: '↓ ТТГ (тиреотоксикоз)', significance: 'high', direction: 'down' },
+            { name: 'Кортизол (утро)', code: 'Cortisol', norm: '138-635 нмоль/л', deviation: '↑ Повышение', significance: 'medium', direction: 'up' },
+            { name: 'Магний (Mg²⁺)', code: 'Mg', norm: '0.66-1.07 ммоль/л', deviation: '↓ Снижение', significance: 'medium', direction: 'down' },
+            { name: 'Витамин B12', code: 'B12', norm: '200-900 пг/мл', deviation: '↓ Снижение', significance: 'low', direction: 'down' },
+            { name: 'Глюкоза', code: 'Glu', norm: '3.9-6.1 ммоль/л', deviation: '↓ Гипогликемия', significance: 'medium', direction: 'down' }
+        ],
+        possibleConditions: ['Тиреотоксикоз', 'Гипогликемия', 'Дефицит магния', 'Феохромоцитома'],
+        organs: ['brain'],
+        recommendations: ['ТТГ, свободный Т3/Т4', 'Кортизол', 'Магний, кальций', 'Глюкоза', 'Витамин B12']
+    },
+    appetite_loss: {
+        name: 'Потеря аппетита',
+        markers: [
+            { name: 'АЛТ, АСТ', code: 'ALT/AST', norm: '< 40 Ед/л', deviation: '↑ Повышение', significance: 'high', direction: 'up' },
+            { name: 'Билирубин', code: 'Bil', norm: '3.4-20.5 мкмоль/л', deviation: '↑ Повышение', significance: 'medium', direction: 'up' },
+            { name: 'Креатинин', code: 'Creat', norm: '62-115 мкмоль/л', deviation: '↑ Повышение (уремия)', significance: 'medium', direction: 'up' },
+            { name: 'Альбумин', code: 'Alb', norm: '35-55 г/л', deviation: '↓ Снижение', significance: 'medium', direction: 'down' },
+            { name: 'ТТГ', code: 'TSH', norm: '0.4-4.0 мЕд/л', deviation: '↑ Повышение', significance: 'low', direction: 'up' },
+            { name: 'Гемоглобин', code: 'Hb', norm: '120-170 г/л', deviation: '↓ Снижение', significance: 'low', direction: 'down' }
+        ],
+        possibleConditions: ['Гепатит', 'Гастрит', 'Депрессия', 'Хроническая почечная недостаточность', 'Онкология'],
+        organs: ['stomach', 'liver'],
+        recommendations: ['Печёночные пробы', 'Креатинин, мочевина', 'Общий анализ крови', 'ТТГ', 'ФГДС']
+    },
+    constipation: {
+        name: 'Запор',
+        markers: [
+            { name: 'ТТГ', code: 'TSH', norm: '0.4-4.0 мЕд/л', deviation: '↑ Повышение (гипотиреоз)', significance: 'high', direction: 'up' },
+            { name: 'Кальций (Ca²⁺)', code: 'Ca', norm: '2.15-2.55 ммоль/л', deviation: '↑ Гиперкальциемия', significance: 'medium', direction: 'up' },
+            { name: 'Калий (K⁺)', code: 'K', norm: '3.5-5.1 ммоль/л', deviation: '↓ Гипокалиемия', significance: 'medium', direction: 'down' },
+            { name: 'Глюкоза', code: 'Glu', norm: '3.9-6.1 ммоль/л', deviation: '↑ Повышение (диабет. нейропатия)', significance: 'low', direction: 'up' }
+        ],
+        possibleConditions: ['Гипотиреоз', 'Гиперкальциемия', 'Гипокалиемия', 'СРК'],
+        organs: ['stomach'],
+        recommendations: ['ТТГ', 'Электролиты (Ca, K, Mg)', 'Глюкоза', 'Колоноскопия (по показаниям)']
+    },
+    diarrhea: {
+        name: 'Диарея',
+        markers: [
+            { name: 'Электролиты (Na⁺, K⁺)', code: 'Electrolytes', norm: 'Na 136-145, K 3.5-5.1', deviation: '↓ Снижение', significance: 'high', direction: 'down' },
+            { name: 'ТТГ', code: 'TSH', norm: '0.4-4.0 мЕд/л', deviation: '↓ Снижение (тиреотоксикоз)', significance: 'medium', direction: 'down' },
+            { name: 'СРБ', code: 'CRP', norm: '< 5 мг/л', deviation: '↑ Повышение', significance: 'medium', direction: 'up' },
+            { name: 'Кальпротектин (кал)', code: 'Calpr', norm: '< 50 мкг/г', deviation: '↑ Повышение (воспаление кишечника)', significance: 'high', direction: 'up' },
+            { name: 'Альбумин', code: 'Alb', norm: '35-55 г/л', deviation: '↓ Снижение', significance: 'low', direction: 'down' }
+        ],
+        possibleConditions: ['Инфекционный энтерит', 'Тиреотоксикоз', 'ВЗК (Крона, НЯК)', 'Мальабсорбция', 'СРК'],
+        organs: ['stomach'],
+        recommendations: ['Электролиты', 'Копрограмма', 'Кальпротектин фекальный', 'ТТГ', 'Посев кала']
+    },
+    vision_problems: {
+        name: 'Нарушение зрения',
+        markers: [
+            { name: 'Глюкоза', code: 'Glu', norm: '3.9-6.1 ммоль/л', deviation: '↑ Повышение (диаб. ретинопатия)', significance: 'high', direction: 'up' },
+            { name: 'HbA1c', code: 'HbA1c', norm: '< 6.0%', deviation: '↑ Повышение', significance: 'high', direction: 'up' },
+            { name: 'АД', code: 'BP', norm: '< 140/90 мм рт.ст.', deviation: '↑ Повышение', significance: 'medium', direction: 'up' },
+            { name: 'ТТГ', code: 'TSH', norm: '0.4-4.0 мЕд/л', deviation: '↓ Снижение (офтальмопатия Грейвса)', significance: 'medium', direction: 'down' },
+            { name: 'СОЭ', code: 'ESR', norm: '1-10 мм/ч', deviation: '↑ Повышение (височный артериит)', significance: 'medium', direction: 'up' }
+        ],
+        possibleConditions: ['Диабетическая ретинопатия', 'Гипертоническая ангиопатия', 'Эндокринная офтальмопатия', 'Височный артериит'],
+        organs: ['brain'],
+        recommendations: ['Глюкоза, HbA1c', 'Контроль АД', 'ТТГ, свободный Т4', 'СОЭ', 'Осмотр офтальмолога']
     }
 };
 
@@ -728,10 +881,21 @@ const symptomKeywords = {
     weight_loss:        ['похудел', 'потеря вес', 'теряю вес', 'худе', 'снижен вес'],
     skin_yellow:        ['желт', 'иктер', 'кожа пожелт', 'склер пожелт'],
     muscle_weakness:    ['мышц', 'слабость в ног', 'слабость в рук', 'миопат', 'парез'],
-    bleeding:           ['кровоточ', 'кровотечен', 'кровь из нос', 'кровь из дёс', 'синяк', 'гематом', 'петехи'],
-    abdominal_pain:     ['живот', 'брюшн', 'колик', 'спазм', 'резь в желуд', 'эпигастр'],
+    bleeding:           ['кровоточ', 'кровотечен', 'кровь из нос', 'кровь из дёс', 'синяк', 'гематом', 'петехи', 'кровянист выделен'],
+    abdominal_pain:     ['живот', 'брюшн', 'колик', 'спазм', 'резь в желуд', 'эпигастр', 'низ живот', 'тянет живот'],
     dark_urine:         ['тёмная моча', 'темная моча', 'моча тёмн', 'моча коричнев', 'цвет мочи'],
-    palpitations:       ['сердцебиен', 'пульс', 'тахикард', 'аритм', 'сердце колот', 'замиран']
+    palpitations:       ['сердцебиен', 'пульс', 'тахикард', 'аритм', 'сердце колот', 'замиран'],
+    back_pain:          ['поясниц', 'спина бол', 'боль в спин', 'люмбалг', 'радикул'],
+    rash:               ['сыпь', 'высыпан', 'покраснен', 'зуд', 'чешет', 'крапивниц', 'дерматит'],
+    cough:              ['кашел', 'кашля', 'мокрот', 'хрип', 'бронхит'],
+    insomnia:           ['бессонниц', 'не могу уснуть', 'плохо сплю', 'не сплю', 'просыпаюсь'],
+    hair_loss:          ['волос', 'лысе', 'алопец', 'выпадают волос', 'облысен'],
+    menstrual_pain:     ['месячн', 'менструац', 'менструальн', 'критическ дни', 'цикл нарушен', 'задержк менструац', 'обильн менструац', 'ПМС', 'дисменоре', 'тянет низ живота'],
+    anxiety:            ['тревог', 'нервничаю', 'нервозн', 'паник', 'беспокой', 'волну'],
+    appetite_loss:      ['аппетит', 'не хочу есть', 'не ем', 'отвращен к еде', 'анорекс'],
+    constipation:       ['запор', 'не могу сходить', 'стул задержк', 'нет стула'],
+    diarrhea:           ['понос', 'жидкий стул', 'диаре', 'рвота и понос', 'расстройств желудк'],
+    vision_problems:    ['зрение', 'не вижу', 'плохо вижу', 'двоится', 'пелена', 'мутно вижу']
 };
 
 function parseTextSymptoms(text) {
@@ -762,6 +926,12 @@ function analyzeBiochemistry() {
         return;
     }
 
+    // Считываем параметры пациента
+    const ageInput = document.getElementById('patient-age');
+    const genderInput = document.getElementById('patient-gender');
+    const patientAge = parseInt(ageInput ? ageInput.value : 30) || 30;
+    const patientGender = genderInput ? genderInput.value : 'male';
+
     // Автоматически подсветить чипы, распознанные из текста
     textSymptoms.forEach(sym => {
         if (!selectedSymptoms.has(sym)) {
@@ -783,7 +953,7 @@ function analyzeBiochemistry() {
 
     // Gather data from selected symptoms
     const allMarkers = [];
-    const allConditions = new Set();
+    const allConditions = [];
     const allOrgans = new Set();
     const allRecommendations = new Set();
     const symptomNames = [];
@@ -801,27 +971,168 @@ function analyzeBiochemistry() {
                     allMarkers.push(marker);
                 }
             });
-            data.possibleConditions.forEach(c => allConditions.add(c));
+            data.possibleConditions.forEach(c => {
+                if (!allConditions.includes(c)) allConditions.push(c);
+            });
             data.organs.forEach(o => allOrgans.add(o));
             data.recommendations.forEach(r => allRecommendations.add(r));
         }
     });
 
+    // ==============================================================
+    // КОНТЕКСТ-ЗАВИСИМАЯ ДИАГНОСТИКА (пол + возраст)
+    // ==============================================================
+    const contextNotes = [];
+    const contextConditions = [];
+    const contextRecommendations = [];
+
+    // --- Сценарий: девочка/женщина + кровотечение/боль в животе → менструация ---
+    const hasBleeding = combined.has('bleeding');
+    const hasAbdominalPain = combined.has('abdominal_pain');
+    const hasMenstrualPain = combined.has('menstrual_pain');
+    const isFemale = patientGender === 'female';
+    const isReproductiveAge = patientAge >= 10 && patientAge <= 55;
+    const isTeenGirl = isFemale && patientAge >= 10 && patientAge <= 17;
+    const isMenarcheAge = isFemale && patientAge >= 10 && patientAge <= 16;
+
+    if (isFemale && isReproductiveAge && (hasBleeding || hasAbdominalPain || hasMenstrualPain)) {
+        // Автоматически добавить менструальный симптом для полноты анализа
+        if (!combined.has('menstrual_pain')) {
+            const menData = symptomBiochemDB['menstrual_pain'];
+            if (menData) {
+                menData.markers.forEach(marker => {
+                    if (!allMarkers.find(m => m.code === marker.code)) {
+                        allMarkers.push(marker);
+                    }
+                });
+                menData.recommendations.forEach(r => allRecommendations.add(r));
+            }
+        }
+
+        if (hasBleeding && hasAbdominalPain) {
+            if (isTeenGirl) {
+                contextConditions.unshift('🩸 Менструация (менархе / становление цикла — ФИЗИОЛОГИЧЕСКАЯ НОРМА)');
+                contextConditions.push('Дисменорея (болезненные менструации)');
+                contextNotes.push(`<div class="context-highlight menstrual-note">
+                    <i class="fas fa-venus"></i> <strong>Важно!</strong> У девочки ${patientAge} лет кровотечение + боль в животе — <strong>наиболее вероятная причина — менструация</strong> (менархе обычно наступает в 11-15 лет).
+                    <br>Если цикл устанавливается — это <strong>нормальный физиологический процесс</strong>.
+                    <br>Рекомендуется: дневник цикла, консультация детского гинеколога при сильных болях или обильных выделениях.
+                    <br>⚠️ Необходимо исключить: аппендицит (если боль справа), внематочную беременность (у старших подростков).
+                </div>`);
+            } else if (isMenarcheAge) {
+                contextConditions.unshift('🩸 Менструация (физиологическая норма)');
+                contextNotes.push(`<div class="context-highlight menstrual-note">
+                    <i class="fas fa-venus"></i> Кровянистые выделения + боль в животе у женщины ${patientAge} лет — <strong>вероятно менструация</strong> или гинекологическая патология.
+                    <br>Рекомендуется оценить характер и периодичность выделений.
+                </div>`);
+            } else {
+                contextConditions.unshift('🩸 Менструация (физиологическая норма)');
+                contextNotes.push(`<div class="context-highlight menstrual-note">
+                    <i class="fas fa-venus"></i> Кровянистые выделения + боль в животе у женщины ${patientAge} лет — <strong>рассмотреть менструальный цикл</strong>.
+                    <br>⚠️ Исключить: эндометриоз, миому, полипы, внематочную беременность.
+                </div>`);
+            }
+            contextRecommendations.push('Консультация гинеколога');
+            contextRecommendations.push('УЗИ органов малого таза');
+            contextRecommendations.push('ХГЧ (бета) — исключение беременности');
+        } else if (hasBleeding && !hasAbdominalPain) {
+            if (isTeenGirl) {
+                contextConditions.unshift('🩸 Менструация (возможно менархе)');
+                contextNotes.push(`<div class="context-highlight menstrual-note">
+                    <i class="fas fa-venus"></i> Кровотечение у девочки ${patientAge} лет — <strong>возможно начало менструации (менархе)</strong>.
+                    <br>Менархе в 11-15 лет — норма. Первые 1-2 года цикл может быть нерегулярным.
+                </div>`);
+            } else {
+                contextConditions.push('Менструация / метроррагия');
+                contextNotes.push(`<div class="context-highlight menstrual-note">
+                    <i class="fas fa-venus"></i> У женщины ${patientAge} лет необходимо уточнить: связано ли кровотечение с менструальным циклом?
+                </div>`);
+            }
+        } else if (hasAbdominalPain && !hasBleeding) {
+            if (isTeenGirl) {
+                contextConditions.push('Дисменорея (менструальные боли)');
+                contextNotes.push(`<div class="context-highlight menstrual-note">
+                    <i class="fas fa-venus"></i> Боль в животе у девочки ${patientAge} лет — <strong>частая причина — менструальные боли (дисменорея)</strong>.
+                    <br>Уточнить: совпадает ли с менструальным циклом? Какой день цикла?
+                </div>`);
+            } else {
+                contextConditions.push('Дисменорея / овуляторная боль');
+                contextNotes.push(`<div class="context-highlight menstrual-note">
+                    <i class="fas fa-venus"></i> Боль в животе у женщины ${patientAge} лет — рассмотреть гинекологические причины (дисменорея, овуляция, эндометриоз).
+                </div>`);
+            }
+        }
+    }
+
+    // --- Контекст: дети ---
+    if (patientAge < 10) {
+        if (combined.has('fever') && combined.has('cough')) {
+            contextNotes.push(`<div class="context-highlight child-note">
+                <i class="fas fa-child"></i> Ребёнку ${patientAge} лет — кашель + температура: исключить ОРВИ, бронхит, пневмонию, ложный круп.
+                <br>🩺 Обязательно: осмотр педиатра, аускультация.
+            </div>`);
+        }
+        if (combined.has('rash') && combined.has('fever')) {
+            contextConditions.push('Детские инфекции (ветрянка, корь, скарлатина, краснуха)');
+            contextNotes.push(`<div class="context-highlight child-note">
+                <i class="fas fa-child"></i> Сыпь + температура у ребёнка ${patientAge} лет — <strong>исключить детские инфекции</strong>: ветрянка, корь, скарлатина, краснуха, розеола.
+            </div>`);
+        }
+    }
+
+    // --- Контекст: пожилые ---
+    if (patientAge >= 65) {
+        if (combined.has('dizziness') || combined.has('muscle_weakness')) {
+            contextNotes.push(`<div class="context-highlight elderly-note">
+                <i class="fas fa-user-shield"></i> Пациенту ${patientAge} лет — <strong>высокий риск падений!</strong> Проверить: постуральную гипотензию, саркопению, полифармакотерапию.
+            </div>`);
+            contextRecommendations.push('Ортостатическая проба (АД лёжа/стоя)');
+        }
+        if (combined.has('chest_pain')) {
+            contextNotes.push(`<div class="context-highlight urgent-note">
+                <i class="fas fa-exclamation-triangle"></i> Боль в груди у пациента ${patientAge} лет — <strong>высокий кардиоваскулярный риск!</strong> Исключить ОКС (инфаркт) в первую очередь!
+            </div>`);
+        }
+    }
+
+    // --- Контекст: мужчина + частое мочеиспускание + возраст > 50 ---
+    if (patientGender === 'male' && patientAge >= 50 && combined.has('frequent_urination')) {
+        contextConditions.push('Аденома предстательной железы (ДГПЖ)');
+        contextRecommendations.push('ПСА (простатический специфический антиген)');
+        contextRecommendations.push('УЗИ предстательной железы (ТРУЗИ)');
+    }
+
+    // Объединяем условия
+    const finalConditions = [...contextConditions];
+    allConditions.forEach(c => {
+        if (!finalConditions.includes(c)) finalConditions.push(c);
+    });
+
+    // Добавить контекстные рекомендации
+    contextRecommendations.forEach(r => allRecommendations.add(r));
+
     // Sort markers by significance
     const sigOrder = { high: 0, medium: 1, low: 2 };
     allMarkers.sort((a, b) => sigOrder[a.significance] - sigOrder[b.significance]);
+
+    // Build patient info line
+    const genderLabel = patientGender === 'female' ? 'Женский' : 'Мужской';
+    const patientInfoLine = `<p style="margin-top: 4px; color: var(--text-secondary);"><i class="fas fa-user"></i> Пациент: <strong>${genderLabel}</strong>, <strong>${patientAge} лет</strong></p>`;
 
     // Build diagnosis section
     const diagnosisDiv = document.getElementById('biochem-diagnosis');
     const unrecNote = unrecognizedText
         ? `<p style="margin-top: 8px; color: #fdcb6e;"><i class="fas fa-info-circle"></i> <strong>Дополнительно:</strong> «${unrecognizedText}» — не удалось автоматически распознать. Рекомендуем выбрать подходящие симптомы из списка выше.</p>`
         : '';
+    const contextNotesHTML = contextNotes.length > 0 ? contextNotes.join('') : '';
     diagnosisDiv.innerHTML = `
         <h4><i class="fas fa-diagnoses"></i> Предварительный анализ</h4>
+        ${patientInfoLine}
         <p><strong>Симптомы:</strong> ${symptomNames.join(', ') || '—'}</p>
         ${unrecNote}
+        ${contextNotesHTML}
         <p style="margin-top: 8px;"><strong>Возможные состояния:</strong></p>
-        <div style="margin-top: 8px;">${[...allConditions].map((c, i) => {
+        <div style="margin-top: 8px;">${finalConditions.map((c, i) => {
             const tag = i < 2 ? 'high' : i < 4 ? 'medium' : 'low';
             return `<span class="diagnosis-tag ${tag}">${c}</span>`;
         }).join(' ')}</div>
